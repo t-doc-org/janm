@@ -5,6 +5,8 @@
 
 Ceci est un cours d'informatique.
 2ème changement
+Encore un changement
+
 ```{toctree}
 :maxdepth: 1
 
