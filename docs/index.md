@@ -3,6 +3,8 @@
 
 # Informatique
 
+Ceci est un cours d'informatique.
+
 ```{toctree}
 :maxdepth: 1
 
