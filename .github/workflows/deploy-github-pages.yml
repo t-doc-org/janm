@@ -1,0 +1,18 @@
+# Copyright 2024 Maxime Jan <maxime.jan@edufr.ch>
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
+name: Deploy book to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    uses: t-doc-org/common/.github/workflows/deploy-github-pages.yml@main
+    secrets: inherit
