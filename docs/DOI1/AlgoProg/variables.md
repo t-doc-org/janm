@@ -185,97 +185,100 @@ une variable et chaque ligne à l'état de la mémoire après chaque
 modification de variable. Celui-ci se construit étape par étape de la
 manière suivante :
 
-   **prix**   **nombre**   **total**  **txt**
-  ---------- ------------ ----------- ---------
-                                                                       
-                                      
+````{admonition} Etape 0
+:class: note dropdown
+| prix | nombre | total | txt |
+| :--- | :----- | :---- | :-- |
+|      |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
 
-Tableau d'état 1
+En inspectant rapidement le programme, on constate qu'il contient 4 variables différentes. Ainsi, le tableau initial contient ces 4 colonnes.
+````
 
-   **prix**   **nombre**   **total**  **txt**
-  ---------- ------------ ----------- ---------
-      10                              
-                                      
-                                      
-                                      
-                                      
+````{admonition} Etape 1
+:class: note dropdown
+| prix | nombre | total | txt |
+| :--- | :----- | :---- | :-- |
+| 10   |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
 
-Tableau d'état 2
-
-   **prix**   **nombre**   **total**  **txt**
-  ---------- ------------ ----------- ---------
-      10                              
-      10          2                   
-                                      
-                                      
-                                      
-
-Tableau d'état 3
-
-   **prix**   **nombre**   **total**  **txt**
-  ---------- ------------ ----------- ---------
-      10                              
-      10          2                   
-      10          2           20      
-                                      
-                                      
-
-Tableau d'état 4
-
-   **prix**   **nombre**   **total**  **txt**
-  ---------- ------------ ----------- ---------
-      10                              
-      10          2                   
-      10          2           20      
-      10          3           20      
-                                      
-
-Tableau d'état 5
-
-   **prix**   **nombre**   **total**  **txt**
-  ---------- ------------ ----------- ---------
-      10                              
-      10          2                   
-      10          2           20      
-      10          3           20      
-      10          3           20      ???
-
-Tableau d'état 6
-
-1.  En inspectant rapidement le programme, on constate qu'il contient 4
-    variables différentes. Ainsi, le tableau initial contient ces 4
-    colonnes.
-
-2.  La première ligne du programme est exécutée. En respectant la
+ La première ligne du programme est exécutée. En respectant la
     priorité des opérations, l'expression est évaluée à `10`, et cette
     valeur est alors stockée dans la variable `prix`.
+````
 
-3.  À la 2ème ligne du programme, l'expression est évaluée à `2` et
+````{admonition} Etape 2
+:class: note dropdown
+| prix | nombre | total | txt |
+| :--- | :----- | :---- | :-- |
+| 10   |        |       |     |
+| 10   | 2      |       |     |
+|      |        |       |     |
+|      |        |       |     |
+|      |        |       |     |
+
+À la 2ème ligne du programme, l'expression est évaluée à `2` et
     cette valeur est stockée dans la variable `nombre`. La valeur de
     `prix` n'ayant pas changé, celle-ci est également reportée sur cette
     ligne pour représenter l'état exact de la mémoire à ce point du
     programme.
 
-4.  Pour évaluer l'expression `prix * nombre`, il faut tout d'abord lire
+````
+
+````{admonition} Etape 3
+:class: note dropdown
+| prix | nombre | total | txt |
+| :--- | :----- | :---- | :-- |
+| 10   |        |       |     |
+| 10   | 2      |       |     |
+| 10   | 2      | 20    |     |
+|      |        |       |     |
+|      |        |       |     |   
+
+Pour évaluer l'expression `prix * nombre`, il faut tout d'abord lire
     la valeur de ces variables. Ainsi, cette expression équivaut à
     `10 * 2` et la valeur `20` est alors enregistrée dans la variable
     `total`.
+````                                      
 
-5.  À la 4ème ligne du programme, il faut commencer par évaluer
-    l'expression `nombre + 1`. En lisant la valeur de `nombre`, on
-    constate qu'il s'agit de `2`. Ainsi, cette expression équivaut à
-    `2 + 1` et s'évalue à `3`. Cette valeur est finalement stockée dans
-    `nombre`. Attention, ce n'est **pas** parce que `nombre` a changé de
-    valeur que celle de `total` doit être modifiée. En effet, la 3ème
-    ligne a déjà été exécutée et ceci avec les valeurs en mémoire à ce
-    moment-là. Des modifications de la mémoire n'impactent pas les
-    instructions exécutées précédemment.
+````{admonition} Etape 4
+:class: note dropdown
+| prix | nombre | total | txt |
+| :--- | :----- | :---- | :-- |
+| 10   |        |       |     |
+| 10   | 2      |       |     |
+| 10   | 2      | 20    |     |
+| 10   | 3      | 20    |     |
+|      |        |       |     |
 
-6.  La valeur de `nombre` étant maintenant 3, l'expression de la 5ème
+À la 4ème ligne du programme, il faut commencer par évaluer l'expression `nombre + 1`. En lisant la valeur de `nombre`, on constate qu'il s'agit de `2`. Ainsi, cette expression équivaut à `2 + 1` et s'évalue à `3`. Cette valeur est finalement stockée dans `nombre`. Attention, ce n'est **pas** parce que `nombre` a changé de valeur que celle de `total` doit être modifiée. En effet, la 3ème ligne a déjà été exécutée et ceci avec les valeurs en mémoire à ce moment-là. Des modifications de la mémoire n'impactent pas les instructions exécutées précédemment.
+````
+
+````{admonition} Etape 5
+:class: note dropdown
+| prix | nombre | total | txt |
+| :--- | :----- | :---- | :-- |
+| 10   |        |       |     |
+| 10   | 2      |       |     |
+| 10   | 2      | 20    |     |
+| 10   | 3      | 20    |     |
+| 10   | 3      | 20    | ??? |
+
+ La valeur de `nombre` étant maintenant 3, l'expression de la 5ème
     ligne équivaut à `"?" * 3` et la valeur `"???"` est alors stockée
     dans `txt`.
+````
 
-Ainsi, le tableau d'état final nous permet de connaître avec certitude
+
+
+
+Ainsi, le tableau d'état final après l'étape 5 nous permet de connaître avec certitude
 la valeur de chaque variable durant l'exécution de notre programme. Il
 s'agit d'un outil d'analyse très pratique, dont l'utilité sera
 multipliée lorsque de nouvelles structures de programmation seront
@@ -438,15 +441,16 @@ y = 5
 
 ````{admonition} Solution
 :class: note dropdown
-   **x**   **y**   **z**
-  ------- ------- -------
-    10            
-    10       2    
-    10       2      20
-    10      30      20
-    20      30      20
-    20      30      40
-    20       5      40
+| x  | y  | z  |
+| :--| :--| :--|
+| 10 |    |    |
+| 10 | 2  |    |
+| 10 | 2  | 20 |
+| 10 | 30 | 20 |
+| 20 | 30 | 20 |
+| 20 | 30 | 40 |
+| 20 | 5  | 40 |
+
 ````
 
 ### Exercice 3

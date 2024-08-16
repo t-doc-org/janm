@@ -3,7 +3,7 @@
 
 # Algorithmique et programmation
 
-A venir
+Cette section contient toute la théorie et les exercices du chapitre d'algorithmique et de programmation en Python.
 
 ```{toctree}
 :maxdepth: 1
@@ -12,5 +12,6 @@ variables
 entrees_sorties
 branchements_cond
 boucles_cond
+fonctions
 ```
 
