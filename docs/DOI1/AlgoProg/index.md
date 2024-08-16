@@ -7,6 +7,8 @@ A venir
 
 ```{toctree}
 :maxdepth: 1
+introduction
 variables
+entrees_sorties
 ```
 
