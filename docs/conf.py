@@ -5,7 +5,7 @@ import time
 
 from tdoc.common.defaults import *
 
-project = "TODO"
+project = "Informatique JANM"
 copyright = f"{time.strftime('%Y')} Maxime Jan"
 
 html_title = project
