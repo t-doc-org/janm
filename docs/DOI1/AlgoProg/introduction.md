@@ -2,7 +2,27 @@
 
 ## Qu'est-ce que la programmation ?
 
+Comme cela se trouve dans le mot, la programmation consiste à créer des programmes informatiques. Il peut s'agir de programmes tels que des applications pour ordinateur comme Word ou Discord, des applications Web comme YouTube ou Twitch, des applications mobiles comme Instagram ou Whatsapp, ou encore de jeux-vidéos en 2D et 3D. Pour créer ces programmes, les informaticiens doivent communiquer à l'ordinateur les instructions à effectuer. La difficulté de cette tâche réside dans le fait qu'il n'est pas possible de parler en français à un ordinateur pour lui expliquer le déroulement d'un programme. Pour écrire un programme dans lequel l'utilisateur doit écrire son adresse email et son mot de passe, on ne peut donc pas écrire :
 
+``` {code-block} text
+:caption: Ceci n'est pas un vrai programme...
+Demande à l'utilisateur d'écrire son adresse email et son mot de passe
+Si la combinaison est correcte, alors affiche le message "Bienvenue"
+Si ce n'est pas le cas, affiche "Mot de passe incorrect"
+```
+
+L'ordinateur est uniquement capable de comprendre des instructions très simples, écrites dans un *langage de programmation*. Dans ce cours, nous apprendrons ainsi à utiliser le langage **Python** pour communiuquer avec notre ordinateur et créer des programmes. L'exemple du programme avec l'adresse email et le mot de passe pourrait alors ressembler à cela en Python :
+
+``` {code-block} python
+:caption: Un vrai programme Python (Vous n'avez pas besoin de comprendre cela pour l'instant !)
+import database_management
+email = input("Email : ")
+mot_de_passe = input("Mot de passe : ")
+if database_management.check_password(email, mot_de_passe):
+    print("Bienvenue")
+else:
+    print("Mot de passe incorrect")
+```
 
 ## Que va-t-on apprendre à programmer avec Python ?
 
@@ -12,18 +32,20 @@ Théoriquement, n'importe quel programme peut être réalisé avec Python. Toute
  
  Lorsque ce jeu sera exécuté, et qu'un utilisateur y jouera, on pourra voir le texte suivant à l'écran : 
  
-`Bienvenue dans le Jeu du Devin !`
-`Je pense à un nombre entre 1 et 100. A toi de deviner quel est ce nombre !`
-`Entre ton nombre : 50`
-`C’est plus grand ! Essaie encore.`
-`Entre ton nombre : 75`
-`C’est plus petit ! Essaie encore.`
-`Entre ton nombre : 63`
-`C’est plus grand ! Essaie encore.`
-`Entre ton nombre : 70`
-`C’est plus petit ! Essaie encore.`
-`Entre ton nombre : 67`
-`Félicitations ! Tu as trouvé le nombre mystère en 5 tentatives !`
+```{code-block} text
+Bienvenue dans le Jeu du Devin !
+Je pense à un nombre entre 1 et 100. A toi de deviner quel est ce nombre !
+Entre ton nombre : 50
+C’est plus grand ! Essaie encore.
+Entre ton nombre : 75
+C’est plus petit ! Essaie encore.
+Entre ton nombre : 63
+C’est plus grand ! Essaie encore.
+Entre ton nombre : 70
+C’est plus petit ! Essaie encore.
+Entre ton nombre : 67
+Félicitations ! Tu as trouvé le nombre mystère en 5 tentatives !
+```
  
 Comme vous pouvez le constater, ce genre de programme n'affiche que du texte, et l'utilisateur ne peut interagir avec celui-ci qu'en écrivant un nombre au clavier. Derrière ce programme assez simple en apparence se cachent déjà toutefois de nombreux concepts de programmation importants. Il est ainsi crucial de maîtriser ce genre de programmes consoles avant d'aller plus loin. Une fois que vous aurez acquis des bases théoriques et pratiques solides en programmation, vous pourrez alors vous lancer dans un projet de développement d'un petit jeu vidéo en 2D.
 
