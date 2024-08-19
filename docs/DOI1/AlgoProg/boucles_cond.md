@@ -196,6 +196,7 @@ Expliquez la différence entre les deux programmes suivants.
 
 1.  
 ```{code-block} python
+:caption: Programme 1
 n = 5
 if n < 10:
     n += 1
@@ -204,6 +205,7 @@ if n < 10:
 
 2. 
 ```{code-block} python
+:caption: Programme 2
 n = 5
 while n < 10:
     n += 1
@@ -275,24 +277,28 @@ Le programme affichera simplement 1000. En effet, malgré le bloc d'instruction 
 
 ### Exercice 4
 1.  Écrivez un programme utilisant seulement 2 instructions `print()` affichant un compte à rebours de 1000 jusqu'à 0. L'exécution du programme ressemblera à ceci :
-`1000`\
-`999`\
-`998`\
-`...`\
-`2`\
-`1`\
-`0`\
-`BOOM`
+```{code-block} text
+1000
+999
+998
+...
+2
+1
+0
+BOOM
+```
 
 2.  Complétez ce programme avec une nouvelle instruction `print()` de manière à ce qu'à chaque fois qu'il affiche un nombre inférieur à 10 il affiche également le texte `"FUYEZ !"`, comme suivant :
-`1000`\
-`999`\
-`998`\
-`...`\
-`2 FUYEZ`\
-`1 FUYEZ`\
-`0 FUYEZ`\
-`BOOM`
+```{code-block} text
+1000
+999
+998
+...
+2 FUYEZ
+1 FUYEZ
+0 FUYEZ
+BOOM`
+```
 
 ````{admonition} Solution
 :class: note dropdown
@@ -328,7 +334,7 @@ Il y a deux manières différentes pour résoudre ce problème. Toutefois, à mo
 
 
 ```{code-block} python
-:caption: Programme 1
+:caption: Solution 1
 n = int(input("Quelle table de multiplication voulez-vous voir ?"))
 multiplicateur = 1
 while multiplicateur <= 10:
@@ -337,7 +343,7 @@ while multiplicateur <= 10:
 ```
 
 ```{code-block} python
-:caption: Programme 1
+:caption: Solution 2
 n = int(input("Quelle table de multiplication voulez-vous voir ?"))
 nombre_de_base = n
 compteur = 0
