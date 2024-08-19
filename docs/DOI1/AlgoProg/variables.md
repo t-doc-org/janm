@@ -66,7 +66,7 @@ autorisation = False
 
 ## Expressions
 
-Pour le moment, nous avons assigné des valeurs littérales à nos variables. C'est-à-dire que nous avons directement écrit la valeur finale lui sera attribuée. Toutefois, nous avons évoqué dans l'introduction de ce livre que le processeur était capable d'effectuer toute une série d'opérations arithmétiques. Ainsi, au lieu d'assigner des valeurs littérales à nos variables, nous pouvons également leur assigner le résultat de calculs. En programmation, nous ne les appelons toutefois pas *calculs*, mais *expressions*. De plus, on ne dit pas que l'on *résout* une expression, mais on l'*évalue*. En Python, les opérateurs arithmétiques que l'on peut utiliser dans les expressions sont les suivants.
+Pour le moment, nous avons assigné des valeurs littérales à nos variables. C'est-à-dire que nous avons directement écrit la valeur finale lui sera attribuée. Nous pouvons toutefois faire d'autres opérations plus intéressantes et assigner aux variables le résultat de calculs. En programmation, nous ne les appelons toutefois pas *calculs*, mais *expressions*. De plus, on ne dit pas que l'on *résout* une expression, mais on l'*évalue*. En Python, les opérateurs arithmétiques que l'on peut utiliser dans les expressions sont les suivants.
 
 -   Opérateur d'addition +
 

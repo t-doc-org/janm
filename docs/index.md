@@ -22,4 +22,9 @@ A venir
 
 ## Cours de 2{sup}`e` année
 ### Cours
+```{toctree}
+:maxdepth: 1
+
+DOI2/AlgoProg/index
+```
 ### Travaux pratiques
