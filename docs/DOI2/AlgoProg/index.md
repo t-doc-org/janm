@@ -8,5 +8,10 @@ Cette section contient toute la théorie et les exercices vous permettant de vou
 ```{toctree}
 :maxdepth: 1
 prerequis
+rev_variables
+rev_entrees_sorties
+rev_branchements_cond
+rev_boucles_cond
+rev_fonctions
 ```
 

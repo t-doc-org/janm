@@ -93,13 +93,13 @@ Si toutefois on décidait d'indenter ce dernier `print()` sous le `else`, alors 
 
 ## Si \...
 
-La structure `if ... else ...` permet de définir deux blocs d'instructions qui ne sont exécutés que si une certaine condition est respectée ou non. Cependant, dans une situation où certaines instructions doivent être exécutées si une condition est respectée, mais que rien ne doit se passer sinon, on peut alors utiliser le `if` tout seul, sans le `else`. Par exemple, dans le programme qui suit, un message spécial est affiché dans le cas où `pizza != "Hawaï"` est évalué à `True`. Dans le cas contraire, rien de spécifique ne se passe. Le dernier message est en effet affiché dans tous les cas puisqu'il n'est pas indenté sous le `if`.
+Un bloc `if ...` peut également s'écrire sans `else ...` dans le cas où rien ne doit être fait si la condition n'est pas respectée. Dans l'exemple suivant, un message est affiché lorsque le choix de pizza est différent de Hawaï, mais rien de particulier ne se passe lorsque cela n'est pas le cas.
 
 ```{code-block} python
 :caption: Utilisation d'un if sans else
 pizza = input("Quelle pizza voulez-vous commander ?")
 if pizza != "Hawaï":
-    print("Ce n'est pas le meilleur choix\...")
+    print("Ce n'est pas le meilleur choix...")
 print("Votre pizza sera prête dans 15min")
 ```
 
@@ -109,11 +109,11 @@ Certaines situations conditionnelles nécessitent plus que 1 ou 2 blocs d'instru
 
 ```{code-block} text
 Si le nombre du joueur est plus grand que le nombre mystère
-Afficher le message "Le nombre est trop grand"
+    Afficher le message "Le nombre est trop grand"
 Sinon si le nombre du joueur est plus petit que le nombre mystère
-Afficher le message "Le nombre est trop petit"
+    Afficher le message "Le nombre est trop petit"
 Sinon
-Afficher le message "Félicitations ! Tu as trouvé le nombre mystère"
+    Afficher le message "Félicitations ! Tu as trouvé le nombre mystère"
 ```
 
 Dans cet exemple, notez bien les deux éléments suivants :
