@@ -69,7 +69,7 @@ Pour le moment, nous avons assigné des valeurs littérales à nos variables. C'
 
 -   Opérateur de division / : Divise un `int` ou un `float` par un autre. Par exemplte `5 / 2` est évalué à `2.5`.
 
--   Opérateur d'exponentiation * : Elève un `int` ou `float` à la puissance d'un autre. Par exemple, `3 ** 3` est évalué à `27`.
+-   Opérateur d'exponentiation ** : Elève un `int` ou `float` à la puissance d'un autre. Par exemple, `3 ** 3` est évalué à `27`.
 
 -   Opérateur modulo % : donne le reste de la division entière entre deux `int` ou `float`. Ainsi `11 % 2` est évalué à 1, car la division entière de 11 par 2 donne 5 et il reste 1.
 
