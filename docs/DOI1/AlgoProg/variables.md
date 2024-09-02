@@ -306,7 +306,7 @@ y = 5
 
 ````
 
-### Exercice 2
+### Exercice 3
 Déterminez la valeur de chacune des variables de ce programme en créant un tableau d'états.
 
 ```{code-block} python
