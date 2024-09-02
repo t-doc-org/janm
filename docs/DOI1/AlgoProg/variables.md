@@ -306,30 +306,43 @@ y = 5
 
 ````
 
-### Exercice 3
-Imaginons une application de prédiction météorologique, dans laquelle l'utilisateur peut consulter le temps qu'il fera à la date souhaitée. Celle-ci donne une description de la météo (ensoleillé, nuageux, pluvieux, etc.), la température en Celsius, ainsi que l'information s'il y a un risque d'orage ou non.\ Créez toutes les variables nécessaires afin d'imiter l'état de la mémoire de cette application lorsque l'utilisateur consulte les prédictions pour le 3 janvier 2024, et, qu'à cette date, il neige, fait -1.2°C, et qu'il n'y a pas de risque d'orage.
+### Exercice 2
+Déterminez la valeur de chacune des variables de ce programme en créant un tableau d'états.
 
+```{code-block} python
+nombre_habitants = 150 + 25 * 2
+cout = 100
+prix = nombre_habitant * cout
+cout = cout / 2
+nombre_habitants = nombre_habitants - 100
+prix = prix + nombre_habitants * cout
+nombre_habitants = 400
+prix = prix + nombre_habitants * cout
+```
 
 ````{admonition} Solution
 :class: note dropdown
-```{code-block} python
-jour = 3
-mois = "janvier" #ou mois = 1
-annee = 2024
-meteo = "neige"
-temperature = -1.2
-risque_orage = False
-```
+| nombre_habitants  | cout  | prix  |
+| :--| :--| :--|
+| 200 |    |    |
+| 200 | 100  |    |
+| 200 | 100  | 20000 |
+| 200 | 50 | 20000 |
+| 100 | 50 | 20000 |
+| 100 | 50 | 25000 |
+| 400 | 50  | 25000 |
+| 400 | 50  | 45000 |
+
 ````
 
 ### Exercice 4
-Lisez attentivement le programme Python ci-dessous, et expliquez en français ce qu'il fait. De plus, la variable `x` n'est pas bien nommée. Trouvez-lui un nom plus adéquat pour définir son contenu. Copiez/collez ensuite ce code dans Thonny pour le tester par vous-même.
+Complétez le programme ci-dessous de manière à ce qu'il permette de calculer la moyenne des notes principales dans la variable du même nom. La note de math est de 4 et demi, la note de français de 6 et la note d'allemand de 5 et demi.
 
 ```{code-block} python
-math = 4.5
-francais = 5.5
-allemand = 4
-x = (allemand + math + francais) / 3
+math = 
+francais = 
+allemand = 
+moyenne = 
 ```
 
 ````{admonition} Solution
