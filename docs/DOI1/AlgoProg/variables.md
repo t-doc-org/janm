@@ -347,7 +347,13 @@ moyenne =
 
 ````{admonition} Solution
 :class: note dropdown
-Ce programme permet de calculer la moyenne des notes de math, de français, et d'allemand. Cette moyenne est stockée dans la variable `x` et celle-ci pourrait alors être renommée en `moyenne` ou `moyenne_principale`.
+```{code-block} python
+math = 4.5
+francais = 6
+allemand = 5.5
+moyenne = (math + francais + allemand) / 3
+```
+Pour calculer la moyenne, on additionne toutes les notes avant de les diviser par 3. Comme la division a la priorité sur l'addition, il ne faut pas oublier de régler la priorité des opérations avec une paire de parenthèses
 ````
 
 ### Exercice 5
