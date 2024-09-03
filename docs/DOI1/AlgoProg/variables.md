@@ -312,7 +312,7 @@ Déterminez la valeur de chacune des variables de ce programme en créant un tab
 ```{code-block} python
 nombre_habitants = 150 + 25 * 2
 cout = 100
-prix = nombre_habitant * cout
+prix = nombre_habitants * cout
 cout = cout / 2
 nombre_habitants = nombre_habitants - 100
 prix = prix + nombre_habitants * cout
