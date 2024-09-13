@@ -520,6 +520,86 @@ Avec des retours à la ligne plutôt que des espaces :
 ````
 
 ### Exercice 8
+Ecrivez un programme correspondant à un petit jeu textuel dans lequel le joueur est perdu dans le désert et doit en ressortir vivant. Le déroulement de ce jeu est le suivant :
+
+- Le joueur doit d'abord décider de rester sur place ou de marcher tout droit dans une direction
+- S'il décide de rester sur place
+  - Personne ne le trouve jamais, le joueur meurt de soif. Fin perdante du jeu
+- S'il décide de marcher
+  - Il doit choisir de partir au Nord, au Sud, à l'Est, ou à l'Ouest
+  - S'il va au Nord ou à l'Est
+    - Il ne trouve rien et meurt de soif. Fin du jeu perdante
+  - Sinon s'il va au Sud
+    - La fin du désert n'était qu'à 500m. Fin du jeu gagnante
+  - Sinon s'il va à l'Ouest
+    - Le joueur tombe sur une oasis
+    - Il peut décider de boire ou non dans cette oasis
+    - S'il décide de ne pas boire
+      - Il meurt de soif. Fin du jeu perdante
+    - Sinon s'il boit
+      - Il peut décider de continuer tout droit ou de prendre des cailloux pour former un SOS sur le sol
+      - S'il continue tout droit
+        - Il ne trouve rien et meurt de soif. Fin du jeu perdante
+      - Sinon s'il a fait un SOS 
+        - Un avion le repère et le sauve. Fin du jeu gagnante
+
+Essayez d'écrire ce programme en n'utilisant le texte `Vous avez gagné` ou `Vous avez perdu` dans un `print()` qu'une seule fois en toute fin de programme
+       
+
+
+```{code-block} python
+# Début du jeu
+print("Vous êtes perdu dans le désert.")
+decision = input("Voulez-vous rester sur place ou marcher ? (entrez 'rester' ou 'marcher') : ")
+
+# Variable booléenne pour savoir si le joueur s'en est sorti ou non
+sorti_du_desert = False
+
+# Si le joueur décide de rester
+if decision == "rester":
+    print("Vous avez décidé de rester sur place. Malheureusement, personne ne vous a trouvé et vous êtes mort de soif.")
+    sorti_du_desert = False  # Il meurt de soif
+else:
+    # Le joueur décide de marcher, on lui demande une direction
+    print("Vous avez décidé de marcher.")
+    direction = input("Dans quelle direction voulez-vous aller ? (entrez 'Nord', 'Sud', 'Est', 'Ouest') : ")
+
+    if direction == "Nord" or direction == "Est":
+        print(f"Vous marchez tout droit, mais vous ne trouvez rien et mourrez de soif.")
+        sorti_du_desert = False  # Il meurt de soif
+    elif direction == "Sud":
+        print("Vous marchez vers le Sud et après quelques centaines de mètres, vous sortez du désert. Vous êtes sauvé !")
+        sorti_du_desert = True  # Il atteint la fin du désert
+    elif direction == "Ouest":
+        # Le joueur tombe sur une oasis
+        print("Vous marchez vers l'Ouest et trouvez une oasis.")
+        boire = input("Voulez-vous boire dans cette oasis ? (entrez 'oui' ou 'non') : ")
+
+        if boire == "non":
+            print("Vous avez décidé de ne pas boire. Malheureusement, vous mourrez de soif.")
+            sorti_du_desert = False  # Il meurt de soif
+        else:
+            print("Vous buvez de l'eau à l'oasis. Vous vous sentez revigoré.")
+            # Le joueur boit, il a maintenant un autre choix
+            decision_oasis = input("Voulez-vous continuer tout droit ou faire un SOS avec des cailloux ? (entrez 'continuer' ou 'SOS') : ")
+
+            if decision_oasis == "continuer":
+                print("Vous continuez à marcher, mais vous ne trouvez rien et vous mourrez de soif.")
+                sorti_du_desert = False  # Il continue et meurt de soif
+            elif decision_oasis == "SOS":
+                print("Vous utilisez des cailloux pour écrire un SOS sur le sol. Un avion passe et vous repère. Vous êtes sauvé !")
+                sorti_du_desert = True  # Un avion le repère et le sauve
+
+# Affichage du résultat final
+if sorti_du_desert:
+    print("Vous avez gagné.")
+else:
+    print("Vous avez perdu.")
+
+```
+
+
+### Exercice 9
 Écrivez un programme dans lequel l'utilisateur peut entrer le prix d'un article ainsi qu'un code de réduction et qui calcule le prix final en conséquence. Les conditions d'application de réduction ainsi que 3 exemples d'exécution sont donnés ci-dessous. Votre programme ne doit utiliser la fonction `print()` **qu'une seule fois** et à la dernière ligne du programme.
 
 -   Avec le code `"STX"`, un article à moins de 100CHF est réduit de 20%
