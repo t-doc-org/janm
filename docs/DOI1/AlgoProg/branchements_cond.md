@@ -546,7 +546,8 @@ Ecrivez un programme correspondant à un petit jeu textuel dans lequel le joueur
 Essayez d'écrire ce programme en n'utilisant le texte `Vous avez gagné` ou `Vous avez perdu` dans un `print()` qu'une seule fois en toute fin de programme
        
 
-
+````{admonition} Solution
+:class: note dropdown
 ```{code-block} python
 # Début du jeu
 print("Vous êtes perdu dans le désert.")
@@ -597,7 +598,7 @@ else:
     print("Vous avez perdu.")
 
 ```
-
+````
 
 ### Exercice 9
 Écrivez un programme dans lequel l'utilisateur peut entrer le prix d'un article ainsi qu'un code de réduction et qui calcule le prix final en conséquence. Les conditions d'application de réduction ainsi que 3 exemples d'exécution sont donnés ci-dessous. Votre programme ne doit utiliser la fonction `print()` **qu'une seule fois** et à la dernière ligne du programme.
