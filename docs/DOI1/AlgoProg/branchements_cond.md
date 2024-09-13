@@ -357,6 +357,16 @@ else:
 ### Exercice 3
 Écrivez un programme permettant de calculer le prix que coûte un certain nombre d'œufs que l'utilisateur souhaite acheter, sachant qu'un œuf coûte 1.50 CHF. Si l'utilisateur entre un nombre négatif, alors le programme ne calculera pas de prix et affichera un message d'erreur à la place. Deux exécutions possibles de ce programme pourraient être les suivantes.
 
+```{code-block} text
+Combien d'oeufs souhaitez-vous acheter ?4
+Cela vous coûtera 6.0CHF
+
+>>>
+
+Combien d'oeufs souhaitez-vous acheter ?-7
+Vous ne pouvez pas acheter un nombre d'oeufs négatif
+```
+
 ````{admonition} Solution
 :class: note dropdown
 ```{code-block} python
