@@ -614,6 +614,24 @@ else:
 
 -   Autrement, aucun changement de prix n'est effectué
 
+```{code-block} text
+Combien coûte l'article ?300
+Quel est votre code de réduction ?STX
+Le prix final est 195.0 CHF
+
+>>>
+
+Combien coûte l'article ?150
+Quel est votre code de réduction ?CSMI
+Le prix final est 160.0 CHF
+
+>>>
+
+Combien coûte l'article ?50
+Quel est votre code de réduction ?JSP
+Le prix final est 50.0 CHF
+```
+
 ````{admonition} Solution
 :class: note dropdown
 ```{code-block} python
