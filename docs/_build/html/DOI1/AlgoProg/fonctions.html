@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fonctions &#8212; Informatique JANM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/t-doc.css?v=837a9104" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/translations.js?v=bf059b8c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DOI1/AlgoProg/fonctions';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Représentation de l&#39;information" href="../ReprInf/index.html" />
+    <link rel="prev" title="Boucles conditionnelles" href="boucles_cond.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Informatique JANM</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Programmation 1ère année</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Fonctions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReprInf/index.html">Représentation de l'information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../DOI2/AlgoProg/index.html">Révisions de programmation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/prerequis.html">Prérequis et objectifs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/DOI1/AlgoProg/fonctions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fonctions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-qu-une-fonction">Qu'est-ce qu'une fonction ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-une-fonction">Définir une fonction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-une-fonction-avec-parametres">Définir une fonction avec paramètres</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passage-par-valeur">Passage par valeur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-une-fonction-avec-valeur-de-retour">Définir une fonction avec valeur de retour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">Exercice 8</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fonctions">
+<h1>Fonctions<a class="headerlink" href="#fonctions" title="Lien vers cette rubrique">#</a></h1>
+<section id="qu-est-ce-qu-une-fonction">
+<h2>Qu'est-ce qu'une fonction ?<a class="headerlink" href="#qu-est-ce-qu-une-fonction" title="Lien vers cette rubrique">#</a></h2>
+<p>Nous avons déjà mentionné plusieurs fois le mot <em>fonction</em> dans ce cours, notamment avec <code class="docutils literal notranslate"><span class="pre">print()</span></code> et <code class="docutils literal notranslate"><span class="pre">input()</span></code>, mais aussi avec <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code>, et <code class="docutils literal notranslate"><span class="pre">randint()</span></code>. De notre point de vue, nous avons utilisé ces fonctions comme des sortes de boîtes noires dans lesquelles nous avons envoyé une valeur (entre les parenthèses) pour, parfois, en recevoir une autre en retour. La figure suivante schématise ce qu'il se passe lorsque l'on exécute le code ci-dessous.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Utilisation des fonctions sqrt() et int()</span><a class="headerlink" href="#id1" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;100&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><img alt="image" src="../../_images/func.png" /></p>
+<p>Nous ne savons en effet pas vraiment quelles opérations sont exécutées lorsque l'on fait appel à ces fonctions. Tout ce que l'on sait, c'est que l'on donne une certaine valeur à <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> et que celle-ci nous retourne sa racine carrée. De même pour <code class="docutils literal notranslate"><span class="pre">int()</span></code>, à laquelle on donne une certaine valeur et qui nous la retourne convertie en nombre entier. Derrière ces fonctions se cachent pourtant de nombreuses lignes de code écrites par d'autres programmeur.euses permettant de réaliser ces opérations. Toutefois, il est bien plus pratique et lisible de simplement écrire <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> ou <code class="docutils literal notranslate"><span class="pre">int()</span></code> que de recopier un algorithme complexe à chaque fois que l'on veut effectuer une racine carrée ou une conversion en nombre entier.\ Cela constitue l'intérêt principal des fonctions et on peut ainsi en utiliser de nombreuses provenant directement de Python ou de modules que l'on télécharge et importe dans notre programme. Dans ce chapitre, nous allons voir comment vous pouvez vous-même créer vos propres fonctions.</p>
+</section>
+<section id="definir-une-fonction">
+<h2>Définir une fonction<a class="headerlink" href="#definir-une-fonction" title="Lien vers cette rubrique">#</a></h2>
+<p>Comme première fonction, nous allons simplement en créer une nommée <code class="docutils literal notranslate"><span class="pre">saluer()</span></code>, ne prenant rien entre ses parenthèses, et permettant d'afficher des textes de salutation. Pour définir une fonction, il faut utiliser le mot-clef <code class="docutils literal notranslate"><span class="pre">def</span></code> et le faire suivre du nom qu'on souhaite lui donner ainsi que d'une paire de parenthèses. Comme souvent en Python, cette ligne doit se terminer par deux-points. Finalement, le bloc d'instructions à exécuter lorsque l'on appelle la fonction, nommé <em>corps</em> de la fonction, est indenté en dessous de la ligne de définition. Ainsi, la fonction <code class="docutils literal notranslate"><span class="pre">saluer()</span></code> peut-être définie de la manière suivante :</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Définition d'une fonction saluer()</span><a class="headerlink" href="#id2" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saluer</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comment allez-vous ?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Que se passe-t-il lorsque vous exécutez ce programme ? Pour le moment, absolument rien. En effet, celui-ci permet uniquement de <em>définir</em> ce que fait la fonction <code class="docutils literal notranslate"><span class="pre">saluer()</span></code>. Si on veut afficher le texte de salutation, il faut alors utiliser cette fonction. Cela est très simple, il suffit d'écrire le nom de la fonction suivi d'une paire de parenthèse. Ainsi, le programme suivant permet d'afficher trois fois les messages de salutation.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Définition et utilisation de la fonction saluer()</span><a class="headerlink" href="#id3" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saluer</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comment allez-vous ?&quot;</span><span class="p">)</span>
+<span class="n">saluer</span><span class="p">()</span>
+<span class="n">saluer</span><span class="p">()</span>
+<span class="n">saluer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="definir-une-fonction-avec-parametres">
+<h2>Définir une fonction avec paramètres<a class="headerlink" href="#definir-une-fonction-avec-parametres" title="Lien vers cette rubrique">#</a></h2>
+<p>Les fonctions que nous avons utilisées dans les précédents chapitres prenaient toutes au moins une valeur entre leurs parenthèses. On appelle ces valeurs des <em>paramètres</em>. Ainsi, on pourrait ajouter un paramètre à notre fonction, de manière que l'on puisse ensuite écrire par exemple <code class="docutils literal notranslate"><span class="pre">saluer(&quot;Maxime&quot;)</span></code> ou <code class="docutils literal notranslate"><span class="pre">saluer(&quot;Caroline&quot;)</span></code> de manière que cette fonction salue à chaque fois un prénom différent.\ Pour ce faire, on doit indiquer au moment de définir la fonction que celle-ci attend un paramètre. Sur la ligne du <code class="docutils literal notranslate"><span class="pre">def</span></code>, on doit alors mettre le nom que l'on veut donner au paramètre entre la paire de parenthèses. Un paramètre est en fait une variable, à la différence que celle-ci tient sa valeur de l'appel à la fonction, et qu'elle n'est utilisable que dans le corps de celle-ci. Le programme devient donc comme suit pour afficher trois messages de salutation personnalisés.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Définition et utilisation d'une fonction paramétrée saluer()</span><a class="headerlink" href="#id4" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saluer</span><span class="p">(</span><span class="n">prenom</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour&quot;</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comment allez-vous ?&quot;</span><span class="p">)</span>
+<span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Maxime&quot;</span><span class="p">)</span>
+<span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Caroline&quot;</span><span class="p">)</span>
+<span class="n">saluer</span><span class="p">(</span><span class="s2">&quot;Iliya&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Au début du programme, la ligne <code class="docutils literal notranslate"><span class="pre">saluer(&quot;Maxime&quot;)</span></code> est exécutée. L'exécution saute alors à la ligne de définition de cette fonction et la valeur<code class="docutils literal notranslate"><span class="pre">&quot;Maxime&quot;</span></code> est attribuée à la variable <code class="docutils literal notranslate"><span class="pre">prenom</span></code>. L'exécution du corps de la fonction peut ensuite commencer, et le premier message affiché sera bien <code class="docutils literal notranslate"><span class="pre">Bonjour</span> <span class="pre">Maxime</span></code>. Quand cette fonction est terminée, l'exécution saute cette fois à la ligne <code class="docutils literal notranslate"><span class="pre">salut(&quot;Caroline&quot;)</span></code>, qui la ramène immédiatement à la ligne de la définition de <code class="docutils literal notranslate"><span class="pre">saluer()</span></code> pour attribuer la valeur <code class="docutils literal notranslate"><span class="pre">&quot;Caroline&quot;</span></code> à <code class="docutils literal notranslate"><span class="pre">prenom</span></code>. Ainsi de suite, le paramètre prend différentes valeurs, et la fonction est exécutée en fonction de cette valeur.\ Il est également possible de définir une fonction avec plusieurs paramètres. Dans ce cas, les noms des différents paramètres doivent être séparés par des virgules entre les parenthèses de la ligne de définition. Lors de l'utilisation de la fonction, les valeurs doivent également être séparées par des virgules et celles-ci sont attribuées aux paramètres dans le même ordre. Dans le programme suivant, la fonction <code class="docutils literal notranslate"><span class="pre">quiz()</span></code> permet de poser une question à l'utilisateur, et de contrôler si sa réponse (un nombre) est correcte ou non. Il devient alors facile de créer un quiz en utilisant la fonction <code class="docutils literal notranslate"><span class="pre">quiz()</span></code> et en lui donnant la question comme premier argument, et la bonne réponse comme deuxième argument.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Définition et utilisation d'une fonction quiz() avec plusieurs paramètres</span><a class="headerlink" href="#id5" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quiz</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">bonne_reponse</span><span class="p">):</span>
+    <span class="n">reponse_joueur</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">question</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">bonne_reponse</span> <span class="o">==</span> <span class="n">reponse_joueur</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonne réponse&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mauvaise réponse&quot;</span><span class="p">)</span>
+<span class="n">quiz</span><span class="p">(</span><span class="s2">&quot;Combien il y a-t-il de cantons en Suisse ?&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+<span class="n">quiz</span><span class="p">(</span><span class="s2">&quot;En quelle année Donald Trump est-il devenu président des USA ?&quot;</span><span class="p">,</span> <span class="mi">2016</span><span class="p">)</span>
+<span class="n">quiz</span><span class="p">(</span><span class="s2">&quot;Quel est le résultat de 2*(5+4)&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="passage-par-valeur">
+<h2>Passage par valeur<a class="headerlink" href="#passage-par-valeur" title="Lien vers cette rubrique">#</a></h2>
+<p>Comme nous l'avons déjà fait avec la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code>, il est tout à fait possible de mettre des variables ou des expressions au lieu de valeurs littérales entre les parenthèses d'un appel de fonction. Dans ce cas, l'expression est tout d'abord évaluée, et son résultat est transmis au paramètre. Ainsi, le programme ci-dessous est tout à fait valide et affichera <code class="docutils literal notranslate"><span class="pre">Majeur</span> <span class="pre">Mineur</span> <span class="pre">Mineur</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Utilisation de variables ou expressions comme arguments</span><a class="headerlink" href="#id6" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_mineur_majeur</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Majeur&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mineur&quot;</span><span class="p">)</span>
+
+<span class="n">affiche_mineur_majeur</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">affiche_mineur_majeur</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">affiche_mineur_majeur</span><span class="p">(</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Il faut toutefois faire attention à un détail. Lorsque, par exemple, la ligne <code class="docutils literal notranslate"><span class="pre">affiche_mineur_majeur(n)</span></code> est exécutée, la valeur de <code class="docutils literal notranslate"><span class="pre">n</span></code> est <strong>copiée</strong> dans la variable <code class="docutils literal notranslate"><span class="pre">age</span></code>. Ainsi, une modification de <code class="docutils literal notranslate"><span class="pre">age</span></code> dans le corps de la fonction ne peut avoir aucun impact sur la valeur de <code class="docutils literal notranslate"><span class="pre">n</span></code>. On appelle cela un <em>passage par valeur</em> et ce concept s'illustre bien dans le programme suivant qui affiche simplement 3 fois le nombre <code class="docutils literal notranslate"><span class="pre">20</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Exemple de passage par valeur</span><a class="headerlink" href="#id7" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">affiche_double</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">affiche_double</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">affiche_double</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="definir-une-fonction-avec-valeur-de-retour">
+<h2>Définir une fonction avec valeur de retour<a class="headerlink" href="#definir-une-fonction-avec-valeur-de-retour" title="Lien vers cette rubrique">#</a></h2>
+<p>Dans le schéma présenté au début de ce chapitre, nous avions représenté une fonction comme une boîte noire à laquelle nous donnions une (ou plusieurs) valeur(s), et qui nous en retournait une autre. Pour l'instant, nous avons appris à définir une fonction avec un corps, ce qui correspond à la boîte noire. De plus, nous avons appris à ajouter des paramètres à la fonction, ce qui correspond aux valeurs entrant dans la boîte. Nous n'avons toutefois pas encore abordé la valeur qui sort de la boîte, que l'on appelle <em>valeur de retour</em>.</p>
+<p>Pour créer notre première fonction avec valeur de retour, reprenons l'idée du programme convertissant des degrés Fahrenheit en degrés Celsius que vous avez développé dans un exercice précédent. Il s'agit d'un cas typique pour lequel nous aimerions définir une fonction. En effet, dans un plus gros programme, plutôt que de réécrire l'algorithme de conversion à chaque fois que vous en avez besoin, il serait plus aisé de simplement utiliser une fonction <code class="docutils literal notranslate"><span class="pre">farhenheit_en_celsius()</span></code>. Pour une valeur de 80.123 degrés Fahrenheit, cette fonction se schématiserait ainsi :</p>
+<p><img alt="image" src="../../_images/f_t_c.png" /></p>
+<p>Pour implémenter cette valeur de retour en Python, il faut utiliser mot-clef <code class="docutils literal notranslate"><span class="pre">return</span></code> suivi de la valeur à retourner. Lorsque le programme rencontre un <code class="docutils literal notranslate"><span class="pre">return</span></code>, l'exécution de la fonction se termine et la valeur qui suit est retournée au programme. Ainsi, en se souvenant que l'on peut convertir une température en Fahrenheit <span class="math notranslate nohighlight">\(F\)</span> en Celsius <span class="math notranslate nohighlight">\(C\)</span> avec la formule <span class="math notranslate nohighlight">\(C = \frac{F - 32}{1.8}\)</span>, notre fonction peut se définir comme suit.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Définition d'une fonction convertissant des °C en °F</span><a class="headerlink" href="#id8" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">celsius_en_fahrenheit</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="k">return</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+<p>On peut ensuite utiliser cette fonction de plusieurs manières pour effectuer les conversions souhaitées. Prenez le temps de bien étudier tous de cas d'utilisation suivants.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">celsius_en_fahrenheit</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="k">return</span> <span class="n">C</span>
+<span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">temp_fahrenheit</span> <span class="o">=</span> <span class="n">celsius_en_fahrenheit</span><span class="p">(</span><span class="n">temp_celsius</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp_celsius</span><span class="p">,</span> <span class="s2">&quot;°C équivaut à&quot;</span><span class="p">,</span> <span class="n">temp_fahrenheit</span><span class="p">,</span> <span class="s2">&quot;°F&quot;</span><span class="p">)</span>
+<span class="n">moyenne</span> <span class="o">=</span> <span class="p">(</span> <span class="n">celsius_en_fahrenheit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">+</span> <span class="n">celsius_en_fahrenhei</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La moyenne en Fahrenheit de 20°C et 30°C est de&quot;</span><span class="p">,</span> <span class="n">moyenne</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;En Fahrenheit, 220°C vaut&quot;</span><span class="p">,</span> <span class="n">celsius_en_fahrenheit</span><span class="p">(</span><span class="mi">220</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Lien vers cette rubrique">#</a></h2>
+<section id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien vers cette rubrique">#</a></h3>
+<p>Définissez une fonction nommée <code class="docutils literal notranslate"><span class="pre">affiche_sourire</span></code> qui affiche simplement <code class="docutils literal notranslate"><span class="pre">:)</span></code> lorsqu'elle est appelée. Appelez une fois votre fonction pour vérifier votre solution.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_sourire</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:)&quot;</span><span class="p">)</span>
+<span class="n">affiche_sourire</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Lien vers cette rubrique">#</a></h3>
+<ol class="arabic simple">
+<li><p>Définissez une fonction nommée <code class="docutils literal notranslate"><span class="pre">affiche_emoji</span></code> prenant un paramètre <code class="docutils literal notranslate"><span class="pre">niveau_humeur</span></code> qui est une valeur numérique entre 0 (très mauvaise humeur) et 10 (excellente humeur). Si la valeur de ce paramètre est inférieur à 3, la fonction affichera l'émoji <code class="docutils literal notranslate"><span class="pre">:(</span></code>, si la valeur est supérieur à 7, elle affichera <code class="docutils literal notranslate"><span class="pre">:)</span></code>. Sinon, elle affichera <code class="docutils literal notranslate"><span class="pre">:|</span></code>.</p></li>
+<li><p>Ajoutez le code suivant à votre programme afin d'utiliser la fonction.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">humeur</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Sur 10, quel est ton niveau d&#39;humeur ?&quot;</span><span class="p">))</span>
+<span class="n">affiche_emoji</span><span class="p">(</span><span class="n">humeur</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">affiche_emoji</span><span class="p">(</span><span class="n">niveau_humeur</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">niveau_humeur</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:(&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">niveau_humeur</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:)&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:|&quot;</span><span class="p">)</span>
+<span class="n">humeur</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Sur 10, quel est ton niveau d&#39;humeur ?&quot;</span><span class="p">))</span>
+<span class="n">affiche_emoji</span><span class="p">(</span><span class="n">humeur</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<!--- ### Exercice 3
+Donnez l'affichage du programme suivant et créez son tableau d'état.
+
+``` {code-block} python
+def mystery_1(z): z += 1 print(z) def mystery_2(x): x *= 2 if x >= 0:
+mystery_1(x + 2) else: mystery_1(x)
+
+y = 5 mystery_1(y) mystery_2(y) mystery_2(y - 10) print(y)
+```
+```
+
+``` Answer
+Affichage avec un retour à la ligne plutôt qu'un espace entre chaque
+nombre : `6 13 -9 5`\
+Tableau d'état :
+
+   **x**   **y**   **z**
+  ------- ------- -------
+             5    
+             5       5
+             5       6
+     5       5    
+    10       5    
+    10       5      12
+    10       5      13
+             5    
+    -5       5    
+    -10      5    
+    -10      5      -10
+    -10      5      -9
+             5    
+``` --->
+</section>
+<section id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Lien vers cette rubrique">#</a></h3>
+<p>Écrivez une fonction nommée <code class="docutils literal notranslate"><span class="pre">salutations()</span></code> prenant 2 paramètres. Le premier est un prénom et le deuxième un âge. Dans le cas où cet âge est plus petit que 18, la fonction affichera <code class="docutils literal notranslate"><span class="pre">&quot;Salut&quot;</span></code> suivi du prénom. Dans le cas contraire, la fonction affichera <code class="docutils literal notranslate"><span class="pre">&quot;Bonjour&quot;</span></code> suivi du prénom. Après avoir défini cette fonction, les appels suivants devraient afficher <code class="docutils literal notranslate"><span class="pre">&quot;&quot;Bonjour</span> <span class="pre">Maxime&quot;</span></code> et <code class="docutils literal notranslate"><span class="pre">&quot;&quot;Salut</span> <span class="pre">Axel&quot;</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">salutations</span><span class="p">(</span><span class="s2">&quot;Maxime&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+<span class="n">salutations</span><span class="p">(</span><span class="s2">&quot;Axel&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">salutations</span><span class="p">(</span><span class="n">prenom</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Salut&quot;</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour&quot;</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>
+<span class="n">salutations</span><span class="p">(</span><span class="s2">&quot;Maxime&quot;</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+<span class="n">salutations</span><span class="p">(</span><span class="s2">&quot;Axel&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Lien vers cette rubrique">#</a></h3>
+<p>Écrivez une fonction nommée <code class="docutils literal notranslate"><span class="pre">compte_a_rebours</span></code> prenant un paramètre nommé <code class="docutils literal notranslate"><span class="pre">maximum</span></code>. Un appel à la fonction affichera alors un compte à rebours jusqu'à 0 en partant du maximum. Ainsi, un appel à <code class="docutils literal notranslate"><span class="pre">compte_a_rebours(400)</span></code> affichera :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>400
+399
+398
+...
+2
+1
+0
+BOOM
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">afficher_compte_a_rebours</span><span class="p">(</span><span class="n">maximum</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">maximum</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span>
+        <span class="n">maximum</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BOOM&quot;</span><span class="p">)</span>
+<span class="n">afficher_compte_a_rebours</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">afficher_compte_a_rebours</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Lien vers cette rubrique">#</a></h3>
+<p>La fonction ci-dessous permet simplement d'additionner 2 nombres. Complétez ce programme de manière à ce que la somme des 5 variables soit affichée. Vous n'avez <strong>pas le droit</strong> d'utiliser vous-même l'opérateur +, uniquement la fonction <code class="docutils literal notranslate"><span class="pre">addi()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">somme</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2.1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">78.14</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a+b+c+d+e vaut&quot;</span><span class="p">,</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">somme</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2.1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">78.14</span>
+<span class="n">e</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a+b+c+d+e vaut&quot;</span><span class="p">,</span> <span class="n">addi</span><span class="p">(</span><span class="n">addi</span><span class="p">(</span> <span class="n">addi</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">addi</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)),</span> <span class="n">e</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Lien vers cette rubrique">#</a></h3>
+<p>Définissez une fonction nommée <code class="docutils literal notranslate"><span class="pre">aire_rectangle()</span></code> prenant en entrée une longueur et une largeur et retournant l'aire du rectangle décrit par ces valeurs. Utilisez ensuite cette fonction pour afficher l'aire totale de deux rectangles de 65x71cm et de 7x70cm.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">aire_rectangle</span><span class="p">(</span><span class="n">largeur</span><span class="p">,</span> <span class="n">longeur</span><span class="p">):</span>
+    <span class="n">aire</span> <span class="o">=</span> <span class="n">largeur</span> <span class="o">*</span> <span class="n">longueur</span>
+    <span class="k">return</span> <span class="n">aire</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aire_rectangle</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">71</span><span class="p">)</span> <span class="o">+</span> <span class="n">aire_rectangle</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">70</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-7">
+<h3>Exercice 7<a class="headerlink" href="#exercice-7" title="Lien vers cette rubrique">#</a></h3>
+<p>Lisez attentivement le programme suivant et décrivez brièvement son fonctionnement. Expliquez ensuite l'intérêt d'avoir défini la fonction <code class="docutils literal notranslate"><span class="pre">montant_est_valide</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">montant_est_valide</span><span class="p">(</span><span class="n">note</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">montant</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">montant</span> <span class="o">&lt;=</span> <span class="mi">1000000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">montant</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">banque</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">montant_est_valide</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="n">montant</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel montant souhaitez-vous créditer ?&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">montant_est_valide</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+        <span class="n">banque</span> <span class="o">+=</span> <span class="n">montant</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous avez maintenant &quot;</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="s2">&quot; CHF en banque&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Dans ce programme, l'utilisateur peut petit à petit ajouter de l'argent à son compte en banque. Cet ajout se termine lorsque le montant donné n'est plus valide :(c'est-à-dire qu'il est négatif ou supérieur à 1000000). A ce moment, le programme affiche le montant total qui a été crédité en banque. L'avantage d'avoir défini une fonction <code class="docutils literal notranslate"><span class="pre">montant_est_valide(montant)</span></code> est double :</p>
+<ol class="arabic simple">
+<li><p>Le programme est plus court et surtout beaucoup plus lisible et plus facile à comprendre. En effet, il est plus simple de comprendre la ligne
+<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">montant_est_valide(montant)</span></code> que
+<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">montant</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">montant</span> <span class="pre">&lt;=</span> <span class="pre">1000000</span></code></p></li>
+<li><p>Comme l'opération de contrôle de montant doit être effectuée 2 fois, la fonction permet de définir la logique une seule fois et de la réutiliser autant que l'on le veut. Ainsi, si le montant maximal passe de 1000000 à 999, il suffit alors de modifier la ligne de condition dans la fonction. Sans fonction, il aurait fallu modifier ce nombre deux fois, ce qui engendre souvent des oublis et des bugs.</p></li>
+</ol>
+</div>
+</section>
+<section id="exercice-8">
+<h3>Exercice 8<a class="headerlink" href="#exercice-8" title="Lien vers cette rubrique">#</a></h3>
+<p>Écrivez une fonction nommée <code class="docutils literal notranslate"><span class="pre">conversion_en_secondes()</span></code> prenant en paramètre des heures, des minutes, et des secondes et retournant l'équivalent en secondes. Utilisez ensuite cette fonction pour calculer la différence en secondes entre 10h55m32s et 8h33m51s</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conversion_en_secondes</span><span class="p">(</span><span class="n">heures</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">secondes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">heures</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">minutes</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">secondes</span>
+
+<span class="n">secondes1</span> <span class="o">=</span> <span class="n">conversion_en_secondes</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">secondes2</span> <span class="o">=</span> <span class="n">conversion_en_secondes</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">secondes1</span> <span class="o">-</span> <span class="n">secondes2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="boucles_cond.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Boucles conditionnelles</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ReprInf/index.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Représentation de l'information</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-qu-une-fonction">Qu'est-ce qu'une fonction ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-une-fonction">Définir une fonction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-une-fonction-avec-parametres">Définir une fonction avec paramètres</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passage-par-valeur">Passage par valeur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-une-fonction-avec-valeur-de-retour">Définir une fonction avec valeur de retour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">Exercice 8</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">Copyright 2024 Maxime Jan</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

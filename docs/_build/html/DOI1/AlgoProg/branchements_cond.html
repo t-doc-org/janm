@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Branchements conditionnels &#8212; Informatique JANM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/t-doc.css?v=837a9104" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/translations.js?v=bf059b8c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DOI1/AlgoProg/branchements_cond';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Boucles conditionnelles" href="boucles_cond.html" />
+    <link rel="prev" title="Sorties et entrées" href="entrees_sorties.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Informatique JANM</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Programmation 1ère année</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReprInf/index.html">Représentation de l'information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../DOI2/AlgoProg/index.html">Révisions de programmation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/prerequis.html">Prérequis et objectifs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/DOI1/AlgoProg/branchements_cond.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Branchements conditionnels</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-qu-un-branchement-conditionnel">Qu'est-ce qu'un branchement conditionnel ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions-conditionnelles">Expressions conditionnelles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si-sinon">Si ... Sinon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si">Si ...</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si-sinon-si-sinon">Si ... Sinon si ... Sinon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etude-de-cas-algorithme-du-discriminant">Étude de cas : algorithme du discriminant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operateurs-logiques">Opérateurs logiques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">Exercice 8</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="branchements-conditionnels">
+<h1>Branchements conditionnels<a class="headerlink" href="#branchements-conditionnels" title="Lien vers cette rubrique">#</a></h1>
+<section id="qu-est-ce-qu-un-branchement-conditionnel">
+<h2>Qu'est-ce qu'un branchement conditionnel ?<a class="headerlink" href="#qu-est-ce-qu-un-branchement-conditionnel" title="Lien vers cette rubrique">#</a></h2>
+<p>Il est très courant pour un programme informatique d'effectuer différentes instructions en fonction du contexte dans lequel il se trouve à un moment précis. Pensez par exemple à un jeu-vidéo dans lequel le joueur souhaite acheter une épée qui coûte 100 pièces d'or. Dans le cas où le joueur en possède suffisamment, celui-ci peut en effet acheter l'équipement, mais s'il en a moins, alors le vendeur lui refusera la vente. Cette situation peut être décrite de la manière suivante :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Si le nombre de pièces d’or est plus grand ou égal à 100
+    Retirer 100 au nombre de pièces d’or
+    Afficher le dialogue &quot;Merci pour votre achat&quot;
+Sinon
+    Afficher le dialogue &quot;Revenez plus tard quand vous aurez assez d’argent&quot;
+</pre></div>
+</div>
+<p>On appelle une structure comme celle-ci un <em>branchement conditionnel</em>. En effet, comme si l'on se retrouvait à l'embranchement de deux routes différentes, la condition de la première ligne nous permet de choisir l'une des deux. Dans le cas où la condition est respectée, on choisit la première route et les deux instructions <code class="docutils literal notranslate"><span class="pre">Retirer</span></code> et <code class="docutils literal notranslate"><span class="pre">Afficher</span> <span class="pre">&quot;Merci&quot;</span></code> sont exécutées alors que la dernière, <code class="docutils literal notranslate"><span class="pre">Afficher</span> <span class="pre">&quot;Revenez</span> <span class="pre">plus</span> <span class="pre">tard&quot;</span></code>, ne l'est pas. Dans le cas contraire, lorsque la première condition n'est pas respectée, le programme emprunte alors la deuxième route et seule la dernière instruction est exécutée.</p>
+</section>
+<section id="expressions-conditionnelles">
+<h2>Expressions conditionnelles<a class="headerlink" href="#expressions-conditionnelles" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour commencer, nous allons écrire la condition du branchement conditionnelle. Dans notre exemple précédent, la condition était : <code class="docutils literal notranslate"><span class="pre">le</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">pièces</span> <span class="pre">d’or</span> <span class="pre">est</span> <span class="pre">plus</span> <span class="pre">grand</span> <span class="pre">ou</span> <span class="pre">égal</span> <span class="pre">à</span> <span class="pre">100</span></code>. Pour transcrire cette expression conditionnelle en Python, il semble naturel d'avoir une variable <code class="docutils literal notranslate"><span class="pre">pieces_d_or</span></code> contenant une valeur de type <code class="docutils literal notranslate"><span class="pre">int</span></code> ainsi qu'une simple valeur littérale <code class="docutils literal notranslate"><span class="pre">int</span></code> pour le <code class="docutils literal notranslate"><span class="pre">100</span></code>. Il ne manque ainsi plus qu'à transcrire le <em>plus grand ou égal à</em>. C'est ce que l'on appelle un opérateur de comparaison. Il en existe 6 différents et, en Python, ils se traduisent par un ou deux symboles :</p>
+<ul class="simple">
+<li><p>Plus grand que <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></li>
+<li><p>Plus grand ou égal à <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></li>
+<li><p>Plus petit que <code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></li>
+<li><p>Plus petit ou égal à <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></li>
+<li><p>Égal à <code class="docutils literal notranslate"><span class="pre">==</span></code></p></li>
+<li><p>Différent de <code class="docutils literal notranslate"><span class="pre">!=</span></code></p></li>
+</ul>
+<p>Une expression conditionnelle simple peut s'écrire avec un opérateur de comparaison entouré de deux valeurs, variables, ou expressions. Ainsi, avec une variable <code class="docutils literal notranslate"><span class="pre">piece_d_or</span></code> préalablement définie, notre exemple peut s'écrire de la manière suivante :</p>
+<p><code class="docutils literal notranslate"><span class="pre">piece_d_or</span> <span class="pre">&gt;=</span> <span class="pre">100</span></code></p>
+<p>Comme vu précédemment pour les expressions en général, une expression conditionnelle est également <em>évaluée</em> lorsqu'elle est exécutée. Comme le résultat d'une condition peut être <em>Oui</em> ou <em>Non</em>, il est logique qu'une expression conditionnelle soit évaluée à <code class="docutils literal notranslate"><span class="pre">True</span></code> ou <code class="docutils literal notranslate"><span class="pre">False</span></code>. Dans le programme suivant, l'expression à l'intérieur du premier <code class="docutils literal notranslate"><span class="pre">print()</span></code> est évaluée à <code class="docutils literal notranslate"><span class="pre">True</span></code>, alors que celle du deuxième est évaluée à <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Ecriture d'expressions conditionnelles</span><a class="headerlink" href="#id1" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pieces_d_or</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">piece_d_or</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">piece_d_or</span> <span class="o">+=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">piece_d_or</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>À l'exécution du programme suivant, celui-ci n'affichera <code class="docutils literal notranslate"><span class="pre">True</span></code> que si l'utilisateur écrit exactement le mot de passe <em>Fr1B0urG</em>, et <code class="docutils literal notranslate"><span class="pre">False</span></code> sinon.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Afficher une autre expression conditionnelle</span><a class="headerlink" href="#id2" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le mot de passe ?&quot;</span><span class="p">)</span>
+<span class="n">mot_de_passe_correct</span> <span class="o">=</span> <span class="n">mdp</span> <span class="o">==</span> <span class="s2">&quot;Fr1B0urG&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mot_de_passe_correct</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="si-sinon">
+<h2>Si ... Sinon<a class="headerlink" href="#si-sinon" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour transcrire l'exemple de l'achat d'une épée complètement en Python, il ne manque maintenant plus qu'à traduire le <em>si</em> et <em>sinon</em>. Les mots-clefs Python qui permettent ceci sont faciles à retenir, car il s'agit de leur traduction littérale en anglais, c'est-à-dire <code class="docutils literal notranslate"><span class="pre">if</span></code> et <code class="docutils literal notranslate"><span class="pre">else</span></code>. Il faut toutefois se rappeler qu'une ligne contenant un <code class="docutils literal notranslate"><span class="pre">if</span></code> ou un <code class="docutils literal notranslate"><span class="pre">else</span></code> doit impérativement se terminer par deux-points. Ainsi, voici notre exemple complet en Python :</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Programme Python d'achat d'une épée</span><a class="headerlink" href="#id3" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pieces_d_or</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="k">if</span> <span class="n">piece_d_or</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">piece_d_or</span> <span class="o">-=</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Merci pour votre achat&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Revenez plus tard quand vous aurez assez d&#39;argent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Vous pouvez noter dans cet exemple que les trois instructions faisant partie des deux branches différentes sont décalées vers la droite. On appelle un tel décalage une <em>indentation</em>. Cette indentation est obligatoire en dessous d'un <code class="docutils literal notranslate"><span class="pre">if</span></code> ou d'un <code class="docutils literal notranslate"><span class="pre">else</span></code> et permet de décrire le <em>bloc d'instructions</em> qui doit être exécuté lorsque l'expression conditionnelle est respectée ou non. Concrètement, lorsque l'expression conditionnelle est évaluée à <code class="docutils literal notranslate"><span class="pre">True</span></code>, les instructions indentées sous le <code class="docutils literal notranslate"><span class="pre">if</span></code> sont exécutées, et, lorsqu'elle est évaluée à <code class="docutils literal notranslate"><span class="pre">False</span></code>, celles indentées sous le <code class="docutils literal notranslate"><span class="pre">else</span></code> le sont. L'utilité de l'indentation s'illustre dans l'exemple suivant :</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Programme Python d'achat d'un billet de cinéma</span><a class="headerlink" href="#id4" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crédit</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achetez votre billet de cinéma en ligne&quot;</span><span class="p">)</span>
+<span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel âge avez-vous ?&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="n">crédit</span> <span class="o">-=</span> <span class="mi">12</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">crédit</span> <span class="o">-=</span> <span class="mi">16</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Achat confirmé, crédit restant :&quot;</span><span class="p">,</span> <span class="n">crédit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Le crédit est débité de <code class="docutils literal notranslate"><span class="pre">12</span></code> seulement lorsque l'utilisateur entre une valeur inférieure à <code class="docutils literal notranslate"><span class="pre">18</span></code>.</p></li>
+<li><p>Le crédit est débité de <code class="docutils literal notranslate"><span class="pre">16</span></code> seulement lorsque l'utilisateur entre une valeur supérieure ou égale à <code class="docutils literal notranslate"><span class="pre">18</span></code>.</p></li>
+<li><p>Le texte <code class="docutils literal notranslate"><span class="pre">Achat</span> <span class="pre">confirmé…</span></code> est affiché <strong>dans tous les cas</strong>, car cette instruction n'est pas indentée sous le <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p></li>
+</ul>
+<p>Si toutefois on décidait d'indenter ce dernier <code class="docutils literal notranslate"><span class="pre">print()</span></code> sous le <code class="docutils literal notranslate"><span class="pre">else</span></code>, alors ce texte ne serait affiché que dans le cas où <code class="docutils literal notranslate"><span class="pre">age</span></code> ne serait pas inférieur à <code class="docutils literal notranslate"><span class="pre">18</span></code>. Il faut donc être très vigilant avec l'indentation et ne décaler que les instructions devant appartenir au branchement conditionnel.</p>
+</section>
+<section id="si">
+<h2>Si ...<a class="headerlink" href="#si" title="Lien vers cette rubrique">#</a></h2>
+<p>Un bloc <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">...</span></code> peut également s'écrire sans <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">...</span></code> dans le cas où rien ne doit être fait si la condition n'est pas respectée. Dans l'exemple suivant, un message est affiché lorsque le choix de pizza est différent de Hawaï, mais rien de particulier ne se passe lorsque cela n'est pas le cas.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Utilisation d'un if sans else</span><a class="headerlink" href="#id5" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pizza</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quelle pizza voulez-vous commander ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">pizza</span> <span class="o">!=</span> <span class="s2">&quot;Hawaï&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ce n&#39;est pas le meilleur choix...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre pizza sera prête dans 15min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="si-sinon-si-sinon">
+<h2>Si ... Sinon si ... Sinon<a class="headerlink" href="#si-sinon-si-sinon" title="Lien vers cette rubrique">#</a></h2>
+<p>Certaines situations conditionnelles nécessitent plus que 1 ou 2 blocs d'instructions. Pensez par exemple au jeu du Devin que nous avons présenté en introduction. Lorsque l'utilisateur essaie de deviner le nombre, 3 chemins différents peuvent être empruntés :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Si le nombre du joueur est plus grand que le nombre mystère
+    Afficher le message &quot;Le nombre est trop grand&quot;
+Sinon si le nombre du joueur est plus petit que le nombre mystère
+    Afficher le message &quot;Le nombre est trop petit&quot;
+Sinon
+    Afficher le message &quot;Félicitations ! Tu as trouvé le nombre mystère&quot;
+</pre></div>
+</div>
+<p>Dans cet exemple, notez bien les deux éléments suivants :</p>
+<ol class="arabic simple">
+<li><p>Nous n'avons pas besoin de condition contrôlant si le nombre du joueur est égal au nombre mystère. En effet, si les deux premières conditions ne sont pas respectées, il est alors logique que le cas <code class="docutils literal notranslate"><span class="pre">Sinon</span></code> corresponde au cas où les deux nombres sont égaux.</p></li>
+<li><p>La 2ème condition est bien précédée par un <code class="docutils literal notranslate"><span class="pre">Sinon</span> <span class="pre">si</span></code>. De cette manière, on comprend que ce cas est lié au précédent. Il est également impératif de suivre ce raisonnement en programmation.</p></li>
+</ol>
+<p>En Python, on peut simplement transcrire le <code class="docutils literal notranslate"><span class="pre">Sinon</span> <span class="pre">si</span></code> par <code class="docutils literal notranslate"><span class="pre">elif</span></code> (qui est la contraction de <code class="docutils literal notranslate"><span class="pre">else</span></code> et <code class="docutils literal notranslate"><span class="pre">if</span></code>). De cette manière, le branchement conditionnel de notre jeu du Devin peut s'écrire comme dans le programme ci-dessous. Ce code ne permet pas encore de jouer réellement à ce mini-jeu, car nous devons relancer le programme entre chaque essai, et le nombre à deviner ne change jamais. Ces problèmes seront résolus dans le prochain chapitre.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Jeu du Devin incomplet</span><a class="headerlink" href="#id6" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nombre_mystere</span> <span class="o">=</span> <span class="mi">76</span>
+<span class="n">nombre_du_joueur</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;À quel nombre est-ce que je pense ?&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">nombre_du_joueur</span> <span class="o">&gt;</span> <span class="n">nombre_mystere</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le nombre est trop grand&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">nombre_du_joueur</span> <span class="o">&lt;</span> <span class="n">nombre_mystere</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le nombre est trop petit&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Félicitations ! Tu as trouvé le nombre mystère&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Pour illustrer l'utilité du <code class="docutils literal notranslate"><span class="pre">elif</span></code>, vous pouvez essayer de le remplacer par un <code class="docutils literal notranslate"><span class="pre">if</span></code> et constater le comportement inattendu lorsque vous écrivez un nombre plus grand que le nombre mystère. De plus, nous pouvons encore noter que les <code class="docutils literal notranslate"><span class="pre">elif</span></code> permettent de créer autant de chemins que l'on souhaite. Par exemple, le branchement conditionnel du programme ci-dessous comporte 5 chemins différents.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Utilisation de plusieurs elif</span><a class="headerlink" href="#id7" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">meteo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel temps fait-il ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;soleil&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mettez de la crème solaire&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;pluie&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prenez un parapluie&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;neige&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mettez une veste&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;orage&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Restez chez vous&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je ne sais pas ce que vous devez faire...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="etude-de-cas-algorithme-du-discriminant">
+<h2>Étude de cas : algorithme du discriminant<a class="headerlink" href="#etude-de-cas-algorithme-du-discriminant" title="Lien vers cette rubrique">#</a></h2>
+<p>Maintenant que vous maîtrisez les variables, les entrées, les sorties, et les branchements conditionnels, nous pouvons commencer à écrire des programmes intéressants. En cours de mathématiques, vous avez probablement étudié la résolution d'équations du 2ème degré grâce à l'algorithme du discriminant. Pour rappel, il s'agit de résoudre une équation du type</p>
+<div class="math notranslate nohighlight">
+\[ax^2 + bx + c = 0\]</div>
+<p>pour une inconnue <span class="math notranslate nohighlight">\(x\)</span> et des nombres réels <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, et <span class="math notranslate nohighlight">\(c\)</span>. La méthode du discriminant permet de trouver les éventuelles solutions de la manière suivante :</p>
+<ul class="simple">
+<li><p>Calculer le discriminant <span class="math notranslate nohighlight">\(D = b^2 - 4ac\)</span></p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(D\)</span> est plus grand que 0</p>
+<ul>
+<li><p>L’équation a deux solutions</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_1 = \frac{-b + \sqrt{D}}{2a}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_2 = \frac{-b - \sqrt{D}}{2a}\)</span></p></li>
+</ul>
+</li>
+<li><p>Sinon si <span class="math notranslate nohighlight">\(D\)</span> est égal à 0</p>
+<ul>
+<li><p>L’équation a une solution</p></li>
+<li><p><span class="math notranslate nohighlight">\(x = \frac{-b}{2a}\)</span></p></li>
+</ul>
+</li>
+<li><p>Sinon</p>
+<ul>
+<li><p>L’équation n’a pas de solution</p></li>
+</ul>
+</li>
+</ul>
+<p>Plutôt que de toujours effectuer cet algorithme à la main, pourquoi ne pas créer un programme qui l'exécute automatiquement ? Mis à part le calcul de la racine carrée, vous avez déjà tous les outils en main pour le réaliser. Allons-y pas à pas. Pour commencer, nous allons demander à l'utilisateur quelle équation il souhaite résoudre. Cela implique de lui demander les 3 coefficients <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, et <span class="math notranslate nohighlight">\(c\)</span>. Comme il s'agit de nombres réels, nous allons convertir les entrées de l'utilisateur en <code class="docutils literal notranslate"><span class="pre">float</span></code>. Nous allons ensuite utiliser ces valeurs pour calculer le discriminant <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quelle équation de type ax\^2+bx+c = 0 souhaitez-vous résoudre ?&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient a ?&quot;</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient b ?&quot;</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient c ?&quot;</span><span class="p">))</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>A ce point, nous entrons dans la partie de l'algorithme contenant un branchement conditionnel. Il s'agit alors d'utiliser une structure <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">elif</span> <span class="pre">else</span></code> pour afficher le nombre de solutions de l'équation. Ainsi, sans encore calculer les solutions, le programme devient :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quelle équation de type ax\^2+bx+c = 0 souhaitez-vous résoudre ?&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient a ?&quot;</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient b ?&quot;</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient c ?&quot;</span><span class="p">))</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="n">D</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;équation a deux solutions&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">D</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;équation a une solution&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;équation n&#39;a pas de solution&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Il ne reste alors plus qu'à calculer les solutions pour ensuite les afficher. Nous n'avons toutefois pas encore vu comment effectuer une racine carrée. En effet, de base, il n'existe pas en Python d'opérateur ou de fonction permettant de calculer une racine carrée. Pour obtenir une telle fonction, il faut l'<em>importer</em> depuis un <em>module</em>. Un module est simplement un bout de code écrit par un autre programmeur et que nous allons réutiliser. Ces modules doivent souvent être téléchargés et installés. Toutefois, le module <code class="docutils literal notranslate"><span class="pre">math</span></code> qui contient notre fonction de racine carrée est déjà installé avec Python. Ainsi, pour importer le module dans notre code, il suffit d'ajouter <strong>tout au début de notre code</strong> la ligne suivante :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Celle-ci signifie <em>importer toutes les fonctions du module math</em>. Cette ligne permet donc d'importer des fonctions telles que <code class="docutils literal notranslate"><span class="pre">sin()</span></code>, <code class="docutils literal notranslate"><span class="pre">cos()</span></code>, <code class="docutils literal notranslate"><span class="pre">log()</span></code>, ou, celle qui nous intéresse, <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> (abréviation de <em>square root</em>, racine carrée en anglais). On peut donc maintenant mettre une valeur de type <code class="docutils literal notranslate"><span class="pre">int</span></code> ou <code class="docutils literal notranslate"><span class="pre">float</span></code> entre les parenthèses de <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> pour obtenir sa racine carrée. Ainsi, en étant vigilant avec les parenthèses pour respecter la priorité des opérations, l'expression correspondant au calcul <span class="math notranslate nohighlight">\(\frac{-b + \sqrt{D}}{2a}\)</span> et permettant de trouver la première solution lorsque <code class="docutils literal notranslate"><span class="pre">D</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> est :</p>
+<div class="center docutils">
+<p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">-b</span> <span class="pre">+</span> <span class="pre">sqrt(D)</span> <span class="pre">)</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">a)</span></code></p>
+</div>
+<p>Ainsi, le programme suivant permet de résoudre n'importe quelle équation du 2ème degré.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quelle équation de type ax\^2+bx+c = 0 souhaitez-vous résoudre ?&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient a ?&quot;</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient b ?&quot;</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est le coefficient c ?&quot;</span><span class="p">))</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="n">D</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x_1</span> <span class="o">=</span> <span class="p">(</span> <span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">x_2</span> <span class="o">=</span> <span class="p">(</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;équation a deux solutions : x_1 =&quot;</span><span class="p">,</span> <span class="n">x_1</span><span class="p">,</span> <span class="s2">&quot;et x_2 =&quot;</span><span class="p">,</span> <span class="n">x_2</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">D</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;équation a une solution : x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;équation n&#39;a pas de solution&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On peut dès lors facilement résoudre l'équation <span class="math notranslate nohighlight">\(4x^2 + 5x + 1\)</span> en exécutant le programme et en y écrivant les coefficients correspondant de la manière suivante :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Quelle ´equation de type ax^2+bx+c= 0 souhaitez-vous résoudre ?
+Quel est le coefficient a ?4
+Quel est le coefficient b ?5
+Quel est le coefficient c ?1
+L’´equation a deux solutions : x 1 = -0.25 et x 2 = -1.0
+</pre></div>
+</div>
+</section>
+<section id="operateurs-logiques">
+<h2>Opérateurs logiques<a class="headerlink" href="#operateurs-logiques" title="Lien vers cette rubrique">#</a></h2>
+<p>Parfois, les conditions que l'on souhaite tester ne sont pas aussi simples que le permettent les expressions conditionnelles que nous avons écrites jusqu'à présent. En effet, on peut s'imaginer un programme d'achat de billet de festival qui applique une réduction de 20% aux visiteurs étudiants de moins de 30 ans. La condition est alors plus complexe, car celle-ci est composée de deux sous-conditions. Pour que le rabais s'applique, il faut que le métier du festivalier soit <code class="docutils literal notranslate"><span class="pre">&quot;étudiant&quot;</span></code> <strong>ET</strong> que son âge soit inférieur à 30. Ce ET est ce que l'on appelle un <em>opérateur logique</em>. Un opérateur logique permet de lier deux sous-expressions conditionnelles pour n'en former plus qu'une. L'opérateur logique ET se traduit simplement en Python par <code class="docutils literal notranslate"><span class="pre">and</span></code>. Ainsi, le programme suivant n'appliquera le rabais que si l'utilisateur entre le mot <code class="docutils literal notranslate"><span class="pre">étudiant</span></code> <strong>et</strong> un nombre plus petit que 30.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metier</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre métier ?&quot;</span><span class="p">)</span>
+<span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel âge avez-vous ?&quot;</span><span class="p">))</span>
+<span class="n">prix_billet</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="k">if</span> <span class="n">metier</span> <span class="o">==</span> <span class="s2">&quot;étudiant&quot;</span> <span class="ow">and</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+    <span class="n">prix_billet</span> <span class="o">*=</span> <span class="mf">0.8</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre billet coûte&quot;</span><span class="p">,</span> <span class="n">prix_billet</span><span class="p">,</span> <span class="s2">&quot;CHF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>En fonction de la situation, l'opérateur logique ET ne sera peut-être pas adapté. En effet, imaginons que le festival applique cette fois un rabais pour les visiteurs qui sont étudiants <strong>OU</strong> retraités. L'opérateur logique est ici le OU qui se traduit en Python par <code class="docutils literal notranslate"><span class="pre">or</span></code>. Dans le programme ci-dessous, le rabais est alors appliqué lorsque l'utilisateur entre la valeur <code class="docutils literal notranslate"><span class="pre">étudiant</span></code>, mais aussi lorsqu'il entre la valeur <code class="docutils literal notranslate"><span class="pre">retraité</span></code>. Notez bien que même si, en français, on dit <em>son métier est étudiant ou retraité</em>, en Python, il est obligatoire de répéter la condition entière après l'opérateur logique, et on a donc <em>son métier est étudiant ou son métier est retraité</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metier</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre métier ?&quot;</span><span class="p">)</span>
+<span class="n">prix_billet</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="k">if</span> <span class="n">metier</span> <span class="o">==</span> <span class="s2">&quot;étudiant&quot;</span> <span class="ow">or</span> <span class="n">metier</span> <span class="o">==</span> <span class="s2">&quot;retraité&quot;</span><span class="p">:</span>
+    <span class="n">prix_billet</span> <span class="o">*=</span> <span class="mf">0.8</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre billet coûte&quot;</span><span class="p">,</span> <span class="n">prix_billet</span><span class="p">,</span> <span class="s2">&quot;CHF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Voici un dernier exemple combinant plusieurs opérateurs logiques. Essayez de réfléchir quelles devraient être les entrées de l'utilisateur pour afficher chacun des textes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">meteo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel temps fait-il ? (soleil/pluie/neige)&quot;</span><span class="p">)</span>
+<span class="n">lieu</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Où voulez-vous aller ? (dedans/dehors)&quot;</span><span class="p">)</span>
+<span class="n">humeur</span> <span class="o">=</span> <span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;Vous êtes de bonne/mauvaise humeur ?&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;soleil&quot;</span> <span class="ow">and</span> <span class="n">lieu</span> <span class="o">==</span> <span class="s2">&quot;dehors&quot;</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mettez de la crème solaire ! &quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;pluie&quot;</span> <span class="ow">or</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;neige&quot;</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mettez une veste !&quot;</span><span class="p">)</span>
+
+<span class="k">elif</span> <span class="n">meteo</span> <span class="o">==</span> <span class="s2">&quot;soleil&quot;</span> <span class="ow">or</span> <span class="p">(</span><span class="n">humeur</span> <span class="o">==</span> <span class="s2">&quot;mauvaise&quot;</span> <span class="ow">and</span> <span class="n">meteo</span> <span class="o">!=</span> <span class="s2">&quot;neige&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Allez chercher une glace !&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je n&#39;ai pas de recommandation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Lien vers cette rubrique">#</a></h2>
+<section id="exercice-1">
+<h3>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien vers cette rubrique">#</a></h3>
+<p>Évaluez les expressions conditionnelles ci-dessous à <code class="docutils literal notranslate"><span class="pre">True</span></code> ou <code class="docutils literal notranslate"><span class="pre">False</span></code>, pour une variable <code class="docutils literal notranslate"><span class="pre">pays</span></code> contenant la valeur <code class="docutils literal notranslate"><span class="pre">&quot;Suisse&quot;</span></code> et la variable <code class="docutils literal notranslate"><span class="pre">temperature</span></code> contenant la valeur <code class="docutils literal notranslate"><span class="pre">26.2</span></code></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pays</span> <span class="pre">==</span> <span class="pre">&quot;Suisse&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pays</span> <span class="pre">!=</span> <span class="pre">&quot;France&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">&gt;</span> <span class="pre">20</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">&lt;</span> <span class="pre">26.2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">&gt;=</span> <span class="pre">26.2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">&lt;</span> <span class="pre">26</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">!=</span> <span class="pre">26.2</span></code></p></li>
+</ol>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ol>
+</div>
+</section>
+<section id="exercice-2">
+<h3>Exercice 2<a class="headerlink" href="#exercice-2" title="Lien vers cette rubrique">#</a></h3>
+<p>Le programme suivant est censé contrôler si un utilisateur est majeur ou non. Toutefois, il contient 6 erreurs. Trouvez-les et corrigez-les</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel âge avez-vous ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">18</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous êtes mineur&quot;</span><span class="p">)</span>
+<span class="k">else</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous êtes majeur&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel âge avez-vous ?&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous êtes mineurs&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous êtes majeurs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Comme <code class="docutils literal notranslate"><span class="pre">age</span></code> est comparé avec <code class="docutils literal notranslate"><span class="pre">18</span></code> qui est un <code class="docutils literal notranslate"><span class="pre">int</span></code>, il faut convertir cette variable dans ce type.</p></li>
+<li><p>Il manquait les deux-points à la fin des lignes du <code class="docutils literal notranslate"><span class="pre">if</span></code> et du <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p></li>
+<li><p>Il y avait une erreur de logique : le programme disait que l'on était mineur si l'on avait plus de 18 ans. Il fallait donc remplacer le <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> par un <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>.</p></li>
+</ol>
+</div>
+</section>
+<section id="exercice-3">
+<h3>Exercice 3<a class="headerlink" href="#exercice-3" title="Lien vers cette rubrique">#</a></h3>
+<p>Écrivez un programme permettant de calculer le prix que coûte un certain nombre d'œufs que l'utilisateur souhaite acheter, sachant qu'un œuf coûte 1.50 CHF. Si l'utilisateur entre un nombre négatif, alors le programme ne calculera pas de prix et affichera un message d'erreur à la place. Deux exécutions possibles de ce programme pourraient être les suivantes.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nb_oeufs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Combien d&#39;œufs souhaitez-vous acheter ?&quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">nb_oeufs</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cela n&#39;est pas possible, vous avez écrit un nombre négatif&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cela vous coûtera &quot;</span><span class="p">,</span> <span class="n">nb_oeufs</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s2">&quot; CHF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-4">
+<h3>Exercice 4<a class="headerlink" href="#exercice-4" title="Lien vers cette rubrique">#</a></h3>
+<p>Expliquez la différence entre les deux programmes ci-dessous.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Programme 1</span><a class="headerlink" href="#id8" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prenom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre prénom ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Maxime&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Très joli prénom !&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour&quot;</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A bientôt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Programme 2</span><a class="headerlink" href="#id9" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prenom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre prénom ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Maxime&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Très joli prénom !&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bonjour&quot;</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A bientôt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Dans le premier programme, le message <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">bientôt</span></code> est affiché dans tous les cas. Dans le deuxième programme, ce message n'est affiché que lorsque l'utilisateur n'entre pas le prénom <code class="docutils literal notranslate"><span class="pre">Maxime</span></code>.</p>
+</div>
+</section>
+<section id="exercice-5">
+<h3>Exercice 5<a class="headerlink" href="#exercice-5" title="Lien vers cette rubrique">#</a></h3>
+<p>Expliquez ce que fait le programme suivant et complétez les chaînes de caractères de manière cohérente.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CHF</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Combien avez-vous de francs suisses en poche ?&quot;</span><span class="p">))</span>
+<span class="n">a_deposer</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Combien de francs souhaitez-vous déposer en banque ?&quot;</span><span class="p">))</span> <span class="n">banque</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">a_deposer</span> <span class="o">&gt;</span> <span class="n">CHF</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a_deposer</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">CHF</span> <span class="o">-=</span> <span class="n">a_deposer</span>
+    <span class="n">banque</span> <span class="o">+=</span> <span class="n">a_deposer</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">CHF</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Ce programme permet de déposer de l'argent sur un compte bancaire fictif. Ce programme contrôle que l'utilisateur possède assez d'argent sur lui avant de créditer le compte. De plus, si l'utilisateur a entré un nombre négatif de CHF à déposer sur le compte, aucune transaction n'est réalisée.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CHF</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Combien avez-vous de francs suisses en poche ?&quot;</span><span class="p">))</span>
+<span class="n">a_deposer</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Combien de francs souhaitez-vous déposer en banque ?&quot;</span><span class="p">))</span>
+<span class="n">banque</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">a_deposer</span> <span class="o">&gt;</span> <span class="n">CHF</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vous n&#39;avez pas autant d&#39;argent !&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a_deposer</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">CHF</span> <span class="o">-=</span> <span class="n">a_deposer</span>
+    <span class="n">banque</span> <span class="o">+=</span> <span class="n">a_deposer</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Il vous reste&quot;</span><span class="p">,</span> <span class="n">CHF</span><span class="p">,</span> <span class="s2">&quot;CHF en poche&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Il y a&quot;</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="s2">&quot;CHF en banque&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aucune transaction n&#39;a été réalisée&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-6">
+<h3>Exercice 6<a class="headerlink" href="#exercice-6" title="Lien vers cette rubrique">#</a></h3>
+<p>Écrivez un programme demandant un prénom à l'utilisateur et affichant sa signification. Le programme connaît les significations suivantes.</p>
+<ul class="simple">
+<li><p>Maxime signifie &quot;celui qui est le plus grand&quot;</p></li>
+<li><p>Félix signifie &quot;celui qui est heureux&quot;</p></li>
+<li><p>Sylvie signifie &quot;celle qui vient de la forêt&quot;</p></li>
+<li><p>Fabien signifie &quot;l'artisan&quot;</p></li>
+<li><p>Clara signifie &quot;celle qui est brillante&quot;</p></li>
+</ul>
+<p>Si un autre prénom est donné au programme, le message <code class="docutils literal notranslate"><span class="pre">&quot;Je</span> <span class="pre">ne</span> <span class="pre">connais</span> <span class="pre">pas</span> <span class="pre">la</span> <span class="pre">signification</span> <span class="pre">de</span> <span class="pre">ce</span> <span class="pre">prénom&quot;</span></code> sera affiché. De plus, le programme se terminera dans tous les cas par le message <code class="docutils literal notranslate"><span class="pre">&quot;Au</span> <span class="pre">revoir&quot;</span></code>.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prenom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre prénom ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Maxime&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre prénom signifie celui qui est le plus grand&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Félix&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre prénom signifie celui qui est heureux&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Sylvie&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre prénom signifie celle qui vient de la forêt&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Fabien&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre prénom signifie l&#39;artisan&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">prenom</span> <span class="o">==</span> <span class="s2">&quot;Clara&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Votre prénom signifie celle qui est brillante&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Je ne connais pas la signification de votre prénom&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Au revoir&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exercice-7">
+<h3>Exercice 7<a class="headerlink" href="#exercice-7" title="Lien vers cette rubrique">#</a></h3>
+<p>Donnez l'affichage du programme suivant pour <code class="docutils literal notranslate"><span class="pre">x</span></code> étant initialisé à -10 et 7.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">...</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">5</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">5</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">5</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>Avec des retours à la ligne plutôt que des espaces :</p>
+<ul class="simple">
+<li><p>Pour <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-10</span></code> : A C E F 25</p></li>
+<li><p>Pour <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">7</span></code> : B C D E G 4</p></li>
+</ul>
+</div>
+</section>
+<section id="exercice-8">
+<h3>Exercice 8<a class="headerlink" href="#exercice-8" title="Lien vers cette rubrique">#</a></h3>
+<p>Écrivez un programme dans lequel l'utilisateur peut entrer le prix d'un article ainsi qu'un code de réduction et qui calcule le prix final en conséquence. Les conditions d'application de réduction ainsi que 3 exemples d'exécution sont donnés ci-dessous. Votre programme ne doit utiliser la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code> <strong>qu'une seule fois</strong> et à la dernière ligne du programme.</p>
+<ul class="simple">
+<li><p>Avec le code <code class="docutils literal notranslate"><span class="pre">&quot;STX&quot;</span></code>, un article à moins de 100CHF est réduit de 20%</p></li>
+<li><p>Avec le code <code class="docutils literal notranslate"><span class="pre">&quot;STX&quot;</span></code>, un article à plus de 200CHF est réduit de 35%</p></li>
+<li><p>Les autres articles avec le code <code class="docutils literal notranslate"><span class="pre">&quot;STX&quot;</span></code> ont une réduction de 20CHF</p></li>
+<li><p>Avec le code <code class="docutils literal notranslate"><span class="pre">&quot;CSMI&quot;</span></code> ou le code <code class="docutils literal notranslate"><span class="pre">&quot;CGAM&quot;</span></code>, le prix est <strong>augmenté</strong>
+de 10CHF</p></li>
+<li><p>Autrement, aucun changement de prix n'est effectué</p></li>
+</ul>
+<div class="note dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prix</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Combien coûte l&#39;article ?&quot;</span><span class="p">))</span>
+<span class="n">code</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre code de réduction ?&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;STX&quot;</span> <span class="ow">and</span> <span class="n">prix</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">prix</span> <span class="o">*=</span> <span class="mf">0.8</span>
+<span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;STX&quot;</span> <span class="ow">and</span> <span class="n">prix</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">prix</span> <span class="o">*=</span> <span class="mf">0.65</span>
+<span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;STX&quot;</span><span class="p">:</span>
+    <span class="n">prix</span> <span class="o">-=</span> <span class="mi">20</span>
+<span class="k">elif</span> <span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;CSMI&quot;</span> <span class="ow">or</span> <span class="n">code</span> <span class="o">==</span> <span class="s2">&quot;CGAM&quot;</span><span class="p">:</span>
+    <span class="n">prix</span> <span class="o">+=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le prix final est&quot;</span><span class="p">,</span> <span class="n">prix</span><span class="p">,</span> <span class="s2">&quot;CHF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="entrees_sorties.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Sorties et entrées</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="boucles_cond.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Boucles conditionnelles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-qu-un-branchement-conditionnel">Qu'est-ce qu'un branchement conditionnel ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions-conditionnelles">Expressions conditionnelles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si-sinon">Si ... Sinon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si">Si ...</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#si-sinon-si-sinon">Si ... Sinon si ... Sinon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etude-de-cas-algorithme-du-discriminant">Étude de cas : algorithme du discriminant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operateurs-logiques">Opérateurs logiques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-5">Exercice 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-6">Exercice 6</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-7">Exercice 7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-8">Exercice 8</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">Copyright 2024 Maxime Jan</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

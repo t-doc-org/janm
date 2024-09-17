@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; Informatique JANM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/t-doc.css?v=837a9104" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/translations.js?v=bf059b8c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DOI1/AlgoProg/introduction';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Variables" href="variables.html" />
+    <link rel="prev" title="Programmation 1ère année" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Informatique JANM</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Programmation 1ère année</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ReprInf/index.html">Représentation de l'information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../DOI2/AlgoProg/index.html">Révisions de programmation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/prerequis.html">Prérequis et objectifs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI2/AlgoProg/rev_fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/DOI1/AlgoProg/introduction.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-la-programmation">Qu'est-ce que la programmation ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-va-t-on-apprendre-a-programmer-avec-python">Que va-t-on apprendre à programmer avec Python ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-et-prise-en-main-de-thonny">Installation et prise en main de Thonny</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Lien vers cette rubrique">#</a></h1>
+<section id="qu-est-ce-que-la-programmation">
+<h2>Qu'est-ce que la programmation ?<a class="headerlink" href="#qu-est-ce-que-la-programmation" title="Lien vers cette rubrique">#</a></h2>
+<p>Comme cela se trouve dans le mot, la programmation consiste à créer des programmes informatiques. Il peut s'agir de programmes tels que des applications pour ordinateur comme Word ou Discord, des applications Web comme YouTube ou Twitch, des applications mobiles comme Instagram ou Whatsapp, ou encore de jeux-vidéos en 2D et 3D. Pour créer ces programmes, les informaticiens doivent communiquer à l'ordinateur les instructions à effectuer. La difficulté de cette tâche réside dans le fait qu'il n'est pas possible de parler en français à un ordinateur pour lui expliquer le déroulement d'un programme. Pour écrire un programme dans lequel l'utilisateur doit écrire son adresse email et son mot de passe, on ne peut donc pas écrire :</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Ceci n'est pas un vrai programme...</span><a class="headerlink" href="#id1" title="Lien vers ce code">#</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Demande à l&#39;utilisateur d&#39;écrire son adresse email et son mot de passe
+Si la combinaison est correcte, alors affiche le message &quot;Bienvenue&quot;
+Si ce n&#39;est pas le cas, affiche &quot;Mot de passe incorrect&quot;
+</pre></div>
+</div>
+</div>
+<p>L'ordinateur est uniquement capable de comprendre des instructions très simples, écrites dans un <em>langage de programmation</em>. Dans ce cours, nous apprendrons ainsi à utiliser le langage <strong>Python</strong> pour communiuquer avec notre ordinateur et créer des programmes. L'exemple du programme avec l'adresse email et le mot de passe pourrait alors ressembler à cela en Python :</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Un vrai programme Python (Vous n'avez pas besoin de comprendre cela pour l'instant !)</span><a class="headerlink" href="#id2" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">database_management</span>
+<span class="n">email</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Email : &quot;</span><span class="p">)</span>
+<span class="n">mot_de_passe</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Mot de passe : &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">database_management</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">mot_de_passe</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bienvenue&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mot de passe incorrect&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="que-va-t-on-apprendre-a-programmer-avec-python">
+<h2>Que va-t-on apprendre à programmer avec Python ?<a class="headerlink" href="#que-va-t-on-apprendre-a-programmer-avec-python" title="Lien vers cette rubrique">#</a></h2>
+<p>Théoriquement, n'importe quel programme peut être réalisé avec Python. Toutefois, tout comme l'apprenti.e cuisinier.ère commence par apprendre à couper des légumes avant de mijoter des plats élaborés, vous allez également commencer par développer des programmes simples avant de vous lancer dans le développement de programmes complexes. L'étape par laquelle passent tou.te.s les apprenti.e.s informaticien.nes est la création de <em>programmes consoles</em>. Il s'agit de programmes ne pouvant pas afficher d'images ou utiliser la souris, mais affichant uniquement du texte et pouvant interagir avec le clavier. Par exemple, la description d'un programme que vous serez amenés à créer dans ce cours est la suivante :</p>
+<p><em>Un mini-jeu dans lequel le programme choisit un nombre aléatoire en 1 et 100. L'utilisateur doit ensuite deviner ce nombre en le moins de tentatives possible. À chaque essai, le programme dira si le nombre donné est correct, trop grand, ou trop petit.</em></p>
+<p>Lorsque ce jeu sera exécuté, et qu'un utilisateur y jouera, on pourra voir le texte suivant à l'écran :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Bienvenue dans le Jeu du Devin !
+Je pense à un nombre entre 1 et 100. A toi de deviner quel est ce nombre !
+Entre ton nombre : 50
+C’est plus grand ! Essaie encore.
+Entre ton nombre : 75
+C’est plus petit ! Essaie encore.
+Entre ton nombre : 63
+C’est plus grand ! Essaie encore.
+Entre ton nombre : 70
+C’est plus petit ! Essaie encore.
+Entre ton nombre : 67
+Félicitations ! Tu as trouvé le nombre mystère en 5 tentatives !
+</pre></div>
+</div>
+<p>Comme vous pouvez le constater, ce genre de programme n'affiche que du texte, et l'utilisateur ne peut interagir avec celui-ci qu'en écrivant un nombre au clavier. Derrière ce programme assez simple en apparence se cachent déjà toutefois de nombreux concepts de programmation importants. Il est ainsi crucial de maîtriser ce genre de programmes consoles avant d'aller plus loin. Une fois que vous aurez acquis des bases théoriques et pratiques solides en programmation, vous pourrez alors vous lancer dans un projet de développement d'un petit jeu vidéo en 2D.</p>
+</section>
+<section id="installation-et-prise-en-main-de-thonny">
+<h2>Installation et prise en main de Thonny<a class="headerlink" href="#installation-et-prise-en-main-de-thonny" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour débuter à programmer, vous aurez besoin d'un éditeur de texte, pour écrire les instructions, ainsi que d'un interpréteur Python. Bien que les deux logiciels puissent être installés indépendamment, il est plus pratique d'installer un <em>Environnement de Développement Intégré</em> (<em>EDI</em>) qui combine les deux et intègre d'autres fonctionnalités très pratiques. Dans ce cours, nous utiliserons l'EDI <em>Thonny</em> qui est très bien adapté pour commencer la programmation. Vous pouvez télécharger ce logiciel pour Windows, Mac, et Linux depuis le site <a class="reference external" href="https://thonny.org">thonny.org</a>. Une fois le logiciel installé, si celui-ci est en anglais et que vous souhaitez changer la langue, vous pouvez le faire en cliquant sur <em>Tools</em> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <em>Options...</em> Puis en choisissant la langue souhaitée dans le menu déroulant. Dans le menu <em>Affichage</em>, vous pouvez activer l'option <em>Variables</em> et désactiver l'option <em>Assistant</em>. Votre fenêtre devrait contenir les trois régions suivantes :</p>
+<p><img alt="image" src="../../_images/thonny.png" /></p>
+<ol class="arabic simple">
+<li><p><em>Éditeur de code</em>. C'est dans cette fenêtre que vous écrirez votre code en Python.</p></li>
+<li><p><em>Console</em>. C'est ici que vous verrez le texte de vos programmes, comme l'exemple du jeu du Devin.</p></li>
+<li><p><em>Variables</em>. Cette zone permettra de consulter l'état des variables de votre programme (voir chapitre 2).</p></li>
+</ol>
+<p>Pour tester que votre installation est fonctionnelle, vous allez pouvoir écrire votre première ligne de code dans l'éditeur de code. Recopiez le code suivant en faisant bien attention de respecter les minuscules sur le mot <code class="docutils literal notranslate"><span class="pre">print</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Premier exemple de programme Python</span><a class="headerlink" href="#id3" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World !&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Vous pouvez ensuite cliquer sur le petit bouton vert avec un petit triangle blanc (ou appuyer sur F5). Ceci aura pour effet d'exécuter votre code. Si tout se passe normalement, vous devriez voir apparaître le texte <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World</span> <span class="pre">!</span></code> dans la console. Ce n'est pas encore très impressionnant, mais vous venez d'écrire et d'exécuter votre premier programme !</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Programmation 1ère année</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="variables.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Variables</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-que-la-programmation">Qu'est-ce que la programmation ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-va-t-on-apprendre-a-programmer-avec-python">Que va-t-on apprendre à programmer avec Python ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-et-prise-en-main-de-thonny">Installation et prise en main de Thonny</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">Copyright 2024 Maxime Jan</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

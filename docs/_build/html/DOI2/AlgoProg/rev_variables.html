@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Variables &#8212; Informatique JANM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/t-doc.css?v=837a9104" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/translations.js?v=bf059b8c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DOI2/AlgoProg/rev_variables';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Sorties et entrées" href="rev_entrees_sorties.html" />
+    <link rel="prev" title="Prérequis et objectifs" href="prerequis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Informatique JANM</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../DOI1/AlgoProg/index.html">Programmation 1ère année</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI1/AlgoProg/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI1/AlgoProg/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI1/AlgoProg/entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI1/AlgoProg/branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI1/AlgoProg/boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../DOI1/AlgoProg/fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../DOI1/ReprInf/index.html">Représentation de l'information</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Révisions de programmation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="prerequis.html">Prérequis et objectifs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rev_entrees_sorties.html">Sorties et entrées</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rev_branchements_cond.html">Branchements conditionnels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rev_boucles_cond.html">Boucles conditionnelles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rev_fonctions.html">Fonctions</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/DOI2/AlgoProg/rev_variables.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variables</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-qu-une-variable">Qu'est-ce qu'une variable ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-de-valeur">Types de valeur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operateurs-d-affectation-combinee">Opérateurs d'affectation combinée</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!-- Copyright 2024 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+<section class="tex2jax_ignore mathjax_ignore" id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Lien vers cette rubrique">#</a></h1>
+<section id="qu-est-ce-qu-une-variable">
+<h2>Qu'est-ce qu'une variable ?<a class="headerlink" href="#qu-est-ce-qu-une-variable" title="Lien vers cette rubrique">#</a></h2>
+<p>On peut décrire une variable comme étant une case mémoire de votre ordinateur possédant un nom et étant capable de stocker une valeur. De manière plus imagée. on peut visualiser une variable comme étant une boîte à chaussures contenant un objet et sur laquelle est collée une étiquette nommant son contenu. Une variable permet alors d'<em>enregistrer</em> des informations dans un programme.On peut par exemple imaginer un programme dans lequel le prénom et l'âge de l'utilisateur devraient être enregistrés. Ce programme devrait alors contenir deux variables qui peuvent être représentées comme ceci :</p>
+<p><img alt="image" src="../../_images/var1.png" /></p>
+<p>Nous avons ici en effet une boîte étiquetée <em>nom</em> contenant un nom de famille, et une boîte avec l'étiquette <em>age</em> contenant une valeur correspondante. Il est important de noter qu'une variable ne peut contenir qu'une seule valeur, et que, pour enregistrer deux informations différentes, il faut alors deux variables. En Python, on peut créer une variable en suivant la syntaxe suivante :</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Format de déclaration d'une variable</span><a class="headerlink" href="#id1" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nom_de_la_variable</span> <span class="o">=</span> <span class="n">valeur</span>
+</pre></div>
+</div>
+</div>
+<p>Ainsi, en Python, on peut créer ces deux variables de la manière suivante :</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Déclaration de 2 variables</span><a class="headerlink" href="#id2" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nom</span> <span class="o">=</span> <span class="s2">&quot;Jan&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">32</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="types-de-valeur">
+<h2>Types de valeur<a class="headerlink" href="#types-de-valeur" title="Lien vers cette rubrique">#</a></h2>
+<p>Les deux variables que nous venons de créer ont chacune un type différent. En effet, l'une contient du texte, alors que l'autre contient un nombre entier. En Python, on distingue 4 types de données primitifs.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">int</span></code></strong>. De son nom complet <em>integer</em>, le type <code class="docutils literal notranslate"><span class="pre">int</span></code> permet de représenter les <em>nombres entiers</em>. Par exemple : <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">999</span></code>, <code class="docutils literal notranslate"><span class="pre">-10</span></code>, ou <code class="docutils literal notranslate"><span class="pre">-376</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>. Les flottants représentent les nombres réels. Par exemple : <code class="docutils literal notranslate"><span class="pre">3.14</span></code>, <code class="docutils literal notranslate"><span class="pre">4.5</span></code>, <code class="docutils literal notranslate"><span class="pre">-8.555</span></code>, ou <code class="docutils literal notranslate"><span class="pre">1000.001</span></code>. Attention, vous avez sûrement l'habitude en français d'appeler les réels des nombres à virgules. Pourtant, en Python, il ne faut pas mettre une virgule pour séparer les unités des décimales, mais bien un point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>. Signifiant en anglais <em>string</em>, le type <code class="docutils literal notranslate"><span class="pre">str</span></code> permet de représenter des <em>chaînes de caractères</em>, ou, dit plus simplement, du texte. Les chaînes de caractères doivent toujours être entourées d'une paire de guillemets doubles ou simples. Par exemple : <code class="docutils literal notranslate"><span class="pre">&quot;Bonjour&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">’Ceci</span> <span class="pre">est</span> <span class="pre">une</span> <span class="pre">chaîne</span> <span class="pre">de</span> <span class="pre">caractères’</span></code>, ou <code class="docutils literal notranslate"><span class="pre">&quot;QUOI</span> <span class="pre">???&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>. Le type booléen n'a que deux valeurs possibles : <code class="docutils literal notranslate"><span class="pre">True</span></code> et <code class="docutils literal notranslate"><span class="pre">False</span></code>. Ce type de valeur est utilisé lorsque l'information que vous souhaitez enregistrer ne peut avoir que deux états. Intuitivement, on peut utiliser le type <code class="docutils literal notranslate"><span class="pre">bool</span></code> lorsque cette information peut être vraie ou fausse (par exemple une variable <code class="docutils literal notranslate"><span class="pre">reponse</span></code> qui aurait la valeur <code class="docutils literal notranslate"><span class="pre">True</span></code> si la réponse à une question est vraie, et <code class="docutils literal notranslate"><span class="pre">False</span></code> sinon). Toutefois, n'importe quelle information à deux états peut être représentée de cette manière : c'est alors au programmeur de décider quel état est <code class="docutils literal notranslate"><span class="pre">True</span></code> et lequel est <code class="docutils literal notranslate"><span class="pre">False</span></code>. On peut s'imaginer une variable <code class="docutils literal notranslate"><span class="pre">etat_porte</span></code> qui est <code class="docutils literal notranslate"><span class="pre">True</span></code> lorsque la porte est ouverte, et qui est <code class="docutils literal notranslate"><span class="pre">False</span></code> quand la porte est fermée.</p></li>
+</ul>
+<p>Le programme ci-dessous permet ainsi de créer des variables de chacun de ces types.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Déclaration d'une variable de chaque type</span><a class="headerlink" href="#id3" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">code_postal</span> <span class="o">=</span> <span class="mi">1700</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">46.80237</span>
+<span class="n">ville</span> <span class="o">=</span> <span class="s2">&quot;Fribourg&quot;</span>
+<span class="n">est_un_chef_lieu</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="expressions">
+<h2>Expressions<a class="headerlink" href="#expressions" title="Lien vers cette rubrique">#</a></h2>
+<p>Pour le moment, nous avons assigné des valeurs littérales à nos variables. C'est-à-dire que nous avons directement écrit la valeur finale lui sera attribuée. Nous pouvons toutefois faire d'autres opérations plus intéressantes et assigner aux variables le résultat de calculs. En programmation, nous ne les appelons toutefois pas <em>calculs</em>, mais <em>expressions</em>. De plus, on ne dit pas que l'on <em>résout</em> une expression, mais on l'<em>évalue</em>. En Python, les opérateurs arithmétiques que l'on peut utiliser dans les expressions sont les suivants.</p>
+<ul class="simple">
+<li><p>Opérateur d'addition +</p>
+<ul>
+<li><p>Entre deux <code class="docutils literal notranslate"><span class="pre">int</span></code> ou <code class="docutils literal notranslate"><span class="pre">float</span></code>, les deux nombres sont additionnés. Par exemple <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">+</span> <span class="pre">6.15</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">16.15</span></code>.</p></li>
+<li><p>Entre deux <code class="docutils literal notranslate"><span class="pre">str</span></code>, les deux chaînes de caractères sont <em>concaténées</em>, c'est-à-dire qu'elles sont collées ensemble. Par exemple <code class="docutils literal notranslate"><span class="pre">&quot;Bonjour&quot;</span> <span class="pre">+</span> <span class="pre">&quot;Au</span> <span class="pre">revoir&quot;</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">&quot;BonjourAu</span> <span class="pre">revoir&quot;</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Opérateur de soustraction - : soustrait un <code class="docutils literal notranslate"><span class="pre">int</span></code> ou un <code class="docutils literal notranslate"><span class="pre">float</span></code> à un autre. Par exemple, <code class="docutils literal notranslate"><span class="pre">99.9</span> <span class="pre">-</span> <span class="pre">10.9</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">89.0</span></code>.</p></li>
+<li><p>Opérateur de multiplication</p>
+<ul>
+<li><p>Entre deux <code class="docutils literal notranslate"><span class="pre">int</span></code> ou <code class="docutils literal notranslate"><span class="pre">float</span></code>, les deux nombres sont multipliés. Par exemple, <code class="docutils literal notranslate"><span class="pre">2.5</span> <span class="pre">*</span> <span class="pre">4</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">10.0</span></code>.</p></li>
+<li><p>Entre un <code class="docutils literal notranslate"><span class="pre">str</span></code> et un <code class="docutils literal notranslate"><span class="pre">int</span></code> la chaîne de caractères est répétée autant de fois que le nombre donné. Par exemple, <code class="docutils literal notranslate"><span class="pre">&quot;AB&quot;</span> <span class="pre">*</span> <span class="pre">3</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">&quot;ABABAB&quot;</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Opérateur de division / : Divise un <code class="docutils literal notranslate"><span class="pre">int</span></code> ou un <code class="docutils literal notranslate"><span class="pre">float</span></code> par un autre. Par exemplte <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">/</span> <span class="pre">2</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">2.5</span></code>.</p></li>
+<li><p>Opérateur d'exponentiation * : Elève un <code class="docutils literal notranslate"><span class="pre">int</span></code> ou <code class="docutils literal notranslate"><span class="pre">float</span></code> à la puissance d'un autre. Par exemple, <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">**</span> <span class="pre">3</span></code> est évalué à <code class="docutils literal notranslate"><span class="pre">27</span></code>.</p></li>
+<li><p>Opérateur modulo % : donne le reste de la division entière entre deux <code class="docutils literal notranslate"><span class="pre">int</span></code> ou <code class="docutils literal notranslate"><span class="pre">float</span></code>. Ainsi <code class="docutils literal notranslate"><span class="pre">11</span> <span class="pre">%</span> <span class="pre">2</span></code> est évalué à 1, car la division entière de 11 par 2 donne 5 et il reste 1.</p></li>
+</ul>
+<p>De plus, au lieu d'utiliser des valeurs littérales dans les expressions, on peut également utiliser des variables préalablement définies. Voici ci-dessous un exemple d'un programme Python utilisant plusieurs expressions. Sans l'exécuter sur Thonny et sans lire l'explication qui suit, essayez de réfléchir à son déroulement et à deviner le contenu de chaque variable à la fin de son exécution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prix</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">prix</span> <span class="o">*</span> <span class="n">nombre</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="n">nombre</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;?&quot;</span> <span class="o">*</span> <span class="n">nombre</span>
+</pre></div>
+</div>
+</section>
+<section id="operateurs-d-affectation-combinee">
+<h2>Opérateurs d'affectation combinée<a class="headerlink" href="#operateurs-d-affectation-combinee" title="Lien vers cette rubrique">#</a></h2>
+<p>Lorsque l'on crée une variable, le signe d'égalité que l'on utilise est appelé <em>opérateur d'affectation</em>. Cet opérateur peut être utilisé non seulement lors de la création d'une variable, mais aussi, comme nous l'avons vu, pour modifier sa valeur plus tard. Dans l'exemple ci-dessous, on assigne la valeur <code class="docutils literal notranslate"><span class="pre">&quot;Bonjour&quot;</span></code> à la variable <code class="docutils literal notranslate"><span class="pre">salutations</span></code> et on lui ajoute la suite plus tard. De manière similaire, la variable <code class="docutils literal notranslate"><span class="pre">prix</span></code> est initialisée à <code class="docutils literal notranslate"><span class="pre">8.5</span></code> et sa valeur est doublée par la suite.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">salutations</span> <span class="o">=</span> <span class="s2">&quot;Bonjour&quot;</span>
+<span class="n">prix</span> <span class="o">=</span> <span class="mf">8.5</span>
+<span class="n">salutations</span> <span class="o">=</span> <span class="n">salutations</span> <span class="o">+</span> <span class="s2">&quot;, comment allez-vous ?&quot;</span>
+<span class="n">prix</span> <span class="o">=</span> <span class="n">prix</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Ce genre d'instruction permettant de modifier la valeur de variables est très courant en programmation. De ce fait, même si ces lignes ne sont pas très compliquées, la flemmardise des programmeurs a donné naissance à une manière plus courte de les écrire en utilisant des <em>opérateurs d'affectation combinée</em>. Ceux-ci permettent de modifier la valeur d'une variable sans recopier son nom deux fois. Pour chaque point de la liste suivante, imaginons que nous avons une variable <code class="docutils literal notranslate"><span class="pre">n</span></code> contenant la valeur <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<ul class="simple">
+<li><p>Opérateur d'incrémentation += : Ajoute une valeur à la variable. Après avoir exécuté l'instruction<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">+=</span> <span class="pre">5</span></code>, alors <code class="docutils literal notranslate"><span class="pre">n</span></code> contiendra la valeur <code class="docutils literal notranslate"><span class="pre">15</span></code>.</p></li>
+<li><p>Opérateur de décrémentation -= : Retire une valeur à la variable. Après avoir exécuté l'instruction<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-=</span> <span class="pre">3</span></code>, alors <code class="docutils literal notranslate"><span class="pre">n</span></code> contiendra la valeur <code class="docutils literal notranslate"><span class="pre">7</span></code>.</p></li>
+<li><p>Opérateur = : Multiplie la variable par une valeur. Après avoir exécuté l'instruction <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*=</span> <span class="pre">2</span></code>, alors <code class="docutils literal notranslate"><span class="pre">n</span></code> contiendra la valeur <code class="docutils literal notranslate"><span class="pre">20</span></code>.</p></li>
+<li><p>Opérateur /= : Divise la variable par une valeur. Après avoir exécuté l'instruction <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">/=</span> <span class="pre">5</span></code>, alors <code class="docutils literal notranslate"><span class="pre">n</span></code> contiendra la valeur <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p>Opérateur *= : Mets la variable à la puissance d'une valeur. Après avoir exécuté l'instruction<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">**=</span> <span class="pre">2</span></code>, alors <code class="docutils literal notranslate"><span class="pre">n</span></code> contiendra la valeur <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p></li>
+<li><p>Opérateur %= : Remplace le contenu de la variable par le reste de la division entière entre sa valeur et une autre. Après avoir exécuté l'instruction <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%=</span> <span class="pre">3</span></code>, alors <code class="docutils literal notranslate"><span class="pre">n</span></code> contiendra la valeur <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+<p>Ainsi, le précédent exemple peut se réécrire de la manière suivante</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Programme revisité avec les opérateurs d'affectation combinés</span><a class="headerlink" href="#id4" title="Lien vers ce code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">salutations</span> <span class="o">=</span> <span class="s2">&quot;Bonjour&quot;</span>
+<span class="n">prix</span> <span class="o">=</span> <span class="mf">8.5</span>
+<span class="n">salutations</span> <span class="o">+=</span> <span class="s2">&quot;, comment allez-vous ?&quot;</span>
+<span class="n">prix</span> <span class="o">*=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="prerequis.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Prérequis et objectifs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rev_entrees_sorties.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Sorties et entrées</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qu-est-ce-qu-une-variable">Qu'est-ce qu'une variable ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-de-valeur">Types de valeur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions">Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operateurs-d-affectation-combinee">Opérateurs d'affectation combinée</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">Copyright 2024 Maxime Jan</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
