@@ -252,27 +252,34 @@ Tableau d'état :
 ````
 
 ### Exercice 3
-Quel est l'affichage du programme suivant ? Réfléchissez bien avant de commencer à évaluer manuellement beaucoup d'expressions, la solution n'est pas si compliquée.
-
+Faites le tableau d'état et donnez l'affichage de l'exécution du programme suivant.
 ```{code-block} python
-x = 10
-y = 20
-n = 800
-compteur = 0
-while compteur < 100:
-    x += (x + y * n)
-    y -= 2 * x
-    n **= 3
-    n = 1000
-    y = x + y + n
-    compteur += 1
-    print(n)
+n = 30
+x = 0
+while n != 20:
+    n -= 2
+    if n < 26:
+        x += 2
+    else:
+        x -= 1
+    x = x * 2
 ```
 
 
 ````{admonition} Solution
 :class: note dropdown
-Le programme affichera simplement 1000. En effet, malgré le bloc d'instruction complexe qui se répète 100 fois, la valeur de `n` est à chaque fois réinitialisée à 1000.
+| n  | x  |
+| :--| :--|
+| 30  |    |
+| 30  | 0 |
+| 28  | 0 |
+| 28  | -1 |
+| 28  | -2 |
+| 26  | -2 |
+| 26  | -3  |
+| 26  | -6  |
+| 24  | -6 |
+| 22  | - |
 ````
 
 ### Exercice 4
