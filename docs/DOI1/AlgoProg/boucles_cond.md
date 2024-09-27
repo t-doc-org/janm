@@ -189,6 +189,7 @@ print("Votre moyenne est de", somme_notes / nb_notes)
 
 En programmation, on retrouve souvent des variables ayant un comportement similaire à `somme_notes` et `nb_notes`. On appelle `somme_notes` une variable *accumulateur*, puisqu'on y accumule constamment de nouvelles valeurs. `nb_notes` est appelé une variable *compteur*, puisqu'elle compte combien de fois une certaine action est effectuée. Retenez bien ces concepts, car ils vous seront souvent utiles ! Par exemple, quand vous développerez plus tard un petit jeu vidéo, vous aurez très probablement besoin d'un accumulateur pour stocker les points que le joueur marque au fur et à mesure de sa progression. De plus, un compteur pourrait vous être utile pour connaître le nombre d'ennemis éliminés une fois la partie terminée.
 
+(exo_boucles_cond=)
 ## Exercices
 
 ### Exercice 1

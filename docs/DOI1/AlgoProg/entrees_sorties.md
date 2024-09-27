@@ -94,7 +94,7 @@ base = float(input("Quelle est la base du triangle en cm ?"))
 hauteur = float(input("Quelle est la hauteur du triangle en cm ?"))
 print("L'aire du triangle est de", base * hauteur / 2, "cm2")
 ```
-
+(exo_es=)
 ## Exercices
 
 ### Exercice 1

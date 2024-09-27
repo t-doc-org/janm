@@ -289,7 +289,7 @@ elif meteo == "soleil" or (humeur == "mauvaise" and meteo != "neige"):
 else:
     print("Je n'ai pas de recommandation")
 ```
-
+(exo_branch_cond=)
 ## Exercices
 
 ### Exercice 1

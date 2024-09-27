@@ -242,7 +242,7 @@ prix = 8.5
 salutations += ", comment allez-vous ?"
 prix *= 2
 ```
-
+(exo_var=)
 ## Exercices
 
 ### Exercice 1
