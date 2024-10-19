@@ -7,4 +7,5 @@ __pycache__
 
 syntax: regexp
 ^_build/
+^docs/_build/
 ^tmp/

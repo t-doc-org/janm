@@ -5,4 +5,5 @@
 __pycache__
 
 /_build/
+/docs/_build/
 /tmp/
