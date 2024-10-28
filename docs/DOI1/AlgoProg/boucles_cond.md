@@ -342,6 +342,14 @@ print("BOOM")
 ### Exercice 5
 Écrivez un programme dans lequel l'utilisateur peut choisir un nombre pour lequel il souhaite voir apparaître sa table de multiplication jusqu'à 10. Un message d'au revoir sera également affiché à la fin. Votre programme ne doit utiliser que 2 instructions `print()`. Un exemple d'exécution pourrait être le suivant :
 
+```{code-block} text
+Quelle table de multiplication voulez-vous voir ?4
+1x4 = 4
+2x4 = 8
+3x4 = 12
+...
+10x4 = 40
+```
 
 ````{admonition} Solution
 :class: note dropdown
@@ -411,6 +419,16 @@ Ce programme permet à l'utilisateur de composer petit à petit la pizza qu'il s
 ### Exercice 7
 Écrivez un programme dans lequel l'utilisateur peut consécutivement entrer les notes qu'il a faites dans une branche. À la fin, le programme affichera le nombre de notes insuffisantes qui ont été entrées. Les notes invalides seront simplement ignorées. Pour terminer le programme, l'utilisateur entrera la note `99`. Un exemple d'exécution peut être le suivant.
 
+```{code-block} text
+Entrez une note : 4.5
+Entrez une note : 3.4
+Entrez une note : 6
+Entrez une note : 3.9
+Entrez une note : 5.1
+Entrez une note : 99
+Vous avez fait 2 notes insuffisantes
+```
+
 ````{admonition} Solution
 :class: note dropdown
 ```{code-block} python
@@ -423,3 +441,51 @@ while note != 99:
 print("Vous avez fait", nb_notes_insuf, "notes insuffisantes")
 ```
 ````
+
+### Exercice 8
+Ecrivez un programme correspondant à une mini machine à calculer. Dans celle-ci, l'utilisateur pourra choisir de faire une addition, soustraction ou multiplication entre 2 nombres. Le programme demandera alors à l'utilisateur quel type d'opération il souhaite faire, avant de lui demander les 2 nombres à utiliser. Le programme demandera à l'utilisateur des opérations à faire en boucle, jusqu'à ce que celui-ci écrive "STOP". Un exemple d'utilisation est donné ci-dessous.
+
+```{code-block} text
+Bienvenue dans la mini calculatrice !
+Quelle opération souhaitez-vous effectuer ?addition
+Quel est le premier nombre ?4
+Quel est le deuxième nombre ?7
+Le résultat de 4 + 7 est 11
+
+Quelle opération souhaitez-vous effectuer ?multiplication
+Quel est le premier nombre ?9
+Quel est le deuxième nombre ?11
+Le résultat de 9 * 11 est 99
+
+Quelle opération souhaitez-vous effectuer ?STOP
+Au revoir !
+```
+
+````{admonition} Solution
+:class: note dropdown
+
+```{code-block} python
+print("Bienvenue dans la mini calculatrice !")
+operation = ""
+while operation != "STOP":
+    operation = input("Quelle opération souhaitez-vous effectuer ?")
+    if operation == "STOP":
+        print("Au revoir !")
+    else:
+        nombre1 = float(input("Quel est le premier nombre ?"))
+        nombre2 = float(input("Quel est le deuxième nombre ?"))
+        if operation == "addition":
+            resultat = nombre1 + nombre2
+            print("Le résultat de", nombre1, "+", nombre2, "est", resultat)
+        elif operation == "soustraction":
+            resultat = nombre1 - nombre2
+            print("Le résultat de", nombre1, "-", nombre2, "est", resultat)
+        elif operation == "multiplication":
+            resultat = nombre1 * nombre2
+            print("Le résultat de", nombre1, "*", nombre2, "est", resultat)
+        else:
+            print("Opération non reconnue")
+
+```
+````
+
