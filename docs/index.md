@@ -18,7 +18,11 @@ DOI1/AlgoProg/index
 DOI1/ReprInf/index
 ```
 ### Travaux pratiques
-A venir
+```{toctree}
+:maxdepth: 1
+
+DOI1/AlgoProg/TP1
+```
 
 ## Cours de 2{sup}`e` année
 ### Cours
