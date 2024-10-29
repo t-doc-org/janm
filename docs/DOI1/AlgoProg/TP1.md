@@ -39,7 +39,7 @@ def salle_principale():
         elif choix == "coffret":
             choix_coffret()
         elif choix == "tapis":
-            choix_coffret()
+            choix_tapis()
             
 def choix_rouge():
     global acces_salle_rouge
