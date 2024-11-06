@@ -140,5 +140,6 @@ Au terme des 4 séances de TP, vous rendrez votre code pour évaluation. Celui-c
 | Le programme utilise au moins 3 entrées utilisateur de manière pertinente, dont au moins une pour une donnée numérique | 3 pts  |
 | Le programme utilise au moins 3 branchements conditionnels pertinents, dont 1 avec un opérateur logique, et 1 avec un elif | 3 pts  |
 | Le programme utilise au moins 2 boucles conditionnelles de manière pertinente                                 | 2 pts  |
+| Le programme utilise au moins 2 fonctions de manière pertinente                                 | 2 pts  |
 | **Questions orales individuelles**                                                                                                 |        |
-| Au terme du projet, 3 questions orales vous seront posées individuellement. Les questions seront du type "Quelle ligne de code permet de faire cette action ?", "A quoi sert cette ligne de code ?", et "Comment modifier cette ligne de code pour modifier le programme ?" | 3 pts |
+| Au terme du projet, 3 questions orales vous seront posées individuellement. Les questions seront du type "Quelle ligne de code permet de faire cette action ?", "A quoi sert cette ligne de code ?", et "Comment modifier cette ligne de code pour modifier le programme ?" | 5 pts |
