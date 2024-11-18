@@ -12,7 +12,23 @@ Entrez la hauteur de l'arbre : -3
 ERREUR
 ```
 
-## Exercice 2 - Quiz répété
+## Exercice 2 - Tableau d'état
+Etablissez le tableau d'état du programme ci-dessous :
+```{code-block} python
+i = 0
+j = 10
+while i < 10:
+    if i < 10:
+        j *= 2
+    else:
+        j-= 3
+    i += j-3
+while i > j:
+    i -= 1
+```
+
+
+## Exercice 3 - Quiz répété
 1.  Dans ce programme de quiz, l'utilisateur doit pouvoir répondre à la question "Qui est le premier homme à avoir posé le pied sur la Lune ?". Tant qu'il ne donne pas une bonne réponse, le programme affiche "Faux" et repose la question. Lorsqu'il a répondu correct, le programme affiche "Bravo" et se termine. Un exemple d'utilisation est donné ci-dessous.
 ```{code-block} text
 Qui est le premier homme à avoir posé le pied sur la Lune ?Buzz Aldrin
@@ -37,7 +53,7 @@ En quelle année s'est déroulée la bataille de Marignan ?
 Bravo !
 ```
 
-## Exercice 3
+## Exercice 4 - Conversions
 Ecrivez une fonction nommée `conversion_argent` prenant en paramètre une somme d'argent en CHF, et une devise étrangère (qui pourrait prendre plus tard comme valeur par exemple "EUR" pour des euros, "USD" pour des dollars, etc.)
 
 En fonction de ces paramètres, la fonction doit ensuite afficher la valeur de la somme en CHF dans cette autre devise sachant que :
