@@ -5,6 +5,7 @@
 
 Cette section contient toute la théorie et les exercices du chapitre d'algorithmique et de programmation en Python.
 
+## Cours
 ```{toctree}
 :maxdepth: 1
 introduction
@@ -17,3 +18,15 @@ objectifs1
 revisions
 ```
 
+## Travaux pratiques
+```{toctree}
+:maxdepth: 1
+TP1
+```
+
+## Examens et préparation
+```{toctree}
+:maxdepth: 1
+objectifs1
+revisions
+```

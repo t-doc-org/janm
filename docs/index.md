@@ -16,12 +16,7 @@ Ce site fait office de script de cours pour les cours d'informatique de Maxime J
 
 DOI1/AlgoProg/index
 DOI1/ReprInf/index
-```
-### Travaux pratiques
-```{toctree}
-:maxdepth: 1
-
-DOI1/AlgoProg/TP1
+DOI1/HTML_CSS/index
 ```
 
 ## Cours de 2{sup}`e` année
