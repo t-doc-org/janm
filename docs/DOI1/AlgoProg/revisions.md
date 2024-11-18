@@ -18,7 +18,7 @@ Etablissez le tableau d'état du programme ci-dessous :
 i = 0
 j = 10
 while i < 10:
-    if i < 10:
+    if i >= 5:
         j *= 2
     else:
         j-= 3
