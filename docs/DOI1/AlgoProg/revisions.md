@@ -11,6 +11,21 @@ Entrez le type d'arbre : épicéa
 Entrez la hauteur de l'arbre : -3
 ERREUR
 ```
+````{admonition} Solution
+:class: note dropdown
+``` {code-block} python
+type_arbre = input("Entrez le type d'arbre : ")
+hauteur_arbre = float(input("Entrez la hauteur de l'arbre : "))
+if type_arbre == "sapin" and hauteur_arbre >= 0:
+    print("Le prix de cet arbre est de", 50 * hauteur_arbre, "CHF")
+elif type_arbre == "frêne" and hauteur_arbre >= 0:
+    print("Le prix de cet arbre est de", 80 * hauteur_arbre, "CHF")
+else:
+    print("ERREUR")
+```
+````
+
+
 
 ## Exercice 2 - Tableau d'état
 Etablissez le tableau d'état du programme ci-dessous :
@@ -53,6 +68,23 @@ En quelle année s'est déroulée la bataille de Marignan ?
 Bravo !
 ```
 
+````{admonition} Solution
+:class: note dropdown
+``` {code-block} python
+reponse_1 = input("Qui est le premier homme à avoir posé le pied sur la Lune ?")
+while reponse_1 != "Neil Armstrong":
+    print("Faux !")
+    reponse_1 = input("Qui est le premier homme à avoir posé le pied sur la Lune ?")
+print("Bravo !")
+
+reponse_2 = input("En quelle année s'est déroulée la bataille de Marignan ?")
+while reponse_2 != "1515":
+    print("Faux !")
+    reponse_2 = input("En quelle année s'est déroulée la bataille de Marignan ?")
+print("Bravo !")
+```
+````
+
 ## Exercice 4 - Conversions
 Ecrivez une fonction nommée `conversion_argent` prenant en paramètre une somme d'argent en CHF, et une devise étrangère (qui pourrait prendre plus tard comme valeur par exemple "EUR" pour des euros, "USD" pour des dollars, etc.)
 
@@ -68,3 +100,21 @@ Le code suivant devrait ensuite permettre d'afficher la valeur de 150CHF en euro
 conversion_argent(150, "EUR")
 conversion_argent(4560, "GBP")
 ```
+
+````{admonition} Solution
+:class: note dropdown
+``` {code-block} python
+def conversion_argent(montant, devise):
+    if devise == "EUR":
+        print(montant * 0.95, "EUR")
+    elif devise == "USD":
+        print(montant * 1.05, "USD")
+    elif devise == "GBP":
+        print(montant * 0.85, "GBP")
+    else:
+        print("Erreur : devise non supportée")
+
+conversion_argent(150, "EUR")
+conversion_argent(4560, "GBP")
+```
+````

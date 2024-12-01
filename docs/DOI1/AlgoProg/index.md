@@ -14,8 +14,6 @@ entrees_sorties
 branchements_cond
 boucles_cond
 fonctions
-objectifs1
-revisions
 ```
 
 ## Travaux pratiques
