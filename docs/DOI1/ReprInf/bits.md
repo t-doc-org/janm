@@ -44,8 +44,6 @@ Ainsi, avec ce tableau de correspondance, la séquence de bits 010100101 représ
 
 ## Exercices
 
-## Exercices
-
 ### Exercice 1
 a) On imagine un ordinateur dont la mémoire ne peut stocker que 4 bits. Combien d’états différents cette mémoire peut-elle représenter ?
 
@@ -61,7 +59,7 @@ a) 16 états
 
 b) 1024 états
 
-c) 2512′000′000′000 états
+c) 2<sup>512′000′000′000</sup> états
 ````
 
 
@@ -73,9 +71,9 @@ b) Qu’en est-il si l’on veut non seulement représenter les 26 lettres minus
 
 ````{admonition} Solution
 :class: note dropdown
-a) 32 est la puissance de 2 supérieure la plus proche de 26. Comme 32 = 25, la longueur minimale de ces séquences de bits doit être de 5.
+a) 32 est la puissance de 2 supérieure la plus proche de 26. Comme 32 = 2<sup>5</sup>, la longueur minimale de ces séquences de bits doit être de 5.
 
-b) Il faut représenter 52 états et 64 = 26 est la puissance de 2 supérieure la plus proche. Il faut donc des séquence de bits de longueur 6 au minimum.
+b) Il faut représenter 52 états et 64 = 2<sup>6</sup> est la puissance de 2 supérieure la plus proche. Il faut donc des séquence de bits de longueur 6 au minimum.
 ````
 
 ### Exercice 3
@@ -142,7 +140,7 @@ c) Un appareil photo contient une carte SD permettant de stocker 128Go. Sachant 
 :class: note dropdown
 a) 64’000’000’000 bits
 
-b) 100Mo/s = 100’000’000 o/s = 800’000’000 b/s. Avec 60s dans 1min, on a donc 800′000′000 b/s ·  60 s/min = 48′000′000′000 b/min
+b) 100Mo/s = 100’000’000 o/s = 800’000’000 b/s. Avec 60s dans 1min, on a donc 800′000′000 b/s · 60 s/min = 48′000′000′000 b/min
 
 c) Chaque photo pèse 24Mb = 3Mo. De plus, la taille de la carte SD est de 128Go = 128’000Mo. On peut donc mettre 128000/3 = 42666.6 photos sur cette carte. Comme on ne peut pas diviser une photo, on peut donc mettre 42’666 photos sur cette carte SD avant qu’elle ne soit (presque) pleine.
 ````
@@ -152,5 +150,9 @@ Chaque minute, 400 nouvelles heures de vidéo sont partagées sur Youtube. En pr
 
 ````{admonition} Solution
 :class: note dropdown
-ddd
+Dans une journée il y a 60 · 24 = 1440 minutes. Donc en une journée, il y a 1440 · 400 = 576′000 heures de vidéo qui sont mises en ligne, ce qui équivaut à 576′000 · 60 = 34′560′000 minutes de vidéos.
+
+Toutes ces minutes de vidéos pèsent 34′560′000 · 120 = 4′147′200′000 Mo.
+
+Un disque dur peut contenir 3To = 3′000′000Mo. Donc pour contenir toutes ces vidéos, il faut ajouter 4′147′200′000 / 3′000′000 = 1382.4 → 1383 disques dur par jour.
 ````
