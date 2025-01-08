@@ -3,9 +3,7 @@
 
 # Représentation de l'information
 
-A venir
-
 ```{toctree}
 :maxdepth: 1
-
+bits
 ```
