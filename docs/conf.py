@@ -15,3 +15,5 @@ keep_warnings = True
 html_theme_options = {
     'repository_url': 'https://github.com/t-doc-org/janm',
 }
+
+html_static_path = []
