@@ -1,9 +1,7 @@
-# Copyright 2024 Maxime Jan <maxime.jan@edufr.ch>
-# SPDX-License-Identifier: CC-BY-NC-SA-4.0
-
 *.orig
 __pycache__
 
 /_build/
+/_venv/
 /docs/_build/
 /tmp/
