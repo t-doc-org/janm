@@ -1,11 +1,9 @@
-# Copyright 2024 Maxime Jan <maxime.jan@edufr.ch>
-# SPDX-License-Identifier: CC-BY-NC-SA-4.0
-
 syntax: glob
 *.orig
 __pycache__
 
 syntax: regexp
 ^_build/
+^_venv/
 ^docs/_build/
 ^tmp/
