@@ -67,17 +67,55 @@ Attention ! Unicode n'est pas un système permettant de représenter les caract�
 ```
 
 ### UTF-8
-Le standard de représentation des caractères est aujourd'hui UTF-8. Il s'agit d0un système de codage de caractères qui permet de représenter tous les caractères définis dans Unicode tout en étant compatible avec les systèmes plus anciens, tels que ceux utilisant la table ASCII.
+Le standard de représentation des caractères est aujourd'hui UTF-8. Il s'agit d'un système de codage de caractères qui permet de représenter tous les caractères définis dans Unicode tout en étant compatible avec les systèmes plus anciens, tels que ceux utilisant la table ASCII.
 
  - Compatibilité : Les premiers 128 caractères (U+0000 à U+007F), qui incluent tous les caractères de base de l'ASCII, sont représentés de la même manière en UTF-8 et en ASCII (c'est-à-dire avec un octet).
- - Longueur variable : Les caractères Unicode au-delà de U+007F sont encodés avec deux, trois ou quatre octets. Par exemple, un caractère comme "é" (U+00E9) sera codé en deux octets, tandis qu'un caractère comme "😊" (U+1F60A) sera codé en quatre octets.
+ - Longueur variable : Les caractères Unicode au-delà de U+007F sont encodés avec deux, trois ou quatre octets. Par exemple, un caractère comme "é" (U+00E9) sera codé en deux octets, tandis qu'un caractère comme "😊" (U+1F60A) sera codé en quatre octets. L'idée est de représenter les caractères les plus fréquemment utilisés avec moins de bits de manière à rendre les fichiers les moins lourds possible.
+ 
+ La table UTF-8 est trop grande pour être affichée au complet ici, mais vous trouvez ci-dessous quelques exemples de caractères avec leur Unicode et leur représentation binaire UTF-8.
+
+ | Caractère | Unicode    | UTF-8 (binaire)                              |
+|-----------|------------|---------------------------------------------|
+| A         | U+0041     | 01000001                                    |
+| ñ         | U+00F1     | 11000011 10110001                           |
+| €         | U+20AC     | 11100010 10000010 10101100                  |
+| 😀        | U+1F600    | 11110000 10011111 10011000 10000000         |
+| 中        | U+4E2D     | 11100100 10111000 10101101                  |
+| أ         | U+0623     | 11011000 10100011                           |
+| ♫         | U+266B     | 11100010 10011001 10101011                  |
+| 🌍        | U+1F30D    | 11110000 10011111 10001100 10001101         |
+
+Pour la lecture d'un texte encodé avec ASCII, il suffisait de séparer les bits 7 par 7 avant de les convertir. Avec UTF-8 c'est un peu plus compliqué. En regardant les exemples ci-dessus, vous noterez que les caractères encodés avec un octet commencent par un 0, que les caractères encodés avec deux octets commencent par deux 1, avec trois octets avec trois 1, et quatre octets avec quatre 1. Il faut donc lire ces premiers bits pour faire la séparation avant de convertir le code binaire.
 
 ## Exercices
 
 ### Exercice 1
-A venir
+A l'aide de la table ASCII qui se trouve sur cette page, déchiffrez le message suivant :
+100011111100101100001110001111001010100000100100011011111110000111000011001011110010
 ````{admonition} Solution
 :class: note dropdown
-A venir
+Le message est : "Grace Hopper"
+
+Grace Hopper était une informaticienne qui a joué un rôle extrêmement important dans l'histoire
+de l’informatique. Elle est surtout connue pour avoir contribué à la création de l'un des premiers compilateurs
+de langages de programmation et pour avoir popularisé l'utilisation des termes "débogage"
+et "bug" en cachant un insecte mort dans un ordinateur défectueux.
+````
+### Exercice 2
+A l'aide de la table ASCII qui se trouve sur cette page, encodez le mot "Suisse".
+````{admonition} Solution
+:class: note dropdown
+1010011 1110101 1101001 1110011 1110011 1100101
 ````
 
+### Exercice 3
+a) Si on écrit dans un fichier texte de notre ordinateur le message "Hello World !", quel sera la taille de ce fichier (en octets), sachant que celui-ci sera encodé avec UTF-8 ?
+
+
+b) Ouvrez réellement un fichier texte (.txt) avec le bloc-note de votre ordinateur et écrivez le texte "Hello World !". Enregistrez ce fichier, puis faites un clic-droite dessus et sélectionnez les propriétés pour inspecter la propriété de la taille et vérifier votre réponse à la question précédente.
+
+
+c) Effacez ensuite le contenu de ce fichier et écrivez le texte "Où as-tu mangé à midi ?" à la place. A nouveau, sachant que le fichier est encodé avec UTF-8, pouvez-vous prédire la taille du fichier ? Contrôlez votre réponse en consultant la taille du fichier sur votre ordinateur.
+
+
+d) Réécrivez ce même texte dans un fichier Microsoft Word (.docx) et consultez ensuite sa taille. Ce fichier est-il plus lourd ou plus léger que le fichier .txt ? Quelle est l'explication de ce résultat ?
