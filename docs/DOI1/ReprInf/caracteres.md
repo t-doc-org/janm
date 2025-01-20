@@ -122,7 +122,7 @@ d) Réécrivez ce même texte dans un fichier Microsoft Word (.docx) et consulte
 
 ### Exercice 4
 
-a) En utilisant la [https://en.wikipedia.org/wiki/List_of_Unicode_characters](page Wikipédia d'Unicode), déterminez les Unicodes des caractères suivants :
+a) En utilisant la [page Wikipédia d'Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters), déterminez les Unicodes des caractères suivants :
  - K
  - à
  - ጬ
@@ -137,4 +137,4 @@ a) En utilisant la [https://en.wikipedia.org/wiki/List_of_Unicode_characters](pa
 
  01010011 01100011 01101000 11000011 10110110 01101110 00100000 11110000 10011111 10010000 10111011
 
- b) En utilisant [https://www.utf8-chartable.de/unicode-utf8-table.pl?number=1024&utf8=bin](cette table UTF-8), décodez ce texte. N'hésitez pas à utiliser de la fonction "recherche" avec CTRL+F (ou CMD+F sur Mac). Indice : le dernier caractère se trouve dans la catégorie *Miscellaneous Symbols and Pictographs*
+ b) En utilisant [cette table UTF-8](https://www.utf8-chartable.de/unicode-utf8-table.pl?number=1024&utf8=bin), décodez ce texte. N'hésitez pas à utiliser de la fonction "recherche" avec CTRL+F (ou CMD+F sur Mac). Indice : le dernier caractère se trouve dans la catégorie *Miscellaneous Symbols and Pictographs*
