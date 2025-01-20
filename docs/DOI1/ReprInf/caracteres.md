@@ -119,3 +119,22 @@ c) Effacez ensuite le contenu de ce fichier et écrivez le texte "Où as-tu mang
 
 
 d) Réécrivez ce même texte dans un fichier Microsoft Word (.docx) et consultez ensuite sa taille. Ce fichier est-il plus lourd ou plus léger que le fichier .txt ? Quelle est l'explication de ce résultat ?
+
+### Exercice 4
+
+a) En utilisant la [https://en.wikipedia.org/wiki/List_of_Unicode_characters](page Wikipédia d'Unicode), déterminez les Unicodes des caractères suivants :
+ - K
+ - à
+ - ጬ
+ - ♕
+ - ♛
+
+ b) En Python, il est possible d'utiliser Unicode dans un `print()` pour afficher la représentation de ce caractère. Par exemple `print("\u0040")` affiche le symbole `@`. Ouvrez Thonny et écrivez 2 lignes de code pour afficher les pièces d'échecs de la dame blanche et de la dame noire.
+
+ ### Exercice 5
+
+ a) Le texte ci-dessous est encodé en UTF-8. Comme vous le savez, UTF-8 encode les caractères avec des séquences de 1, 2, 3, ou 4 octets. Commencez par grouper les octets appartenant à la même séquence.
+
+ 01010011 01100011 01101000 11000011 10110110 01101110 00100000 11110000 10011111 10010000 10111011
+
+ b) En utilisant [https://www.utf8-chartable.de/unicode-utf8-table.pl?number=1024&utf8=bin](cette table UTF-8), décodez ce texte. N'hésitez pas à utiliser de la fonction "recherche" avec CTRL+F (ou CMD+F sur Mac). Indice : le dernier caractère se trouve dans la catégorie *Miscellaneous Symbols and Pictographs*
