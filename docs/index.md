@@ -24,6 +24,13 @@ DOI1/HTML_CSS/index
 ```{toctree}
 :maxdepth: 1
 
-DOI2/AlgoProg/index
+DOI2/Databases/index
 ```
 ### Travaux pratiques
+
+## Archives
+```{toctree}
+:maxdepth: 1
+
+DOI2/AlgoProg/index
+```
