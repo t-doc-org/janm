@@ -117,3 +117,7 @@ INSERT INTO Utilisateur(nom, prenom, role) VALUES
 INSERT INTO Utilisateur(nom, prenom, role) VALUES
 ('Queloz', 'Aurélien', 'élève');
 ```
+
+## Sélectionner des données
+
+

@@ -7,4 +7,5 @@
 :maxdepth: 1
 bits
 caracteres
+nombres
 ```

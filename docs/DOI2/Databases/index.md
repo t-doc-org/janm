@@ -7,5 +7,6 @@
 ```{toctree}
 :maxdepth: 1
 ref_sql
+ex_select
 ```
 
