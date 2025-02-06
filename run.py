@@ -18,12 +18,11 @@ import venv
 VERSION = ''
 
 package = 't-doc-common'
-command = 'tdoc'
-default_args = ['serve']
+default_command = ['tdoc', 'serve']
 
 
 def main(argv, stdin, stdout, stderr):
-    base = pathlib.Path(argv[0]).resolve().parent
+    base = pathlib.Path(argv[0]).parent.resolve()
 
     # Find a matching venv, or create one if there is none.
     version = os.environ.get('TDOC_VERSION', VERSION)
@@ -72,9 +71,10 @@ Release notes: <https://t-doc.org/common/release-notes.html\
                 stderr.write("\n")
 
     # Run the command.
+    args = argv[1:] if len(argv) > 1 else default_command
     bin, ext = env.sysinfo
-    args = argv[1:] if len(argv) > 1 else default_args
-    return subprocess.run([bin / f'{command}{ext}'] + args).returncode
+    args[0] = bin / f'{args[0]}{ext}'
+    return subprocess.run(args).returncode
 
 
 class lazy:
