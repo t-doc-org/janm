@@ -8,4 +8,5 @@
 bits
 caracteres
 nombres
+images
 ```
