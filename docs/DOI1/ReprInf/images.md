@@ -3,7 +3,7 @@
 ## Format PBM
 Avec le format PBM (Portable BitMap), il n'est possible de représenter des images qu'avec des pixels noirs et des pixels blancs. Un pixel blanc est représenté par un `0` alors qu'un pixel noir est représenté par un `1`.
 
-L'entête d'un tel fichier contient tout d'abord `P1` indiquant que l'image est représentée en noir et blanc. L'entête contient ensuite les dimensions de l'image en donnant le nombre de pixels en largeur et le nombre de pixels sur en hauteur. 
+L'entête d'un tel fichier contient tout d'abord `P1`, indiquant que l'image est représentée en noir et blanc. L'entête contient ensuite les dimensions de l'image en donnant d'abprd le nombre de pixels en largeur, puis le nombre de pixels en hauteur. 
 ```{image} images/smiley.png
 :alt: smiley
 :width: 30%
@@ -20,7 +20,7 @@ P1
 
 
 ## Format PGM
-Le format PGM (Portable GrayMap) permet de représentation des images avec des pixels ayant différents niveaux de gris. L'entête d'un tel fichier comporte l'indication `P2`, les dimensions en pixels de l'image, ainsi que la valeur décimale représentant le blanc. Par exemple, si cette valeur est `100`, alors :
+Le format PGM (Portable GrayMap) permet de représentater des images avec des pixels ayant différents niveaux de gris. L'entête d'un tel fichier comporte l'indication `P2`, les dimensions en pixels de l'image, ainsi que la valeur décimale représentant le blanc. Les valeurs inférieures à celle-ci représentent les niveau de gris. Plus la valeur se rapproche de `0`, plus elle se rapproche du noir. Par exemple, si la valeur maximale donnée dans l'entête est `100`, alors :
  - `100` représente le blanc
  - `99` à `51` représentent des gris clairs de plus en plus sombres
  - `50` est un gris exactement à mi-chemin entre le noir et le blanc
@@ -53,6 +53,7 @@ Le format PPM (Portable PixelMap) permet de représenter des images en couleur e
 :width: 30%
 :align: center
 ```
+Cette petite image est représentée avec le code PPM suivant :
  ```{code-block} text
 P3
 3 2
