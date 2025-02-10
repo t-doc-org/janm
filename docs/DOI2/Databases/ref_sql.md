@@ -101,6 +101,7 @@ Les valeurs de type `TEXT` doivent être entre guillemets, et la séparation ent
 :after: sql-livre
 :name: sql-livre-insert1
 :then: sql-livre-select
+:editor:
 INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
 ('La Vérité sur l`Affaire Harry Québert', 'Joël Dicker', 2012, 9782877068161, 23.95);
 ```
@@ -112,6 +113,7 @@ Lorsqu'on insère des données dans une table contenant une clef primaire qui a 
 :after: sql-user
 :name: sql-user-insert1
 :then: sql-user-select
+:editor:
 INSERT INTO Utilisateur(nom, prenom, role) VALUES
 ('Jan', 'Maxime', 'enseignant');
 INSERT INTO Utilisateur(nom, prenom, role) VALUES
@@ -119,5 +121,153 @@ INSERT INTO Utilisateur(nom, prenom, role) VALUES
 ```
 
 ## Sélectionner des données
+L'instruction `SELECT ... WHERE ...` permet de rechercher des données dans une table. On fait suivre le mot-clef `SELECT` du nom de(s) colonne(s) que l'on souhaite afficher, et le `WHERE` de la table contenant ces données. Ainsi, la requête suivante nous permet d'afficher tous les titres et auteurs dans notre table Livre.
 
+```{exec} sql
+:after: sql-livre
+:name: sql-livre-insert-many
+:class: hidden
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('1984', 'George Orwell', 1949, 9780451524935, 9.99);
 
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Le Petit Prince', 'Antoine de Saint-Exupéry', 1943, 9782070612758, 7.50);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Les Misérables', 'Victor Hugo', 1862, 9782253004220, 12.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('L`Étranger', 'Albert Camus', 1942, 9782070360024, 8.70);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Le Comte de Monte-Cristo', 'Alexandre Dumas', 1844, 9782070105618, 14.99);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Les Trois Mousquetaires', 'Alexandre Dumas', 1846, 9782070405732, 12.99);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Madame Bovary', 'Gustave Flaubert', 1857, 9782070360604, 10.50);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Don Quichotte', 'Miguel de Cervantes', 1605, 9782070117153, 15.80);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Crime et Châtiment', 'Fiodor Dostoïevski', 1866, 9782070360405, 11.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Orgueil et Préjugés', 'Jane Austen', 1813, 9782070318746, 9.50);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Germinal', 'Émile Zola', 1885, 9782070443943, 10.99);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Les Fleurs du mal', 'Charles Baudelaire', 1857, 9782070413113, 8.20);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('L`Odyssée', 'Homère', -800, 9782080700241, 13.50);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('La Divine Comédie', 'Dante Alighieri', 1320, 9782253084079, 16.40);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Ulysse', 'James Joyce', 1922, 9782253943635, 17.99);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Moby Dick', 'Herman Melville', 1851, 9782070408485, 12.00);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Le Nom de la Rose', 'Umberto Eco', 1980, 9782070388824, 11.50);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('À la recherche du temps perdu', 'Marcel Proust', 1913, 9782070107586, 22.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Le Seigneur des Anneaux', 'J.R.R. Tolkien', 1954, 9782266154115, 29.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter à l`école des sorciers', 'J.K. Rowling', 1997, 9782070643022, 8.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Le Meilleur des mondes', 'Aldous Huxley', 1932, 9782070368222, 9.20);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter et la Chambre des Secrets', 'J.K. Rowling', 1998, 9782070643039, 8.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter et le Prisonnier d`Azkaban', 'J.K. Rowling', 1999, 9782070643046, 8.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter et la Coupe de Feu', 'J.K. Rowling', 2000, 9782070643053, 9.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter et l`Ordre du Phénix', 'J.K. Rowling', 2003, 9782070643060, 10.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter et le Prince de Sang-Mêlé', 'J.K. Rowling', 2005, 9782070643077, 10.90);
+
+INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
+('Harry Potter et les Reliques de la Mort', 'J.K. Rowling', 2007, 9782070643084, 11.90);
+
+```
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select1
+:editor:
+SELECT Livre.titre, Livre.auteur FROM Livre
+```
+
+Si on souhaite ne pas avoir de lignes "doublons" dans les résultats, on peut faire suivre `SELECT` du mot-clef `DISTINCT` afin de les retirer du résultat de la recherche et n'avoir ainsi que des lignes uniques.
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select2
+:editor:
+SELECT DISTINCT Livre.auteur FROM Livre
+```
+
+On peut également utiliser `SELECT *` pour sélectionner toutes les colonnes d'un seul coup.
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select3
+:editor:
+SELECT * FROM Livre
+```
+
+## Filtrer les données
+Les résultats obtenus à l'aide d'une requête `SELECT ... FROM ...` peuvent être filtrés en faisant suivre cette requête d'un `WHERE`. Ce mot-clef est suivi d'une condition qui s'écrit de manière similaire à Python en utilisant les opérateurs de comparaisons `=`, `!=`, `>`, `>=`, `<`, `<=`. La requête suivante permet par exemple de sélectionner toutes les lignes où le prix est inférieur ou égal à 10CHF.
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select4
+:editor:
+SELECT * FROM Livre WHERE Livre.prix <= 10
+```
+
+Celle ci-dessous permet de sélectionner les titres de livre écrit par J.K. Rowling.
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select5
+:editor:
+SELECT Livre.Titre FROM Livre WHERE Livre.auteur = 'J.K. Rowling'
+```
+### Opérateurs logiques
+Comme en Python, il est possible de chaîner plusieurs conditions avec les opérateurs logiques `AND` et `OR`. La requête suivante permet d'afficher tous les livres écrits par Alexandre Dumas ou par Gustave Flaubert.
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select6
+:editor:
+SELECT Livre.Titre FROM Livre WHERE Livre.auteur = 'Alexandre Dumas' OR Livre.Auteur = 'Gustave Flaubert'
+```
+
+La requête suivante permet d'afficher toutes les infos des livres écrits par J.K. Rowling après 2003.
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-livre-select7
+:editor:
+SELECT Livre.Titre FROM Livre WHERE Livre.auteur = 'J.K. Rowling' AND Livre.date_pub > 2003
+```
