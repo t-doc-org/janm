@@ -1,78 +1,140 @@
 # Représentation des images
 
+## Format PBM
+Avec le format PBM (Portable BitMap), il n'est possible de représenter des images qu'avec des pixels noirs et des pixels blancs. Un pixel blanc est représenté par un `0` alors qu'un pixel noir est représenté par un `1`.
+
+L'entête d'un tel fichier contient tout d'abord `P1` indiquant que l'image est représentée en noir et blanc. L'entête contient ensuite les dimensions de l'image en donnant le nombre de pixels en largeur et le nombre de pixels sur en hauteur. 
+```{image} images/smiley.png
+:alt: smiley
+:width: 30%
+:align: center
+```
+Le smiley ci-dessus peut alors être représenté avec le fichier PBM suivant :
+
+```{code-block} text
+P1
+8 8
+0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 1 0 1 0 0 1 0 1 1 0 0 0 0 0 0 1
+1 0 1 0 0 1 0 1 1 0 0 1 1 0 0 1 0 1 0 0 0 0 1 0 0 0 1 1 1 1 0 0
+```
+
+
+## Format PGM
+Le format PGM (Portable GrayMap) permet de représentation des images avec des pixels ayant différents niveaux de gris. L'entête d'un tel fichier comporte l'indication `P2`, les dimensions en pixels de l'image, ainsi que la valeur décimale représentant le blanc. Par exemple, si cette valeur est `100`, alors :
+ - `100` représente le blanc
+ - `99` à `51` représentent des gris clairs de plus en plus sombres
+ - `50` est un gris exactement à mi-chemin entre le noir et le blanc
+ - `49` à `1` représentent des gris sombres qui tendent vers le noir
+ - `0` représente le noir
+```{image} images/vache.png
+:alt: Vache
+:width: 30%
+:align: center
+```
+ Avec cela, on pourrait représenter l'image de vache ci-dessus avec le fichier PGM suivant :
+ ```{code-block} text
+P2
+8 8
+100
+100 75 100 100 100 100 75 100
+75 75 50 75 75 50 75 75
+75 75 75 75 75 75 75 75 
+50 75 0 75 75 0 75 50
+75 75 0 75 75 0 75 75 
+50 75 75 75 75 75 75 50
+100 75 0 50 50 0 75 100
+100 100 50 50 50 50 100 100
+```
+
+## Format PPM
+Le format PPM (Portable PixelMap) permet de représenter des images en couleur en utilisant la notation `RGB`. L'entête contient l'indication `P3`, les dimensions de l'image en pixels, et l'intensité maximale pouvant être donnée à chaque composante rouge, verte et bleue. Afin de garder la notation RGB classique, il est préférable de toujours laisser cette valeur à `255`.
+```{image} images/couleurs.png
+:alt: Couleurs
+:width: 30%
+:align: center
+```
+ ```{code-block} text
+P3
+3 2
+255
+255 0 0
+0 255 0
+0 0 255
+255 255 0
+255 255 255
+0 0 0 
+```
 
 ## Exercices
 
-### Editeur de fichiers PBM, PGM, PPM
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<div class="container">
-
-<div class="row justify-content-center">
-<div class="col-md-10 text-center">
-<textarea id="dataEntry" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="14" cols="80">P1
-36 11
-1 0 0 0 1 0 0 1 1 1 1 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 1 1 1 0 0 1
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 1 1 1 1 0 0 1 1 1 1 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0
-1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1
-1 0 0 0 1 0 0 1 1 1 1 1 0 0 1 1 1 1 1 0 0 1 1 1 1 1 0 0 1 1 1 1 1 0 0 1</textarea>
-</div>
-</div>
-<div class="row justify-content-center mt-5">
-    <div class="col-md-8 text-center">
-        <p id="sha256"></p>
-    </div>
-</div>
-<div class="row justify-content-center mb-4 mt-4">
-<div class="col-md-8 text-center">
-<button id="dataEntryBtn" class="btn btn-primary">Générer l'image</button>
-</div>
-</div>
-<div class="row justify-content-center">
-<div class="col-md-8 text-center">
-<canvas id="canvas2" style="image-rendering:pixelated;"></canvas>
-</div>
-</div>
-</div>
-
-
-
 ### Exercice 1 
 Le code binaire ci-dessous est censé représenter l'image d'enveloppe suivante.
-![Enveloppe](images/enveloppe.png)
-
-Toutefois, l'entête de ce code binaire permettant de générer l'image au format .pbm est manquant ! Copiez/collez le code binaire dans l'éditeur ci-dessus et compléter l'entête pour que l'image se génère correctement
-
-```{code-block} text
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 1 0 1 1 1 1 1 0 1 1 1 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 1 1 1 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+```{image} images/enveloppe.png
+:alt: enveloppe
+:width: 30%
+:align: center
 ```
+
+Toutefois, l'entête de ce code binaire permettant de générer l'image au format .pbm est manquant ! Complétez ce fichier et générez l'image de manière qu'elle corresponde à l'enveloppe ci-dessus.
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div style="text-align:center">
+    <textarea id="generatorArea1" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="14" cols="80">
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 1 1 0 1 1 1 1 1 0 1 1 1 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 1 1 1 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</textarea>
+    <button canvas-number="1" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
+    <canvas id="canvas1" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
+</div>
+
 
 
 ### Exercice 2
 Voici l'image d'un petit personnage sorti de Space Invaders. Reproduisez cette image en format .pbm, sachant que celle-ci fait 11 pixels de large, et 8 pixels de haut.
-![Space Invaders](images/spaceinvaders.png)
+```{image} images/spaceinvaders.png
+:alt: Space Invaders
+:width: 50%
+:align: center
+```
+
+
+<div style="text-align:center">
+    <textarea id="generatorArea2" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="10" cols="80">P1
+</textarea>
+    <button canvas-number="2" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
+    <canvas id="canvas2" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
+</div>
+
 
 ### Exercice 3
 Voici une image au format .pgm représentant le mot "DATA". Sur cette image, le dernier A est totalement blanc.
 
-![Data](images/data.png)
+
+```{image} images/data.png
+:alt: Data
+:width: 50%
+:align: center
+```
+
 
 Le code .pgm de cette image vous est donné ci-dessous, mais l'entête a été perdu. Copiez/collez ce code .pgm sur la l'éditeur et écrivez son entête pour obtenir exactement l'image ci-dessus.
+<div style="text-align:center">
+    <textarea id="generatorArea3" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="6" cols="80">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 3 0 0 0 7 7 0 0 11 11 11 11 11 0 0 15 15 0 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 0 0 3 0 7 7 7 7 0 0 0 11 0 0 0 15 15 15 15 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 3 3 0 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+</textarea>
+    <button canvas-number="3" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
+    <canvas id="canvas3" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
+</div>
 
-```{code-block} text
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 3 0 0 0 7 7 0 0 11 11 11 11 11 0 0 15 15 0 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 0 0 3 0 7 7 7 7 0 0 0 11 0 0 0 15 15 15 15 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 3 3 0 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-```
+
 
 ### Exercice 4
 Pouvez-vous modifier uniquement l'entête de l'image précédente afin que celle-ci soit exactement 2 fois plus sombre ? Le résultat devrait être celui ci-dessous.
-![DataDark](images/data_dark.png)
+
+```{image} images/data_dark.png
+:alt: Data Dark
+:width: 50%
+:align: center
+```
 
 ### Exercice 5
 Utilisez l'éditeur pour reproduire le coeur de The Legend of Zelda ci-dessous.
@@ -83,23 +145,31 @@ Pour ce faire, utilisez l'entête donné ci-dessous et respectez les propriété
  - Gris très clair : illuminé à 90%
  - Blanc : illuminé à 100%
 
-Début du fichier :
-```{code-block} text
-P2
-8 7
-10
+```{image} images/coeur.png
+:alt: Coeur
+:width: 30%
+:align: center
 ```
-![Coeur](images/coeur.png)
+<div style="text-align:center">
+    <textarea id="generatorArea5" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="11" cols="80">P2
+</textarea>
+    <button canvas-number="5" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
+    <canvas id="canvas5" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
+</div>
+
+
 
 
 ### Exercice 6
-Voici ci-dessous le code .ppm du drapeau d'un pays. Sans copier/coller ce code sur l'éditeur, devinez de quel drapeau il s'agit. Vérifiez ensuite votre hypothèse en générant l'image.
-Début du fichier :
-```{code-block} text
-P3
+Voici ci-dessous le code .ppm du drapeau d'un pays. Sans générer l'image, devinez d'abord de quel drapeau il s'agit. Vérifiez ensuite votre hypothèse en générant l'image.
+<div style="text-align:center">
+    <textarea id="generatorArea6" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="6" cols="80">P3
 6 3
 255 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0
-```
+</textarea>
+    <button canvas-number="6" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
+    <canvas id="canvas6" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
+</div>
 
 ### Exercice 7
 Vous allez maintenant dessiner par vous-même une image en couleur. L'image que vous allez reproduire est celle du petit personnage rose de Nintendo : Kirby.
@@ -109,12 +179,27 @@ Pour vous lancer dans la réalisation de ce dessin au format PPM, vous devez con
  - Rose foncé : 255 0 85
  - Bleu des yeux : 40 0 255
 
-![Kirby](images/kirby.png)
-<div class="row">
-<div class="col-md-12 text-center">
-Source : <a href="https://kylepaulsen.com/stuff/NetpbmViewer/">Kyle Paulsen</a>
+```{image} images/kirby.png
+:alt: Kirby
+:width: 30%
+:align: center
+```
+
+Reproduisez l'image ci-dessous :
+<div style="text-align:center">
+    <textarea id="generatorArea7" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="11" cols="80">P3
+</textarea>
+    <button canvas-number="7" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
+    <canvas id="canvas7" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
 </div>
-</div>
+
+
+
+
+Le code permettant de générer les images PBM/PGM/PPM est tiré du site de [Kyle Paulsen](https://kylepaulsen.com/stuff/NetpbmViewer/)
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 
 <script>
@@ -307,15 +392,23 @@ Source : <a href="https://kylepaulsen.com/stuff/NetpbmViewer/">Kyle Paulsen</a>
         return buf;
     }
 
-    get("dataEntryBtn").addEventListener("click", function () {
-        netPBM.render(str2ab(get("dataEntry").value), get("canvas2"));
-        var canvas = get("canvas2");
+    function canvasRender(canvasNumber){
+        netPBM.render(str2ab(get("generatorArea"+canvasNumber).value), get("canvas"+canvasNumber));
+        var canvas = get("canvas"+canvasNumber);
         canvas.style.width = (canvas.width * 8) + "px";
-
-        
+        /*
         const hash = sha256(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data.join());
         const sha256Paragraph = document.getElementById("sha256");
         sha256Paragraph.innerHTML= "<b>Code Exercice :</b> " + hash.substring(0,8)
+        */
+    }
+
+    document.querySelectorAll(".generatorButton").forEach(button => {
+        button.addEventListener("click", function () {
+            console.log(this)
+            const canvasNumber = this.getAttribute("canvas-number");
+            canvasRender(canvasNumber);
+        });
     });
 </script>
 
