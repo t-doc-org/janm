@@ -120,7 +120,7 @@ Voici une image au format .pgm représentant le mot "DATA". Sur cette image, le 
 
 Le code .pgm de cette image vous est donné ci-dessous, mais l'entête a été perdu. Copiez/collez ce code .pgm sur la l'éditeur et écrivez son entête pour obtenir exactement l'image ci-dessus.
 <div style="text-align:center">
-    <textarea id="generatorArea3" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="6" cols="80">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 3 0 0 0 7 7 0 0 11 11 11 11 11 0 0 15 15 0 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 0 0 3 0 7 7 7 7 0 0 0 11 0 0 0 15 15 15 15 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 3 3 0 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    <textarea id="generatorArea3" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="6" cols="80">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 3 0 0 0 7 7 0 0 11 11 11 11 11 0 0 15 15 0 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 0 0 3 0 7 7 7 7 0 0 0 11 0 0 0 15 15 15 15 0 0 3 0 0 3 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 3 3 3 0 0 7 0 0 7 0 0 0 11 0 0 0 15 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 </textarea>
     <button canvas-number="3" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
     <canvas id="canvas3" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
