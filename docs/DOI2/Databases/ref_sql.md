@@ -42,6 +42,7 @@ select * from Livre;
 Lorsque la clef primaire d'une table est un identifiant artificiel créé uniquement pour ce rôle, on peut utiliser le mot-clef `AUTOINCREMENT` dans la définition de la `PRIMARY KEY` afin que SQL se charge lui-même d'attribuer ce numéro unique aux futures lignes de la table. La valeur de cet identifiant doit obligatoirement être `INTEGER`
 
 ```{exec} sql
+:after: sql-livre
 :name: sql-user
 :then: sql-user-select
 CREATE TABLE Utilisateur (
@@ -67,6 +68,7 @@ select * from Utilisateur;
 Lors de la création d'une table contenant des clefs étrangères, on doit également les spécifier avec `FOREIGN KEY ... REFERENCES ...`. Après le `FOREIGN KEY`, on spécifie entre parenthèses quelle colonne est la clef étrangère. Puis, après le `REFERENCES`, on donne le nom de la table et de sa colonne référencée. Dans l'exemple ci-dessous, `utilisateur` est une clef étrangère référençant la colonne `uid` de la table `Utilisateur`. De plus, `livre` est une clef étrangère référançant la colonne `isbn` de la table `livre`.
 
 ```{exec} sql
+:after: sql-user
 :name: sql-borrow
 :then: sql-borrow-select
 CREATE TABLE Emprunt (
@@ -124,7 +126,7 @@ INSERT INTO Utilisateur(nom, prenom, role) VALUES
 L'instruction `SELECT ... WHERE ...` permet de rechercher des données dans une table. On fait suivre le mot-clef `SELECT` du nom de(s) colonne(s) que l'on souhaite afficher, et le `WHERE` de la table contenant ces données. Ainsi, la requête suivante nous permet d'afficher tous les titres et auteurs dans notre table Livre.
 
 ```{exec} sql
-:after: sql-livre
+:after: sql-borrow
 :name: sql-livre-insert-many
 :class: hidden
 INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
@@ -208,14 +210,31 @@ INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
 INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
 ('Harry Potter et les Reliques de la Mort', 'J.K. Rowling', 2007, 9782070643084, 11.90);
 
+INSERT INTO Utilisateur(nom, prenom, role) VALUES
+('Dupont', 'Alice', 'enseignant'),
+('Martin', 'Benoît', 'bibliothécaire'),
+('Leroy', 'Catherine', 'enseignant'),
+('Moreau', 'David', 'enseignant'),
+('Bernard', 'Elise', 'élève'),
+('Petit', 'François', 'élève'),
+('Robert', 'Gabrielle', 'élève'),
+('Richard', 'Hélène', 'élève'),
+('Durand', 'Isabelle', 'bibliothécaire'),
+('Dubois', 'Jules', 'élève');
+
+INSERT INTO Emprunt(livre, utilisateur, date) VALUES
+(9780451524935, 6, '2025-02-01'),
+(9782070612758, 3, '2025-02-03'),
+(9782253004220, 3, '2025-02-05'),
+(9782070360024, 2, '2025-02-07'),
+(9782070105618, 8, '2025-02-10'),
+(9782070405732, 6, '2025-02-12'),
+(9782070360604, 2, '2025-02-15'),
+(9782070117153, 1, '2025-02-18'),
+(9782070360405, 7, '2025-02-20'),
+(9782070318746, 3, '2025-02-22');
 ```
 
-```{exec} sql
-:after: sql-livre-insert-many
-:name: sql-livre-select1
-:editor:
-SELECT Livre.titre, Livre.auteur FROM Livre
-```
 
 Si on souhaite ne pas avoir de lignes "doublons" dans les résultats, on peut faire suivre `SELECT` du mot-clef `DISTINCT` afin de les retirer du résultat de la recherche et n'avoir ainsi que des lignes uniques.
 
@@ -270,4 +289,72 @@ La requête suivante permet d'afficher toutes les infos des livres écrits par J
 :name: sql-livre-select7
 :editor:
 SELECT Livre.Titre FROM Livre WHERE Livre.auteur = 'J.K. Rowling' AND Livre.date_pub > 2003
+```
+
+### Opérateur `LIKE`
+
+Le mot-clef `LIKE` peut s'utiliser comme un opérateur de comparaison sur du texte, de manière similaire à un `=`. Il permet de vérifier qu'une colonne soit *semblable à* une valeur que l'on définit. Ces similitudes peuvent se décliner de trois manières
+
+ - La valeur commence par un certain texte. Par exemple, pour trouver tous les prénoms d'utilisateur qui commencent par "M" ou pour trouver tous les livres dont le  titre commence par "Harry". Pour cela, il faut ajouter le signe `%` (qui peut être compris par "n'importe quel texte") après la valeur commençant le mot. 
+    ```{exec} sql
+    :after: sql-livre-insert-many
+    :name: sql-livre-select8
+    :editor:
+    SELECT * FROM Livre WHERE Livre.titre LIKE 'Harry%'
+    ```
+ - La valeur se termine par un certain texte. Par exemple pour trouver tous les livres dont la date de publication se termine par "2". Cette fois, le signe `%` doit précéder la valeur terminant le mot.
+     ```{exec} sql
+    :after: sql-livre-insert-many
+    :name: sql-livre-select9
+    :editor:
+    SELECT * FROM Livre WHERE Livre.date_pub LIKE '%2'
+    ```
+ - La valeur contient un certain texte. Par exemple pour trouver tous les livres dont le titre contient "le". Le signe `%` doit ici entourer la valeur à contenir.
+      ```{exec} sql
+    :after: sql-livre-insert-many
+    :name: sql-livre-select10
+    :editor:
+    SELECT * FROM Livre WHERE Livre.titre LIKE '%le%'
+    ```
+
+
+
+### Joindre plusieurs tables
+Les requêtes `SELECT` précédentes ont permis de rechercher des informations dans une seule table à la fois. Si toutefois on souhaite rechercher tous les titres de livres qu'un certain utilisateur a emprunté, les trois tables devront être mises à contribution dans la même requête.
+
+Pour joindre deux tables entre elles, on utilise `JOIN ... ON ...` dans une requête `SELECT`. On fait suivre le `JOIN` de la table à rajouter à la requête, et le `ON` des champs qui permettent de lier ces deux tables, avec un signe d'égalité. Ces deux champs sont simplement la clef étrangère et la clef primaire référencée. Par exemple, la requête suivante me permet de lier la table des Utilisateurs avec la table des Emprunts. 
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-join1
+:editor:
+SELECT *
+FROM Utilisateur
+JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.UID
+```
+Comme vous pouvez le constater avec le résultat de cette requête, tous les emprunts de livre ont été collés à leur utilisateur.
+
+On peut utiliser autant de `JOIN` que souhaiter pour coller plusieurs tables ensemble. La requête suivante nous permet de coller les 3 tables ensemble :
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-join2
+:editor:
+SELECT *
+FROM Utilisateur
+JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.UID
+JOIN Livre ON Emprunt.livre = Livre.ISBN
+```
+
+Cette requête peut être simplement complétée par un `WHERE` et affinée après le `SELECT` pour trouver tous les noms de livres empruntés par l'utilisateur dont le prénom est *Catherine*
+
+```{exec} sql
+:after: sql-livre-insert-many
+:name: sql-join3
+:editor:
+SELECT Livre.titre
+FROM Utilisateur
+JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.UID
+JOIN Livre ON Emprunt.livre = Livre.ISBN
+WHERE Utilisateur.prenom = 'Catherine'
 ```
