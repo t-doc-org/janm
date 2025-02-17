@@ -9,4 +9,5 @@ bits
 caracteres
 nombres
 images
+qr
 ```

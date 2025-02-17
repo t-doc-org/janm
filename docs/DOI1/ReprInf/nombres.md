@@ -54,8 +54,51 @@ Dans la représentation hexadécimale, les symboles utilisants pour les nombres 
  - $14 \cdot 16^0 + 6 \cdot 16^1 + 12 \cdot 16^2 =$
  - $ 14 + 96 + 3072 = 3182_{10}$
 ### Exercice 1
+Utilisez le générateur de nombres aléatoires ci-dessous pour obtenir un nombre binaire. Convertissez ce nombre en notation décimale, et vérifiez automatiquement votre réponse. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
 
-````{admonition} Solution
-:class: note dropdown
-dsds
-````
+<button onclick="generateBinaryNumber('binary-number', 'user-input-1', 'result-1', 17, 511)">Générer un nombre</button>
+<p id="binary-number"></p>
+<input type="number" id="user-input-1" placeholder="Votre réponse">
+<button onclick="checkAnswer(10,'user-input-1', 'result-1')">Vérifier</button>
+<p id="result-1"></p>
+
+
+### Exercice 2
+Utilisez le générateur de nombres aléatoires ci-dessous pour obtenir un nombre décimal. Convertissez ce nombre en notation binaire, et vérifiez automatiquement votre réponse. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
+<button onclick="generateDecimalNumber('decimal-number', 'user-input-2', 'result-2', 17, 511)">Générer un nombre</button>
+<p id="decimal-number"></p>
+<input type="number" id="user-input-2" placeholder="Votre réponse">
+<button onclick="checkAnswer(2,'user-input-2', 'result-2')">Vérifier</button>
+<p id="result-2"></p>
+<script>
+    let binarySolution = 0;
+    let decimalSolution = 0;
+    function generateBinaryNumber(number_field_id, input_id, result_id, minNumber, maxNumber){
+        randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+        decimalSolution = randomNumber;
+        let binaryNumber = randomNumber.toString(2);
+        document.getElementById(number_field_id).textContent = `Nombre binaire : ${binaryNumber}`;
+        document.getElementById(result_id).textContent = "";
+        document.getElementById(input_id).value = "";
+    }
+    function generateDecimalNumber(number_field_id, input_id, result_id, minNumber, maxNumber){
+        decimalNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+        binarySolution = randomNumber.toString(2);
+        document.getElementById(number_field_id).textContent = `Nombre décimal : ${decimalNumber}`;
+        document.getElementById(result_id).textContent = "";
+        document.getElementById(input_id).value = "";
+    }
+    function checkAnswer(base, input_id, result_id){
+        let userAnswer = document.getElementById(input_id).value.toString();
+        solution = base == 2 ? binarySolution : decimalSolution;
+        console.log(solution)
+        console.log(userAnswer)
+        if (userAnswer === solution) {
+            document.getElementById(result_id).textContent = "Bravo ! C'est la bonne réponse.";
+            document.getElementById(result_id).style.color = "green";
+        } else {
+            document.getElementById(result_id).textContent = "Incorrect. Essayez encore !";
+            document.getElementById(result_id).style.color = "red";
+        }
+    }
+</script>
