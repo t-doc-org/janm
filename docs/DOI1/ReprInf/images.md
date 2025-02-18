@@ -166,7 +166,8 @@ Voici ci-dessous le code .ppm du drapeau d'un pays. Sans générer l'image, devi
 <div style="text-align:center">
     <textarea id="generatorArea6" style="font-family: 'Courier New', Courier, monospace;" class="form-control" rows="6" cols="80">P3
 6 3
-255 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0
+255
+0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0 0 0 255 0 0 255 255 255 255 255 255 255 255 0 0 255 0 0
 </textarea>
     <button canvas-number="6" class="btn btn-primary generatorButton" style="display:block;margin:10px auto">Générer l'image</button>
     <canvas id="canvas6" style="image-rendering:pixelated;display:block;margin:10px auto"></canvas>
