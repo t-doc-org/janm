@@ -8,5 +8,6 @@
 :maxdepth: 1
 ref_sql
 ex_select
+ex_join
 ```
 
