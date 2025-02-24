@@ -10,4 +10,5 @@ caracteres
 nombres
 images
 qr
+objectifs
 ```
