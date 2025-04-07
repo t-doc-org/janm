@@ -16,20 +16,18 @@ Pour ce projet, vous réaliserez un travail de recherche qui se concrétisera av
 ## Groupes
 | Sujet              | Groupe       |
 |--------------------|--------------|
-| Sujet 1            | Groupe A     |
-| Sujet 2            | Groupe B     |
-| Sujet 3            | Groupe C     |
-| Sujet 4            | Groupe D     |
-| Sujet 5            | Groupe E     |
-| Sujet 6            | Groupe F     |
-| Sujet 7            | Groupe G     |
-| Sujet 8            | Groupe H     |
-| Sujet 9            | Groupe I     |
-| Sujet 10           | Groupe J     |
-| Sujet 11           | Groupe K     |
-| Sujet 12           | Groupe L     |
-| Sujet 13           | Groupe M     |
-| Sujet 14           | Groupe N     |
+| Bulles de filtre           | Dalal & Leticia     |
+| Bulles de filtre            | Laura & Mathilde W.     |
+| Menaces informatiques (virus, vers)            | Jaime % Emmanuel     |
+| Menaces informatiques (phishing, ransomware)            | Arthur & Gaël     |
+| Menaces informatiques (virus, vers)            | Rafaela % Sakineh     |
+| Menaces informatiques (phishing, ransomware)            | Fei & Kesika & Yelyzaveta     |
+| Identité numérique et vie privée            | Angelica & Rinesa    |
+| Utilisation excessive du numérique (développement cognitif petite-enfance)            | Emilie & Mathilde S.     |
+| Utilisation excessive du numérique (Réseaux sociaux)            | Tina & Alphine     |
+| Utilisation excessive du numérique (jeux-vidéos)           | Simon & Yahnis     |
+| Ingénierie sociale           | Maurine & Olivia     |
+| plus-values de l'IA générative           | Youssef & Emilien     |
 
 ## Critères et évaluations
 Votre projet devra répondre à certains critères qui seront évalués.
