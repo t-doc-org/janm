@@ -19,7 +19,7 @@ import venv
 VERSION = ''
 
 package = 't-doc-common'
-default_command = ['tdoc', 'serve']
+default_command = ['tdoc', 'serve', '--open']
 
 
 def main(argv, stdin, stdout, stderr):
@@ -46,7 +46,7 @@ def main(argv, stdin, stdout, stderr):
     if new is not None:
         stderr.write(f"""\
 An upgrade is available: {package} {cur} => {new}
-Release notes: <https://t-doc.org/common/release-notes.html\
+Release notes: <https://common.t-doc.org/release-notes.html\
 #release-{new.replace('.', '-')}>
 """)
         if VERSION:
@@ -156,7 +156,7 @@ class Env:
     @lazy
     def upgrade(self):
         try:
-            upgrade = (self.path / self.upgrade_txt).read_text()
+            upgrade = (self.path / self.upgrade_txt).read_text('utf-8')
             return upgrade.split(' ')[:2]
         except Exception:
             return None, None
@@ -179,7 +179,7 @@ class Env:
             upgrades = {pkg.metadata.name: pkg.metadata.version
                         for pkg in data.install}
             if (new := upgrades.get(package)) is None: return
-            (self.path / self.upgrade_txt).write_text(f'{cur} {new}')
+            (self.path / self.upgrade_txt).write_text(f'{cur} {new}', 'utf-8')
             self.upgrade = cur, new
         except Exception:
             if self.builder.debug: raise
