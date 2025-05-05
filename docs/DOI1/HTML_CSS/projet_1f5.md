@@ -47,3 +47,7 @@ Votre projet devra répondre à certains critères qui seront évalués.
 - Au moins 1 sélecteur de type, 1 sélecteur d'identifiant, et 1 sélecteur de classe sont utilisées de manière pertinente
 
 
+**Date de rendu**
+Jeudi 12 juin à 23h59
+
+
