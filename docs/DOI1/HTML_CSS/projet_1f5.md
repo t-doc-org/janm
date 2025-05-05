@@ -14,20 +14,20 @@ Pour ce projet, vous réaliserez un travail de recherche qui se concrétisera av
 - Utilisation des IA génératives (LLM) : quelles plus-values ?
 
 ## Groupes
-| Sujet              | Groupe       |
-|--------------------|--------------|
-| Bulles de filtre           | Dalal & Leticia     |
-| Bulles de filtre            | Laura & Mathilde W.     |
-| Menaces informatiques (virus, vers)            | Jaime % Emmanuel     |
-| Menaces informatiques (phishing, ransomware)            | Arthur & Gaël     |
-| Menaces informatiques (virus, vers)            | Rafaela % Sakineh     |
-| Menaces informatiques (phishing, ransomware)            | Fei & Kesika & Yelyzaveta     |
-| Identité numérique et vie privée            | Angelica & Rinesa    |
-| Utilisation excessive du numérique (développement cognitif petite-enfance)            | Emilie & Mathilde S.     |
-| Utilisation excessive du numérique (Réseaux sociaux)            | Tina & Alphine     |
-| Utilisation excessive du numérique (jeux-vidéos)           | Simon & Yahnis     |
-| Ingénierie sociale           | Maurine & Olivia     |
-| plus-values de l'IA générative           | Youssef & Emilien     |
+| Sujet              | Groupe       |3 sources montrées
+|--------------------|--------------|-------------------|
+| Bulles de filtre           | Dalal & Leticia     | |
+| Bulles de filtre            | Laura & Mathilde W.     | |
+| Menaces informatiques (virus, vers)            | Jaime & Emmanuel     | |
+| Menaces informatiques (phishing, ransomware)            | Arthur & Gaël     | |
+| Menaces informatiques (virus, vers)            | Rafaela & Sakineh     | |
+| Menaces informatiques (phishing, ransomware)            | Fei & Kesika & Yelyzaveta     | |
+| Identité numérique et vie privée            | Angelica & Rinesa    | |
+| Utilisation excessive du numérique (développement cognitif petite-enfance)            | Emilie & Mathilde S.     | |
+| Utilisation excessive du numérique (Réseaux sociaux)            | Tina & Alphine     | |
+| Utilisation excessive du numérique (jeux-vidéos)           | Simon & Yahnis     | |
+| Ingénierie sociale           | Maurine & Olivia     | |
+| plus-values de l'IA générative           | Youssef & Emilien     | |
 
 ## Critères et évaluations
 Votre projet devra répondre à certains critères qui seront évalués.
@@ -35,7 +35,7 @@ Votre projet devra répondre à certains critères qui seront évalués.
 **Contenu du site** :
 - Le texte traite du sujet d'une manière intéressante et pertinente
 - Les explications sont scientifiquement correctes
-- Les faits sont cités en utilisant 3 sources différentes qui sont correctement citées
+- Les faits sont cités en utilisant 3 sources différentes qui sont correctement citées sur le site
 - Le contenu du site est séparé sur au moins 3 pages de manière pertinente
 - La mise en page du site Web est agréable. Des illustrations pertinentes complètent le texte. La navigation est intuitive et facile.
 
