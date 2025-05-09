@@ -74,7 +74,7 @@ Utilisez le générateur de nombres aléatoires ci-dessous pour obtenir un nombr
     let binarySolution = 0;
     let decimalSolution = 0;
     function generateBinaryNumber(number_field_id, input_id, result_id, minNumber, maxNumber){
-        randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+        let randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
         decimalSolution = randomNumber;
         let binaryNumber = randomNumber.toString(2);
         document.getElementById(number_field_id).textContent = `Nombre binaire : ${binaryNumber}`;
@@ -82,23 +82,34 @@ Utilisez le générateur de nombres aléatoires ci-dessous pour obtenir un nombr
         document.getElementById(input_id).value = "";
     }
     function generateDecimalNumber(number_field_id, input_id, result_id, minNumber, maxNumber){
-        decimalNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+        let randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+        decimalSolution = randomNumber;
         binarySolution = randomNumber.toString(2);
-        document.getElementById(number_field_id).textContent = `Nombre décimal : ${decimalNumber}`;
+        document.getElementById(number_field_id).textContent = `Nombre décimal : ${randomNumber}`;
         document.getElementById(result_id).textContent = "";
         document.getElementById(input_id).value = "";
     }
     function checkAnswer(base, input_id, result_id){
-        let userAnswer = document.getElementById(input_id).value.toString();
-        solution = base == 2 ? binarySolution : decimalSolution;
-        console.log(solution)
-        console.log(userAnswer)
-        if (userAnswer === solution) {
-            document.getElementById(result_id).textContent = "Bravo ! C'est la bonne réponse.";
-            document.getElementById(result_id).style.color = "green";
+        let userAnswer = document.getElementById(input_id).value;
+        let solution = base == 2 ? binarySolution : decimalSolution;
+        if (base == 2) {
+            // Pour la conversion décimal -> binaire
+            if (userAnswer == solution) {
+                document.getElementById(result_id).textContent = "Bravo ! C'est la bonne réponse.";
+                document.getElementById(result_id).style.color = "green";
+            } else {
+                document.getElementById(result_id).textContent = "Incorrect. Essayez encore !";
+                document.getElementById(result_id).style.color = "red";
+            }
         } else {
-            document.getElementById(result_id).textContent = "Incorrect. Essayez encore !";
-            document.getElementById(result_id).style.color = "red";
+            // Pour la conversion binaire -> décimal
+            if (parseInt(userAnswer) == solution) {
+                document.getElementById(result_id).textContent = "Bravo ! C'est la bonne réponse.";
+                document.getElementById(result_id).style.color = "green";
+            } else {
+                document.getElementById(result_id).textContent = "Incorrect. Essayez encore !";
+                document.getElementById(result_id).style.color = "red";
+            }
         }
     }
 </script>
