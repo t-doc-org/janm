@@ -17,16 +17,16 @@ Pour ce projet, vous réaliserez un travail de recherche qui se concrétisera av
 | Sujet              | Groupe       |3 sources montrées
 |--------------------|--------------|-------------------|
 | Bulles de filtre           | Dalal & Leticia     | |
-| Bulles de filtre            | Laura & Mathilde W.     | |
+| Bulles de filtre            | Laura & Mathilde W.     | OK |
 | Menaces informatiques (virus, vers)            | Jaime & Emmanuel     | |
-| Menaces informatiques (phishing, ransomware)            | Arthur & Gaël     | |
-| Menaces informatiques (virus, vers)            | Rafaela & Sakineh     | |
+| Menaces informatiques (phishing, ransomware)            | Arthur & Gaël     | OK |
+| Menaces informatiques (virus, vers)            | Rafaela & Sakineh     | OK |
 | Menaces informatiques (phishing, ransomware)            | Fei & Kesika & Yelyzaveta     | |
 | Identité numérique et vie privée            | Angelica & Rinesa    | |
 | Utilisation excessive du numérique (développement cognitif petite-enfance)            | Emilie & Mathilde S.     | |
-| Utilisation excessive du numérique (Réseaux sociaux)            | Tina & Alphine     | |
-| Utilisation excessive du numérique (jeux-vidéos)           | Simon & Yahnis     | |
-| Ingénierie sociale           | Maurine & Olivia     | |
+| Utilisation excessive du numérique (Réseaux sociaux)            | Tina & Alphine     | Ok |
+| Utilisation excessive du numérique (jeux-vidéos)           | Simon & Yahnis     | OK |
+| Ingénierie sociale           | Maurine & Olivia     | OK |
 | plus-values de l'IA générative           | Youssef & Emilien     | |
 
 ## Critères et évaluations
