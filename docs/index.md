@@ -25,6 +25,7 @@ DOI1/HTML_CSS/index
 :maxdepth: 1
 
 DOI2/Databases/index
+DOI2/AppWeb/quiz
 ```
 ### Travaux pratiques
 
