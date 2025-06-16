@@ -188,9 +188,9 @@ Observez la différence de syntaxe entre les deux langages :
 
 ```{exec} python
 :when: never
-if compte <= 10:
+if compteur <= 10:
     ...
-elif compte <= 20:
+elif compteur <= 20:
     ...
 else:
     ...
@@ -201,10 +201,10 @@ else:
 ```{exec} html
 :when: never
 <script>
-if(compte <= 10){
+if(compteur <= 10){
     ...
 }
-else if(compte <= 20){
+else if(compteur <= 20){
     ...
 }
 else{

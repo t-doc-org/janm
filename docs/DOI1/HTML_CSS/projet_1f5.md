@@ -16,7 +16,7 @@ Pour ce projet, vous réaliserez un travail de recherche qui se concrétisera av
 ## Groupes
 | Sujet              | Groupe       |3 sources montrées
 |--------------------|--------------|-------------------|
-| Bulles de filtre           | Dalal & Leticia     | |
+| Bulles de filtre           | Dalal & Leticia     | OK |
 | Bulles de filtre            | Laura & Mathilde W.     | OK |
 | Menaces informatiques (virus, vers)            | Jaime & Emmanuel     | |
 | Menaces informatiques (phishing, ransomware)            | Arthur & Gaël     | OK |
@@ -27,7 +27,7 @@ Pour ce projet, vous réaliserez un travail de recherche qui se concrétisera av
 | Utilisation excessive du numérique (Réseaux sociaux)            | Tina & Alphine     | Ok |
 | Utilisation excessive du numérique (jeux-vidéos)           | Simon & Yahnis     | OK |
 | Ingénierie sociale           | Maurine & Olivia     | OK |
-| plus-values de l'IA générative           | Youssef & Emilien     | |
+| plus-values de l'IA générative           | Youssef & Emilien     | OK |
 
 ## Critères et évaluations
 Votre projet devra répondre à certains critères qui seront évalués.
