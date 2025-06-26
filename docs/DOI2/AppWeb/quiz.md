@@ -6,10 +6,10 @@ Dans le cours d'informatique de 1ère année, vous avez appris les bases des lan
 ## Rappels HTML et CSS
 Pour commencer à créer une page Web dynamique, il est essentiel que vous vous rappeliez des langages HTML et CSS. La page Web ci-dessous contient les balises HTML essentielles et quelques propriétés CSS pratiques. Cliquez sur le bouton "Play" à côté de ce code pour voir le rendu de la page, puis faites les exercices en dessous.
 
-
 ```{exec} html
 :when: load
 :editor: de04d58dc5ccc4b9671c3627fb8d626fe4a15810bc1fe3e724feea761965fb71
+:style: max-height: 30rem;
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,15 +22,12 @@ Pour commencer à créer une page Web dynamique, il est essentiel que vous vous 
       background-color: lightgrey;
       margin: 20px;
     }
-
     h1 {
       color: blue;
     }
-
     p {
       color: red;
     }
-
   </style>
 
 </head>
@@ -73,10 +70,11 @@ Pour commencer à créer une page Web dynamique, il est essentiel que vous vous 
  Commençons par créer la page statique :
 
  ```{exec} html
- :output-style: height: 8rem
- :when: load
- :editor: e539a2f323302f80a10f029f795087cabe5b6814574b6dc13382a90fd614d091
- <!DOCTYPE html>
+:when: load
+:editor: e539a2f323302f80a10f029f795087cabe5b6814574b6dc13382a90fd614d091
+:style: max-height: 35rem;
+:output-style: height: 8rem
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -97,38 +95,38 @@ Pour l'instant, il est normal qu'un clic sur ce bouton ne modifie rien. Pour cel
 
 Nous allons commencer par y récupérer les balises HTML qui nous intéressent, c'est-à-dire les balises du bouton et du paragraphe compteur qui ont été nommées par les id précédemment, et les stocker dans des variables du même nom. La création de variable fonctionne comme en Python, en écrivant son nom, suivi d'un `=` puis de sa valeur.
 
-```{code} javascript
-//Récupère la balise avec l'id "bouton"
+```{code-block} javascript
+// Récupère la balise avec l'id "bouton"
 bouton = document.querySelector("#bouton")
-//Récupère la balise avec l'id "compte"
+// Récupère la balise avec l'id "compte"
 compte = document.querySelector("#compte")
 ```
 Puis, nous allons définir une fonction qui sera exécutée quand on clique sur le bouton. Contrairement à Python, pour définir une fonction on utilise pas le mot-clef `def`, mais `function`. De plus, le contenu d'une fonction est ajouté entre une paire de crochet.
 
-```{code} javascript
+```{code-block} javascript
 bouton = document.querySelector("#bouton")
 compte = document.querySelector("#compte")
 
 function ajouter(){
-    ... //code de la fonction ajouter
+    ... // code de la fonction ajouter
 }
 
- //Demande d'exécuter la fonction ajouter quand on clique sur le bouton
+// Demande d'exécuter la fonction ajouter quand on clique sur le bouton
 bouton.addEventListener("click", ajouter)
 ```
 
 Nous allons maintenant compléter le code de la fonction `ajouter()`. Celle-ci doit simplement ajouter 1 à un compteur, et l'afficher dans le paragraphe approprié. Nous allons donc créer une variable tenant le compte de clic et l'initialiser. Puis, dans la fonction, nous allons l'augmenter de 1 et changer le texte du paragraphe `compte`.
 
-```{code} javascript
+```{code-block} javascript
 bouton = document.querySelector("#bouton")
 compte = document.querySelector("#compte")
-//Initialise une variable à 0
+// Initialise une variable à 0
 compteur = 0
 
 function ajouter(){
-    //Ajoute 1 à la variable compteur
+    // Ajoute 1 à la variable compteur
     compteur += 1
-    //Donne la valeur du compteur au texte du paragraphe compte
+    // Donne la valeur du compteur au texte du paragraphe compte
     compte.text = compteur
 }
 
@@ -138,10 +136,11 @@ bouton.addEventListener("click", ajouter)
 Ce code peut maintenant être ajouté au bas de notre page HTML, dans une balise `<script>` :
 
  ```{exec} html
- :output-style: height: 8rem
- :when: load
- :editor: 6effc5f5355aac32d84b1a2f43564a693a97c6f095eb1bb860d1c4df2bd99b80
- <!DOCTYPE html>
+:when: load
+:editor: 6effc5f5355aac32d84b1a2f43564a693a97c6f095eb1bb860d1c4df2bd99b80
+:style: max-height: 35rem;
+:output-style: height: 8rem
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -186,8 +185,7 @@ Observez la différence de syntaxe entre les deux langages :
   <th>Python</th><th>JavaScript</th>
 </tr><tr><td>
 
-```{exec} python
-:when: never
+```{code-block} python
 if compteur <= 10:
     ...
 elif compteur <= 20:
@@ -198,26 +196,21 @@ else:
 
 </td><td style="padding-left: 1rem">
 
-```{exec} html
-:when: never
-<script>
-if(compteur <= 10){
+```{code-block} javascript
+if (compteur <= 10) {
+    ...
+} else if (compteur <= 20) {
+    ...
+} else {
     ...
 }
-else if(compteur <= 20){
-    ...
-}
-else{
-    ...
-}
-</script>
 ```
 </td></tr></table>
 
 ## Exercice 3
 Avec JavaScript, vous pouvez également modifier le style de la page en intéragissant avec CSS. La ligne suivante permet par exemple de changer la couleur du fond de la page en bleu.
 
-```{code} javascript
+```{code-block} javascript
 document.body.style.backgroundColor = "blue";
 ```
 
