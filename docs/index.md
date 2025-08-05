@@ -4,34 +4,29 @@
 <!-- Copyright 2024 Caroline Blank <caro@c-space.org> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
-# Cours d'informatique Maxime Jan
+# Cours d'informatique de Maxime Jan
 
-Ce site fait office de script de cours pour les cours d'informatique de Maxime Jan au Collège Sainte-Croix de Fribourg. Vous trouverez ici la théorie des cours, les exercices et leur solution, ainsi que les données des travaux pratiques.
+Ce site Web fait office de support de cours pour les cours d'informatique de Maxime Jan au Collège Sainte-Croix de Fribourg.
 
 ## Informatique 1{sup}`ère` année
-
-### Cours
 ```{toctree}
 :maxdepth: 1
-
 DOI1/AlgoProg/index
 DOI1/ReprInf/index
 DOI1/HTML_CSS/index
 ```
 
-## Cours de 2{sup}`e` année
-### Cours
+## Informatique 2{sup}`ème` année
 ```{toctree}
 :maxdepth: 1
 
 DOI2/Databases/index
-DOI2/AppWeb/quiz
+DOI2/AppWeb/index
 ```
-### Travaux pratiques
 
 ## Archives
 ```{toctree}
 :maxdepth: 1
 
-DOI2/AlgoProg/index
+Archives/AlgoProg/index
 ```
