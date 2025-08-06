@@ -201,20 +201,61 @@ print("Le total des courses est de", total, "CHF")
 ### Exercice {num1}`exercice`
 Complétez le programme ci-dessous pour calculer le montant que chaque élève doit payer pour la sortie de classe en fonction des données suivantes :
 
-- 25 élèves prennent par à la sortie
+- 25 élèves prennent part à la sortie
 - La journée débute à *FriBowling*. Le prix du bowling est de 10CHF par personne et par heure. Les élèves jouent durant 1h30.
-- 
+- En sortant, un élève chanceux et généreux trouve un billet de 50CHF sur le sol et décide de le mettre dans la caisse de classe pour payer les activités suivantes.
+- Puis, les élèves se rendent à la piscine de la Motta. L'entrée coûte 4.5 CHF par élève. Toutefois, comme le groupe dépasse 20 personnes, un rabais de 20% est accordé.
+- L'après-midi, la classe fait un mini-golf urbain. Le prix pour tout le groupe est de 125CHF
+
+Affichez le montant que chaque élève devra payer sachant que dans cet univers fictif (et décidemment très généreux) le collège paie la moitié du montant de la journée.
+
+**ATTENTION** : Pour vous y retrouver, veillez à inclure des commentaires dans votre code !
 
 ```{exec} python
 :editor: 01987ee4-8971-7a6e-8535-e69a98261be1
 nombre_élèves =
+
+#Calcul du prix du bowling
 tarif_bowling = 10
 durée_bowling =
 prix_total_bowling =
+
 #A vous de continuer depuis ici !
 ```
 
 ````{solution}
+```{exec} python
+nombre_élèves = 25
+
+#Calcul du prix du bowling
+tarif_bowling = 10
+durée_bowling = 1.5
+prix_bowling = nombre_élèves * tarif_bowling * durée_bowling
+
+#Billet trouvé sur le sol
+billet_trouvé = 50
+
+#Prix de la piscine
+tarif_piscine = 4.5
+rabais_piscine = 0.8
+prix_piscine = nombre_élèves * tarif_piscine * rabais_piscine
+
+#Prix du mini-golf urbain
+prix_mini_golf = 125
+
+#Calcul du prix total
+total = prix_bowling - billet_trouvé + prix_piscine + prix_mini_golf
+
+#Prise en charge de la moitié par le collège
+total = total / 2
+
+#Calcul du prix par élève
+prix_par_élève = total / nombre_élèves
+
+#Affichage du prix par élève
+print("Chaque élève doit payer", prix_par_élève, "CHF")
+
+```
 ````
 
 
