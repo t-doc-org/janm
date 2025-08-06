@@ -8,10 +8,150 @@ solutions: show
 # Variables
 
 ## Qu'est-ce qu'une variable ?
+En programmation, l'un des concepts fondamental est celui de *variable*. Ce terme désigne en fait la **mémoire** du programme. Une variable permet de stocker **une valeur** dans la mémoire du programme et de lui donner **un nom**. On peut se représenter une variable comme une boîte dans laquelle on range une valeur et sur laquelle on colle une étiquette indiquant son contenu. De manière schématique, on a donc ci-dessous deux variables. La première, appelée `nom`, contient le texte `"Jan"`. La variable `age` contient quant à elle la valeur `26`.
 
+```{image} images/var.png
+:width: 50%
+:alt: Exemple visuel de deux variables
+:align: center
+```
+
+En Python, on peut créer des variables (et donc stocker des valeurs dans la mémoire du programme) en avec la syntaxe `nom_de_la_variable = valeur`. Ainsi, les deux variables ci-dessus peuvent être créées de la manière suivante :
+
+```{exec} python
+:linenos:
+nom = "Jan"
+age = 26
+```
+L'exécution de ce programme ne donne rien, mais les deux variables ont bien été créées. On peut visualiser le contenu des variables en utilisant le `print()` vu précédemment. En effet, si l'on met le nom d'une variable préalablement déclarée dans un `print()`, sa valeur sera alors affichée.
+```{exec} python
+:linenos:
+nom = "Jan"
+age = 26
+print(nom)
+print(age)
+```
+
+Le nom des variables ne doit jamais contenir d'espaces ! Ainsi, dans le cas où le nom d'une variable contiendrait plusieurs mots, on les sépare avec des "tirets en bas". Par exemple. `année_de_naissance` ou `poids_en_grammes`.
+
+## Types de valeurs
+En Python, les valeurs que l'on stocke dans les variables peuvent être de 4 types différents. Dans l'exemple précédent, `nom` contient un texte, c'est-à-dire une valeur de type `str`. La variable `age` contient quant à elle un nombre entier, qui est une valeur de type `int`. Le tableau ci-dessous résume les quatre types de valeurs possibles.
+
+| Type      | Nom complet      | Description                      | Exemple            |
+|---------  |--------   |----------------------------------|--------------------|
+| `int`   | integer   | Nombres entiers                  | `4`                  |
+| `float` | flottant  | Nombres à virgules               | `4.125`              |
+| `str`   | string    | Texte / Chaînes de caractères            | `"Bonjour"`          |
+| `bool`  | booléen   | Résultat d'un test: Vrai ou Faux | 2<1 renvoie `False`  |
+
+```{important}
+- Pour séparer les unités des décimales, les flottants utilisent un **point**, et non une virgule
+- Le texte des strings est toujours entourant de **guillemets**
+```
+
+Dans l'exemple ci-dessous, 4 variables de 4 types différents sont déclarées.
+```{exec} python
+:linenos:
+:when: never
+année = 2025
+distance_km = 45.32
+collège = "Collège Sainte-Croix"
+promu = True
+```
+
+## Opérations arithmétiques
+Avec Python, il est très facile d'effectuer des opérations arithmétiques (autrement dit, des calculs). On peut utiliser les opérateurs suivants. La priorité des opérations est la même qu'en mathématiques. On peut utiliser des parenthèses pour modifier cette priorité.
+| Opérateur | Nom                                   | Exemple | Résultat |
+| :-------: | :-----------------------------------: | :-----: | :------: |
+| `+`         | Addition                              | `3 + 4`   | `7`        |
+| `-`         | Soustraction                          | `9 - 12`  | `-3`       |
+| `*`         | Multiplication                        | `5 * 6`   | `30`       |
+| `/`         | Division                              | `11 / 2`  | `5.5`      |
+| `**`        | Puissance                             | `2 ** 3`  | `8`        |
+
+Ces opérateurs peuvent être utilisés comme ci-dessus avec des valeurs, ou avec des variables, comme le montre l'exemple ci-dessous.
+```{exec} python
+:linenos:
+nombre_de_personnes = 13
+prix_par_personne = 5
+réduction = 10
+total = nombre_de_personnes * prix_par_personne - réduction
+print("Le prix total est de", total, "CHF")
+```
+
+## Ordre d'exécution des instructions
+Dans tous les langages de programmation, les lignes de code s'exécutent les unes après les autres de haut en bas. Lorsqu'une ligne s'effectue, elle **ne peut pas influencer une ligne précédente**. Par exemple, dans le programme ci-dessous, la valeur de `b` est définie comme le double de `a`. Toutefois, lorsque la valeur de `a` change, cela n'impacte pas la valeur de `b` qui a déjà été calculée.
+
+```{exec} python
+:linenos:
+a = 5
+b = a * 2
+a = 9
+print(a, b)
+```
+
+Afin de bien comprendre l'exécution d'un programme, nous allons utiliser un tableau d'état. Celui-ci permettra d'établir la valeur de chaque variable à tout moment du programme. Dans l'exemple ci-dessous, on comprend bien que le changement de valeur de `a` n'impacte pas les valeurs de `b`, `c`, et `d`.
+
+````{list-grid}
+:style: grid-template-columns: 1fr min-content;
+- # Programme
+  ```{exec} python
+  :linenos:
+  a = 10
+  b = 30
+  c = a + b
+  d = c * a
+  a = 2 * a
+
+  print(a, b, c, d)
+  ```
+- # Tableau d'états
+  | ligne | a | b | c | d |
+  |:-----:|:-:|:-:|:-:|:-:|
+  | 1 | 10| / | / | / |
+  | 2 | 10| 30| / | / |
+  | 3 | 10| 30| 40| / |
+  | 4 | 10| 30| 40| 400|
+  | 5 | 20| 30| 40| 400|
+````
+
+## Opérateurs d'affectation combinée
+Les opérateurs d'affectation combinée permettent de modifier la valeur des variables avec une notation simplifiée. Il existe pour tous les opérateurs mathématiques, voici les principaux.
+
+| Opérateur | Exemple | Équivalent à |
+| :-------: | :-----: | :----------: |
+| `+=`        | `x += 6`  | `x = x + 6`    |
+| `-=`        | `x -= 6`  | `x = x - 6`    |
+| `\*=`       | `x \*= 6` | `x = x * 6`    |
+| `/=`        | `x /= 6`  | `x = x / 6`    |
 
 ## Exercices
+### Exercice {num1}`exercice`
 
+De quel type sont les valeurs suivantes?
+
+```{role} select(quiz-select)
+:right:
+:options: |
+: int
+: float
+: str
+: bool
+```
+
+```{quiz}
+:style: max-width: 20rem;
+1.  {select}`int`   `60`
+2.  {select}`str`   `"Hello Bob"`
+3.  {select}`float` `1.34`
+4.  {select}`bool`  `True`
+5.  {select}`str`   `"45"`
+6.  {select}`float` `-1.23`
+7.  {select}`str`   `"False"`
+8.  {select}`float` `0.34`
+9.  {select}`int`   `-12`
+10. {select}`bool`  `False`
+```
 ### Exercice {num1}`exercice`
 Ce code Python déclare 5 variables puis affiche leur contenu. Toutefois, ce programme contient une erreur par ligne.
 Trouvez ces erreurs et corrigez-les.
@@ -46,6 +186,35 @@ nombre_de_voitures = 10
 
 5.  Les noms de variables ne peuvent pas contenir d'espaces. Généralement, en Python, on les remplace alors par des tirets en bas.
 ````
+
+### Exercice {num1}`exercice`
+
+Quel est le résultat des expressions suivantes en Python?
+
+```{role} input(quiz-input)
+:right: width: 5rem;
+:check: json trim
+```
+
+```{quiz}
+:style: max-width: 30rem;
+1.  {input}`{"5": true}`
+    {quiz-hint}`Il faut effectuer la division de 15 par 3.`
+    `15 / 3`
+2.  {input}`{"21": true}`
+    {quiz-hint}`Il faut multiplier 3 avec 7`
+    `3 * 7`
+3.  {input}`{"3.5": true,
+             "3,5": "En Python, il faut utiliser un point pour les nombres à
+                     virgule."}`
+    {quiz-hint}`Il faut effectuer la division.`
+    `7 / 2`
+4.  {input}`{"-2": true,
+             "2": "En Python, l'ordre de priorité est le même qu'en maths."}`
+    `4 - 3 * 2`
+5.  {input}`{"8": true}`
+    `(1 + 2) ** 2 - 1`
+```
 
 ### Exercice {num1}`exercice`
 Déterminez la valeur de chacune des variables de ce programme en créant un tableau d'états.
