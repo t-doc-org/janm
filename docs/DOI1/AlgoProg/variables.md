@@ -122,7 +122,7 @@ Les opérateurs d'affectation combinée permettent de modifier la valeur des var
 | :-------: | :-----: | :----------: |
 | `+=`        | `x += 6`  | `x = x + 6`    |
 | `-=`        | `x -= 6`  | `x = x - 6`    |
-| `\*=`       | `x \*= 6` | `x = x * 6`    |
+| `*=`       | `x \*= 6` | `x = x * 6`    |
 | `/=`        | `x /= 6`  | `x = x / 6`    |
 
 ## Exercices
