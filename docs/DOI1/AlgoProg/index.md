@@ -10,6 +10,7 @@ Cette section contient toute la théorie et les exercices du chapitre d'algorith
 :maxdepth: 1
 introduction
 variables
+entrees
 ```
 
 ## Travaux pratiques

@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
 ```{metadata}
-solutions: show
+solutions: dynamic
 ```
 
 # Variables
@@ -23,13 +23,14 @@ En Python, on peut créer des variables (et donc stocker des valeurs dans la mé
 nom = "Jan"
 age = 26
 ```
-L'exécution de ce programme ne donne rien, mais les deux variables ont bien été créées. On peut visualiser le contenu des variables en utilisant le `print()` vu précédemment. En effet, si l'on met le nom d'une variable préalablement déclarée dans un `print()`, sa valeur sera alors affichée.
+L'exécution de ce programme ne donne rien, mais les deux variables ont bien été créées. On peut visualiser le contenu des variables en utilisant le `print()` vu précédemment. En effet, si l'on met le nom d'une variable préalablement déclarée dans un `print()`, sa valeur sera alors affichée. Finalement, pour donner du sens à la valeur affichée, on peut afficher un texte à ses côtés en le séparant par une virgule.
 ```{exec} python
 :linenos:
-nom = "Jan"
-age = 26
-print(nom)
-print(age)
+prénom = "Iliya"
+pays = "Bulgarie"
+ville = "Fribourg"
+print(prénom)
+print("Je viens de", pays, "et j'habite à", ville)
 ```
 
 Le nom des variables ne doit jamais contenir d'espaces ! Ainsi, dans le cas où le nom d'une variable contiendrait plusieurs mots, on les sépare avec des "tirets en bas". Par exemple. `année_de_naissance` ou `poids_en_grammes`.
@@ -73,8 +74,8 @@ Ces opérateurs peuvent être utilisés comme ci-dessus avec des valeurs, ou ave
 ```{exec} python
 :linenos:
 nombre_de_personnes = 13
-prix_par_personne = 5
-réduction = 10
+prix_par_personne = 5.75
+réduction = 10.5
 total = nombre_de_personnes * prix_par_personne - réduction
 print("Le prix total est de", total, "CHF")
 ```
@@ -268,6 +269,20 @@ prix = prix + nombre_habitants * cout
 | 400 | 50  | 25000 |
 | 400 | 50  | 45000 |
 
+````
+
+
+### Exercice {num1}`exercice`
+**Sans exécuter** le programme ci-dessous, prédites ce qu'il affichera. Une fois votre hypothèse faite, exécutez le code pour la vérifier. Quelle est donc l'impact des guillemets dans un `print()` ?
+
+```{exec} python
+salutations = "Bonjour"
+print(salutations)
+print("salutations")
+```
+
+````{solution}
+Lorsque `salutations` est écrit sans guillemets dans un `print()`, il fait référence à la variable. L'affichage substitue donc la variable par son contenu, c'est-à-dire `"Bonjour"`. En revanche, lorsque des guillemets entourent `salutations`, alors le mot est considéré comme une valeur de type `str` et le mot est alors affiché tel quel.
 ````
 
 ### Exercice {num1}`exercice`
