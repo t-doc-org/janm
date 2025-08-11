@@ -1,3 +1,6 @@
+```{metadata}
+solutions: dynamic
+```
 # Entrées utilisateur
 
 ## Qu'est-ce qu'une entrée utilisateur ?
@@ -15,91 +18,58 @@ print("Bonjour", prénom)
 ```
 
 ## Fonctions de conversion de types
-
-
+Lorsque l'utilisateur doit rentré une valeur numérique (c'est-à-dire une valeur `int` ou `float`), la fonction `input()` doit être contenue dans la fonction de conversion `int()` ou `float()` correspondante comme ci-dessous 
+```{exec} python
+:linenos:
+nb_invités = int(input("Combien de personnes sont invitées ?"))
+prix_par_personne = float(input("Quel est le prix en CHF par personne ?"))
+total = nb_invités * prix_par_personne
+print("Le prix total est de", total, "CHF")
+```
 ## Exercices
 
-### Exercice {num1}`exercice`
-Le programme ci-dessous contient une erreur par ligne. Trouvez-les et corrigez-les.
-
-```{code-block} python
-print "Bienvenue dans ce nouveau programme !"
-print(nombre_de_pommes = 10)
-print("Vous devez payer" nombre_de_pommes * 1.5 "CHF")
-print(Fin du programme)
-```
-
-
-````{admonition} Solution
-:class: note dropdown
-```{code-block} python
-print("Bienvenue dans ce nouveau programme !")
-nombre_de_pommes = 10
-print("Vous devez payer", nombre_de_pommes * 1.5, "CHF")
-print("Fin du programme")
-```
-````
-
-
-
-### Exercice {num1}`exercice`
-Complétez le code Python ci-dessous (sans rien supprimer à ce qui est déjà écrit) pour que celui-ci affiche exactement le texte suivant :
-
-```{code-block} python
-parole = "NA "
-héro = "BATMAN"
-print(parole)
-```
-
-
-````{admonition} Solution
-:class: note dropdown
-
-```{code-block} python
-parole = "NA "
-héro = "BATMAN"
-print(parole * 16, héros)
-print("Gotham m'appelle")
-```
-````
 
 ### Exercice {num1}`exercice`
 Écrivez un programme Python demandant à l'utilisateur son nom, son prénom, ainsi que la ville ou le village dans laquelle il/elle habite. Ce programme affichera ensuite un texte saluant l'utilisateur correctement. Par exemple, si l'utilisateur s'appelle Maxime Jan et qu'il habite à Fribourg, alors le programme affichera :
 
 ```{code-block} text
-Quel est votre pr´enom ?Maxime Jan`
-Où habitez-vous ?Fribourg`
-Bienvenue dans ce programme Maxime Jan`
-Je vois que vous habitez à Fribourg`
-A bientôt !
+Quel est ton nom?
+Quel est ton prénom?
+Où habites-tu?
+Bonjour {afficher le prénom} {afficher le nom}, heureux de faire ta connaissance.
+Je vois que tu habites à {afficher le lieu}.
 ```
 
+```{exec} python
+:editor: 01989971-667c-7a23-9178-fe068c410f2b
+#Ecrivez votre code ici
 
+```
 
-````{admonition} Solution
-:class: note dropdown
-```{code-block} python
+````{solution}
+```{exec} python
+:linenos:
 nom = input("Quel est votre nom ?")
 prenom = input("Quel est votre prénom ?")
 ville = input("Où habitez-vous ?")
-print("Bonjour", prenom, nom)
-print("Je vois que vous habitez à", ville)
-print("A bientôt !")
+print("Bonjour", prenom, nom, ", heureux de faire ta connaissance")
+print("Je vois que tu habites à", ville)
 ```
 ````
 
 ### Exercice {num1}`exercice`
 Le programme ci-dessous devrait permettre de calculer l'année de naissance de l'utilisateur. Toutefois, celui-ci contient au moins une erreur par ligne. Trouvez-les et corrigez-les.
 
-```{code-block} python
+```{exec} python
+:editor: 01989974-a6fe-7772-993a-b328c3037344
 age = input("Quel âge avez-vous ?")
 annee = input("En quelle année sommes-nous")
 print("Vous êtes né.e en" annee - age "ou en" annee - age - 1)
 ```
 
-````{admonition} Solution
-:class: note dropdown
-```{code-block} python
+````{solution}
+```{exec} python
+:linenos:
 age = int(input("Quel âge avez-vous ?"))
 annee = int(input("En quelle année sommes-nous"))
 print("Vous êtes né.e en", annee - age, "ou en", annee - age - 1)
@@ -116,15 +86,74 @@ $$C = \frac{F - 32}{1.8}$$
 Par exemple, si l'utilisateur entre la valeur `60.2`, alors le programme affichera :
 
 ```{code-block} text
-Quelle température en Fahrenheit souhaitez-vous convertir ?60.2
-Merci, 60.2 °F équivalent à 15.666666666666668 °C
+Quelle température en Fahrenheit souhaitez-vous convertir ?
+Merci, xxx °F équivalent à yyy °C
 ```
 
-````{admonition} Solution
-:class: note dropdown
-```{code-block} python
+```{exec} python
+:editor: 01989975-6db0-7faf-861a-f5705647315f
+#Ecrivez votre code ici
+
+```
+````{solution}
+```{exec} python
+:linenos:
 fahrenheit = float(input("Quelle température en F souhaitez-vous convertir ?"))
 celsius = (fahrenheit - 32) / 1.8
 print("Merci,", fahrenheit, "°F équivaut à", celsius, "°C")
+```
+````
+
+### Exercice {num1}`exercice`
+Ecrivez un programme permettant de calculer les quantités requises pour une recette de cake au citron. Les quantités dans le début de programme ci-dessous sont pour une personne. De plus, le programme laissera l'utilisateur choisir la quantité de sucre (en kg) qu'il souhaite mettre dans son cake. Le programme final affichera donc les textes suivants.
+
+```{code-block} text
+Combien de kg de sucre souhaitez-vous ajouter par personne ?
+Pour combien de personne cuisinez-vous ?
+Vous avez besoin de :
+ - xxx oeufs
+ - yyy citrons
+ - zzz kg de farine
+ - www kg de sucre.
+```
+
+```{exec} python
+:editor: 01989a68-020b-7273-a825-129e9a0b9b5c
+#Ecrivez votre code ici
+
+```
+
+````{solution}
+```{exec} python
+:linenos:
+
+```
+````
+
+### Exercice {num1}`exercice`
+Développez un programme permettant de calculer la note que vous avez obtenue à un examen en fonction du nombre de points. On note $P_{\text{obt}}$ le nombre de points obtenus et $P_{\text{max}}$ le nombre de points maximal de l'examen. Dans le cas où le barème n'est pas adapté, la formule permettant de calculer la note est : 
+
+$$\text{note} = \frac{P_{\text{obt}}}{P_{\text{max}}} \cdot 5 + 1$$
+
+L'exécution du programme devrait alors ressembler à cela :
+```{code-block} text
+Combien de points pouvait-on obtenir au maximum ?
+Combien de points avez-vous obtenu ?
+Votre note est de : xxx
+```
+
+```{exec} python
+:editor: 0198997c-b076-7805-a162-6cd394a862bb
+#Ecrivez votre code ici
+
+```
+
+````{solution}
+```{exec} python
+:linenos:
+p_max = float(input("Combien de points pouvait-on obtenir au maximum ?"))
+p_obt = float(input("Combien de points avez-vous obtenu ?"))
+note = p_obt / p_max * 5 + 1
+print("Votre note est de :", note)
 ```
 ````

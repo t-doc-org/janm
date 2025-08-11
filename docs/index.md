@@ -6,7 +6,7 @@
 
 # Cours d'informatique de Maxime Jan
 
-Ce site Web fait office de support de cours pour les cours d'informatique de Maxime Jan au Collège Sainte-Croix de Fribourg. Certains contenus sont repris et adaptés du [cours de Caroline Blank](https://informatique.t-doc-org).
+Ce site Web fait office de support de cours pour les cours d'informatique de Maxime Jan au Collège Sainte-Croix de Fribourg. Un grand merci à Rémy Blank pour le développement du module [t-doc](https://pypi.org/project/t-doc-common/) et à Caroline Blank pour certains contenus repris et adaptés de [son cours](https://informatique.t-doc.org).
 
 ## Informatique 1{sup}`ère` année
 ```{toctree}

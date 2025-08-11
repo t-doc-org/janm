@@ -334,6 +334,7 @@ Dans le `print()`, on commence par mettre le texte en guillemets, puis on le sé
 
 ```{exec} python
 :editor: 01987ec3-570e-74b8-9c99-80738baa4db6
+#Ecrivez votre code ici
 
 ```
 
