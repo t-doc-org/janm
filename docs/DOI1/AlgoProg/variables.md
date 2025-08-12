@@ -16,7 +16,7 @@ En programmation, l'un des concepts fondamental est celui de *variable*. Ce term
 :align: center
 ```
 
-En Python, on peut créer des variables (et donc stocker des valeurs dans la mémoire du programme) en avec la syntaxe `nom_de_la_variable = valeur`. Ainsi, les deux variables ci-dessus peuvent être créées de la manière suivante :
+En Python, on peut créer des variables (et donc stocker des valeurs dans la mémoire du programme) avec la syntaxe `nom_de_la_variable = valeur`. Ainsi, les deux variables ci-dessus peuvent être créées de la manière suivante :
 
 ```{exec} python
 :linenos:

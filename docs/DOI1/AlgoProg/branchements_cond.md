@@ -1,3 +1,6 @@
+```{metadata}
+solutions: dynamic
+```
 # Branchements conditionnels
 
 ## Qu'est-ce qu'un branchement conditionnel ?

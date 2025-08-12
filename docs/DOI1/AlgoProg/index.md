@@ -12,6 +12,7 @@ introduction
 variables
 entrees
 branchements_cond
+boucles_cond
 ```
 
 ## Travaux pratiques
