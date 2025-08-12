@@ -11,6 +11,7 @@ Cette section contient toute la théorie et les exercices du chapitre d'algorith
 introduction
 variables
 entrees
+branchements_cond
 ```
 
 ## Travaux pratiques
