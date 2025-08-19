@@ -66,13 +66,12 @@ $$
 
 <script type="module">
 const [core, quiz] = await tdoc.imports('tdoc/core.js', 'tdoc/quiz.js');
-const debug = false;
 
 function conversion(fromRadix, toRadix, min, max) {
     return () => {
         const v = core.randomInt(min, max);
         const solution = core.toRadix(v, toRadix);
-        if (debug) console.log(solution);
+        if (tdoc.dev) console.log(solution);
         return {
             v,
             equal(other) { return v === other.v; },
