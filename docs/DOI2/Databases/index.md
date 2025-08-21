@@ -3,7 +3,7 @@
 
 # 1. Bases de données
 
-
+## Théorie et exercices
 ```{toctree}
 :maxdepth: 1
 ref_sql
@@ -11,3 +11,8 @@ ex_select
 ex_join
 ```
 
+## Pratique
+```{toctree}
+:maxdepth: 1
+murder
+```
