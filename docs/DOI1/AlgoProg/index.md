@@ -5,7 +5,7 @@
 
 Cette section contient toute la théorie et les exercices du chapitre d'algorithmique et de programmation en Python.
 
-## Cours
+## Théorie et exercice
 ```{toctree}
 :maxdepth: 1
 introduction
@@ -16,10 +16,11 @@ boucles_cond
 fonctions
 ```
 
-## Travaux pratiques
+## Pratique
 ```{toctree}
 :maxdepth: 1
-TP1
+challenge
+dessin
 ```
 
 ## Examens et préparation

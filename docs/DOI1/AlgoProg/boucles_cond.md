@@ -1,5 +1,5 @@
 ```{metadata}
-solutions: show
+solutions: dynamic
 ```
 # Boucles conditionnelles
 
