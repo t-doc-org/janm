@@ -6,7 +6,9 @@
 ## Théorie et exercices
 ```{toctree}
 :maxdepth: 1
-ref_sql
+introduction
+sql_create_insert
+sql_select
 ex_select
 ex_join
 ```
