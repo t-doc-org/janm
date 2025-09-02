@@ -103,7 +103,7 @@ Quel artiste se produit-il sur la scène *Les Arches* ?
 | 3        | Les Arches    | 8000            |
 
 
-| id_prog | id_artiste | id_scene | heure_debut |
+| id_prog | artiste | scene | heure_debut |
 |---------|------------|------------|-------------|
 | 1       | 2          | 2          | 21:00       |
 | 2       | 1          | 1          | 23:45       |
@@ -115,8 +115,32 @@ Quel artiste se produit-il sur la scène *Les Arches* ?
 ### Exercice {num1}`exercice`
 Sur un bout de papier, ou de manière numérique, établissez le schéma relationnel de la base de données de Paléo de l'exercice précédent.
 
+````{solution}
+```{image} images/ex2.png
+:width: 100%
+:alt: Solution exercice 2
+:align: center
+
+
+```
+````
+
 ### Exercice {num1}`exercice`
 Dessinez le schéma relationnel de la base de données d'une version "light" d'Instagram, telle qu’elle pouvait l'être dans les premières années d'existence de l'application.
 - Instagram possède des utilisateurs qui, en s’inscrivant, doivent donner un pseudo, une adresse e-mail et un mot de passe.
 - Les utilisateurs peuvent poster des photos et des vidéos. Les postes de cette version d’Instagram ne peuvent contenir qu’une seule image ou une seule vidéo, ainsi qu’une description, et une localisation. Il faut noter qu’il est impossible de stocker une image ou une vidéo dans un tableau. A la place on stocke le chemin d’accès (par exemple C:/Users/…/photo4193.jpeg).
 - Chaque poste peut être commenté par d’autres utilisateurs.
+
+
+````{solution}
+Pour cet exercice, des solutions alternatives proches de celle ci-dessous sont possibles. Notamment, la clef primaire de la table `Utilisateur` pourrait être l'email ou un nouveau champ `id_utilisateur`. En revanche, la colonne `mot_de_passe` ne peut pas être clef primaire car plusieurs utilisateurs pourraient avoir le même mot de passe.
+
+En ce qui concerne la table `Post`, il est impératif de créer un `id_post` pour faire office de clef primaire, car aucune des autres colonnes n'est garantie comme étant unique.
+
+Finalement, la table des commentaires doit bien contenir 2 clefs étrangères (référençant le post sur lequel le commentaire est fait, et quel utilisateur l'a écrit) en plus du texte en lui-même. Cette table ne doit pas forcément contenir de clef primaire, mais on peut y ajouter un `id_commentaire` si besoin.
+```{image} images/ex3.png
+:width: 100%
+:alt: Solution exercice 2
+:align: center
+```
+````
