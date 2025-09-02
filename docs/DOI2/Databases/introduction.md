@@ -77,7 +77,7 @@ La base de données partielle ci-dessous contient des données relatives à l'or
 1. {input}`suisse`
 De quel pays vient *Me & George* ?
 
-2. {input}`21:00`
+2. {input}`22:45`
 A quelle heure est programmé *David Guetta* ?
 
 3. {input}`3`
