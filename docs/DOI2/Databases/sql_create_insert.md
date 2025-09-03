@@ -11,7 +11,7 @@ Pour exemplifier la création de tables et l'insertion de données, la base de d
 
 ```{image} images/biblio_schema.png
 :width: 75%
-:alt: Schéma relationnel de la base de données des films
+:alt: Schéma relationnel
 :align: center
 ```
 
@@ -27,7 +27,7 @@ Les types de données peuvent être les suivants :
 - `INTEGER` pour un nombre entier
 - `REAL` pour un nombre réel
 - `TEXT` pour du texte
-- `DATE` pour une date
+- `DATE` pour une date au format `AAAA-MM-JJ`
 
 Finalement, on précise la clef primaire avec `PRIMARY KEY` suivi de parenthèses entre lesquelles on précise l'attribut devant faire office de clef primaire.
 
@@ -109,18 +109,18 @@ select * from Emprunt;
 ## Insertion de données
 
 Pour insérer une ligne dans une table, il faut utiliser l'instruction
-`INSERT INTO ... VALUES ...`. Après `INSERT INTO`, il faut préciser le nom de la table dans laquelle nous souhaitons ajoutons une ligne, ainsi que les noms de colonnes à remplir. Nous ajoutons ensuite le mot-clef `VALUES` et une paire de parenthèses entre lesquelles nous indiquons
-les valeurs à insérer dans chaque colonne. L'ordre des valeurs doit être le même que celui établit plus tôt dans la requête.
+`INSERT INTO ... VALUES ...`. Après `INSERT INTO`, il faut préciser le nom de la table dans laquelle nous souhaitons ajoutons une ligne, ainsi que les colonnes à remplir. Nous ajoutons ensuite le mot-clef `VALUES` et une paire de parenthèses entre lesquelles nous indiquons
+les valeurs à insérer dans chaque colonne. L'ordre des valeurs doit être le même que celui établi plus tôt dans la requête.
 
-Les valeurs de type `TEXT` doivent être entre guillemets, et la séparation entre les unités et les décimales d'une valeur `REAL` se fait avec un point.
+Les valeurs de type `TEXT` et `DATE` doivent être entre guillemets simples, et la séparation entre les unités et les décimales d'une valeur `REAL` se fait avec un point.
 
 ```{exec} sql
 :after: sql-livre
 :name: sql-livre-insert1
 :then: sql-livre-select
 :editor:
-INSERT INTO Livre(titre, auteur, date_pub, isbn, prix) VALUES
-('La Vérité sur l`Affaire Harry Québert', 'Joël Dicker', 2012, 9782877068161, 23.95);
+INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix)
+VALUES ('La Vérité sur l`Affaire Harry Québert', 'Joël Dicker', '2012-03-01', 9782877068161, 23.95);
 ```
 
 Lorsqu'on insère des données dans une table contenant une clef primaire qui a été définie avec `AUTOINCREMENT`, on peut omettre sa valeur et SQL se charge de l'attribuer automatiquement.
@@ -131,8 +131,47 @@ Lorsqu'on insère des données dans une table contenant une clef primaire qui a 
 :name: sql-user-insert1
 :then: sql-user-select
 :editor:
-INSERT INTO Utilisateur(nom, prenom, role) VALUES
-('Jan', 'Maxime', 'enseignant');
-INSERT INTO Utilisateur(nom, prenom, role) VALUES
-('Queloz', 'Aurélien', 'élève');
+INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Jan', 'Maxime', 'enseignant');
+
+INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Queloz', 'Aurélien', 'élève');
 ```
+
+## Exercices
+
+### Exercice {num1}`exercice`
+Ecrivez la requête SQL `CREATE TABLE` permettant de créer la table ci-dessous contenant des données sur des évaluations. Veillez à bien préciser les types de données, la clef primaire et l'éventuel `AUTOINCREMENT`.
+
+
+
+```{image} images/ex4.png
+:width: 30%
+:alt: Schéma relationnel
+:align: center
+```
+Veillez à nommer exactement la table `Evaluation` !
+```{exec} sql
+:name: select-evaluation
+:when: never
+:class: hidden
+select * from Evaluation;
+```
+
+```{exec} sql
+:editor: 01990f75-6c5a-77ca-ba13-01db7dc18b40
+:then: select-evaluation
+```
+
+````{solution}
+```{exec} sql
+CREATE TABLE Evaluation(
+    titre TEXT,
+    branche TEXT,
+    note REAL,
+    date DATE,
+    id_evaluation INTEGER,
+    PRIMARY KEY(id_evaluation AUTOINCREMENT)
+)
+```
+
+
+````
