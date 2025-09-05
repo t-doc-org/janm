@@ -1,6 +1,9 @@
 <!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
+```{metadata}
+solutions: dynamic
+```
 # Introduction
 
 ## Qu'est-ce qu'une base de données ?

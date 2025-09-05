@@ -1,3 +1,9 @@
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+
+```{metadata}
+solutions: dynamic
+```
 La base de données provient de [SQL Mysteries](https://github.com/NUKnightLab/sql-mysteries/tree/master), Joon Park & Cathy He CC- BY-SA 4.0
 
 

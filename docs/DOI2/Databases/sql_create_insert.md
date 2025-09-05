@@ -1,7 +1,9 @@
-% Adapté du cours de Caroline Blank <caro@c-space.org>
-% Copyright 2025 Maxime Jan <maxime.jan@edufr.ch>
-% SPDX-License-Identifier: CC-BY-NC-SA-4.0
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
+```{metadata}
+solutions: dynamic
+```
 # SQL - Créer et insérer
 
 Les bases de données relationnelles peuvent être créées et manipulées grâce au langage **SQL** (Structured Query Language). Il ne s'agit pas d'un langage de programmation, mais d'un langage de requête permettant d'influer directement sur la base de données en créant des tables, insérant des données, et en y recherchant des informations.
@@ -159,10 +161,13 @@ select * from Evaluation;
 ```{exec} sql
 :editor: 01990f75-6c5a-77ca-ba13-01db7dc18b40
 :then: select-evaluation
+:name: eleve-create-evaluation
 ```
 
 ````{solution}
 ```{exec} sql
+:then: select-evaluation
+:name: solution-create-evaluation
 CREATE TABLE Evaluation(
     titre TEXT,
     branche TEXT,
@@ -172,6 +177,28 @@ CREATE TABLE Evaluation(
     PRIMARY KEY(id_evaluation AUTOINCREMENT)
 )
 ```
+````
+
+### Exercice {num1}`exercice`
+Dans la table `Evaluation` que vous avez créée dans l'exercice précédent, insérez les 2 évaluations suivantes :
+ - Une évaluation de math nommée "Géométrie" faite le 2025-12-11 à laquelle vous avez fait 4.75 
+  - Une évaluation d'informatique nommée "Base de données" faite le 2025-10-30 à laquelle vous avez fait 6 
+
+**Attention :** l'exercice précédent doit être terminé avant de pouvoir faire celui-ci
+
+```{exec} sql
+:editor: 01991a0b-4cae-728e-9744-5f011ed08d3a
+:after: eleve-create-evaluation
+:then: select-evaluation
+```
 
 
+````{solution}
+```{exec} sql
+:then: select-evaluation
+:after: solution-create-evaluation
+INSERT INTO Evaluation(branche, titre, note, date) VALUES('Math', 'Géométrie', 4.75, '2025-12-11');
+
+INSERT INTO Evaluation(branche, titre, note, date) VALUES('Informatique', 'Bases de données', 6, '2025-10-30')
+```
 ````

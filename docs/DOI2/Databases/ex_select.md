@@ -1,3 +1,9 @@
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+
+```{metadata}
+solutions: dynamic
+```
 # Exercices SELECT
 
 Téléchargez la [base de données](university.db) d'une université et ouvrez la avec DB Browser for SQLite. En utilisant des requêtes SELECT ... FROM ... WHERE ... répondez aux questions suivantes.
