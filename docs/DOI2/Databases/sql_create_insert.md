@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
 ```{metadata}
-solutions: show
+solutions: dynamic
 ```
 # SQL - Créer et insérer
 
