@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
 ```{metadata}
-solutions: dynamic
+solutions: show
 ```
 # SQL - Créer et insérer
 
@@ -141,16 +141,17 @@ INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Queloz', 'Aurélien', 'élè
 ## Exercices
 
 ### Exercice {num1}`exercice`
-Ecrivez la requête SQL `CREATE TABLE` permettant de créer la table ci-dessous contenant des données sur des évaluations. Veillez à bien préciser les types de données, la clef primaire et l'éventuel `AUTOINCREMENT`.
-
-
-
+Le schéma relationnel ci-dessous ne contient qu'une seule table et représente une base de données d'évaluations.
 ```{image} images/ex4.png
-:width: 30%
+:width: 25%
 :alt: Schéma relationnel
 :align: center
 ```
-Veillez à nommer exactement la table `Evaluation` !
+
+#### Partie A
+Ecrivez la requête SQL `CREATE TABLE` permettant de créer la table `Evaluation`. Veillez à bien préciser les types de données, la clef primaire et l'éventuel `AUTOINCREMENT`.
+
+
 ```{exec} sql
 :name: select-evaluation
 :when: never
@@ -179,12 +180,11 @@ CREATE TABLE Evaluation(
 ```
 ````
 
-### Exercice {num1}`exercice`
-Dans la table `Evaluation` que vous avez créée dans l'exercice précédent, insérez les 2 évaluations suivantes :
+#### Partie B
+Ajoutez 2 évaluations dans la table créée dans la partie A :
  - Une évaluation de math nommée "Géométrie" faite le 2025-12-11 à laquelle vous avez fait 4.75 
   - Une évaluation d'informatique nommée "Base de données" faite le 2025-10-30 à laquelle vous avez fait 6 
 
-**Attention :** l'exercice précédent doit être terminé avant de pouvoir faire celui-ci
 
 ```{exec} sql
 :editor: 01991a0b-4cae-728e-9744-5f011ed08d3a
@@ -200,5 +200,141 @@ Dans la table `Evaluation` que vous avez créée dans l'exercice précédent, in
 INSERT INTO Evaluation(branche, titre, note, date) VALUES('Math', 'Géométrie', 4.75, '2025-12-11');
 
 INSERT INTO Evaluation(branche, titre, note, date) VALUES('Informatique', 'Bases de données', 6, '2025-10-30')
+```
+````
+
+
+### Exercice {num1}`exercice`
+Le schéma relationnel ci-dessous décrit une base de données d'équipes de foot et leurs joueur.euse.s. 
+```{image} images/ex5.png
+:width: 50%
+:alt: Schéma relationnel
+:align: center
+```
+
+#### Partie A
+Commencez par écrire, ci-dessous, la requête permettant de créer la table `Equipe`.
+```{exec} sql
+:editor: 01992e22-d137-7c9a-8f7b-9f623bdab7b8
+:name: eleve-create-equipe
+:then: select-equipe
+```
+
+```{exec} sql
+:when: never
+:class: hidden
+:name: select-equipe
+SELECT * FROM Equipe
+```
+
+Si votre code SQL est correct, le code ci-dessous devrait permettre de créer et enregistrer 3 nouvelles équipes.
+
+```{exec} sql
+:after: eleve-create-equipe
+:name: insert-equipe
+:then: select-equipe
+INSERT INTO Equipe(nom, entraineur, budget)
+VALUES('PSG', 'Luis Enrique', 850000000);
+
+INSERT INTO Equipe(nom, entraineur, budget)
+VALUES('FC Gottéron', 'Jean-Marc Genoud', 2500);
+
+INSERT INTO Equipe(nom, entraineur, budget)
+VALUES('Young Boys', 'Giorgio Contini', 77900000);
+```
+
+
+````{solution}
+```{exec} sql
+:name: solution-create-equipe
+:then: select-equipe
+CREATE TABLE Equipe(
+    nom TEXT,
+    président TEXT,
+    budget REAL,
+    PRIMARY KEY(nom)
+)
+```
+````
+
+#### Partie B
+Créez maintenant la table `Joueur`. N'oubliez pas de référencer la clef étrangère avec `FOREIGN KEY ... REFERENCES ...`. (Ne mettez pas d'accent sur le *e* de l'attribut *equipe*)
+
+```{exec} sql
+:editor: 01992e30-d3cb-77c7-a4bb-09cb857dbe00
+:name: eleve-create-joueur
+:after: insert-equipe
+:then: select-joueur
+```
+```{exec} sql
+:when: never
+:class: hidden
+:name: select-joueur
+SELECT * FROM Joueur
+```
+Si votre code est correct, la requête `INSERT INTO` ci-dessous ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un 1er joueur à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
+
+```{exec} sql
+:when: never
+:class: hidden
+:name: pragma-CE
+:after: eleve-create-joueur
+PRAGMA foreign_keys = ON;
+```
+
+
+
+```{exec} sql
+:after: pragma-CE
+:then: select-joueur
+
+INSERT INTO Joueur(prénom, nom, numéro_maillot, equipe)
+VALUES('Kylian', 'Mbappé', 10, 'Real Madrid')
+```
+````{solution}
+```{exec} sql
+:name: solution-create-joueur
+:after: solution-create-equipe
+:then: select-joueur
+CREATE TABLE Joueur(
+    prénom TEXT,
+    nom TEXT, 
+    numéro_maillot INTEGER, 
+    equipe TEXT, 
+    id_joueur INTEGER, 
+    primary KEY (id_joueur AUTOINCREMENT),
+    FOREIGN KEY(equipe) references Equipe(nom)
+)
+```
+
+Le `INSERT INTO` ne fonctionne pas car la clef étrangère `equipe` qui devrait ici prendre la valeur `Real Madrid` ferait  référence à une valeur qui n'existe pas dans la colonne `nom` de la table `Equipe`. 
+````
+#### Partie C
+Ajoutez maintenant 3 nouveaux joueurs dans cette base de données.
+ - Aurélien Queloz (n° 12) est dans l'équipe entrainée par Jean-Marc Genoud
+ - Isaac Genoud (n° 7) fait partie de la même équipe
+ - Maxime Dupasquier (n° 3) est quant à lui dans l'équipe de Giorgi Contini.
+
+Grâce au `AUTOINCREMENT`, ces joueurs devraient avoir **automatiquement** les `id_joueur` 1, 2, 3.
+ ```{exec} sql
+:editor: 01992e4a-8378-79be-a44a-551312f61caa
+:after: pragma-CE
+:then: select-joueur
+
+
+```
+
+````{solution}
+```{exec} sql
+:after: solution-create-joueur
+:then: select-joueur
+INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
+VALUES('Queloz', 'Aurélien', 12, 'FC Gottéron');
+
+INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
+VALUES('Genoud', 'Isaac', 7, 'FC Gottéron');
+
+INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
+VALUES('Dupasquier', 'Maxime', 3, 'Young Boys');
 ```
 ````

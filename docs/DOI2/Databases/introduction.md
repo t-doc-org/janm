@@ -120,7 +120,7 @@ Sur un bout de papier, ou de manière numérique, établissez le schéma relatio
 
 ````{solution}
 ```{image} images/ex2.png
-:width: 100%
+:width: 60%
 :alt: Solution exercice 2
 :align: center
 
@@ -142,7 +142,7 @@ En ce qui concerne la table `Post`, il est impératif de créer un `id_post` pou
 
 Finalement, la table des commentaires doit bien contenir 2 clefs étrangères (référençant le post sur lequel le commentaire est fait, et quel utilisateur l'a écrit) en plus du texte en lui-même. Cette table ne doit pas forcément contenir de clef primaire, mais on peut y ajouter un `id_commentaire` si besoin.
 ```{image} images/ex3.png
-:width: 100%
+:width: 60%
 :alt: Solution exercice 2
 :align: center
 ```
