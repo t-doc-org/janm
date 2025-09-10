@@ -123,7 +123,7 @@ Les opérateurs d'affectation combinée permettent de modifier la valeur des var
 | :-------: | :-----: | :----------: |
 | `+=`        | `x += 6`  | `x = x + 6`    |
 | `-=`        | `x -= 6`  | `x = x - 6`    |
-| `*=`       | `x \*= 6` | `x = x * 6`    |
+| `*=`       | `x *= 6` | `x = x * 6`    |
 | `/=`        | `x /= 6`  | `x = x / 6`    |
 
 ## Exercices
@@ -347,6 +347,7 @@ diamètre = 11
 rayon = diamètre / 2
 aire_disque = pi * rayon ** 2
 volume = aire_disque * hauteur
+print("Le volume est de", 2849.55, "m3")
 ```
 ````
 

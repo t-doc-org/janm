@@ -30,7 +30,7 @@ print("Le prix total est de", total, "CHF")
 
 
 ### Exercice {num1}`exercice`
-Écrivez un programme Python demandant à l'utilisateur son nom, son prénom, ainsi que la ville ou le village dans laquelle il/elle habite. Ce programme affichera ensuite un texte saluant l'utilisateur correctement. Par exemple, si l'utilisateur s'appelle Maxime Jan et qu'il habite à Fribourg, alors le programme affichera :
+Écrivez un programme Python demandant à l'utilisateur son nom, son prénom, ainsi que la ville ou le village dans laquelle il/elle habite. Ce programme affichera ensuite un texte saluant l'utilisateur correctement. Le programme devrait se dérouler de la manière suivante :
 
 ```{code-block} text
 Quel est ton nom?

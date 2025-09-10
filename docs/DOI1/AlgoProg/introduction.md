@@ -8,8 +8,6 @@ solutions: dynamic
 
 # Introduction
 
-## Qu'est-ce que la programmation ?
-
 ## Votre premier programme
 Le premier programme que nous allons créer est un programme extrêmement simple, mais avec lequel tous les informaticien.nes ont débuté. Il s'agit d'un programme qui affiche simplement le texte `Hello World!` à l'utilisateur quand on l'exécute. Le code de ce premier programme est déjà écrit ci-dessous. Pour l'exécuter, il suffit de cliquer sur le bouton *Play* à sa droite.
 
