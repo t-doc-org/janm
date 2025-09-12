@@ -37,85 +37,86 @@ CREATE TABLE Emprunt (
 );
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('1984', 'George Orwell', 1949, 9780451524935, 9.99);
+('1984', 'George Orwell', '1949-06-08', 9780451524935, 9.99);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Le Petit Prince', 'Antoine de Saint-Exupéry', 1943, 9782070612758, 7.50);
+('Le Petit Prince', 'Antoine de Saint-Exupéry', '1943-04-06', 9782070612758, 7.50);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Les Misérables', 'Victor Hugo', 1862, 9782253004220, 12.90);
+('Les Misérables', 'Victor Hugo', '1862-03-30', 9782253004220, 12.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('L`Étranger', 'Albert Camus', 1942, 9782070360024, 8.70);
+('L`Étranger', 'Albert Camus', '1942-05-19', 9782070360024, 8.70);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Le Comte de Monte-Cristo', 'Alexandre Dumas', 1844, 9782070105618, 14.99);
+('Le Comte de Monte-Cristo', 'Alexandre Dumas', '1844-08-28', 9782070105618, 14.99);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Les Trois Mousquetaires', 'Alexandre Dumas', 1846, 9782070405732, 12.99);
+('Les Trois Mousquetaires', 'Alexandre Dumas', '1846-03-15', 9782070405732, 12.99);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Madame Bovary', 'Gustave Flaubert', 1857, 9782070360604, 10.50);
+('Madame Bovary', 'Gustave Flaubert', '1857-04-01', 9782070360604, 10.50);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Don Quichotte', 'Miguel de Cervantes', 1605, 9782070117153, 15.80);
+('Don Quichotte', 'Miguel de Cervantes', '1605-01-16', 9782070117153, 15.80);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Crime et Châtiment', 'Fiodor Dostoïevski', 1866, 9782070360405, 11.90);
+('Crime et Châtiment', 'Fiodor Dostoïevski', '1866-11-01', 9782070360405, 11.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Orgueil et Préjugés', 'Jane Austen', 1813, 9782070318746, 9.50);
+('Orgueil et Préjugés', 'Jane Austen', '1813-01-28', 9782070318746, 9.50);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Germinal', 'Émile Zola', 1885, 9782070443943, 10.99);
+('Germinal', 'Émile Zola', '1885-03-01', 9782070443943, 10.99);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Les Fleurs du mal', 'Charles Baudelaire', 1857, 9782070413113, 8.20);
+('Les Fleurs du mal', 'Charles Baudelaire', '1857-06-25', 9782070413113, 8.20);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('L`Odyssée', 'Homère', -800, 9782080700241, 13.50);
+('L`Odyssée', 'Homère', '0800-01-01', 9782080700241, 13.50);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('La Divine Comédie', 'Dante Alighieri', 1320, 9782253084079, 16.40);
+('La Divine Comédie', 'Dante Alighieri', '1320-09-14', 9782253084079, 16.40);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Ulysse', 'James Joyce', 1922, 9782253943635, 17.99);
+('Ulysse', 'James Joyce', '1922-02-02', 9782253943635, 17.99);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Moby Dick', 'Herman Melville', 1851, 9782070408485, 12.00);
+('Moby Dick', 'Herman Melville', '1851-10-18', 9782070408485, 12.00);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Le Nom de la Rose', 'Umberto Eco', 1980, 9782070388824, 11.50);
+('Le Nom de la Rose', 'Umberto Eco', '1980-09-01', 9782070388824, 11.50);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('À la recherche du temps perdu', 'Marcel Proust', 1913, 9782070107586, 22.90);
+('À la recherche du temps perdu', 'Marcel Proust', '1913-11-14', 9782070107586, 22.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Le Seigneur des Anneaux', 'J.R.R. Tolkien', 1954, 9782266154115, 29.90);
+('Le Seigneur des Anneaux', 'J.R.R. Tolkien', '1954-07-29', 9782266154115, 29.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter à l`école des sorciers', 'J.K. Rowling', 1997, 9782070643022, 8.90);
+('Harry Potter à l`école des sorciers', 'J.K. Rowling', '1997-06-26', 9782070643022, 8.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Le Meilleur des mondes', 'Aldous Huxley', 1932, 9782070368222, 9.20);
+('Le Meilleur des mondes', 'Aldous Huxley', '1932-01-01', 9782070368222, 9.20);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter et la Chambre des Secrets', 'J.K. Rowling', 1998, 9782070643039, 8.90);
+('Harry Potter et la Chambre des Secrets', 'J.K. Rowling', '1998-07-02', 9782070643039, 8.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter et le Prisonnier d`Azkaban', 'J.K. Rowling', 1999, 9782070643046, 8.90);
+('Harry Potter et le Prisonnier d`Azkaban', 'J.K. Rowling', '1999-07-08', 9782070643046, 8.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter et la Coupe de Feu', 'J.K. Rowling', 2000, 9782070643053, 9.90);
+('Harry Potter et la Coupe de Feu', 'J.K. Rowling', '2000-07-08', 9782070643053, 9.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter et l`Ordre du Phénix', 'J.K. Rowling', 2003, 9782070643060, 10.90);
+('Harry Potter et l`Ordre du Phénix', 'J.K. Rowling', '2003-06-21', 9782070643060, 10.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter et le Prince de Sang-Mêlé', 'J.K. Rowling', 2005, 9782070643077, 10.90);
+('Harry Potter et le Prince de Sang-Mêlé', 'J.K. Rowling', '2005-07-16', 9782070643077, 10.90);
 
 INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix) VALUES
-('Harry Potter et les Reliques de la Mort', 'J.K. Rowling', 2007, 9782070643084, 11.90);
+('Harry Potter et les Reliques de la Mort', 'J.K. Rowling', '2007-07-21', 9782070643084, 11.90);
+
 
 INSERT INTO Utilisateur(nom, prenom, role) VALUES
 ('Dupont', 'Alice', 'enseignant'),
