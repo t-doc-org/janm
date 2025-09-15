@@ -108,8 +108,8 @@ print("Merci,", fahrenheit, "°F équivaut à", celsius, "°C")
 Ecrivez un programme permettant de calculer les quantités requises pour une recette de cake au citron. Les quantités dans le début de programme ci-dessous sont pour une personne. De plus, le programme laissera l'utilisateur choisir la quantité de sucre (en kg) qu'il souhaite mettre dans son cake. Le programme final affichera donc les textes suivants.
 
 ```{code-block} text
-Combien de kg de sucre souhaitez-vous ajouter par personne ?
-Pour combien de personne cuisinez-vous ?
+Combien de kg de sucre souhaitez-vous ajouter par cake ?
+Combien de cakes voulez-vous faire ?
 Vous avez besoin de :
  - xxx oeufs
  - yyy citrons
@@ -119,13 +119,28 @@ Vous avez besoin de :
 
 ```{exec} python
 :editor: 01989a68-020b-7273-a825-129e9a0b9b5c
-#Ecrivez votre code ici
+nb_oeufs = 2
+nb_citrons = 3
+kg_farine = 0.2
+kg_sucre = #Continuez ici
 
 ```
 
 ````{solution}
 ```{exec} python
 :linenos:
+nb_oeufs = 2
+nb_citrons = 3
+kg_farine = 0.2
+kg_sucre = float(input("Combien de kg de sucre souhaitez-vous ajouter par cake ?"))
+nb_cakes = int(input("Combien de cakes voulez-vous faire ?"))
+
+print("Vous avez besoin de :")
+
+print(nb_oeufs * nb_cakes, "oeufs")
+print(nb_citrons * nb_cakes, "citrons")
+print(kg_farine * nb_cakes, "kg de farine")
+print(kg_sucre * nb_cakes, "kg de sucre")
 
 ```
 ````
