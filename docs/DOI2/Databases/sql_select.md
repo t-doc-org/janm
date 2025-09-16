@@ -438,6 +438,8 @@ des cantons.
 :after: sql-canton
 select nom, abr, chef_lieu from canton;
 ```
+````
+
 
 5.  Écrire une requête SQL qui retourne le nom, l'abréviation et le chef-lieu
 des cantons ordonnés selon le nombre d'habitants du plus grand au plus
