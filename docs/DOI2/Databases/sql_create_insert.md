@@ -250,7 +250,7 @@ VALUES('Young Boys', 'Giorgio Contini', 77900000);
 :then: select-equipe
 CREATE TABLE Equipe(
     nom TEXT,
-    président TEXT,
+    entraineur TEXT,
     budget REAL,
     PRIMARY KEY(nom)
 )

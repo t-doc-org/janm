@@ -82,13 +82,12 @@ print("Vous êtes né.e en", annee - age, "ou en", annee - age - 1)
 
 $$C = \frac{F - 32}{1.8}$$
 
-
-Par exemple, si l'utilisateur entre la valeur `60.2`, alors le programme affichera :
-
+L'exécution du programme devrait ressembler à cela :
 ```{code-block} text
 Quelle température en Fahrenheit souhaitez-vous convertir ?
 Merci, xxx °F équivalent à yyy °C
 ```
+Vous pouvez vérifier votre programme en contrôlant que `60.2`°F valent bien `15.666`°C et que `100`°F valent `37.777`°C
 
 ```{exec} python
 :editor: 01989975-6db0-7faf-861a-f5705647315f
