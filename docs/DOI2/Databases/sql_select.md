@@ -498,7 +498,7 @@ n'est pas FR.
 ````{solution}
 ```{exec} sql
 :after: sql-canton
-select nom from canton where abr <> 'FR';
+select nom from canton where abr != 'FR';
 ```
 ````
 
@@ -513,6 +513,6 @@ la population se trouve entre 300'000 et 500'000 habitants.
 ````{solution}
 ```{exec} sql
 :after: sql-canton
-select nom, abr from canton where population between 300000 and 500000;
+select nom, abr from canton where population > 300000 and population < 500000;
 ```
 ````
