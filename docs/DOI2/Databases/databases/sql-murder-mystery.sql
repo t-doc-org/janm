@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS "crime_scene_report" (
 	"description"	text,
 	"city"	text
 );
-CREATE TABLE IF NOT EXISTS "drivers_license" (
+CREATE TABLE IF NOT EXISTS "driver_license" (
 	"id"	integer,
 	"age"	integer,
 	"height"	integer,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS "person" (
 	"ssn"	CHAR,
 	PRIMARY KEY("id"),
 	FOREIGN KEY("ssn") REFERENCES "income"("ssn"),
-	FOREIGN KEY("license_id") REFERENCES "drivers_license"("id")
+	FOREIGN KEY("license_id") REFERENCES "driver_license"("id")
 );
 INSERT INTO "crime_scene_report" VALUES (20180115,'robbery','A Man Dressed as Spider-Man Is on a Robbery Spree','NYC'),
  (20180115,'murder','Life? Dont talk to me about life.','Albany'),
@@ -2516,7 +2516,7 @@ INSERT INTO "crime_scene_report" VALUES (20180115,'robbery','A Man Dressed as Sp
  (20180501,'assault','be NO mistake about it: it was neither more nor less than a pig, and she
 ','Trenton'),
  (20180115,'murder','Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave".','SQL City');
-INSERT INTO "drivers_license" VALUES (100280,72,57,'brown','red','male','P24L4U','Acura','MDX'),
+INSERT INTO "driver_license" VALUES (100280,72,57,'brown','red','male','P24L4U','Acura','MDX'),
  (100460,63,72,'brown','brown','female','XF02T6','Cadillac','SRX'),
  (101029,62,74,'green','green','female','VKY5KR','Scion','xB'),
  (101198,43,54,'amber','brown','female','Y5NZ08','Nissan','Rogue'),
