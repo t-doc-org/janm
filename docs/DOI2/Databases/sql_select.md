@@ -177,6 +177,12 @@ insert into canton values
 
 # SQL - Sélectionner des données
 
+```{image} images/biblio_schema.png
+:width: 75%
+:alt: Schéma relationnel
+:align: center
+```
+
 ## Sélectionner des données
 L'instruction `SELECT ... FROM ...` permet de rechercher des données dans une table. On fait suivre le mot-clef `SELECT` du nom de(s) colonne(s) que l'on souhaite afficher, et le `FROM` de la table contenant ces données. Ainsi, la requête suivante nous permet d'afficher tous les titres et auteurs dans notre table Livre.
 
@@ -279,48 +285,6 @@ Le mot-clef `LIKE` peut s'utiliser comme un opérateur de comparaison sur du tex
     :editor:
     SELECT * FROM Livre WHERE titre LIKE '%le%'
     ```
-
-
-
-### Joindre plusieurs tables
-Les requêtes `SELECT` précédentes ont permis de rechercher des informations dans une seule table à la fois. Si toutefois on souhaite rechercher tous les titres de livres qu'un certain utilisateur a emprunté, les trois tables devront être mises à contribution dans la même requête.
-
-Pour joindre deux tables entre elles, on utilise `JOIN ... ON ...` dans une requête `SELECT`. On fait suivre le `JOIN` de la table à rajouter à la requête, et le `ON` des champs qui permettent de lier ces deux tables, avec un signe d'égalité. Ces deux champs sont simplement la clef étrangère et la clef primaire référencée. Par exemple, la requête suivante me permet de lier la table des Utilisateurs avec la table des Emprunts. 
-
-```{exec} sql
-:after: sql-create-insert-all
-:name: sql-join1
-:editor:
-SELECT *
-FROM Utilisateur
-JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
-```
-Comme vous pouvez le constater avec le résultat de cette requête, tous les emprunts de livre ont été collés à leur utilisateur.
-
-On peut utiliser autant de `JOIN` que souhaiter pour coller plusieurs tables ensemble. La requête suivante nous permet de coller les 3 tables ensemble :
-
-```{exec} sql
-:after: sql-create-insert-all
-:name: sql-join2
-:editor:
-SELECT *
-FROM Utilisateur
-JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
-JOIN Livre ON Emprunt.livre = Livre.numero_isbn
-```
-
-Cette requête peut être simplement complétée par un `WHERE` et affinée après le `SELECT` pour trouver tous les noms de livres empruntés par l'utilisateur dont le prénom est *Catherine*
-
-```{exec} sql
-:after: sql-create-insert-all
-:name: sql-join3
-:editor:
-SELECT Livre.titre
-FROM Utilisateur
-JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
-JOIN Livre ON Emprunt.livre = Livre.numero_isbn
-WHERE Utilisateur.prenom = 'Catherine'
-```
 
 
 ## Exercices

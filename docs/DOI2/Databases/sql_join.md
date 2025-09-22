@@ -178,9 +178,17 @@ insert into canton values
 
 # SQL - Joindre plusieurs tables
 
-Les requêtes `SELECT` vues jusqu'ici ont permis de rechercher des informations dans une seule table à la fois. Si toutefois on souhaite rechercher tous les titres de livres qu'un certain utilisateur a emprunté, les trois tables devront être mises à contribution dans la même requête.
+```{image} images/biblio_schema.png
+:width: 75%
+:alt: Schéma relationnel
+:align: center
+```
+## Utilisation de JOIN ... ON ...
+Les requêtes `SELECT` vues jusqu'ici ont permis de rechercher des informations dans une seule table à la fois. Toutefois, certaines requêtes demandent des informations s'étalant sur plusieurs tables à la fois. Par exemple, si on souhaite rechercher tous les titres de livres qu'un certain utilisateur a emprunté, les trois tables devront être mises à contribution.
 
-Pour joindre deux tables entre elles, on utilise `JOIN ... ON ...` dans une requête `SELECT`. On fait suivre le `JOIN` de la table à rajouter à la requête, et le `ON` des champs qui permettent de lier ces deux tables, avec un signe d'égalité. Ces deux champs sont simplement la clef étrangère et la clef primaire référencée. Par exemple, la requête suivante me permet de lier la table des Utilisateurs avec la table des Emprunts. 
+Pour joindre deux tables entre elles, on commence par sélectionner la 1ère avec le `FROM` comme d'habitude. Puis, juste après ce `FROM`, on ajoute la seconde table nécessaire. Ce `JOIN` doit ensuite être complété par une égalité indiquant la logique reliant ces deux tables. Dans l'exemple de la bibliothèque, un emprunt est lié à un utilisateur grâce au `id_utilisateur` référencé dans les emprunts. Ainsi, la requête ci-dessous permet de coller chaque utilisateur à ses emprunts.
+
+Lorsqu'on utilise plusieurs tables en même temps dans une requête, il est parfois nécessaire de faire précéder le nom d'une colonne par sa table pour éviter les ambiguités (par exemple `Utilisateur.id_utilisateur` plutôt que juste `id_utilisateur`).
 
 ```{exec} sql
 :after: sql-create-insert-all
@@ -190,9 +198,8 @@ SELECT *
 FROM Utilisateur
 JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
 ```
-Comme vous pouvez le constater avec le résultat de cette requête, tous les emprunts de livre ont été collés à leur utilisateur.
 
-On peut utiliser autant de `JOIN` que souhaiter pour coller plusieurs tables ensemble. La requête suivante nous permet de coller les 3 tables ensemble :
+On peut utiliser autant de `JOIN` que souhaité pour coller plusieurs tables ensemble. La requête suivante nous permet de lier chaque livre à chaque utilisateur l'ayant emprunté.
 
 ```{exec} sql
 :after: sql-create-insert-all
@@ -204,7 +211,7 @@ JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
 JOIN Livre ON Emprunt.livre = Livre.numero_isbn
 ```
 
-Cette requête peut être simplement complétée par un `WHERE` et affinée après le `SELECT` pour trouver tous les noms de livres empruntés par l'utilisateur dont le prénom est *Catherine*
+Cette requête peut être simplement complétée par un `WHERE` et affinée après le `SELECT` pour trouver tous les noms de livres empruntés par l'utilisateur dont le prénom est *Catherine*.
 
 ```{exec} sql
 :after: sql-create-insert-all

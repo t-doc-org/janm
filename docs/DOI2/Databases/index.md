@@ -10,8 +10,6 @@ introduction
 sql_create_insert
 sql_select
 sql_join
-ex_select
-ex_join
 ```
 
 ## Pratique
