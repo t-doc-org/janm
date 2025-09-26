@@ -10,6 +10,8 @@ solutions: dynamic
 :name: sql-create-insert-all
 :when: never
 :class: hidden
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE Livre (
     titre TEXT,
     auteur TEXT,
@@ -143,6 +145,7 @@ INSERT INTO Emprunt(livre, utilisateur, date_emprunt) VALUES
 (9782070360405, 7, '2025-02-20'),
 (9782070318746, 3, '2025-02-22');
 
+
 ```
 
 ```{exec} sql
@@ -152,28 +155,6 @@ INSERT INTO Emprunt(livre, utilisateur, date_emprunt) VALUES
 select * from canton;
 ```
 
-````{solution}
-```{exec} sql
-:name: sql-canton
-:then: sql-canton-select
-create table canton (
-  nom text not null,
-  abr text not null,
-  chef_lieu text not null,
-  nb_communes int not null,
-  population int not null,
-  superficie decimal(6,2) not null
-);
-insert into canton values
-  ('Fribourg', 'FR', 'Fribourg', 126, 334465, 1670.7),
-  ('Genève', 'GE', 'Genève', 45, 514114, 282.48),
-  ('Berne', 'BE', 'Berne', 335, 1051437, 5959.44),
-  ('Zurich', 'ZH', 'Zurich', 160, 1579967, 1729),
-  ('Tessin', 'TI', 'Bellinzone', 106, 354023, 2812.2),
-  ('Grison', 'GR', 'Coire', 101, 202538, 7105.44),
-  ('Uri', 'UR', 'Altdorf', 19, 37317, 1076.57);
-```
-````
 
 
 # SQL - Joindre plusieurs tables
@@ -226,5 +207,125 @@ WHERE Utilisateur.prenom = 'Catherine'
 
 
 ## Exercices
+```{role} input(quiz-input)
+:right: width: 18rem; clear: right;
+:check: split lowercase
+```
+```{exec} sql
+:include: databases/isa.sql
+:name: isa
+:when: never
+:style: display: none;
+
+```
+### Exercice {num1}`exercice`
+Dans cet exercice, nous considérons la base de données d'ISA avec le schéma relationnel ci-dessous.
+
+```{image} images/isa.png
+:width: 75%
+:alt: Schéma relationnel d'ISA
+:align: center
+```
+
+Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLite par question. Vérifiez à chaque fois votre réponse en l'entrant dans l'encadré à côté.
+
+
+
+```````{quiz}
+
+1. Pour s'échauffer sans utiliser encore de `JOIN`, trouvez quelle branche est donnée en salle P110 à 13h30. (Attention le format d'heure est tel que 16h30 = 1630, 9h00 = 900) {input}`géographie`
+```{exec} sql
+:editor: 019985a8-4b28-7d3c-9e1d-ecb1a508fda5
+:after: isa
+:output-style: max-height: 30rem
+
+```
+```````
+
+```````{quiz}
+2. Quel est le nom de famille du MCL (Maître De Classe) de la 1F2 ? Pour cette requête et les suivantes, vous aurez besoin d'un `JOIN`. {input}`dupont`
+```{exec} sql
+:editor: 019985c0-a579-7f12-8a48-4d51b654c27b
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+```````{quiz}
+3. Quel est le nom de la classe ayant comme MCL un enseignant dont le prénom est *Antoine* . {input}`1bp1`
+```{exec} sql
+:editor: 019985c1-9110-7e3d-a352-36ad2dfe1a20
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+```````{quiz}
+4. Quelle branche donne *Laura Conti* ? {input}`histoire`
+```{exec} sql
+:editor: 019985c6-dbf3-7646-87b5-e474dc29ff4d
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+```````{quiz}
+5. Dans quelle classe se trouve *Eva Savary* ? {input}`2d2`
+```{exec} sql
+:editor: 019985c8-01c1-73a7-a057-0973939a6a4f
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+```````{quiz}
+6. Quel est le nom de famille de l'enseignant.e de Français travaillant avec le plus petit taux ?{input}`schaller`
+```{exec} sql
+:editor: 019985cc-5ff2-73d5-ac57-5b195c17521b
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+```````{quiz}
+7. Quelle classe a cours de Français en salle E220  ?{input}`1d1`
+```{exec} sql
+:editor: 019985d5-c6e4-7722-ba09-68435801cbea
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+
+```````{quiz}
+8. Quelle est la branche qui finit le plus tard pour la classe 2F2 ?{input}`sport`
+```{exec} sql
+:editor: 019985d9-12a9-706e-8b3e-30248076d364
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+
 
 ### Exercice {num1}`exercice`
+Cet exercice utilise à nouveau la base de données d'ISA
+
+```{image} images/isa.png
+:width: 75%
+:alt: Schéma relationnel d'ISA
+:align: center
+```
+
+Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLite par question. Dans cet exercice, chaque question requiert entre 2 et 3 `JOIN` par requête.
+
+```````{quiz}
+1. Quel est le nom de famille du MCL de *Sara Ngoy* ? {input}`keller`
+```{exec} sql
+:editor: 019985dd-ae95-7e26-bcc9-71316b123284
+:after: isa
+:output-style: max-height: 30rem
+```
+```````
+
+

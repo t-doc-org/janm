@@ -151,9 +151,10 @@ INSERT INTO Emprunt(livre, utilisateur, date_emprunt) VALUES
 select * from canton;
 ```
 
-````{solution}
+
 ```{exec} sql
 :name: sql-canton
+:class: hidden
 :then: sql-canton-select
 create table canton (
   nom text not null,
@@ -172,7 +173,6 @@ insert into canton values
   ('Grison', 'GR', 'Coire', 101, 202538, 7105.44),
   ('Uri', 'UR', 'Altdorf', 19, 37317, 1076.57);
 ```
-````
 
 
 # SQL - Sélectionner des données
