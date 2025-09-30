@@ -5,6 +5,10 @@
 solutions: dynamic
 ```
 
+:orphan:
+:nosidebar:
+
+
 
 ```{exec} sql
 :name: sql-create-insert-all
