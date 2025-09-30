@@ -332,6 +332,7 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 ```
 ```````
 
+<!-- Exercise by Emma Zerpa 2BP1 -->
 ```````{quiz}
 2. Dans quelle salle à lieu le cours de Français de la classe de l'élève Emma Durand?  {input}`p101`
 ```{exec} sql
@@ -340,7 +341,6 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :output-style: max-height: 30rem
 ```
 
-<!-- Exercise by Emma Zürch 2BP1 -->
 ````{solution}
 ```{exec} sql
 :after: isa
@@ -350,6 +350,53 @@ from cours
 join classe on cours.classe=id_classe
 join eleve on eleve.classe=id_classe
 where eleve.nom='Durand' and eleve.prenom='Emma' and branche='Français'
+```
+````
+```````
+
+<!-- Exercise by Emma Zürch 2BP1 -->
+
+```````{quiz}
+3. Quelle branche que suit l’élève Clara Zaugg finit le plus tard ?  {input}`musique`
+```{exec} sql
+:editor: 3de3c6ea-49c0-41a3-8509-2e30a0513720
+:after: isa
+:output-style: max-height: 30rem
+```
+
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+select cours.branche from cours
+join eleve on eleve.classe = classe.id_classe
+join classe on classe.id_classe = cours.classe
+where eleve.nom = 'Zaugg' and eleve.prenom = 'Clara'
+order by cours.heure_fin desc
+```
+````
+```````
+
+
+<!-- Exercise by Dionys Volken 2BP1 -->
+
+```````{quiz}
+4. Quel enseignant donne quel cours à Elio de la 3BP1 dans la Salle E205 ? Pour contrôler votre réponse, écrivez le prénom et nom de l'enseignant suivi directement de la branche {input}`marco rossi informatique`
+```{exec} sql
+:editor: 47c8a246-9d36-4d44-9767-9e3b74b87358
+:after: isa
+:output-style: max-height: 30rem
+```
+
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+Select Enseignant.prenom, Enseignant.nom, Cours.branche from Eleve
+Join Cours on Eleve.classe = Cours.classe
+Join Enseignant on Cours.enseignant = id_enseignant
+Join Classe on Eleve.classe = id_classe
+Where Eleve.prenom = 'Elio' and Cours.salle = 'E205' and Classe.nom = '3BP1'
 ```
 ````
 ```````
