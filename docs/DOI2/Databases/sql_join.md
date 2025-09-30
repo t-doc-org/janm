@@ -332,4 +332,26 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 ```
 ```````
 
+```````{quiz}
+2. Dans quelle salle à lieu le cours de Français de la classe de l'élève Emma Durand?  {input}`p101`
+```{exec} sql
+:editor: db7245d0-f7fa-4185-b504-c6c0b39857af
+:after: isa
+:output-style: max-height: 30rem
+```
+
+<!-- Exercise by Emma Zürch 2BP1 -->
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+select salle
+from cours
+join classe on cours.classe=id_classe
+join eleve on eleve.classe=id_classe
+where eleve.nom='Durand' and eleve.prenom='Emma' and branche='Français'
+```
+````
+```````
+
 
