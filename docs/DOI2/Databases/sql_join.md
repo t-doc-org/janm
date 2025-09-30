@@ -292,7 +292,7 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 ```````
 
 ```````{quiz}
-7. Quelle classe a cours de Français en salle E220  ?{input}`1d1`
+7. Quelle classe a cours de Physique en salle E220  ?{input}`1d1`
 ```{exec} sql
 :editor: 019985d5-c6e4-7722-ba09-68435801cbea
 :after: isa
