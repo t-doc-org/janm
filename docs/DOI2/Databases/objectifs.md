@@ -15,4 +15,4 @@
    - Filtrer les données avec `WHERE` et les opérateurs logiques `AND` et `OR`
    - Ecrire des conditions avec les 6 opérateurs de conditions usuels (`=`, `!=`, `>`, `>=`, `<`, `<=`) ainsi que le `LIKE` avec l'utilisation du signe `%`
    - Trier les données avec `ORDER BY`
- - Rechercher des informations dans une base de données en SQL en croisant les données de plusieurs tables grâce à un ou plusieurs `JOIN`
+ - Rechercher des informations dans une base de données en SQL en croisant les données de plusieurs tables grâce à un `JOIN`

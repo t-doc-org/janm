@@ -1,7 +1,7 @@
 ```{metadata}
 solutions: show
 ```
-# Exercices de révision
+# Exercices de révision 2ème examen
 
 ## Révision 1 - Coupe de bois
 Dans la forêt à côté de STX, une coupe de bois a été organisée. Chaque arbre coupé peut être revendu pour un certain prix. Plus particulièrement, un sapin peut être revendu pour 50CHF par mètre, et un frêne pour 80CHF par mètre. Pour aider les bûcherons à calculer le prix de vente, écrivez un programme demandant à l'utilisateur le type l'arbre ainsi que sa hauteur en mètre et affichant le prix de cet arbre. Si le type n'est pas correct, ou la hauteur négative, le programme affiche "ERREUR". Des exemples d'utilisation sont donnés ci-dessous
