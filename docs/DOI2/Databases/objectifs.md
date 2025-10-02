@@ -10,6 +10,7 @@
    - Utiliser `CREATE TABLE` et référencer chaque colonne avec son nom et son type de données
    - Référencer la clef primaire avec `PRIMARY KEY` et déterminer si `AUTOINCREMENT` est nécessaire
    - Référencer les clefs étrangères avec `FOREIGN KEY`
+- Insérer des données avec `INSERT INTO ... VALUES ...`
  - Rechercher des informations dans une base de données avec SQL
    - Utiliser `SELECT ... FROM ...` en précisant les bonnes colonnes à sélectionner et la bonne table
    - Filtrer les données avec `WHERE` et les opérateurs logiques `AND` et `OR`
