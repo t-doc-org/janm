@@ -79,6 +79,14 @@ INSERT INTO Commande (numero_commande, article, client) VALUES
 select * from compte;
 ```
 
+
+```{exec} sql
+:name: select-client
+:class: hidden
+:when: never
+select * from Client;
+```
+
 # Examen formatif
 
 ```{image} images/banque_faux.png
@@ -101,16 +109,17 @@ Créez la table Compte avec une requête SQL. Si vous avez apporté des correcti
 
 
 ## Question 3 - Insérez des données
-Insérez 2 nouveaux banquiers dans la base de données :
+Insérez 2 nouveaux clients dans la base de données :
  - Madame Suzanne Rudiger née le 09-03-1956
  - Monsieur Isaac Genoud né le 07-10-1997
-La table des banquiers est déjà créée pour vous. Vous pouvez donc directement écrire les requêtes d'insertion. Rappel : entre 2 requêtes d'insertion, il faut un point-virgule
+
+La table des clients est déjà créée pour vous. Vous pouvez donc directement écrire les requêtes d'insertion. Rappel : entre 2 requêtes d'insertion, il faut un point-virgule
 
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} sql
-:after: q2
+:after: sql-insert-bank
 :editor: hdashsadhsadsahd
-:then: select-compte
+:then: select-client
 
 ```
 
@@ -121,7 +130,7 @@ Sur la base du schéma relationnel ci-dessus, écrivez une requête permettant d
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} sql
 :after: sql-insert-bank
-:editor:
+:editor: 
 
 ```
 
