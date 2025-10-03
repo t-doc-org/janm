@@ -70,13 +70,22 @@ INSERT INTO Commande (numero_commande, article, client) VALUES
   (1004, 5, 103),  -- Daniel commande un écran
   (1005, 1, 103);  -- Daniel commande aussi un stylo
 
+
+
+```
+
+```{exec} sql
+:name: create-client
+:class: hidden
+:when: never
+CREATE TABLE Client(nom TEXT, id_client INTEGER, date_naissance DATE, PRIMARY KEY(id_client AUTOINCREMENT));
 ```
 
 ```{exec} sql
 :name: select-compte
 :class: hidden
 :when: never
-select * from compte;
+select * from Compte;
 ```
 
 
@@ -88,20 +97,21 @@ select * from Client;
 ```
 
 # Examen formatif
+## Question 1
+Pas ici ! Répondez sur l'interface de Exam.net
 
+## Question 2 -  Créer une table
 ```{image} images/banque_faux.png
 :width: 75%
 :alt: Schéma relationnel
 :align: center
 ```
-## Question 2 -  Créer une table
 Créez la table Compte avec une requête SQL. Si vous avez apporté des corrections à cette table dans l'exercice précédent, prenez les en compte dans votre code.
 
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 
 ```{exec} sql
-:name: q2
-:editor: fdshhfdshfds
+:editor: 1876a2a9-3cfe-4f9a-99c3-1f9f49ca6f03
 :then: select-compte
 
 ```
@@ -113,33 +123,49 @@ Insérez 2 nouveaux clients dans la base de données :
  - Madame Suzanne Rudiger née le 09-03-1956
  - Monsieur Isaac Genoud né le 07-10-1997
 
-La table des clients est déjà créée pour vous. Vous pouvez donc directement écrire les requêtes d'insertion. Rappel : entre 2 requêtes d'insertion, il faut un point-virgule
+La table Client est déjà créée pour vous. Vous pouvez donc directement écrire les requêtes d'insertion. Rappel : entre 2 requêtes d'insertion, il faut un point-virgule
 
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} sql
-:after: sql-insert-bank
-:editor: hdashsadhsadsahd
+:after: create-client
+:editor: d04a7917-9c3d-4a10-92ab-e674346a5e88
 :then: select-client
 
 ```
 
+## Question 4
+Pas ici ! Répondez sur l'interface de Exam.net
+
+## Question 5
+Pas ici ! Répondez sur l'interface de Exam.net
 
 ## Question 6 - SELECT
-Sur la base du schéma relationnel ci-dessus, écrivez une requête permettant de sélectionner tous les articles de moins de 100CHF ayant la lettre "a" dans leur nom.
+```{image} images/vente_en_ligne.png
+:width: 75%
+:alt: Schéma relationnel
+:align: center
+```
+Sur la base du schéma relationnel du site de vente en ligne ci-dessus , écrivez une requête permettant de sélectionner toutes les colonnes des articles de moins de 100CHF ayant la lettre "a" dans leur nom.
 
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} sql
 :after: sql-insert-bank
-:editor: 
+:editor: 7feebb5f-6291-4b0a-9663-cfbd331296c3
 
 ```
 
 ## Question 7 - SELECT
-Sur la base du schéma relationnel ci-dessus, écrivez une seule requête permettant de sélectionner les numéros de commande des achats de 'Stylo bille bleu'
+```{image} images/vente_en_ligne.png
+:width: 75%
+:alt: Schéma relationnel
+:align: center
+```
+
+Sur la base du schéma relationnel du site de vente en ligne ci-dessus, écrivez une seule requête permettant de sélectionner **uniquement** les numéros de commande des achats de 'Stylo bille bleu'
 
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} sql
 :after: sql-insert-bank
-:editor:
+:editor: 97fda549-7d33-4a85-9b4d-f6dd7f7e9fea
 
 ```
