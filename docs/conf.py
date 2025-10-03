@@ -10,4 +10,16 @@ language = 'fr'
 
 html_theme_options = {
     # 'repository_url': 'https://github.com/t-doc-org/janm',
+    # Désactivation globale des boutons Précédent/Suivant gérée via CSS
+}
+
+# Ressources statiques (CSS/JS) supplémentaires
+html_static_path = ['_static']
+html_css_files = [
+    'custom.css',
+]
+
+# Désactive les barres latérales (gauche/droite) pour une page précise
+html_sidebars = {
+    'DOI2/Databases/page_sans_bandeaux': [],
 }

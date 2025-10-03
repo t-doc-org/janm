@@ -1,0 +1,18 @@
+/* Masque les liens de navigation Précédent/Suivant globalement */
+.prev-next-area,
+.prev-next,
+.prev-next-nav,
+nav.bd-prev-next,
+.btn.prev-page,
+.btn.next-page {
+  display: none !important;
+}
+
+/* Optionnel: réduire l'espace en bas si la zone était réservée */
+main.bd-content #main-content {
+  padding-bottom: 1rem;
+}
+
+/* Footer global (si souhaité, décommentez) */
+/* footer, .bd-footer { display: none !important; } */
+

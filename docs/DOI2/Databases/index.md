@@ -24,3 +24,10 @@ murder
 :maxdepth: 1
 objectifs
 ```
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+examen_formatif
+```
+
