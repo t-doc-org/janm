@@ -22,5 +22,5 @@ html_css_files = [
 # Désactive les barres latérales (gauche/droite) pour une page précise
 html_sidebars = {
     'DOI2/Databases/examen_formatif': [],
-    'DOI2/Databases/examen_2b': [],
+    'DOI1/AlgoProg/examen_formatif1': [],
 }
