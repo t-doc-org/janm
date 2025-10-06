@@ -14,5 +14,5 @@ main.bd-content #main-content {
 }
 
 /* Footer global (si souhaité, décommentez) */
-/* footer, .bd-footer { display: none !important; } */
+ footer, .bd-footer { display: none !important; } 
 
