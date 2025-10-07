@@ -25,9 +25,4 @@ murder
 objectifs
 ```
 
-```{toctree}
-:hidden:
-:maxdepth: 1
-examen_formatif
-```
 
