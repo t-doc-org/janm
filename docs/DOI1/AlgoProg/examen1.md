@@ -70,6 +70,23 @@ Le prix de base d'un billet est de 18CHF
 
 Pour obtenir le maximum des points, veillez à n'utiliser qu'une seule fois la fonction `print`
 
+3 exemples d'exécution sont donnés ci-dessous :
+
+```{code-block} text
+Quel âge avez-vous ? <--- [32]
+Quel est votre métier ? <--- [fonctionnaire]
+Le billet coûte : 18 CHF
+>>>
+Quel âge avez-vous ? <--- [15]
+Quel est votre métier ? <--- [étudiante]
+Le billet coûte : 8 CHF
+>>>
+Quel âge avez-vous ? <--- [65]
+Quel est votre métier ? <--- [retraité]
+Le billet coûte : 14.4 CHF
+```
+
+
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} python
 :editor: 442d3179-4595-457c-9ae2-e118ee3a96f9
