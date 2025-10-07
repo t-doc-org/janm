@@ -24,7 +24,7 @@ Le code suivant comporte de nombreuses erreurs. Corrigez les afin que le program
 **N'oubliez pas de copier-coller ce code dans la question Exam.net**
 ```{exec} python
 :editor: 627447fe-905a-4935-a88c-39cfeb340b7a
-x = input("Quelle est la réponse du calcul 7/3 ?")
+x = input("Quelle est la réponse du calcul 7/2 ?")
 if x = 3.5
 print("Bonne réponse")
 elif x < 3.5
