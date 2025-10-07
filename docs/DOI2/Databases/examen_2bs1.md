@@ -30,6 +30,13 @@ CREATE TABLE Client(nom TEXT, id_client INTEGER, date_naissance DATE, PRIMARY KE
 select * from Ville;
 ```
 
+```{exec} sql
+:name: select-batiment
+:class: hidden
+:when: never
+select * from Batiment;
+```
+
 
 ```{exec} sql
 :name: select-last2-batiment
@@ -59,7 +66,7 @@ Créez la table `Batiment` avec une requête SQL en veillant à bien préciser t
 
 ```{exec} sql
 :editor: b90c7327-a07d-44e4-986e-0918b59c0599
-:then: select-ville
+:then: select-batiment
 
 ```
 
