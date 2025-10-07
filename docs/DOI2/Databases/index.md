@@ -29,6 +29,5 @@ objectifs
 :hidden:
 :maxdepth: 1
 examen_formatif
-examen_2b
 ```
 
