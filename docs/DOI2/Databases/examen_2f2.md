@@ -142,6 +142,12 @@ Pour cet exercice, toutes les tables d'Ikariam ont déjà été créées et des 
 
 ```
 
+```{image} images/ikariam.png
+:width: 50%
+:alt: Schéma relationnel
+:align: center
+```
+
 4. Affichez le pseudo du joueur possédant la ville `Naxos`.
 ```{exec} sql
 :after: ikariam-create-all
