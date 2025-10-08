@@ -65,6 +65,11 @@ Créez la table `Ville` avec une requête SQL en veillant à bien préciser tous
 
 
 ## Question 4 - SELECT et INSERT
+```{image} images/ikariam.png
+:width: 50%
+:alt: Schéma relationnel
+:align: center
+```
 Pour cet exercice, toutes les tables d'Ikariam ont déjà été créées et des données y ont été insérées.
 **N'oubliez pas de copier-coller ces codes dans les questions Exam.net**
 
@@ -89,6 +94,11 @@ Entre 2 requêtes d'insertion, il ne faut pas oublier le `;`.
 ```
 
 ## Question 5 - Un INSERT erroné
+```{image} images/ikariam.png
+:width: 50%
+:alt: Schéma relationnel
+:align: center
+```
 Pour cet exercice, toutes les tables d'Ikariam ont déjà été créées et des données y ont été insérées.
 
 Exécutez la requête `INSERT` ci-dessous. Pourquoi ne fonctionne-t-elle pas ? Expliquez en 1-2 phrases **sur l'interface Exam.net**.
@@ -102,6 +112,11 @@ VALUES('Fribourg', 'maxime.jan@edufr.ch', 40000, 0.1, '2025-10-07')
 
 
 ## Question 6 - Encore des SELECT
+```{image} images/ikariam.png
+:width: 50%
+:alt: Schéma relationnel
+:align: center
+```
 Pour cet exercice, toutes les tables d'Ikariam ont déjà été créées et des données y ont été insérées. Dans toutes les requêtes suivantes, veillez à ne jamais sélectionner plus de données que nécessaire.
 
 
@@ -143,3 +158,9 @@ Pour cet exercice, toutes les tables d'Ikariam ont déjà été créées et des 
 ```
 
 **N'oubliez pas de copier-coller ces codes dans les questions Exam.net**
+
+```{image} images/ikariam.png
+:width: 50%
+:alt: Schéma relationnel
+:align: center
+```
