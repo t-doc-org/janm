@@ -244,6 +244,14 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :output-style: max-height: 30rem
 
 ```
+
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT branche FROM Cours WHERE salle = 'P110' AND heure_debut = 1330
+```
+````
 ```````
 
 ```````{quiz}
@@ -253,6 +261,14 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT Enseignant.nom FROM Enseignant JOIN Classe ON id_enseignant = mcl
+WHERE Classe.nom = '1F2'
+```
+````
 ```````
 
 ```````{quiz}
@@ -262,6 +278,14 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT Enseignant.nom FROM Enseignant JOIN Classe ON id_enseignant = mcl
+WHERE Classe.nom = '1F2'
+```
+````
 ```````
 
 ```````{quiz}
@@ -271,6 +295,16 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT branche FROM Cours 
+JOIN Enseignant ON Enseignant.id_enseignant = Cours.enseignant
+WHERE Enseignant.nom = 'Conti' AND Enseignant.prenom = 'Laura'
+```
+````
+
 ```````
 
 ```````{quiz}
@@ -280,6 +314,16 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT Classe.nom
+FROM Classe
+JOIN Eleve ON Eleve.classe = Classe.id_classe
+WHERE Eleve.nom = 'Savary' AND Eleve.prenom = 'Eva'
+```
+````
 ```````
 
 ```````{quiz}
@@ -289,6 +333,17 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT Enseignant.nom
+FROM Enseignant
+JOIN Cours ON Cours.enseignant = Enseignant.id_enseignant
+WHERE branche = 'Français'
+ORDER BY taux_travail ASC
+```
+````
 ```````
 
 ```````{quiz}
@@ -298,6 +353,16 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT Classe.nom
+FROM Classe
+JOIN Cours ON Classe.id_classe = Cours.classe
+WHERE branche = 'Physique' AND salle = 'E220'
+```
+````
 ```````
 
 
@@ -308,6 +373,17 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT branche
+FROM Cours
+JOIN Classe ON Classe.id_classe = Cours.Classe
+WHERE Classe.nom = '2F2'
+ORDER BY heure_fin DESC
+```
+````
 ```````
 
 
@@ -330,6 +406,17 @@ Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLi
 :after: isa
 :output-style: max-height: 30rem
 ```
+````{solution}
+```{exec} sql
+:after: isa
+:output-style: max-height: 30rem
+SELECT Enseignant.nom
+FROM Enseignant
+JOIN Classe ON Enseignant.id_enseignant = Classe.mcl
+JOIN Eleve ON Eleve.classe = Classe.id_classe
+WHERE Eleve.prenom = 'Sara' AND Eleve.nom = 'Ngoy'
+```
+````
 ```````
 
 <!-- Exercise by Emma Zerpa 2BP1 -->
