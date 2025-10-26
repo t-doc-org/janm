@@ -48,31 +48,6 @@ while compteur <= 10 :
 
 ## Exercices
 
-### Exercice {num1}`exercice`
-Sans les exécuter, lisez attentivement les programmes ci-dessous. Leur seule différence est le `if` ou `while` de la ligne 3. Quel sera l'affichage de chacun de ses programmes ? Quelle est la différence entre un `if` et un `while` ?
-
-```{exec} python
-:when: never
-:caption: Programme 1
-n = 5
-if n < 10:
-    n += 1
-    print(n)
-```
-
-```{exec} python
-:when: never
-:caption: Programme 2
-n = 5
-while n < 10:
-    n += 1
-    print(n)
-```
-
-
-````{solution} 
-Comme le premier programme utilise un `if`, le bloc d'instruction indenté en dessous n'est exécuté qu'une seule fois. Ce programme affichera simplement `6`. Dans le 2ème programme, l'exécution revient à la ligne du while après avoir exécuté une première fois le bloc indenté en dessous et réévalue l'expression conditionnelle. Le bloc est donc exécuté en boucle tant que `n` est plus petit que `10`. Ainsi, ce programme affiche 6, puis 7, puis 8, puis 9, puis 10. Si cela n'est pas clair pour vous, suivez le programme en complétant un tableau d'état pour vous convaincre de cet affichage.
-````
 
 ### Exercice {num1}`exercice`
 Etablissez le tableau d'état du programme suivant.
@@ -141,6 +116,120 @@ while n != 20:
 | 20  | -10 |
 | 20  | -20 |
 ````
+
+### Exercice {num1}`exercice`
+Sans les exécuter, lisez attentivement les programmes ci-dessous. Leur seule différence est le `if` ou `while` de la ligne 3. Quel sera l'affichage de chacun de ses programmes ? Quelle est la différence entre un `if` et un `while` ?
+
+```{exec} python
+:when: never
+:caption: Programme 1
+n = 5
+if n < 10:
+    n += 1
+    print(n)
+```
+
+```{exec} python
+:when: never
+:caption: Programme 2
+n = 5
+while n < 10:
+    n += 1
+    print(n)
+```
+
+
+````{solution} 
+Comme le premier programme utilise un `if`, le bloc d'instruction indenté en dessous n'est exécuté qu'une seule fois. Ce programme affichera simplement `6`. Dans le 2ème programme, l'exécution revient à la ligne du while après avoir exécuté une première fois le bloc indenté en dessous et réévalue l'expression conditionnelle. Le bloc est donc exécuté en boucle tant que `n` est plus petit que `10`. Ainsi, ce programme affiche 6, puis 7, puis 8, puis 9, puis 10. Si cela n'est pas clair pour vous, suivez le programme en complétant un tableau d'état pour vous convaincre de cet affichage.
+````
+
+
+### Exercice {num1}`exercice`
+
+Chacun des programmes suivant comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
+
+
+Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement et affichent un résultat logique.
+
+1.  ```{exec} python
+    :editor:
+    réponse = input("Tu aimes la pizza avec ananas ?")
+    while réponse != "oui" and réponse != "Oui"
+    réponse = input("Réfléchis bien ! Tu aimes la pizza ananas ?")
+    print("Je savais que tu aimais ça !") 
+    ```
+
+2.  ```{exec} python
+    :editor:
+    nb_affichage = int(input("Combien de fois veux-tu voir mon magnifique dessin ?"))
+    i = 0
+    while i < nb_affichage 
+        print(" _._     _,-'\"\"`-._\n(,-.`._,'(       |\\`-/|\n    `-.-' \\ )-`( , o o)\n          `-    \\`_`\"'-")
+
+        i = i + 1
+       
+    ```
+
+3.  ```{exec} python
+    :editor:
+    #Compte de 1 à 20 de 2 en 2
+    compteur = 0
+    while compteur >= 20:
+        compteur = compteur + 2
+        print(compteur)
+    print("FIN")
+    ```
+
+
+4.  ```{exec} python
+    :editor:
+    quiz = input("Quelle est la capitale de la France ?")
+    while quiz != "Paris":
+        réponse = input("Faux ! Réessaie")
+    print("Bonne réponse")
+    ```
+
+
+
+````{solution} 
+1.  ```{exec} python
+    :linenos:
+    réponse = input("Tu aimes la pizza avec ananas ?")
+    while réponse != "oui" and réponse != "Oui"
+        réponse = input("Réfléchis bien ! Tu aimes la pizza ananas ?")
+    print("Je savais que tu aimais ça !") 
+    ```
+
+2.  ```{exec} python
+    :linenos:
+    nb_affichage = int(input("Combien de fois veux-tu voir mon magnifique dessin ?"))
+    i = 0
+    while i < nb_affichage:
+        i = i + 1
+        print(" _._     _,-'\"\"`-._\n(,-.`._,'(       |\\`-/|\n    `-.-' \\ )-`( , o o)\n          `-    \\`_`\"'-")
+    ```
+
+3.  ```{exec} python
+    :linenos:
+    #Compte de 1 à 20 de 2 en 2
+    compteur = 0
+    while compteur < 20:
+        compteur = compteur + 2
+        print(compteur)
+    print("FIN")
+    ```
+
+
+4.  ```{exec} python
+    :linenos:
+    quiz = input("Quelle est la capitale de la France ?")
+    while quiz != "Paris":
+        quiz = input("Faux ! Réessaie")
+    print("Bonne réponse")
+    ```
+````
+
+
 
 ### Exercice {num1}`exercice`
 1.  Écrivez un programme utilisant seulement 2 instructions `print()` affichant un compte à rebours de 100 jusqu'à 0. L'exécution du programme ressemblera à ceci :

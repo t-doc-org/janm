@@ -13,6 +13,6 @@ main.bd-content #main-content {
   padding-bottom: 1rem;
 }
 
-/* Footer global (si souhaité, décommentez) */
+/* Footer global (si souhaité, décommentez)
  footer, .bd-footer { display: none !important; } 
-
+ */
