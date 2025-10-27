@@ -26,4 +26,5 @@ html_sidebars = {
     'DOI2/Databases/examen_2bs1': [],
     'DOI1/AlgoProg/examen_formatif1': [],
     'DOI1/AlgoProg/examen1': [],
+    'DOI1/AlgoProg/examen1_rattrapage': [],
 }
