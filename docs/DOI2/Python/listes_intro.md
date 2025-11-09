@@ -322,17 +322,47 @@ print("Prix le plus haut:")
 ```
 
 ### Exercice {num1}`exercice-listes`
+
+1.  Créez une liste, nommée `sports` avec les éléments suivants: `kayak`,
+    `escrime` et `escalade`.
+2.  Affichez la liste et son nombre d'éléments.
+3.  Demandez un sport à l'utilisateur et ajoutez-le à la liste `sports`.
+4.  Afficher la liste et son nombre d'éléments.
+5.  Effacez l'élément `escalade`.
+6.  Affichez la liste et son nombre d'éléments.
+
+```{exec} python
+:editor: 019a6ab8-e2eb-7e6b-8059-a807dc944f8b
+# Écrivez le programme ici
+```
+
+````{solution}
+
+```{exec} python
+:linenos:
+sports = ["kayak", "escrime", "escalade"]
+print(sports, len(sports))
+sport = input("Entrer un sport: ")
+sports.append(sport)
+print(sports, len(sports))
+sports.remove("escalade")
+print(sports, len(sports))
+```
+````
+
+
+### Exercice {num1}`exercice-listes`
 Dans la base de données de la pizzeria, la colonne *description* de la table *Pizza* contient les ingrédients. Le programme ci-dessous doit alors permettre de sélectionner toutes les descriptions possédant respectivement l'ingrédient `jambon` et `champignon`, puis d'afficher leur nombre. Finalement, le programme affichera quel ingrédient est le plus utilisé.
 
 Complétez le programme ci-dessous de manière qu'il fonctionne correctement.
 ```{exec} python
 :editor: 019a6aad-5c8b-7006-9ef5-f0c2e1ef5942
 :after: pizzeria
-pizza_avec_jambon = execute_sql("SELECT description FROM Pizza WHERE ...")
-pizza_avec_champignons = execute_sql("SELECT description FROM Pizza WHERE ...")
+pizza_avec_jambon = execute_sql("SELECT nom FROM Pizza WHERE description ...")
+pizza_avec_champignons = execute_sql("SELECT nom FROM Pizza WHERE description ...")
 
-print("Nombre de pizzas avec du jambon :")
-print("Nombre de pizzas avec des champignons :")
+print("Nombre de pizzas avec du jambon :", ...)
+print("Nombre de pizzas avec des champignons :", ...)
 
 if ... :
     print("Il y a plus de pizzas avec champignons")
