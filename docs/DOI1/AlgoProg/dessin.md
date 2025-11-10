@@ -158,9 +158,9 @@ creation_image(600, 400, "#f0ffffff")
 :after: fonctions_dessin_svg
 :then: rendu
 :editor: bd1d954d-9db5-4f5e-961c-cbc12e319d83
-creation_image(600, 400, "black")
+creation_image(300, 300, "black")
 
-cercle(50, 50, 100, "yellow")
+cercle(150, 150, 100, "yellow")
 ```
 
 ## Exercice {num1}`exercice-dessin`
