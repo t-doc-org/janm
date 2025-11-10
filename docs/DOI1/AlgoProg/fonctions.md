@@ -127,7 +127,19 @@ else:
 ````
 
 ### Exercice {num1}`exercice`
-Le programme ci-dessous appelle 2 fonctions qui n'existent pas. Définissez les et complétez leur corps avec un texte approprié de manière que le programme fonctionne correctement
+Le programme ci-dessous appelle 2 fonctions qui n'existent pas. Définissez les et complétez leur corps avec un texte approprié de manière que le programme fonctionne affiche :
+
+```{code-block} text
+Bombe amorcée
+TIC
+TAC
+TIC
+TAC
+...
+TIC
+TAC
+BOOOOOM
+```
 
 ```{exec} python
 :editor: 0198c25d-378e-7564-bd1f-f0e57f4c9b57
@@ -161,7 +173,7 @@ explosion()
 
 
 ### Exercice {num1}`exercice`
-Définissez une fonction nommée `calcule_et_affiche_aire_cercle`, paramétrée par le rayon $r$ du cercle. L'aire peut être calculée par le formule $\pi \cdot r^2$. Utilisez la valeur `3.14` pour $\pi$. Appelez ensuite la fonction pour afficher l'aire de cercles de 3, 10 et 80 de rayon.
+Définissez une fonction nommée `calcule_et_affiche_aire_cercle`, paramétrée par le rayon $r$ du cercle. L'aire peut être calculée par la formule $\pi \cdot r^2$. Utilisez la valeur `3.14` pour $\pi$. Appelez ensuite la fonction pour afficher l'aire de cercles de 3, 10 et 80 de rayon.
 
 ```{exec} python
 :editor: 0198c266-96d0-7d6d-bb24-aec73a93ca8f

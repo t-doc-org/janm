@@ -107,123 +107,78 @@ Ajoute du texte sur l'image.
 :arg epaisseur: La taille des caractères en pixels (px).
 ```
 
-## Exercice {num2}`exercice`
+## Exercice {num1}`exercice-dessin`
 
-````{tab-set}
-:sync-group: etape
-```{tab-item} Étape 1
-:sync: etape1
-Changez la couleur du fond de l'image, de la maison et du toit.
+1. Changez la couleur de fond de l'image en vert. Pour cela, le paramètre de la couleur peut prendre la valeur d'une couleur en anglais comme `"green"`, `"blue"`, `"purple"`, etc.
 
-Il existe une liste de couleurs de base définies: "black", "white", "blue",
-"red", "yellow", "green", gray", etc.
+2. Changez la couleur du rectangle en blanc
+3. Changez la couleur du contour en une couleur de votre choix en spécifiant la notation hexadécimale `#...`. Vous trouverez une liste de ces couleurs hexadécimale [ici](https://www.rapidtables.com/web/color/RGB_Color.html)
 
-Pour avoir un plus grand choix, utilisez la valeur hexadécimale, par exemple
-"#AFEEEE" pour du turquoise pale.
-[Liste des couleurs](https://www.rapidtables.com/web/color/RGB_Color.html)
-```
-```{tab-item} Étape 2
-:sync: etape2
-Ajoutez du gazon devant la maison et un soleil.
-```
-```{tab-item} Étape 3
-:sync: etape2
-Ajoutez une porte et une fenêtre à la maison. Cet ajout doit se faire dans la
-fonction `maison`.
-```
-```{tab-item} Étape 4
-:sync: etape2
-Ajoutez une cheminée et de la fumée.\
-Pour la fumée, créez une fonction `fumee` qui a un paramètre de manière à
-pouvoir choisir/changer la quantité de fumée.
-
-L'ordre de dessin des éléments a de l'importance.
-```
-```{tab-item} Étape 5
-:sync: etape2
-Ajoutez une barrière en définissant une nouvelle fonction `barriere`.
-
-- Évitez les répétitions en utilisant une boucle.
-- Utilisez des paramètres pour pouvoir modifier:
-    - son emplacement
-    - sa longueur
-    - sa couleur
-```
-```{tab-item} Étape 6
-:sync: etape2
-Ajoutez un texte sur l'image.
-```
-````
-
-
+4. Déplacez le rectangle en haut à droite du dessin
+5. Ajoutez un cercle et un triangle de la taille et la couleur de votre choix à ce dessin
 ```{exec} python
-:name: maison_exercice
 :after: fonctions_dessin_svg
 :then: rendu
 :editor: a72b3183-cb55-400c-8016-4317ee41ace5
-# définition des fonctions
-def maison():
-  rectangle(100, 200, 150, 150, "#F7E4E1", "black")
-  triangle((80, 200), (270, 200), (175, 100), "brown")
-
-# programme principal
 creation_image(600, 400, "#CCFFFF")
 
-# Ajoute des éléments à l'image
-maison()
+rectangle(100, 200, 150, 150, "#F7E4E1", "black")
 ```
 
-````{solution}
+## Exercice {num1}`exercice-dessin`
+1. Observez la fonction ci-dessous. Celle-ci permet de créer une maison à différents endroits du dessin en fonction des paramètres de coordonnées `x` et `y`. Appelez cette fonction 3x pour dessiner 3 maisons.
+
+2. Modifiez le corps de la fonction `maison` afin d'y ajouter une porte brune
+
+3. Ajoutez un paramètre `couleur_toit` permettant de préciser la couleur du toit d'une maison au moment de l'appel de la fonction. Ainsi, l'appel `maison(100, 100, "blue")` devrait dessiner une maison au toit bleu.
+
+
 ```{exec} python
-:name: maison_solution
 :after: fonctions_dessin_svg
 :then: rendu
-:when: load
-# définition des fonctions
-def barriere(x, y, longueur, couleur):
-  rectangle(x, y, longueur, 10, couleur)
-  rectangle(x, y+25, longueur, 10, couleur)
-  poteau_x = x + 10
-  while poteau_x < x + longueur - 10:
-    rectangle(poteau_x, y-10, 15, 65, couleur)
-    poteau_x += 20
+:editor: 458d80f5-a896-4ce7-a45a-8ce188c546cc
+def maison(x, y):
+  rectangle(x, y, 150, 150, "gray", "black")
+  triangle((x, y), (x+150, y), (x+80, y-100), "brown")
 
-def fumee(n):
-  x = 220
-  y = 100
-  rx = 10
-  ry = 5
-  for i in range(n):
-    ellipse(x, y, rx, ry, "white")
-    x *= 1.1
-    y *= 0.9
-    rx += 4
-    ry += 2
+creation_image(600, 400, "#f0ffffff")
 
-def cheminee():
-  rectangle(200, 110, 20, 40, "gray")
-  fumee(7)
-
-def maison():
-  rectangle(100, 200, 150, 150, "#E8AF35")
-  cheminee()
-  triangle((80, 200), (270, 200), (175, 100), "silver")
-  # porte
-  rectangle(120, 280, 50, 70, "#FF4500")
-  # fenêtres
-  rectangle(190, 280, 40, 40, "white", "black")
-  rectangle(125, 220, 40, 40, "white", "black")
-  rectangle(190, 220, 40, 40, "white", "black")
+#Appelez la fonction ici
+```
 
 
-# programme principal
-creation_image(600,400, "#DAF5F3")
+## Exercice {num1}`exercice-dessin`
+1. Complétez le smiley ci-dessous avec 2 cercles pour les yeux, et un rectangle pour la bouche.
 
-# Ajoute des éléments à l'image
-cercle(530, 70, 50, "yellow")
-rectangle(0, 300, 600, 150, "#006400")
-maison()
-barriere(300, 250, 250, "#8B0000")
-barriere(10, 250, 80, "#8B4513")
-texte(140, 190, "Bienvenue", "black", 15)
+2. En vous inspirant du code du précédent exercice, définissez une fonction `smiley(x, y)` permettant de dessiner le smiley que vous avez créé aux coordonnées `(x, y)` lorsqu'on appelle la fonction
+
+3. Utilisez la fonction 3x pour dessiner 3 smileys.
+
+```{exec} python
+:after: fonctions_dessin_svg
+:then: rendu
+:editor: bd1d954d-9db5-4f5e-961c-cbc12e319d83
+creation_image(600, 400, "black")
+
+cercle(50, 50, 100, "yellow")
+```
+
+## Exercice {num1}`exercice-dessin`
+Le code ci-dessous permet de dessiner des cercles les uns à côtés des autres
+
+1. Modifiez ce programme de sorte qu'il y ait plus d'espace entre les cercles.
+
+2. Modifiez ce programme en y ajoutant une variable `rayon = 5`, de sorte que chaque cercle ait un rayon plus grand que le précédent.
+
+
+```{exec} python
+:after: fonctions_dessin_svg
+:then: rendu
+:editor: 65189273-0a76-4857-b0fd-cd2e489f6f5b
+creation_image(600, 100, "black")
+
+position_x = 25
+while position_x < 600:
+    cercle(position_x, 50, 12.5, "purple", "black")
+    position_x += 25
 ```

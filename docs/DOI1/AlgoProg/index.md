@@ -20,6 +20,7 @@ fonctions
 ```{toctree}
 :maxdepth: 1
 challenge
+organisation_tp
 dessin
 ```
 
