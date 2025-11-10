@@ -97,7 +97,7 @@ Pour écrire des crochets sur :
 
 
 ## Indexation
-L'indexation permet d'accéder à **un élément précis** d'une liste. Pour ce faire, on peut faire suivre une liste d'une paire de crochets `[]` entre lesquelles on écrit l'index de l'élément souhaité. L'index correspond à la *position* de l'élément dans la liste, sachant que le premier élément à l'index `0`, le deuxième l'index `2`, etc. 
+L'indexation permet d'accéder à **un élément précis** d'une liste. Pour ce faire, on peut faire suivre une liste d'une paire de crochets `[]` entre lesquelles on écrit l'index de l'élément souhaité. L'index correspond à la *position* de l'élément dans la liste, sachant que le premier élément à l'index `0`, le deuxième l'index `1`, etc. 
 
 
 ```{exec} python

@@ -179,6 +179,6 @@ creation_image(600, 100, "black")
 
 position_x = 25
 while position_x < 600:
-    cercle(position_x, 50, 12.5, "purple", "black")
+    cercle(position_x, 50, 12.5, "purple", "white")
     position_x += 25
 ```
