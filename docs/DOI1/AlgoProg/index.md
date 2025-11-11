@@ -22,6 +22,7 @@ fonctions
 challenge
 organisation_tp
 dessin
+projet_dessin
 ```
 
 ## Examens et préparation

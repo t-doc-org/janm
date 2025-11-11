@@ -1,4 +1,4 @@
-% Copyright 2025 Caroline Blank <caro@c-space.org>
+% Copyright 2025 Caroline Blank <caro@c-space.org> & Maxime Jan
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ```{metadata}
