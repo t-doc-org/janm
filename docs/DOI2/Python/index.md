@@ -13,6 +13,7 @@ revisions_boucles_cond
 ```{toctree}
 :maxdepth: 1
 listes_intro
+listes_if_in
 ```
 
 
