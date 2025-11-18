@@ -37,7 +37,7 @@ if not exists:
 
 def execute_sql(request):
     results = db.execute(request).fetchall()
-    if results == None :
+    if results == None or results == [] :
         return
     if len(results[0]) == 1:
         return [x[0] for x in results]
@@ -271,6 +271,24 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
 
 ```
 
+````{solution}
+1. 
+```{exec} python
+:linenos:
+emails = execute_sql("SELECT email FROM Utilisateur")
+print("Emails :", emails)
+```
+
+2.
+```{exec} python
+
+:linenos:
+tel = execute_sql("SELECT telephone1 FROM Utilisateur WHERE telephone LIKE '078%'")
+print("n° de téléphone commençant par 078 :", tel)
+```
+
+````
+
 ### Exercice {num1}`exercice-listes`
 Complétez le programme suivant en utilisant l'indexation de manière à ce que le
 programme affiche le texte suivant:
@@ -315,7 +333,7 @@ Le programme ci-dessous recherche tous les prix des pizzas et, avec le `ORDER BY
 ```{exec} python
 :editor: 019a6a8f-c799-770f-9168-3df90e739050
 :after: pizzeria
-prix = execute_sql("SELECT prix FROM Pizza ORDER BY prix")
+prix = execute_sql("SELECT prix FROM Pizza ORDER BY prix ASC")
 
 print("Prix le plus bas :")
 print("Prix le plus haut:")

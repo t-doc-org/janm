@@ -80,6 +80,39 @@ calcul_et_affiche_aire_triangle(20, 10)
 calcul_et_affiche_aire_triangle(35, 54)
 ```
 
+
+## Utilisation de fonctions provenant de modules
+
+### Module `math`
+En Python, il est possible d'obtenir et d'utiliser des fonctions d'autres développeurs du monde entier en les important dans son code via des modules. Ce concept facilite grandement le développement, car, à la place de soi-même recoder des fonctions complexes, il est possible de prendre celles qui ont déjà été codées par des développeurs expérimentés.
+
+Par exemple, de nombreuses fonctions permettant de faire des calculs mathématiques sont disponibles dans le module `math`. Dans celui-ci, on retrouve par exemple la fonction `sqrt` calculant la racine carrée. Avec la structure `from ... import ...` placée **1x** au début du code, il est possible d'importer cette fonction dans notre code.
+```{exec} python
+:linenos:
+from math import sqrt
+
+print("La racine carrée de 2 est", sqrt(2))
+print("La racine carrée de 16 est", sqrt(16))
+```
+
+Le module `math` contient une grande quantité de fonctions que vous pouvez retrouver [ici](https://docs.python.org/3/library/math.html).
+
+### Module `random`
+Un autre module très pratique est `random`. Celui-ci contient de nombreuses fonctions permettant d'obtenir des valeurs aléatoires et ainsi d'introduire du hasard dans nos programme. En particulier, `randint` permet d'obtenir un entier aléatoire entre deux bornes données entre parenthèses. Observez et exécutez plusieurs fois le programme ci-dessous pour comprendre l'utilisation de `randint`.
+
+```{exec} python
+from random import randint
+
+a = randint(0, 10)
+b = randint(1000, 2000)
+c = randint(-100, 100)
+print("A :", a)
+print("B :", b)
+print("C :", c)
+```
+
+
+
 ## Exercices
 
 ### Exercice {num1}`exercice`
@@ -287,3 +320,94 @@ quiz("Quel est le meilleur collège de Suisse ?", "STX")
 quiz("Quelle est la capitale du Groenland ?", "Nuuk")
 quiz("Qui a été élu président des USA en 2016 ?", "Trump")
 ````
+
+
+### Exercice {num1}`exercice`
+Complétez le programme ci-dessous de sorte qu'il demande à l'utilisateur un nombre, puis affiche sa racine carrée. Pour cela, commencez par importer la fonction `sqrt` du module `math`. Comme il est impossible de calculer la racine carrée d'un nombre négatif, le programme affichera `IMPOSSIBLE` si l'utilisateur entre un tel nombre. Deux exemples d'exécution sont donnés ci-dessous.
+Exemples d'exécutions :
+
+
+```{code-block} text
+Entre un nombre : <--- [4]
+La racine carrée de 4 est 2.0
+>>>
+Entre un nombre <--- [-1]
+IMPOSSIBLE
+```
+
+
+```{exec} python
+:editor: 687cf93e-55fc-46f7-9343-27c38cc5dbb6
+from ... import ...
+```
+
+````{solution}
+```{exec} python
+:linenos:
+from math import sqrt
+x = float(input("Entre un nombre"))
+if x >= 0:
+    print("La racine carrée de", x, "est", sqrt(x))
+else:
+    print("IMPOSSIBLE")
+````
+
+
+### Exercice {num1}`exercice`
+Grâce à Pythagore, il est possible de calculer l'hypothénuse d'un triangle rectangle avec la formule ci-dessous.
+
+```{image} images/pythagore.jpg
+:width: 40%
+:alt: a^2 + b^2 = c^2
+:align: center
+```
+En appliquant une racine carrée des deux côtés, on obtient que l'hypothénuse est obtenue à partie de $a$ et $b$ avec $\sqrt{a^2 + b^2}$.
+
+1. Ecrivez un programme Python demandant à l'utilisateur les côtés $a$ et $b$ d'un triangle, puis affichant l'hypothénuse.
+```{exec} python
+:editor: f2182148-d96d-4545-a0c3-6061172e155a
+#Ecrivez votre programme ici
+```
+
+
+2. Transformez ce programme qui demande 2 nombres à un utilisateur en une fonction `calcule_et_affiche_hyp` prenant en paramètre `a` et `b`. Ce programme ne contiendra **plus aucun input**. En revanche, un programmeur pourra par exemple utiliser `calcule_et_affiche_hyp(4, 10)` pour afficher l'hypothénuse d'un triangle avec $a=4$ et $b=10$.
+
+```{exec} python
+:editor: c5ddfd27-6f5e-4583-a056-2aad1af5a4f4
+#Importez sqrt et définissez la fonction ici
+
+
+
+#Programme principal à ne pas toucher
+calcule_et_affiche_hyp(4, 10)
+calcule_et_affiche_hyp(2.1, 9.3)
+calcule_et_affiche_hyp(10, 2.5)
+```
+
+````{solution}
+1.
+```{exec} python
+:linenos:
+from math import sqrt
+
+a = float(input("Quelle est la valeur de a ?"))
+b = float(input("Quelle est la valeur de b ?"))
+c = sqrt(a ** 2 + b ** 2)
+print("L'hypoténuse vaut :", c)
+```
+
+2.
+```{exec} python
+:linenos:
+from math import sqrt
+
+def calcule_et_affiche_hyp(a, b):
+    print("L'hypoténuse vaut :", sqrt(a**2 + b**2))
+
+# Programme principal
+calcule_et_affiche_hyp(4, 10)
+calcule_et_affiche_hyp(2.1, 9.3)
+calcule_et_affiche_hyp(10, 2.5)
+```
+````
+

@@ -40,6 +40,9 @@ def ligne(x1, y1, x2, y2, couleur, epaisseur):
 def texte(x, y, texte, couleur, taille):
   font = f"font: bold italic {taille}px serif"
   img.text(x, y, texte, stroke='transparent', fill=couleur, style=font)
+
+def rendu():
+  render(img)
 ```
 
 ```{exec} python
@@ -106,8 +109,8 @@ Ajoute du texte sur l'image.
 :arg couleur: La couleur du texte.
 :arg epaisseur: La taille des caractères en pixels (px).
 ```
-
-## Exercice {num1}`exercice-dessin`
+## Exercices de base
+### Exercice {num1}`exercice-dessin`
 
 1. Changez la couleur de fond de l'image en vert. Pour cela, le paramètre de la couleur peut prendre la valeur d'une couleur en anglais comme `"green"`, `"blue"`, `"purple"`, etc.
 
@@ -125,7 +128,7 @@ creation_image(600, 400, "#CCFFFF")
 rectangle(100, 200, 150, 150, "#F7E4E1", "black")
 ```
 
-## Exercice {num1}`exercice-dessin`
+### Exercice {num1}`exercice-dessin`
 1. Observez la fonction ci-dessous. Celle-ci permet de créer une maison à différents endroits du dessin en fonction des paramètres de coordonnées `x` et `y`. Appelez cette fonction 3x pour dessiner 3 maisons.
 
 2. Modifiez le corps de la fonction `maison` afin d'y ajouter une porte brune
@@ -147,7 +150,7 @@ creation_image(600, 400, "#f0ffffff")
 ```
 
 
-## Exercice {num1}`exercice-dessin`
+### Exercice {num1}`exercice-dessin`
 1. Complétez le smiley ci-dessous avec 2 cercles pour les yeux, et un rectangle pour la bouche.
 
 2. En vous inspirant du code du précédent exercice, définissez une fonction `smiley(x, y)` permettant de dessiner le smiley que vous avez créé aux coordonnées `(x, y)` lorsqu'on appelle la fonction
@@ -163,7 +166,7 @@ creation_image(900, 900, "black")
 cercle(150, 150, 100, "yellow")
 ```
 
-## Exercice {num1}`exercice-dessin`
+### Exercice {num1}`exercice-dessin`
 Le code ci-dessous permet de dessiner des cercles les uns à côtés des autres
 
 1. Modifiez ce programme de sorte qu'il y ait plus d'espace entre les cercles.
@@ -182,3 +185,4 @@ while position_x < 600:
     cercle(position_x, 50, 12.5, "purple", "white")
     position_x += 25
 ```
+
