@@ -385,7 +385,7 @@ Quel ingrédient voulez-vous ajouter ? <--- [jambon]
 Quel ingrédient voulez-vous ajouter ? <--- [ananas]
 Quel ingrédient voulez-vous ajouter ? <--- [ananas]
 Quel ingrédient voulez-vous ajouter ? <--- [STOP]
-Votre pizza sera faite de : ['ananas', 'jambon', 'ananas', 'ananas']
+Votre pizza sera faite de : ['sauce tomate', 'mozzarella', 'ananas', 'jambon', 'ananas', 'ananas']
 ```
 
 L'algorithme de ce programme est le suivant

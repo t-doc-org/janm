@@ -1,7 +1,8 @@
 # Organisation TP
-
 ## 1F6
 Groupe A:
+ - Ahmed Ayenda
+ - Amari Bilal
  - Bianchi Nolan
  - Bratu Gabriel
  - Campos Loureiro Melinda

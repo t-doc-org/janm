@@ -158,7 +158,7 @@ creation_image(600, 400, "#f0ffffff")
 :after: fonctions_dessin_svg
 :then: rendu
 :editor: bd1d954d-9db5-4f5e-961c-cbc12e319d83
-creation_image(300, 300, "black")
+creation_image(900, 900, "black")
 
 cercle(150, 150, 100, "yellow")
 ```

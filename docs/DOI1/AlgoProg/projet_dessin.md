@@ -54,18 +54,18 @@ Le but de ce TP est de réaliser un dessin complexe avec Python pour réaliser u
 | Critère | Points |
 |---------|-------|
 | Le programme s'exécute sans aucune erreur et un dessin est affiché | **1 pt** |
+| Les noms des fonctions et des variables sont explicites et cohérents | **1 pt** |
 | Le dessin contient au moins : un triangle, un rectangle, un cercle, une ellipse, une ligne et un texte, chacun utilisé de manière pertinente | **2 pts** |
 | Le programme contient au moins **2 inputs** permettant à l'utilisateur de modifier le dessin (couleur, taille, nombre, ...) | **2 pts** |
-| Le programme contient au moins **1 branchement conditionnel** `if / elif / else` utilisé de manière pertinente | **2 pts** |
+| Le programme contient au moins **1 branchement conditionnel** `if / elif / else` utilisé de manière pertinente | **1 pt** |
 | Le programme contient au moins **2 boucles while** utilisées pour répéter le dessin d’un objet plusieurs fois en faisant varier une propriété (taille, nombre, couleur, ...) | **4 pts** |
 | Le programme définit et appelle au moins **5 fonctions**, dont au moins **3 paramétrées**, regroupant chacune les instructions permettant de dessiner un objet complexe du dessin | **5 pts** |
-| Le dessin complet est **suffisamment complexe, visuellement intéressant et original** | **4 pts** |
+| Le dessin complet est suffisamment complexe, visuellement intéressant et original | **4 pts** |
 
 **Total : 20 points possibles pour atteindre 5**
 
----
 
-## Pour aller de **5 à 6**
+## Pour aller de 5 à 6
 
 | Critère | Points |
 |---------|-------|
@@ -73,6 +73,7 @@ Le but de ce TP est de réaliser un dessin complexe avec Python pour réaliser u
 | Le dessin contient **un élément animé** (déplacement, clignotement, etc.) | **2 pts** |
 
 **Total possible : 25 points**  
+
 
 ## Mon projet
 
