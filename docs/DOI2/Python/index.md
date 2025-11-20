@@ -16,5 +16,11 @@ listes_intro
 listes_if_in
 ```
 
+## Travaux Pratiques
+```{toctree}
+:maxdepth: 1
+organisation_tp
+```
+
 
 
