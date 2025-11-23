@@ -411,3 +411,49 @@ calcule_et_affiche_hyp(10, 2.5)
 ```
 ````
 
+### Exercice {num1}`exercice`
+Complétez le programme ci-dessous de sorte qu'il affiche une année du 20ème siècle au hasard.
+
+```{exec} python
+:editor: 42ee1dbc-81a6-489a-a9f4-7e5429c4a28c
+from random import randint
+annee_20_eme_siecle =
+print(annee_20_eme_siecle)
+```
+
+````{solution}
+```{exec} python
+:linenos:
+from random import randint
+annee_20_eme_siecle = randint(1900, 1999)
+print(annee_20_eme_siecle)
+````
+
+### Exercice {num1}`exercice`
+Dans le jeu du Devin, un nombre mystère est tiré au hasard entre 1 et 100. Puis, le joueur doit essayer de deviner ce nombre. A chaque tentative infructueuse, le programme affiche `Trop bas` ou `Trop haut` afin de guider le joueur vers la bonne réponse. Quand le nombre mystère est finalement deviné, le programme affiche `Bravo ! Tu as trouvé le nombre mystère en x essais`, où `x` est remplacé le nombre de tentative du joueur.
+
+Ecrivez un programme permettant de joueur à ce jeu ci-dessous.
+```{exec} python
+:editor: b62084b2-8ade-44a9-b5af-42eec254fc0a
+from random import randint
+
+#Complétez le programme à partir de là
+
+```
+
+````{solution}
+```{exec} python
+:linenos:
+from random import randint
+nb_mystere = randint(1, 100)
+tentative = int(input("Devine le nombre entre 1 et 100"))
+nb_tentatives = 1
+while tentative != nb_mystere:
+    if tentative > nb_mystere:
+        print("Trop haut !")
+    else:
+        print("Trop bas !")
+    tentative = int(input("Réessaie !"))
+    nb_tentatives += 1
+print("Bravo ! Tu as trouvé le nombre mystère en", nb_tentatives, "tentatives.")
+````
