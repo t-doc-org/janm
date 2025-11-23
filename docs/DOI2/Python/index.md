@@ -14,6 +14,7 @@ revisions_boucles_cond
 :maxdepth: 1
 listes_intro
 listes_if_in
+listes_for
 ```
 
 ## Travaux Pratiques
