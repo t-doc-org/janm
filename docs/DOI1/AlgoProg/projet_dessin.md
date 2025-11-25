@@ -31,6 +31,9 @@ def ligne(x1, y1, x2, y2, couleur, epaisseur):
 def texte(x, y, texte, couleur, taille):
   font = f"font: bold italic {taille}px serif"
   img.text(x, y, texte, stroke='transparent', fill=couleur, style=font)
+
+def rendu():
+  render(img)
 ```
 
 ```{exec} python
