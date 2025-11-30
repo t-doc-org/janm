@@ -21,6 +21,7 @@ listes_for
 ```{toctree}
 :maxdepth: 1
 organisation_tp
+pygame_intro
 ```
 
 
