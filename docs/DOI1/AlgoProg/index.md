@@ -29,6 +29,7 @@ projet_dessin
 ```{toctree}
 :maxdepth: 1
 objectifs1
+objectifs2
 revisions
 ```
 
