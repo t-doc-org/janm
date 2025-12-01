@@ -124,6 +124,14 @@ conversion_argent(150, "EUR")
 conversion_argent(4560, "GBP")
 ```
 
+
+```{exec} python
+:editor: 744a4bb2-8602-4b0e-bd41-bb0b6465a370
+#Ecrivez votre code ici
+
+```
+
+
 ````{solution}
 ``` {exec} python
 :linenos:
