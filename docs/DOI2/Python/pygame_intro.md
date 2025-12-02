@@ -253,3 +253,128 @@ async def main():
 ### Exercice {num1}`exo-intro-pygame`
 1. Ajoutez un 2ème texte **rouge** avec un fond **jaune** en dessous du premier texte de bienvenue
 2. Avec vos connaissances des entrées utilisateurs, faites en sorte que ce texte ne s'affiche maintenant plus que lorsqu'on appuie sur la barre espace (`SPACE`).
+
+## Etape {num1}`etapes-intro-pygame` : de l'aléatoire
+Afin que vos jeux ne soient pas trop prévisibles et restent intéressants, il faut leur ajouter une dose d'aléatoire :
+
+ - Un ennemi qui apparaît à une position aléatoire
+ - Des bonus qui apparaissent à un interval de temps aléatoire
+ - Un choix d'objets aléatoire que l'on trouve dans un coffre
+ - ...
+
+Pour cela, on peut utiliser la fonction `randint` (*random integer*) qui permet de sélectionner un nombre entier aléatoire entre deux bornes. Lisez et exécutez **plusieurs fois** le programme ci-dessous pour tester et comprendre le fonctionnement de `randint`.
+
+```{exec} python main
+:then: pygame_end
+:editor: 3348777c-8819-47d3-b7f2-74e43071aee6
+async def main():
+
+  pos_x = randint(50, 550)
+  pos_y = randint(50, 550)
+
+  roger = Actor("roger.png", pos_x, pos_y)
+  banane = Actor("banana.png", 50, 50)
+  while True:
+    await refresh((197, 255, 143))
+    roger.draw()
+    banana.draw()
+```
+
+### Exercice {num1}`exo-intro-pygame`
+Modifiez le programme ci-dessus de sorte que la banane reste en haut de l'écran, mais que sa position horizontale soit aléatoire.
+
+### Exercice {num1}`exo-intro-pygame`
+Dans le programme ci-dessous, à chaque fois que Roger entre en collision avec une fraise, celle-ci est déplacée à de nouvelles coordonnées aléatoires. 
+
+```{exec} python main
+:then: pygame_end
+:editor: 43a555a3-9439-4251-86a6-8091015599e0
+async def main():
+  roger = Actor("roger.png", 100, 100)
+  fraise = Actor("strawberry.png", 200, 100)
+  while True:
+    await refresh((197, 255, 143))
+    roger.draw()
+    fraise.draw()
+
+    touches_pressées = get_pressed_keys()
+    if "D" in touches_pressées:
+      roger.move(5, 0)
+    if "A" in touches_pressées:
+      roger.move(-5, 0)
+    if "S" in touches_pressées:
+      roger.move(0, 5)
+    if "W" in touches_pressées:
+      roger.move(0, -5)
+
+    if roger.collide(fraise):
+      pos_x = randint(50, 550)
+      pos_y = randint(50, 550)
+      fraise.set_position(pos_x, pos_y)
+```
+1. Avant la boucle `while`, créez une nouvelle **liste vide** nommée `inventaire`, et un nouveau texte (voir étape précédente) contenant le message `Gagné !`.
+2. A chaque fois que Roger entre en collision avec une fraise, ajoutez un élément `"fraise"` à l'inventaire.
+3. Dès que la liste `inventaire` contient au moins 5 éléments, le texte `Gagné !` doit être affiché sur l'écran.
+
+
+
+## Etape {num1}`etapes-intro-pygame` : des listes d'acteurs
+Pour le moment, les exemples ne contiennent qu'un seul acteur de chaque type (1 personnage, 1 orange, 1 banane, ...). Cependant, dans un vrai jeu, chaque type d'acteurs peut apparaître de nombreuses fois. Dans ce cas, les acteurs sont stockés dans une liste.
+
+- Une horde d'ennemis qui vous attaque : une liste d'acteurs `ennemis`
+- Les 10 pièces d'or à ramasser dans un niveau : une liste de 10 acteurs `pièces_d_or`
+- ...
+
+Lisez attentivement le programme ci-dessous avant de l'exécuter. Celui-ci permet de définir une liste de fruits à afficher à l'écran. Grâce à la boucle `for ... in ...`, la fonction `draw` est appelée **pour chaque** fruit de la liste.
+
+```{exec} python main
+:then: pygame_end
+:editor: 0eb2884f-e30e-406b-a648-489408abccbb
+async def main():
+  
+  fruits = [Actor("strawberry.png", 200, 100), Actor("strawberry.png", 250, 200), Actor("banana.png", 400, 300), Actor("banana.png", 50, 300), Actor("strawberry.png", 50, 400), Actor("orange.png", 300, 500)]
+
+  while True:
+    await refresh((197, 255, 143))
+
+    for fruit in fruits:
+        fruit.draw()
+```
+
+### Exercice {num1}`exo-intro-pygame`
+1. Tous les fruits du programme ci-dessus sont trop gros. Grâce à une boucle `for ... in ...` placée **avant** la boucle de jeu, réduisez de moitié la taille de chaque fruit avec `scale`.
+2. A nouveau grâce à la boucle `for ... in ...`, mais cette fois **dans** la boucle de jeu, faites automatiquement se déplacer chaque fruit vers la droite.
+
+
+### Exercice {num1}`exo-intro-pygame`
+Avec les listes et `randint`, il est possible de simuler l'apparition d'acteurs à une position aléatoire avec un interval de temps aléatoire. Vous devriez déjà avoir compris comment les positions aléatoires fonctionnent. En ce qui concerne l'interval de temps aléatoire, l'algorithme permettant de le simuler est le suivant :
+
+```{code-block} text
+Définir une liste d'acteurs
+Dans la boucle de jeu
+    Choisir un nombre aléatoire entre 1 et 100
+    Si le nombre aléatoire est exactement 1
+        Ajouter un nouvel acteur à la liste
+    Dessiner la liste d'acteurs
+```
+
+1. Complétez le code ci-dessous de sorte qu'il corresponde à cet algorithme et fasse apparaitre des fraises à un interval aléatoire, et à une position aléatoire. Pour cela, il faudra ajouter un nouvel acteur avec l'image `strawberry.png` à la liste `fruits` lorsque la condition portant sur le nombre aléatoire sera respectée.
+
+2. Que se passe-t-il si au lieu de tirer un nombre aléatoire entre 1 et 100, on le tire entre 1 et 20 ?
+
+3. Ajoutez un nouveau `randint` de sorte qu'à l'ajout d'un nouveau fruit, il y ait 1 chance sur 2 qu'il s'agisse d'une banane ou d'une fraise.
+
+```{exec} python main
+:then: pygame_end
+:editor: 4bd75f23-8302-467d-a2d8-b5923e32b971
+async def main():
+  fruits = []
+  while True:
+    await refresh((197, 255, 143))
+
+    #Compléter le code ici
+
+    for fruit in fruits:
+        fruit.draw()
+```
+

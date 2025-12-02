@@ -2,7 +2,7 @@
 import pygame
 import math
 import pathlib
-from random import randint
+from random import randint, choice
 
 width, height = 600, 600
 window = pygame.display.set_mode((width, height))
@@ -37,7 +37,9 @@ class Actor(pygame.sprite.Sprite):
 
     def move(self, dx, dy):
         self.rect.move_ip(dx, dy)  # Plus simple que x += dx, y += dy
-
+    def set_position(self, x, y):
+        self.rect.x = x
+        self.rect.y = y
     def collide(self, other_actor):
         other_rect = getattr(other_actor, 'collision_rect', other_actor.rect)
         return self.collision_rect.colliderect(other_rect)
