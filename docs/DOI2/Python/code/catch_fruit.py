@@ -7,6 +7,8 @@ async def main():
     game_over = False
     score = 0
 
+    game_over_text = Text(f"Game over. Score: {score}", 300, 300, True, (10, 10, 10), (255, 90, 20))
+
     while True:
         await refresh((111, 255, 255))
 
@@ -38,5 +40,4 @@ async def main():
                 if pineapple.rect.y > height:
                     game_over = True
         else:
-            game_over_text = Text(200, 100,f"Game over. Score: {score}", True, (10, 10, 10), (255, 90, 20))
             game_over_text.draw()
