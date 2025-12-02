@@ -277,7 +277,7 @@ async def main():
   while True:
     await refresh((197, 255, 143))
     roger.draw()
-    banana.draw()
+    banane.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
