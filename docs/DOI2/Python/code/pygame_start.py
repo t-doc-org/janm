@@ -35,6 +35,11 @@ class Actor(pygame.sprite.Sprite):
         global window
         window.blit(self.image, self.rect)
 
+    def get_x(self):
+        return self.rect.x
+    def get_y(self):
+        return self.rect.y
+
     def move(self, dx, dy):
         self.rect.move_ip(dx, dy)  # Plus simple que x += dx, y += dy
     def set_position(self, x, y):
@@ -73,6 +78,29 @@ class Text(pygame.sprite.Sprite):
         global window
         window.blit(self.image, self.rect)
 
+
+class Timer(pygame.time.Clock):
+    def __init__(self, time):
+        super().__init__()
+        self.time = time * 1000
+        self.started = False
+
+    def start(self):
+        self.started = True
+        self.start_time = animation_time()
+        self.end_time = self.start_time + self.time
+
+    def is_finished(self):
+        return animation_time() >= self.end_time
+
+    def __str__(self):
+        if not self.started:
+            return "Not started"
+        elif self.is_finished():
+            return "0.00s"
+        else:
+            return f"{(self.end_time - animation_time()) / 1000:.2f}s"
+
 def get_pressed_keys():
     """
     Retourne la liste des touches et boutons de souris ACTUELLEMENT enfoncés.
@@ -103,3 +131,5 @@ def get_pressed_keys():
         pressed_list.append("MOUSE_3")
 
     return pressed_list
+
+

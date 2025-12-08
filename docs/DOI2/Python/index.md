@@ -22,6 +22,7 @@ listes_for
 :maxdepth: 1
 organisation_tp
 pygame_intro
+pygame_tp1
 ```
 
 
