@@ -61,7 +61,7 @@ Le but de ce TP est de réaliser un dessin complexe avec Python pour réaliser u
 | Le dessin contient au moins : un triangle, un rectangle, un cercle, une ellipse, une ligne et un texte, chacun utilisé de manière pertinente | **2 pts** |
 | Le programme contient au moins **2 inputs** permettant à l'utilisateur de modifier le dessin (couleur, taille, nombre, ...) | **2 pts** |
 | Le programme contient au moins **1 branchement conditionnel** `if / elif / else` utilisé de manière pertinente | **1 pt** |
-| Le programme contient au moins **2 boucles while** utilisées pour répéter le dessin d’un objet plusieurs fois en faisant varier une propriété (taille, nombre, couleur, ...) | **4 pts** |
+| Le programme contient au moins **2 boucles while** utilisées pour répéter le dessin d’un objet plusieurs fois en faisant varier une propriété (taille, nombre, couleur, ...) | **3 pts** |
 | Le programme définit et appelle au moins **5 fonctions**, dont au moins **3 paramétrées**, regroupant chacune les instructions permettant de dessiner un objet complexe du dessin | **5 pts** |
 | Le dessin complet est suffisamment complexe, visuellement intéressant et original | **4 pts** |
 
@@ -77,6 +77,11 @@ Le but de ce TP est de réaliser un dessin complexe avec Python pour réaliser u
 
 **Total possible : 25 points**  
 
+## Rendu du projet
+
+Pour rendre votre projet, copiez/collez votre code dans exam.net en suivant [ce lien](https://exam.net/student?code=qwUJuc).
+
+Délai de reddition : 19.12.2025 à 23h59
 
 ## Mon projet
 
