@@ -161,7 +161,7 @@ Si le Timer s'affiche correctement, vous pouvez retirer le `print()`
 :sync: etape7
  - Vous pouvez contrôler si le `timer_tuyaux` est terminé (c'est-à-dire est arrivé à 0.00s) avec `if timer_tuyaux.is_finished():`
  - Ajoutez cette condition dans la boucle de jeu. Lorsqu'elle est respectée, faites un `print("Nouveaux tuyaux")` et redémarrez le Timer avec la méthode `start()` utilisée précédemment.
- - Vous devriez alors voir le texte `Nouveaux tuyaux` apparaître toutes les 5 secondes.
+ - Vous devriez alors voir le texte `Nouveaux tuyaux` apparaître toutes les 3 secondes.
 ```
 ```{tab-item}   8
 :sync: etape8
@@ -172,12 +172,12 @@ Il faut maintenant retirer ce `print()` et faire véritablement apparaître les 
  - Pour que les tuyaux apparaissent, il faut les *draw*. Vous pouvez le faire dans la boucle de jeu avec la logique *Pour chaque tuyau dans la liste : dessiner le tuyau*.
 
 
-5 secondes après le lancement, vous devriez voir une paire de tuyau apparaître.
+3 secondes après le lancement, vous devriez voir une paire de tuyau apparaître.
 ```
 ```{tab-item}   9
 :sync: etape9
  Les tuyaux doivent se déplacer constamment vers la gauche.
- - Dans la boucle de jeu, ajoutez la logique suivante : *Pour chaque tuyau dans la liste : move le tuyau vers la gauche*. Vous devriez alors voir des tuyaux apparaître toutes les 5 secondes et se déplacer sans arrêt vers la gauche.
+ - Dans la boucle de jeu, ajoutez la logique suivante : *Pour chaque tuyau dans la liste : move le tuyau vers la gauche*. Vous devriez alors voir des tuyaux apparaître toutes les 3 secondes et se déplacer sans arrêt vers la gauche.
  - Quand un tuyau sort de l'écran à gauche, alors il doit être retiré de la liste. La logique est donc : *Pour chaque tuyau dans la liste : si la position horizontale du tuyau est inférieure à -100, alors retirer ce tuyau de la liste. Notez que si `tuyau` est un acteur, alors `tuyau.get_x()` permet d'accéder à sa position horizontale. Utilisez `remove()` pour retirer un élément d'une liste.
   - Modifiez la position initiale d'apparition des tuyaux pour qu'ils débutent en dehors de l'écran, à sa droite.
 
