@@ -58,12 +58,13 @@ Le but de ce TP est de réaliser un dessin complexe avec Python pour réaliser u
 |---------|-------|
 | Le programme s'exécute sans aucune erreur et un dessin est affiché | **1 pt** |
 | Les noms des fonctions et des variables sont explicites et cohérents | **1 pt** |
+|Le programme est correctement ordonné : d'abord les imports, puis les définitions de fonction, puis le reste du code | **1 pt** |
 | Le dessin contient au moins : un triangle, un rectangle, un cercle, une ellipse, une ligne et un texte, chacun utilisé de manière pertinente | **2 pts** |
 | Le programme contient au moins **2 inputs** permettant à l'utilisateur de modifier le dessin (couleur, taille, nombre, ...) | **2 pts** |
 | Le programme contient au moins **1 branchement conditionnel** `if / elif / else` utilisé de manière pertinente | **1 pt** |
-| Le programme contient au moins **2 boucles while** utilisées pour répéter le dessin d’un objet plusieurs fois en faisant varier une propriété (taille, nombre, couleur, ...) | **3 pts** |
+| Le programme contient au moins **2 boucles while** utilisées pour répéter le dessin d’un objet plusieurs fois en faisant varier une propriété (taille, nombre, couleur, ...) ou pour demander à l'utilisateur de corriger son input. Un while d'animation n'est pas pris en compte.| **3 pts** |
 | Le programme définit et appelle au moins **5 fonctions**, dont au moins **3 paramétrées**, regroupant chacune les instructions permettant de dessiner un objet complexe du dessin | **5 pts** |
-| Le dessin complet est suffisamment complexe, visuellement intéressant et original | **4 pts** |
+| Le dessin complet est suffisamment complexe, visuellement intéressant et original | **3 pts** |
 
 **Total : 20 points possibles pour atteindre 5**
 
