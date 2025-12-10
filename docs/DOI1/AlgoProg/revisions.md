@@ -111,9 +111,9 @@ print("Bravo !")
 Ecrivez une fonction nommée `conversion_argent` prenant en paramètre une somme d'argent en CHF, et une devise étrangère (qui pourrait prendre plus tard comme valeur par exemple "EUR" pour des euros, "USD" pour des dollars, etc.)
 
 En fonction de ces paramètres, la fonction doit ensuite afficher la valeur de la somme en CHF dans cette autre devise sachant que :
-- 1 CHF = 0.95 EUR
-- 1 CHF = 1.05 USD
-- 1 CHF = 0.85 GBP
+- 1 CHF = 1.07 EUR
+- 1 CHF = 1.25 USD
+- 1 CHF = 0.93 GBP
 La fonction devra afficher un message d'erreur si la devise n'est pas supportée.
 
 Le code suivant devrait ensuite permettre d'afficher la valeur de 150CHF en euros, et la valeur de 4560CHF en Livres Sterling.
