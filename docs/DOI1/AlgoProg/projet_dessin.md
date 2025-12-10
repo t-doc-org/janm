@@ -83,6 +83,8 @@ Pour rendre votre projet, copiez/collez votre code dans exam.net en suivant [ce 
 
 Délai de reddition : 19.12.2025 à 23h59
 
+Ce projet sera évalué avec un coefficient 0.5. Toute utilisation de l'IA sera pénalisée de la note 1. Ainsi, utiliser un concept de programmation externe au cours doit être annoncé **durant** les TPs. Dans le cas contraire, l'utilisation de ces concepts sera considérée comme du plagiat.
+
 ## Mon projet
 
 ```{exec} python
