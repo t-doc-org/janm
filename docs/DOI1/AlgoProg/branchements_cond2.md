@@ -50,6 +50,7 @@ render(img)
 
 ```{exec} python
 :name: trap
+:class: hidden
 try:
     pose_question()
 except:
