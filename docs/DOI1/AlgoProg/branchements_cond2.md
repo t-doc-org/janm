@@ -58,7 +58,7 @@ except:
 ```
 
 
-# Examen de programmationn Python 2
+# Examen de programmation Python 2
 ## Question 1 - Tableau d'état
 Pas ici ! Répondez sur l'interface de Exam.net
 
