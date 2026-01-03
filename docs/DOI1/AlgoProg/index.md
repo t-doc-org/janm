@@ -32,11 +32,3 @@ objectifs1
 objectifs2
 revisions
 ```
-
-
-```{toctree}
-:hidden:
-:maxdepth: 1
-examen_formatif1
-```
-
