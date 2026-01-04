@@ -36,15 +36,15 @@ class Actor(pygame.sprite.Sprite):
         window.blit(self.image, self.rect)
 
     def get_x(self):
-        return self.rect.x
+        return self.rect.centerx
     def get_y(self):
-        return self.rect.y
+        return self.rect.centery
 
     def move(self, dx, dy):
-        self.rect.move_ip(dx, dy)  # Plus simple que x += dx, y += dy
+        self.rect.move_ip(dx, dy)
     def set_position(self, x, y):
-        self.rect.x = x
-        self.rect.y = y
+        self.rect.centerx = x
+        self.rect.centery = y
     def collide(self, other_actor):
         other_rect = getattr(other_actor, 'collision_rect', other_actor.rect)
         return self.collision_rect.colliderect(other_rect)

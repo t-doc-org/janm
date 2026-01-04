@@ -56,13 +56,6 @@ finally:
 ```
 
 
-```{exec} python
-:name: catch_fruit
-:when: never
-:include: code/catch_fruit.py
-:class: hidden
-
-```
 
 # Pygame - TP 1
 
