@@ -34,6 +34,8 @@ L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de
 ```{toctree}
 :maxdepth: 1
 Pygame_TP2/space_shooter
+Pygame_TP2/casse_brique
+Pygame_TP2/snake_like
 ```
 
 

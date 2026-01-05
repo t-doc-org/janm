@@ -4,7 +4,9 @@ exec:
   python:
     packages: [numpy, pygame-ce]
     files:
-      spaceship.png
+      spaceship.png:
+      asteroide.png:
+      laser.png:
 
 versions:
   pyodide: 0.27.7
@@ -91,7 +93,7 @@ Nous allons maintenant faire apparaître et tomber des astéroïdes régulièrem
  - Créez également un `timer_asteroides = Timer(1)` et démarrez-le immédiatement avec `timer_asteroides.start()`.
  - Dans la boucle de jeu, vérifiez si le timer est terminé (`if timer_asteroides.is_finished():`).
  - Si c'est le cas :
-   1. Créez un nouvel acteur `asteroid.png` en dessus de l'écran (y=-50).
+   1. Créez un nouvel acteur `asteroidedawd.png` en dessus de l'écran (y=-50).
    2. Ajoutez cet acteur à la liste `asteroides`.
    3. Redémarrez le timer.
  - Enfin, en vous inspirant grandement de ce que vous avez fait pour les lasers, utilisez une boucle `for` dans la boucle de jeu de sorte à dessiner les astéroïdes et à les faire bouger vers le bas.
@@ -152,3 +154,17 @@ async def main():
   while True:
     await refresh((14, 0, 38))
 ```
+
+
+
+## Partie 2 : fonctionnalités intermédiaires
+
+Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc choisir des éléments de la liste suivante à implémenter et s'additionnant à 10 pts.
+
+ - (2 pts) Ajoutez un score au jeu s'affichant avec le gameover. Par exemple, chaque astéroïde détruit augmente le score de 1, et, lors du gameover, le texte `Score : x` où x est remplacé par le véritable score est affiché.
+ - (2 pts) Accélérez graduellement la vitesse des astéroïdes. Actuellement, les astéroïdes se déplacent toujours à la même vitesse. A chaque fois que l'on détruit un astéroïde, leur vitesse pourrait augmenter afin de rendre le jeu progressivement plus difficile.
+ - (2 pts) Accélérez la vitesse d'apparition des astéroïdes. Pour le moment, les astéroïdes apparaissent à un intervalle régulier. Afin d'augmenter progressivement la difficulté du jeu, réduisez petit à petit l'écart d'apparition entre chaque astéroïde (par exemple à chaque fois que le vaisseau en détruit un)
+ - ...
+
+ ## Partie 3 : fonctionnalités avancées
+ - ...
