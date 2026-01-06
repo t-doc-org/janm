@@ -68,7 +68,7 @@ class Actor(pygame.sprite.Sprite):
 
     def set_angle(self, angle):
         self.angle = angle
-        self.image = pygame.transform.rotate(self.image, angle)
+        self.image = pygame.transform.rotate(self.original_image, angle)
 
 class Text(pygame.sprite.Sprite):
 
