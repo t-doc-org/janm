@@ -93,7 +93,7 @@ Nous allons maintenant faire apparaître et tomber des astéroïdes régulièrem
  - Créez également un `timer_asteroides = Timer(1)` et démarrez-le immédiatement avec `timer_asteroides.start()`.
  - Dans la boucle de jeu, vérifiez si le timer est terminé (`if timer_asteroides.is_finished():`).
  - Si c'est le cas :
-   1. Créez un nouvel acteur `asteroidedawd.png` en dessus de l'écran (y=-50).
+   1. Créez un nouvel acteur `asteroide.png` en dessus de l'écran (y=-50).
    2. Ajoutez cet acteur à la liste `asteroides`.
    3. Redémarrez le timer.
  - Enfin, en vous inspirant grandement de ce que vous avez fait pour les lasers, utilisez une boucle `for` dans la boucle de jeu de sorte à dessiner les astéroïdes et à les faire bouger vers le bas.
