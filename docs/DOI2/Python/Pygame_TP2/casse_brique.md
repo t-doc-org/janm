@@ -98,6 +98,7 @@ La balle devrait maintenant rebondir sur les trois côtés de l'écran.
 La balle doit également rebondir sur la raquette.
  - Dans la boucle de jeu, vérifiez si la balle entre en collision avec la raquette : `if balle.collide(raquette):`
  - Si c'est le cas, inversez la vitesse verticale de la balle.
+ - Afin que le joueur ait également un contrôle sur le rebond de la balle, sa vitesse horizontale doit être modifiée en fonction de l'endroit où elle percute la raquette. Ajoutez pour cela la ligne suivante en cas de collision : `vitesse_balle_x = (balle.get_x() - raquette.get_x()) / 10`.
 
 Vous pouvez maintenant contrôler la raquette pour renvoyer la balle !
 ````
