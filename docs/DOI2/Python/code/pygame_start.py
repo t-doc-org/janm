@@ -64,6 +64,7 @@ class Actor(pygame.sprite.Sprite):
         
     def kill(self):
         self.image = pygame.Surface((0, 0))
+        self.original_image = pygame.Surface((0, 0))
         self.rect = self.image.get_rect()
 
     def set_angle(self, angle):
