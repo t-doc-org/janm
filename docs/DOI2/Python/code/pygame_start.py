@@ -22,6 +22,7 @@ class Actor(pygame.sprite.Sprite):
         self.image = self.original_image.copy()
         self.rect = self.image.get_rect(center=(cx, cy))
         self.collision_margin = 0.05  # 5% de marge
+        self.angle = 0
 
     @property
     def collision_rect(self):
@@ -64,6 +65,10 @@ class Actor(pygame.sprite.Sprite):
     def kill(self):
         self.image = pygame.Surface((0, 0))
         self.rect = self.image.get_rect()
+
+    def set_angle(self, angle):
+        self.angle = angle
+        self.image = pygame.transform.rotate(self.original_image, angle)
 
 class Text(pygame.sprite.Sprite):
 

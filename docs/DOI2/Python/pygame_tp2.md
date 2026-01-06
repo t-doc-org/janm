@@ -5,8 +5,8 @@
 Durant 3 séances de TP, vous allez mettre en pratique les connaissances et compétences acquises en Python avec Pygame afin de créer votre propre mini-jeu. Pour cela, 4 choix s'offrent à vous :
 
  1) Le projet **Space Shooter** : un jeu dans le style *shoot'em up* où le joueur pilote un vaisseau devant tirer sur des astéroïdes avant qu'ils n'atteignent la terre
- 2) Le projet
- 3) Le projet
+ 2) Le projet **Casse-Briques** : un jeu de casse-brique classique où le joueur dirige une raquette sur laquelle rebondit une balle qui détruit des briques.
+ 3) Le projet **Pacman-like** : un jeu similaire à Pacman où le personnage du même nom se déplace pour manger des pommes en évitant les fantômes.
  4) Un projet de votre choix. Pour cette option libre, vous ne serez absolument pas guidés. Cette option est donc réservée à celles et ceux qui sont très à l'aise avec la programmation et qui souhaitent du challenge. Merci de me consulter avant de choisir cette option.
 
 
@@ -36,6 +36,7 @@ L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de
 Pygame_TP2/space_shooter
 Pygame_TP2/casse_brique
 Pygame_TP2/snake_like
+Pygame_TP2/libre
 ```
 
 
