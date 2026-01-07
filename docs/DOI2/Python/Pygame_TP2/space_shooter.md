@@ -84,7 +84,7 @@ Vous devriez alors voir des lasers apparaître à l'endroit de votre vaisseau lo
 Les lasers doivent maintenant se déplacer vers le haut.
  - Dans la boucle de jeu, parcourez la liste des lasers avec un `for`.
  - Déplacez chaque laser vers le haut (vitesse verticale négative, ex: `move(0, -7)`).
- - Pour éviter de ralentir l'ordinateur, si un laser sort par le haut de l'écran (y < -50), supprimez-le de la liste avec `remove()`. Vous pouvez récupérer la position verticale du vaisseau avec `vaisseau.get_y()`.
+ - Pour éviter de ralentir l'ordinateur, si un laser sort par le haut de l'écran (y < -50), supprimez-le de la liste avec `remove()`. Vous pouvez récupérer la position verticale d'un laser avec `laser.get_y()`.
 ```
 ```{tab-item}   5
 :sync: etape5
