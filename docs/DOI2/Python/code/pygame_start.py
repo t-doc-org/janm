@@ -83,6 +83,9 @@ class Text(pygame.sprite.Sprite):
     def draw(self):
         global window
         window.blit(self.image, self.rect)
+    def kill(self):
+        self.image = pygame.Surface((0,0))
+        self.rect = self.image.get_rect()
 
 
 class Timer(pygame.time.Clock):
