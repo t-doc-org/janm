@@ -111,33 +111,45 @@ class Timer(pygame.time.Clock):
             return f"{(self.end_time - animation_time()) / 1000:.2f}s"
 
 def get_pressed_keys():
-    """
-    Retourne la liste des touches et boutons de souris ACTUELLEMENT enfoncés.
-    """
     pressed_list = []
-    
     keys = pygame.key.get_pressed()
     
-# On utilise len(keys) pour déterminer combien de scancodes il faut vérifier.
-    # C'est la méthode la plus fiable depuis Pygame 2.
+    # 1. La boucle pour les touches "standards" (lettres, chiffres)
+    # On itère sur les scancodes standards
     for scancode in range(len(keys)):
-        if keys[scancode]: # Si l'état de la touche à cet index est True (appuyé)
+        if keys[scancode]:
             try:
-                # Utiliser try/except est plus sûr car certains scancodes peuvent ne pas 
-                # avoir de nom de touche lisible, mais ils devraient être rares.
-                nom_touche = pygame.key.name(scancode).upper()
-                pressed_list.append(nom_touche)
+                name = pygame.key.name(scancode).upper()
+                # On filtre un peu pour éviter d'avoir des trucs bizarres ou vides
+                if name and name != "UNKNOWN":
+                    pressed_list.append(name)
             except ValueError:
-                # Gérer les scancodes inconnus si nécessaire, mais on peut juste les ignorer.
                 pass
-    mouse_buttons = pygame.mouse.get_pressed()
+
+    # 2. Vérification MANUELLE des touches spéciales (Flèches, Ctrl, etc.)
+    # C'est nécessaire car elles échappent souvent à la boucle simple ci-dessus
+    if keys[pygame.K_UP]:
+        pressed_list.append("UP")
+    if keys[pygame.K_DOWN]:
+        pressed_list.append("DOWN")
+    if keys[pygame.K_LEFT]:
+        pressed_list.append("LEFT")
+    if keys[pygame.K_RIGHT]:
+        pressed_list.append("RIGHT")
     
-    if mouse_buttons[0]: # Gauche
-        pressed_list.append("MOUSE_1")
-    if mouse_buttons[1]: # Molette
-        pressed_list.append("MOUSE_2")
-    if mouse_buttons[2]: # Droit
-        pressed_list.append("MOUSE_3")
+    # Tu peux aussi ajouter d'autres touches spéciales souvent manquées par la boucle :
+    if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+        pressed_list.append("SHIFT")
+    if keys[pygame.K_SPACE]:
+        # Parfois "SPACE" ressort comme " " (vide) dans le name(), donc utile de le forcer
+        if " " in pressed_list: pressed_list.remove(" ") # Nettoyage optionnel
+        if "SPACE" not in pressed_list: pressed_list.append("SPACE")
+
+    # 3. Souris (Ton code original)
+    mouse_buttons = pygame.mouse.get_pressed()
+    if mouse_buttons[0]: pressed_list.append("MOUSE_1")
+    if mouse_buttons[1]: pressed_list.append("MOUSE_2")
+    if mouse_buttons[2]: pressed_list.append("MOUSE_3")
 
     return pressed_list
 
