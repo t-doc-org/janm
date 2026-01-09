@@ -119,26 +119,25 @@ Ajoutez et dessinez l'acteur Flappy Bird en haut à gauche de l'écran avec l'im
 ```
 ```{tab-item}  2
 :sync: etape2
- - Avant la boucle `while True`, définissez une nouvelle variable `vitesse` qui déterminera la vitesse verticale de l'oiseau. Si celle-ci est positive, alors l'oiseau tombera, si elle est négative, alors l'oiseau montera. Au début, la vitesse devrait être de `1`.
- - Définissez une variable `VITESSE_MAX` qui déterminera la vitesse maximale à laquelle l'oiseau peut tomber. Vous ajusterez cette valeur par la suite, mais vous pouvez y mettre `4` pour commencer.
- - Définissez une variable `ACCELERATION` qui déterminera l'accélération de l'oiseau vers la Terre. Pour commencer, mettez-y la valeur `0.05`.
- - Définissez une variable `VITESSE_SAUT` qui déterminera la vitesse à laquelle l'oiseau "sautera" quand on appuiera sur une touche. Comme un saut fait monter l'oiseau, cette valeur doit être négative. Par exemple `-3`.
+ - Avant la boucle `while True`, définissez une nouvelle variable `vitesse` qui déterminera la vitesse verticale de l'oiseau.
+ - Définissez une variable `ACCELERATION` qui déterminera l'accélération de l'oiseau vers la Terre. Pour commencer, mettez-y la valeur `0.1`.
+ - Définissez une variable `VITESSE_SAUT` qui déterminera la vitesse à laquelle l'oiseau "sautera" quand on appuiera sur une touche. Comme un saut fait monter l'oiseau, cette valeur doit être négative. Par exemple `-5`.
 ```
 ```{tab-item}   3
 :sync: etape3
-Complétez la boucle de jeu de sorte que l'oiseau tombe constamment vers le bas en fonction de la variable `vitesse`. Vous pouvez utiliser pour cela la fonction `move()`.
+Complétez la boucle de jeu de sorte que l'oiseau tombe constamment vers le bas en fonction de la variable `vitesse`. Vous pouvez utiliser pour cela la fonction `move()`. L'oiseau ne bouge pas sur l'axe x, et proportionnellement à `vitesse` sur l'axe y.
 ```
 ```{tab-item}   4
 :sync: etape4
-A chaque tour de boucle de jeu, si la `vitesse` de l'oiseau est plus petite que la `VITESSE_MAX`, augmentez la valeur de `VITESSE` avec l' `ACCELERATION`. Même si cela est peu visible, vous devriez voir votre oiseau tomber de plus en plus vite vers le bas.
+A chaque tour de boucle de jeu, augmentez la valeur de `vitesse` avec l' `ACCELERATION`. Même si cela est peu visible, vous devriez voir votre oiseau tomber de plus en plus vite vers le bas.
 ```
 ```{tab-item}   5
 :sync: etape5
- - Afin de faire "sauter" l'oiseau, commencez par ajouter la ligne de code `touches_pressées = get_pressed_keys()` à votre boucle de jeu. Vous récupérez ainsi la liste des touches pressées par le joueur
+ - Afin de faire "sauter" l'oiseau, commencez par ajouter la ligne de code `touches_pressées = get_pressed_keys()` à votre boucle de jeu. Vous récupérez ainsi la liste des touches pressées par le joueur.
  - Avec un `if ... in ...`, contrôlez si l'utilisateur a appuyé sur la touche de saut. Vous pouvez choisir n'importe quelle touche du clavier, ou le clic gauche de la souris (`"MOUSE_1"`).
- - Si cette condition est respectée, la `vitesse` doit prendre la valeur de la variable `VITESSE_SAUT`
+ - Si cette condition est respectée, la `vitesse` doit prendre la valeur de la variable `VITESSE_SAUT`.
 
- Testez votre programme et ajustez les valeurs des 3 variables constantes (en majuscules) afin que l'effet de saut et de gravité vous convienne.
+ Testez votre programme et ajustez les valeurs de `ACCELERATION` et `VITESSE_SAUT` afin que l'effet de saut et de gravité vous convienne.
 ```
 ```{tab-item}   6
 :sync: etape6
