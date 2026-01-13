@@ -7,6 +7,7 @@ exec:
       spaceship.png:
       asteroide.png:
       laser.png:
+      galaxy_background.jpg:
 
 versions:
   pyodide: 0.27.7
