@@ -48,42 +48,26 @@ ASCII a servi de base à de nombreux autres systèmes de codage, mais il présen
 | RS    | 0011110  | >     | 0111110  | ^     | 1011110  | ~     | 1111110  |
 | US    | 0011111  | ?     | 0111111  | _     | 1011111  | DEL   | 1111111  |
 
-### Unicode
 
-Bien que la table ASCII était très populaire dans les débuts de l'informatique, celle-ci est devenue obsolète lorsque les ordinateurs sont devenus accessibles au grand public. En effet, avec ASCII, il est impossible de représenter des caractères accentués (é, è, ê, à, â, ü, ù, ö, ô, etc...), ou des caractères d'autres alphabets (cyrillique, grec, hébreux, japonais, etc...).
-
-Une initiative, nommée Unicode, a donc été mise en place dès 1991 afin de recenser tous les caractères que l'on souhaiterait représenter. Unicode définit un identifiant unique pour tous les systèmes d'écriture que l'on pourrait souhaiter représenter. Aujourd'hui, environ 150'000 caractères possèdent un identifiant Unicode, y compris des emojis, des lettres d'alphabets antiques, des pièces d'échec, et bien d'autres caractères exotiques. Ces identifiants commencent toujours par "U+" et sont suivis d'un nombre hexadécimal. En voici quelques exemples :
-
-| Caractère | Unicode |
-|-----------|---------|
-| Œ         | U+0152  |
-| Ů         | U+016E  |
-| ©         | U+00A9  |
-| ¶         | U+00B6  |
-
-```{admonition} Note sur Unicode 
-:class: note
-Attention ! Unicode n'est pas un système permettant de représenter les caractères sous forme informatiques avec des bits. Il s'agit d'un standard de codage permettant de recenser et d'identifier tous les caractères existants.
-```
 
 ### UTF-8
-Le standard de représentation des caractères est aujourd'hui UTF-8. Il s'agit d'un système de codage de caractères qui permet de représenter tous les caractères définis dans Unicode tout en étant compatible avec les systèmes plus anciens, tels que ceux utilisant la table ASCII.
+Le standard de représentation des caractères est aujourd'hui UTF-8. Il s'agit d'un système de codage de caractères qui permet de représenter tous les caractères recensés dans *Unicode* tout en étant compatible avec les systèmes plus anciens, tels que ceux utilisant la table ASCII.
 
- - Compatibilité : Les premiers 128 caractères (U+0000 à U+007F), qui incluent tous les caractères de base de l'ASCII, sont représentés de la même manière en UTF-8 et en ASCII (c'est-à-dire avec un octet).
- - Longueur variable : Les caractères Unicode au-delà de U+007F sont encodés avec deux, trois ou quatre octets. Par exemple, un caractère comme "é" (U+00E9) sera codé en deux octets, tandis qu'un caractère comme "😊" (U+1F60A) sera codé en quatre octets. L'idée est de représenter les caractères les plus fréquemment utilisés avec moins de bits de manière à rendre les fichiers les moins lourds possible.
+ - Compatibilité : Les premiers 128 caractères, qui incluent tous les caractères de base de l'ASCII, sont représentés de la même manière en UTF-8 et en ASCII (c'est-à-dire avec un octet).
+ - Longueur variable : Les caractères suivants sont encodés avec deux, trois ou quatre octets. Par exemple, un caractère comme "é" sera codé en deux octets, tandis qu'un caractère comme "😊"  sera codé en quatre octets. L'idée est de représenter les caractères les plus fréquemment utilisés avec moins de bits de manière à rendre les fichiers les moins lourds possible.
  
- La table UTF-8 est trop grande pour être affichée au complet ici, mais vous trouvez ci-dessous quelques exemples de caractères avec leur Unicode et leur représentation binaire UTF-8.
+ La table UTF-8 est trop grande pour être affichée au complet ici, mais vous trouvez ci-dessous quelques exemples de caractères avec leur représentation binaire UTF-8.
 
- | Caractère | Unicode    | UTF-8 (binaire)                              |
-|-----------|------------|---------------------------------------------|
-| A         | U+0041     | 01000001                                    |
-| ñ         | U+00F1     | 11000011 10110001                           |
-| €         | U+20AC     | 11100010 10000010 10101100                  |
-| 😀        | U+1F600    | 11110000 10011111 10011000 10000000         |
-| 中        | U+4E2D     | 11100100 10111000 10101101                  |
-| أ         | U+0623     | 11011000 10100011                           |
-| ♫         | U+266B     | 11100010 10011001 10101011                  |
-| 🌍        | U+1F30D    | 11110000 10011111 10001100 10001101         |
+ | Caractère | UTF-8 (binaire) |
+| :--- | :--- |
+| A | 01000001 |
+| ñ | 11000011 10110001 |
+| € | 11100010 10000010 10101100 |
+| 😀 | 11110000 10011111 10011000 10000000 |
+| 中 | 11100100 10111000 10101101 |
+| أ | 11011000 10100011 |
+| ♫ | 11100010 10011001 10101011 |
+| 🌍 | 11110000 10011111 10001100 10001101 |
 
 Pour la lecture d'un texte encodé avec ASCII, il suffisait de séparer les bits 7 par 7 avant de les convertir. Avec UTF-8 c'est un peu plus compliqué. En regardant les exemples ci-dessus, vous noterez que les caractères encodés avec un octet commencent par un 0, que les caractères encodés avec deux octets commencent par deux 1, avec trois octets avec trois 1, et quatre octets avec quatre 1. Il faut donc lire ces premiers bits pour faire la séparation avant de convertir le code binaire.
 
@@ -112,26 +96,13 @@ A l'aide de la table ASCII qui se trouve sur cette page, encodez le mot "Suisse"
 a) Si on écrit dans un fichier texte de notre ordinateur le message "Hello World !", quel sera la taille de ce fichier (en octets), sachant que celui-ci sera encodé avec UTF-8 ?
 
 
-b) Ouvrez réellement un fichier texte (.txt) avec le bloc-note de votre ordinateur et écrivez le texte "Hello World !". Enregistrez ce fichier, puis faites un clic-droite dessus et sélectionnez les propriétés pour inspecter la propriété de la taille et vérifier votre réponse à la question précédente.
+
+b) Si l'on efface ce texte et qu'on écrit "Où as-tu mangé à midi ?" à la place, quelle sera la taille du fichier ?
 
 
-c) Effacez ensuite le contenu de ce fichier et écrivez le texte "Où as-tu mangé à midi ?" à la place. A nouveau, sachant que le fichier est encodé avec UTF-8, pouvez-vous prédire la taille du fichier ? Contrôlez votre réponse en consultant la taille du fichier sur votre ordinateur.
+d) A votre avis, si l'on enregistrait ces textes non pas dans des fichiers .txt, mais des fichiers Word, ceux-ci seraient-il plus lourds, plus légers, ou feraient le même poids ?
 
-
-d) Réécrivez ce même texte dans un fichier Microsoft Word (.docx) et consultez ensuite sa taille. Ce fichier est-il plus lourd ou plus léger que le fichier .txt ? Quelle est l'explication de ce résultat ?
-
-### Exercice 4
-
-a) En utilisant la [page Wikipédia d'Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters), déterminez les Unicodes des caractères suivants :
- - K
- - à
- - ጬ
- - ♕
- - ♛
-
- b) En Python, il est possible d'utiliser Unicode dans un `print()` pour afficher la représentation de ce caractère. Par exemple `print("\u0040")` affiche le symbole `@`. Ouvrez Thonny et écrivez 2 lignes de code pour afficher les pièces d'échecs de la dame blanche et de la dame noire.
-
- ### Exercice 5
+ ### Exercice 4
 
  a) Le texte ci-dessous est encodé en UTF-8. Comme vous le savez, UTF-8 encode les caractères avec des séquences de 1, 2, 3, ou 4 octets. Commencez par grouper les octets appartenant à la même séquence.
 
