@@ -17,6 +17,13 @@ listes_if_in
 listes_for
 ```
 
+## Fonctions
+```{toctree}
+:maxdepth: 1
+fonctions_sans_vdr
+fonctions_avec_vdr
+```
+
 ## Travaux Pratiques
 ```{toctree}
 :maxdepth: 1
