@@ -8,6 +8,7 @@ exec:
       asteroide.png:
       laser.png:
       galaxy_background.jpg:
+      heart.png:
 
 versions:
   pyodide: 0.27.7
