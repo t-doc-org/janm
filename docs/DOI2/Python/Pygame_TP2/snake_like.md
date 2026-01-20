@@ -7,6 +7,7 @@ exec:
       apple.png:
       blinky.png:
       heart.png:
+      bubble.png:
 
 versions:
   pyodide: 0.27.7
