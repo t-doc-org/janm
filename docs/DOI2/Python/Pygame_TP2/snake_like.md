@@ -9,6 +9,10 @@ exec:
       heart.png:
       bubble.png:
       inky.png:
+      strawberry.png:
+      orange.png:
+      banana.png:
+
 
 versions:
   pyodide: 0.27.7

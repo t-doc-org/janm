@@ -9,6 +9,12 @@ exec:
       paddle.png:
       heart.png:
       bubble.png:
+      brick_red.png:
+      brick_green.png:
+      strawberry.png:
+      orange.png:
+      banana.png:
+
 
 versions:
   pyodide: 0.27.7

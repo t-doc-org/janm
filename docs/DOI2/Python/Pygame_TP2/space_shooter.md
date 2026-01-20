@@ -10,6 +10,10 @@ exec:
       galaxy_background.jpg:
       heart.png:
       bubble.png:
+      strawberry.png:
+      orange.png:
+      banana.png:
+
 
 versions:
   pyodide: 0.27.7
