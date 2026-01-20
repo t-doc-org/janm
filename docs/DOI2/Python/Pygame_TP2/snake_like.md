@@ -8,6 +8,7 @@ exec:
       blinky.png:
       heart.png:
       bubble.png:
+      inky.png:
 
 versions:
   pyodide: 0.27.7
@@ -168,6 +169,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (2 pts) Faites accélérer progressivement le fantôme. À chaque fois que pacman ramasse une pomme, augmentez légèrement les vitesses du fantôme (en conservant leur signe) pour rendre le jeu plus difficile.
  - (3 pts) Ajoutez un power-up d'invincibilité. Créez un acteur qui apparaît rarement (timer de 10 secondes). Si pacman le ramasse, il devient invincible pendant 5 secondes (utilisez un timer). Pendant ce temps, faites clignoter pacman et le fantôme ne peut plus le toucher.
  - (4 pts) Ajoutez un système de vies. pacman commence avec 3 vies affichées à l'écran. Toucher un fantôme fait perdre une vie au lieu du gameover immédiat. Après avoir perdu une vie, pacman est invincible pendant 2 secondes. Le gameover n'arrive que lorsque toutes les vies sont perdues.
+ - (3 pts) Ajoutez un 2ème fantôme qui apparaît lorsque on atteint un certain nombre de points
 
  ## Partie 3 : fonctionnalités avancées
  
