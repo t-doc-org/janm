@@ -177,7 +177,9 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (2pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir plus de points que la pomme. Vous pouvez utiliser `banana.png`, `orange.png` ou `strawberry.png`.
  - (3pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir des bonus tels que pacman qui bouge plus rapidement, le fantôme qui ralentit, ...
  - (3 pts) Ajoutez un 2ème fantôme qui apparaît lorsque on atteint un certain nombre de points 
+ - (2 pts) Ajoutez un "écran" de gameover.
 
  ## Partie 3 : fonctionnalités avancées
  
- - ...
+ - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
+ 
