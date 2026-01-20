@@ -14,6 +14,7 @@ exec:
       strawberry.png:
       orange.png:
       banana.png:
+      shield.png:
 
 
 versions:
