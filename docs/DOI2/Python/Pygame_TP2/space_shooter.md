@@ -172,7 +172,10 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (2 pts) Ajoutez un score au jeu s'affichant avec le gameover. Par exemple, chaque astéroïde détruit augmente le score de 1, et, lors du gameover, le texte `Score : x` où x est remplacé par le véritable score est affiché.
  - (2 pts) Accélérez graduellement la vitesse des astéroïdes. Actuellement, les astéroïdes se déplacent toujours à la même vitesse. A chaque fois que l'on détruit un astéroïde, leur vitesse pourrait augmenter afin de rendre le jeu progressivement plus difficile.
  - (2 pts) Accélérez la vitesse d'apparition des astéroïdes. Pour le moment, les astéroïdes apparaissent à un intervalle régulier. Afin d'augmenter progressivement la difficulté du jeu, réduisez petit à petit l'écart d'apparition entre chaque astéroïde (par exemple à chaque fois que le vaisseau en détruit un)
- - ...
+ - (4 pts) Ajoutez un système de vies. Le vaisseau commence avec 3 vies affichées à l'écran. Toucher un astéroïde ou en laisser passer un fait perdre une vie au lieu du gameover immédiat. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pt si vous utilisez des images de coeur (`heart.png`).
+ - (3 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsque le vaisseau ramasse l'un de ces bonus, il obtient un bonus de points (fonctionnalité à combiner avec l'affichage du score).
 
  ## Partie 3 : fonctionnalités avancées
- - ...
+ - (4 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsqu'il le ramasse, le vaisseau obtient un pouvoir supplémentaire (tirs plus fréquents, vitesse augmentée, ...). +1 pt si le bonus obtenu est temporaire.
+ - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
+ - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.

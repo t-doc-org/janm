@@ -178,13 +178,14 @@ async def main():
 Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc choisir des éléments de la liste suivante à implémenter et s'additionnant à 10 pts.
 
  - (2 pts) Ajoutez un score au jeu. Chaque brique détruite augmente le score de 10 points. Affichez le score en temps réel en haut de l'écran avec un `Text`.
- - (2 pts) Ajoutez des couleurs différentes aux briques selon leur rangée. Vous pouvez utiliser les images `brick_green.png` et `brick_red.png`.
- - (3 pts) Faites accélérer progressivement la balle. À chaque fois qu'une brique est détruite, augmentez légèrement `vitesse_balle_x` et `vitesse_balle_y` (en conservant leur signe) pour rendre le jeu plus difficile.
- - (3 pts) Ajoutez des vies au joueur. Le joueur commence avec 3 vies. Lorsque la balle tombe, une vie est perdue et la balle est replacée au centre. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pts si vous utilisez des images de coeur.
- - 
+ - (2 pts) Donnez des couleurs différentes aux briques selon leur rangée. Vous pouvez utiliser les images `brick_green.png` et `brick_red.png`.
+ - (2 pts) Faites accélérer progressivement la balle. À chaque fois qu'une brique est détruite, augmentez légèrement `vitesse_balle_x` et `vitesse_balle_y` (en conservant leur signe) pour rendre le jeu plus difficile.
+ - (4 pts) Ajoutez des vies au joueur. Le joueur commence avec 3 vies. Lorsque la balle tombe, une vie est perdue et la balle est replacée au centre. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pt si vous utilisez des images de coeur (`heart.png`).
+
 
  ## Partie 3 : fonctionnalités avancées
+  - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
+ - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
  - (5 pts) Ajoutez plusieurs niveaux. Lorsque toutes les briques sont détruites, créez un nouveau niveau avec plus de rangées ou des configurations différentes.
- - (5 pts) Ajoutez des bonus : quand on casse une brique, un bonus peut aléatoirement apparaître et tomber. Si la raquette ramasse le bonus, le joueur l'obtient. Le bonus peuvent être les suivants : raquette plus rapide, balle plus lente, balle supplémentaire, raquette plus grande, ... . Ajoutez 1 bonus pour 5pts, puis +1pt par autre bonus.
- - (5 pts) Créez des briques spéciales qui nécessitent plusieurs coups pour être détruites (changement d'image à chaque coup).
+ - (5 pts) Ajoutez des bonus : quand on casse une brique, un bonus peut aléatoirement apparaître et tomber. Si la raquette ramasse le bonus, le joueur l'obtient. Le bonus peuvent être les suivants : raquette plus rapide, balle plus lente, raquette plus grande, ... . Ajoutez 1 bonus pour 5pts, puis +1pt par autre bonus.
  - (5 pts) Ajoutez plusieurs balles simultanément (bonus "multi-ball"). Gérez une liste de balles comme pour les briques.

@@ -170,16 +170,13 @@ async def main():
 
 Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc choisir des éléments de la liste suivante à implémenter et s'additionnant à 10 pts.
 
-
  - (2 pts) Faites accélérer progressivement le fantôme. À chaque fois que pacman ramasse une pomme, augmentez légèrement les vitesses du fantôme (en conservant leur signe) pour rendre le jeu plus difficile.
- - (3 pts) Ajoutez un power-up d'invincibilité. Créez un acteur qui apparaît rarement (timer de 10 secondes). Si pacman le ramasse, il devient invincible pendant 5 secondes (utilisez un timer). Pendant ce temps, faites clignoter pacman et le fantôme ne peut plus le toucher.
- - (4 pts) Ajoutez un système de vies. pacman commence avec 3 vies affichées à l'écran. Toucher un fantôme fait perdre une vie au lieu du gameover immédiat. Après avoir perdu une vie, pacman est invincible pendant 2 secondes. Le gameover n'arrive que lorsque toutes les vies sont perdues.
+ - (4 pts) Ajoutez un système de vies. pacman commence avec 3 vies affichées à l'écran. Toucher un fantôme fait perdre une vie au lieu du gameover immédiat. Après avoir perdu une vie, pacman est invincible pendant 2 secondes. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pt si vous utilisez des images de coeur (`heart.png`).
  - (2pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir plus de points que la pomme. Vous pouvez utiliser `banana.png`, `orange.png` ou `strawberry.png`.
- - (3pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir des bonus tels que pacman qui bouge plus rapidement, le fantôme qui ralentit, ...
+ - (3pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir des bonus tels que pacman qui bouge plus rapidement, le fantôme qui ralentit, etc.
  - (3 pts) Ajoutez un 2ème fantôme qui apparaît lorsque on atteint un certain nombre de points 
  - (2 pts) Ajoutez un "écran" de gameover.
 
  ## Partie 3 : fonctionnalités avancées
- 
+ - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
  - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
- 
