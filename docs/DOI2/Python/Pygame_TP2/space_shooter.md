@@ -174,6 +174,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (2 pts) Accélérez la vitesse d'apparition des astéroïdes. Pour le moment, les astéroïdes apparaissent à un intervalle régulier. Afin d'augmenter progressivement la difficulté du jeu, réduisez petit à petit l'écart d'apparition entre chaque astéroïde (par exemple à chaque fois que le vaisseau en détruit un)
  - (4 pts) Ajoutez un système de vies. Le vaisseau commence avec 3 vies affichées à l'écran. Toucher un astéroïde ou en laisser passer un fait perdre une vie au lieu du gameover immédiat. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pt si vous utilisez des images de coeur (`heart.png`).
  - (3 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsque le vaisseau ramasse l'un de ces bonus, il obtient un bonus de points (fonctionnalité à combiner avec l'affichage du score).
+ - (1 pt) Ajoutez l'image `galaxy_background.jpg` comme image de fond.
 
  ## Partie 3 : fonctionnalités avancées
  - (4 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsqu'il le ramasse, le vaisseau obtient un pouvoir supplémentaire (tirs plus fréquents, vitesse augmentée, ...). +1 pt si le bonus obtenu est temporaire.
