@@ -62,7 +62,6 @@ C6E_{16} &= 14 \cdot 16^0 + 6 \cdot 16^1 + 12 \cdot 16^2 \\
          &= 3182_{10}
 $$
 
-### Exercice 1
 
 <script type="module">
 const [core, quiz] = await tdoc.imports('tdoc/core.js', 'tdoc/quiz.js');
@@ -76,8 +75,24 @@ function conversion(fromRadix, toRadix, min, max) {
             v,
             equal(other) { return v === other.v; },
             history: (max - min + 1) / 2,
+            value(ph) { ph.textContent = `${core.toRadix(v, fromRadix).toUpperCase()}`; },
+            result(args) { 
+                args.ok = args.answer.trim().toLowerCase() === solution.toLowerCase(); 
+            },
+        };
+    };
+}
 
-            value(ph) { ph.textContent = `${core.toRadix(v, fromRadix)}`; },
+function addition(min, max) {
+    return () => {
+        const a = core.randomInt(min, max);
+        const b = core.randomInt(min, max);
+        const solution = core.toRadix(a + b, 2);
+        return {
+            v: [a, b],
+            equal(other) { return this.v[0] === other.v[0] && this.v[1] === other.v[1]; },
+            history: 20, 
+            value(ph) { ph.textContent = `${core.toRadix(a, 2)} + ${core.toRadix(b, 2)}`; },
             result(args) { args.ok = args.answer.trim() === solution; },
         };
     };
@@ -85,12 +100,19 @@ function conversion(fromRadix, toRadix, min, max) {
 
 quiz.generator('bin2dec', conversion(2, 10, 17, 511));
 quiz.generator('dec2bin', conversion(10, 2, 17, 511));
+quiz.generator('binAdd',  addition(1, 255));
+quiz.generator('hex2dec', conversion(16, 10, 16, 4095));
+quiz.generator('hex2bin', conversion(16, 2, 16, 4095));
+quiz.generator('bin2hex', conversion(2, 16, 16, 4095));
 </script>
 
+## Exercices
+
+### Exercice 1
 Convertissez le nombre binaire suivant en notation décimale. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
 
 ```{role} input(quiz-input)
-:style: width: 4rem; text-align: center;
+:style: width: 8rem; text-align: center;
 ```
 
 ```{quiz} table bin2dec
@@ -102,12 +124,44 @@ Convertissez le nombre binaire suivant en notation décimale. Répétez l'exerci
 ### Exercice 2
 Convertissez le nombre décimal suivant en notation binaire. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
 
-```{role} input(quiz-input)
-:style: width: 8rem; text-align: center;
-```
-
 ```{quiz} table dec2bin
 | Décimal          | Binaire         |
 | :--------------: | :-------------: |
 | {quiz-ph}`value` | {input}`result` |
+```
+
+### Exercice 3
+Effectuez l'addition binaire suivante. Effectuez au moins 3 additions pour vous assurer de la bonne compréhension de cette opération.
+
+```{quiz} table binAdd
+| Opération (Binaire) | Résultat (Binaire) |
+| :-----------------: | :----------------: |
+| {quiz-ph}`value`    | {input}`result`    |
+```
+### Exercice 4
+Convertissez le nombre hexadécimal suivant en décimal. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
+
+```{quiz} table hex2dec
+| Hexadécimal      | Décimal            |
+| :--------------: | :----------------: |
+| {quiz-ph}`value` | {input}`result`    |
+```
+
+
+### Exercice 5
+Convertissez le nombre hexadécimal suivant en notation binaire. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
+
+```{quiz} table hex2bin
+| Hexadécimal      | Binaire            |
+| :--------------: | :----------------: |
+| {quiz-ph}`value` | {input}`result`    |
+```
+
+### Exercice 6
+Convertissez le nombre binaire suivant en notation hexadécimale. Répétez l'exercice au moins 3 fois pour vous assurer de la bonne compréhension de cette conversion.
+
+```{quiz} table bin2hex
+| Binaire          | Hexadécimal       |
+| :--------------: | :---------------: |
+| {quiz-ph}`value` | {input}`result`   |
 ```
