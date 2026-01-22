@@ -13,6 +13,7 @@ exec:
       orange.png:
       banana.png:
       shield.png:
+      bomb.png:
 
 
 versions:
