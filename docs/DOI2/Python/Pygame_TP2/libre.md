@@ -6,6 +6,7 @@ exec:
       pacman.png:
       apple.png:
       blinky.png:
+      roger.png:
 
 versions:
   pyodide: 0.27.7
