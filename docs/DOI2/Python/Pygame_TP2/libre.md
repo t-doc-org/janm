@@ -7,6 +7,8 @@ exec:
       apple.png:
       blinky.png:
       roger.png:
+      tuyau_bas.png:
+      tuyau_haut.png:
 
 versions:
   pyodide: 0.27.7
