@@ -1,5 +1,11 @@
 # 2.2 Programmation Python
 
+## Examen
+```{toctree}
+:maxdepth: 1
+objectifs
+```
+
 ## Révisions
 ```{toctree}
 :maxdepth: 1
