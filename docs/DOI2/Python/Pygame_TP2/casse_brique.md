@@ -16,6 +16,7 @@ exec:
       banana.png:
       shield.png:
       bomb.png:
+      tools.png:
 
 
 versions:
