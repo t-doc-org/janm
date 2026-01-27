@@ -16,6 +16,7 @@ exec:
       shield.png:
       bomb.png:
       enemy_spaceship.png:
+      metal_skull.png:
 
 
 versions:
