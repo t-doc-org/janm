@@ -15,7 +15,7 @@ exec:
       banana.png:
       shield.png:
       bomb.png:
-      enemy_spaceship.png
+      enemy_spaceship.png:
 
 
 versions:
