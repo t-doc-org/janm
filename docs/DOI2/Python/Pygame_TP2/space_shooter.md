@@ -26,7 +26,7 @@ exec:
 versions:
   pyodide: 0.27.7
 ```
-
+ 
 
 ```{exec} python
 :name: setup
