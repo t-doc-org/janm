@@ -18,6 +18,9 @@ exec:
       enemy_spaceship.png:
       metal_skull.png:
       tools.png:
+      gift_blue.png:
+      gift_yellow.png:
+      gift_red.png:
 
 
 versions:

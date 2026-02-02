@@ -15,6 +15,9 @@ exec:
       shield.png:
       bomb.png:
       tools.png:
+      gift_blue.png:
+      gift_yellow.png:
+      gift_red.png:
 
 
 versions:
