@@ -31,4 +31,6 @@ html_sidebars = {
     'DOI1/AlgoProg/examen1_rattrapage': [],
     'DOI1/AlgoProg/examen2_rattrapage': [],
     'DOI2/Python/examen_formatif' : [],
+    'DOI2/Python/examen_2bp1' : [],
+    'DOI2/Python/pygame_doc' : [],
 }
