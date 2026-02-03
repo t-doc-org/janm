@@ -101,8 +101,9 @@ class Timer(pygame.time.Clock):
         self.end_time = self.start_time + self.time
 
     def is_finished(self):
+        #A retravailler
         if not self.started:
-            return False
+            return True
         return animation_time() >= self.end_time
 
     def __str__(self):
