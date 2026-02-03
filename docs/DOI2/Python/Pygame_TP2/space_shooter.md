@@ -184,6 +184,9 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (1 pt) Ajoutez l'image `galaxy_background.jpg` comme image de fond.
 
  ## Partie 3 : fonctionnalités avancées
- - (4 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsqu'il le ramasse, le vaisseau obtient un pouvoir supplémentaire (tirs plus fréquents, vitesse augmentée, ...). +1 pt si le bonus obtenu est temporaire.
- - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
+  - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
  - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
+  - (2 pts) Ajouter une nouvelle "attaque" par exemple un rayon laser plus large, une grosse bombe, ...
+
+ - (5 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsqu'il le ramasse, le vaisseau obtient un pouvoir supplémentaire (tirs plus fréquents, vitesse augmentée, nouvelle attaque débloquée, ...). 5 pts pour l'ajout d'un bonus, + 1pt par bonus supplémentaire. +1 pt si un bonus obtenu est temporaire. 
+ - (3 pts) Ajoutez un deuxième type d'ennemi à détruire (`enemy_spaceship.png`). Ceux-ci se comportent différemment des astéroïdes. Par exemple, ils pourraient aussi bouger horizontalement. +2pts si les ennemis tirent aussi des lasers

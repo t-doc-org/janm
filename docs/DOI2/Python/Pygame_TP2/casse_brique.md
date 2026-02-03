@@ -190,6 +190,6 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  ## Partie 3 : fonctionnalités avancées
   - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
  - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
- - (5 pts) Ajoutez plusieurs niveaux. Lorsque toutes les briques sont détruites, créez un nouveau niveau avec plus de rangées ou des configurations différentes.
- - (5 pts) Ajoutez des bonus : quand on casse une brique, un bonus peut aléatoirement apparaître et tomber. Si la raquette ramasse le bonus, le joueur l'obtient. Le bonus peuvent être les suivants : raquette plus rapide, balle plus lente, raquette plus grande, ... . Ajoutez 1 bonus pour 5pts, puis +1pt par autre bonus.
- - (5 pts) Ajoutez plusieurs balles simultanément (bonus "multi-ball"). Gérez une liste de balles comme pour les briques.
+ - (5 pts) Ajoutez un 2ème niveau. Lorsque toutes les briques sont détruites, créez un nouveau niveau avec plus de rangées ou des configurations différentes.
+ - (5 pts) Ajoutez des bonus : quand on casse une brique, un bonus peut aléatoirement apparaître et tomber. Si la raquette ramasse le bonus, le joueur l'obtient. Le bonus peuvent être les suivants : raquette plus rapide, balle plus lente, raquette plus grande, ... . Ajoutez 1 bonus pour 5pts, puis +1pt par autre bonus. + 1 pt si le bonus est temporaire.
+ - (3 pts) Ajoutez plusieurs balles simultanément (bonus "multi-ball"). Gérez une liste de balles comme pour les briques.
