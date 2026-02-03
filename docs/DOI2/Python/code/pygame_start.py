@@ -18,6 +18,7 @@ async def refresh(color):
 class Actor(pygame.sprite.Sprite):
     def __init__(self, image_path, cx, cy):
         super().__init__()
+        self.image_path = image_path
         self.original_image = pygame.image.load(image_path).convert_alpha()
         self.image = self.original_image.copy()
         self.rect = self.image.get_rect(center=(cx, cy))
