@@ -177,11 +177,18 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
 
  - (2 pts) Faites accélérer progressivement le fantôme. À chaque fois que pacman ramasse une pomme, augmentez légèrement les vitesses du fantôme (en conservant leur signe) pour rendre le jeu plus difficile.
  - (4 pts) Ajoutez un système de vies. pacman commence avec 3 vies affichées à l'écran. Toucher un fantôme fait perdre une vie au lieu du gameover immédiat. Après avoir perdu une vie, pacman est invincible pendant 2 secondes. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pt si vous utilisez des images de coeur (`heart.png`).
- - (2pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir plus de points que la pomme. Vous pouvez utiliser `banana.png`, `orange.png` ou `strawberry.png`.
- - (3pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir des bonus tels que pacman qui bouge plus rapidement, le fantôme qui ralentit, etc.
- - (3 pts) Ajoutez un 2ème fantôme qui apparaît lorsque on atteint un certain nombre de points 
+ - (2 pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir plus de points que la pomme. Vous pouvez utiliser `banana.png`, `orange.png` ou `strawberry.png`.
+ - (4 pts) Ajoutez de nouveaux fruits autres que la pomme qui apparaissent aléatoirement. Ceux-ci permettent d'obtenir des bonus tels que pacman qui bouge plus rapidement, le fantôme qui ralentit, etc.
+ - (3 pts) Ajoutez un 2ème fantôme (`inky.png`) qui apparaît lorsque on atteint un certain nombre de points 
  - (2 pts) Ajoutez un "écran" de gameover.
 
  ## Partie 3 : fonctionnalités avancées
  - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
  - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
+ 
+
+ - (2 pts) Rendez le mouvement du fantôme moins prévisible d'une manière ou d'une autre. Par exemple, à interval régulier, celui-ci pourrait aléatoirement changer de directement. Ou, lorsqu'il rebondit contre un mur, il pourrait aléatoirement revenir dans la même direction.
+
+ - (3 pts) Ajoutez un obstacle fixe sur le terrain. Lorsque Pacman entre en collision avec cet obstacle, il rebondit comme sur un mur. +2pts si vous utilisez une liste d'obstacles.
+ - (5 pts) Ajoutez un 2ème niveau avec une condition de victoire. Lorsque Pacman atteint un certain score, le joueur gagne, et un 2ème niveau apparaît. Celui-ci est différent du premier (différents obstacles, différents fantômes, différents fruits, ...)
+
