@@ -8,6 +8,7 @@
 bits
 caracteres
 nombres
+couleurs
 images
 qr
 objectifs
