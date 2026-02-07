@@ -421,3 +421,16 @@ Ecrivez ce programme au complet ci-dessous
 :editor: 019a6aa3-f3c2-7cb1-8e50-2168f735c246
 #Ecrivez votre code ici
 ```
+
+````{solution}
+Ecrivez ce programme au complet ci-dessous
+```{exec} python
+ingredients = ["sauce tomate", "mozzarella"]
+ingredient = input("Quel ingredient veux-tu ajouter ?")
+while ingredient != "STOP":
+    ingredients.append(ingredient)
+    ingredient = input("Quel ingredient veux-tu ajouter ?")
+print("Liste d'ingrédients finale :", ingredients)
+```
+
+````

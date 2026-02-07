@@ -179,6 +179,19 @@ def périmètre_cercle(rayon):
 #Complétez le code ici
 ```
 
+````{solution}
+```{exec} python
+def périmètre_cercle(rayon):
+    périmètre = 2 * 3.14159 * rayon
+    return périmètre
+
+p1 = périmètre_cercle(3)
+p2 = périmètre_cercle(5)
+total = p1 + p2
+print("Le périmètre total est de", total)
+```
+````
+
 ### Exercice {num1}`exercice`
 Le code ci-dessous fait appel à une fonction calculant et retournant un prix réduit de 20%. Définissez cette fonction et écrivez son corps.
 
@@ -189,6 +202,17 @@ prix = 56
 prix_réduit = réduction_20(prix)
 print("Prix réduit :", prix_réduit, "CHF")
 ```
+
+````{solution}
+```{exec} python
+def réduction_20(p):
+    return p * 0.8
+
+prix = 56
+prix_réduit = réduction_20(prix)
+print("Prix réduit :", prix_réduit, "CHF")
+```
+````
 
 ### Exercice {num1}`exercice`
 Définissez une fonction nommée `sanctions_STX` permettant de déterminer les sanctions à STX en fonction du nombre de retard et du nombre d'absences injustifiées. Pour rappel les sanctions sont les suivantes : 
@@ -209,3 +233,26 @@ Si les deux sanctions sont pareilles, votre programme affichera en plus : `Deux 
 def sanctions_STX(n_retards, n_absences_inj):
 
 ```
+
+````{solution}
+```{exec} python
+def sanctions_STX(n_retards, n_absences_inj):
+    if n_retards >= 15 or n_absences_ing >= 10:
+        return "exclusion"
+    elif n_retards >= 12 or n_absences_ing >= 8:
+        return "menace d'exclusion"
+    elif n_retards >= 9 or n_absences_ing >= 6:
+        return "avertissement"
+    elif n_retards >= 6 or n_absences_ing >= 4:
+        return "retenue samedi"
+    elif n_retards >= 3 or n_absences_ing >= 2:
+        return "retenue"
+    else:
+        return "rien"
+sanction1 = sanction_STX(4, 0)
+sanction2 = sanction_STX(2, 2)
+if sanction1 == sanction2:
+    print("Même sanction")
+
+```
+````
