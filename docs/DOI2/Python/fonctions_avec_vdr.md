@@ -242,15 +242,15 @@ def sanctions_STX(n_retards, n_absences_inj):
     elif n_retards >= 12 or n_absences_ing >= 8:
         return "menace d'exclusion"
     elif n_retards >= 9 or n_absences_ing >= 6:
-        return "avertissement"
+        return "avertissement écrit"
     elif n_retards >= 6 or n_absences_ing >= 4:
-        return "retenue samedi"
+        return "retenue samedi matin"
     elif n_retards >= 3 or n_absences_ing >= 2:
         return "retenue"
     else:
         return "rien"
-sanction1 = sanction_STX(4, 0)
-sanction2 = sanction_STX(2, 2)
+sanction1 = sanctions_STX(4, 0)
+sanction2 = sanctions_STX(2, 2)
 if sanction1 == sanction2:
     print("Même sanction")
 
