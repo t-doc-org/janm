@@ -64,6 +64,7 @@ Avant de développer le programme au complet, une première version de test est 
  - Les autres oeuvres sont estimées à 500CHF
 
  a) Implémentez la fonction `estimation` au complet
+ 
  b) Utilisez cette fonction afin d'estimer le prix de vente total d'une statue de 2003 et d'une tapisserie de 1670.
 
 
