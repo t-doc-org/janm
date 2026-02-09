@@ -355,7 +355,7 @@ def execute_sql(request):
   else:
     raise Exception("Invalid SQL request")
 ```
-Pour cet exercice, une mini-base de données contient quelques notes stockées dans une table `Bulletin`. On peut les récupérer de la manière suivante :
+Pour cet exercice, une mini-base de données contient quelques notes stockées dans une table `Bulletin`. On peut les récupérer et les lire de la manière suivante :
 ```{exec} python
 :after: python-liste-notes
 notes = execute_sql("SELECT note FROM Bulletin")
