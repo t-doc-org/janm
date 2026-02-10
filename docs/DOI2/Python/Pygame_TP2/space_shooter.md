@@ -21,6 +21,7 @@ exec:
       gift_blue.png:
       gift_yellow.png:
       gift_red.png:
+      laser_enemy.png:
 
 
 versions:
