@@ -68,32 +68,19 @@ Lorsqu'on teste toutes les clefs possibles sans autre réflexion, on appelle cel
 ## Exercices
 
 ### Exercice {num1}`exercice_crypto`
-Alice veut envoyer le message `RDV DEMAIN` à Bob avec le chiffrement de César. Au préalable, ils se sont échangés la clek $k=20$. Quel est le texte chiffré qu'Alice transmettra sur un canal public ?
+Alice veut envoyer le message `RDV DEMAIN` à Bob avec le chiffrement de César. Au préalable, ils se sont échangés la clef $k=20$. Quel est le texte chiffré qu'Alice transmettra sur un canal public ?
 
 ### Exercice {num1}`exercice_crypto`
 
-Vous connaissez le message chiffré `LSOXFOXEO`. Vous savez également qu'il a été chiffré avec César et un décalage de 10.
-
-1. Identifiez les éléments suivants du chiffrement symétrique:
-   - $t$ (texte en clair)
-   - $c$ (texte chiffré)
-   - $k$ (clef)
-
-2. Effectuez le déchiffrement $D_k(c) = t$ pour trouver le texte en clair.
+Vous connaissez le message chiffré `LSOXFOXEO`. Vous savez également qu'il a été chiffré avec César et un décalage de 10. Effectuez le déchiffrement $D_k(c) = t$ pour trouver le texte en clair.
 
 
 
 ### Exercice {num1}`exercice_crypto`
 
-Vous connaissez le texte en clair $t = $ `SECRET` ainsi que son équivalent chiffré $c = $ `VHFUHW`. Quelle est la clef $k$ utilisée?
+Vous connaissez le texte en clair $t = $ `SECRET` ainsi que son équivalent chiffré $c = $ `WIGVIX`. Quelle est la clef $k$ utilisée?
 
 ### Exercice {num1}`exercice_crypto`
-
-Le code Python suivant implémente le chiffrement et le déchiffrement de César, ainsi qu'une attaque par force brute.
-
-Testez le code avec différentes clefs et messages, puis:
-1. Chiffrez le message `INFORMATIQUE` avec la clef $k = 5$
-2. Effectuez une attaque par force brute sur le texte chiffré pour retrouver la clef
 
 ```{exec} python
 :name: cesar
@@ -134,54 +121,40 @@ def cesar_dechiffrer(texte_chiffre, k):
     """
     # Déchiffrer c'est chiffrer avec l'inverse de la clef
     return cesar_chiffrer(texte_chiffre, -k)
-
-
-def cesar_attaque_brute(texte_chiffre):
-    """
-    Effectue une attaque par force brute pour casser le chiffrement César.
-
-    Args:
-        texte_chiffre: Le texte chiffré
-
-    Returns:
-        Une liste de tuples (clef, texte_en_clair)
-    """
-    resultats = []
-    for k in range(1, 26):
-        texte_clair = cesar_dechiffrer(texte_chiffre, k)
-        resultats.append((k, texte_clair))
-    return resultats
 ```
 
-Les cellules de code ci-dessous contiennent 2 fonctions Python avec valeur de retour. La fonction `cesar_chiffrer` et `cesar_dechiffrer` prennent chacune en paramètre le texte à chiffrer/déchiffrer et la clef. Elles retournent le texte adéquat.
+Les cellules de code ci-dessous contiennent 2 fonctions Python avec valeur de retour :`cesar_chiffrer` et `cesar_dechiffrer`. Celles-ci prennent chacune en paramètre le texte à chiffrer/déchiffrer et la clef. Elles retournent le texte adéquat.
 
-
+Vous pouvez modifier le code ci-dessous pour chiffrer différents messages avec différentes clefs.
 ```{exec} python
 :after: cesar
-:editor:
+:editor: fdd03faf-8203-4c80-9f48-cb47420d73a2
 t = "BONJOUR COMMENT ALLEZ-VOUS"
 k = 6
 c = cesar_chiffrer(t, k)
 print("Texte chiffré :", c)
 ```
 
-De manière similaire, utilisez la fonction `cesar_dechiffrer` avec la clef $k=85438$ afin de trouver la signification du texte chiffré
+Utilisez maintenant la fonction `cesar_dechiffrer` avec la clef $k=23$ afin de trouver la signification du texte chiffré
 
 ```{exec} python
 :after: cesar
 :editor: fb4cac35-5395-465f-bb5c-612ce6bffa86
-c = "KYZ-IK WAK ZA IUTTGOY R'NOYZUOXK ZXGMOWAK JK JGXQ VRGMAKOY RK YGMK ?"
+c = "BPQ-ZB NRB QR ZLKKXFP I'EFPQLFOB QOXDFNRB AB AXOH MIXDRBFP IB PXDB ?"
 #Complétez ici
 ```
 
 ### Exercice {num1}`exercice_crypto`
-Pour cet exercice, vous n'avez pas connaissance de la clef de chiffrement utilisée pour chiffrer avec César. Vous allez donc attaquer $c$ par force brute. Pour cela, `for k in range(1, 26):` permet de tester toutes les clefs $k$ de 1 à 25. Exécutez la cellule ci-dessous pour déterminer quelle clef a été utilisée et quel est le texte en clair.
+Pour cet exercice, vous n'avez pas connaissance de la clef de chiffrement utilisée avec César. Vous allez donc attaquer $c$ par force brute. Pour cela, exécutez le code Python ci-dessous. La boucle `for k in range(1, 26):` permet de tester toutes les clefs $k$ de 1 à 25.
 
+ - Trouvez la valeur de $k$ utilisée dans le chiffrement ainsi que le texte en clair.
+ - Le texte en clair déchiffré contient de petites erreurs, pourquoi ?
 ```{exec} python
 :after: cesar
 :editor: 9a44b7db-acae-47c1-a790-63c27d64e698
-c = "KYZ-IK WAK ZA IUTTGOY R'NOYZUOXK ZXGMOWAK JK JGXQ VRGMAKOY RK YGMK ?"
+c = "MZYUZFC ? BF'PYEPYOPK GZFD ALC WI ? XP DZFSLTEPK GZFD WP MZYUZFC ZF NZYDELEPK GZFD BFP N’PDE FYP MZYYP UZFCYRP, BFP UP WP GPFTWWP ZF YZY, ZF PYNZCP BFP N'PDE FYP UZFCYRP ZH TW QLFE SECP MZY ?"
 for k in range(1, 26):
   t = cesar_dechiffrer(c, k)
   print(f"k={k} : t={t}")
 ```
+
