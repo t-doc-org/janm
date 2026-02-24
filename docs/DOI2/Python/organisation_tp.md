@@ -68,8 +68,7 @@ Dates :
  - 30.01.2026 : Groupe B
  - 06.02.2026 : Groupe A
  - 27.02.2026 : Groupe B
- - 06.03.2026 : Groupe A
- - 13.03.2026 : Groupe B
+ - 06.03.2026 : Groupe A + B (rendu)
 
 
 
