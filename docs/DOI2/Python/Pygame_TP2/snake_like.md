@@ -19,6 +19,7 @@ exec:
       gift_yellow.png:
       gift_red.png:
       lamp.png:
+      trampoline.png:
 
 
 versions:

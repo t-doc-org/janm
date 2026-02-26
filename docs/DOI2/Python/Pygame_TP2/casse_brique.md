@@ -20,6 +20,7 @@ exec:
       gift_blue.png:
       gift_yellow.png:
       gift_red.png:
+      trampoline.png:
 
 versions:
   pyodide: 0.27.7
