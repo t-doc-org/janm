@@ -22,6 +22,7 @@ exec:
       gift_yellow.png:
       gift_red.png:
       laser_enemy.png:
+      trampoline.png:
 
 
 versions:
