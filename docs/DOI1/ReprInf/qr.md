@@ -17,88 +17,44 @@ Un code QR est composé de plusieurs éléments clés :
 | Données encodées | L'information réelle contenue dans le code |
 | Motif de format | Information sur le niveau de correction d'erreur et le type de masque utilisé |
 
+## Sens de lecture d'un QR code
 
-## Outil interactif : Explorer et décoder un code QR
+Le QR code se lit en suivant un parcours en **zigzag**, partant du **coin inférieur droit** et remontant par bandes de 2 colonnes. Dans chaque bande, on lit d'abord la colonne de droite puis celle de gauche, en alternant montée et descente. La colonne 6 (synchronisation) est sautée.
 
-Utilisez l'outil interactif ci-dessous pour décoder manuellement le texte de ce code QR
-
-1. Mettez en évidence en **vert** les motifs de recherche
-2. Mettez en évidence en **jaune** le motif de synchronisation
-3. Mettez en évidence en **bleu** les séparateurs
-4. Mettez en évidence en **rose** les 3 bits permettant de déterminer le masque à appliquer
-5. Cliquez sur le masque adéquat pour l'appliquer sur tout le code QR
-6. Mettez en évidence en **orange** les 4 bits permettant de déterminer l'encodage du texte.
-7. Déterminez quel encodage est utilisé en
 ```{raw} html
-<div id="qr-explorer" style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; border-radius: 8px; margin: 20px 0;">
-  <div style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+<script src="../../_static/qr-tools.js"></script>
+<script>
+window.QR_COURS = [[1,1,1,1,1,1,1,0,0,1,0,0,0,0,1,1,1,1,1,1,1],[1,0,0,0,0,0,1,0,1,1,1,0,1,0,1,0,0,0,0,0,1],[1,0,1,1,1,0,1,0,0,1,0,1,1,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,1,1,0,0,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,1,0,0,1,1,0,1,0,1,1,1,0,1],[1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,0,0,0,1],[1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],[1,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,0,1,0],[1,1,0,0,0,1,0,1,1,1,0,1,0,0,0,1,1,1,0,0,1],[0,0,0,1,0,1,1,0,0,1,0,1,0,1,0,1,1,0,0,1,1],[0,0,1,1,1,0,0,1,1,0,1,1,1,1,0,1,1,0,0,1,1],[0,1,0,1,1,1,1,1,1,0,0,1,0,0,1,0,1,0,0,1,1],[0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,1,1,1,1,0],[1,1,1,1,1,1,1,0,0,1,0,0,1,0,0,1,1,1,1,1,1],[1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0],[1,0,1,1,1,0,1,0,1,0,0,0,1,0,1,1,1,0,0,0,0],[1,0,1,1,1,0,1,0,0,0,0,1,0,1,0,0,1,1,0,1,0],[1,0,1,1,1,0,1,0,1,0,0,1,0,1,1,1,1,0,0,0,1],[1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,1,0,0,1,0],[1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0,0,0,1,1]];
+</script>
+<div id="qr-reading" style="font-family: Arial, sans-serif; padding: 10px; background: #f5f5f5; border-radius: 8px; margin: 20px 0;">
+  <div style="display: flex; gap: 16px; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
     <div>
-      <div id="qr-grid" style="display: inline-block; border: 2px solid #333; background: white; image-rendering: pixelated;"></div>
+      <canvas id="reading-canvas" style="border: 1px solid #999; border-radius: 4px;"></canvas>
     </div>
-    <div style="min-width: 280px; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
-      <div>
-        <label style="font-size: 12px; font-weight: bold;">Outil :</label>
-        <div style="display: flex; gap: 5px; margin-top: 5px;">
-          <button id="tool-draw" style="flex: 1; padding: 6px; background: #4CAF50; color: white; cursor: pointer; border: none; border-radius: 4px; font-size: 11px;">Dessin</button>
-          <button id="tool-erase" style="flex: 1; padding: 6px; background: #ccc; color: #333; cursor: pointer; border: none; border-radius: 4px; font-size: 11px;">Gomme</button>
+    <div style="min-width: 200px; font-size: 11px;">
+      <div style="margin-bottom: 8px;">
+        <label style="font-size: 11px; font-weight: bold;">Nb. caractères : </label>
+        <input id="data-chars" type="number" min="1" max="14" value="10" style="width: 50px; padding: 2px 4px; border:1px solid #aaa; border-radius:4px; font-size:11px;">
+        <span style="font-size:10px;color:#666;margin-left:4px;">(ASCII, EC-M)</span>
+      </div>
+      <div id="reading-legend" style="font-size: 11px; line-height: 1.9;"></div>
+      <div style="margin-top:10px;padding-top:8px;border-top:1px solid #ccc;">
+        <div style="font-size:11px;font-weight:bold;margin-bottom:5px;">Bits dans un octet :</div>
+        <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;">
+          <div style="text-align:center;"><table style="border-collapse:collapse;font-size:9px;"><tr><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">0</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">1</td></tr><tr><td style="border:1px solid #888;text-align:center;">2</td><td style="border:1px solid #888;text-align:center;">3</td></tr><tr><td style="border:1px solid #888;text-align:center;">4</td><td style="border:1px solid #888;text-align:center;">5</td></tr><tr><td style="border:1px solid #888;text-align:center;">6</td><td style="border:1px solid #888;text-align:center;">7</td></tr></table><div style="font-size:8px;color:#E65100;font-weight:bold;">&#9650;</div></div>
+          <div style="text-align:center;"><table style="border-collapse:collapse;font-size:9px;"><tr><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">6</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">7</td></tr><tr><td style="border:1px solid #888;text-align:center;">4</td><td style="border:1px solid #888;text-align:center;">5</td></tr><tr><td style="border:1px solid #888;text-align:center;">2</td><td style="border:1px solid #888;text-align:center;">3</td></tr><tr><td style="border:1px solid #888;text-align:center;">0</td><td style="border:1px solid #888;text-align:center;">1</td></tr></table><div style="font-size:8px;color:#E65100;font-weight:bold;">&#9660;</div></div>
+          <div style="text-align:center;"><table style="border-collapse:collapse;font-size:9px;"><tr><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">0</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">1</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">6</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">7</td></tr><tr><td style="border:1px solid #888;text-align:center;">2</td><td style="border:1px solid #888;text-align:center;">3</td><td style="border:1px solid #888;text-align:center;">4</td><td style="border:1px solid #888;text-align:center;">5</td></tr></table><div style="font-size:8px;color:#E65100;font-weight:bold;">&#8630; haut</div></div>
+          <div style="text-align:center;"><table style="border-collapse:collapse;font-size:9px;"><tr><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">2</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">3</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">4</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">5</td></tr><tr><td style="border:1px solid #888;text-align:center;">0</td><td style="border:1px solid #888;text-align:center;">1</td><td style="border:1px solid #888;text-align:center;">6</td><td style="border:1px solid #888;text-align:center;">7</td></tr></table><div style="font-size:8px;color:#E65100;font-weight:bold;">&#8635 bas</div></div>
+          <div style="text-align:center;"><table style="border-collapse:collapse;font-size:9px;"><tr><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">0</td><td style="border:1px solid #888;width:15px;height:13px;text-align:center;">1</td></tr><tr><td style="border:1px solid #888;text-align:center;">2</td><td style="border:1px solid #888;text-align:center;">3</td></tr></table><div style="font-size:8px;color:#E65100;font-weight:bold;">&#189;</div></div>
         </div>
-      </div>
-      <div id="color-section">
-        <label style="font-size: 12px; color: #333; display: block;">Couleur de sélection :</label>
-        <input id="color-picker" type="color" value="#4CAF50" style="width: 40px; height: 30px; cursor: pointer; border: 1px solid #999; margin-top: 5px;">
-      </div>
-      <div>
-        <label style="font-size: 12px; font-weight: bold;">Masques :</label>
-        <div id="mask-selector" style="margin-top: 5px; display: flex; flex-wrap: wrap; gap: 4px;"></div>
+        <div style="font-size:9px;color:#666;margin-top:3px;">0 = MSB (2&#x2077;) &rarr; 7 = LSB (2&#x2070;)</div>
       </div>
     </div>
   </div>
 </div>
-<script>
-(function() {
-  const SIZE=21,PIXEL_SIZE=15;
-  const qrData=[[1,1,1,1,1,1,1,0,0,1,0,0,0,0,1,1,1,1,1,1,1],
-  [1,0,0,0,0,0,1,0,1,1,1,0,1,0,1,0,0,0,0,0,1],
-  [1,0,1,1,1,0,1,0,0,1,0,1,1,0,1,0,1,1,1,0,1],
-  [1,0,1,1,1,0,1,0,0,1,1,0,0,0,1,0,1,1,1,0,1],
-  [1,0,1,1,1,0,1,0,1,0,0,1,1,0,1,0,1,1,1,0,1],
-  [1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,0,0,0,1],
-  [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],
-  [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
-  [1,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,0,1,0],
-  [1,1,0,0,0,1,0,1,1,1,0,1,0,0,0,1,1,1,0,0,1],
-  [0,0,0,1,0,1,1,0,0,1,0,1,0,1,0,1,1,0,0,1,1],
-  [0,0,1,1,1,0,0,1,1,0,1,1,1,1,0,1,1,0,0,1,1],
-  [0,1,0,1,1,1,1,1,1,0,0,1,0,0,1,0,1,0,0,1,1],
-  [0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,0,1,1,1,1,0],
-  [1,1,1,1,1,1,1,0,0,1,0,0,1,0,0,1,1,1,1,1,1],
-  [1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0],
-  [1,0,1,1,1,0,1,0,1,0,0,0,1,0,1,1,1,0,0,0,0],
-  [1,0,1,1,1,0,1,0,0,0,0,1,0,1,0,0,1,1,0,1,0],
-  [1,0,1,1,1,0,1,0,1,0,0,1,0,1,1,1,1,0,0,0,1],
-  [1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,1,0,0,1,0],
-  [1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0,0,0,1,1],
-];
-  const masks=[(i,j)=>(i+j)%2===0,(i,j)=>i%2===0,(i,j)=>j%3===0,(i,j)=>(i+j)%3===0,(i,j)=>(Math.floor(i/2)+Math.floor(j/3))%2===0,(i,j)=>((i*j)%2)+((i*j)%3)===0,(i,j)=>(((i*j)%2)+((i*j)%3))%2===0,(i,j)=>(((i+j)%2)+((i*j)%3))%2===0];
-  let currentMask=-1,selectedPixels=new Map(),isSelecting=false,startX,startY,currentTool='draw';
-  const canvas=document.createElement('canvas');
-  canvas.width=SIZE*PIXEL_SIZE;canvas.height=SIZE*PIXEL_SIZE;canvas.style.cursor='crosshair';
-  const ctx=canvas.getContext('2d');
-  function isProtected(i,j){if((i<9&&j<9)||(i<9&&j>=SIZE-8)||(i>=SIZE-8&&j<9))return true;if(i===6||j===6)return true;if((i<9&&j===8)||(i===8&&j<9))return true;if((i<9&&j>=SIZE-8)||(i===8&&j>=SIZE-8))return true;if((i>=SIZE-8&&j===8)||(i===8&&j>=SIZE-8))return true;return false;}
-  function drawQR(){ctx.fillStyle='white';ctx.fillRect(0,0,canvas.width,canvas.height);for(let i=0;i<SIZE;i++){for(let j=0;j<SIZE;j++){let p=qrData[i][j];if(currentMask>=0&&!isProtected(i,j)&&masks[currentMask](i,j))p=1-p;ctx.fillStyle=p?'black':'white';ctx.fillRect(j*PIXEL_SIZE,i*PIXEL_SIZE,PIXEL_SIZE,PIXEL_SIZE);if(selectedPixels.has(i*SIZE+j)){const col=selectedPixels.get(i*SIZE+j);ctx.fillStyle=col+'80';ctx.fillRect(j*PIXEL_SIZE,i*PIXEL_SIZE,PIXEL_SIZE,PIXEL_SIZE);}ctx.strokeStyle='#ddd';ctx.lineWidth=0.5;ctx.strokeRect(j*PIXEL_SIZE,i*PIXEL_SIZE,PIXEL_SIZE,PIXEL_SIZE);}}}
-  canvas.addEventListener('mousedown',(e)=>{isSelecting=true;const r=canvas.getBoundingClientRect();startX=Math.floor((e.clientX-r.left)/PIXEL_SIZE);startY=Math.floor((e.clientY-r.top)/PIXEL_SIZE);});
-  canvas.addEventListener('mousemove',(e)=>{if(!isSelecting)return;drawQR();const r=canvas.getBoundingClientRect(),curX=Math.floor((e.clientX-r.left)/PIXEL_SIZE),curY=Math.floor((e.clientY-r.top)/PIXEL_SIZE);const minX=Math.max(0,Math.min(startX,curX)),maxX=Math.min(SIZE-1,Math.max(startX,curX)),minY=Math.max(0,Math.min(startY,curY)),maxY=Math.min(SIZE-1,Math.max(startY,curY));ctx.strokeStyle=currentTool==='draw'?'#FFD700':'#FF6B6B';ctx.lineWidth=2;ctx.setLineDash([3,3]);ctx.strokeRect(minX*PIXEL_SIZE,minY*PIXEL_SIZE,(maxX-minX+1)*PIXEL_SIZE,(maxY-minY+1)*PIXEL_SIZE);ctx.setLineDash([]);});
-  canvas.addEventListener('mouseup',(e)=>{if(!isSelecting)return;isSelecting=false;const r=canvas.getBoundingClientRect(),curX=Math.floor((e.clientX-r.left)/PIXEL_SIZE),curY=Math.floor((e.clientY-r.top)/PIXEL_SIZE);const minX=Math.max(0,Math.min(startX,curX)),maxX=Math.min(SIZE-1,Math.max(startX,curX)),minY=Math.max(0,Math.min(startY,curY)),maxY=Math.min(SIZE-1,Math.max(startY,curY));if(currentTool==='draw'){const col=document.getElementById('color-picker').value;for(let i=minY;i<=maxY;i++)for(let j=minX;j<=maxX;j++)selectedPixels.set(i*SIZE+j,col);}else{for(let i=minY;i<=maxY;i++)for(let j=minX;j<=maxX;j++)selectedPixels.delete(i*SIZE+j);}drawQR();});
-  function createMaskPreview(maskIndex){const container=document.createElement('div');container.style.display='flex';container.style.flexDirection='column';container.style.alignItems='center';container.style.gap='2px';const formatCanvas=document.createElement('canvas');formatCanvas.width=42;formatCanvas.height=14;const fmtCtx=formatCanvas.getContext('2d');fmtCtx.fillStyle='#e0e0e0';fmtCtx.fillRect(0,0,45,15);const fmtPixelSize=14;if(maskIndex>=0){const maskBitsMap=[0b101,0b100,0b111,0b110,0b001,0b000,0b011,0b010];const v=maskBitsMap[maskIndex];const bits=[(v>>2)&1,(v>>1)&1,v&1];for(let j=0;j<3;j++){fmtCtx.fillStyle=bits[j]?'black':'white';fmtCtx.fillRect(j*fmtPixelSize,0,fmtPixelSize,14);fmtCtx.strokeStyle='#999';fmtCtx.lineWidth=1;fmtCtx.strokeRect(j*fmtPixelSize,0,fmtPixelSize,14);}}else{fmtCtx.strokeStyle='#999';fmtCtx.lineWidth=1;for(let j=0;j<3;j++){fmtCtx.fillStyle='#e0e0e0';fmtCtx.fillRect(j*fmtPixelSize,0,fmtPixelSize,14);fmtCtx.strokeRect(j*fmtPixelSize,0,fmtPixelSize,14);}fmtCtx.beginPath();fmtCtx.moveTo(0,0);fmtCtx.lineTo(42,14);fmtCtx.moveTo(42,0);fmtCtx.lineTo(0,14);fmtCtx.stroke();}container.appendChild(formatCanvas);const hr=document.createElement('div');hr.style.cssText='width:42px;height:1px;background:#aaa;';container.appendChild(hr);const PREV_GRID=6,PREV_PX=7;const patternCanvas=document.createElement('canvas');patternCanvas.width=PREV_GRID*PREV_PX;patternCanvas.height=PREV_GRID*PREV_PX;const prevCtx=patternCanvas.getContext('2d');prevCtx.fillStyle='#e0e0e0';prevCtx.fillRect(0,0,patternCanvas.width,patternCanvas.height);if(maskIndex>=0){for(let i=0;i<PREV_GRID;i++){for(let j=0;j<PREV_GRID;j++){prevCtx.fillStyle=masks[maskIndex](i,j)?'black':'white';prevCtx.fillRect(j*PREV_PX,i*PREV_PX,PREV_PX,PREV_PX);prevCtx.strokeStyle='#bbb';prevCtx.lineWidth=0.5;prevCtx.strokeRect(j*PREV_PX,i*PREV_PX,PREV_PX,PREV_PX);}}}else{prevCtx.strokeStyle='#999';prevCtx.lineWidth=1;for(let i=0;i<PREV_GRID;i++)for(let j=0;j<PREV_GRID;j++)prevCtx.strokeRect(j*PREV_PX,i*PREV_PX,PREV_PX,PREV_PX);prevCtx.beginPath();prevCtx.moveTo(0,0);prevCtx.lineTo(patternCanvas.width,patternCanvas.height);prevCtx.moveTo(patternCanvas.width,0);prevCtx.lineTo(0,patternCanvas.height);prevCtx.stroke();}container.appendChild(patternCanvas);return container;}
-  const maskContainer=document.getElementById('mask-selector');
-  [-1,0,1,2,3,4,5,6,7].forEach(maskIdx=>{const btn=document.createElement('button');btn.style.cssText='padding:3px;background:#f0f0f0;border:2px solid #ccc;cursor:pointer;border-radius:4px;display:flex;align-items:center;justify-content:center;width:50px;height:68px;transition:all 0.2s;';btn.title=maskIdx===-1?'Pas de masque':`Masque ${maskIdx}`;const preview=createMaskPreview(maskIdx);btn.appendChild(preview);btn.addEventListener('click',()=>{currentMask=maskIdx;document.querySelectorAll('#mask-selector button').forEach(b=>b.style.borderColor='#ccc');btn.style.borderColor='#4CAF50';btn.style.borderWidth='3px';drawQR();});if(maskIdx===-1){btn.click();}maskContainer.appendChild(btn);});
-  document.getElementById('tool-draw').addEventListener('click',()=>{currentTool='draw';document.getElementById('tool-draw').style.background='#4CAF50';document.getElementById('tool-draw').style.color='white';document.getElementById('tool-erase').style.background='#ccc';document.getElementById('tool-erase').style.color='#333';document.getElementById('color-section').style.opacity='1';document.getElementById('color-picker').disabled=false;});
-  document.getElementById('tool-erase').addEventListener('click',()=>{currentTool='erase';document.getElementById('tool-erase').style.background='#ff6b6b';document.getElementById('tool-erase').style.color='white';document.getElementById('tool-draw').style.background='#ccc';document.getElementById('tool-draw').style.color='#333';document.getElementById('color-section').style.opacity='0.5';document.getElementById('color-picker').disabled=true;});
-  document.getElementById('qr-grid').appendChild(canvas);
-  drawQR();
-})();
-</script>
+<script>createQRReading(window.QR_COURS, 'reading-canvas', 'reading-legend', 'data-chars');</script>
 ```
+
 
 ## Tables de référence pour le décodage
 
@@ -201,73 +157,56 @@ Les 4 premiers bits de données (en bas à droite du QR code, après application
 </script>
 ```
 
-## Sens de lecture d'un QR code v1
 
-Le QR code se lit en suivant un parcours en **zigzag**, partant du **coin inférieur droit** et remontant par bandes de 2 colonnes. Dans chaque bande, on lit d'abord la colonne de droite puis celle de gauche, en alternant montée et descente. La colonne 6 (synchronisation) est sautée.
+
+## Exercices
+### Exerice 1
+
+Utilisez l'outil interactif ci-dessous pour décoder manuellement le texte de ce code QR
+
+1. Mettez en évidence en **vert** les motifs de recherche
+2. Mettez en évidence en **jaune** le motif de synchronisation
+3. Mettez en évidence en **bleu** les séparateurs
+4. Mettez en évidence en **rose** les 3 bits permettant de déterminer le masque à appliquer
+5. Cliquez sur le masque adéquat pour l'appliquer sur tout le code QR
+6. Mettez en évidence en **orange** les 4 bits permettant de déterminer l'encodage du texte.
+7. Déterminez quel encodage est utilisé en vous basant sur le sens de lecture et les tables de référence pour le décodage
+8. Mettez en évidence en **rouge** la zone contenant la longueur du texte
+9. Déterminez la longueur du texte
+10. Mettez en évidence dans différentes couleurs les zones contenant toutes les lettres du texte
+11. Déterminez le texte encodé en vous basant sur les tables de référence pour le décodage
 
 ```{raw} html
-<div id="qr-reading" style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; border-radius: 8px; margin: 20px 0;">
-  <div style="display: flex; gap: 30px; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
-    <div>
-      <canvas id="reading-canvas" style="border: 1px solid #999; border-radius: 4px;"></canvas>
-    </div>
-    <div style="min-width: 220px;">
-      <div style="margin-bottom: 12px;">
-        <label style="font-size: 12px; font-weight: bold; display:block; margin-bottom:4px;">Nb. caractères données :</label>
-        <input id="data-chars" type="number" min="1" max="14" value="10" style="width: 60px; padding: 4px; border:1px solid #aaa; border-radius:4px;">
-        <span style="font-size:11px;color:#666;margin-left:6px;">(mode octet, EC-M)</span>
-      </div>
-      <div id="reading-legend" style="font-size: 12px; line-height: 2.2;"></div>
-      <div style="margin-top:12px;font-size:11px;color:#666;border-top:1px solid #ccc;padding-top:8px;">
-        <strong>Lecture :</strong> dans chaque bande de 2 colonnes, on lit la colonne droite puis gauche, ligne par ligne.<br>
-        <span style="color:red;">■</span> = module de départ (bit 0)
-      </div>
-    </div>
-  </div>
-  <h4 style="margin-top: 20px; margin-bottom: 10px;">Structure linéaire par mot de code</h4>
-  <p style="font-size:12px;color:#555;margin:0 0 10px 0;">Chaque mot de code (codeword) contient 8 bits. Le bit le plus significatif (MSB, 2⁷) est lu en premier.</p>
-  <div id="reading-linear" style="overflow-x: auto;"></div>
-</div>
-<script>
-(function(){
-  var SIZE=21,PX=22;
-  var canvas=document.getElementById('reading-canvas');
-  var ctx=canvas.getContext('2d');
-  canvas.width=SIZE*PX;canvas.height=SIZE*PX;
-  function isP(r,c){if((r<9&&c<9)||(r<9&&c>=13)||(r>=13&&c<9))return true;if(r===6||c===6)return true;return false;}
-  function getOrder(){var o=[],up=true;for(var right=SIZE-1;right>=1;right-=2){if(right===6)right=5;for(var ri=0;ri<SIZE;ri++){var row=up?(SIZE-1-ri):ri;if(!isP(row,right))o.push([row,right]);if(right-1>=0&&!isP(row,right-1))o.push([row,right-1]);}up=!up;}return o;}
-  var order=getOrder();
-  var ZONES=[{name:'Mode (4 bits)',color:'#FF9800',short:'M'},{name:'Longueur (8 bits)',color:'#2196F3',short:'L'},{name:'Données',color:'#4CAF50',short:'D'},{name:'Terminateur (4 bits)',color:'#f44336',short:'T'},{name:'Remplissage',color:'#9E9E9E',short:'R'},{name:'Correction d\'erreur',color:'#9C27B0',short:'EC'}];
-  function getZoneBounds(n){n=Math.max(1,Math.min(14,n));var de=11+n*8,ts=de+1,te=ts+3,ps=te+1;var b=[{s:0,e:3,z:0},{s:4,e:11,z:1},{s:12,e:de,z:2},{s:ts,e:te,z:3}];if(ps<=127)b.push({s:ps,e:127,z:4});b.push({s:128,e:207,z:5});return b;}
-  function zoneOf(bit,bounds){for(var i=0;i<bounds.length;i++){if(bit>=bounds[i].s&&bit<=bounds[i].e)return bounds[i].z;}return-1;}
-  function draw(){
-    var nChars=parseInt(document.getElementById('data-chars').value)||10;
-    var bounds=getZoneBounds(nChars);
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
-    var i,r,c;
-    for(r=0;r<SIZE;r++)for(c=0;c<SIZE;c++){if(isP(r,c)){ctx.fillStyle='#e8e8e8';ctx.fillRect(c*PX,r*PX,PX,PX);ctx.strokeStyle='#d0d0d0';ctx.lineWidth=0.5;ctx.strokeRect(c*PX,r*PX,PX,PX);}}
-    for(i=0;i<order.length;i++){r=order[i][0];c=order[i][1];var z=zoneOf(i,bounds);var col=z>=0?ZONES[z].color:'#bbb';ctx.fillStyle=col+'CC';ctx.fillRect(c*PX,r*PX,PX,PX);ctx.strokeStyle='#fff';ctx.lineWidth=0.5;ctx.strokeRect(c*PX,r*PX,PX,PX);}
-    ctx.font='bold 9px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
-    for(i=0;i<Math.min(24,order.length);i++){r=order[i][0];c=order[i][1];ctx.fillStyle='#fff';ctx.fillText(i,c*PX+PX/2,r*PX+PX/2);}
-    var up=true;
-    for(var right=SIZE-1;right>=1;right-=2){if(right===6)right=5;var cx=(right-0.5)*PX;ctx.fillStyle='rgba(0,0,0,0.25)';ctx.beginPath();if(up){ctx.moveTo(cx-5,10);ctx.lineTo(cx+5,10);ctx.lineTo(cx,3);}else{ctx.moveTo(cx-5,SIZE*PX-10);ctx.lineTo(cx+5,SIZE*PX-10);ctx.lineTo(cx,SIZE*PX-3);}ctx.fill();up=!up;}
-    if(order.length>0){r=order[0][0];c=order[0][1];ctx.strokeStyle='#ff0000';ctx.lineWidth=2.5;ctx.strokeRect(c*PX+1,r*PX+1,PX-2,PX-2);}
-    var legend=document.getElementById('reading-legend');
-    legend.innerHTML=ZONES.map(function(z){return '<div><span style="display:inline-block;width:14px;height:14px;background:'+z.color+'CC;border:1px solid #999;vertical-align:middle;margin-right:6px;border-radius:2px;"></span>'+z.name+'</div>';}).join('');
-    buildLinear(bounds);
-  }
-  function buildLinear(bounds){
-    var container=document.getElementById('reading-linear');
-    var html='<table style="border-collapse:collapse;font-size:11px;font-family:monospace;"><tr><th style="border:1px solid #ccc;padding:3px 8px;background:#eee;">CW</th>';
-    for(var b=7;b>=0;b--)html+='<th style="border:1px solid #ccc;padding:3px 6px;background:#eee;min-width:28px;">2<sup>'+b+'</sup></th>';
-    html+='<th style="border:1px solid #ccc;padding:3px 10px;background:#eee;">Zone</th></tr>';
-    for(var cw=0;cw<26;cw++){html+='<tr><td style="border:1px solid #ccc;padding:3px 8px;font-weight:bold;background:#f9f9f9;text-align:center;">'+(cw+1)+'</td>';var zset={};for(var b=0;b<8;b++){var bit=cw*8+b;var z=zoneOf(bit,bounds);var col=z>=0?ZONES[z].color+'30':'#fff';var sh=z>=0?ZONES[z].short:'';if(z>=0)zset[ZONES[z].name]=1;html+='<td style="border:1px solid #ccc;padding:3px 6px;background:'+col+';text-align:center;" title="Bit '+bit+'">'+sh+'</td>';}var znames=Object.keys(zset);html+='<td style="border:1px solid #ccc;padding:3px 8px;font-size:10px;font-family:Arial,sans-serif;">'+znames.join(' / ')+'</td></tr>';}
-    html+='</table>';
-    container.innerHTML=html;
-  }
-  document.getElementById('data-chars').addEventListener('input',draw);
-  draw();
-})();
-</script>
+<div id="qr-ex1"></div>
+<script>createQRExplorer(window.QR_COURS, 'qr-ex1');</script>
+```
+
+### Exercice 2
+En utilisant la même méthode qu'à l'exercice précédent, décodez le texte du QR code ci-dessous.
+
+```{raw} html
+<div id="qr-ex2"></div>
+<script>createQRExplorer([
+  [1,1,1,1,1,1,1,0,1,1,1,1,0,0,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,1,0,1,1,1,0,1,0,1,0,0,0,0,0,1],
+  [1,0,1,1,1,0,1,0,0,1,0,0,0,0,1,0,1,1,1,0,1],
+  [1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,0,1,1,1,0,1],
+  [1,0,1,1,1,0,1,0,0,0,1,1,0,0,1,0,1,1,1,0,1],
+  [1,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,0,0,0,0,0,0],
+  [1,0,1,1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,0,1,1],
+  [1,0,1,1,1,0,0,1,0,0,0,1,1,1,1,1,1,1,0,0,1],
+  [1,1,1,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1],
+  [1,0,0,0,1,1,0,0,1,1,1,1,0,0,0,1,1,1,0,0,0],
+  [0,0,0,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,0,1],
+  [0,0,0,0,0,0,0,0,1,1,0,1,0,0,1,0,1,0,0,1,0],
+  [1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,0,0],
+  [1,0,0,0,0,0,1,0,1,0,1,0,0,1,0,1,1,1,1,1,1],
+  [1,0,1,1,1,0,1,0,0,1,0,0,1,0,0,0,0,0,1,0,0],
+  [1,0,1,1,1,0,1,0,1,1,0,0,0,0,1,0,0,1,0,1,0],
+  [1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,0,0,1,0,0],
+  [1,0,0,0,0,0,1,0,0,1,1,0,0,1,1,1,0,0,0,0,1],
+  [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0],
+], 'qr-ex2');</script>
 ```
