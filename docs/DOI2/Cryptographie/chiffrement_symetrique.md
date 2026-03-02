@@ -1,6 +1,10 @@
 <!-- Copyright 2024 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
+```{metadata}
+solutions: dynamic
+```
+
 # Chiffrement symétrique
 
 ## Contexte historique : La machine Enigma
@@ -65,20 +69,168 @@ Bien que simple à comprendre, le chiffrement de César est très **peu sûr** p
 
 Lorsqu'on teste toutes les clefs possibles sans autre réflexion, on appelle cela une **attaque par force brute**.
 
+## Le chiffrement par substitution
+
+Le chiffrement de César est en réalité un cas particulier d'un chiffrement plus général : le **chiffrement par substitution**. Dans le chiffrement par substitution, chaque lettre de l'alphabet est remplacée par une autre lettre, mais contrairement à César, les remplacements ne suivent pas un décalage régulier. La **clef** est une permutation complète de l'alphabet, c'est-à-dire une table de correspondance entre chaque lettre et son remplacement.
+
+**Exemple :** voici une clef de substitution possible :
+
+| Clair  | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z |
+|--------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chiffré| Q | W | E | R | T | Y | U | I | O | P | A | S | D | F | G | H | J | K | L | Z | X | C | V | B | N | M |
+
+Avec cette clef, le texte `HELLO` serait chiffré en `ITSSG` :
+- `H` → `I`
+- `E` → `T`
+- `L` → `S`
+- `L` → `S`
+- `O` → `G`
+
+Pour déchiffrer, le destinataire utilise la table de correspondance **inversée** : il cherche la lettre chiffrée dans la ligne du bas et lit la lettre en clair correspondante dans la ligne du haut.
+
+### Nombre de clefs possibles
+
+Le chiffrement par substitution est **beaucoup plus résistant** à l'attaque par force brute que le chiffrement de César. En effet, le nombre de clefs possibles correspond au nombre de façons d'arranger 26 lettres, soit $26!$ (26 factorielle) :
+
+$$26! = 26 \times 25 \times 24 \times \ldots \times 2 \times 1 \approx 4 \times 10^{26}$$
+
+C'est environ **400'000'000'000'000'000'000'000'000** clefs possibles. Même un ordinateur testant un milliard de clefs par seconde mettrait des milliards d'années à toutes les essayer. L'attaque par force brute est donc **irréalisable** dans ce cas.
+
+### Attaque par analyse de fréquence
+
+Malgré ce très grand nombre de clefs, le chiffrement par substitution reste **vulnérable**. En effet, chaque lettre est toujours remplacée par la même lettre chiffrée. Cela signifie que les **fréquences d'apparition** des lettres sont conservées dans le texte chiffré.
+
+Par exemple, en français, la lettre `E` est de loin la plus fréquente (environ 15% des lettres). Si dans un texte chiffré, la lettre `Z` apparaît le plus souvent, on peut supposer que `Z` remplace `E`. En répétant ce raisonnement pour les lettres les plus courantes (`E`, `A`, `S`, `I`, `N`, `T`...), on peut progressivement reconstituer la clef de substitution.
+
+Cette méthode s'appelle l'**analyse de fréquence** et elle permet de casser le chiffrement par substitution sans avoir à tester toutes les clefs.
+
+## Le masque jetable (One-Time Pad)
+
+Le chiffrement de César et le chiffrement par substitution sont tous les deux vulnérables : le premier à la force brute, le second à l'analyse de fréquence. Existe-t-il un chiffrement **parfaitement sûr** ? La réponse est oui : le **masque jetable** (ou *One-Time Pad*, OTP), inventé par Gilbert Vernam en 1917.
+
+### Principe
+
+Le masque jetable fonctionne en combinant le texte en clair avec une **clef aléatoire de même longueur** que le message, à l'aide de l'opération **XOR** (ou exclusif). Pour cela, le texte et la clef doivent d'abord être représentés en binaire.
+
+### Encodage ASCII
+
+Pour représenter du texte en binaire, on utilise l'encodage **ASCII** (*American Standard Code for Information Interchange*). Chaque caractère est associé à un nombre entre 0 et 127, lui-même représenté sur 8 bits (un octet).
+
+Voici quelques exemples :
+
+| Caractère | Code ASCII (décimal) | Code ASCII (binaire) |
+|-----------|---------------------|---------------------|
+| `A`       | 65                  | `01000001`          |
+| `B`       | 66                  | `01000010`          |
+| `H`       | 72                  | `01001000`          |
+| `e`       | 101                 | `01100101`          |
+| `i`       | 105                 | `01101001`          |
+| espace    | 32                  | `00100000`          |
+
+Ainsi, le mot `Hi` s'encode en binaire comme : `01001000 01101001`.
+
+### L'opération XOR
+
+Le **XOR** (ou exclusif, noté $\oplus$) est une opération logique sur des bits. Elle renvoie `1` si les deux bits sont **différents**, et `0` s'ils sont **identiques** :
+
+| $a$ | $b$ | $a \oplus b$ |
+|-----|-----|--------------|
+| 0   | 0   | 0            |
+| 0   | 1   | 1            |
+| 1   | 0   | 1            |
+| 1   | 1   | 0            |
+
+Une propriété essentielle du XOR est qu'il est **réversible** : si $c = t \oplus k$, alors $t = c \oplus k$. C'est cette propriété qui permet d'utiliser la même clef pour chiffrer et déchiffrer.
+
+### Exemple complet
+
+Chiffrons le message $t =$ `Hi` avec la clef $k =$ `Wp` :
+
+**1. Encodage ASCII en binaire :**
+
+| | Caractère | ASCII | Binaire |
+|---|-----------|-------|------------|
+| $t$ | `H` | 72 | `01001000` |
+| $t$ | `i` | 105 | `01101001` |
+| $k$ | `W` | 87 | `01010111` |
+| $k$ | `p` | 112 | `01110000` |
+
+**2. Chiffrement : $c = t \oplus k$ (XOR bit à bit) :**
+
+```
+  t = 01001000 01101001
+  k = 01010111 01110000
+  ⊕ ─────────────────────
+  c = 00011111 00011001
+```
+
+Le texte chiffré $c$ en binaire est `00011111 00011001`, ce qui correspond aux codes ASCII 31 et 25 (des caractères non imprimables, ce qui est normal).
+
+**3. Déchiffrement : $t = c \oplus k$ :**
+
+```
+  c = 00011111 00011001
+  k = 01010111 01110000
+  ⊕ ─────────────────────
+  t = 01001000 01101001
+```
+
+On retrouve bien `01001000` = 72 = `H` et `01101001` = 105 = `i`, soit le message original `Hi`.
+
+### Sécurité parfaite
+
+Le masque jetable est le **seul chiffrement prouvé mathématiquement incassable**, à condition de respecter trois règles strictes :
+
+1. La clef doit être **aussi longue** que le message
+2. La clef doit être **parfaitement aléatoire**
+3. La clef ne doit **jamais être réutilisée** (d'où le nom de masque *jetable*)
+
+Si ces conditions sont remplies, le texte chiffré ne révèle **aucune information** sur le texte en clair. En effet, pour un même texte chiffré, toutes les clefs possibles produisent des textes en clair différents et tous sont équiprobables. Un espion ne peut donc pas savoir lequel est le bon, même avec une puissance de calcul infinie.
+
+### Limites pratiques
+
+Malgré sa sécurité parfaite, le masque jetable est **rarement utilisé en pratique** car :
+- Il faut générer et transmettre de manière sécurisée une clef **aussi longue que le message**, ce qui est souvent plus difficile que de transmettre le message lui-même
+- Chaque clef ne peut servir qu'**une seule fois** : pour envoyer 1 Go de données, il faut 1 Go de clef
+
+Le téléphone rouge entre Washington et Moscou pendant la Guerre froide est l'un des rares exemples d'utilisation du masque jetable : des clefs étaient échangées physiquement par valise diplomatique.
+
 ## Exercices
+
+```{role} input(quiz-input)
+:right: width: 18rem; clear: right;
+:check: split lowercase
+```
 
 ### Exercice {num1}`exercice_crypto`
 Alice veut envoyer le message `RDV DEMAIN` à Bob avec le chiffrement de César. Au préalable, ils se sont échangés la clef $k=20$. Quel est le texte chiffré qu'Alice transmettra sur un canal public ?
+
+```{quiz}
+{input}`LXP XYGUCH`
+Texte chiffré :
+
+```
 
 ### Exercice {num1}`exercice_crypto`
 
 Vous connaissez le message chiffré `LSOXFOXEO`. Vous savez également qu'il a été chiffré avec César et un décalage de 10. Effectuez le déchiffrement $D_k(c) = t$ pour trouver le texte en clair.
 
+```{quiz}
+{input}`BIENVENUE`
+Texte en clair :
+
+```
 
 
 ### Exercice {num1}`exercice_crypto`
 
 Vous connaissez le texte en clair $t = $ `SECRET` ainsi que son équivalent chiffré $c = $ `WIGVIX`. Quelle est la clef $k$ utilisée?
+
+```{quiz}
+{input}`4`
+Clef $k$ :
+
+```
 
 ### Exercice {num1}`exercice_crypto`
 
@@ -144,6 +296,12 @@ c = "BPQ-ZB NRB QR ZLKKXFP I'EFPQLFOB QOXDFNRB AB AXOH MIXDRBFP IB PXDB ?"
 #Complétez ici
 ```
 
+```{quiz}
+{input}`EST-CE QUE TU CONNAIS L'HISTOIRE TRAGIQUE DE DARK PLAGUEIS LE SAGE`
+Texte en clair (sans le ?) :
+
+```
+
 ### Exercice {num1}`exercice_crypto`
 Pour cet exercice, vous n'avez pas connaissance de la clef de chiffrement utilisée avec César. Vous allez donc attaquer $c$ par force brute. Pour cela, exécutez le code Python ci-dessous. La boucle `for k in range(1, 26):` permet de tester toutes les clefs $k$ de 1 à 25.
 
@@ -152,9 +310,148 @@ Pour cet exercice, vous n'avez pas connaissance de la clef de chiffrement utilis
 ```{exec} python
 :after: cesar
 :editor: 9a44b7db-acae-47c1-a790-63c27d64e698
-c = "MZYUZFC ? BF'PYEPYOPK GZFD ALC WI ? XP DZFSLTEPK GZFD WP MZYUZFC ZF NZYDELEPK GZFD BFP N’PDE FYP MZYYP UZFCYRP, BFP UP WP GPFTWWP ZF YZY, ZF PYNZCP BFP N'PDE FYP UZFCYRP ZH TW QLFE SECP MZY ?"
+c = "MZYUZFC ? BF’PYEPYOPK GZFD ALC WI ? XP DZFSLTEPK GZFD WP MZYUZFC ZF NZYDELEPK GZFD BFP N’PDE FYP MZYYP UZFCYRP, BFP UP WP GPFTWWP ZF YZY, ZF PYNZCP BFP N’PDE FYP UZFCYRP ZH TW QLFE SECP MZY ?"
 for k in range(1, 26):
   t = cesar_dechiffrer(c, k)
   print(f"k={k} : t={t}")
+```
+
+```{quiz}
+{input}`11`
+Valeur de $k$ :
+
+```
+
+### Exercice {num1}`exercice_crypto`
+
+Le texte chiffré ci-dessous a été chiffré avec un **chiffrement par substitution** en utilisant la clef suivante :
+
+| Clair  | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z |
+|--------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Chiffré| Q | W | E | R | T | Y | U | I | O | P | A | S | D | F | G | H | J | K | L | Z | X | C | V | B | N | M |
+
+Déchiffrez le message suivant : $c =$ `WKQCG CGXL QCTM KTXLLO`
+
+```{quiz}
+{input}`BRAVO VOUS AVEZ REUSSI`
+Texte en clair :
+
+```
+
+### Exercice {num1}`exercice_crypto`
+
+Le texte chiffré ci-dessous a été chiffré avec un **chiffrement par substitution** (et non pas César). L'attaque par force brute est donc impossible. Vous allez devoir utiliser l'**analyse de fréquence** pour le déchiffrer.
+
+$$c = \text{TH HJ ETPL QPJH CA FEJW RJ WTJAS R JDDJHLPJR JDL PHEPDPQRJ YTAS RJD UJAO ETPRF RJ DJWSJL MA YJLPL YSPHWJ}$$
+
+Pour vous aider, voici les fréquences d'apparition des lettres en français (en %) :
+
+| Lettre | % | Lettre | % | Lettre | % |
+|--------|------|--------|------|--------|------|
+| E | 14.7 | S | 7.9 | R | 6.6 |
+| A | 7.6 | I | 7.5 | N | 7.1 |
+| T | 7.2 | L | 5.5 | O | 5.4 |
+| U | 6.3 | D | 3.7 | C | 3.3 |
+| P | 3.0 | M | 2.6 | V | 1.6 |
+
+Le code Python ci-dessous compte les fréquences des lettres dans le texte chiffré. Exécutez-le pour commencer votre analyse.
+
+```{exec} python
+:name: substitution
+:editor: c8f1a2b3-4d5e-6f7a-8b9c-0d1e2f3a4b5c
+c = "TH HJ ETPL QPJH CA FEJW RJ WTJAS R JDDJHLPJR JDL PHEPDPQRJ YTAS RJD UJAO ETPRF RJ DJWSJL MA YJLPL YSPHWJ"
+
+# Compter les fréquences des lettres dans le texte chiffré
+frequences = {}
+for char in c:
+    if char.isalpha():
+        frequences[char] = frequences.get(char, 0) + 1
+
+# Trier par fréquence décroissante
+total = sum(frequences.values())
+for lettre, count in sorted(frequences.items(), key=lambda x: x[1], reverse=True):
+    print(f"{lettre} : {count} fois ({count/total*100:.1f}%)")
+```
+
+Utilisez maintenant le code ci-dessous pour tester vos hypothèses de substitution. Remplacez les `?` dans le dictionnaire `clef` par les lettres en clair correspondantes au fur et à mesure de vos découvertes.
+
+```{exec} python
+:editor: d9e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a
+c = "TH HJ ETPL QPJH CA FEJW RJ WTJAS R JDDJHLPJR JDL PHEPDPQRJ YTAS RJD UJAO ETPRF RJ DJWSJL MA YJLPL YSPHWJ"
+
+# Remplacez les ? par vos hypothèses (ex: "J": "E")
+clef = {
+    "J": "?",
+    "P": "?",
+    "R": "?",
+    "D": "?",
+    "T": "?",
+    "H": "?",
+    "E": "?",
+    "L": "?",
+    "A": "?",
+    "W": "?",
+    "S": "?",
+    "Y": "?",
+    "Q": "?",
+    "F": "?",
+    "M": "?",
+    "U": "?",
+    "O": "?",
+    "K": "?",
+    "I": "?",
+}
+
+# Appliquer la substitution
+resultat = ""
+for char in c:
+    if char in clef:
+        resultat += clef[char] if clef[char] != "?" else "_"
+    else:
+        resultat += char
+print("Déchiffrement :", resultat)
+```
+
+```{quiz}
+{input}`le petit prince`
+De quel livre est tirée cette citation ?
+
+```
+
+### Exercice {num1}`exercice_crypto`
+
+Alice veut chiffrer le message $t =$ `OK` avec le masque jetable (One-Time Pad). Sa clef est $k =$ `Zr`.
+
+1. Convertissez chaque caractère de $t$ et $k$ en binaire à l'aide de la table ASCII ci-dessous
+2. Effectuez l'opération XOR bit à bit pour obtenir le texte chiffré $c$
+
+| Caractère | ASCII | Binaire | | Caractère | ASCII | Binaire |
+|-----------|-------|------------|---|-----------|-------|------------|
+| `K`       | 75    | `01001011` | | `Z`       | 90    | `01011010` |
+| `O`       | 79    | `01001111` | | `r`       | 114   | `01110010` |
+
+```{quiz}
+{input}`00010101 00111001`
+Texte chiffré $c$ (groupes de 8 bits séparés par un espace) :
+
+```
+
+### Exercice {num1}`exercice_crypto`
+
+Bob reçoit le texte chiffré $c =$ `00011011 00001010` (en binaire). Il connaît la clef $k =$ `Sc`. Effectuez le déchiffrement avec le masque jetable pour retrouver le texte en clair $t$.
+
+1. Convertissez chaque caractère de $k$ en binaire à l'aide de la table ASCII ci-dessous
+2. Effectuez l'opération XOR entre $c$ et $k$ pour obtenir $t$ en binaire
+3. Convertissez le résultat en caractères ASCII
+
+| Caractère | ASCII | Binaire |
+|-----------|-------|------------|
+| `S`       | 83    | `01010011` |
+| `c`       | 99    | `01100011` |
+
+```{quiz}
+{input}`Hi`
+Texte en clair $t$ :
+
 ```
 
