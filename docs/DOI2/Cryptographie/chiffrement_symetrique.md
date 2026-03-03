@@ -342,8 +342,6 @@ Texte en clair :
 
 Le texte chiffré ci-dessous a été chiffré avec un **chiffrement par substitution** (et non pas César). L'attaque par force brute est donc impossible. Vous allez devoir utiliser l'**analyse de fréquence** pour le déchiffrer.
 
-$$c = \text{TH HJ ETPL QPJH CA FEJW RJ WTJAS R JDDJHLPJR JDL PHEPDPQRJ YTAS RJD UJAO ETPRF RJ DJWSJL MA YJLPL YSPHWJ}$$
-
 Pour vous aider, voici les fréquences d'apparition des lettres en français (en %) :
 
 | Lettre | % | Lettre | % | Lettre | % |
@@ -359,7 +357,9 @@ Le code Python ci-dessous compte les fréquences des lettres dans le texte chiff
 ```{exec} python
 :name: substitution
 :editor: c8f1a2b3-4d5e-6f7a-8b9c-0d1e2f3a4b5c
-c = "TH HJ ETPL QPJH CA FEJW RJ WTJAS R JDDJHLPJR JDL PHEPDPQRJ YTAS RJD UJAO ETPRF RJ DJWSJL MA YJLPL YSPHWJ"
+
+c = """Furnsyp h’qeqjn njc qvn h’qj ey, yvp lujn, yvp gqmvjljsyp jgqmp, zqvn yv fjerp nyr fq Lurêo Ejprmp syj n’qttpfqjo « Kjnoujrpn Eéxypn». Çq rptrénpvoqjo yv nprtpvo wuq syj qeqfqjo yv lqyep. Eujfà fq xutjp zy zpnnjv."""
+
 
 # Compter les fréquences des lettres dans le texte chiffré
 frequences = {}
@@ -377,36 +377,44 @@ Utilisez maintenant le code ci-dessous pour tester vos hypothèses de substituti
 
 ```{exec} python
 :editor: d9e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a
-c = "TH HJ ETPL QPJH CA FEJW RJ WTJAS R JDDJHLPJR JDL PHEPDPQRJ YTAS RJD UJAO ETPRF RJ DJWSJL MA YJLPL YSPHWJ"
+c = """Furnsyp h’qeqjn njc qvn h’qj ey, yvp lujn, yvp gqmvjljsyp jgqmp, zqvn yv fjerp nyr fq Lurêo Ejprmp syj n’qttpfqjo « Kjnoujrpn Eéxypn». Çq rptrénpvoqjo yv nprtpvo wuq syj qeqfqjo yv lqyep. Eujfà fq xutjp zy zpnnjv."""
 
-# Remplacez les ? par vos hypothèses (ex: "J": "E")
+# Remplacez les ? par vos hypothèses (ex: "j": "i")
 clef = {
-    "J": "?",
-    "P": "?",
-    "R": "?",
-    "D": "?",
-    "T": "?",
-    "H": "?",
-    "E": "?",
-    "L": "?",
-    "A": "?",
-    "W": "?",
-    "S": "?",
-    "Y": "?",
-    "Q": "?",
-    "F": "?",
-    "M": "?",
-    "U": "?",
-    "O": "?",
-    "K": "?",
-    "I": "?",
+    "c": "?",
+    "e": "?",
+    "f": "?",
+    "g": "?",
+    "h": "?",
+    "j": "?",
+    "k": "?",
+    "l": "?",
+    "m": "?",
+    "n": "?",
+    "o": "?",
+    "p": "?",
+    "q": "?",
+    "r": "?",
+    "s": "?",
+    "t": "?",
+    "u": "?",
+    "v": "?",
+    "w": "?",
+    "x": "?",
+    "y": "?",
+    "z": "?",
 }
 
 # Appliquer la substitution
 resultat = ""
 for char in c:
-    if char in clef:
-        resultat += clef[char] if clef[char] != "?" else "_"
+    lower = char.lower()
+    if lower in clef:
+        remplacement = clef[lower]
+        if remplacement != "?":
+            resultat += remplacement.upper() if char.isupper() else remplacement
+        else:
+            resultat += "_"
     else:
         resultat += char
 print("Déchiffrement :", resultat)
