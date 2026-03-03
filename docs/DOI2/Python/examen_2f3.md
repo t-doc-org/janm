@@ -9,8 +9,8 @@ orphan: true
 solutions: dynamic
 ```
 
-# Examen programmationn Python - 2F3
-## Question 1 - Classement d'une course
+# Examen programmationn Python - 2BS1
+## Question 1
 Pas ici ! Répondez sur l'interface de Exam.net
 
 
@@ -45,10 +45,10 @@ print("Ventes :", ventes)
 ```
 
 
-## Question 3 - Les tuyaux de Flappybird
+## Question 3
 Pas ici ! Répondez sur l'interface de Exam.net
 
-## Question 4 - Roger et ses fraises
+## Question 4
 Pas ici ! Répondez sur l'interface de Exam.net
 
 ## Question 5 - Estimation d'oeuvres d'art
