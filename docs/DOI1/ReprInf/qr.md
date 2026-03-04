@@ -210,3 +210,36 @@ En utilisant la même méthode qu'à l'exercice précédent, décodez le texte d
   [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0],
 ], 'qr-ex2');</script>
 ```
+
+### Exercice 3
+Le code QR ci-dessous a déjà été inversé grâce à un masque, mais a été partiellement effacé. Il devrait contenir le texte "STX!". La zone contenant l'encodage a été conservée : le texte est donc encodé en ASCII.
+1. Complétez la zone contenant la longueur du texte encodé (4). Pour cela, utilisez l'outil de dessin avec du noir.
+2. Complétez les 4 zones caractères avec "STX!"" en vous aidant de la table ASCII
+3. Observez les 3 pixels donnant l'information du masque. Appliquez celui qui est adéquat. Puis, avec votre téléphone, scannez ce code QR pour vérifier qu'il contient bien "STX".
+
+```{raw} html
+<div id="qr-ex3"></div>
+<script>createQRExplorer([
+  [1,1,1,1,1,1,1,0,0,1,1,0,0,0,1,1,1,1,1,1,1],
+  [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1],
+  [1,0,1,1,1,0,1,0,1,0,1,1,1,0,1,0,1,1,1,0,1],
+  [1,0,1,1,1,0,1,0,1,1,1,0,1,0,1,0,1,1,1,0,1],
+  [1,0,1,1,1,0,1,0,1,0,0,1,0,0,1,0,1,1,1,0,1],
+  [1,0,0,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,0,0,1],
+  [1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0],
+  [1,0,1,1,1,1,1,0,0,1,0,0,0,0,1,1,1,1,1,0,0],
+  [0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,1,0,1,0,0,1,1,0,0,0,1,1,1,0,1,1,0,0,0,0],
+  [1,0,1,0,0,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,0],
+  [0,1,1,1,1,1,1,1,0,0,0,1,1,1,0,1,1,0,0,0,0],
+  [0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,1,0,0,0,0,0],
+  [1,1,1,1,1,1,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0],
+  [1,0,0,0,0,0,1,0,1,0,0,1,0,1,1,1,0,0,0,0,0],
+  [1,0,1,1,1,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0],
+  [1,0,1,1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0],
+  [1,0,1,1,1,0,1,0,1,0,0,1,1,1,0,1,1,0,0,0,0],
+  [1,0,0,0,0,0,1,0,0,1,1,0,1,0,0,0,1,0,0,0,0],
+  [1,1,1,1,1,1,1,0,1,0,0,1,1,1,0,1,1,0,0,1,0],
+], 'qr-ex3');</script>
+```

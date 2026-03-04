@@ -7,7 +7,7 @@ function createQRExplorer(qrData, containerId) {
   var SIZE = qrData.length, PIXEL_SIZE = 15;
   var root = document.getElementById(containerId);
   root.style.cssText = 'font-family:Arial,sans-serif;padding:20px;background:#f5f5f5;border-radius:8px;margin:20px 0;';
-  root.innerHTML = '<div style="display:flex;gap:20px;align-items:center;justify-content:center;"><div><div class="qr-grid" style="display:inline-block;border:2px solid #333;background:white;image-rendering:pixelated;"></div></div><div style="min-width:280px;display:flex;flex-direction:column;justify-content:center;gap:15px;"><div><label style="font-size:12px;font-weight:bold;">Outil :</label><div style="display:flex;gap:5px;margin-top:5px;"><button class="btn-draw" style="flex:1;padding:6px;background:#4CAF50;color:white;cursor:pointer;border:none;border-radius:4px;font-size:11px;">Dessin</button><button class="btn-erase" style="flex:1;padding:6px;background:#ccc;color:#333;cursor:pointer;border:none;border-radius:4px;font-size:11px;">Gomme</button></div></div><div class="color-section"><label style="font-size:12px;color:#333;display:block;">Couleur de sélection :</label><input class="color-picker" type="color" value="#4CAF50" style="width:40px;height:30px;cursor:pointer;border:1px solid #999;margin-top:5px;"></div><div><label style="font-size:12px;font-weight:bold;">Masques :</label><div class="mask-selector" style="margin-top:5px;display:flex;flex-wrap:wrap;gap:4px;"></div></div></div></div>';
+  root.innerHTML = '<div style="display:flex;gap:20px;align-items:center;justify-content:center;"><div><div class="qr-grid" style="display:inline-block;border:2px solid #333;background:white;image-rendering:pixelated;"></div></div><div style="min-width:280px;display:flex;flex-direction:column;justify-content:center;gap:15px;"><div><label style="font-size:12px;font-weight:bold;">Outil :</label><div style="display:flex;gap:5px;margin-top:5px;"><button class="btn-draw" style="flex:1;padding:6px;background:#4CAF50;color:white;cursor:pointer;border:none;border-radius:4px;font-size:11px;">Dessin</button><button class="btn-erase" style="flex:1;padding:6px;background:#ccc;color:#333;cursor:pointer;border:none;border-radius:4px;font-size:11px;">Gomme</button></div></div><div class="color-section"><label style="font-size:12px;color:#333;display:block;">Couleur de sélection :</label><div style="display:flex;align-items:center;gap:8px;margin-top:5px;"><input class="color-picker" type="color" value="#4CAF50" style="width:40px;height:30px;cursor:pointer;border:1px solid #999;"><input class="opacity-slider" type="range" min="10" max="100" value="50" style="width:80px;"><span class="opacity-value" style="font-size:11px;color:#666;min-width:30px;">50%</span></div></div><div><label style="font-size:12px;font-weight:bold;">Masques :</label><div class="mask-selector" style="margin-top:5px;display:flex;flex-wrap:wrap;gap:4px;"></div></div></div></div>';
   var masks = [
     function(i,j){return(i+j)%2===0;},
     function(i,j){return i%2===0;},
@@ -24,6 +24,7 @@ function createQRExplorer(qrData, containerId) {
   var ctx = canvas.getContext('2d');
   var btnDraw = root.querySelector('.btn-draw'), btnErase = root.querySelector('.btn-erase');
   var colorSection = root.querySelector('.color-section'), colorPicker = root.querySelector('.color-picker');
+  var opacitySlider = root.querySelector('.opacity-slider'), opacityValue = root.querySelector('.opacity-value');
 
   function isProtected(i, j) {
     if ((i < 9 && j < 9) || (i < 9 && j >= SIZE - 8) || (i >= SIZE - 8 && j < 9)) return true;
@@ -43,7 +44,8 @@ function createQRExplorer(qrData, containerId) {
         ctx.fillStyle = p ? 'black' : 'white';
         ctx.fillRect(j * PIXEL_SIZE, i * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
         if (selectedPixels.has(i * SIZE + j)) {
-          ctx.fillStyle = selectedPixels.get(i * SIZE + j) + '80';
+          var opHex = Math.round((parseInt(opacitySlider.value) / 100) * 255).toString(16).padStart(2, '0');
+          ctx.fillStyle = selectedPixels.get(i * SIZE + j) + opHex;
           ctx.fillRect(j * PIXEL_SIZE, i * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
         }
         ctx.strokeStyle = '#ddd'; ctx.lineWidth = 0.5;
@@ -150,6 +152,11 @@ function createQRExplorer(qrData, containerId) {
     });
     if (maskIdx === -1) btn.click();
     maskContainer.appendChild(btn);
+  });
+
+  opacitySlider.addEventListener('input', function() {
+    opacityValue.textContent = opacitySlider.value + '%';
+    drawQR();
   });
 
   btnDraw.addEventListener('click', function() {
