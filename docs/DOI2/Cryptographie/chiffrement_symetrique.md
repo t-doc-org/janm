@@ -340,84 +340,65 @@ Texte en clair :
 
 ### Exercice {num1}`exercice_crypto`
 
-Le texte chiffré ci-dessous a été chiffré avec un **chiffrement par substitution** (et non pas César). L'attaque par force brute est donc impossible. Vous allez devoir utiliser l'**analyse de fréquence** pour le déchiffrer.
-
-Pour vous aider, voici les fréquences d'apparition des lettres en français (en %) :
-
-| Lettre | % | Lettre | % | Lettre | % |
-|--------|------|--------|------|--------|------|
-| E | 14.7 | S | 7.9 | R | 6.6 |
-| A | 7.6 | I | 7.5 | N | 7.1 |
-| T | 7.2 | L | 5.5 | O | 5.4 |
-| U | 6.3 | D | 3.7 | C | 3.3 |
-| P | 3.0 | M | 2.6 | V | 1.6 |
-
-Le code Python ci-dessous compte les fréquences des lettres dans le texte chiffré. Exécutez-le pour commencer votre analyse.
+Le texte chiffré ci-dessous a été chiffré avec un **chiffrement par substitution**. L’attaque par force brute est donc impossible. Vous allez devoir utiliser l’**analyse de fréquence** pour le déchiffrer.
 
 ```{exec} python
 :name: substitution
-:editor: c8f1a2b3-4d5e-6f7a-8b9c-0d1e2f3a4b5c
+:class: hidden
+def frequences(texte):
+    freq = {}
+    for char in texte:
+        if char.isalpha():
+            freq[char] = freq.get(char, 0) + 1
+    total = sum(freq.values())
+    for lettre, count in sorted(freq.items(), key=lambda x: x[1], reverse=True):
+        print(f"{lettre} : {count} fois ({count/total*100:.1f}%)")
 
-c = """Furnsyp h’qeqjn njc qvn h’qj ey, yvp lujn, yvp gqmvjljsyp jgqmp, zqvn yv fjerp nyr fq Lurêo Ejprmp syj n’qttpfqjo « Kjnoujrpn Eéxypn». Çq rptrénpvoqjo yv nprtpvo wuq syj qeqfqjo yv lqyep. Eujfà fq xutjp zy zpnnjv."""
-
-
-# Compter les fréquences des lettres dans le texte chiffré
-frequences = {}
-for char in c:
-    if char.isalpha():
-        frequences[char] = frequences.get(char, 0) + 1
-
-# Trier par fréquence décroissante
-total = sum(frequences.values())
-for lettre, count in sorted(frequences.items(), key=lambda x: x[1], reverse=True):
-    print(f"{lettre} : {count} fois ({count/total*100:.1f}%)")
+def dechiffrer_substitution(texte, clef):
+    resultat = ""
+    for char in texte:
+        lower = char.lower()
+        if lower in clef:
+            remplacement = clef[lower]
+            if remplacement != "_":
+                resultat += remplacement.upper() if char.isupper() else remplacement
+            else:
+                resultat += "_"
+        elif lower.isalpha():
+            resultat += "_"
+        else:
+            resultat += char
+    print("Déchiffrement :", resultat)
 ```
 
-Utilisez maintenant le code ci-dessous pour tester vos hypothèses de substitution. Remplacez les `?` dans le dictionnaire `clef` par les lettres en clair correspondantes au fur et à mesure de vos découvertes.
+Le code Python ci-dessous compte les fréquences des lettres dans le texte chiffré. Exécutez-le et comparez les fréquences obtenues avec celles des lettres en français pour commencer votre analyse.
+
+```{image} images/freq_fr.gif
+:width: 80%
+:alt: Fréquence d'apparition des lettres en français
+:align: center
+```
+```{exec} python
+:after: substitution
+:editor: c8f1a2b3-4d5e-6f7a-8b9c-0d1e2f3a4b5c
+c = """Furnsyp h’qeqjn njc qvn h’qj ey, yvp lujn, yvp gqmvjljsyp jgqmp, zqvn yv fjerp nyr fq Lurpo Ejprmp syj n’qttpfqjo « Kjnoujrpn Epxypn ». Xq rptrpnpvoqjo yv nprtpvo wuq syj qeqfqjo yv lqyep. Eujfq fq xutjp zy zpnnjv. Uv zjnqjo zqvn fp fjerp : « Fpn nprtpvon wuqn qeqfpvo fpyr trujp ouyo pvojprp, nqvn fq gqxkpr. Pvnyjop jfn vp tpyepvo tfyn wuympr po jfn zurgpvo tpvzqvo fpn njc gujn zp fpyr zjmpnojuv. » H’qj qfurn wpqyxuyt rplfpxkj nyr fpn qepvoyrpn zp fq hyvmfp po, q guv ouyr, h’qj rpynnj, qepx yv xrqbuv zp xuyfpyr, q orqxpr guv trpgjpr zpnnjv."""
+frequences(c)
+```
+
+Utilisez maintenant le code ci-dessous pour tester vos hypothèses de substitution. Complétez le dictionnaire `k` avec vos découvertes (ex: `"z": "e"` signifierait que `z` dans le texte chiffré remplace le `e` du texte en clair). Les lettres non encore devinées apparaîtront comme `_`.
 
 ```{exec} python
+:after: substitution
 :editor: d9e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a
-c = """Furnsyp h’qeqjn njc qvn h’qj ey, yvp lujn, yvp gqmvjljsyp jgqmp, zqvn yv fjerp nyr fq Lurêo Ejprmp syj n’qttpfqjo « Kjnoujrpn Eéxypn». Çq rptrénpvoqjo yv nprtpvo wuq syj qeqfqjo yv lqyep. Eujfà fq xutjp zy zpnnjv."""
-
-# Remplacez les ? par vos hypothèses (ex: "j": "i")
-clef = {
-    "c": "?",
-    "e": "?",
-    "f": "?",
-    "g": "?",
-    "h": "?",
-    "j": "?",
-    "k": "?",
-    "l": "?",
-    "m": "?",
-    "n": "?",
-    "o": "?",
-    "p": "?",
-    "q": "?",
-    "r": "?",
-    "s": "?",
-    "t": "?",
-    "u": "?",
-    "v": "?",
-    "w": "?",
-    "x": "?",
-    "y": "?",
-    "z": "?",
+c = """Furnsyp h’qeqjn njc qvn h’qj ey, yvp lujn, yvp gqmvjljsyp jgqmp, zqvn yv fjerp nyr fq Lurpo Ejprmp syj n’qttpfqjo « Kjnoujrpn Epxypn ». Xq rptrpnpvoqjo yv nprtpvo wuq syj qeqfqjo yv lqyep. Eujfq fq xutjp zy zpnnjv. Uv zjnqjo zqvn fp fjerp : « Fpn nprtpvon wuqn qeqfpvo fpyr trujp ouyo pvojprp, nqvn fq gqxkpr. Pvnyjop jfn vp tpyepvo tfyn wuympr po jfn zurgpvo tpvzqvo fpn njc gujn zp fpyr zjmpnojuv. » H’qj qfurn wpqyxuyt rplfpxkj nyr fpn qepvoyrpn zp fq hyvmfp po, q guv ouyr, h’qj rpynnj, qepx yv xrqbuv zp xuyfpyr, q orqxpr guv trpgjpr zpnnjv."""
+k = {
+    "a": "_", "b": "_", "c": "_", "d": "_", "e": "_", "f": "_",
+    "g": "_", "h": "_", "i": "_", "j": "_", "k": "_", "l": "_",
+    "m": "_", "n": "_", "o": "_", "p": "_", "q": "_", "r": "_",
+    "s": "_", "t": "_", "u": "_", "v": "_", "w": "_", "x": "_",
+    "y": "_", "z": "_"
 }
-
-# Appliquer la substitution
-resultat = ""
-for char in c:
-    lower = char.lower()
-    if lower in clef:
-        remplacement = clef[lower]
-        if remplacement != "?":
-            resultat += remplacement.upper() if char.isupper() else remplacement
-        else:
-            resultat += "_"
-    else:
-        resultat += char
-print("Déchiffrement :", resultat)
+dechiffrer_substitution(c, k)
 ```
 
 ```{quiz}
