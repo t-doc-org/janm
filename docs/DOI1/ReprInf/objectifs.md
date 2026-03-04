@@ -38,6 +38,7 @@
 
 Avec une documentation adéquate, être capable de :
 
+- Identifier les différentes zones d'un code QR et expliquer leur signification
 - Trouver quel masque doit être appliqué au code QR étant donné la liste des masques
 - Déterminer la longueur du mot encodé dans le code QR
 - Décoder les caractères d'un code QR à l'aide d'une table ASCII et des schémas donnant l'ordre de lecture
