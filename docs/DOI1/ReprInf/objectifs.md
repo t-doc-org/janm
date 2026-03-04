@@ -38,9 +38,7 @@
 
 Avec une documentation adéquate, être capable de :
 
-- Trouver quel masque doit être appliqué au code QR
-- Appliquer le masque au code QR en inversant les pixels adéquats
-- Trouver l'encodage des caractères du code QR
-- Trouver la longueur du mot encodé dans le code QR
-- Décoder les caractères composant le code QR
+- Trouver quel masque doit être appliqué au code QR étant donné la liste des masques
+- Déterminer la longueur du mot encodé dans le code QR
+- Décoder les caractères d'un code QR à l'aide d'une table ASCII et des schémas donnant l'ordre de lecture
 
