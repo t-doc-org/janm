@@ -20,6 +20,9 @@ exec:
       gift_red.png:
       lamp.png:
       trampoline.png:
+      brick.png:
+      brick_red.png:
+      brick_green.png:
 
 
 versions:
