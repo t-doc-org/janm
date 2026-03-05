@@ -21,6 +21,7 @@ exec:
       gift_yellow.png:
       gift_red.png:
       trampoline.png:
+      landscape.jpg:
 
 versions:
   pyodide: 0.27.7
