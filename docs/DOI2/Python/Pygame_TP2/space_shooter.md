@@ -25,6 +25,9 @@ exec:
       trampoline.png:
       megaman.ogg:
       futuriste.ogg:
+      winners.ogg:
+      sad.ogg:
+      yoshi.ogg:
 
 
 versions:

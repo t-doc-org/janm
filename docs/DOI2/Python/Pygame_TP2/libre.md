@@ -13,6 +13,9 @@ exec:
       son.ogg:
       megaman.ogg:
       futuriste.ogg:
+      winners.ogg:
+      sad.ogg:
+      yoshi.ogg:
 
 versions:
   pyodide: 0.27.7
