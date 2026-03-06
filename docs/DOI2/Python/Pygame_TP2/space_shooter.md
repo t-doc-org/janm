@@ -23,6 +23,8 @@ exec:
       gift_red.png:
       laser_enemy.png:
       trampoline.png:
+      megaman.ogg:
+      futuriste.ogg:
 
 
 versions:

@@ -11,6 +11,8 @@ exec:
       tuyau_haut.png:
       son.mp3:
       son.ogg:
+      megaman.ogg:
+      futuriste.ogg:
 
 versions:
   pyodide: 0.27.7

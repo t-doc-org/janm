@@ -23,6 +23,8 @@ exec:
       trampoline.png:
       landscape.jpg:
       skull.png:
+      megaman.ogg:
+      futuriste.ogg:
 
 versions:
   pyodide: 0.27.7

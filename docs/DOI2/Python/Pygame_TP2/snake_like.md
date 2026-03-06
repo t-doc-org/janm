@@ -23,6 +23,8 @@ exec:
       brick.png:
       brick_red.png:
       brick_green.png:
+      megaman.ogg:
+      futuriste.ogg:
 
 
 versions:
