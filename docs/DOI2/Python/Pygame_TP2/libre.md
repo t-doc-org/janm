@@ -16,6 +16,8 @@ exec:
       winners.ogg:
       sad.ogg:
       yoshi.ogg:
+      yoshi2.ogg:
+      MARIO.png:
 
 versions:
   pyodide: 0.27.7
