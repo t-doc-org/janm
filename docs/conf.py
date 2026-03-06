@@ -9,7 +9,7 @@ license = 'CC-BY-NC-SA-4.0'
 language = 'fr'
 
 html_theme_options = {
-    # 'repository_url': 'https://github.com/t-doc-org/janm',
+    'repository_url': 'https://github.com/t-doc-org/janm',
     # Désactivation globale des boutons Précédent/Suivant gérée via CSS
 }
 
