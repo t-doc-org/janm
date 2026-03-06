@@ -114,6 +114,28 @@ class Timer(pygame.time.Clock):
         else:
             return f"{(self.end_time - animation_time()) / 1000:.2f}s"
 
+class Sound:
+    def __init__(self, file_path):
+        if not pygame.mixer.get_init():
+            pygame.mixer.init()
+        pygame.mixer.music.load(file_path)
+
+    def play(self, loops=0):
+        pygame.mixer.music.play(loops)
+
+    def pause(self):
+        pygame.mixer.music.pause()
+
+    def unpause(self):
+        pygame.mixer.music.unpause()
+
+    def stop(self):
+        pygame.mixer.music.stop()
+
+    def set_volume(self, volume):
+        pygame.mixer.music.set_volume(volume)
+
+
 def get_pressed_keys():
     pressed_list = []
     keys = pygame.key.get_pressed()

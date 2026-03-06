@@ -9,6 +9,8 @@ exec:
       roger.png:
       tuyau_bas.png:
       tuyau_haut.png:
+      son.mp3:
+      son.ogg:
 
 versions:
   pyodide: 0.27.7
