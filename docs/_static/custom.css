@@ -9,10 +9,11 @@ nav.bd-prev-next,
 }
 
 /* Optionnel: réduire l'espace en bas si la zone était réservée */
+/*
 main.bd-content #main-content {
   padding-bottom: 1rem;
 }
 
 
- footer, .bd-footer { display: none !important; } 
+ footer, .bd-footer { display: none !important; } */
 

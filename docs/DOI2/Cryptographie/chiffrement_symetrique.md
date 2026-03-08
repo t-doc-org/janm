@@ -121,13 +121,13 @@ Voici quelques exemples :
 | Caractère | Code ASCII (décimal) | Code ASCII (binaire) |
 |-----------|---------------------|---------------------|
 | `A`       | 65                  | `01000001`          |
-| `B`       | 66                  | `01000010`          |
-| `H`       | 72                  | `01001000`          |
+| `L`       | 76                  | `01001100`          |
 | `e`       | 101                 | `01100101`          |
-| `i`       | 105                 | `01101001`          |
+| `n`       | 110                 | `01101110`          |
+| `u`       | 117                 | `01110101`          |
 | espace    | 32                  | `00100000`          |
 
-Ainsi, le mot `Hi` s'encode en binaire comme : `01001000 01101001`.
+Ainsi, le mot `Lune` s'encode en binaire comme : `01001100 01110101 01101110 01100101`.
 
 ### L'opération XOR
 
@@ -144,38 +144,42 @@ Une propriété essentielle du XOR est qu'il est **réversible** : si $c = t \op
 
 ### Exemple complet
 
-Chiffrons le message $t =$ `Hi` avec la clef $k =$ `Wp` :
+Chiffrons le message $t =$ `Lune` avec la clef $k =$ `Braf` :
 
 **1. Encodage ASCII en binaire :**
 
 | | Caractère | ASCII | Binaire |
 |---|-----------|-------|------------|
-| $t$ | `H` | 72 | `01001000` |
-| $t$ | `i` | 105 | `01101001` |
-| $k$ | `W` | 87 | `01010111` |
-| $k$ | `p` | 112 | `01110000` |
+| $t$ | `L` | 76 | `01001100` |
+| $t$ | `u` | 117 | `01110101` |
+| $t$ | `n` | 110 | `01101110` |
+| $t$ | `e` | 101 | `01100101` |
+| $k$ | `B` | 66 | `01000010` |
+| $k$ | `r` | 114 | `01110010` |
+| $k$ | `a` | 97 | `01100001` |
+| $k$ | `f` | 102 | `01100110` |
 
 **2. Chiffrement : $c = t \oplus k$ (XOR bit à bit) :**
 
 ```
-  t = 01001000 01101001
-  k = 01010111 01110000
-  ⊕ ─────────────────────
-  c = 00011111 00011001
+  t = 01001100 01110101 01101110 01100101
+  k = 01000010 01110010 01100001 01100110
+  ⊕ ─────────────────────────────────────────
+  c = 00001110 00000111 00001111 00000011
 ```
 
-Le texte chiffré $c$ en binaire est `00011111 00011001`, ce qui correspond aux codes ASCII 31 et 25 (des caractères non imprimables, ce qui est normal).
+Le texte chiffré $c$ en binaire est `00001110 00000111 00001111 00000011`, ce qui correspond aux codes ASCII 14, 7, 15 et 3 (des caractères non imprimables, ce qui est normal).
 
 **3. Déchiffrement : $t = c \oplus k$ :**
 
 ```
-  c = 00011111 00011001
-  k = 01010111 01110000
-  ⊕ ─────────────────────
-  t = 01001000 01101001
+  c = 00001110 00000111 00001111 00000011
+  k = 01000010 01110010 01100001 01100110
+  ⊕ ─────────────────────────────────────────
+  t = 01001100 01110101 01101110 01100101
 ```
 
-On retrouve bien `01001000` = 72 = `H` et `01101001` = 105 = `i`, soit le message original `Hi`.
+On retrouve bien `01001100` = 76 = `L`, `01110101` = 117 = `u`, `01101110` = 110 = `n` et `01100101` = 101 = `e`, soit le message original `Lune`.
 
 ### Sécurité parfaite
 
