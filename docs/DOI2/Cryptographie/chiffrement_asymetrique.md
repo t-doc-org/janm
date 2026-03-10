@@ -193,16 +193,16 @@ $d$ :
 **d)** Quelle est la clef publique ?
 
 ```{quiz}
-{input}`(143, 7)`
-Clef publique $(n, e)$ :
+{input}`(143 7)`
+Clef publique $(n$ $e)$ pas de virgule:
 
 ```
 
 **e)** Quelle est la clef privée ?
 
 ```{quiz}
-{input}`(143, 103)`
-Clef privée $(n, d)$ :
+{input}`(143 103)`
+Clef privée $(n$ $d)$ pas de virgule :
 
 ```
 
