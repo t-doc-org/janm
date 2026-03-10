@@ -194,7 +194,7 @@ $d$ :
 
 ```{quiz}
 {input}`(143 7)`
-Clef publique $(n$ $e)$ pas de virgule:
+Clef publique $(n$ $e)$ sans virgule:
 
 ```
 
@@ -202,7 +202,7 @@ Clef publique $(n$ $e)$ pas de virgule:
 
 ```{quiz}
 {input}`(143 103)`
-Clef privée $(n$ $d)$ pas de virgule :
+Clef privée $(n$ $d)$ sans virgule :
 
 ```
 
