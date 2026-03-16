@@ -293,8 +293,6 @@ Notez la balise qui indique:
     ... la fin d'un paragraphe?
 7.  {input}`{"<title>": true}`
     ... le début du titre de la page indiqué dans l'onglet?
-8.  {input}`{"<meta charset=\"utf-8\">": true, "<meta charset=\"UTF-8\">": true}`
-    ... que l'encodage utilisé est l'`utf-8`?
 ```
 
 ## Exercice {num2}`exercice`
