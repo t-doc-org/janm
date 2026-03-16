@@ -88,11 +88,7 @@ Rendez-vous au tableau et inscrivez votre nom et votre clef **publique** $(n, e)
 
 $$c = t^{e_{dest}} \mod n_{dest}$$
 
-**c)** Transmettez votre message sur un papier :
-
-> De : _______ → Pour : _______
->
-> Message chiffré : ___ , ___ , ___ , ___
+**c)** Complétez le papier distribué et transmettez-le à votre destinataire.
 
 ---
 
@@ -112,68 +108,54 @@ $$t = c^d \mod n$$
 
 ## Étape 5 : Mais qui a vraiment envoyé ce message ?
 
-Vous avez reçu un message signé du nom d'un camarade. Mais **comment être sûr** que c'est bien cette personne qui l'a envoyé ? N'importe qui aurait pu écrire un faux nom sur le papier et chiffrer un message avec la clef publique du destinataire. Celle-ci est au tableau, visible par tous.
+Vous avez reçu un message avec un nom d'expéditeur écrit dessus. Mais **comment être sûr** que c'est bien cette personne qui l'a envoyé ? N'importe qui aurait pu écrire un faux nom sur le papier et chiffrer un message avec la clef publique du destinataire — celle-ci est au tableau, visible par tous.
 
-### Exercice 4 : L'imposteur
-
-**a)** Envoyez un message chiffré à un camarade **en vous faisant passer pour quelqu'un d'autre**. Écrivez un faux nom d'expéditeur sur le papier.
-
-**b)** Le destinataire peut-il détecter la supercherie ? Pourquoi ?
-
-```{solution}
-Non, il ne peut pas. Le chiffrement RSA garantit la **confidentialité** (seul le destinataire peut lire le message), mais il ne garantit pas l'**authenticité** (n'importe qui peut chiffrer avec une clef publique). Le destinataire n'a aucun moyen de vérifier qui a réellement écrit le message.
-```
+Le chiffrement RSA garantit la **confidentialité** (seul le destinataire peut lire), mais il ne garantit pas l'**authenticité** de l'expéditeur.
 
 ### La signature numérique
 
-Pour prouver son identité, l'expéditeur peut **signer** son message en utilisant sa **clef privée**. Puisque seul l'expéditeur connaît sa clef privée, personne d'autre ne peut produire cette signature.
+Pour prouver son identité, l'expéditeur peut produire une **signature** en utilisant sa **clef privée**. Puisque seul l'expéditeur connaît sa clef privée, personne d'autre ne peut produire cette signature.
 
-Le principe est simple : on applique RSA « à l'envers ».
+Le principe : on applique RSA « à l'envers ». L'expéditeur signe sa propre clef publique $e$ avec sa clef privée $d$. En pratique, c'est le même principe que celui utilisé par les **certificats** sur Internet : une signature prouve que quelqu'un possède bien la clef privée correspondant à une clef publique.
 
 **Signer** (l'expéditeur utilise sa clef **privée**) :
 
-$$s = t^{d_{exp}} \mod n_{exp}$$
+$$s = e_{exp}^{d_{exp}} \mod n_{exp}$$
 
-**Vérifier** (le destinataire utilise la clef **publique** de l'expéditeur) :
+**Vérifier** (le destinataire utilise la clef **publique** de l'expéditeur, trouvée au tableau) :
 
-$$t_{vérifié} = s^{e_{exp}} \mod n_{exp}$$
+$$e_{vérifié} = s^{e_{exp}} \mod n_{exp}$$
 
-Si $t_{vérifié}$ correspond au message déchiffré, alors le message vient bien de l'expéditeur.
+Si $e_{vérifié} = e_{exp}$, alors l'expéditeur possède bien la clef privée correspondante. Il est bien celui qu'il prétend être.
 
-### Exercice 5 : Envoyer un message signé
+### Exercice 4 : Envoyer un message signé
 
-**a)** Choisissez un destinataire et **un seul caractère** à envoyer (pour limiter les calculs).
+**a)** Choisissez un destinataire et un message de 2-5 caractères à envoyer.
 
 **b)** Convertissez le caractère en code ASCII (valeur $t$).
 
 **c)** **Chiffrez** avec la clef publique du destinataire : $c = t^{e_{dest}} \mod n_{dest}$
 
-**d)** **Signez** avec votre clef privée : $s = t^{d_{vous}} \mod n_{vous}$
+**d)** **Signez** votre clef publique $e$ avec votre clef privée : $s = e_{vous}^{d_{vous}} \mod n_{vous}$
 
-**e)** Transmettez le tout sur un papier :
+**e)** Complétez le papier distribué (avec la signature cette fois) et transmettez-le à votre destinataire.
 
-> De : _______ → Pour : _______
->
-> Message chiffré : $c =$ ___
->
-> Signature : $s =$ ___
-
-### Exercice 6 : Vérifier une signature
+### Exercice 5 : Vérifier une signature
 
 **a)** Déchiffrez le message reçu avec votre clef privée : $t = c^d \mod n$
 
 **b)** Vérifiez la signature avec la clef **publique** de l'expéditeur (au tableau) :
 
-$$t_{vérifié} = s^{e_{exp}} \mod n_{exp}$$
+$$e_{vérifié} = s^{e_{exp}} \mod n_{exp}$$
 
-**c)** Comparez $t$ et $t_{vérifié}$. Sont-ils identiques ?
+**c)** Comparez $e_{vérifié}$ avec le $e$ de l'expéditeur au tableau. Sont-ils identiques ?
 
 **d)** Si oui, vous avez la garantie que :
 - Le message est **confidentiel** : seul vous pouvez le lire
-- Le message est **authentique** : il vient bien de l'expéditeur indiqué
+- Le message est **authentique** : seul le possesseur de la clef privée correspondante a pu produire cette signature
 
 **e)** Un imposteur pourrait-il produire une signature valide au nom de quelqu'un d'autre ? Pourquoi ?
 
 ```{solution}
-Non. Pour signer au nom de quelqu'un, il faudrait connaître sa clef **privée** $d$. Or seul le propriétaire de la clef la connaît. L'imposteur peut écrire un faux nom, mais il ne peut pas produire une signature que la clef publique de la vraie personne pourrait vérifier. La vérification échouerait car $t_{vérifié} \neq t$.
+Non. Pour produire la signature, il faudrait calculer $e^{d} \mod n$, ce qui nécessite de connaître la clef **privée** $d$. Or seul le propriétaire la connaît. L'imposteur peut écrire un faux nom, mais la vérification échouerait : $e_{vérifié} \neq e_{exp}$.
 ```
