@@ -1,19 +1,16 @@
----
-orphan: true
----
-
-<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
-<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+% Copyright 2025 Maxime Jan <maxime.jan@edufr.ch>
+% SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ```{metadata}
+orphan: true
 solutions: dynamic
 ```
+
 ```{exec} sql
 :name: ikariam-create-all
 :include: databases/ikariam.sql
 :class: hidden
 :when: never
-
 ```
 
 ```{exec} sql
