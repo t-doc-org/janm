@@ -1,6 +1,3 @@
-```{metadata}
-solutions: dynamic
-```
 # Boucles conditionnelles
 
 ## Qu'est-ce qu'une boucle conditionnelle ?

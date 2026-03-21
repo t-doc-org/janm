@@ -3,7 +3,6 @@
 
 ```{metadata}
 orphan: true
-solutions: dynamic
 ```
 
 # Examen programmationn Python 2 - rattrapage

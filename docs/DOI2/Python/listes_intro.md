@@ -2,7 +2,6 @@
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
 ```{metadata}
-solutions: dynamic
 exec:
   python:
     files:

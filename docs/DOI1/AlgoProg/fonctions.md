@@ -1,6 +1,3 @@
-```{metadata}
-solutions: dynamic
-```
 # Fonctions
 
 ## Qu'est-ce qu'une fonction ?

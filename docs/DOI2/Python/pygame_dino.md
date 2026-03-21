@@ -1,5 +1,4 @@
 ```{metadata}
-solutions: dynamic
 exec:
   python:
     packages: [numpy, pygame-ce]
@@ -7,12 +6,9 @@ exec:
       cactus.png:
       t-rex.png:
 
-
 versions:
   pyodide: 0.27.7
 ```
-
-
 
 ```{exec} python
 :name: setup

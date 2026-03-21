@@ -1,5 +1,9 @@
 # Représentation des couleurs
 
+```{metadata}
+solutions: show
+```
+
 ## La synthèse additive et les pixels
 
 Sur un écran d'ordinateur, chaque pixel est composé de trois sous-pixels qui émettent respectivement de la lumière rouge (R pour *Red*), verte (G pour *Green*), et bleue (B pour *Blue*). En modulant l'intensité de chacun de ces trois sous-pixels, on peut créer une grande variété de couleurs grâce au principe de **synthèse additive** : lorsque plusieurs lumières colorées se superposent, leurs couleurs s'additionnent.

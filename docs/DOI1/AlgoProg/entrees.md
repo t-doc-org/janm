@@ -1,6 +1,3 @@
-```{metadata}
-solutions: dynamic
-```
 # Entrées utilisateur
 
 ## Qu'est-ce qu'une entrée utilisateur ?

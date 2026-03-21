@@ -3,8 +3,8 @@
 
 ```{metadata}
 orphan: true
-solutions: dynamic
 ```
+
 ```{exec} sql
 :name: sql-insert-bank
 :class: hidden

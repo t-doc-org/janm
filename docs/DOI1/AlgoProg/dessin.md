@@ -1,10 +1,6 @@
 % Copyright 2025 Caroline Blank <caro@c-space.org> & Maxime Jan
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
-```{metadata}
-solutions: dynamic
-```
-
 # Dessiner avec Python
 
 Python peut être utilisé pour faire des dessins.

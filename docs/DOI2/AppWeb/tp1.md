@@ -1,5 +1,9 @@
 # TP Découverte JavaScript
 
+```{metadata}
+solutions: show
+```
+
 ## Introduction
 Dans le cours d'informatique de 1ère année, vous avez appris les bases des langages HTML et CSS pour créer des pages webs. Cependant, les sites que vous avez créés ne correspondent pas tout à fait à ceux que vous visitez quotidiennement aujourd'hui. En effet, HTML et CSS vous ont permis de créer des pages **statiques**, c'est-à-dire des pages contenant des images, des textes, ou des vidéos, mais sans interactivité avec l'utilisateur. Pour rendre les pages Webs **dynamiques**, et donc y ajouter des fonctionnalités comme des formulaires interactifs, des boutons qui réagissent aux clics, ou des éléments qui se mettent à jour sans recharger la page, il faut utiliser un langage de programmation comme **JavaScript**. Dans ce TP, vous allez donc apprendre les bases de JavaScript pour créer une page Web dynamique.
 

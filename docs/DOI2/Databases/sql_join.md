@@ -1,15 +1,6 @@
 <!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
-```{metadata}
-solutions: dynamic
-```
-
-:orphan:
-:nosidebar:
-
-
-
 ```{exec} sql
 :name: sql-create-insert-all
 :when: never

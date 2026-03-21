@@ -1,13 +1,7 @@
 <!-- Copyright 2024 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
-```{metadata}
-solutions: dynamic
-```
-
 # Chiffrement asymétrique
-
-
 
 Dans le chiffrement symétrique, Alice et Bob doivent se partager une **même clef secrète** par un canal sécurisé avant de pouvoir communiquer. Mais comment faire si Alice et Bob ne se sont jamais rencontrés ? Comment transmettre cette clef secrète sans qu'un espion ne l'intercepte ?
 

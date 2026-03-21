@@ -10,6 +10,8 @@ language = 'fr'
 
 html_theme_options = {
     'repository_url': 'https://github.com/t-doc-org/janm',
+    'show_navbar_depth': 1,
+    'show_toc_level': 2,
     # Désactivation globale des boutons Précédent/Suivant gérée via CSS
 }
 
@@ -35,4 +37,8 @@ html_sidebars = {
     'DOI2/Python/examen_2f2' : [],
     'DOI2/Python/examen_2f3' : [],
     'DOI2/Python/pygame_doc' : [],
+}
+
+metadata = {
+    'solutions': 'dynamic',
 }

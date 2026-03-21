@@ -1,6 +1,3 @@
-```{metadata}
-solutions: dynamic
-```
 # Fonctions avec valeur de retour
 
 ## Qu'est-ce qu'une valeur de retour ?

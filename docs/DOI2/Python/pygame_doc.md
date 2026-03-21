@@ -1,10 +1,6 @@
 % Copyright 2025 Caroline Blank <caro@c-space.org> & Maxime Jan
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
-```{metadata}
-solutions: dynamic
-```
-
 # Pygame - Documentation
 
 Ce module simplifie l'utilisation de Pygame pour créer des jeux en 2D. Il fournit des classes et fonctions facilitant la gestion des acteurs, du texte, des timers et des interactions.

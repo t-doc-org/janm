@@ -1,6 +1,3 @@
-```{metadata}
-solutions: dynamic
-```
 # Fonctions sans valeur de retour
 
 ## Qu'est-ce qu'une fonction ?

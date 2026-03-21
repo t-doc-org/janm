@@ -5,10 +5,6 @@
 :language: html
 ```
 
-```{metadata}
-solutions: dynamic
-```
-
 # HTML
 
 Le format **HTML** (**H**yper**T**ext **M**arkup **L**anguage) est un format qui
