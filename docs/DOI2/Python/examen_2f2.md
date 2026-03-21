@@ -3,6 +3,7 @@
 
 ```{metadata}
 orphan: true
+hide: [navbar, primary-sidebar, prev-next, footer]
 ```
 
 # Examen programmationn Python - 2F2

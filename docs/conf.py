@@ -12,32 +12,10 @@ html_theme_options = {
     'repository_url': 'https://github.com/t-doc-org/janm',
     'show_navbar_depth': 1,
     'show_toc_level': 2,
-    # Désactivation globale des boutons Précédent/Suivant gérée via CSS
 }
 
 # Ressources statiques (CSS/JS) supplémentaires
-html_static_path = ['_static']
-html_css_files = [
-    'custom.css',
-]
-
-# Désactive les barres latérales (gauche/droite) pour une page précise
-html_sidebars = {
-    'DOI2/Databases/examen_formatif': [],
-    'DOI2/Databases/examen_2bp1': [],
-    'DOI2/Databases/examen_2bs1': [],
-    'DOI1/AlgoProg/examen_formatif1': [],
-    'DOI1/AlgoProg/examen1': [],
-    'DOI1/AlgoProg/examen_2a': [],
-    'DOI1/AlgoProg/examen_2b': [],
-    'DOI1/AlgoProg/examen1_rattrapage': [],
-    'DOI1/AlgoProg/examen2_rattrapage': [],
-    'DOI2/Python/examen_formatif' : [],
-    'DOI2/Python/examen_2bp1' : [],
-    'DOI2/Python/examen_2f2' : [],
-    'DOI2/Python/examen_2f3' : [],
-    'DOI2/Python/pygame_doc' : [],
-}
+html_css_files = ['custom.css']
 
 metadata = {
     'solutions': 'dynamic',

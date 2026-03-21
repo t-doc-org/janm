@@ -3,6 +3,10 @@
 
 # Pygame - Documentation
 
+```{metadata}
+hide: [navbar, primary-sidebar, prev-next, footer]
+```
+
 Ce module simplifie l'utilisation de Pygame pour créer des jeux en 2D. Il fournit des classes et fonctions facilitant la gestion des acteurs, du texte, des timers et des interactions.
 
 ## Boucle de jeu
