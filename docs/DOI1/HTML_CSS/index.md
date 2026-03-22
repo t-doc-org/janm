@@ -7,7 +7,6 @@ Cette section contient toute la théorie et les exercices du chapitre de dévelo
 
 ```{toctree}
 :maxdepth: 1
-introduction
 html
 css
 bootstrap
