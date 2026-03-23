@@ -326,7 +326,7 @@ Complétez les règles CSS pour:
 ````{solution}
 ```{exec} html
 :when: load
-:editor:
+:editor: 019d199d-d1ca-7b3e-8b8f-bacb7d4c5e65
 :style: height: 16rem;
 <!DOCTYPE html>
 <html>
@@ -392,7 +392,7 @@ Complétez le CSS pour:
 ````{solution}
 ```{exec} html
 :when: load
-:editor:
+:editor: 019d199d-d1ca-7f08-aaaa-7f7f6c6c5033
 :style: height: 16rem;
 <!DOCTYPE html>
 <html>
