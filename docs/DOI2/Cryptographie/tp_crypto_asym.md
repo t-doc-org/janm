@@ -41,18 +41,82 @@ Vérifiez sur WolframAlpha que $\phi \mod e \neq 0$.
 
 Sur WolframAlpha, tapez `PowerMod[e, -1, phi]` en remplaçant par vos valeurs. Par exemple, `PowerMod[17, -1, 3120]` donne 2753.
 
-**e)** Notez vos clefs :
+**e)** Vérifiez vos clefs avec l'outil ci-dessous. Entrez vos valeurs et cliquez sur **Vérifier**.
+
+<style>
+  .rsa-grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; max-width: 350px; }
+  .rsa-grid input { padding: 4px 8px; width: 100px; font-size: 14px; }
+  .rsa-check-btn { margin-top: 10px; padding: 8px 20px; font-size: 14px; cursor: pointer; }
+  .rsa-result { margin-top: 12px; padding: 10px; border-radius: 6px; font-weight: bold; }
+  .rsa-ok { background: #d4edda; color: #155724; }
+  .rsa-err { background: #f8d7da; color: #721c24; }
+</style>
+
+<div class="rsa-grid">
+  <label>p :</label><input id="rsa-p" type="number">
+  <label>q :</label><input id="rsa-q" type="number">
+  <label>e :</label><input id="rsa-e" type="number">
+  <label>d :</label><input id="rsa-d" type="number">
+</div>
+<button class="rsa-check-btn" onclick="rsaCheck()">Vérifier</button>
+<div id="rsa-out"></div>
+
+<script>
+function rsaModpow(base, exp, mod) {
+  base = BigInt(base); exp = BigInt(exp); mod = BigInt(mod);
+  let r = 1n;
+  base = ((base % mod) + mod) % mod;
+  while (exp > 0n) {
+    if (exp % 2n === 1n) r = r * base % mod;
+    exp /= 2n;
+    base = base * base % mod;
+  }
+  return r;
+}
+function rsaIsPrime(n) {
+  if (n < 2) return false;
+  for (let i = 2; i * i <= n; i++) { if (n % i === 0) return false; }
+  return true;
+}
+function rsaCheck() {
+  const p = parseInt(document.getElementById('rsa-p').value);
+  const q = parseInt(document.getElementById('rsa-q').value);
+  const e = parseInt(document.getElementById('rsa-e').value);
+  const d = parseInt(document.getElementById('rsa-d').value);
+  const out = document.getElementById('rsa-out');
+  const errs = [];
+  if (!p || !q || !e || !d) { out.className='rsa-result rsa-err'; out.textContent='Veuillez remplir tous les champs.'; return; }
+  if (!rsaIsPrime(p)) errs.push('p = ' + p + " n'est pas premier.");
+  if (!rsaIsPrime(q)) errs.push('q = ' + q + " n'est pas premier.");
+  const n = p * q;
+  if (n <= 127) errs.push('n = ' + n + ' ≤ 127. Choisissez des nombres plus grands.');
+  const phi = (p - 1) * (q - 1);
+  if (!rsaIsPrime(e)) errs.push('e = ' + e + " n'est pas premier.");
+  else if (phi % e === 0) errs.push('φ = ' + phi + ' est divisible par e = ' + e + '. Choisissez un autre e.');
+  if (d === e) errs.push('d ne doit pas être égal à e.');
+  if ((e * d) % phi !== 1) errs.push('(e × d) mod φ = ' + ((e*d)%phi) + ' ≠ 1. Recalculez d.');
+  if (errs.length === 0) {
+    const t = 42n;
+    const c = rsaModpow(t, e, n);
+    const r = rsaModpow(c, d, n);
+    if (r !== t) errs.push('Le chiffrement/déchiffrement de 42 échoue (résultat : ' + r + ').');
+  }
+  if (errs.length === 0) {
+    out.className = 'rsa-result rsa-ok';
+    out.textContent = '✓ Clefs valides ! (n=' + n + ', e=' + e + ', d=' + d + ')';
+  } else {
+    out.className = 'rsa-result rsa-err';
+    out.innerHTML = errs.map(e => '✗ ' + e).join('<br>');
+  }
+}
+</script>
+
+**f)** Notez vos clefs :
 
 | | Valeur |
 |---|---|
 | **Clef publique** $(n, e)$ | ( ___ , ___ ) |
 | **Clef privée** $(n, d)$ | ( ___ , ___ ) |
-
-**f)** Vérifiez vos clefs en chiffrant puis déchiffrant le nombre 42 :
-- $c = 42^e \mod n$
-- $t = c^d \mod n$
-
-Si vous retrouvez 42, vos clefs sont correctes.
 
 ---
 
