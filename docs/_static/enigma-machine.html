@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enigma Machine Simulator</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=IBM+Plex+Mono:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+:root {
+  --oak: #3a2a1a;
+  --oak-light: #5a4030;
+  --oak-dark: #2a1a0a;
+  --brass: #c8a84e;
+  --brass-light: #e8d080;
+  --brass-dark: #987830;
+  --bakelite: #1a1a1a;
+  --bakelite-light: #2a2a2a;
+  --key-face: #222;
+  --key-ring: #888;
+  --lamp-off: #333;
+  --lamp-on: #ffee88;
+  --plug-red: #cc3333;
+  --plug-blue: #3355aa;
+  --plug-green: #33aa55;
+  --plug-yellow: #ccaa33;
+  --plug-purple: #8833aa;
+  --plug-orange: #cc6633;
+  --cable-colors: var(--plug-red), var(--plug-blue), var(--plug-green), var(--plug-yellow), var(--plug-purple), var(--plug-orange);
+  --bg: #0d0b09;
+  --text: #e8ddd0;
+  --rotor-bg: #1a1a1a;
+  --rotor-num: #ffcc44;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass);
+  text-shadow: 0 0 30px rgba(200,168,78,0.3);
+  margin: 20px 0 5px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  color: var(--brass-dark);
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.machine {
+  width: 100%;
+  background: linear-gradient(145deg, #3a2a1a 0%, #2a1a0a 40%, #1a1008 100%);
+  border-radius: 0 18px 18px 18px;
+  padding: 20px;
+  box-shadow: 
+    0 30px 80px rgba(0,0,0,0.8),
+    0 0 1px 1px rgba(200,168,78,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  border: 2px solid rgba(200,168,78,0.15);
+}
+
+/* ROTOR SELECTOR */
+.rotor-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  align-items: flex-end;
+}
+
+.rotor-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.rotor-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  color: var(--brass-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rotor-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rotor-selector select {
+  background: var(--bakelite);
+  color: var(--brass);
+  border: 1px solid var(--brass-dark);
+  padding: 4px 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.rotor-display {
+  width: 52px;
+  height: 72px;
+  background: linear-gradient(180deg, #111 0%, #1a1a1a 30%, #222 50%, #1a1a1a 70%, #111 100%);
+  border: 2px solid var(--brass-dark);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    inset 0 3px 10px rgba(0,0,0,0.8),
+    0 2px 4px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.rotor-display::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 20px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), transparent);
+  pointer-events: none;
+}
+
+.rotor-display::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.6), transparent);
+  pointer-events: none;
+}
+
+.rotor-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--rotor-num);
+  text-shadow: 0 0 10px rgba(255,204,68,0.4);
+  user-select: none;
+  cursor: ns-resize;
+  line-height: 1;
+}
+
+.rotor-letter-prev, .rotor-letter-next {
+  font-size: 0.7rem;
+  color: rgba(255,204,68,0.2);
+  user-select: none;
+}
+
+.rotor-btn {
+  width: 36px;
+  height: 22px;
+  border: 1px solid var(--brass-dark);
+  background: linear-gradient(180deg, #444, #222);
+  color: var(--brass);
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s;
+}
+.rotor-btn:hover { background: linear-gradient(180deg, #555, #333); }
+.rotor-btn:active { transform: scale(0.95); }
+
+.reflector-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-right: 20px;
+}
+
+.reflector-select select {
+  background: var(--bakelite);
+  color: var(--brass);
+  border: 1px solid var(--brass-dark);
+  padding: 4px 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* LAMPBOARD */
+.lampboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+  border-radius: 10px;
+}
+
+.lamp-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.lamp {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #444, #1a1a1a);
+  border: 2px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #666;
+  transition: all 0.05s;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.lamp.lit {
+  background: radial-gradient(circle at 40% 35%, #fffde0, #ffee88, #ddaa22);
+  color: #333;
+  border-color: var(--brass);
+  box-shadow: 
+    0 0 15px rgba(255,238,136,0.6),
+    0 0 40px rgba(255,238,136,0.3),
+    inset 0 -2px 5px rgba(200,150,0,0.3);
+  text-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+
+/* KEYBOARD */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.key-row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #333, #1a1a1a);
+  border: 2px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.08s;
+  box-shadow: 
+    0 3px 6px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  user-select: none;
+}
+
+.key:hover {
+  background: linear-gradient(145deg, #444, #2a2a2a);
+  border-color: var(--brass-dark);
+}
+
+.key:active, .key.pressed {
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  background: linear-gradient(145deg, #222, #111);
+  border-color: var(--brass);
+  color: var(--brass-light);
+}
+
+/* PLUGBOARD */
+.plugboard-section {
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.plugboard-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  color: var(--brass-dark);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.plugboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.plug-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.plug-socket {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #222, #111);
+  border: 2px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #777;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+
+.plug-socket:hover {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+.plug-socket.selected {
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.plug-socket.connected {
+  border-width: 3px;
+}
+
+.plug-connections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.plug-pair {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #fff;
+}
+
+.plug-pair:hover {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+/* OUTPUT */
+.output-section {
+  margin-top: 10px;
+  padding: 12px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+}
+
+.output-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.output-label {
+  font-size: 0.6rem;
+  color: var(--brass-dark);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  min-width: 60px;
+  padding-top: 4px;
+}
+
+.output-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--brass-light);
+  letter-spacing: 0.15em;
+  word-break: break-all;
+  min-height: 1.2em;
+  flex: 1;
+}
+
+.output-text.cipher {
+  color: var(--lamp-on);
+  text-shadow: 0 0 8px rgba(255,238,136,0.3);
+}
+
+.controls-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.ctrl-btn {
+  padding: 5px 14px;
+  background: linear-gradient(180deg, var(--brass-dark), #6a5020);
+  border: 1px solid var(--brass);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+  text-transform: uppercase;
+}
+
+.ctrl-btn:hover {
+  background: linear-gradient(180deg, var(--brass), var(--brass-dark));
+  color: #111;
+}
+
+/* SIGNAL PATH */
+.signal-path {
+  margin-top: 8px;
+  padding: 8px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 6px;
+  font-size: 0.6rem;
+  color: #888;
+  text-align: center;
+  letter-spacing: 0.1em;
+  min-height: 1.5em;
+}
+
+.signal-path span {
+  color: var(--brass-light);
+}
+
+.signal-path .arrow {
+  color: #555;
+  margin: 0 2px;
+}
+
+/* SOUND */
+.click-sound { display: none; }
+
+/* RESPONSIVE */
+@media (max-width: 740px) {
+  .machine { padding: 12px; }
+  .key { width: 32px; height: 32px; font-size: 0.65rem; }
+  .lamp { width: 30px; height: 30px; font-size: 0.6rem; }
+  .plug-socket { width: 26px; height: 26px; font-size: 0.5rem; }
+  h1 { font-size: 1.3rem; }
+  .rotor-display { width: 44px; height: 60px; }
+  .rotor-letter { font-size: 1.4rem; }
+}
+
+/* Animation */
+@keyframes pressFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+/* TABS */
+.tabs-container {
+  width: 760px;
+  max-width: 95vw;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  background: linear-gradient(180deg, #2a1a0a, #1a1008);
+  border: 2px solid rgba(200,168,78,0.15);
+  border-bottom: none;
+  color: var(--brass-dark);
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: var(--brass);
+  background: linear-gradient(180deg, #3a2a1a, #2a1a0a);
+}
+
+.tab-btn.active {
+  background: linear-gradient(145deg, #3a2a1a 0%, #2a1a0a 40%, #1a1008 100%);
+  color: var(--brass-light);
+  border-color: rgba(200,168,78,0.3);
+  position: relative;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(145deg, #3a2a1a 0%, #2a1a0a 100%);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* CODEBOOK */
+.codebook {
+  width: 100%;
+  background: linear-gradient(145deg, #3a2a1a 0%, #2a1a0a 40%, #1a1008 100%);
+  border-radius: 0 18px 18px 18px;
+  padding: 24px;
+  box-shadow: 
+    0 30px 80px rgba(0,0,0,0.8),
+    0 0 1px 1px rgba(200,168,78,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  border: 2px solid rgba(200,168,78,0.15);
+  border-top-left-radius: 0;
+}
+
+.codebook-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(200,168,78,0.2);
+}
+
+.codebook-stamp {
+  display: inline-block;
+  padding: 4px 18px;
+  border: 3px solid #cc3333;
+  color: #cc3333;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 0.4em;
+  transform: rotate(-3deg);
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(204,51,51,0.3);
+}
+
+.codebook-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--brass-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+
+.codebook-subtitle {
+  font-size: 0.7rem;
+  color: var(--brass-dark);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.codebook-month {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--brass);
+  margin-top: 6px;
+  letter-spacing: 0.2em;
+}
+
+.codebook-network {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 4px;
+  letter-spacing: 0.1em;
+}
+
+.codebook-explanation {
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(200,168,78,0.1);
+}
+
+.codebook-explanation h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--brass);
+  margin-bottom: 10px;
+  letter-spacing: 0.15em;
+}
+
+.codebook-explanation p {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.codebook-explanation em {
+  color: var(--brass-light);
+  font-style: italic;
+}
+
+.codebook-explanation code {
+  background: rgba(200,168,78,0.1);
+  color: var(--brass-light);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.explanation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.explanation-item {
+  background: rgba(0,0,0,0.25);
+  border-radius: 6px;
+  padding: 10px;
+  border-left: 3px solid var(--brass-dark);
+}
+
+.explanation-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: var(--brass);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.explanation-desc {
+  font-size: 0.68rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* CODEBOOK TABLE */
+.codebook-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(200,168,78,0.15);
+}
+
+.codebook-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+}
+
+.codebook-table thead th {
+  background: rgba(200,168,78,0.15);
+  color: var(--brass-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 2px solid var(--brass-dark);
+  white-space: nowrap;
+}
+
+.codebook-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.codebook-table tbody tr:hover {
+  background: rgba(200,168,78,0.08);
+}
+
+.codebook-table tbody tr.selected-day {
+  background: rgba(200,168,78,0.15);
+  box-shadow: inset 3px 0 0 var(--brass);
+}
+
+.codebook-table td {
+  padding: 6px 10px;
+  color: #ccc;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  vertical-align: middle;
+}
+
+.codebook-table td:first-child {
+  font-weight: 700;
+  color: var(--brass);
+  text-align: center;
+  width: 35px;
+}
+
+.codebook-table td.walzen {
+  color: var(--rotor-num);
+  font-weight: 600;
+}
+
+.codebook-table td.stecker {
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: #aaa;
+}
+
+.codebook-table td.kenn {
+  color: var(--brass-light);
+  letter-spacing: 0.1em;
+}
+
+.codebook-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 740px) {
+  .explanation-grid { grid-template-columns: 1fr; }
+  .tab-btn { font-size: 0.6rem; padding: 8px 12px; }
+  .codebook { padding: 14px; }
+  .codebook-title { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<h1>Enigma</h1>
+<div class="subtitle">Chiffriermaschinen Gesellschaft · Modell M3</div>
+
+<div class="tabs-container">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('machine')">Enigma M3</button>
+    <button class="tab-btn" onclick="switchTab('codebook')">Schlüsseltafel — Livret du Jour</button>
+  </div>
+
+  <div class="tab-content active" id="tab-machine">
+    <div class="machine" id="machine">
+      <!-- Rotor Section -->
+      <div class="rotor-section" id="rotorSection"></div>
+
+      <!-- Lampboard -->
+      <div class="lampboard" id="lampboard"></div>
+
+      <!-- Keyboard -->
+      <div class="keyboard" id="keyboard"></div>
+
+      <!-- Plugboard -->
+      <div class="plugboard-section">
+        <div class="plugboard-title">Steckerbrett — Tableau de Fiches</div>
+        <div style="text-align:center;font-size:0.55rem;color:#666;margin-bottom:6px;">Cliquez deux lettres pour les relier · Cliquez une prise connectée pour la retirer</div>
+        <div class="plugboard" id="plugboard"></div>
+        <div class="plug-connections" id="plugConnections"></div>
+      </div>
+
+      <!-- Output -->
+      <div class="output-section">
+        <div class="output-row">
+          <div class="output-label">Entrée</div>
+          <div class="output-text" id="inputText"></div>
+        </div>
+        <div class="output-row">
+          <div class="output-label">Sortie</div>
+          <div class="output-text cipher" id="outputText"></div>
+        </div>
+        <div class="signal-path" id="signalPath"></div>
+        <div class="controls-row">
+          <button class="ctrl-btn" onclick="resetMachine()">Reset</button>
+          <button class="ctrl-btn" onclick="clearText()">Effacer texte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-codebook">
+    <div class="codebook">
+      <div class="codebook-header">
+        <div class="codebook-stamp">GEHEIM !</div>
+        <div class="codebook-title">Schlüsseltafel</div>
+        <div class="codebook-subtitle">Enigma-Chiffrierschlüssel · Heer / Luftwaffe</div>
+        <div class="codebook-month" id="codebookMonth"></div>
+        <div class="codebook-network">Netzschlüssel: <span style="color:var(--plug-red);">ROT</span></div>
+      </div>
+
+      <div class="codebook-explanation">
+        <h3>Qu'est-ce que la Schlüsseltafel ?</h3>
+        <p>
+          La <em>Schlüsseltafel</em> (« tableau des clés ») était un livret <strong>top secret</strong> distribué chaque mois aux opérateurs Enigma d'un même réseau radio. Chaque page couvrait un mois et contenait les réglages quotidiens de la machine. Le livret était lu <strong>de bas en haut</strong> : le jour 31 était en haut, le jour 1 en bas. Chaque jour, on découpait la ligne utilisée pour la détruire.
+        </p>
+        <p>Chaque ligne du livret spécifiait :</p>
+        <div class="explanation-grid">
+          <div class="explanation-item">
+            <div class="explanation-label">Walzenlage</div>
+            <div class="explanation-desc">Le choix et l'ordre des 3 rotors (parmi les 5 disponibles : I à V). Ex : <code>II IV I</code> = rotor II à gauche, IV au milieu, I à droite.</div>
+          </div>
+          <div class="explanation-item">
+            <div class="explanation-label">Ringstellung</div>
+            <div class="explanation-desc">La position de l'anneau de chaque rotor (1–26 ou A–Z). Affecte le point d'enclenchement des rotors sans changer le câblage interne.</div>
+          </div>
+          <div class="explanation-item">
+            <div class="explanation-label">Steckerverbindungen</div>
+            <div class="explanation-desc">Les 10 paires de lettres connectées sur le tableau de fiches (plugboard). Les 6 lettres restantes ne sont pas permutées.</div>
+          </div>
+          <div class="explanation-item">
+            <div class="explanation-label">Grundstellung</div>
+            <div class="explanation-desc">La position de départ des rotors pour ce jour (3 lettres). C'est avec cette position que l'opérateur chiffrait sa <em>Spruchschlüssel</em> (clé de message) en début de transmission.</div>
+          </div>
+          <div class="explanation-item">
+            <div class="explanation-label">Kenngruppen</div>
+            <div class="explanation-desc">Des trigrammes d'identification insérés dans l'en-tête du message. Permettaient au destinataire d'identifier quel jour (et donc quels réglages) avait été utilisé — utile si un message arrivait en retard.</div>
+          </div>
+        </div>
+        <p style="margin-top:12px;">
+          La <em>Spruchschlüssel</em> (clé de message), elle, n'apparaissait <strong>pas</strong> dans le livret — c'est précisément la partie que chaque opérateur devait improviser, d'où les fameuses <em>cillies</em>.
+        </p>
+        <p style="margin-top:8px;color:var(--brass-dark);font-size:0.7rem;">
+          <strong>Sécurité :</strong> les livrets de la Kriegsmarine étaient imprimés à l'encre soluble dans l'eau, pour pouvoir être détruits instantanément en cas de capture. Les feuilles de la Luftwaffe étaient interdites à bord des avions.
+        </p>
+      </div>
+
+      <div class="codebook-table-wrapper">
+        <table class="codebook-table" id="codebookTable">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Walzenlage</th>
+              <th>Ringstellung</th>
+              <th>Steckerverbindungen</th>
+              <th>Grundstellung</th>
+              <th>Kenngruppen</th>
+            </tr>
+          </thead>
+          <tbody id="codebookBody"></tbody>
+        </table>
+      </div>
+
+      <div class="codebook-actions">
+        <button class="ctrl-btn" onclick="generateCodebook()">Nouveau livret aléatoire</button>
+        <button class="ctrl-btn" onclick="applyDay()" id="applyDayBtn">Appliquer le jour sélectionné à la machine</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ ENIGMA ENGINE ============
+
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+// Historical rotor wirings
+const ROTORS = {
+  I:    { wiring: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ', notch: 'Q' },
+  II:   { wiring: 'AJDKSIRUXBLHWTMCQGZNPYFVOE', notch: 'E' },
+  III:  { wiring: 'BDFHJLCPRTXVZNYEIWGAKMUSQO', notch: 'V' },
+  IV:   { wiring: 'ESOVPZJAYQUIRHXLNFTGKDCMWB', notch: 'J' },
+  V:    { wiring: 'VZBRGITYUPSDNHLXAWMJQOFECK', notch: 'Z' },
+};
+
+const REFLECTORS = {
+  'UKW-B': 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
+  'UKW-C': 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
+};
+
+const PLUG_COLORS = ['#cc3333','#3355aa','#33aa55','#ccaa33','#8833aa','#cc6633','#cc5588','#33aaaa','#88aa33','#5533cc','#cc8833','#3388cc','#aa3355'];
+
+// State
+let state = {
+  rotorChoices: ['I', 'II', 'III'],
+  rotorPositions: [0, 0, 0],
+  ringSettings: [0, 0, 0],
+  reflector: 'UKW-B',
+  plugboard: {},
+  inputText: '',
+  outputText: '',
+  litLamp: null,
+  pressedKey: null,
+  selectedPlug: null,
+  plugPairs: [],
+};
+
+// AudioContext for click sounds
+let audioCtx = null;
+function playClick() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.04);
+  gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.06);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.06);
+}
+
+function mod(n, m) { return ((n % m) + m) % m; }
+
+function charToIdx(c) { return c.charCodeAt(0) - 65; }
+function idxToChar(i) { return String.fromCharCode(65 + mod(i, 26)); }
+
+function applyPlugboard(c) {
+  return state.plugboard[c] || c;
+}
+
+function rotorForward(letter, rotorName, position, ring) {
+  const wiring = ROTORS[rotorName].wiring;
+  const idx = charToIdx(letter);
+  const shifted = mod(idx + position - ring, 26);
+  const out = charToIdx(wiring[shifted]);
+  return idxToChar(mod(out - position + ring, 26));
+}
+
+function rotorBackward(letter, rotorName, position, ring) {
+  const wiring = ROTORS[rotorName].wiring;
+  const idx = charToIdx(letter);
+  const shifted = mod(idx + position - ring, 26);
+  const out = wiring.indexOf(ALPHABET[shifted]);
+  return idxToChar(mod(out - position + ring, 26));
+}
+
+function reflectorMap(letter, reflectorName) {
+  const wiring = REFLECTORS[reflectorName];
+  return wiring[charToIdx(letter)];
+}
+
+function stepRotors() {
+  const r = state.rotorChoices;
+  const p = state.rotorPositions;
+  // Double stepping
+  const middleAtNotch = ALPHABET[p[1]] === ROTORS[r[1]].notch;
+  const rightAtNotch = ALPHABET[p[2]] === ROTORS[r[2]].notch;
+
+  if (middleAtNotch) {
+    p[0] = mod(p[0] + 1, 26);
+    p[1] = mod(p[1] + 1, 26);
+  }
+  if (rightAtNotch) {
+    p[1] = mod(p[1] + 1, 26);
+  }
+  p[2] = mod(p[2] + 1, 26);
+}
+
+function encryptLetter(letter) {
+  letter = letter.toUpperCase();
+  if (!ALPHABET.includes(letter)) return null;
+
+  const path = [];
+
+  stepRotors();
+  updateRotorDisplay();
+
+  // Plugboard forward
+  let c = applyPlugboard(letter);
+  path.push(letter);
+  if (c !== letter) path.push('Stecker→' + c);
+
+  // Rotors right to left (2, 1, 0)
+  for (let i = 2; i >= 0; i--) {
+    const prev = c;
+    c = rotorForward(c, state.rotorChoices[i], state.rotorPositions[i], state.ringSettings[i]);
+    path.push('R' + (i+1) + '→' + c);
+  }
+
+  // Reflector
+  const preRef = c;
+  c = reflectorMap(c, state.reflector);
+  path.push('UKW→' + c);
+
+  // Rotors left to right (0, 1, 2)
+  for (let i = 0; i <= 2; i++) {
+    c = rotorBackward(c, state.rotorChoices[i], state.rotorPositions[i], state.ringSettings[i]);
+    path.push('R' + (i+1) + '→' + c);
+  }
+
+  // Plugboard backward
+  const prePlug = c;
+  c = applyPlugboard(c);
+  if (c !== prePlug) path.push('Stecker→' + c);
+
+  // Show signal path
+  showSignalPath(path);
+
+  return c;
+}
+
+function showSignalPath(path) {
+  const el = document.getElementById('signalPath');
+  el.innerHTML = path.map((p, i) => {
+    if (i === 0) return `<span>${p}</span>`;
+    return `<span class="arrow">→</span><span>${p}</span>`;
+  }).join('');
+}
+
+// ============ UI ============
+
+const LAMP_ROWS = ['QWERTZUIO', 'ASDFGHJK', 'PYXCVBNML'];
+const KEY_ROWS = ['QWERTZUIO', 'ASDFGHJK', 'PYXCVBNML'];
+const PLUG_ROWS = ['QWERTZUIO', 'ASDFGHJKL', 'PYXCVBNM'];
+
+function buildRotorSection() {
+  const section = document.getElementById('rotorSection');
+  let html = '';
+
+  // Reflector
+  html += `<div class="reflector-select">
+    <div class="rotor-label">Réflecteur</div>
+    <select onchange="state.reflector=this.value">
+      ${Object.keys(REFLECTORS).map(r => `<option value="${r}" ${r===state.reflector?'selected':''}>${r}</option>`).join('')}
+    </select>
+  </div>`;
+
+  // 3 Rotors
+  for (let i = 0; i < 3; i++) {
+    const pos = state.rotorPositions[i];
+    const prev = idxToChar(mod(pos - 1, 26));
+    const curr = idxToChar(pos);
+    const next = idxToChar(mod(pos + 1, 26));
+    html += `<div class="rotor-unit">
+      <div class="rotor-label">Rotor ${i===0?'L':i===1?'M':'R'}</div>
+      <div class="rotor-selector">
+        <select onchange="changeRotor(${i}, this.value)">
+          ${Object.keys(ROTORS).map(r => {
+            const usedElsewhere = state.rotorChoices.some((c, j) => j !== i && c === r);
+            return `<option value="${r}" ${r===state.rotorChoices[i]?'selected':''} ${usedElsewhere?'disabled':''}>${r}${usedElsewhere?' ✗':''}</option>`;
+          }).join('')}
+        </select>
+      </div>
+      <button class="rotor-btn" onclick="adjustRotor(${i}, -1)">▲</button>
+      <div class="rotor-display" onwheel="wheelRotor(event, ${i})" id="rotorDisp${i}">
+        <div class="rotor-letter-prev">${prev}</div>
+        <div class="rotor-letter" id="rotorLetter${i}">${curr}</div>
+        <div class="rotor-letter-next">${next}</div>
+      </div>
+      <button class="rotor-btn" onclick="adjustRotor(${i}, 1)">▼</button>
+      <div class="rotor-label" style="margin-top:3px">Ring</div>
+      <select style="background:#1a1a1a;color:var(--brass);border:1px solid var(--brass-dark);padding:2px 4px;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;border-radius:3px;cursor:pointer;" onchange="state.ringSettings[${i}]=parseInt(this.value)">
+        ${Array.from({length:26},(_, j) => `<option value="${j}" ${j===state.ringSettings[i]?'selected':''}>${j+1} (${ALPHABET[j]})</option>`).join('')}
+      </select>
+    </div>`;
+  }
+
+  section.innerHTML = html;
+}
+
+function buildLampboard() {
+  const lb = document.getElementById('lampboard');
+  lb.innerHTML = LAMP_ROWS.map(row => 
+    `<div class="lamp-row">${row.split('').map(l =>
+      `<div class="lamp" id="lamp-${l}">${l}</div>`
+    ).join('')}</div>`
+  ).join('');
+}
+
+function buildKeyboard() {
+  const kb = document.getElementById('keyboard');
+  kb.innerHTML = KEY_ROWS.map(row =>
+    `<div class="key-row">${row.split('').map(l =>
+      `<div class="key" id="key-${l}" 
+           onmousedown="pressKey('${l}')" 
+           onmouseup="releaseKey()" 
+           onmouseleave="releaseKey()"
+           ontouchstart="pressKey('${l}'); event.preventDefault();"
+           ontouchend="releaseKey(); event.preventDefault();">${l}</div>`
+    ).join('')}</div>`
+  ).join('');
+}
+
+function buildPlugboard() {
+  const pb = document.getElementById('plugboard');
+  pb.innerHTML = PLUG_ROWS.map(row =>
+    `<div class="plug-row">${row.split('').map(l =>
+      `<div class="plug-socket" id="plug-${l}" onclick="clickPlug('${l}')">${l}</div>`
+    ).join('')}</div>`
+  ).join('');
+  updatePlugDisplay();
+}
+
+function updateRotorDisplay() {
+  for (let i = 0; i < 3; i++) {
+    const pos = state.rotorPositions[i];
+    const el = document.getElementById(`rotorLetter${i}`);
+    if (el) {
+      el.textContent = idxToChar(pos);
+      el.parentElement.querySelector('.rotor-letter-prev').textContent = idxToChar(mod(pos-1,26));
+      el.parentElement.querySelector('.rotor-letter-next').textContent = idxToChar(mod(pos+1,26));
+    }
+  }
+}
+
+function adjustRotor(idx, dir) {
+  state.rotorPositions[idx] = mod(state.rotorPositions[idx] + dir, 26);
+  updateRotorDisplay();
+  playClick();
+}
+
+function wheelRotor(e, idx) {
+  e.preventDefault();
+  adjustRotor(idx, e.deltaY > 0 ? 1 : -1);
+}
+
+function changeRotor(idx, val) {
+  // Check for duplicate — real Enigma couldn't use same rotor twice
+  const otherRotors = state.rotorChoices.filter((_, i) => i !== idx);
+  if (otherRotors.includes(val)) {
+    alert('Impossible : chaque rotor ne peut être utilisé qu\'une seule fois !\n(La machine Enigma ne contenait qu\'un exemplaire de chaque rotor.)');
+    // Reset the select to current value
+    buildRotorSection();
+    return;
+  }
+  state.rotorChoices[idx] = val;
+  buildRotorSection();
+  playClick();
+}
+
+function pressKey(letter) {
+  playClick();
+  const encrypted = encryptLetter(letter);
+  if (encrypted === null) return;
+
+  state.inputText += letter;
+  state.outputText += encrypted;
+
+  document.getElementById('inputText').textContent = formatOutput(state.inputText);
+  document.getElementById('outputText').textContent = formatOutput(state.outputText);
+
+  // Light lamp
+  if (state.litLamp) {
+    document.getElementById('lamp-' + state.litLamp).classList.remove('lit');
+  }
+  state.litLamp = encrypted;
+  document.getElementById('lamp-' + encrypted).classList.add('lit');
+
+  // Press key visual
+  if (state.pressedKey) {
+    document.getElementById('key-' + state.pressedKey).classList.remove('pressed');
+  }
+  state.pressedKey = letter;
+  document.getElementById('key-' + letter).classList.add('pressed');
+}
+
+function releaseKey() {
+  if (state.litLamp) {
+    document.getElementById('lamp-' + state.litLamp).classList.remove('lit');
+    state.litLamp = null;
+  }
+  if (state.pressedKey) {
+    document.getElementById('key-' + state.pressedKey).classList.remove('pressed');
+    state.pressedKey = null;
+  }
+}
+
+function formatOutput(text) {
+  return text.match(/.{1,5}/g)?.join(' ') || '';
+}
+
+// Plugboard interaction
+function clickPlug(letter) {
+  // If clicking on an already connected letter, disconnect its pair
+  if (state.plugboard[letter]) {
+    const pair = state.plugboard[letter];
+    delete state.plugboard[letter];
+    delete state.plugboard[pair];
+    state.plugPairs = state.plugPairs.filter(p => !(p.includes(letter) && p.includes(pair)));
+    // Also clear any pending selection
+    state.selectedPlug = null;
+    updatePlugDisplay();
+    playClick();
+    return;
+  }
+
+  // Nothing selected yet — select this one
+  if (state.selectedPlug === null) {
+    state.selectedPlug = letter;
+    updatePlugDisplay();
+    return;
+  }
+
+  // Clicking the same letter again — deselect
+  if (state.selectedPlug === letter) {
+    state.selectedPlug = null;
+    updatePlugDisplay();
+    return;
+  }
+
+  // Second letter clicked — check it's not already connected elsewhere
+  if (state.plugboard[state.selectedPlug]) {
+    state.selectedPlug = letter;
+    updatePlugDisplay();
+    return;
+  }
+
+  // Too many pairs
+  if (state.plugPairs.length >= 13) {
+    state.selectedPlug = null;
+    updatePlugDisplay();
+    return;
+  }
+
+  // Connect the pair
+  const a = state.selectedPlug;
+  const b = letter;
+  state.plugboard[a] = b;
+  state.plugboard[b] = a;
+  state.plugPairs.push([a, b]);
+  state.selectedPlug = null;
+  updatePlugDisplay();
+  playClick();
+}
+
+function removePair(idx) {
+  const [a, b] = state.plugPairs[idx];
+  delete state.plugboard[a];
+  delete state.plugboard[b];
+  state.plugPairs.splice(idx, 1);
+  updatePlugDisplay();
+  playClick();
+}
+
+function updatePlugDisplay() {
+  // Reset all sockets
+  ALPHABET.split('').forEach(l => {
+    const el = document.getElementById('plug-' + l);
+    if (!el) return;
+    el.classList.remove('selected', 'connected');
+    el.style.borderColor = '';
+    el.style.color = '';
+  });
+
+  // Mark connected
+  state.plugPairs.forEach((pair, idx) => {
+    const color = PLUG_COLORS[idx % PLUG_COLORS.length];
+    pair.forEach(l => {
+      const el = document.getElementById('plug-' + l);
+      if (!el) return;
+      el.classList.add('connected');
+      el.style.borderColor = color;
+      el.style.color = color;
+    });
+  });
+
+  // Mark selected
+  if (state.selectedPlug) {
+    document.getElementById('plug-' + state.selectedPlug).classList.add('selected');
+  }
+
+  // Update connections display
+  const connEl = document.getElementById('plugConnections');
+  connEl.innerHTML = state.plugPairs.map((pair, idx) => {
+    const color = PLUG_COLORS[idx % PLUG_COLORS.length];
+    return `<div class="plug-pair" style="background:${color}33;border:1px solid ${color}" onclick="removePair(${idx})">${pair[0]}↔${pair[1]}</div>`;
+  }).join('');
+}
+
+function resetMachine() {
+  state.rotorPositions = [0, 0, 0];
+  state.ringSettings = [0, 0, 0];
+  state.rotorChoices = ['I', 'II', 'III'];
+  state.reflector = 'UKW-B';
+  state.plugboard = {};
+  state.plugPairs = [];
+  state.inputText = '';
+  state.outputText = '';
+  state.litLamp = null;
+  state.pressedKey = null;
+  state.selectedPlug = null;
+  document.getElementById('inputText').textContent = '';
+  document.getElementById('outputText').textContent = '';
+  document.getElementById('signalPath').innerHTML = '';
+  buildRotorSection();
+  buildPlugboard();
+  updateRotorDisplay();
+  playClick();
+}
+
+function clearText() {
+  state.inputText = '';
+  state.outputText = '';
+  document.getElementById('inputText').textContent = '';
+  document.getElementById('outputText').textContent = '';
+  document.getElementById('signalPath').innerHTML = '';
+}
+
+// Keyboard listener
+document.addEventListener('keydown', (e) => {
+  const key = e.key.toUpperCase();
+  if (ALPHABET.includes(key) && !e.repeat) {
+    e.preventDefault();
+    pressKey(key);
+  }
+});
+
+document.addEventListener('keyup', (e) => {
+  const key = e.key.toUpperCase();
+  if (ALPHABET.includes(key)) {
+    releaseKey();
+  }
+});
+
+// Initialize
+buildRotorSection();
+buildLampboard();
+buildKeyboard();
+buildPlugboard();
+
+// ============ TABS ============
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.querySelector(`.tab-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
+  if (tab === 'codebook' && !codebookGenerated) {
+    generateCodebook();
+    codebookGenerated = true;
+  }
+}
+
+// ============ CODEBOOK ============
+
+let codebookGenerated = false;
+let codebookData = [];
+let selectedDayIdx = -1;
+
+const MONTH_NAMES = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+function randLetter() { return ALPHABET[randInt(0, 25)]; }
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = randInt(0, i);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function generatePlugPairs() {
+  const letters = shuffle(ALPHABET.split(''));
+  const pairs = [];
+  for (let i = 0; i < 20; i += 2) {
+    pairs.push(letters[i] + letters[i+1]);
+  }
+  return pairs;
+}
+
+function generateKenngruppen() {
+  let s = '';
+  for (let i = 0; i < 3; i++) s += randLetter();
+  return s;
+}
+
+function pickRotors() {
+  const available = shuffle(Object.keys(ROTORS));
+  return [available[0], available[1], available[2]];
+}
+
+function generateCodebook() {
+  const month = randInt(0, 11);
+  const year = randInt(1939, 1944);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  document.getElementById('codebookMonth').textContent = `${MONTH_NAMES[month]} ${year}`;
+
+  codebookData = [];
+  for (let d = 1; d <= daysInMonth; d++) {
+    const rotors = pickRotors();
+    const rings = [randInt(1, 26), randInt(1, 26), randInt(1, 26)];
+    const plugs = generatePlugPairs();
+    const kenn = [generateKenngruppen(), generateKenngruppen(), generateKenngruppen()];
+    const grund = randLetter() + randLetter() + randLetter();
+    codebookData.push({ day: d, rotors, rings, plugs, grund, kenn });
+  }
+
+  // Render table (reversed — day 31 at top, day 1 at bottom, like the real sheets)
+  const tbody = document.getElementById('codebookBody');
+  tbody.innerHTML = '';
+  for (let i = codebookData.length - 1; i >= 0; i--) {
+    const d = codebookData[i];
+    const tr = document.createElement('tr');
+    tr.dataset.idx = i;
+    tr.onclick = () => selectDay(i);
+    tr.innerHTML = `
+      <td>${d.day}</td>
+      <td class="walzen">${d.rotors.join('  ')}</td>
+      <td>${d.rings.map(r => String(r).padStart(2, '0')).join('  ')}</td>
+      <td class="stecker">${d.plugs.join(' ')}</td>
+      <td class="kenn" style="color:var(--rotor-num);font-weight:600;">${d.grund.split('').join(' ')}</td>
+      <td class="kenn">${d.kenn.join('  ')}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+  selectedDayIdx = -1;
+}
+
+function selectDay(idx) {
+  selectedDayIdx = idx;
+  document.querySelectorAll('.codebook-table tbody tr').forEach(tr => {
+    tr.classList.toggle('selected-day', parseInt(tr.dataset.idx) === idx);
+  });
+}
+
+function applyDay() {
+  if (selectedDayIdx < 0) {
+    alert('Sélectionnez d\'abord un jour dans le tableau en cliquant dessus.');
+    return;
+  }
+  const d = codebookData[selectedDayIdx];
+
+  // Apply rotors
+  state.rotorChoices = [...d.rotors];
+
+  // Apply ring settings (codebook uses 1-26, internal uses 0-25)
+  state.ringSettings = d.rings.map(r => r - 1);
+
+  // Apply Grundstellung (daily start position for rotors)
+  state.rotorPositions = d.grund.split('').map(c => c.charCodeAt(0) - 65);
+
+  // Apply plugboard
+  state.plugboard = {};
+  state.plugPairs = [];
+  d.plugs.forEach(pair => {
+    const a = pair[0];
+    const b = pair[1];
+    state.plugboard[a] = b;
+    state.plugboard[b] = a;
+    state.plugPairs.push([a, b]);
+  });
+
+  // Clear text
+  state.inputText = '';
+  state.outputText = '';
+
+  // Rebuild UI
+  buildRotorSection();
+  buildPlugboard();
+  updateRotorDisplay();
+  document.getElementById('inputText').textContent = '';
+  document.getElementById('outputText').textContent = '';
+  document.getElementById('signalPath').innerHTML = '';
+
+  // Switch to machine tab
+  switchTab('machine');
+  playClick();
+}
+</script>
+</body>
+</html>

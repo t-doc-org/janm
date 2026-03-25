@@ -19,6 +19,7 @@ La machine Enigma fonctionnait selon le principe du chiffrement symétrique :
 - Le texte chiffré était transmis par radio
 - Le destinataire, possédant une machine Enigma configurée avec la **même clef**, pouvait déchiffrer le message
 
+Vous pouvez essayer une <a href="../../_static/enigma-machine.html" target="_blank">simulation interactive de la machine Enigma</a>.
 
 ## Définition
 
