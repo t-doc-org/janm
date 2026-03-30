@@ -1,0 +1,31 @@
+.steg-tool { margin: 16px 0; }
+.steg-tool textarea { padding: 6px 10px; font-size: 14px; font-family: monospace; width: 100%; box-sizing: border-box; resize: vertical; }
+
+.steg-canvas-wrap { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+.steg-canvas-wrap > div { text-align: center; }
+.steg-canvas { border: 1px solid #ccc; border-radius: 6px; max-width: 100%; }
+
+.steg-pixel-grid { border-collapse: collapse; font-family: monospace; font-size: 13px; margin: 10px 0; }
+.steg-pixel-grid th, .steg-pixel-grid td { border: 1px solid #ddd; padding: 4px 8px; text-align: center; }
+.steg-pixel-grid th { background: #f5f5f5; }
+.steg-lsb-highlight { color: #d32f2f; font-weight: bold; }
+.steg-msb-highlight { color: #1565c0; font-weight: bold; }
+
+.steg-controls { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; max-width: 500px; }
+.steg-controls input, .steg-controls select, .steg-controls textarea { padding: 4px 8px; font-size: 14px; font-family: monospace; }
+
+.steg-capacity { margin-top: 8px; font-size: 13px; color: #666; }
+
+.steg-result { margin-top: 12px; padding: 10px; border-radius: 6px; font-weight: bold; }
+.steg-ok { background: #d4edda; color: #155724; }
+.steg-err { background: #f8d7da; color: #721c24; }
+.steg-info { background: #d1ecf1; color: #0c5460; }
+
+.steg-vis-wrap { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.steg-vis-wrap canvas { image-rendering: pixelated; border: 1px solid #ccc; border-radius: 4px; }
+
+.steg-checkbox-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 10px 0; }
+.steg-checkbox-grid label { font-size: 12px; font-family: monospace; cursor: pointer; }
+
+.steg-lsb-btn { font-family: monospace; font-size: 14px; font-weight: bold; width: 32px; height: 28px; cursor: pointer; border: 2px solid #999; border-radius: 4px; background: #f5f5f5; }
+.steg-lsb-btn:hover { background: #e0e0e0; }

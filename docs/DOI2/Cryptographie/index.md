@@ -9,6 +9,7 @@
 chiffrement_symetrique
 chiffrement_asymetrique
 mdp
+steganographie
 ```
 
 ## Travaux pratiques
