@@ -7,5 +7,6 @@
 ```{toctree}
 :maxdepth: 1
 tp1
+organisation_tp
 ```
 
