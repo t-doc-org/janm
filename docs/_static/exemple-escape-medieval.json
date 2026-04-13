@@ -1,0 +1,38 @@
+{
+  "nodes": [
+    { "id": "node_1", "label": "Cachot", "x": 80, "y": 250, "nodeType": "start" },
+    { "id": "node_2", "label": "Couloir sombre", "x": 230, "y": 250 },
+    { "id": "node_3", "label": "Salle des gardes", "x": 400, "y": 150 },
+    { "id": "node_4", "label": "Crypte", "x": 400, "y": 350 },
+    { "id": "node_5", "label": "Bibliotheque", "x": 570, "y": 80 },
+    { "id": "node_6", "label": "Salle du trone", "x": 570, "y": 350 },
+    { "id": "node_7", "label": "Tour du sorcier", "x": 400, "y": 40 },
+    { "id": "node_8", "label": "Pont-levis", "x": 720, "y": 80 },
+    { "id": "node_9", "label": "Liberte!", "x": 720, "y": 180, "nodeType": "victory" },
+    { "id": "node_10", "label": "Piege mortel", "x": 230, "y": 420, "nodeType": "defeat" },
+    { "id": "node_11", "label": "Petrification", "x": 570, "y": 180, "nodeType": "defeat" },
+    { "id": "node_12", "label": "Tresor du roi", "x": 720, "y": 420, "nodeType": "victory" }
+  ],
+  "edges": [
+    { "id": "edge_1", "from": "node_1", "to": "node_2", "label": "Crocheter la serrure" },
+    { "id": "edge_2", "from": "node_1", "to": "node_1", "label": "Fouiller la paille" },
+    { "id": "edge_3", "from": "node_2", "to": "node_3", "label": "Monter l'escalier" },
+    { "id": "edge_4", "from": "node_2", "to": "node_4", "label": "Descendre" },
+    { "id": "edge_5", "from": "node_2", "to": "node_10", "label": "Toucher le mur piege" },
+    { "id": "edge_6", "from": "node_3", "to": "node_5", "label": "Porte secrete" },
+    { "id": "edge_7", "from": "node_3", "to": "node_7", "label": "Escalier en spirale" },
+    { "id": "edge_8", "from": "node_3", "to": "node_2", "label": "Rebrousser chemin" },
+    { "id": "edge_9", "from": "node_4", "to": "node_6", "label": "Passage secret" },
+    { "id": "edge_10", "from": "node_4", "to": "node_2", "label": "Remonter" },
+    { "id": "edge_11", "from": "node_4", "to": "node_10", "label": "Ouvrir le sarcophage" },
+    { "id": "edge_12", "from": "node_5", "to": "node_3", "label": "Retour" },
+    { "id": "edge_13", "from": "node_5", "to": "node_8", "label": "Formule magique" },
+    { "id": "edge_14", "from": "node_6", "to": "node_12", "label": "Vaincre le dragon" },
+    { "id": "edge_15", "from": "node_6", "to": "node_4", "label": "Fuir" },
+    { "id": "edge_16", "from": "node_7", "to": "node_5", "label": "Voler un grimoire" },
+    { "id": "edge_17", "from": "node_7", "to": "node_11", "label": "Regarder la gorgone" },
+    { "id": "edge_18", "from": "node_7", "to": "node_3", "label": "Redescendre" },
+    { "id": "edge_19", "from": "node_8", "to": "node_9", "label": "Traverser" },
+    { "id": "edge_20", "from": "node_8", "to": "node_3", "label": "Demi-tour" }
+  ]
+}
