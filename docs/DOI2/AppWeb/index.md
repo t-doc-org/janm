@@ -9,7 +9,6 @@
 :maxdepth: 1
 js_variables
 js_branchements_cond
-js_boucles
 js_fonctions
 ```
 

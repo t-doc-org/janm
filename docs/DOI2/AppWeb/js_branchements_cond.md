@@ -11,7 +11,7 @@ solutions: show
 
 Comme en Python, un **branchement conditionnel** permet d'exécuter certaines
 instructions seulement si une **condition** est remplie. La logique est
-exactement la même qu'en Python — seule la syntaxe change.
+exactement la même qu'en Python : seule la syntaxe change.
 
 ## Conditions
 
@@ -224,51 +224,6 @@ si une ville est Romont ou Rue, il faut écrire :
 
 ## Exercices
 
-### Exercice {num1}`exercice-revision`
-
-Est-ce que les conditions suivantes sont `true` ou `false` en JavaScript ?
-
-```{role} select(quiz-select)
-:right:
-:options: |
-: true
-: false
-```
-
-```{quiz}
-:style: max-width: 25rem;
-1.  {select}`true`  `1 + 1 === 2`
-2.  {select}`false` `2 * 3 === 3`
-3.  {select}`true`  `2 + 3 !== 4`
-4.  {select}`false` `14 >= 15`
-5.  {select}`false` `2 ** 3 === 6`
-6.  {select}`true`  `13 >= 13`
-```
-
-### Exercice {num1}`exercice-revision`
-
-Est-ce que les conditions suivantes sont `true` ou `false`, sachant que la
-variable `pays` contient la valeur `"Suisse"` et la variable `temperature`
-contient `26.2` ?
-
-```{role} select(quiz-select)
-:right:
-:options: |
-: true
-: false
-```
-
-```{quiz}
-:style: max-width: 30rem;
-1.  {select}`true`  `pays === "Suisse"`
-2.  {select}`true`  `pays !== "France"`
-3.  {select}`true`  `temperature > 20`
-4.  {select}`false` `temperature < 26.2`
-5.  {select}`false` `temperature < 26`
-6.  {select}`true`  `pays === "Suisse" && temperature > 20`
-7.  {select}`true`  `pays === "France" || temperature > 20`
-8.  {select}`false` `pays === "France" && temperature > 20`
-```
 
 ### Exercice {num1}`exercice-revision`
 
@@ -415,48 +370,6 @@ Corrigez chaque code puis cliquez sur "Play".
 
 ### Exercice {num1}`exercice-revision`
 
-Complétez le programme de commande de pizza ci-dessous. Dans celui-ci, le
-client peut entrer le nom de la pizza à commander. Si la pizza est `"hawaï"`,
-le programme affiche un message supplémentaire de félicitations. Deux
-exemples d'exécution :
-
-```{code-block} text
-Quelle pizza souhaitez-vous commander ? <-- [prosciutto]
-Commande confirmée pour 1x pizza prosciutto
-
->>>
-
-Quelle pizza souhaitez-vous commander ? <-- [hawaï]
-Excellent choix !
-Commande confirmée pour 1x pizza hawaï
-```
-
-```{exec} html
-:editor: 019f01a0-0108-7108-8108-000000000108
-:style: max-height: 18rem;
-:output-style: height: 0;
-<!DOCTYPE html>
-<html><body><script>
-let pizza = prompt("Quelle pizza souhaitez-vous commander ?");
-// Complétez le code ici
-
-
-console.log("Commande confirmée pour 1x pizza", pizza);
-</script></body></html>
-```
-
-````{solution}
-```{code-block} javascript
-let pizza = prompt("Quelle pizza souhaitez-vous commander ?");
-if (pizza === "hawaï") {
-    console.log("Excellent choix !");
-}
-console.log("Commande confirmée pour 1x pizza", pizza);
-```
-````
-
-### Exercice {num1}`exercice-revision`
-
 Écrivez un programme qui calcule le prix d'un certain nombre de bananes à
 1.50 CHF pièce. Si l'utilisateur entre un nombre négatif, le programme
 affiche un message d'erreur à la place.
@@ -477,7 +390,7 @@ ERREUR : nombre négatif invalide
 :output-style: height: 0;
 <!DOCTYPE html>
 <html><body><script>
-// Écrivez votre code ici
+let nbBananes = Number(Prompt("Combien de bananes voulez-vous acheter ?"))
 
 </script></body></html>
 ```
