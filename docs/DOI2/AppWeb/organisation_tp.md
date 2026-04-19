@@ -24,14 +24,11 @@ Groupe B :
  - Sam
 
 Dates :
- - 09.12.2025 : Groupe A
- - 16.12.2025 : Groupe B
- - 06.01.2026 : Groupe A
- - 13.01.2026 : Groupe B
- - 20.01.2026 : Groupe A
- - 27.01.2026 : Groupe B
- - 03.02.2025 : Groupe A
- - 10.02.2025 : Groupe B
+  - 28.04.2026 : groupe A
+  - 05.05.2026 : groupe B
+  - 12.05.2026 : groupe A
+  - 19.05.2026 : groupe B
+  
 
 
 
@@ -62,13 +59,7 @@ Groupe B :
  - Zeynab
 
 Dates :
- - 09.01.2026 : Groupe A
- - 16.01.2026 : Groupe B
- - 23.01.2026 : Groupe A
- - 30.01.2026 : Groupe B
- - 06.02.2026 : Groupe A
- - 27.02.2026 : Groupe B
- - 06.03.2026 : Groupe A + B (rendu)
+
 
 
 
@@ -114,13 +105,6 @@ Dates :
 
 
 
-
-
-
-
-
-
-
   ## 2F3
 
 Groupe A :
@@ -153,11 +137,8 @@ Groupe B :
 
 
   Dates : 
-  - 11.12.2025 : Groupe A
-  - 18.12.2025 : Groupe B
-  - 08.01.2026 : Groupe A
-  - 15.01.2026 : Groupe B
-  - 22.01.2026 : Groupe A
-  - 05.02.2026 : Groupe B
-  - 26.02.2026 : Groupe A
-  - 05.03.2025 : Groupe B
+  - 30.04.2026 : groupe A
+  - 07.05.2026 : groupe B
+  - 14.05.2026 : groupe A
+  - 21.05.2026 : groupe B
+  

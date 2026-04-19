@@ -5,14 +5,22 @@
 
 Cette section contient toute la théorie et les exercices du chapitre de développement Web
 
+## Cours et exercices
 ```{toctree}
 :maxdepth: 1
 html
 css
 bootstrap
 ../../Software/index
-organisation_tp
-TP_escape/createur_schema
+
 ```
 
+
+## Travaux pratiques
+```{toctree}
+:maxdepth: 1
+TP_escape/organisation_tp
+TP_escape/consigne_tp
+TP_escape/createur_schema
+```
 

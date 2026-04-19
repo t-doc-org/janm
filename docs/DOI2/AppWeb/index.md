@@ -4,9 +4,19 @@
 # 2.5 Applications Webs
 
 
+## Théorie JavaScript
 ```{toctree}
 :maxdepth: 1
-tp1
+js_variables
+js_branchements_cond
+js_boucles
+js_fonctions
+```
+
+## Travaux pratiques
+```{toctree}
+:maxdepth: 1
 organisation_tp
+tp1
 ```
 
