@@ -11,6 +11,12 @@ Cette section contient toute la théorie et les exercices du chapitre de dévelo
 html
 css
 bootstrap
+
+```
+
+## Travaux pratiques
+```{toctree}
+:maxdepth: 1
 ../../Software/index
 
 ```

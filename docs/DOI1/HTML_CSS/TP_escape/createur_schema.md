@@ -12,6 +12,7 @@ N'oubliez pas de **SAUVEGARDER** votre projet !
 
 
 
+N'oubliez pas de **Sauvegarder** votre projet sur votre ordinateur !
 <div id="escape-schema-editor"></div>
 
 <script>initEscapeSchema('escape-schema-editor');</script>
