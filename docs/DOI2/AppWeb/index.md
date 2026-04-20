@@ -11,6 +11,7 @@ js_intro
 js_variables
 js_branchements_cond
 js_fonctions
+js_dom
 ```
 
 ## Travaux pratiques
