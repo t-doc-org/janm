@@ -7,36 +7,12 @@ solutions: show
 
 # Branchements conditionnels en JavaScript
 
-## Qu'est-ce qu'un branchement conditionnel ?
 
-Comme en Python, un **branchement conditionnel** permet d'exécuter certaines
-instructions seulement si une **condition** est remplie. La logique est
-exactement la même qu'en Python : seule la syntaxe change.
-
-## Conditions
-
-Une condition est composée de deux valeurs comparées à l'aide d'un opérateur.
-Le résultat est un `boolean` (`true` ou `false`).
-
-| Opérateur | Nom                  | Exemple   | Résultat |
-| :-------: | :------------------: | :-------: | :------: |
-| `===`     | égal à               | `3 === 7` | `false`  |
-| `!==`     | différent de         | `3 !== 7` | `true`   |
-| `>`       | plus grand que       | `3 > 7`   | `false`  |
-| `<`       | plus petit que       | `3 < 7`   | `true`   |
-| `>=`      | plus grand ou égal à | `3 >= 7`  | `false`  |
-| `<=`      | plus petit ou égal à | `3 <= 7`  | `true`   |
-
-```{important}
-En JavaScript, on utilise **trois signes égal** (`===`) pour tester l'égalité,
-et `!==` pour tester l'inégalité. C'est une différence importante avec Python
-qui utilise `==` et `!=`.
-```
 
 ## Si …
 
 La forme la plus simple d'un branchement conditionnel est le `if`. En
-JavaScript, la condition est entourée de **parenthèses** et le bloc
+JavaScript, la condition est entourée de **parenthèses** `( ... )` et le bloc
 d'instructions à exécuter est entouré d'**accolades** `{ ... }`.
 
 <table><tr style="text-align: center">
@@ -70,10 +46,11 @@ console.log("Fin du programme");
 - `prompt()` renvoie toujours un **texte**. Pour obtenir un nombre, il faut
   convertir la valeur avec `Number(...)` (équivalent de `int(...)` ou
   `float(...)` en Python).
-- Contrairement à Python, **l'indentation n'est pas obligatoire** en
-  JavaScript : ce sont les accolades `{ }` qui délimitent le bloc. L'indenter
-  reste cependant une bonne pratique pour la lisibilité.
+ - En JavaScript, on utilise **trois signes égal** (`===`) pour tester l'égalité,
+et `!==` pour tester l'inégalité. C'est une différence importante avec Python
+qui utilise `==` et `!=`.
 ```
+
 
 Vous pouvez tester le code ci-dessous :
 
@@ -225,10 +202,11 @@ si une ville est Romont ou Rue, il faut écrire :
 ## Exercices
 
 
-### Exercice {num1}`exercice-revision`
+### Exercice {num1}`exercice-js`
 
-Chacun des programmes suivants comporte au moins une erreur. Certaines
-bloquent l'exécution ; d'autres donnent un résultat faux.
+Chacun des programmes suivants comporte au moins une erreur typique due à une
+habitude Python. Certaines bloquent l'exécution ; d'autres donnent un résultat
+faux.
 
 Corrigez chaque code puis cliquez sur "Play".
 
@@ -238,11 +216,12 @@ Corrigez chaque code puis cliquez sur "Play".
     :output-style: height: 0;
     <!DOCTYPE html>
     <html><body><script>
-    let collège = prompt("Dans quel collège es-tu ?");
-    if (collège = "STX") {
-        console.log("Tu es dans le meilleur collège !");
+    let âge = Number(prompt("Quel âge as-tu ?"));
+    if âge >= 18 {
+        console.log("Tu es majeur");
+    } else {
+        console.log("Tu es mineur");
     }
-    console.log("A bientôt");
     </script></body></html>
     ```
 
@@ -252,12 +231,12 @@ Corrigez chaque code puis cliquez sur "Play".
     :output-style: height: 0;
     <!DOCTYPE html>
     <html><body><script>
-    let âge = Number(prompt("Quel âge as-tu ?"));
-    if (âge < 18) {
-        console.log("Tu es majeur");
-    } else {
-        console.log("Tu es mineur");
-    }
+    let note = Number(prompt("Quelle est ta note ?"));
+    if (note >= 4)
+        console.log("Bravo !");
+        console.log("Continue comme ça");
+    else
+        console.log("Essaie encore");
     </script></body></html>
     ```
 
@@ -267,30 +246,28 @@ Corrigez chaque code puis cliquez sur "Play".
     :output-style: height: 0;
     <!DOCTYPE html>
     <html><body><script>
-    let moyenne = Number(prompt("Quelle moyenne principale as-tu ?"));
-    if moyenne < 4 {
-        console.log("Tu n'es pas promu");
+    let t = Number(prompt("Température ?"));
+    if (t < 0) {
+        console.log("Il gèle");
+    } elif (t < 15) {
+        console.log("Il fait frais");
     } else {
-        console.log("Tu es promu");
+        console.log("Il fait bon");
     }
     </script></body></html>
     ```
 
 4.  ```{exec} html
     :editor: 019f01a0-0106-7106-8106-000000000106
-    :style: max-height: 18rem;
+    :style: max-height: 16rem;
     :output-style: height: 0;
     <!DOCTYPE html>
     <html><body><script>
-    let nombre = Number(prompt("Entre un nombre"));
-
-    if (nombre > 0) {
-        console.log(nombre, "est positif");
-    }
-    if (nombre < 0) {
-        console.log(nombre, "est négatif");
+    let métier = prompt("Quel est ton métier ?");
+    if (métier === "étudiant" or métier === "étudiante") {
+        console.log("Tu as droit à une réduction");
     } else {
-        console.log("Zéro n'est ni positif ni négatif");
+        console.log("Tu dois payer plein prix");
     }
     </script></body></html>
     ```
@@ -301,27 +278,18 @@ Corrigez chaque code puis cliquez sur "Play".
     :output-style: height: 0;
     <!DOCTYPE html>
     <html><body><script>
-    let métier = prompt("Quel est ton métier ?");
-
-    if (métier === "étudiant" || "étudiante") {
-        console.log("Tu as droit à une réduction");
+    let age = Number(prompt("Quel âge as-tu ?"));
+    let argent = Number(prompt("As-tu de l'argent ?"));
+    if (age >= 18 and argent >= 50) {
+        console.log("Tu peux acheter");
     } else {
-        console.log("Tu dois payer plein prix");
+        console.log("Tu ne peux pas acheter");
     }
     </script></body></html>
     ```
 
 ````{solution}
 1.  ```{code-block} javascript
-    let collège = prompt("Dans quel collège es-tu ?");
-    if (collège === "STX") {
-        console.log("Tu es dans le meilleur collège !");
-    }
-    console.log("A bientôt");
-    ```
-    `=` est une affectation, il fallait utiliser `===` pour une comparaison.
-
-2.  ```{code-block} javascript
     let âge = Number(prompt("Quel âge as-tu ?"));
     if (âge >= 18) {
         console.log("Tu es majeur");
@@ -329,46 +297,55 @@ Corrigez chaque code puis cliquez sur "Play".
         console.log("Tu es mineur");
     }
     ```
-    La condition était inversée : si l'âge est inférieur à 18, on est
-    *mineur*, pas majeur.
+    En JavaScript, la condition doit être entourée de **parenthèses**.
+
+2.  ```{code-block} javascript
+    let note = Number(prompt("Quelle est ta note ?"));
+    if (note >= 4) {
+        console.log("Bravo !");
+        console.log("Continue comme ça");
+    } else {
+        console.log("Essaie encore");
+    }
+    ```
+    Les accolades `{ }` sont **obligatoires** en JavaScript pour délimiter le
+    bloc d'instructions, contrairement à Python qui utilise l'indentation.
 
 3.  ```{code-block} javascript
-    let moyenne = Number(prompt("Quelle moyenne principale as-tu ?"));
-    if (moyenne < 4) {
-        console.log("Tu n'es pas promu");
+    let t = Number(prompt("Température ?"));
+    if (t < 0) {
+        console.log("Il gèle");
+    } else if (t < 15) {
+        console.log("Il fait frais");
     } else {
-        console.log("Tu es promu");
+        console.log("Il fait bon");
     }
     ```
-    La condition doit être entourée de **parenthèses**.
+    En JavaScript, c'est `else if` (deux mots), pas `elif` comme en Python.
 
 4.  ```{code-block} javascript
-    let nombre = Number(prompt("Entre un nombre"));
-
-    if (nombre > 0) {
-        console.log(nombre, "est positif");
-    } else if (nombre < 0) {
-        console.log(nombre, "est négatif");
-    } else {
-        console.log("Zéro n'est ni positif ni négatif");
-    }
-    ```
-    Il fallait un `else if` pour relier les trois cas, sinon un nombre positif
-    affichait aussi "Zéro n'est ni positif ni négatif".
-
-5.  ```{code-block} javascript
     let métier = prompt("Quel est ton métier ?");
-
     if (métier === "étudiant" || métier === "étudiante") {
         console.log("Tu as droit à une réduction");
     } else {
         console.log("Tu dois payer plein prix");
     }
     ```
-    Chaque condition doit être complète : il faut répéter `métier === ...`.
+    En JavaScript, l'opérateur logique OR s'écrit `||`, pas `or` comme en Python.
+
+5.  ```{code-block} javascript
+    let age = Number(prompt("Quel âge as-tu ?"));
+    let argent = Number(prompt("As-tu de l'argent ?"));
+    if (age >= 18 && argent >= 50) {
+        console.log("Tu peux acheter");
+    } else {
+        console.log("Tu ne peux pas acheter");
+    }
+    ```
+    En JavaScript, l'opérateur logique AND s'écrit `&&`, pas `and` comme en Python.
 ````
 
-### Exercice {num1}`exercice-revision`
+### Exercice {num1}`exercice-js`
 
 Écrivez un programme qui calcule le prix d'un certain nombre de bananes à
 1.50 CHF pièce. Si l'utilisateur entre un nombre négatif, le programme
@@ -407,7 +384,7 @@ if (nbBananes >= 0) {
 ```
 ````
 
-### Exercice {num1}`exercice-revision`
+### Exercice {num1}`exercice-js`
 
 Complétez le programme suivant pour qu'il corresponde à cet algorithme :
 
@@ -457,59 +434,8 @@ if (météo === "pluie") {
 ```
 ````
 
-### Exercice {num1}`exercice-revision`
 
-Un zoo pratique les tarifs suivants :
-
-- Les enfants jusqu'à 16 ans paient 15 CHF.
-- Les jeunes jusqu'à 20 ans paient 22 CHF.
-- Les adultes jusqu'à 65 ans paient 28 CHF.
-- Les personnes âgées paient 20 CHF.
-
-Écrivez un programme qui demande l'âge de l'utilisateur et affiche le prix à
-payer :
-
-```{code-block} text
-Quel est ton âge ? <--- [16]
-Pour une personne de 16 ans, le prix à payer est de 22 francs.
-```
-
-Pour une solution optimale, essayez de n'utiliser qu'une seule fois
-`console.log()`.
-
-```{exec} html
-:editor: 019f01a0-010b-710b-810b-00000000010b
-:style: max-height: 18rem;
-:output-style: height: 0;
-<!DOCTYPE html>
-<html><body><script>
-// Écrivez votre code ici
-
-</script></body></html>
-```
-
-````{solution}
-```{code-block} javascript
-let age = Number(prompt("Quel est ton âge ?"));
-let prix;
-
-if (age <= 16) {
-    prix = 15;
-} else if (age <= 20) {
-    prix = 22;
-} else if (age <= 65) {
-    prix = 28;
-} else {
-    prix = 20;
-}
-
-console.log("Pour une personne de", age, "ans, le prix à payer est de", prix, "francs.");
-```
-Note : on peut déclarer `let prix;` sans valeur initiale ; la variable existe
-alors mais son contenu sera défini dans les `if/else if/else`.
-````
-
-### Exercice {num1}`exercice-revision`
+### Exercice {num1}`exercice-js`
 
 Complétez le programme de quiz ci-dessous selon cet algorithme :
 
@@ -554,58 +480,3 @@ if (participation === "oui" || participation === "ok") {
 ```
 ````
 
-### Exercice {num1}`exercice-revision`
-
-Écrivez un programme dans lequel l'utilisateur peut entrer le prix d'un
-article et un code de réduction. Les règles sont les suivantes :
-
-- Avec le code `"STX"`, un article à moins de 100 CHF est réduit de 20 %.
-- Avec le code `"STX"`, un article à plus de 200 CHF est réduit de 35 %.
-- Avec le code `"STX"`, les autres articles ont une réduction de 20 CHF.
-- Avec le code `"CSMI"` ou `"CGAM"`, le prix est **augmenté** de 10 CHF.
-- Sinon, aucun changement.
-
-Votre programme ne doit utiliser `console.log()` **qu'une seule fois** et à
-la dernière ligne.
-
-```{code-block} text
-Combien coûte l'article ? <--- [300]
-Quel est votre code de réduction ? <--- [STX]
-Le prix final est 195 CHF
-
->>>
-
-Combien coûte l'article ? <--- [150]
-Quel est votre code de réduction ? <--- [CSMI]
-Le prix final est 160 CHF
-```
-
-```{exec} html
-:editor: 019f01a0-010d-710d-810d-00000000010d
-:style: max-height: 20rem;
-:output-style: height: 0;
-<!DOCTYPE html>
-<html><body><script>
-// Écrivez votre code ici
-
-</script></body></html>
-```
-
-````{solution}
-```{code-block} javascript
-let prix = Number(prompt("Combien coûte l'article ?"));
-let code = prompt("Quel est votre code de réduction ?");
-
-if (code === "STX" && prix < 100) {
-    prix = prix * 0.8;
-} else if (code === "STX" && prix > 200) {
-    prix = prix * 0.65;
-} else if (code === "STX") {
-    prix = prix - 20;
-} else if (code === "CSMI" || code === "CGAM") {
-    prix = prix + 10;
-}
-
-console.log("Le prix final est", prix, "CHF");
-```
-````
