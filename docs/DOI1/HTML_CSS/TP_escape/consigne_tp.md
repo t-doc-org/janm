@@ -28,9 +28,6 @@ balises `<a>`:
 - Si le joueur se trompe, il peut atterrir sur une page "game over" et devoir
   recommencer depuis le début.
 
-Voici un [exemple d'escape game médiéval](/_static/exemple-escape-medieval/index.html)
-pour vous donner une idée du résultat attendu.
-
 ## Déroulement
 
 Le projet est réalisé en 3 phases successives:
@@ -93,12 +90,9 @@ valeur maximale indiquée.
 | Style visuel soigné et ambiance graphique immersive | 3 |
 | **Total** | **35** |
 
-
-
 ## Rendu
 
-Consignes à venir...
-
+Informations à venir...
 
 ## Note sur le plagiat
 
