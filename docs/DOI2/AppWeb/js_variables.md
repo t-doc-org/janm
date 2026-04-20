@@ -88,7 +88,7 @@ let prénom = "Iliya";
 let pays = "Bulgarie";
 let ville = "Fribourg";
 console.log(prénom);
-console.log("Je viens de", pays, "et j'habite à", ville);
+console.log("Je viens de " + pays + " et j'habite à " + ville);
 </script></body></html>
 ```
 
