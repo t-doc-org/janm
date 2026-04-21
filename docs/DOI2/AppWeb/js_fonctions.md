@@ -184,7 +184,7 @@ function convertirCelsiusEnFahrenheit(celsius) {
 
 // Aire d'un cercle de rayon 5
 let aire = ;
-console.log("Aire du cercle :" + aire.toFixed(2));
+console.log("Aire du cercle :" + aire);
 
 // Conversion de 30°C en Fahrenheit
 let tempF = ;
@@ -203,7 +203,7 @@ function convertirCelsiusEnFahrenheit(celsius) {
 }
 
 let aire = calculerAire(5);
-console.log("Aire du cercle :" + aire.toFixed(2));
+console.log("Aire du cercle :" + aire);
 
 let tempF = convertirCelsiusEnFahrenheit(30);
 console.log("30°C = " + tempF + "°F");
@@ -212,11 +212,10 @@ console.log("30°C = " + tempF + "°F");
 
 ### Exercice {num1}`exercice-js`
 
-Écrivez les 3 fonctions manquantes :
-
-1. Une fonction `mettreEnMajuscules()` qui convertit un texte en majuscules.
-2. Une fonction `ajouterPrefixe()` qui ajoute un préfixe à un texte.
-3. Une fonction `genererSalutation()` qui crée un message de bienvenue personnalisé.
+Définissez une fonction `AfficheSalutations` prenant en paramètre un nom et affichant un message de Bienvenue. Avec l'appel déjà noté ci-dessous, le programme devrait afficher :
+```{code-block} text
+Bienvenue Alice !
+```
 
 ```{exec} html
 :editor: 019f01a0-0303-7303-8303-000000000303
@@ -224,36 +223,21 @@ console.log("30°C = " + tempF + "°F");
 :output-style: height: 0;
 <!DOCTYPE html>
 <html><body><script>
-// Définissez vos trois fonctions ici
+//Définissez la fonction ici
 
 
-console.log(mettreEnMajuscules("hello"));
 
-console.log(ajouterPrefixe("Bonjour", ">>> "));
-
-console.log(genererSalutation("Alice"));
+AfficheSalutations("Alice");
 </script></body></html>
 ```
 
 ````{solution}
 ```{code-block} javascript
-function mettreEnMajuscules(texte) {
-    return texte.toUpperCase();
+function AfficheSalutations(nom) {
+    console.log("Bienvenue " + nom + " !");
 }
 
-function ajouterPrefixe(texte, prefixe) {
-    return prefixe + texte;
-}
-
-function genererSalutation(nom) {
-    return "Bienvenue " + nom + " !";
-}
-
-console.log(mettreEnMajuscules("hello"));
-
-console.log(ajouterPrefixe("Bonjour", ">>> "));
-
-console.log(genererSalutation("Alice"));
+AfficheSalutations("Alice");
 ```
 ````
 
