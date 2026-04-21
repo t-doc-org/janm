@@ -96,7 +96,7 @@ saluer("Bob")
 
 ```{code-block} javascript
 function saluer(nom) {
-    console.log("Bonjour", nom);
+    console.log("Bonjour " + nom);
 }
 
 saluer("Alice");
@@ -184,11 +184,11 @@ function convertirCelsiusEnFahrenheit(celsius) {
 
 // Aire d'un cercle de rayon 5
 let aire = ;
-console.log("Aire du cercle :", aire.toFixed(2));
+console.log("Aire du cercle :" + aire.toFixed(2));
 
 // Conversion de 30°C en Fahrenheit
 let tempF = ;
-console.log("30°C = ", tempF, "°F");
+console.log("30°C = "+ tempF + "°F");
 </script></body></html>
 ```
 
@@ -203,10 +203,10 @@ function convertirCelsiusEnFahrenheit(celsius) {
 }
 
 let aire = calculerAire(5);
-console.log("Aire du cercle :", aire.toFixed(2));
+console.log("Aire du cercle :" + aire.toFixed(2));
 
 let tempF = convertirCelsiusEnFahrenheit(30);
-console.log("30°C = ", tempF, "°F");
+console.log("30°C = " + tempF + "°F");
 ```
 ````
 
@@ -283,11 +283,11 @@ Vie après soin : 105 devient 100 (80 + 25)
 // Créez vos deux fonctions ici
 
 
-console.log("Dégâts :", calculerDegats(15, 5));
-console.log("Dégâts :", calculerDegats(20, 3));
+console.log("Dégâts :" + calculerDegats(15, 5));
+console.log("Dégâts :"+ calculerDegats(20, 3));
 
-console.log("Vie après soin :", soigner(80, 5));
-console.log("Vie après soin :", soigner(80, 25));
+console.log("Vie après soin :"+ soigner(80, 5));
+console.log("Vie après soin :"+ soigner(80, 25));
 </script></body></html>
 ```
 
@@ -305,10 +305,10 @@ function soigner(vie, soin) {
     return nouvellVie;
 }
 
-console.log("Dégâts :", calculerDegats(15, 5));
-console.log("Dégâts :", calculerDegats(20, 3));
+console.log("Dégâts :"+ calculerDegats(15, 5));
+console.log("Dégâts :"+ calculerDegats(20, 3));
 
-console.log("Vie après soin :", soigner(80, 5));
-console.log("Vie après soin :", soigner(80, 25));
+console.log("Vie après soin :"+ soigner(80, 5));
+console.log("Vie après soin :"+ soigner(80, 25));
 ```
 ````
