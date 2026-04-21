@@ -14,17 +14,13 @@ bootstrap
 
 ```
 
+
+
+
 ## Travaux pratiques
 ```{toctree}
 :maxdepth: 1
 ../../Software/index
-
-```
-
-
-## Travaux pratiques
-```{toctree}
-:maxdepth: 1
 TP_escape/organisation_tp
 TP_escape/consigne_tp
 TP_escape/createur_schema
