@@ -367,7 +367,7 @@ ERREUR : nombre négatif invalide
 :output-style: height: 0;
 <!DOCTYPE html>
 <html><body><script>
-let nbBananes = Number(Prompt("Combien de bananes voulez-vous acheter ?"))
+let nbBananes = Number(prompt("Combien de bananes voulez-vous acheter ?"))
 
 </script></body></html>
 ```

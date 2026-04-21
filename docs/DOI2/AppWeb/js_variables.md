@@ -70,7 +70,7 @@ print("J'habite en", pays)
 
 ```{code-block} javascript
 let pays = "Suisse";
-console.log("J'habite en", pays);
+console.log("J'habite en " + pays);
 ```
 
 </td></tr></table>
