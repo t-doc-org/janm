@@ -7,4 +7,5 @@
 AlgoProg/index
 ReprInf/index
 HTML_CSS/index
+ArchOrdi/index
 ```
