@@ -96,7 +96,7 @@ saluer("Bob")
 
 ```{code-block} javascript
 function saluer(nom) {
-    console.log("Bonjour", nom);
+    console.log("Bonjour " + nom);
 }
 
 saluer("Alice");
@@ -184,11 +184,11 @@ function convertirCelsiusEnFahrenheit(celsius) {
 
 // Aire d'un cercle de rayon 5
 let aire = ;
-console.log("Aire du cercle :", aire.toFixed(2));
+console.log("Aire du cercle :" + aire);
 
 // Conversion de 30°C en Fahrenheit
 let tempF = ;
-console.log("30°C = ", tempF, "°F");
+console.log("30°C = "+ tempF + "°F");
 </script></body></html>
 ```
 
@@ -203,20 +203,19 @@ function convertirCelsiusEnFahrenheit(celsius) {
 }
 
 let aire = calculerAire(5);
-console.log("Aire du cercle :", aire.toFixed(2));
+console.log("Aire du cercle :" + aire);
 
 let tempF = convertirCelsiusEnFahrenheit(30);
-console.log("30°C = ", tempF, "°F");
+console.log("30°C = " + tempF + "°F");
 ```
 ````
 
 ### Exercice {num1}`exercice-js`
 
-Écrivez les 3 fonctions manquantes :
-
-1. Une fonction `mettreEnMajuscules()` qui convertit un texte en majuscules.
-2. Une fonction `ajouterPrefixe()` qui ajoute un préfixe à un texte.
-3. Une fonction `genererSalutation()` qui crée un message de bienvenue personnalisé.
+Définissez une fonction `AfficheSalutations` prenant en paramètre un nom et affichant un message de Bienvenue. Avec l'appel déjà noté ci-dessous, le programme devrait afficher :
+```{code-block} text
+Bienvenue Alice !
+```
 
 ```{exec} html
 :editor: 019f01a0-0303-7303-8303-000000000303
@@ -224,91 +223,21 @@ console.log("30°C = ", tempF, "°F");
 :output-style: height: 0;
 <!DOCTYPE html>
 <html><body><script>
-// Définissez vos trois fonctions ici
+//Définissez la fonction ici
 
 
-console.log(mettreEnMajuscules("hello"));
 
-console.log(ajouterPrefixe("Bonjour", ">>> "));
-
-console.log(genererSalutation("Alice"));
+AfficheSalutations("Alice");
 </script></body></html>
 ```
 
 ````{solution}
 ```{code-block} javascript
-function mettreEnMajuscules(texte) {
-    return texte.toUpperCase();
+function AfficheSalutations(nom) {
+    console.log("Bienvenue " + nom + " !");
 }
 
-function ajouterPrefixe(texte, prefixe) {
-    return prefixe + texte;
-}
-
-function genererSalutation(nom) {
-    return "Bienvenue " + nom + " !";
-}
-
-console.log(mettreEnMajuscules("hello"));
-
-console.log(ajouterPrefixe("Bonjour", ">>> "));
-
-console.log(genererSalutation("Alice"));
+AfficheSalutations("Alice");
 ```
 ````
 
-### Exercice {num1}`exercice-js`
-
-Créez deux fonctions pour un petit jeu de combat ET appelez-les avec différentes
-valeurs.
-
-1. Une fonction `calculerDegats()` qui prend la force d'une arme et un bonus,
-et retourne les dégâts totaux.
-2. Une fonction `soigner()` qui prend la vie actuelle et une quantité de soin,
-et retourne la nouvelle vie (maximum 100).
-
-```{code-block} text
-Dégâts avec force 15 et bonus 5 : 20
-Dégâts avec force 20 et bonus 3 : 23
-Vie après soin : 85 (80 + 5, max 100)
-Vie après soin : 105 devient 100 (80 + 25)
-```
-
-```{exec} html
-:editor: 019f01a0-0304-7304-8304-000000000304
-:style: max-height: 20rem;
-:output-style: height: 0;
-<!DOCTYPE html>
-<html><body><script>
-// Créez vos deux fonctions ici
-
-
-console.log("Dégâts :", calculerDegats(15, 5));
-console.log("Dégâts :", calculerDegats(20, 3));
-
-console.log("Vie après soin :", soigner(80, 5));
-console.log("Vie après soin :", soigner(80, 25));
-</script></body></html>
-```
-
-````{solution}
-```{code-block} javascript
-function calculerDegats(force, bonus) {
-    return force + bonus;
-}
-
-function soigner(vie, soin) {
-    let nouvellVie = vie + soin;
-    if (nouvellVie > 100) {
-        return 100;
-    }
-    return nouvellVie;
-}
-
-console.log("Dégâts :", calculerDegats(15, 5));
-console.log("Dégâts :", calculerDegats(20, 3));
-
-console.log("Vie après soin :", soigner(80, 5));
-console.log("Vie après soin :", soigner(80, 25));
-```
-````
