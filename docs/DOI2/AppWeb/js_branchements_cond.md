@@ -377,7 +377,7 @@ let nbBananes = Number(prompt("Combien de bananes voulez-vous acheter ?"))
 let nbBananes = Number(prompt("Combien de bananes souhaitez-vous acheter ?"));
 if (nbBananes >= 0) {
     let prix = 1.5 * nbBananes;
-    console.log("Cela vous coûtera", prix, "CHF");
+    console.log("Cela vous coûtera " + prix + " CHF");
 } else {
     console.log("ERREUR : nombre négatif invalide");
 }

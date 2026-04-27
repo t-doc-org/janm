@@ -124,7 +124,7 @@ Corrigez chacun de ces codes dans l'éditeur puis cliquez sur "Play".
     note = 4.5;
     bonus = 0.5;
     noteFinale = note + bonus;
-    console.log("Note finale :", noteFinale);
+    console.log("Note finale : " + noteFinale);
     </script></body></html>
     ```
 
@@ -137,7 +137,7 @@ Corrigez chacun de ces codes dans l'éditeur puis cliquez sur "Play".
     let score = 0;
     let score = score + 10;
     let score = score + 5;
-    console.log("Score :", score);
+    console.log("Score : " + score);
     </script></body></html>
     ```
 
@@ -169,7 +169,7 @@ Corrigez chacun de ces codes dans l'éditeur puis cliquez sur "Play".
 ````{solution}
 1.  ```{code-block} javascript
     let ville = "Fribourg";
-    console.log("Je viens de", ville);
+    console.log("Je viens de " + ville);
     ```
     En JavaScript, la fonction d'affichage s'appelle `console.log()` et non
     `print()` comme en Python.
@@ -179,7 +179,7 @@ Corrigez chacun de ces codes dans l'éditeur puis cliquez sur "Play".
     let note = 4.5;
     let bonus = 0.5;
     let noteFinale = note + bonus;
-    console.log("Note finale :", noteFinale);
+    console.log("Note finale : " + noteFinale);
     ```
     Chaque variable doit être déclarée avec `let`. Sans `let`, JavaScript
     crée une variable globale, ce qui est interdit en mode strict (`"use strict"`)
@@ -189,7 +189,7 @@ Corrigez chacun de ces codes dans l'éditeur puis cliquez sur "Play".
     let score = 0;
     score = score + 10;
     score = score + 5;
-    console.log("Score :", score);
+    console.log("Score : " + score);
     ```
     Le mot-clef `let` ne sert qu'à **créer** une variable. Pour modifier sa
     valeur ensuite, on écrit simplement `score = ...` sans répéter `let`.
@@ -255,9 +255,9 @@ let productionJournalière = nombrePanneaux * puissanceParPanneau * heuresSoleil
 let productionAnnuelle = productionJournalière * 365;
 let revenuAnnuel = productionAnnuelle * prixKWh;
 
-console.log("Production journalière :", productionJournalière, "kWh");
-console.log("Production annuelle :", productionAnnuelle, "kWh");
-console.log("Revenu annuel :", revenuAnnuel, "CHF");
+console.log("Production journalière : " + productionJournalière + " kWh");
+console.log("Production annuelle : " + productionAnnuelle + " kWh");
+console.log("Revenu annuel : " + revenuAnnuel + " CHF");
 ```
 ````
 
