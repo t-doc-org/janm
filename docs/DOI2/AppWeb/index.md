@@ -12,6 +12,7 @@ js_variables
 js_branchements_cond
 js_fonctions
 js_dom
+js_evenements
 ```
 
 ## Travaux pratiques
