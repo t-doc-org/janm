@@ -36,8 +36,10 @@ Dates :
  - 29.04.2026 : Groupe B
  - 06.05.2026 : Groupe A
  - 13.05.2026 : Groupe B
- - 20.05.2026 : Groupe A
- - 27.05.2026 : Groupe B
+ - 20.05.2026 : Recherche documentaire
+ - 27.05.2026 : Groupe A
+ - 03.06.2026 : Journée sportive
+ - 10.06.2026 : Groupe B
 
 ## 1F1
 
