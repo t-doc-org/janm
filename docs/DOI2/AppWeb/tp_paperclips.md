@@ -28,6 +28,6 @@ L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de
 ```{toctree}
 :maxdepth: 1
 Paperclips/theorie
-Paperclips/consignes
 Paperclips/jeu
 ```
+
