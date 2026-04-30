@@ -15,8 +15,6 @@ bootstrap
 ```
 
 
-
-
 ## Travaux pratiques
 ```{toctree}
 :maxdepth: 1

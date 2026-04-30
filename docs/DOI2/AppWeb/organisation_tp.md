@@ -28,6 +28,9 @@ Dates :
   - 05.05.2026 : groupe B
   - 12.05.2026 : groupe A
   - 19.05.2026 : groupe B
+  - 26.05.2026 : groupe A
+  - 02.05.2026 : journée sportive
+  - 09.05.2026 : groupe B
   
 
 
@@ -59,10 +62,14 @@ Groupe B :
  - Zeynab
 
 Dates :
-
-
-
-
+ - 01.05.2026 : groupe A
+ - 08.05.2026 : groupe B
+ - 15.05.2026 : Ascension
+ - 22.05.2026 : groupe A
+ - 29.05.2026 : Fun Day
+ - 05.06.2026 : groupe B
+ - 12.06.2026 : groupe A
+ - 19.06.2026 : groupe B
 
 
 
@@ -100,6 +107,9 @@ Dates :
   - 06.05.2026 : groupe B
   - 13.05.2026 : groupe A
   - 20.05.2026 : groupe B
+  - 27.05.2026 : groupe A
+  - 03.06.2026 : journée sportive
+  - 09.06.2026 : groupe B
   
 
 
@@ -139,6 +149,10 @@ Groupe B :
   Dates : 
   - 30.04.2026 : groupe A
   - 07.05.2026 : groupe B
-  - 14.05.2026 : groupe A
-  - 21.05.2026 : groupe B
+  - 14.05.2026 : Ascension
+  - 21.05.2026 : groupe A
+  - 28.05.2026 : groupe B
+  - 04.06.2026 : Fête Dieu
+  - 11.06.2026 : groupe A
+  - 18.06.2026 : groupe B
   

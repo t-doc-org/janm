@@ -152,10 +152,7 @@ Dans le JavaScript :
 
   <!-- Construisez votre jeu ici, étape par étape -->
 
-  <script>
-    // Votre code JavaScript ici
 
-  </script>
 </body>
 </html>
 ```
