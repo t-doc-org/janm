@@ -144,6 +144,7 @@ Groupe B :
  - Aude
  - Rinesa
  - Lisa
+ - Rina
 
 
   Dates : 
