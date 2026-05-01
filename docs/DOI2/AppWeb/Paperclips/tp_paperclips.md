@@ -25,9 +25,11 @@ Au terme du TP, le code complet de votre jeu doit être rendu et sera évalué a
 
 L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de copier le code de quelqu'un d'autre. Tout manquement à ces règles entraînera automatiquement la note 1.
 
+## Pages du TP
+
 ```{toctree}
 :maxdepth: 1
-Paperclips/theorie
-Paperclips/jeu
+theorie
+jeu
 ```
 

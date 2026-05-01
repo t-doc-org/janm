@@ -18,8 +18,7 @@ js_evenements
 ## Travaux pratiques
 ```{toctree}
 :maxdepth: 1
-organisation_tp
-tp1
-tp_paperclips
+Paperclips/organisation_tp
+Paperclips/tp_paperclips
 ```
 
