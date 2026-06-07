@@ -92,7 +92,12 @@ valeur maximale indiquée.
 
 ## Rendu
 
-Informations à venir...
+ 1. Placez votre fichier `schema_escape.json` dans le dossier de projet.
+ 2. Faites un clic-droite sur le dossier contenant tout le projet
+ 3. Windows : Cliquer sur `Compresser vers... --> Fichier ZIP`. MacOS : cliquer sur `Compresser`
+ 4. Renommer ce fichier ZIP en `prenom_nom_classe.zip`. Par exemple `Maxime_Jan_1F8.zip`
+ 5. Envoyer ce fichier ZIP par email à `maxime.jan@edufr.ch`
+
 
 ## Note sur le plagiat
 
