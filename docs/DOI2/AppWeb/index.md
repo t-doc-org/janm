@@ -4,6 +4,12 @@
 # 2.4 Applications Webs
 
 
+## Examen
+```{toctree}
+:maxdepth: 1
+objectifs
+```
+
 ## Théorie JavaScript
 ```{toctree}
 :maxdepth: 1

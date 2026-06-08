@@ -3,6 +3,12 @@
 
 # 2.3 Cryptographie
 
+## Examen
+```{toctree}
+:maxdepth: 1
+objectifs
+```
+
 ## Théorie et exercices
 ```{toctree}
 :maxdepth: 1
