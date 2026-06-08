@@ -7,7 +7,9 @@
 ```{toctree}
 :maxdepth: 1
 objectifs
+revisions
 ```
+
 
 ## Théorie et exercices
 ```{toctree}

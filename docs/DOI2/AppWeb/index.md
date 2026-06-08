@@ -8,7 +8,9 @@
 ```{toctree}
 :maxdepth: 1
 objectifs
+revisions
 ```
+
 
 ## Théorie JavaScript
 ```{toctree}
