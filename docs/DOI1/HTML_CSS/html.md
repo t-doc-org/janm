@@ -259,7 +259,7 @@ La balise `<table>` permet de représenter des tableaux de données (tableaux en
   </tr>
 </table>
 ```
-
+ 
 [Tuto](https://developer.mozilla.org/fr/docs/Web/HTML/Element/table) tables et
 tableaux
 
