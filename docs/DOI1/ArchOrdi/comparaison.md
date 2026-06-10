@@ -1,6 +1,10 @@
 <!-- Copyright 2026 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
+```{metadata}
+solutions: dynamic
+```
+
 # Comparer plusieurs ordinateurs
 
 Acheter un ordinateur, c'est choisir **composant par composant** selon
@@ -75,3 +79,34 @@ produit :
    Justifiez votre choix en tenant compte du processeur, de la RAM, du
    stockage, du format et du prix.
 
+````{admonition} Solution
+:class: note dropdown
+1. Caractéristiques relevées sur les fiches produit :
+
+   | | **Lenovo ThinkBook 16** | **HP OmniBook X Flip 14** | **HP ProBook 4 G1i** |
+   |:--|:--|:--|:--|
+   | Processeur | AMD Ryzen 7 7735HS | Intel Core Ultra 7 258V | Intel Core Ultra 5 225U |
+   | RAM | 32 Go | 32 Go | 16 Go |
+   | Stockage (SSD) | 1 To | 512 Go | 512 Go |
+   | Taille de l'écran | 16 pouces | 14 pouces (tactile, convertible) | 16 pouces |
+   | Prix | à relever (les prix varient) | à relever | à relever |
+
+
+3. N'ayant qu'un GPU intégré, ces machines sont conçues pour la **bureautique**,
+   la **navigation** et la **productivité**, pas pour les jeux 3D ni le montage
+   vidéo lourd.
+
+4. Les trois conviennent à un usage étudiant. Le choix dépend des priorités :
+
+   - **Lenovo ThinkBook 16** : grand écran 16 pouces, 1 To de stockage et CPU
+     très performant en multitâche. Idéal pour travailler longtemps et stocker
+     beaucoup de fichiers.
+   - **HP OmniBook X Flip 14** : le plus moderne et le plus mobile (14 pouces,
+     écran tactile convertible, excellente autonomie), mais seulement 512 Go.
+     Idéal pour la mobilité et la prise de notes.
+   - **HP ProBook 4 G1i** : l'entrée de gamme (16 Go de RAM, CPU le moins
+     puissant), à privilégier si le **prix** est le critère principal.
+
+   Une réponse correcte justifie le choix avec ces critères : il n'y a pas une
+   seule bonne réponse, mais un compromis adapté aux priorités de l'élève.
+````
