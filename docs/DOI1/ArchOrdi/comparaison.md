@@ -3,19 +3,35 @@
 
 # Comparer plusieurs ordinateurs
 
-Pour choisir une machine, on ne se fie pas à un seul chiffre (prix, fréquence,
-nombre de cœurs) : on compare **composant par composant**, selon l'**usage**
-visé. Comme les caractéristiques brutes sont trompeuses, on mesure la vraie
-performance du CPU et du GPU avec des **benchmarks** : un score de test
-standardisé, où plus le score est élevé, plus le composant est performant.
+Acheter un ordinateur, c'est choisir **composant par composant** selon
+l'**usage** visé — et non se fier à un seul chiffre (le prix ou la fréquence du
+processeur). Voici des repères concrets pour une machine destinée aux **études**
+en 2026.
 
-| Usage | Composant déterminant |
-|:--|:--|
-| Bureautique, navigation | SSD + assez de RAM (le CPU/GPU importe peu) |
-| Jeux vidéo 3D | Carte graphique (GPU), puis CPU |
-| Montage vidéo, 3D | CPU (multi-cœurs) + beaucoup de RAM + GPU |
+## Bien choisir ses composants en 2026
 
-**Outils de comparaison (gratuits) :**
+| Composant | Recommandation pour des études | À savoir / pièges à éviter |
+|:--|:--|:--|
+| **RAM (mémoire vive)** | **16 Go minimum**, 32 Go confortable | En dessous de 16 Go, Windows 11 + navigateur + Office rament. Au-delà de 32 Go, c'est de l'argent gaspillé : ce n'est utile que pour la vidéo ou la 3D professionnelle. |
+| **Stockage** | **SSD de 512 Go minimum**, 1 To confortable | Toujours un **SSD** (jamais un disque dur mécanique) : c'est lui qui rend la machine réactive. 256 Go se remplit trop vite. |
+| **Processeur (CPU)** | Milieu de gamme récent : Intel **Core Ultra 5/7** ou AMD **Ryzen 5/7** | Inutile de viser un Core Ultra 9 ou un Ryzen 9 (gamme gamer/pro). Évitez les Celeron, Pentium et Core i3 d'entrée de gamme, trop lents. Comparez les **scores de benchmark**, pas les GHz. |
+| **Carte graphique (GPU)** | Le **GPU intégré** au processeur suffit | Une carte graphique **dédiée** (NVIDIA RTX, AMD Radeon) n'est utile que pour les **jeux 3D, le montage vidéo et la 3D**. Sinon elle coûte plus cher, alourdit la machine et vide la batterie. |
+| **Écran** | 14 à 16 pouces, **Full HD (1920×1080)** minimum, dalle **IPS** | 14" = léger et mobile ; 16" = confortable mais plus lourd. Une dalle IPS offre de bons angles de vue ; un écran mat limite les reflets. |
+| **Autonomie** | **8 heures et plus** | Indispensable pour une machine qu'on transporte. Les puces récentes (Core Ultra, Ryzen AI, Snapdragon X) tiennent facilement une journée. |
+
+```{tip}
+Pour les **jeux 3D**, le **montage vidéo** ou la **modélisation 3D**, il faut en
+plus une **carte graphique dédiée** puissante, un processeur plus rapide et
+souvent **32 Go de RAM**. Pour de la simple bureautique, ces composants seraient
+du gaspillage.
+```
+
+## Mesurer la vraie performance : les benchmarks
+
+Les caractéristiques brutes (GHz, nombre de cœurs) sont trompeuses. Pour comparer
+réellement deux processeurs ou deux cartes graphiques, on utilise des
+**benchmarks** : un score de test standardisé où, plus le score est élevé, plus
+le composant est performant.
 
 | Composant | Sites |
 |:--|:--|
@@ -59,40 +75,3 @@ produit :
    Justifiez votre choix en tenant compte du processeur, de la RAM, du
    stockage, du format et du prix.
 
-````{admonition} Solution
-:class: note dropdown
-1. Caractéristiques relevées sur les fiches produit :
-
-   | | **Lenovo ThinkBook 16** | **HP OmniBook X Flip 14** | **HP ProBook 4 G1i** |
-   |:--|:--|:--|:--|
-   | Processeur | AMD Ryzen 7 7735HS | Intel Core Ultra 7 258V | Intel Core Ultra 5 225U |
-   | RAM | 32 Go | 32 Go | 16 Go |
-   | Stockage (SSD) | 1 To | 512 Go | 512 Go |
-   | Taille de l'écran | 16 pouces | 14 pouces (tactile, convertible) | 16 pouces |
-   | Prix | à relever (les prix varient) | à relever | à relever |
-
-2. Le **Core Ultra 5 225U** est le processeur le plus faible des trois. Le
-   **Ryzen 7 7735HS** et le **Core Ultra 7 258V** sont nettement devant et
-   proches l'un de l'autre : le Ryzen, avec ses 8 cœurs et 16 fils d'exécution,
-   est très bon en multi-thread, tandis que le Core Ultra 7, plus récent,
-   brille en single-thread et en autonomie. (Vérifiez les scores actuels sur le
-   site.)
-
-3. N'ayant qu'un GPU intégré, ces machines sont conçues pour la **bureautique**,
-   la **navigation** et la **productivité**, pas pour les jeux 3D ni le montage
-   vidéo lourd.
-
-4. Les trois conviennent à un usage étudiant. Le choix dépend des priorités :
-
-   - **Lenovo ThinkBook 16** : grand écran 16 pouces, 1 To de stockage et CPU
-     très performant en multitâche. Idéal pour travailler longtemps et stocker
-     beaucoup de fichiers.
-   - **HP OmniBook X Flip 14** : le plus moderne et le plus mobile (14 pouces,
-     écran tactile convertible, excellente autonomie), mais seulement 512 Go.
-     Idéal pour la mobilité et la prise de notes.
-   - **HP ProBook 4 G1i** : l'entrée de gamme (16 Go de RAM, CPU le moins
-     puissant), à privilégier si le **prix** est le critère principal.
-
-   Une réponse correcte justifie le choix avec ces critères : il n'y a pas une
-   seule bonne réponse, mais un compromis adapté aux priorités de l'élève.
-````
