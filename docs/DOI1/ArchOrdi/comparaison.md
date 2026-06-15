@@ -5,6 +5,7 @@
 solutions: dynamic
 ```
 
+
 # Comparer plusieurs ordinateurs
 
 Acheter un ordinateur, c'est choisir **composant par composant** selon
