@@ -66,32 +66,42 @@ Le code Javascript ci-dessous contient plusieurs erreurs de syntaxe. Trouver les
 
 ```{raw} html
 <style>
+  .janm-copy-wrap {
+    margin: 0.3rem 0 1.2rem;
+  }
   .janm-copy-btn {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.4rem;
-    z-index: 5;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.8rem;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.2;
     border: 1px solid var(--pst-color-border, #ccc);
     border-radius: 0.3rem;
     background: var(--pst-color-surface, #fff);
     color: var(--pst-color-text-base, #333);
     cursor: pointer;
-    opacity: 0.7;
   }
-  .janm-copy-btn:hover { opacity: 1; }
+  .janm-copy-btn:hover { background: var(--pst-color-border, #eee); }
 </style>
 <script>
   (() => {
+    // Échappe les caractères qui seraient sinon interprétés comme du HTML lors
+    // du collage, afin de conserver le code tel quel.
     const escapeHtml = (text) =>
       text
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#39;");
+        .replaceAll(">", "&gt;");
+
+    // Renvoie le CODE COURANT d'un bloc {exec} : le contenu vivant de l'éditeur
+    // CodeMirror s'il existe, sinon le <pre> d'origine.
+    // ⚠ Ne PAS lire pre.innerText quand un éditeur est présent : t-doc masque ce
+    // <pre> mais y laisse le code de BASE — on copierait alors l'énoncé, pas la
+    // réponse de l'élève.
+    const liveCode = (block) => {
+      const view = block.querySelector("div.cm-editor")?.tdocEditor;
+      if (view) return view.state.doc.toString();
+      const pre = block.querySelector("pre");
+      return pre ? pre.innerText : "";
+    };
 
     const copyText = async (text, btn) => {
       try {
@@ -112,30 +122,34 @@ Le code Javascript ci-dessous contient plusieurs erreurs de syntaxe. Trouver les
       setTimeout(() => { btn.textContent = original; }, 1500);
     };
 
-    const addButtons = () => {
-      // Chaque bloc de code interactif est un <pre> dans .highlight
-      document.querySelectorAll(".bd-article .highlight > pre").forEach((pre) => {
-        const container = pre.parentElement;
-        if (container.querySelector(".janm-copy-btn")) return;
-        if (getComputedStyle(container).position === "static") {
-          container.style.position = "relative";
-        }
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "janm-copy-btn";
-        btn.textContent = "Copier";
-        btn.addEventListener("click", () => copyText(escapeHtml(pre.innerText), btn));
-        container.appendChild(btn);
-      });
+    const addButton = (block) => {
+      if (block.dataset.janmCopy) return;  // évite les doublons
+      block.dataset.janmCopy = "1";
+      const wrap = document.createElement("div");
+      wrap.className = "janm-copy-wrap";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "janm-copy-btn";
+      btn.textContent = "Copier le code";
+      btn.title = "Copier le code courant (modifications incluses)";
+      // Le code est relu À CHAQUE clic → toujours la version à jour de l'éditeur.
+      btn.addEventListener("click", () => copyText(escapeHtml(liveCode(block)), btn));
+      wrap.appendChild(btn);
+      block.after(wrap);
     };
 
+    // Les div.tdoc-exec sont déjà dans le HTML au chargement (seul l'éditeur
+    // CodeMirror est ajouté ensuite), donc un simple scan suffit ; on relit le
+    // contenu au clic, pas ici.
+    const scan = () =>
+      document.querySelectorAll("div.tdoc-exec").forEach(addButton);
+
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", addButtons);
+      document.addEventListener("DOMContentLoaded", scan);
     } else {
-      addButtons();
+      scan();
     }
-    // Les éditeurs {exec} peuvent être réécrits après le chargement : on réessaie.
-    setTimeout(addButtons, 1000);
+    setTimeout(scan, 1500);  // filet de sécurité si le rendu est tardif
   })();
 </script>
 ```
