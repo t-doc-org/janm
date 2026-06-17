@@ -39,9 +39,9 @@ Le code Javascript ci-dessous contient plusieurs erreurs de syntaxe. Trouver les
 
 # Question 2 - Quiz
 
-Complétez le code pour créer un petit **quiz** :
+1. Complétez le code pour créer un petit **quiz** :
 
-1. 
+
 - un clic sur **"Vrai"** affiche `Bonne réponse` **dans un paragraphe**
 - un clic sur **"Faux"** affiche `Mauvaise réponse"` **dans un paragraphe**
 
