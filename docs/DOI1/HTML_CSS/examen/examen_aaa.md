@@ -86,6 +86,8 @@ Modifiez la page Web ci-dessous afin de la mettre en forme avec les éléments s
 <html>
 <head>
     <meta charset="utf-8">
+    <style>
+    </style>
 </head>
 <body>
     <h1>Le café dans le monde</h1>
