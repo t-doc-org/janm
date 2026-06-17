@@ -97,7 +97,7 @@ Modifiez la page Web ci-dessous afin de la mettre en forme avec les éléments s
     l'équateur. Les deux espèces les plus connues sont l'arabica et le robusta.</p>
 
     <h2>Les plus grands producteurs</h2>
-    <table border="1">
+    <table border="1">-
       <tr>
         <th>Pays</th>
         <th>Production annuelle</th>
