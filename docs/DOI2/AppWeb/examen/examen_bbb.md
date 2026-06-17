@@ -17,13 +17,13 @@ Le code Javascript ci-dessous contient plusieurs erreurs de syntaxe. Trouver les
 <html><body>
     <script>
     
-    fonction afficheMessage:
+    fonction afficheMessage():
         console.log(Au revoir)
 
     let note = 4
     let bonus = 0.5
-    let note = note + bonus
-    if note > 5:
+    let note += bonus
+    if note > 4.5 and note < 5.5:
         print("C'est une bonne note")
     elif note > 4:
         print("C'est une note correcte")
