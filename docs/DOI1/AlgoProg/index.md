@@ -32,3 +32,12 @@ objectifs1
 objectifs2
 revisions
 ```
+
+## Microbit
+```{toctree}
+:maxdepth: 1
+microbit-tuto
+microbit-exo
+microbit-jeu
+microbit-fonctions
+```
