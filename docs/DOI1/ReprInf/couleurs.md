@@ -133,7 +133,7 @@ f) FFFFFF
 ````
 
 <script type="module">
-const [core, quiz] = await tdoc.imports('tdoc/core.js', 'tdoc/quiz.js');
+const [core, quiz] = await tdoc.import('tdoc/core.js', 'tdoc/quiz.js');
 
 const colors = [
     { name: 'noir', r: 0, g: 0, b: 0, exact: true },
@@ -153,7 +153,7 @@ function toHex(r, g, b) {
 }
 
 // Exercice 3: notation hex -> nom de couleur (avec variations)
-quiz.generator('colorHexToName', () => {
+quiz.generators.colorHexToName = () => {
     const colorIndex = core.randomInt(0, colors.length - 1);
     const baseColor = colors[colorIndex];
     
@@ -188,7 +188,7 @@ quiz.generator('colorHexToName', () => {
         value(ph) { ph.textContent = hex; },
         result(args) { args.ok = args.answer === baseColor.name; }
     };
-});
+};
 </script>
 
 ### Exercice 3

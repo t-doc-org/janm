@@ -64,13 +64,13 @@ $$
 
 
 <script type="module">
-const [core, quiz] = await tdoc.imports('tdoc/core.js', 'tdoc/quiz.js');
+const [core, quiz] = await tdoc.import('tdoc/core.js', 'tdoc/quiz.js');
 
 function conversion(fromRadix, toRadix, min, max) {
     return () => {
         const v = core.randomInt(min, max);
         const solution = core.toRadix(v, toRadix);
-        if (tdoc.dev) console.log(solution);
+        if (tdoc.local) console.log(solution);
         return {
             v,
             equal(other) { return v === other.v; },
@@ -98,12 +98,12 @@ function addition(min, max) {
     };
 }
 
-quiz.generator('bin2dec', conversion(2, 10, 17, 511));
-quiz.generator('dec2bin', conversion(10, 2, 17, 511));
-quiz.generator('binAdd',  addition(1, 255));
-quiz.generator('hex2dec', conversion(16, 10, 16, 4095));
-quiz.generator('hex2bin', conversion(16, 2, 16, 4095));
-quiz.generator('bin2hex', conversion(2, 16, 16, 4095));
+quiz.generators.bin2dec = conversion(2, 10, 17, 511);
+quiz.generators.dec2bin = conversion(10, 2, 17, 511);
+quiz.generators.binAdd =  addition(1, 255);
+quiz.generators.hex2dec = conversion(16, 10, 16, 4095);
+quiz.generators.hex2bin = conversion(16, 2, 16, 4095);
+quiz.generators.bin2hex = conversion(2, 16, 16, 4095);
 </script>
 
 ## Exercices
