@@ -2,7 +2,6 @@
 ```{metadata}
 exec:
   python:
-    packages: [numpy, pygame-ce]
     files:
       spaceship.png:
       asteroide.png:
@@ -28,12 +27,7 @@ exec:
       winners.ogg:
       sad.ogg:
       yoshi.ogg:
-
-
-versions:
-  pyodide: 0.27.7
 ```
- 
 
 ```{exec} python
 :name: setup
@@ -52,20 +46,16 @@ setup_canvas()
 :include: ../code/pygame_start.py
 ```
 
-
-
 ```{defaults} exec
+:env: main
 :after: setup pygame_start
 :style: max-height: 25rem;
 ```
-
-
 
 ```{exec} python
 :name: pygame_end
 :when: never
 :class: hidden
-
 try:
     await main()
 finally:
@@ -169,7 +159,7 @@ Lorsque gameover est `True`, nous allons indiquer écrire le texte "GAMEOVER" à
 ````
 
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 351561ff-39c1-4c28-834b-01556c44a642
 async def main():

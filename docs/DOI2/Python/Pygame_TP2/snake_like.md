@@ -1,7 +1,6 @@
 ```{metadata}
 exec:
   python:
-    packages: [numpy, pygame-ce]
     files:
       pacman.png:
       apple.png:
@@ -28,12 +27,7 @@ exec:
       winners.ogg:
       sad.ogg:
       yoshi.ogg:
-
-
-versions:
-  pyodide: 0.27.7
 ```
-
 
 ```{exec} python
 :name: setup
@@ -53,6 +47,7 @@ setup_canvas()
 ```
 
 ```{defaults} exec
+:env: main
 :after: setup pygame_start
 :style: max-height: 25rem;
 ```
@@ -61,7 +56,6 @@ setup_canvas()
 :name: pygame_end
 :when: never
 :class: hidden
-
 try:
     await main()
 finally:
@@ -171,7 +165,7 @@ pacman devrait maintenant disparaître lorsqu'il entre en contact avec le fantô
 ````
 
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: a130776b-40b4-46b1-969d-b172edd44ba7
 async def main():

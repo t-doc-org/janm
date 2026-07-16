@@ -1,5 +1,14 @@
 # Pygame - TP 2-4
 
+```{metadata}
+:recursive:
+exec:
+  python:
+    packages: [numpy, pygame-ce]
+versions:
+  pyodide: 0.27.7
+```
+
 ## Introduction
 
 Durant 3 séances de TP, vous allez mettre en pratique les connaissances et compétences acquises en Python avec Pygame afin de créer votre propre mini-jeu. Pour cela, 4 choix s'offrent à vous :

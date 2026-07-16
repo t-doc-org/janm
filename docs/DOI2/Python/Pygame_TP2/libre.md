@@ -1,7 +1,6 @@
 ```{metadata}
 exec:
   python:
-    packages: [numpy, pygame-ce]
     files:
       pacman.png:
       apple.png:
@@ -16,13 +15,8 @@ exec:
       winners.ogg:
       sad.ogg:
       yoshi.ogg:
-      yoshi2.ogg:
       MARIO.png:
-
-versions:
-  pyodide: 0.27.7
 ```
-
 
 ```{exec} python
 :name: setup
@@ -42,6 +36,7 @@ setup_canvas()
 ```
 
 ```{defaults} exec
+:env: main
 :after: setup pygame_start
 :style: max-height: 25rem;
 ```
@@ -50,7 +45,6 @@ setup_canvas()
 :name: pygame_end
 :when: never
 :class: hidden
-
 try:
     await main()
 finally:
@@ -59,7 +53,7 @@ finally:
 
 # Projet libre
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: e722f1e6-542a-4106-b297-6f9511754d02
 async def main():

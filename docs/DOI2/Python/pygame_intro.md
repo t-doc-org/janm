@@ -14,8 +14,6 @@ versions:
   pyodide: 0.27.7
 ```
 
-
-
 ```{exec} python
 :name: setup
 :when: never
@@ -33,33 +31,27 @@ setup_canvas()
 :include: code/pygame_start.py
 ```
 
-
-
 ```{defaults} exec
+:env: main
 :after: setup pygame_start
 :style: max-height: 25rem;
 ```
-
-
 
 ```{exec} python
 :name: pygame_end
 :when: never
 :class: hidden
-
 try:
     await main()
 finally:
     pygame.quit()
 ```
 
-
 ```{exec} python
 :name: catch_fruit
 :when: never
 :include: code/catch_fruit.py
 :class: hidden
-
 ```
 
 # Pygame - Introduction
@@ -73,10 +65,10 @@ finally:
 
 Pygame est une librairie Python permettant de facilement de facilement créer de petits jeux en 2D. Avec celle-ci, vous pourrez facilement créer une fenêtre de jeu, ajouter des personnages, les faire se déplacer, gérer leurs collisions, afficher du texte, etc. Pour vous donner une idée de ce à quoi peut ressembler un jeu Pygame, vous pouvez exécuter le programme ci-dessous ci-dessous. Vous le reproduirez durant le 1er TP. Le but est d'attraper les oranges avec le panier en le déplaçant à l'aide des touches {kbd}`A` et {kbd}`D`.
 
-```{exec} python main
+```{exec} python
 :after: catch_fruit
 :then: pygame_end
-#Exécutez cette cellule pour tester le jeu du TP1
+# Exécutez cette cellule pour tester le jeu du TP1
 ```
 
 Pour débuter avec Pygame, vous allez commencer par réaliser des exercices pratiques qui introduiront pas à pas les concepts qui vous permettront de réaliser un jeu complet.
@@ -86,7 +78,7 @@ Comme décrit en cours, tout jeu vidéo n'est qu'une succession d'images fixes d
 
 
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 5b09530d-d320-4550-9619-8fa5e2bd87f7
 async def main():
@@ -127,7 +119,7 @@ roger = Actor("roger.png", 300, 50)
 
 Un acteur doit être créé **avant la boucle de jeu**. Cependant, il ne faut pas oublier après chaque *refresh* de redessiner chaque acteur sur l'écran grâce à la méthode `draw`. Ainsi, le code ci-dessous permet de créer Roger et de l'afficher à l'écran.
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: a6e28294-fad5-4523-86dc-660cb3dc334f
 async def main():
@@ -164,7 +156,7 @@ Ainsi, avec la strucutre `if ... in ...` travaillée en cours, il est facile d'e
 
 
 Ainsi, le code ci-dessous permet de déplacer Roger vers la droite lorsqu'on appuie sur {kbd}`D`.
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: cd37e935-680e-451a-9f22-2ca4595de57a
 async def main():
@@ -198,7 +190,7 @@ L'interaction la plus commune entre deux acteurs est la collision.
 
 Avec Pygame, il est possible de contrôler si deux acteurs sont en collision avec la méthode `collide`. Dans le programme ci-dessous, on contrôle à chaque tour de boucle de jeu si Roger est en collision avec une orange. Si tel est le cas, l'orange est détruite avec sa méthode `kill` et la vitesse de Roger est augmentée. Cela permet de simuler le fait que Roger ramasse l'orange qui lui octroie un bonus de rapidité.
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 99d5ff38-8e4c-46bd-a032-fffc1daf41be
 async def main():
@@ -237,7 +229,7 @@ Utilisez l'image `banana.png` et `strawberry.png` afin de faire apparaître une 
 
 ## Etape {num1}`etapes-intro-pygame` : afficher du texte
 Avec Pygame, il est possible de facilement afficher du texte dans son jeu. Un texte est lui aussi un acteur, mais qui se définit différemment. Lisez attentivement l'exemple ci-dessous et testez-le.
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: d2334d57-7a9a-4a40-ad39-bae5b37d0011
 async def main():
@@ -264,7 +256,7 @@ Afin que vos jeux ne soient pas trop prévisibles et restent intéressants, il f
 
 Pour cela, on peut utiliser la fonction `randint` (*random integer*) qui permet de sélectionner un nombre entier aléatoire entre deux bornes. Lisez et exécutez **plusieurs fois** le programme ci-dessous pour tester et comprendre le fonctionnement de `randint`.
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 3348777c-8819-47d3-b7f2-74e43071aee6
 async def main():
@@ -286,7 +278,7 @@ Modifiez le programme ci-dessus de sorte que la banane reste en haut de l'écran
 ### Exercice {num1}`exo-intro-pygame`
 Dans le programme ci-dessous, à chaque fois que Roger entre en collision avec une fraise, celle-ci est déplacée à de nouvelles coordonnées aléatoires. 
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 43a555a3-9439-4251-86a6-8091015599e0
 async def main():
@@ -327,7 +319,7 @@ Pour le moment, les exemples ne contiennent qu'un seul acteur de chaque type (1 
 
 Lisez attentivement le programme ci-dessous avant de l'exécuter. Celui-ci permet de définir une liste de fruits à afficher à l'écran. Grâce à la boucle `for ... in ...`, la fonction `draw` est appelée **pour chaque** fruit de la liste.
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 0eb2884f-e30e-406b-a648-489408abccbb
 async def main():
@@ -364,7 +356,7 @@ Dans la boucle de jeu
 
 3. Ajoutez un nouveau `randint` de sorte qu'à l'ajout d'un nouveau fruit, il y ait 1 chance sur 2 qu'il s'agisse d'une banane ou d'une fraise.
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: 4bd75f23-8302-467d-a2d8-b5923e32b971
 async def main():

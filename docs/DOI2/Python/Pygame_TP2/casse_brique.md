@@ -1,8 +1,6 @@
-
 ```{metadata}
 exec:
   python:
-    packages: [numpy, pygame-ce]
     files:
       brick.png:
       ball.png:
@@ -28,11 +26,7 @@ exec:
       winners.ogg:
       sad.ogg:
       yoshi.ogg:
-
-versions:
-  pyodide: 0.27.7
 ```
-
 
 ```{exec} python
 :name: setup
@@ -51,20 +45,16 @@ setup_canvas()
 :include: ../code/pygame_start.py
 ```
 
-
-
 ```{defaults} exec
+:env: main
 :after: setup pygame_start
 :style: max-height: 25rem;
 ```
-
-
 
 ```{exec} python
 :name: pygame_end
 :when: never
 :class: hidden
-
 try:
     await main()
 finally:
@@ -171,11 +161,10 @@ Ajoutons un message de fin de jeu.
 
 Vous avez maintenant un jeu complet avec conditions de victoire et de défaite !
 ````
-
 ``````
 
 
-```{exec} python main
+```{exec} python
 :then: pygame_end
 :editor: fce1ff87-ed2f-496e-9229-90e3d86166db
 async def main():
