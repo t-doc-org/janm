@@ -16,8 +16,6 @@ DOI2/index
 
 ## Archives
 ```{toctree}
-:maxdepth: 1
-
 Archives/AlgoProg/index
 ```
 

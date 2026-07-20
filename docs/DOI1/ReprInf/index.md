@@ -4,7 +4,6 @@
 # 1.2 Représentation de l'information
 
 ```{toctree}
-:maxdepth: 1
 bits
 caracteres
 nombres

@@ -7,7 +7,6 @@ Cette section contient toute la théorie et les exercices du chapitre d'algorith
 
 ## Cours
 ```{toctree}
-:maxdepth: 1
 introduction
 variables
 entrees_sorties
@@ -18,13 +17,11 @@ fonctions
 
 ## Travaux pratiques
 ```{toctree}
-:maxdepth: 1
 TP1
 ```
 
 ## Examens et préparation
 ```{toctree}
-:maxdepth: 1
 objectifs1
 revisions
 ```

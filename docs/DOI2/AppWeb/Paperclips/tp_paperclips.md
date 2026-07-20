@@ -28,7 +28,6 @@ L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de
 ## Pages du TP
 
 ```{toctree}
-:maxdepth: 1
 theorie
 jeu
 ```
