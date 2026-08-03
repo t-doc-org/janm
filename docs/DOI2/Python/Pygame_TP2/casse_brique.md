@@ -32,9 +32,7 @@ exec:
 :name: setup
 :when: never
 :class: hidden
-import io
-with redirect(stdout=io.StringIO()):
-    import tdoc.pygame
+import tdoc.pygame
 setup_canvas()
 ```
 

@@ -5,8 +5,8 @@
 exec:
   python:
     packages: [numpy, pygame-ce]
-versions:
-  pyodide: 0.27.7
+    env:
+        PYGAME_HIDE_SUPPORT_PROMPT:
 ```
 
 ## Introduction

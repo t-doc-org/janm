@@ -2,6 +2,8 @@
 exec:
   python:
     packages: [numpy, pygame-ce]
+    env:
+        PYGAME_HIDE_SUPPORT_PROMPT:
     files:
       orange.png:
       basket.png:
@@ -9,18 +11,13 @@ exec:
       banana.png:
       strawberry.png:
       dirt.png:
-
-versions:
-  pyodide: 0.27.7
 ```
 
 ```{exec} python
 :name: setup
 :when: never
 :class: hidden
-import io
-with redirect(stdout=io.StringIO()):
-    import tdoc.pygame
+import tdoc.pygame
 setup_canvas()
 ```
 
