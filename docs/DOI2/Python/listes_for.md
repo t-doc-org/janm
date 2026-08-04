@@ -6,7 +6,6 @@ exec:
   python:
     files:
       pizzeria.sql:
-    packages: [sqlite3]
 ```
 
 # Listes - Boucle for

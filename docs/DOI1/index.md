@@ -3,7 +3,6 @@
 # 1{sup}`ère` année
 
 ```{toctree}
-:maxdepth: 1
 AlgoProg/index
 ReprInf/index
 HTML_CSS/index

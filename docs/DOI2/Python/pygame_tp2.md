@@ -1,5 +1,14 @@
 # Pygame - TP 2-4
 
+```{metadata}
+:recursive:
+exec:
+  python:
+    packages: [numpy, pygame-ce]
+    env:
+        PYGAME_HIDE_SUPPORT_PROMPT:
+```
+
 ## Introduction
 
 Durant 3 séances de TP, vous allez mettre en pratique les connaissances et compétences acquises en Python avec Pygame afin de créer votre propre mini-jeu. Pour cela, 4 choix s'offrent à vous :
@@ -32,7 +41,6 @@ L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de
 
 ## Projets
 ```{toctree}
-:maxdepth: 1
 Pygame_TP2/space_shooter
 Pygame_TP2/casse_brique
 Pygame_TP2/snake_like

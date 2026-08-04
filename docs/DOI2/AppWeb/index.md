@@ -3,18 +3,14 @@
 
 # 2.4 Applications Webs
 
-
 ## Examen
 ```{toctree}
-:maxdepth: 1
 objectifs
 revisions
 ```
 
-
 ## Théorie JavaScript
 ```{toctree}
-:maxdepth: 1
 js_intro
 js_variables
 js_branchements_cond
@@ -25,8 +21,6 @@ js_evenements
 
 ## Travaux pratiques
 ```{toctree}
-:maxdepth: 1
 Paperclips/organisation_tp
 Paperclips/tp_paperclips
 ```
-

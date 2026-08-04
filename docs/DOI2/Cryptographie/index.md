@@ -5,16 +5,12 @@
 
 ## Examen
 ```{toctree}
-:maxdepth: 1
 objectifs
 revisions
 ```
 
-
-
 ## Théorie et exercices
 ```{toctree}
-:maxdepth: 1
 chiffrement_symetrique
 chiffrement_asymetrique
 mdp
@@ -23,6 +19,5 @@ steganographie
 
 ## Travaux pratiques
 ```{toctree}
-:maxdepth: 1
 tp_crypto_asym
 ```

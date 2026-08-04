@@ -4,7 +4,6 @@
 # 1.4 Architecture de l'ordinateur
 
 ```{toctree}
-:maxdepth: 1
 composants
 comparaison
 ```

@@ -3,8 +3,6 @@
 # 2{sup}`ème` année
 
 ```{toctree}
-:maxdepth: 1
-
 Databases/index
 Python/index
 Cryptographie/index
