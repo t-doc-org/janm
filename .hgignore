@@ -7,3 +7,7 @@ syntax: regexp
 ^_[^/]*/
 ^docs/_build/
 ^tmp/
+# Exam sources injected by exam-server/build_exam.py (all except the mock).
+# The (/|$) also lets the 'mock' directory itself through, not just its
+# contents (a bare "docs/_exam/mock" path has no trailing slash to match).
+^docs/_exam/(?!mock(/|$))

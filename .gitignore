@@ -5,3 +5,8 @@ __pycache__
 /_*/
 /docs/_build/
 /tmp/
+
+# Exam sources injected by exam-server/build_exam.py. Only the mock exam
+# (demo) is committed; real exam sources must never reach GitHub.
+/docs/_exam/*
+!/docs/_exam/mock/
