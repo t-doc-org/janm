@@ -1,159 +1,41 @@
 # Groupes de TP
-## 2BP1
-Groupe A :
- - Lyne
- - Pauline
- - Elise J.
- - Joséphine
- - Lorin
- - Benjamin
- - Emma Zürch
- - Miriam
- - Emma Zerpa
- - Livia
-
-Groupe B :
- - Emiliano
- - Maximillian
- - Max
- - Noah
- - Immanuel
- - Dionys
- - Flurin
- - Elise Favre
- - Sam
-
-Dates :
-  - 28.04.2026 : groupe A
-  - 05.05.2026 : groupe B
-  - 12.05.2026 : groupe A
-  - 19.05.2026 : groupe B
-  - 26.05.2026 : groupe A
-  - 02.05.2026 : journée sportive
-  - 09.05.2026 : groupe B
-  
-
-
 
 ## 2BS1
-
 Groupe A :
- - Tarek
- - Noélie
- - Eléonore
- - Isaline
- - Thibault
- - Esra
- - Arnaud 
- - Amélie
- - Melanie
- - Zoe
-  
+ -
+
 Groupe B :
- - Leticia
- - Réka
- - Luna
- - Samira
- - Marie-Liesse
- - Elisabeth
- - Sarah
- - Cataline
- - Danica
- - Zeynab
+ -
 
 Dates :
- - 01.05.2026 : groupe A
- - 08.05.2026 : groupe B
- - 15.05.2026 : Ascension
- - 22.05.2026 : groupe A
- - 29.05.2026 : Fun Day
- - 05.06.2026 : groupe B
- - 12.06.2026 : groupe A
- - 19.06.2026 : groupe B
+ -
 
-
-
-
- ## 2F2
- Groupe A:
- - Lidya
- - Roxane
- - Maxime
- - Adrien
- - Gabriel
- - Chloé
- - Ornella
- - Victoria
- - David 
- - Camille
- - Olivier
- - Ladina
-
- Groupe B:
- - Bryan
- - Yarine
- - Olivia
- - Neela
- - Naomi
- - Hannah
- - Marylou
- - Kesika
- - Emilien
- - Raphaël
- - Hai Ly
-
- Dates :
-  - 29.04.2026 : groupe A
-  - 06.05.2026 : groupe B
-  - 13.05.2026 : groupe A
-  - 20.05.2026 : groupe B
-  - 27.05.2026 : groupe A
-  - 03.06.2026 : journée sportive
-  - 09.06.2026 : groupe B
-  
-
-
-
-
-  ## 2F3
-
+## 2BP1
 Groupe A :
- - Linda
- - Julia
- - Emma
- - Laura
- - Emilie
- - Mathilde W.
- - Mathilde S.
- - Wendy
- - Jeanne
- - Kiera
- - Yasmin
+ -
 
 Groupe B :
- - Jade
- - Clara
- - Sofia
- - Nicolas
- - Neven
- - Hugo
- - Yahnis
- - Anir
- - Clément
- - Maxence
- - Aude
- - Rinesa
- - Lisa
- - Rina
+ -
 
+Dates :
+ -
 
-  Dates : 
-  - 30.04.2026 : groupe A
-  - 07.05.2026 : groupe B
-  - 14.05.2026 : Ascension
-  - 21.05.2026 : groupe A
-  - 28.05.2026 : groupe B
-  - 04.06.2026 : Fête Dieu
-  - 11.06.2026 : groupe A
-  - 18.06.2026 : groupe B
-  
+## 2F1
+Groupe A :
+ -
+
+Groupe B :
+ -
+
+Dates :
+ -
+
+## 2F2
+Groupe A :
+ -
+
+Groupe B :
+ -
+
+Dates :
+ -

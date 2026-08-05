@@ -4,13 +4,23 @@
 # Opérateurs logiques
 
 ## L'algèbre de Boole
-Au milieu du XIXᵉ siècle, bien avant l'invention du premier ordinateur, le
+Au milieu du XIXᵉ siècle, le
 mathématicien anglais *George Boole* (1815–1864) a eu une idée révolutionnaire :
 et si l'on pouvait **calculer avec le vrai et le faux**, comme on calcule avec
 les nombres ? Dans son ouvrage *Les lois de la pensée* (1854), il construit une
 algèbre où les variables ne prennent que **deux valeurs**, vrai ou faux, et se
 combinent à l'aide d'*opérateurs logiques*. C'est ce que l'on appelle
 aujourd'hui l'**algèbre de Boole**.
+
+```{figure} images/GeorgesBoole.jpg
+:width: 40%
+:alt: Portrait de George Boole
+:align: center
+
+George Boole (1815–1864), l'inventeur de l'algèbre qui porte son nom.
+
+*Portrait dans le domaine public, via Wikimedia Commons.*
+```
 
 Pendant près d'un siècle, cette algèbre reste une curiosité de logicien. Puis,
 en 1937, l'ingénieur *Claude Shannon* remarque qu'un interrupteur électrique n'a
@@ -20,20 +30,58 @@ rencontre entre la logique et l'électricité est l'acte de naissance de
 l'informatique numérique : encore aujourd'hui, **tout** ce que fait un
 processeur se ramène à des opérations de l'algèbre de Boole.
 
-## Deux valeurs : 0 et 1
-En algèbre de Boole, une variable ne peut valoir que `0` ou `1`. Par convention,
-`1` représente le **vrai** et `0` le **faux**. On peut aussi voir ces deux
-valeurs comme les deux états d'un fil électrique : `1` = courant qui passe,
-`0` = pas de courant.
+```{figure} images/ClaudeShannon.jpg
+:width: 40%
+:alt: Portrait de Claude Shannon
+:align: center
 
-Un opérateur logique prend une ou deux de ces valeurs et en produit une
-nouvelle. Pour décrire complètement son comportement, on dresse une **table de
-vérité** : un tableau qui donne le résultat pour **toutes** les combinaisons
-possibles des entrées.
+Claude Shannon (1916–2001), qui a relié l'algèbre de Boole aux circuits électriques.
+
+*Photo : Konrad Jacobs, Erlangen, MFO, [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/deed.fr)*
+```
+
+## Une proposition, c'est vrai ou faux
+Avant de calculer, il faut savoir sur quoi on calcule. En logique, une
+*proposition* est une **affirmation dont on peut dire si elle est vraie ou
+fausse**, sans hésitation possible. "La lampe est allumée", "j'ai 18 ans" ou
+"7 est un nombre pair" sont des propositions. En revanche, "quelle heure
+est-il ?" ou "ferme la porte !" n'en sont pas : on ne peut pas leur attribuer un
+vrai ou un faux.
+
+À chaque proposition, on associe une **variable logique**, notée par une lettre
+(`a`, `b`, `c`…). Cette variable résume la proposition en une seule valeur : `1`
+si la proposition est vraie, `0` si elle est fausse. Par exemple, en posant
+`a` = "la lampe est allumée" :
+
+- si la lampe est allumée, alors `a` vaut `1` ;
+- si elle est éteinte, alors `a` vaut `0`.
+
+| Proposition                    | Vaut `1` (vrai) si…          | Vaut `0` (faux) si…   |
+| :----------------------------- | :--------------------------- | :-------------------- |
+| `a` = "la lampe est allumée"   | la lampe est allumée         | la lampe est éteinte  |
+| `b` = "l'élève est majeur"     | l'élève a 18 ans ou plus     | l'élève a moins de 18 ans |
+| `c` = "le nombre est pair"     | le nombre est divisible par 2| le nombre est impair  |
+
+Tout l'intérêt de l'algèbre de Boole est là : une fois les propositions
+traduites en `0` et `1`, on peut les **combiner** et **calculer** avec,
+exactement comme avec des nombres. Les opérateurs logiques des sections
+suivantes servent justement à relier plusieurs propositions.
+
+```{tip}
+Les lettres `a`, `b`, `c` ne désignent pas toujours les mêmes propositions : à
+chaque exemple, on annonce d'abord ce que chaque variable représente, puis on
+raisonne uniquement sur ses valeurs `0` et `1`.
+```
+
 
 ## Le ET, la conjonction (∧)
 La conjonction, notée `a ∧ b`, ne vaut `1` **que si les deux** variables valent
 `1` en même temps. Dans tous les autres cas, elle vaut `0`.
+
+Posons `a` = "j'ai mon billet" et `b` = "j'ai ma carte d'identité". La
+proposition `a ∧ b` se lit "j'ai mon billet **et** ma carte d'identité". Au
+contrôle du concert, on ne laisse entrer que si les **deux** sont vraies ; dès
+qu'il en manque une, l'entrée est refusée.
 
 | `a` | `b` | `a ∧ b` |
 | :-: | :-: | :-----: |
@@ -46,6 +94,11 @@ La conjonction, notée `a ∧ b`, ne vaut `1` **que si les deux** variables vale
 La disjonction, notée `a ∨ b`, vaut `1` **si au moins une** des deux variables
 vaut `1`. Elle ne vaut `0` que lorsque les deux entrées valent `0`.
 
+Posons `a` = "j'aime le foot" et `b` = "j'aime le tennis". La proposition
+`a ∨ b` se lit "j'aime le foot **ou** le tennis". Elle est vraie dès que l'on
+aime au moins un des deux sports, et même si on aime les deux. Elle n'est fausse
+que si on n'aime ni l'un ni l'autre.
+
 | `a` | `b` | `a ∨ b` |
 | :-: | :-: | :-----: |
 | `0` | `0` | `0`     |
@@ -56,6 +109,10 @@ vaut `1`. Elle ne vaut `0` que lorsque les deux entrées valent `0`.
 ## Le NON, la négation (¬)
 La négation, notée `¬a`, est particulière : elle ne porte que sur **une seule**
 variable, qu'elle **inverse**. Elle transforme `0` en `1` et `1` en `0`.
+
+Si `a` = "la lampe est allumée", alors `¬a` se lit "la lampe **n'est pas**
+allumée". Quand `a` vaut `1` (lampe allumée), `¬a` vaut `0` ; et quand `a` vaut
+`0` (lampe éteinte), `¬a` vaut `1`.
 
 | `a` | `¬a` |
 | :-: | :--: |
@@ -68,6 +125,11 @@ lorsque les deux entrées sont **différentes**, et `0` lorsqu'elles sont
 **identiques**. Contrairement au OU ordinaire, il vaut donc `0` quand les deux
 entrées valent `1`.
 
+Posons `a` = "je pars en train" et `b` = "je pars en bus". La proposition
+`a ⊕ b` se lit "je prends soit le train, soit le bus, **mais pas les deux**".
+Elle est vraie si l'on choisit exactement un moyen de transport, et fausse si on
+n'en prend aucun ou si on tente de prendre les deux à la fois.
+
 | `a` | `b` | `a ⊕ b` |
 | :-: | :-: | :-----: |
 | `0` | `0` | `0`     |
@@ -77,7 +139,7 @@ entrées valent `1`.
 
 ```{tip}
 Une façon simple de retenir le OU exclusif : il répond à la question
-« **l'une ou l'autre, mais pas les deux** ? ». C'est l'opérateur idéal pour
+"**l'une ou l'autre, mais pas les deux** ?". C'est l'opérateur idéal pour
 tester si deux valeurs sont différentes.
 ```
 
@@ -91,25 +153,13 @@ calcule d'abord `0 ∧ 0 = 0`, puis `1 ∨ 0 = 1`.
 
 ```{important}
 - Ordre de priorité : **`¬`** d'abord, puis **`∧`**, puis **`∨`**.
+- Le `⊕` s'écrit toujours avec des **parenthèses** explicites, pour éviter toute
+  ambiguïté : on note `(a ⊕ b) ∧ c` et jamais `a ⊕ b ∧ c`.
 - En cas de doute, on ajoute des **parenthèses** pour lever toute ambiguïté :
   `(a ∨ b) ∧ c` n'a pas le même sens que `a ∨ (b ∧ c)`.
 ```
 
-Voici un récapitulatif des cinq opérateurs de base de l'algèbre de Boole.
 
-| Notation | Nom          | Vaut `1` lorsque…                        |
-| :------: | :----------- | :--------------------------------------- |
-| `a ∧ b`  | ET           | les deux entrées valent `1`              |
-| `a ∨ b`  | OU           | au moins une entrée vaut `1`             |
-| `¬a`     | NON          | l'entrée vaut `0` (il inverse)           |
-| `a ⊕ b`  | OU exclusif  | les deux entrées sont différentes        |
-
-```{tip}
-En électronique, on rencontre souvent d'autres notations pour ces mêmes
-opérateurs : le ET s'écrit `a · b` (comme une multiplication), le OU s'écrit
-`a + b` (comme une addition), et le NON se note avec une barre au-dessus de la
-variable.
-```
 
 ## Des opérateurs aux portes logiques
 La grande découverte de Shannon, c'est que chaque opérateur logique peut être
@@ -176,73 +226,6 @@ Quelle est la valeur (`0` ou `1`) de chacune des expressions suivantes ?
 ```
 
 ### Exercice {num1}`exercice`
-Complétez la table de vérité de l'expression `¬a ∨ b`.
-
-| `a` | `b` | `¬a ∨ b` |
-| :-: | :-: | :------: |
-| `0` | `0` |   `?`    |
-| `0` | `1` |   `?`    |
-| `1` | `0` |   `?`    |
-| `1` | `1` |   `?`    |
-
-````{solution}
-| `a` | `b` | `¬a ∨ b` |
-| :-: | :-: | :------: |
-| `0` | `0` | `1`      |
-| `0` | `1` | `1`      |
-| `1` | `0` | `0`      |
-| `1` | `1` | `1`      |
-
-Le `¬` étant prioritaire, on calcule d'abord `¬a`, puis on applique le `∨` avec
-`b`. Le résultat ne vaut `0` que lorsque `¬a` **et** `b` valent tous les deux
-`0`, c'est-à-dire lorsque `a` vaut `1` et `b` vaut `0`.
-````
-
-### Exercice {num1}`exercice`
-On peut fabriquer un OU exclusif à partir des trois opérateurs de base. Complétez
-les tables de vérité de `a ⊕ b` et de `(a ∧ ¬b) ∨ (¬a ∧ b)`, puis comparez la
-dernière colonne des deux tables. Que constatez-vous ?
-
-````{solution}
-| `a` | `b` | `a ⊕ b` | `(a ∧ ¬b) ∨ (¬a ∧ b)` |
-| :-: | :-: | :-----: | :-------------------: |
-| `0` | `0` | `0`     | `0`                   |
-| `0` | `1` | `1`     | `1`                   |
-| `1` | `0` | `1`     | `1`                   |
-| `1` | `1` | `0`     | `0`                   |
-
-Les deux dernières colonnes sont **identiques** : l'expression
-`(a ∧ ¬b) ∨ (¬a ∧ b)` produit exactement le même résultat que `a ⊕ b`. Autrement
-dit, une porte OU exclusif peut être construite uniquement avec des portes ET,
-OU et NON.
-````
-
-### Exercice {num1}`exercice`
-Sur un schéma de circuit, à quel opérateur logique correspond chacune des formes
-décrites ci-dessous ?
-
-```{role} porte(quiz-select)
-:right:
-:options: |
-: ET
-: OU
-: NON
-: OU exclusif
-```
-
-```{quiz}
-:style: max-width: 32rem;
-1.  {porte}`ET`
-    Un côté gauche plat et un côté droit arrondi, en forme de D.
-2.  {porte}`OU`
-    Un dos incurvé qui se termine par une pointe à droite.
-3.  {porte}`NON`
-    Un triangle terminé par un petit rond.
-4.  {porte}`OU exclusif`
-    La même forme que le OU, avec une double courbe à l'entrée.
-```
-
-### Exercice {num1}`exercice`
 Sachant que `a = 1`, `b = 0` et `c = 1`, quelle est la valeur de chacune des
 expressions suivantes ?
 
@@ -274,3 +257,82 @@ On remplace chaque variable par sa valeur, puis on respecte les priorités
 5.  `a ∧ c` vaut `1 ∧ 1 = 1`, donc `¬1 = 0`, et `0 ∨ 0 = 0`.
 6.  `a ⊕ b` vaut `1 ⊕ 0 = 1`, donc `1 ∧ 1 = 1`.
 ````
+
+
+### Exercice {num1}`exercice`
+Complétez la table de vérité de l'expression `¬a ∨ b`.
+
+| `a` | `b` | `¬a ∨ b` |
+| :-: | :-: | :------: |
+| `0` | `0` |   `?`    |
+| `0` | `1` |   `?`    |
+| `1` | `0` |   `?`    |
+| `1` | `1` |   `?`    |
+
+````{solution}
+| `a` | `b` | `¬a ∨ b` |
+| :-: | :-: | :------: |
+| `0` | `0` | `1`      |
+| `0` | `1` | `1`      |
+| `1` | `0` | `0`      |
+| `1` | `1` | `1`      |
+
+Le `¬` étant prioritaire, on calcule d'abord `¬a`, puis on applique le `∨` avec
+`b`. Le résultat ne vaut `0` que lorsque `¬a` **et** `b` valent tous les deux
+`0`, c'est-à-dire lorsque `a` vaut `1` et `b` vaut `0`.
+````
+
+### Exercice {num1}`exercice`
+On peut fabriquer un OU exclusif (XOR) à partir des trois opérateurs de base.
+
+1.  Créez et complétez une table de vérité contenant les variables booléennes
+    `a` et `b` ainsi que `s = a ⊕ b` et `t = (a ∧ ¬b) ∨ (¬a ∧ b)`. Comparez `s`
+    et `t` : que constatez-vous ? Quel sens en français pourriez-vous donner à
+    la variable `t` ?
+2.  Trouvez une autre expression logique donnant le même résultat que `s` et
+    `t`. Celle-ci se base sur la logique qu'un OU exclusif peut également se
+    traduire en français par "A ou B, mais pas les deux".
+
+````{solution}
+**1.** Table de vérité :
+
+| `a` | `b` | `s = a ⊕ b` | `t = (a ∧ ¬b) ∨ (¬a ∧ b)` |
+| :-: | :-: | :---------: | :-----------------------: |
+| `0` | `0` | `0`         | `0`                       |
+| `0` | `1` | `1`         | `1`                       |
+| `1` | `0` | `1`         | `1`                       |
+| `1` | `1` | `0`         | `0`                       |
+
+Les colonnes `s` et `t` sont **identiques** : l'expression `(a ∧ ¬b) ∨ (¬a ∧ b)`
+produit exactement le même résultat que `a ⊕ b`. Autrement dit, une porte OU
+exclusif peut être construite uniquement avec des portes ET, OU et NON.
+
+En français, `t` se lit "soit `a` est vraie et `b` fausse, **soit** `b` est
+vraie et `a` fausse", c'est-à-dire "exactement une des deux propositions est
+vraie".
+
+**2.** L'autre formulation traduit littéralement "A ou B, mais pas les deux" :
+
+`(a ∨ b) ∧ ¬(a ∧ b)`
+
+| `a` | `b` | `a ∨ b` | `a ∧ b` | `¬(a ∧ b)` | `(a ∨ b) ∧ ¬(a ∧ b)` |
+| :-: | :-: | :-----: | :-----: | :--------: | :------------------: |
+| `0` | `0` | `0`     | `0`     | `1`        | `0`                  |
+| `0` | `1` | `1`     | `0`     | `1`        | `1`                  |
+| `1` | `0` | `1`     | `0`     | `1`        | `1`                  |
+| `1` | `1` | `1`     | `1`     | `0`        | `0`                  |
+
+Le `a ∨ b` exige "au moins une des deux", et le `¬(a ∧ b)` interdit le cas où
+les deux sont vraies. On retrouve bien la colonne de `s`.
+````
+
+
+### Exercice {num1}`exercice`
+Dans ce chapitre, nous utiliserons souvent [Logix](https://maximejan.github.io/logix/) afin de simuler des circuits logiques. Vous pouvez vous rendre directement sur le site pour jouer avec tous les composants, ou suivre des exercices spécifiques directement sur ce site.
+
+La consigne se trouve toujours dans le bandeau à gauche et, une fois le circuit créé, il est possible de vérifier sa réponse avec le bouton bleu.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ3LDqWVyIHVuIGNpcmN1aXQgbG9naXF1ZSIsIm8iOiJFbiBnbGlzc2FudCBldCByZWxpYW50IGRlcyBwb3J0ZXMgbG9naXF1ZXMsIHLDqWFsaXNleiBsZSBjaXJjdWl0IGNvcnJlc3BvbmRhbnQgw6AgbGEgZm9uY3Rpb24gbG9naXF1ZSBTID0gQSDiiKcgQiIsInMiOltdLCJhIjpbIklOUFVUIiwiT1VUUFVUIiwiQU5EIl0sImkiOltbIkEiLDFdLFsiQiIsMV1dLCJ1IjpbWyJTIiwxXV0sImsiOiJ0dCIsInIiOltbWzAsMF0sWzBdXSxbWzAsMV0sWzBdXSxbWzEsMF0sWzBdXSxbWzEsMV0sWzFdXV19&embed=1
+:style: height: 400px; aspect-ratio: auto; border: 1px solid black;
+:title: Simulateur Logix : construire un circuit S = A ∧ B
+```
