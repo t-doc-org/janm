@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="Symbole de la porte logique ET">
+  <rect x="2" y="2" width="196" height="136" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <g fill="none" stroke="#111827" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <line x1="18" y1="50" x2="60" y2="50"/>
+    <line x1="18" y1="90" x2="60" y2="90"/>
+    <path d="M60,32 L112,32 A38,38 0 0 1 112,108 L60,108 Z"/>
+    <line x1="150" y1="70" x2="185" y2="70"/>
+  </g>
+  <g fill="#111827" font-family="'Segoe UI',Arial,sans-serif" font-size="17">
+    <text x="6" y="55">a</text>
+    <text x="6" y="95">b</text>
+    <text x="150" y="60">a &#8743; b</text>
+  </g>
+</svg>

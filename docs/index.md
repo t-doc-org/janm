@@ -11,4 +11,5 @@ Ce site Web fait office de support de cours pour les cours d'informatique de Max
 :maxdepth: 2
 DOI1/index
 DOI2/index
+OC3/index
 ```

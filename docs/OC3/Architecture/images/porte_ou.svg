@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140" role="img" aria-label="Symbole de la porte logique OU">
+  <rect x="2" y="2" width="196" height="136" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <g fill="none" stroke="#111827" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <line x1="18" y1="50" x2="66" y2="50"/>
+    <line x1="18" y1="90" x2="66" y2="90"/>
+    <path d="M58,32 Q78,70 58,108 Q108,108 150,70 Q108,32 58,32 Z"/>
+    <line x1="150" y1="70" x2="185" y2="70"/>
+  </g>
+  <g fill="#111827" font-family="'Segoe UI',Arial,sans-serif" font-size="17">
+    <text x="6" y="55">a</text>
+    <text x="6" y="95">b</text>
+    <text x="150" y="60">a &#8744; b</text>
+  </g>
+</svg>
