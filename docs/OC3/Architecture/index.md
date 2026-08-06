@@ -1,6 +1,9 @@
 # 3.1 Architecture de l'ordinateur
 
-## Théorie et exercice
+## Théorie et exercices
 ```{toctree}
 oplogic
 ```
+
+## Lien vers Logix
+[Logix](https://maximejan.github.io/logix/)

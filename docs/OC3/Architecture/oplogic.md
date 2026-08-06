@@ -67,12 +67,6 @@ traduites en `0` et `1`, on peut les **combiner** et **calculer** avec,
 exactement comme avec des nombres. Les opérateurs logiques des sections
 suivantes servent justement à relier plusieurs propositions.
 
-```{tip}
-Les lettres `a`, `b`, `c` ne désignent pas toujours les mêmes propositions : à
-chaque exemple, on annonce d'abord ce que chaque variable représente, puis on
-raisonne uniquement sur ses valeurs `0` et `1`.
-```
-
 
 ## Le ET, la conjonction (∧)
 La conjonction, notée `a ∧ b`, ne vaut `1` **que si les deux** variables valent
@@ -336,3 +330,31 @@ La consigne se trouve toujours dans le bandeau à gauche et, une fois le circuit
 :style: height: 400px; aspect-ratio: auto; border: 1px solid black;
 :title: Simulateur Logix : construire un circuit S = A ∧ B
 ```
+
+
+### Exercice {num1}`exercice`
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ29uc3RydWlyZSB1biBjaXJjdWl0IiwibyI6IlLDqWFsaXNleiB1biBjaXJjdWl0IGxvZ2lxdWUgY29ycmVzcG9uZGFudCDDoCBsYSBmb25jdGlvbiBsb2dpcXVlIFMgPSDCrChBIOKIqCDCrEIpIiwicyI6W10sImEiOlsiSU5QVVQiLCJPVVRQVVQiLCJPUiIsIk5PVCJdLCJpIjpbWyJBIiwxXSxbIkIiLDFdXSwidSI6W1siUyIsMV1dLCJrIjoidHQiLCJyIjpbW1swLDBdLFswXV0sW1swLDFdLFsxXV0sW1sxLDBdLFswXV0sW1sxLDFdLFswXV1dfQ&embed=1
+:style: height: 400px; aspect-ratio: auto; border: 1px solid black;
+:title: Simulateur Logix : construire un circuit
+```
+
+
+### Exercice {num1}`exercice`
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ3LDqWVyIHVuIGNpcmN1aXQiLCJvIjoiUsOpYWxpc2V6IHVuIGNpcmN1aXQgbG9naXF1ZSBjb3JyZXNwb25kYW50IMOgIGxhIGZvbmN0aW9uIGxvZ2lxdWUgUyA9IMKsKEMg4oqVICjCrEEg4oioIEIpKSDiiKcgQSIsInMiOltdLCJhIjpbIklOUFVUIiwiT1VUUFVUIiwiQU5EIiwiT1IiLCJOT1QiLCJYT1IiXSwiaSI6W1siQSIsMV0sWyJCIiwxXSxbIkMiLDFdXSwidSI6W1siUyIsMV1dLCJrIjoidHQiLCJyIjpbW1swLDAsMF0sWzBdXSxbWzAsMCwxXSxbMF1dLFtbMCwxLDBdLFswXV0sW1swLDEsMV0sWzBdXSxbWzEsMCwwXSxbMV1dLFtbMSwwLDFdLFswXV0sW1sxLDEsMF0sWzBdXSxbWzEsMSwxXSxbMV1dXX0&embed=1
+:style: height: 400px; aspect-ratio: auto; border: 1px solid black;
+:title: Simulateur Logix : construire un circuit
+```
+
+### Exercice {num1}`exercice`
+Déterminez la fonction logique de `S`
+```{figure} images/circuit1.png
+:width: 100%
+:align: center
+```
+````{solution}
+`¬((((A ∧ ¬C) ∨ D) ∧ B) ⊕ A)`
+````
+
+

@@ -5,7 +5,7 @@ import os
 
 from tdoc.common.defaults import *
 
-project = "Informatique JANM"
+project = "Informatique Maxime Jan"
 author = "Maxime Jan"
 license = 'CC-BY-NC-SA-4.0'
 language = 'fr'
