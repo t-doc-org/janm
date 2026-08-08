@@ -3,6 +3,7 @@
 ## Théorie et exercices
 ```{toctree}
 oplogic
+rules
 ```
 
 ## Lien vers Logix

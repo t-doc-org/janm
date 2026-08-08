@@ -1,6 +1,7 @@
 syntax: glob
 *.local.*
 *.orig
+.*
 __pycache__
 
 syntax: regexp
