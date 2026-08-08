@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 470" role="img" aria-label="Additionneur complet au niveau des portes : deux portes XOR pour la somme, trois portes ET et une porte OU pour la retenue">
+  <rect x="2" y="2" width="676" height="466" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="14" y="51" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">a</text>
+  <text x="14" y="75" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">b</text>
+  <text x="8" y="435" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">C<tspan font-size="11" dy="3">in</tspan></text>
+  <path d="M 28,46 L 245,46" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="70" cy="46" r="3.6" fill="#111827"/>
+  <path d="M 70,46 L 70,252" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="70" cy="162" r="3.6" fill="#111827"/>
+  <path d="M 70,162 L 250,162" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 70,252 L 250,252" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 28,70 L 245,70" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="98" cy="70" r="3.6" fill="#111827"/>
+  <path d="M 98,70 L 98,342" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="98" cy="186" r="3.6" fill="#111827"/>
+  <path d="M 98,186 L 250,186" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 98,342 L 250,342" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 28,430 L 126,430 L 126,110" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="126" cy="276" r="3.6" fill="#111827"/>
+  <path d="M 126,276 L 250,276" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="126" cy="366" r="3.6" fill="#111827"/>
+  <path d="M 126,366 L 250,366" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="126" cy="110" r="3.6" fill="#111827"/>
+  <path d="M 126,110 L 405,110 L 405,70 L 425,70" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M241,34 Q253,58 241,82" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M250,34 Q262,58 250,82 Q280,82 304,58 Q280,34 250,34 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M250,150 L277,150 A24,24 0 0 1 277,198 L250,198 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M250,240 L277,240 A24,24 0 0 1 277,288 L250,288 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M250,330 L277,330 A24,24 0 0 1 277,378 L250,378 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M421,34 Q433,58 421,82" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M430,34 Q442,58 430,82 Q460,82 484,58 Q460,34 430,34 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M440,222 Q454,258.0 440,294 Q474,294 504,258.0 Q474,222 440,222 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <text x="270" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">XOR</text>
+  <text x="450" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">XOR</text>
+  <text x="275" y="148" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">ET</text>
+  <text x="275" y="238" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">ET</text>
+  <text x="275" y="328" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">ET</text>
+  <text x="470" y="214" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">OU</text>
+  <path d="M 304,58 L 390,58 L 390,46 L 425,46" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="312" y="50" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="start">a ⊕ b</text>
+  <path d="M 484,58 L 560,58" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="568" y="63" font-family="'Segoe UI',Arial,sans-serif" font-size="18" fill="#111827" font-weight="bold" text-anchor="start">S</text>
+  <path d="M 301,174 L 360,174 L 360,238 L 445,238" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 301,264 L 415,264 L 415,258.0 L 447,258.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 301,354 L 360,354 L 360,278 L 445,278" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 504,258.0 L 585,258.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="593" y="263.0" font-family="'Segoe UI',Arial,sans-serif" font-size="18" fill="#111827" font-weight="bold" text-anchor="start">C<tspan font-size="12" dy="3">out</tspan></text>
+  <text x="307" y="166" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="start">a ∧ b</text>
+  <text x="307" y="256" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="start">a ∧ Cin</text>
+  <text x="307" y="346" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="start">b ∧ Cin</text>
+</svg>

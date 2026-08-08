@@ -4,6 +4,7 @@
 ```{toctree}
 oplogic
 rules
+adder
 ```
 
 ## Lien vers Logix

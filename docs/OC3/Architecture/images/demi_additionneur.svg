@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 230" role="img" aria-label="Schema du demi-additionneur : une porte XOR et une porte ET">
+  <rect x="2" y="2" width="476" height="226" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="16" y="69" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">a</text>
+  <text x="16" y="191" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">b</text>
+  <path d="M 30,64 L 205,64" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="120" cy="64" r="3.6" fill="#111827"/>
+  <path d="M 120,64 L 120,162 L 210,162" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 30,186 L 210,186" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="90" cy="186" r="3.6" fill="#111827"/>
+  <path d="M 90,186 L 90,88 L 205,88" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M201,52 Q213,76 201,100" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M210,52 Q222,76 210,100 Q240,100 264,76 Q240,52 210,52 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <path d="M210,150 L237,150 A24,24 0 0 1 237,198 L210,198 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <text x="230" y="44" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">XOR</text>
+  <text x="230" y="220" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">ET</text>
+  <path d="M 264,76 L 324,76" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 261,174 L 321,174" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="332" y="81" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="normal" text-anchor="start">S = a ⊕ b</text>
+  <text x="329" y="179" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="normal" text-anchor="start">C = a ∧ b</text>
+</svg>
