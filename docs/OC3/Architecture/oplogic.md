@@ -162,13 +162,6 @@ porte reçoit un ou deux signaux (`0` ou `1`) en entrée, à gauche, et produit 
 résultat en sortie, à droite. Sur les schémas de circuits, chaque porte possède
 une **forme normalisée** qui permet de la reconnaître d'un coup d'œil :
 
-- la porte **ET** a un côté gauche plat et un côté droit **arrondi**, un peu en
-  forme de D ;
-- la porte **OU** a un dos incurvé et se termine par une **pointe** à droite ;
-- la porte **NON** est un **triangle** suivi d'un petit **rond**, et c'est ce
-  rond qui symbolise l'inversion ;
-- la porte **OU exclusif** ressemble à la porte OU, avec une **double courbe** à
-  l'entrée.
 
 ````{list-grid}
 :style: grid-template-columns: 1fr 1fr; align-items: center; justify-items: center; gap: 0.5rem 2rem;
@@ -193,6 +186,16 @@ une **forme normalisée** qui permet de la reconnaître d'un coup d'œil :
   :alt: Symbole de la porte logique OU exclusif
   ```
 ````
+
+Ces portes ne sont pas que des symboles : ce sont de vrais circuits qui réagissent
+à leurs entrées. Dans la démonstration ci-dessous, cliquez sur les entrées `A` et
+`B` et observez la sortie de chacune des portes : le ET, le OU, le NON (appliqué à
+`A`) et le OU exclusif.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBsZXMgcG9ydGVzIGxvZ2lxdWVzIGVuIG1hcmNoZSIsIm8iOiJDbGlxdWV6IGxlcyBlbnRyw6llcyBBIGV0IEIsIGV0IG9ic2VydmV6IGxhIHNvcnRpZSBkZSBjaGFxdWUgcG9ydGUgOiBFVCwgT1UsIE5PTiAoc3VyIEEpIGV0IE9VIGV4Y2x1c2lmLiIsInMiOltdLCJhIjpbXSwiaSI6W10sInUiOltdLCJrIjoibm9uZSIsInIiOltdLCJsIjoxLCJjIjp7InZlcnNpb24iOjIsIm5hbWUiOiJjaXJjdWl0IiwiY29tcG9uZW50cyI6W3siaWQiOiJBIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjQwLCJzdGF0ZSI6eyJ2YWx1ZSI6MX0sImxhYmVsIjoiQSJ9LHsiaWQiOiJCIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjE0MCwic3RhdGUiOnsidmFsdWUiOjB9LCJsYWJlbCI6IkIifSx7ImlkIjoiYW5kMSIsInR5cGUiOiJBTkQiLCJ4IjoxODAsInkiOjQwfSx7ImlkIjoib3IxIiwidHlwZSI6Ik9SIiwieCI6MTgwLCJ5IjoxNDB9LHsiaWQiOiJuYSIsInR5cGUiOiJOT1QiLCJ4IjoxODAsInkiOjIyMH0seyJpZCI6InhvcjEiLCJ0eXBlIjoiWE9SIiwieCI6MTgwLCJ5IjozMjB9LHsiaWQiOiJvYW5kIiwidHlwZSI6Ik9VVFBVVCIsIngiOjMyMCwieSI6NDAsImxhYmVsIjoiQSDiiKcgQiJ9LHsiaWQiOiJvb3IiLCJ0eXBlIjoiT1VUUFVUIiwieCI6MzIwLCJ5IjoxNDAsImxhYmVsIjoiQSDiiKggQiJ9LHsiaWQiOiJvbm90IiwidHlwZSI6Ik9VVFBVVCIsIngiOjMyMCwieSI6MjIwLCJsYWJlbCI6IsKsQSJ9LHsiaWQiOiJveG9yIiwidHlwZSI6Ik9VVFBVVCIsIngiOjMyMCwieSI6MzIwLCJsYWJlbCI6IkEg4oqVIEIifV0sIndpcmVzIjpbeyJpZCI6IncxIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiYW5kMSIsInBvcnQiOiJpbjAifX0seyJpZCI6IncyIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkIiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiYW5kMSIsInBvcnQiOiJpbjEifX0seyJpZCI6InczIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6ImFuZDEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib2FuZCIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc0IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib3IxIiwicG9ydCI6ImluMCJ9fSx7ImlkIjoidzUiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiQiIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvcjEiLCJwb3J0IjoiaW4xIn19LHsiaWQiOiJ3NiIsImZyb20iOnsiY29tcG9uZW50SWQiOiJvcjEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib29yIiwicG9ydCI6ImluMCJ9fSx7ImlkIjoidzciLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiQSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJuYSIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc4IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6Im5hIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9ub3QiLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3OSIsImZyb20iOnsiY29tcG9uZW50SWQiOiJBIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6InhvcjEiLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3MTAiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiQiIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJ4b3IxIiwicG9ydCI6ImluMSJ9fSx7ImlkIjoidzExIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6InhvcjEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib3hvciIsInBvcnQiOiJpbjAifX1dLCJjdXN0b21EZWZpbml0aW9ucyI6e319fQ&embed=1
+:style: height: 460px; aspect-ratio: auto; border: 1px solid black;
+:title: Démonstration Logix : les portes ET, OU, NON et OU exclusif en fonctionnement
+```
 
 
 ## Exercices
@@ -356,5 +359,13 @@ Déterminez la fonction logique de `S`
 ````{solution}
 `¬((((A ∧ ¬C) ∨ D) ∧ B) ⊕ A)`
 ````
+
+
+### Exercice {num1}`exercice`
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiU3lzdMOobWUgZCdhbGFybWUiLCJvIjoiVW4gc3lzdMOobWUgZCdhbGFybWUgZXN0IGNvbXBvc8OpIGRlIDMgY2FwdGV1cnMgZGUgbW91dmVtZW50cyBldCBkJ3VuIGNhcHRldXIgdGhlcm1pcXVlLiBMJ2FsYXJtZSBzJ2FjdGl2ZSBsb3JzcXUnYXUgbW9pbnMgMiBkZXMgMyBjYXB0ZXVycyBkZSBtb3V2ZW1lbnRzIG9udCBkw6l0ZWN0w6kgb3UgcHLDqXNlbmNlLCBvdSBzaSBsZSBjYXB0ZXVyIHRoZXJtaXF1ZSBlbiBhIGTDqXRlY3TDqSB1bmUuIENyw6llciBsZSBjaXJjdWl0IGxvZ2lxdWUgZGUgY2Ugc3lzdMOobWUgZCdhbGFybWUuIiwicyI6W10sImEiOlsiSU5QVVQiLCJPVVRQVVQiLCJBTkQiLCJPUiIsIk5PVCIsIlhPUiJdLCJpIjpbWyJBIiwxXSxbIkIiLDFdLFsiQyIsMV0sWyJEIiwxXV0sInUiOltbIlMiLDFdXSwiayI6InR0IiwiciI6W1tbMCwwLDAsMF0sWzBdXSxbWzAsMCwwLDFdLFsxXV0sW1swLDAsMSwwXSxbMF1dLFtbMCwwLDEsMV0sWzFdXSxbWzAsMSwwLDBdLFswXV0sW1swLDEsMCwxXSxbMV1dLFtbMCwxLDEsMF0sWzFdXSxbWzAsMSwxLDFdLFsxXV0sW1sxLDAsMCwwXSxbMF1dLFtbMSwwLDAsMV0sWzFdXSxbWzEsMCwxLDBdLFsxXV0sW1sxLDAsMSwxXSxbMF1dLFtbMSwxLDAsMF0sWzBdXSxbWzEsMSwwLDFdLFswXV0sW1sxLDEsMSwwXSxbMF1dLFtbMSwxLDEsMV0sWzBdXV19&embed=1
+:style: height: 400px; aspect-ratio: auto; border: 1px solid black;
+:title: Simulateur Logix : système d'alarme
+```
 
 

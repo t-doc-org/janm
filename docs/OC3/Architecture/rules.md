@@ -55,6 +55,15 @@ L'intuition est plus claire en français. Posons `a` = "j'ai mon billet" et
 - `¬(a ∨ b)` se lit "je n'ai ni l'un ni l'autre". Cela signifie que je n'ai pas
   le billet **et** que je n'ai pas la carte : `¬a ∧ ¬b`.
 
+Le mieux est de le **voir**. Dans la démonstration ci-dessous, cliquez sur `a` et
+`b` : les deux sorties, `¬(a ∧ b)` et `¬a ∨ ¬b`, affichent toujours la même
+valeur, quelles que soient les entrées.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBsYSBsb2kgZGUgRGUgTW9yZ2FuIiwibyI6IkNsaXF1ZXogYSBldCBiIGV0IGNvbXBhcmV6IGxlcyBkZXV4IHNvcnRpZXMgOiDCrChhIOKIpyBiKSBldCDCrGEg4oioIMKsYiBkb25uZW50IHRvdWpvdXJzIGxhIG3Dqm1lIHZhbGV1ci4iLCJzIjpbXSwiYSI6W10sImkiOltdLCJ1IjpbXSwiayI6Im5vbmUiLCJyIjpbXSwibCI6MSwiYyI6eyJ2ZXJzaW9uIjoyLCJuYW1lIjoiY2lyY3VpdCIsImNvbXBvbmVudHMiOlt7ImlkIjoiYSIsInR5cGUiOiJJTlBVVCIsIngiOjQwLCJ5Ijo0MCwic3RhdGUiOnsidmFsdWUiOjF9LCJsYWJlbCI6ImEifSx7ImlkIjoiYiIsInR5cGUiOiJJTlBVVCIsIngiOjQwLCJ5IjoxNDAsInN0YXRlIjp7InZhbHVlIjoxfSwibGFiZWwiOiJiIn0seyJpZCI6ImFuZDEiLCJ0eXBlIjoiQU5EIiwieCI6MTgwLCJ5Ijo0MH0seyJpZCI6Im5hYiIsInR5cGUiOiJOT1QiLCJ4IjozMjAsInkiOjQwfSx7ImlkIjoibzEiLCJ0eXBlIjoiT1VUUFVUIiwieCI6NDYwLCJ5Ijo0MCwibGFiZWwiOiLCrChhIOKIpyBiKSJ9LHsiaWQiOiJuYSIsInR5cGUiOiJOT1QiLCJ4IjoxODAsInkiOjE0MH0seyJpZCI6Im5iIiwidHlwZSI6Ik5PVCIsIngiOjE4MCwieSI6MjIwfSx7ImlkIjoib3IxIiwidHlwZSI6Ik9SIiwieCI6MzIwLCJ5IjoxNDB9LHsiaWQiOiJvMiIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo0NjAsInkiOjE0MCwibGFiZWwiOiLCrGEg4oioIMKsYiJ9XSwid2lyZXMiOlt7ImlkIjoidzEiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiYSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJhbmQxIiwicG9ydCI6ImluMCJ9fSx7ImlkIjoidzIiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiYiIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJhbmQxIiwicG9ydCI6ImluMSJ9fSx7ImlkIjoidzMiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiYW5kMSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJuYWIiLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NCIsImZyb20iOnsiY29tcG9uZW50SWQiOiJuYWIiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoibzEiLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NSIsImZyb20iOnsiY29tcG9uZW50SWQiOiJhIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im5hIiwicG9ydCI6ImluMCJ9fSx7ImlkIjoidzYiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiYiIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJuYiIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc3IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6Im5hIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9yMSIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc4IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6Im5iIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9yMSIsInBvcnQiOiJpbjEifX0seyJpZCI6Inc5IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6Im9yMSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvMiIsInBvcnQiOiJpbjAifX1dLCJjdXN0b21EZWZpbml0aW9ucyI6e319fQ&embed=1
+:style: height: 460px; aspect-ratio: auto; border: 1px solid black;
+:title: Démonstration Logix : la loi de De Morgan ¬(a ∧ b) = ¬a ∨ ¬b
+```
+
 
 ## Simplifier une expression
 Simplifier, c'est appliquer les règles les unes après les autres jusqu'à ce
@@ -309,20 +318,13 @@ Deux groupes :
 ````
 
 ### Exercice {num1}`exercice`
-Même consigne.
+À l'aide d'une table de Karnaugh, réduisez au maximum l'expression suivante.
 
-| `a` | `b` | `c` | `s` |
-| :-: | :-: | :-: | :-: |
-| `0` | `0` | `0` | `1` |
-| `0` | `0` | `1` | `1` |
-| `0` | `1` | `0` | `0` |
-| `0` | `1` | `1` | `0` |
-| `1` | `0` | `0` | `0` |
-| `1` | `0` | `1` | `0` |
-| `1` | `1` | `0` | `1` |
-| `1` | `1` | `1` | `1` |
+`s = (¬a ∧ ¬b ∧ ¬c) ∨ (¬a ∧ ¬b ∧ c) ∨ (a ∧ b ∧ ¬c) ∨ (a ∧ b ∧ c)`
 
 ````{solution}
+On reporte les quatre termes dans le tableau de Karnaugh :
+
 |         | `bc = 00` | `bc = 01` | `bc = 11` | `bc = 10` |
 | :-----: | :-------: | :-------: | :-------: | :-------: |
 | `a = 0` | `1`       | `1`       | `0`       | `0`       |

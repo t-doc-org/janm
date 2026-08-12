@@ -5,6 +5,8 @@
 oplogic
 rules
 adder
+substracter
+mux
 ```
 
 ## Lien vers Logix

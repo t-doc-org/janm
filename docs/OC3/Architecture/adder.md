@@ -62,6 +62,15 @@ et une porte ET pour la retenue `C`, branchées sur les mêmes entrées `a` et `
 :align: center
 ```
 
+On peut le mettre à l'épreuve. Cliquez sur `A` et `B` dans la démonstration
+ci-dessous et vérifiez les quatre cas : la somme `S` vaut `1` seulement quand une
+seule des deux entrées vaut `1`, et la retenue `C` ne s'allume que pour `1 + 1`.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBsZSBkZW1pLWFkZGl0aW9ubmV1ciBlbiBtYXJjaGUiLCJvIjoiQ2xpcXVleiBBIGV0IEIgZXQgb2JzZXJ2ZXogbGEgc29tbWUgUyA9IEEg4oqVIEIgZXQgbGEgcmV0ZW51ZSBDID0gQSDiiKcgQi4iLCJzIjpbXSwiYSI6W10sImkiOltdLCJ1IjpbXSwiayI6Im5vbmUiLCJyIjpbXSwibCI6MSwiYyI6eyJ2ZXJzaW9uIjoyLCJuYW1lIjoiY2lyY3VpdCIsImNvbXBvbmVudHMiOlt7ImlkIjoiQSIsInR5cGUiOiJJTlBVVCIsIngiOjQwLCJ5Ijo0MCwic3RhdGUiOnsidmFsdWUiOjF9LCJsYWJlbCI6IkEifSx7ImlkIjoiQiIsInR5cGUiOiJJTlBVVCIsIngiOjQwLCJ5IjoxNDAsInN0YXRlIjp7InZhbHVlIjoxfSwibGFiZWwiOiJCIn0seyJpZCI6InhvcjEiLCJ0eXBlIjoiWE9SIiwieCI6MTgwLCJ5Ijo0MH0seyJpZCI6ImFuZDEiLCJ0eXBlIjoiQU5EIiwieCI6MTgwLCJ5IjoxNDB9LHsiaWQiOiJTIiwidHlwZSI6Ik9VVFBVVCIsIngiOjMyMCwieSI6NDAsImxhYmVsIjoiUyJ9LHsiaWQiOiJDIiwidHlwZSI6Ik9VVFBVVCIsIngiOjMyMCwieSI6MTQwLCJsYWJlbCI6IkMifV0sIndpcmVzIjpbeyJpZCI6IncxIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoieG9yMSIsInBvcnQiOiJpbjAifX0seyJpZCI6IncyIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkIiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoieG9yMSIsInBvcnQiOiJpbjEifX0seyJpZCI6InczIiwiZnJvbSI6eyJjb21wb25lbnRJZCI6InhvcjEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiUyIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc0IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiYW5kMSIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc1IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6IkIiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiYW5kMSIsInBvcnQiOiJpbjEifX0seyJpZCI6Inc2IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6ImFuZDEiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiQyIsInBvcnQiOiJpbjAifX1dLCJjdXN0b21EZWZpbml0aW9ucyI6e319fQ&embed=1
+:style: height: 420px; aspect-ratio: auto; border: 1px solid black;
+:title: Démonstration Logix : un demi-additionneur en fonctionnement
+```
+
 
 
 ## Circuit d'addition de 3 bits
@@ -132,6 +141,32 @@ Un additionneur 4 bits : la retenue se propage de droite à gauche.
 
 Le résultat `s` composé de `s3`...`s0` est la somme de `a` et `b`. C'est exactement ce type de circuit, en plus large (32 ou 64 bits), qui se
 trouve au cœur de l'unité de calcul d'un processeur.
+
+## Le dépassement de capacité
+Un additionneur 4 bits ne dispose que de quatre sorties `s3…s0` : il ne peut donc
+représenter que les nombres de `0` à `15`. Que se passe-t-il quand la somme
+dépasse cette limite ?
+
+Reprenons `1011` (11) `+ 0111` (7). La vraie somme vaut `18`, qui s'écrit `10010`
+sur **cinq** bits. Mais le circuit n'a que quatre sorties : il ne garde que
+`0010` (2), et le cinquième bit s'échappe dans la **retenue sortante** du dernier
+additionneur (celui des bits de poids fort).
+
+Cette retenue sortante finale est donc un signal précieux : lorsqu'elle vaut `1`,
+c'est que la somme a débordé des quatre bits et que le résultat conservé est
+faux. On appelle cela un *dépassement de capacité* (en anglais *overflow*).
+
+```{important}
+- Pour une addition de nombres positifs sur `n` bits, la **retenue sortante du
+  dernier additionneur** vaut `1` exactement lorsqu'il y a dépassement de
+  capacité : le résultat ne tient pas sur `n` bits.
+- Dans un processeur, ce bit n'est pas jeté : il est conservé dans un indicateur
+  spécial (un *drapeau*) pour que le programme puisse réagir.
+```
+
+Nous n'avons additionné ici que des nombres positifs. Avec les nombres négatifs,
+codés en complément à deux au chapitre suivant, le dépassement se repère un peu
+différemment.
 
 
 ## Exercices
@@ -207,3 +242,44 @@ Trois groupes de deux cases, qui se chevauchent :
 On retrouve bien l'idée intuitive : il y a une retenue dès qu'au moins deux des
 trois bits valent `1`.
 ````
+
+### Exercice {num1}`exercice`
+Construisez vous-même un **demi-additionneur** dans le simulateur ci-dessous :
+deux entrées `A` et `B`, et deux sorties, la somme `S` et la retenue `C`. La
+consigne est rappelée dans le bandeau de gauche, et le bouton bleu vérifie votre
+circuit une fois qu'il est terminé.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ29uc3RydWlyZSB1biBkZW1pLWFkZGl0aW9ubmV1ciIsIm8iOiJSw6lhbGlzZXogbGUgY2lyY3VpdCBkJ3VuIGRlbWktYWRkaXRpb25uZXVyIDogbGEgc29ydGllIFMgZXN0IGxhIHNvbW1lIChBIOKKlSBCKSBldCBsYSBzb3J0aWUgQyBlc3QgbGEgcmV0ZW51ZSAoQSDiiKcgQikuIiwicyI6W10sImEiOlsiSU5QVVQiLCJPVVRQVVQiLCJBTkQiLCJPUiIsIk5PVCIsIlhPUiJdLCJpIjpbWyJBIiwxXSxbIkIiLDFdXSwidSI6W1siUyIsMV0sWyJDIiwxXV0sImsiOiJ0dCIsInIiOltbWzAsMF0sWzAsMF1dLFtbMCwxXSxbMSwwXV0sW1sxLDBdLFsxLDBdXSxbWzEsMV0sWzAsMV1dXX0=&embed=1
+:style: height: 440px; aspect-ratio: auto; border: 1px solid black;
+:title: Simulateur Logix : construire un demi-additionneur (S = A ⊕ B, C = A ∧ B)
+```
+
+### Exercice {num1}`exercice`
+À vous l'**additionneur complet** : trois entrées `A`, `B` et la retenue entrante
+`Cin`, et deux sorties, la somme `S` et la retenue sortante `Cout`. Vous pouvez le
+câbler directement, ou assembler deux demi-additionneurs et une porte OU comme
+dans la théorie.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ29uc3RydWlyZSB1biBhZGRpdGlvbm5ldXIgY29tcGxldCIsIm8iOiJSw6lhbGlzZXogdW4gYWRkaXRpb25uZXVyIGNvbXBsZXQgOiB0cm9pcyBlbnRyw6llcyBBLCBCIGV0IENpbiAocmV0ZW51ZSBlbnRyYW50ZSksIGRldXggc29ydGllcyBTIChzb21tZSkgZXQgQ291dCAocmV0ZW51ZSBzb3J0YW50ZSkuIiwicyI6W10sImEiOlsiSU5QVVQiLCJPVVRQVVQiLCJBTkQiLCJPUiIsIk5PVCIsIlhPUiJdLCJpIjpbWyJBIiwxXSxbIkIiLDFdLFsiQ2luIiwxXV0sInUiOltbIlMiLDFdLFsiQ291dCIsMV1dLCJrIjoidHQiLCJyIjpbW1swLDAsMF0sWzAsMF1dLFtbMCwwLDFdLFsxLDBdXSxbWzAsMSwwXSxbMSwwXV0sW1swLDEsMV0sWzAsMV1dLFtbMSwwLDBdLFsxLDBdXSxbWzEsMCwxXSxbMCwxXV0sW1sxLDEsMF0sWzAsMV1dLFtbMSwxLDFdLFsxLDFdXV19&embed=1
+:style: height: 460px; aspect-ratio: auto; border: 1px solid black;
+:title: Simulateur Logix : construire un additionneur complet (S et Cout)
+```
+
+### Exercice {num1}`exercice`
+Dans le simulateur ci-dessous, câblez un **additionneur 4 bits**, disposé comme le
+**schéma du cours** : les quatre « Additionneur complet » sont déjà en ligne (`a3`
+à gauche, `a0` à droite), avec les entrées `a` et `b` en haut et les sommes `s` en
+bas. À vous de relier chaque `a`/`b` à son additionneur, de **chaîner les
+retenues** (le `Cout` de chacun vers le `Cin` de son voisin de gauche, le premier
+`Cin` restant à `0`), puis de relier les sorties `s` et `cout`. Le bouton bleu
+vérifie votre circuit sur plusieurs additions, dont des cas de dépassement.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQWRkaXRpb25uZXVyIDQgYml0cyA6IGNoYcOubmVyIGRlcyBhZGRpdGlvbm5ldXJzIGNvbXBsZXRzIiwibyI6IkPDomJsZXogdW4gYWRkaXRpb25uZXVyIDQgYml0cywgZGlzcG9zw6kgY29tbWUgbGUgc2Now6ltYSA6IHF1YXRyZSDCqyBBZGRpdGlvbm5ldXIgY29tcGxldCDCuyBlbiBsaWduZSAoYTMgw6AgZ2F1Y2hlLCBhMCDDoCBkcm9pdGUpLCBhIGV0IGIgYXUtZGVzc3VzLCBzIGVuIGRlc3NvdXMuIiwicyI6WyJSZWxpZXogY2hhcXVlIGFfaSBldCBiX2kgw6AgQSBldCBCIGRlIHNvbiBhZGRpdGlvbm5ldXIuIiwiQ2hhw65uZXogbGVzIHJldGVudWVzIDogQ291dCBkJ3VuIGFkZGl0aW9ubmV1ciB2ZXJzIGxlIENpbiBkZSBzb24gdm9pc2luIGRlIGdhdWNoZSA7IGxlIENpbiBkZSBkcm9pdGUgKGEwKSByZXN0ZSDDoCAwLiIsIlJlbGlleiBsZXMgc29ydGllcyBTIMOgIHNfaSBldCBsYSBkZXJuacOocmUgcmV0ZW51ZSDDoCBjb3V0LiIsIkNsaXF1ZXogVsOpcmlmaWVyLiJdLCJhIjpbIkZVTExBRERFUiJdLCJpIjpbWyJhMCIsMV0sWyJhMSIsMV0sWyJhMiIsMV0sWyJhMyIsMV0sWyJiMCIsMV0sWyJiMSIsMV0sWyJiMiIsMV0sWyJiMyIsMV1dLCJ1IjpbWyJzMCIsMV0sWyJzMSIsMV0sWyJzMiIsMV0sWyJzMyIsMV0sWyJjb3V0IiwxXV0sImsiOiJ0dCIsInIiOltbWzAsMCwwLDAsMCwwLDAsMF0sWzAsMCwwLDAsMF1dLFtbMSwwLDAsMCwxLDAsMCwwXSxbMCwxLDAsMCwwXV0sW1swLDEsMCwwLDEsMCwwLDBdLFsxLDEsMCwwLDBdXSxbWzEsMSwwLDAsMCwwLDEsMF0sWzEsMSwxLDAsMF1dLFtbMSwxLDEsMCwxLDAsMCwwXSxbMCwwLDAsMSwwXV0sW1sxLDEsMSwxLDEsMCwwLDBdLFswLDAsMCwwLDFdXSxbWzEsMSwwLDEsMSwxLDEsMF0sWzAsMSwwLDAsMV1dLFtbMSwwLDAsMSwxLDAsMCwxXSxbMCwxLDAsMCwxXV0sW1sxLDAsMSwwLDAsMSwwLDFdLFsxLDEsMSwxLDBdXSxbWzAsMCwwLDEsMCwwLDAsMV0sWzAsMCwwLDAsMV1dLFtbMSwxLDEsMSwxLDEsMSwxXSxbMCwxLDEsMSwxXV0sW1swLDEsMSwwLDEsMSwwLDBdLFsxLDAsMCwxLDBdXSxbWzAsMCwxLDEsMSwxLDAsMF0sWzEsMSwxLDEsMF1dLFtbMCwxLDAsMSwxLDAsMSwwXSxbMSwxLDEsMSwwXV0sW1swLDEsMSwxLDAsMSwwLDBdLFswLDAsMCwwLDFdXSxbWzEsMCwxLDEsMCwxLDAsMF0sWzEsMSwxLDEsMF1dXSwiYyI6eyJ2ZXJzaW9uIjoyLCJuYW1lIjoiY2lyY3VpdCIsImNvbXBvbmVudHMiOlt7ImlkIjoiYTAiLCJ0eXBlIjoiSU5QVVQiLCJ4Ijo0NjAsInkiOjQwLCJzdGF0ZSI6eyJvcmllbnRhdGlvbiI6ImRvd24ifSwibGFiZWwiOiJhMCJ9LHsiaWQiOiJhMSIsInR5cGUiOiJJTlBVVCIsIngiOjM0MCwieSI6NDAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6ImExIn0seyJpZCI6ImEyIiwidHlwZSI6IklOUFVUIiwieCI6MjAwLCJ5Ijo0MCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn0sImxhYmVsIjoiYTIifSx7ImlkIjoiYTMiLCJ0eXBlIjoiSU5QVVQiLCJ4Ijo2MCwieSI6NDAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6ImEzIn0seyJpZCI6ImIwIiwidHlwZSI6IklOUFVUIiwieCI6NDYwLCJ5IjoxMjAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6ImIwIn0seyJpZCI6ImIxIiwidHlwZSI6IklOUFVUIiwieCI6MzQwLCJ5IjoxMjAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6ImIxIn0seyJpZCI6ImIyIiwidHlwZSI6IklOUFVUIiwieCI6MjAwLCJ5IjoxMjAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6ImIyIn0seyJpZCI6ImIzIiwidHlwZSI6IklOUFVUIiwieCI6NjAsInkiOjEyMCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn0sImxhYmVsIjoiYjMifSx7ImlkIjoiZmEwIiwidHlwZSI6IkZVTExBRERFUiIsIngiOjQ0MCwieSI6MjAwLCJzdGF0ZSI6eyJvcmllbnRhdGlvbiI6ImRvd24ifX0seyJpZCI6ImZhMSIsInR5cGUiOiJGVUxMQURERVIiLCJ4IjozMDAsInkiOjIwMCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn19LHsiaWQiOiJmYTIiLCJ0eXBlIjoiRlVMTEFEREVSIiwieCI6MTYwLCJ5IjoyMDAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9fSx7ImlkIjoiZmEzIiwidHlwZSI6IkZVTExBRERFUiIsIngiOjQwLCJ5IjoyMDAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9fSx7ImlkIjoiczAiLCJ0eXBlIjoiT1VUUFVUIiwieCI6NDgwLCJ5IjozNjAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6InMwIn0seyJpZCI6InMxIiwidHlwZSI6Ik9VVFBVVCIsIngiOjM0MCwieSI6MzYwLCJzdGF0ZSI6eyJvcmllbnRhdGlvbiI6ImRvd24ifSwibGFiZWwiOiJzMSJ9LHsiaWQiOiJzMiIsInR5cGUiOiJPVVRQVVQiLCJ4IjoyMDAsInkiOjM2MCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn0sImxhYmVsIjoiczIifSx7ImlkIjoiczMiLCJ0eXBlIjoiT1VUUFVUIiwieCI6ODAsInkiOjM2MCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn0sImxhYmVsIjoiczMifSx7ImlkIjoiY291dCIsInR5cGUiOiJPVVRQVVQiLCJ4IjowLCJ5IjozNjAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9LCJsYWJlbCI6ImNvdXQifV0sIndpcmVzIjpbXSwiY3VzdG9tRGVmaW5pdGlvbnMiOnt9fX0&embed=1
+:style: height: 580px; aspect-ratio: auto; border: 1px solid black;
+:title: Exercice Logix : un additionneur 4 bits en chaînant quatre additionneurs complets
+```
+
+Une fois le circuit validé, observez la **retenue sortante** `cout` sur l'addition
+`1011 + 0111` (soit `11 + 7`) : les sorties `s3..s0` affichent `0010` (2) et
+`cout` vaut `1`. Le vrai résultat, `18`, ne tient pas sur 4 bits : cette retenue
+finale signale un **dépassement de capacité**.

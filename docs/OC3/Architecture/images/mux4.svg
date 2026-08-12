@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Multiplexeur 4 vers 1 construit avec trois multiplexeurs 2 vers 1 en arbre">
+  <rect x="2" y="2" width="636" height="396" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="24" y="81.0" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#111827" font-weight="normal" text-anchor="start">e<tspan font-size="9" dy="3">0</tspan></text>
+  <path d="M 40,76.0 L 170,76.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="24" y="129.0" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#111827" font-weight="normal" text-anchor="start">e<tspan font-size="9" dy="3">1</tspan></text>
+  <path d="M 40,124.0 L 170,124.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="24" y="281.0" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#111827" font-weight="normal" text-anchor="start">e<tspan font-size="9" dy="3">2</tspan></text>
+  <path d="M 40,276.0 L 170,276.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="24" y="329.0" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#111827" font-weight="normal" text-anchor="start">e<tspan font-size="9" dy="3">3</tspan></text>
+  <path d="M 40,324.0 L 170,324.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 266,100.0 L 330,100.0 L 330,176.0 L 400,176.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 266,300.0 L 330,300.0 L 330,224.0 L 400,224.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 170,40 L 266,66.4 L 266,133.6 L 170,160 Z" fill="#f8fafc" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="210.32" y="104.0" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">mux 2→1</text>
+  <path d="M 170,240 L 266,266.4 L 266,333.6 L 170,360 Z" fill="#f8fafc" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="210.32" y="304.0" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">mux 2→1</text>
+  <path d="M 400,140 L 496,166.4 L 496,233.6 L 400,260 Z" fill="#f8fafc" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="440.32" y="204.0" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">mux 2→1</text>
+  <path d="M 496,200.0 L 560,200.0" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="568" y="205.0" font-family="'Segoe UI',Arial,sans-serif" font-size="18" fill="#111827" font-weight="bold" text-anchor="start">y</text>
+  <text x="24" y="377" font-family="'Segoe UI',Arial,sans-serif" font-size="15" fill="#2563eb" font-weight="normal" text-anchor="start">s<tspan font-size="10" dy="3">0</tspan></text>
+  <path d="M 44,372 L 218.0,372" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 218.0,372 L 218.0,346.8" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="150" cy="372" r="3.6" fill="#2563eb"/>
+  <path d="M 150,372 L 150,205 L 218.0,205 L 218.0,146.8" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="470" y="300" font-family="'Segoe UI',Arial,sans-serif" font-size="15" fill="#2563eb" font-weight="normal" text-anchor="start">s<tspan font-size="10" dy="3">1</tspan></text>
+  <path d="M 484,296 L 448.0,296 L 448.0,246.8" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
