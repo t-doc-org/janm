@@ -6,7 +6,7 @@
 ```{exec} micropython
 :name: microbit-reset
 :class: hidden
-:when: never
+:when:
 from microbit import *
 display.clear()
 ```

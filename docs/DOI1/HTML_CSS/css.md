@@ -325,7 +325,7 @@ Complétez les règles CSS pour:
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor: 019d199d-d1ca-7b3e-8b8f-bacb7d4c5e65
 :style: height: 16rem;
 <!DOCTYPE html>
@@ -391,7 +391,7 @@ Complétez le CSS pour:
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor: 019d199d-d1ca-7f08-aaaa-7f7f6c6c5033
 :style: height: 16rem;
 <!DOCTYPE html>
@@ -426,7 +426,7 @@ Le contenu d'une page a été défini en HTML de la manière suivante.
 
 ```{exec} html
 :name: ex-labrador-html
-:when: never
+:when:
 :style: height: 30rem;
 <!DOCTYPE html>
 <html>
@@ -481,7 +481,7 @@ Au moyen du CSS, modifiez les éléments suivants:
 ```{exec} html
 :editor: 76fa6122-75cd-449c-a539-d4141d082c56
 :after: ex-labrador-html
-:when: load
+:when: load click
 :reset: hide
 <style>
   /* Écrivez le CSS ici */
@@ -491,7 +491,7 @@ Au moyen du CSS, modifiez les éléments suivants:
 ````{solution}
 ```{exec} html
 :after: ex-labrador-html
-:when: load
+:when: load click
 :reset: hide
 <style>
   h1 {
@@ -525,7 +525,7 @@ Le contenu d'une page a été défini en HTML de la manière suivante.
 
 ```{exec} html
 :name: ex-escalade-html
-:when: never
+:when:
 :style: height: 30rem;
 <!DOCTYPE html>
 <html>
@@ -573,7 +573,7 @@ Au moyen du CSS:
 ```{exec} html
 :editor: 1a2b3c4d-5e6f-7890-abcd-ef0123456789
 :after: ex-escalade-html
-:when: load
+:when: load click
 :reset: hide
 <style>
   /* Écrivez le CSS ici */
@@ -583,7 +583,7 @@ Au moyen du CSS:
 ````{solution}
 ```{exec} html
 :after: ex-escalade-html
-:when: load
+:when: load click
 :reset: hide
 <style>
   h1 {
@@ -616,7 +616,7 @@ Le contenu d'une page a été défini en HTML de la manière suivante.
 
 ```{exec} html
 :name: ex-paleo-html
-:when: never
+:when:
 :style: height: 30rem;
 <!DOCTYPE html>
 <html>
@@ -684,7 +684,7 @@ Au moyen du CSS:
 ```{exec} html
 :editor: b2c3d4e5-f6a7-8901-bcde-f23456789012
 :after: ex-paleo-html
-:when: load
+:when: load click
 :reset: hide
 <style>
   /* Écrivez le CSS ici */
@@ -694,7 +694,7 @@ Au moyen du CSS:
 ````{solution}
 ```{exec} html
 :after: ex-paleo-html
-:when: load
+:when: load click
 :reset: hide
 <style>
   h1 {

@@ -46,7 +46,7 @@ CREATE TABLE Livre (
 
 ```{exec} sql
 :name: sql-livre-select
-:when: never
+:when:
 :class: hidden
 select * from Livre;
 ```
@@ -71,7 +71,7 @@ CREATE TABLE Utilisateur (
 
 ```{exec} sql
 :name: sql-user-select
-:when: never
+:when:
 :class: hidden
 select * from Utilisateur;
 ```
@@ -99,7 +99,7 @@ CREATE TABLE Emprunt (
 
 ```{exec} sql
 :name: sql-borrow-select
-:when: never
+:when:
 :class: hidden
 select * from Emprunt;
 ```
@@ -151,7 +151,7 @@ Ecrivez la requête SQL `CREATE TABLE` permettant de créer la table `Evaluation
 
 ```{exec} sql
 :name: select-evaluation
-:when: never
+:when:
 :class: hidden
 select * from Evaluation;
 ```
@@ -218,7 +218,7 @@ Commencez par écrire, ci-dessous, la requête permettant de créer la table `Eq
 ```
 
 ```{exec} sql
-:when: never
+:when:
 :class: hidden
 :name: select-equipe
 SELECT * FROM Equipe
@@ -264,7 +264,7 @@ Créez maintenant la table `Joueur`. N'oubliez pas de référencer la clef étra
 :then: select-joueur
 ```
 ```{exec} sql
-:when: never
+:when:
 :class: hidden
 :name: select-joueur
 SELECT * FROM Joueur
@@ -272,7 +272,7 @@ SELECT * FROM Joueur
 Si votre code est correct, la requête `INSERT INTO` ci-dessous ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un 1er joueur à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
 
 ```{exec} sql
-:when: never
+:when:
 :class: hidden
 :name: pragma-CE
 :after: eleve-create-joueur

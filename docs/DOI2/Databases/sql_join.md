@@ -3,7 +3,7 @@
 
 ```{exec} sql
 :name: sql-create-insert-all
-:when: never
+:when:
 :class: hidden
 PRAGMA foreign_keys = ON;
 
@@ -146,7 +146,7 @@ INSERT INTO Emprunt(livre, utilisateur, date_emprunt) VALUES
 ```{exec} sql
 :name: sql-canton-select
 :class: hidden
-:when: never
+:when:
 select * from canton;
 ```
 
@@ -209,7 +209,7 @@ WHERE Utilisateur.prenom = 'Catherine'
 ```{exec} sql
 :include: databases/isa.sql
 :name: isa
-:when: never
+:when:
 :style: display: none;
 
 ```

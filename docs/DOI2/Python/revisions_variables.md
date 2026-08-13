@@ -56,7 +56,7 @@ En Python, les valeurs que l'on stocke dans les variables peuvent être de 4 typ
 Dans l'exemple ci-dessous, 4 variables de 4 types différents sont déclarées.
 ```{exec} python
 :linenos:
-:when: never
+:when:
 année = 2025
 distance_km = 45.32
 collège = "Collège Sainte-Croix"

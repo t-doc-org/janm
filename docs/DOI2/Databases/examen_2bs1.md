@@ -10,28 +10,28 @@ hide: [navbar, primary-sidebar, prev-next, footer]
 :name: ikariam-create-all
 :include: databases/ikariam.sql
 :class: hidden
-:when: never
+:when:
 
 ```
 
 ```{exec} sql
 :name: create-client
 :class: hidden
-:when: never
+:when:
 CREATE TABLE Client(nom TEXT, id_client INTEGER, date_naissance DATE, PRIMARY KEY(id_client AUTOINCREMENT));
 ```
 
 ```{exec} sql
 :name: select-ville
 :class: hidden
-:when: never
+:when:
 select * from Ville;
 ```
 
 ```{exec} sql
 :name: select-batiment
 :class: hidden
-:when: never
+:when:
 select * from Batiment;
 ```
 
@@ -39,7 +39,7 @@ select * from Batiment;
 ```{exec} sql
 :name: select-last2-batiment
 :class: hidden
-:when: never
+:when:
 select * from Batiment
 ORDER BY id_batiment DESC
 LIMIT 2;
