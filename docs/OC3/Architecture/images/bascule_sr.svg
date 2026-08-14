@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Bascule SR : deux portes NON-OU croisées, entrées R et S, sorties Q et non-Q ; les fils de rétroaction contournent les portes">
+  <rect x="2" y="2" width="476" height="296" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="28" y="64" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">R</text>
+  <path d="M 44,59 L 216,59" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="28" y="218" font-family="'Segoe UI',Arial,sans-serif" font-size="17" fill="#111827" font-weight="normal" text-anchor="start">S</text>
+  <path d="M 44,213 L 216,213" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M210,46 Q223,71 210,96 Q242,96 266,71 Q242,46 210,46 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <circle cx="272" cy="71" r="6" fill="#ffffff" stroke="#111827" stroke-width="3"/>
+  <path d="M210,176 Q223,201 210,226 Q242,226 266,201 Q242,176 210,176 Z" fill="none" stroke="#111827" stroke-width="3"/>
+  <circle cx="272" cy="201" r="6" fill="#ffffff" stroke="#111827" stroke-width="3"/>
+  <text x="238" y="34" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">NON-OU</text>
+  <text x="238" y="262" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle">NON-OU</text>
+  <path d="M 278,71 L 410,71" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="420" y="76" font-family="'Segoe UI',Arial,sans-serif" font-size="18" fill="#111827" font-weight="bold" text-anchor="start">Q</text>
+  <path d="M 278,201 L 410,201" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="420" y="206" font-family="'Segoe UI',Arial,sans-serif" font-size="18" fill="#111827" font-weight="bold" text-anchor="start">¬Q</text>
+  <circle cx="320" cy="71" r="3.6" fill="#111827"/>
+  <path d="M 320,71 L 320,132 L 165,132 L 165,189 L 216,189" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="345" cy="201" r="3.6" fill="#111827"/>
+  <path d="M 345,201 L 345,142 L 185,142 L 185,83 L 216,83" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

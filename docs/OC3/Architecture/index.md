@@ -7,6 +7,7 @@ rules
 adder
 substracter
 mux
+sequential
 ```
 
 ## Lien vers Logix

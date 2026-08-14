@@ -142,7 +142,7 @@ Un additionneur 4 bits : la retenue se propage de droite à gauche.
 Le résultat `s` composé de `s3`...`s0` est la somme de `a` et `b`. C'est exactement ce type de circuit, en plus large (32 ou 64 bits), qui se
 trouve au cœur de l'unité de calcul d'un processeur.
 
-## Le dépassement de capacité
+## L'overflow
 Un additionneur 4 bits ne dispose que de quatre sorties `s3…s0` : il ne peut donc
 représenter que les nombres de `0` à `15`. Que se passe-t-il quand la somme
 dépasse cette limite ?
