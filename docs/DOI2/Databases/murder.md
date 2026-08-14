@@ -24,7 +24,7 @@ Quand vous aurez trouvé le coupable, vérifiez votre solution en bas de la page
 ```{exec} sql
 :include: databases/sql-murder-mystery.sql
 :name: murder
-:when: never
+:when:
 :style: display: none;
 
 ```

@@ -5,7 +5,7 @@
 ```{exec} python
 :name: fonctions_dessin_svg
 :class: hidden
-:when: never
+:when:
 from tdoc import svg
 
 def creation_image(largeur, hauteur, couleur):
@@ -39,7 +39,7 @@ def rendu():
 ```{exec} python
 :name: rendu
 :class: hidden
-:when: never
+:when:
 
 # Affiche l'image
 render(img)

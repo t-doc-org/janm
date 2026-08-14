@@ -9,7 +9,7 @@ hide: [navbar, primary-sidebar, prev-next, footer]
 ```{exec} sql
 :name: sql-insert-bank
 :class: hidden
-:when: never
+:when:
 -- Activer l’intégrité référentielle dans SQLite
 PRAGMA foreign_keys = ON;
 
@@ -79,14 +79,14 @@ INSERT INTO Commande (numero_commande, article, client) VALUES
 ```{exec} sql
 :name: create-client
 :class: hidden
-:when: never
+:when:
 CREATE TABLE Client(nom TEXT, id_client INTEGER, date_naissance DATE, PRIMARY KEY(id_client AUTOINCREMENT));
 ```
 
 ```{exec} sql
 :name: select-compte
 :class: hidden
-:when: never
+:when:
 select * from Compte;
 ```
 
@@ -94,7 +94,7 @@ select * from Compte;
 ```{exec} sql
 :name: select-client
 :class: hidden
-:when: never
+:when:
 select * from Client;
 ```
 

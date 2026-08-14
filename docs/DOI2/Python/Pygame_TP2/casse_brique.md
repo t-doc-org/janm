@@ -30,7 +30,7 @@ exec:
 
 ```{exec} python
 :name: setup
-:when: never
+:when:
 :class: hidden
 import tdoc.pygame
 setup_canvas()
@@ -38,7 +38,7 @@ setup_canvas()
 
 ```{exec} python
 :name: pygame_start
-:when: never
+:when:
 :class: hidden
 :include: ../code/pygame_start.py
 ```
@@ -51,7 +51,7 @@ setup_canvas()
 
 ```{exec} python
 :name: pygame_end
-:when: never
+:when:
 :class: hidden
 try:
     await main()

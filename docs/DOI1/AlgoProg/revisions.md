@@ -119,7 +119,7 @@ La fonction devra afficher un message d'erreur si la devise n'est pas supportée
 Le code suivant devrait ensuite permettre d'afficher la valeur de 150CHF en euros, et la valeur de 4560CHF en Livres Sterling.
 
 ```{exec} python
-:when: never
+:when:
 conversion_argent(150, "EUR")
 conversion_argent(4560, "GBP")
 ```

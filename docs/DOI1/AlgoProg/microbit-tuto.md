@@ -6,7 +6,7 @@
 ```{exec} micropython
 :name: microbit-reset
 :class: hidden
-:when: never
+:when:
 from microbit import *
 display.clear()
 ```
@@ -134,7 +134,7 @@ allumée ou éteinte, ce qui correspond à un dessin en noir et blanc.
 Il est donc possible de créer ses propres images ainsi:
 
 ```{exec} micropython
-:when: never
+:when:
 img = Image("09090:"
             "99999:"
             "99999:"
@@ -203,7 +203,7 @@ display.show(img)
     s'exécutera sans fin, sauf si on l’interrompt manuellement.
 
     ```{exec} python
-    :when: never
+    :when:
     # Ce code va afficher le texte sans s'arrêter
     while True:
         print("Bonjour !")

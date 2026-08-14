@@ -360,7 +360,7 @@ Observez la différence de taille entre les niveaux de titres.
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor:
 :style: height: 14rem;
 <!DOCTYPE html>
@@ -405,7 +405,7 @@ En utilisant l'éditeur ci-dessous, ajoutez dans le `<body>` :
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor:
 :style: height: 14rem;
 <!DOCTYPE html>
@@ -446,7 +446,7 @@ En utilisant l'éditeur ci-dessous, ajoutez dans le `<body>` :
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor:
 :style: height: 18rem;
 <!DOCTYPE html>
@@ -500,7 +500,7 @@ En utilisant l'éditeur ci-dessous, ajoutez dans le `<body>` :
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor:
 :style: height: 14rem;
 <!DOCTYPE html>
@@ -546,7 +546,7 @@ En utilisant l'éditeur ci-dessous, complétez le tableau pour représenter votr
 
 ````{solution}
 ```{exec} html
-:when: load
+:when: load click
 :editor:
 :style: height: 20rem;
 <!DOCTYPE html>

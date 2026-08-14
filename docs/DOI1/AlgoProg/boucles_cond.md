@@ -118,7 +118,7 @@ while n != 20:
 Sans les exécuter, lisez attentivement les programmes ci-dessous. Leur seule différence est le `if` ou `while` de la ligne 3. Quel sera l'affichage de chacun de ses programmes ? Quelle est la différence entre un `if` et un `while` ?
 
 ```{exec} python
-:when: never
+:when:
 :caption: Programme 1
 n = 5
 if n < 10:
@@ -127,7 +127,7 @@ if n < 10:
 ```
 
 ```{exec} python
-:when: never
+:when:
 :caption: Programme 2
 n = 5
 while n < 10:

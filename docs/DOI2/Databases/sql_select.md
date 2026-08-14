@@ -3,7 +3,7 @@
 
 ```{exec} sql
 :name: sql-create-insert-all
-:when: never
+:when:
 :class: hidden
 CREATE TABLE Livre (
     titre TEXT,
@@ -143,7 +143,7 @@ INSERT INTO Emprunt(livre, utilisateur, date_emprunt) VALUES
 ```{exec} sql
 :name: sql-canton-select
 :class: hidden
-:when: never
+:when:
 select * from canton;
 ```
 
