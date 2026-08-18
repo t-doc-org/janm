@@ -180,10 +180,20 @@ insert into canton values
 ```
 
 ## Sélectionner des données
-L'instruction `SELECT ... FROM ...` permet de rechercher des données dans une table. On fait suivre le mot-clef `SELECT` du nom de(s) colonne(s) que l'on souhaite afficher, et le `FROM` de la table contenant ces données. Ainsi, la requête suivante nous permet d'afficher tous les titres et auteurs dans notre table Livre.
+L'instruction `SELECT ... FROM ...` permet de rechercher des données dans une table. On fait suivre le mot-clef `SELECT` du nom de(s) colonne(s) que l'on souhaite afficher, et le `FROM` de la table contenant ces données. Ainsi, la requête suivante nous permet d'afficher tous les titres et auteurs de notre table `Livre`.
 
 ```{exec} sql
 :after: sql-create-insert-all
+:name: sql-livre-select1
+:editor:
+SELECT titre, auteur FROM Livre
+```
+
+Et celle-ci affiche le nom et le prénom de tous les utilisateurs de la bibliothèque.
+
+```{exec} sql
+:after: sql-create-insert-all
+:name: sql-user-select1
 :editor:
 SELECT nom, prenom FROM Utilisateur
 ```
@@ -247,13 +257,20 @@ Comme en Python, il est possible de chaîner plusieurs conditions avec les opér
 SELECT titre FROM Livre WHERE auteur = 'Alexandre Dumas' OR Auteur = 'Gustave Flaubert'
 ```
 
-La requête suivante permet d'afficher toutes les infos des livres écrits par J.K. Rowling après 2003.
+La requête suivante permet d'afficher les titres des livres écrits par J.K. Rowling après 2003.
 
 ```{exec} sql
 :after: sql-create-insert-all
 :name: sql-livre-select7
 :editor:
-SELECT titre FROM Livre WHERE auteur = 'J.K. Rowling' AND date_pub > 2003
+SELECT titre FROM Livre WHERE auteur = 'J.K. Rowling' AND date_pub > '2003-12-31'
+```
+
+```{important}
+Une date s'écrit **entre guillemets simples** et se compare comme du texte, caractère par
+caractère. Il faut donc toujours donner une date **complète** au format `'AAAA-MM-JJ'`.
+Écrire `date_pub > 2003` (sans guillemets et sans mois ni jour) ne produit aucune erreur, mais
+donne un résultat faux : SQL compare alors un nombre à du texte et retourne **tous** les livres.
 ```
 
 ### Opérateur `LIKE`
@@ -285,49 +302,26 @@ Le mot-clef `LIKE` peut s'utiliser comme un opérateur de comparaison sur du tex
 
 ## Exercices
 
+```{role} input(quiz-input)
+:right: width: 12rem; clear: right;
+:check: split lowercase
+```
+
+```{role} num(quiz-input)
+:right: width: 5rem; clear: right;
+:check: trim
+```
+
+```{role} pourcent(quiz-select)
+:right:
+:options: |
+: 'Zola%'
+: '%Zola'
+: '%Zola%'
+```
+
 ### Exercice {num1}`exercice`
-
-En dessous des requêtes se trouve une table `canton`. **Avant d'exécuter ces requêtes** ci-dessous, lisez-les attentivement et prédites leur résultat. La requête est-elle correcte ou produira-t-elle une erreur ? Si elle est correcte, quelle sera la ou les lignes affichées ? 
-
-1.  ```{exec} sql
-    :after: sql-canton
-    select * from canton where nb_communes = 45;
-    ```
-
-2.  ```{exec} sql
-    :after: sql-canton
-    select * from canton where chef_lieu = Coire;
-    ```
-
-    ````{solution} Explication
-    Cette requête produit une erreur, car il manque les guillemets simples
-    autour de Coire.
-    ````
-
-3.  ```{exec} sql
-    :after: sql-canton
-    select nom, superficie from canton where nom = 'Fribourg';
-    ```
-
-4.  ```{exec} sql
-    :after: sql-canton
-    select * from canton where population > 500000;
-    ```
-
-5.  ```{exec} sql
-    :after: sql-canton
-    select * from canton where abr < 'GR';
-    ```
-
-    ````{solution} Explication
-    Les opérateurs de comparaison pour du texte utilisent l'ordre alphabétique.\
-    Exemples: 'a' < 'b' ou 'p' > 'd'
-    ````
-
-6.  ```{exec} sql
-    :after: sql-canton
-    select * from canton order by superficie asc;
-    ```
+Voici la table `canton`, qui servira de base aux deux prochains exercices.
 
 ```{exec} sql
 :after: sql-canton
@@ -336,6 +330,103 @@ En dessous des requêtes se trouve une table `canton`. **Avant d'exécuter ces r
 select * from canton;
 ```
 
+**Avant d'exécuter les requêtes ci-dessous**, lisez-les attentivement et prédisez leur résultat.
+La requête est-elle correcte ou produira-t-elle une erreur ? Si elle est correcte, combien de
+lignes affichera-t-elle ? Indiquez ce nombre dans la case à droite (ou le mot `erreur` si la
+requête ne fonctionne pas), puis exécutez la requête pour vérifier.
+
+```````{quiz}
+1.  {input}`1`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton where nb_communes = 45;
+    ```
+
+2.  {input}`erreur`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton where chef_lieu = Coire;
+    ```
+
+3.  {input}`1`
+    ```{exec} sql
+    :after: sql-canton
+    select nom, superficie from canton where nom = 'Fribourg';
+    ```
+
+4.  {input}`3`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton where population > 500000;
+    ```
+
+5.  {input}`3`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton where abr < 'GR';
+    ```
+
+6.  {input}`7`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton order by superficie asc;
+    ```
+
+7.  {input}`0`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton where nom like 'F';
+    ```
+
+8.  {input}`0`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton where chef_lieu = 'coire';
+    ```
+
+9.  {input}`7`
+    ```{exec} sql
+    :after: sql-canton
+    select nom, superficie from canton order by nb_communes desc;
+    ```
+
+10. {input}`3`
+    ```{exec} sql
+    :after: sql-canton
+    select * from canton
+      where nb_communes > 100 and population > 300000 and superficie < 3000;
+    ```
+
+11. {input}`0`
+    ```{exec} sql
+    :after: sql-canton
+    select nom from canton where nom = 'Fribourg' and nom = 'Genève';
+    ```
+```````
+
+````{solution} Explications
+1.  Un seul canton a 45 communes : Genève.
+2.  Cette requête produit une erreur, car il manque les guillemets simples autour de `Coire`.
+    Sans eux, SQL cherche une *colonne* appelée `Coire`.
+3.  Un seul canton s'appelle Fribourg. Notez que seules deux colonnes sont affichées, mais cela
+    ne change rien au nombre de lignes.
+4.  Genève, Berne et Zurich dépassent les 500'000 habitants.
+5.  Les opérateurs de comparaison pour du texte utilisent l'ordre alphabétique.\
+    Exemples: `'a' < 'b'` ou `'p' > 'd'`. Les abréviations placées avant `GR` dans l'ordre
+    alphabétique sont `BE`, `FR` et `GE`.
+6.  Un `ORDER BY` ne filtre rien : il ne fait que **changer l'ordre** des lignes. Les 7 cantons
+    sont donc affichés.
+7.  Aucune ligne. `LIKE 'F'` cherche un nom **exactement** égal à `F`. Pour trouver les noms qui
+    commencent par F, il faut écrire `LIKE 'F%'`.
+8.  Aucune ligne. Contrairement au `LIKE`, l'opérateur `=` distingue les majuscules des
+    minuscules : `'coire'` n'est pas `'Coire'`.
+9.  Sept lignes également. On peut parfaitement trier selon une colonne qui n'est pas affichée :
+    le tri se fait avant la sélection des colonnes.
+10. Rien n'empêche de chaîner plus de deux conditions avec `and`. Une ligne n'est retenue que si
+    **toutes** les conditions sont vraies : Fribourg, Zurich et Tessin remplissent les trois.
+11. Aucune ligne : un canton ne peut pas s'appeler à la fois Fribourg **et** Genève. Quand on veut
+    *plusieurs valeurs possibles pour une même colonne*, c'est un `or` qu'il faut utiliser.
+````
 
 ### Exercice {num1}`exercice`
 En vous basant sur la table `canton` ci-dessus, écrivez les requêtes SQL répondant aux critères suivants.
@@ -475,4 +566,319 @@ la population se trouve entre 300'000 et 500'000 habitants.
 :after: sql-canton
 select nom, abr from canton where population > 300000 and population < 500000;
 ```
+````
+
+
+### Exercice {num1}`exercice`
+Chacune des requêtes ci-dessous, écrite sur la base de données de la bibliothèque, comporte **une
+erreur**. Parfois l'erreur produit un message rouge, parfois la requête s'exécute mais ne retourne
+pas ce qui était demandé. Corrigez-les.
+
+1.  On souhaite afficher le titre des livres coûtant moins de 10 CHF.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    :editor: 3109bb2e-716c-4e17-8e36-701035f5490b
+    SELECT titre WHERE prix < 10
+    ```
+
+2.  On souhaite afficher tous les livres de Victor Hugo.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    :editor: ae2942b9-e605-443d-8e70-047dfdca6316
+    SELECT * FROM Livre WHERE auteur = Victor Hugo
+    ```
+
+3.  On souhaite afficher tous les livres du plus cher au moins cher.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    :editor: 3ebce8a4-10ca-495a-954f-c35bcf45f3c8
+    SELECT * FROM Livre ORDER prix BY DESC
+    ```
+
+4.  On souhaite afficher tous les livres de la saga Harry Potter.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    :editor: d9569268-b095-4a11-af6f-1aace3bfdb1c
+    SELECT * FROM Livre WHERE titre LIKE 'Harry'
+    ```
+
+5.  On souhaite afficher les livres qui coûtent moins de 10 CHF ou plus de 20 CHF.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    :editor: 764ac472-3e1f-4395-9094-2047fb4acf8d
+    SELECT * FROM Livre WHERE prix < 10 AND prix > 20
+    ```
+
+````{solution}
+1.  Le `FROM` a été oublié : SQL ne sait pas dans quelle table chercher.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    SELECT titre FROM Livre WHERE prix < 10
+    ```
+
+2.  Il manque les guillemets simples autour du texte recherché.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    SELECT * FROM Livre WHERE auteur = 'Victor Hugo'
+    ```
+
+3.  Les deux mots-clefs `ORDER BY` vont ensemble et se placent **avant** le nom de la colonne.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    SELECT * FROM Livre ORDER BY prix DESC
+    ```
+
+4.  La requête ne produit aucune erreur, mais retourne zéro ligne : sans `%`, le `LIKE` cherche un
+    titre exactement égal à `Harry`.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    SELECT * FROM Livre WHERE titre LIKE 'Harry%'
+    ```
+
+5.  Aucune erreur non plus, mais aucun résultat : un prix ne peut pas être à la fois inférieur à 10
+    et supérieur à 20. Il fallait un `OR`.
+    ```{exec} sql
+    :after: sql-create-insert-all
+    SELECT * FROM Livre WHERE prix < 10 OR prix > 20
+    ```
+````
+
+### Exercice {num1}`exercice`
+Les exercices suivants utilisent la table `jeu` ci-dessous, qui recense quelques jeux vidéo.
+
+```{exec} sql
+:name: sql-jeu-select
+:class: hidden
+:when:
+select * from jeu;
+```
+
+```{exec} sql
+:name: sql-jeu
+:class: hidden
+:then: sql-jeu-select
+create table jeu (
+  titre text not null,
+  studio text not null,
+  genre text not null,
+  annee int not null,
+  note real not null,
+  prix real not null
+);
+insert into jeu values
+  ('The Legend of Zelda: Breath of the Wild', 'Nintendo', 'Aventure', 2017, 9.7, 59.90),
+  ('Super Mario Odyssey', 'Nintendo', 'Plateforme', 2017, 9.4, 54.90),
+  ('Mario Kart 8 Deluxe', 'Nintendo', 'Course', 2017, 9.2, 49.90),
+  ('Minecraft', 'Mojang', 'Bac à sable', 2011, 9.0, 26.95),
+  ('Stardew Valley', 'ConcernedApe', 'Simulation', 2016, 8.9, 13.99),
+  ('Hollow Knight', 'Team Cherry', 'Aventure', 2017, 9.1, 14.99),
+  ('Celeste', 'Maddy Makes Games', 'Plateforme', 2018, 9.4, 19.99),
+  ('Rocket League', 'Psyonix', 'Sport', 2015, 8.6, 0.00),
+  ('Among Us', 'Innersloth', 'Party game', 2018, 7.8, 4.30),
+  ('Terraria', 'Re-Logic', 'Bac à sable', 2011, 8.8, 9.99),
+  ('It Takes Two', 'Hazelight', 'Aventure', 2021, 9.3, 39.90),
+  ('Portal 2', 'Valve', 'Réflexion', 2011, 9.5, 8.19);
+```
+
+```{exec} sql
+:after: sql-jeu
+:class: hidden
+:when: load
+select * from jeu;
+```
+
+Pour commencer, où faut-il placer le signe `%` ? On cherche ici des auteurs dans une table
+`Livre`.
+
+```{quiz}
+:style: max-width: 32rem;
+1. {pourcent}`'Zola%'`
+Le nom de l'auteur **commence** par Zola
+
+2. {pourcent}`'%Zola'`
+Le nom de l'auteur **se termine** par Zola
+
+3. {pourcent}`'%Zola%'`
+Le nom de l'auteur **contient** Zola
+```
+
+Écrivez maintenant les requêtes suivantes sur la table `jeu`. Toutes nécessitent un `LIKE`.
+
+1.  Afficher tous les jeux dont le titre commence par *Super*.
+
+```{exec} sql
+:after: sql-jeu
+:editor: ef404ae6-fb04-45b3-adb8-c6763ec95bd9
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select * from jeu where titre like 'Super%';
+```
+````
+
+2.  Afficher tous les jeux dont le titre contient *Mario*.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 8100626e-f0f3-4a98-8113-d4cb2dd67c65
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select * from jeu where titre like '%Mario%';
+```
+````
+
+3.  Afficher le titre et le studio des jeux dont le nom du studio se termine par *o* **et** qui
+    coûtent plus de 50 CHF.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 305b9c7f-d4dc-47ee-935e-b3a8f0f754b0
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select titre, studio from jeu where studio like '%o' and prix > 50;
+```
+````
+
+4.  Afficher les jeux dont le genre se termine par *ure* **et** dont la note dépasse 9.2.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 73bae7c3-21de-4ada-8da3-d0129d1362fb
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select * from jeu where genre like '%ure' and note > 9.2;
+```
+````
+
+5.  Afficher les jeux dont le titre contient la lettre *a*, qui coûtent moins de 20 CHF **et**
+    dont la note est supérieure ou égale à 8.8.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 3a831e83-f38f-468f-8af6-46b4d2255071
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select * from jeu where titre like '%a%' and prix < 20 and note >= 8.8;
+```
+Rien n'empêche d'enchaîner trois conditions avec deux `and` : la ligne n'est retenue que si les
+trois sont vraies en même temps. Cette requête retourne 3 jeux. Notez au passage que le `LIKE` ne
+fait pas la différence entre majuscules et minuscules : *Portal 2* est bien trouvé.
+````
+
+### Exercice {num1}`exercice`
+Toujours sur la table `jeu`, écrivez les requêtes suivantes. Elles nécessitent toutes un
+`DISTINCT`, un `ORDER BY`, ou les deux.
+
+1.  Afficher la liste des genres présents dans la table, sans doublon.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 6e48b780-75a4-4bb7-97c2-ef9e2b97f0b6
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select distinct genre from jeu;
+```
+Sans le `DISTINCT`, la requête afficherait 12 lignes (une par jeu) au lieu des 8 genres réellement
+différents.
+````
+
+2.  Afficher la liste des studios, sans doublon, par ordre alphabétique.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 0c31316d-3bb5-4600-9ec6-fbb31d4af0cb
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select distinct studio from jeu order by studio asc;
+```
+````
+
+3.  Afficher les années de sortie, sans doublon, de la plus récente à la plus ancienne.
+
+```{exec} sql
+:after: sql-jeu
+:editor: bb7e8b3a-c289-4386-8739-95aac654a706
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select distinct annee from jeu order by annee desc;
+```
+````
+
+4.  Afficher le titre et la note des jeux d'aventure **ou** de plateforme, du mieux noté au moins
+    bien noté.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 0d80a461-1424-49b8-8169-98f05e29b671
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select titre, note from jeu where genre = 'Aventure' or genre = 'Plateforme' order by note desc;
+```
+````
+
+5.  Afficher le titre et le prix des jeux qui coûtent moins de 20 CHF, sont sortis après 2014 et
+    ont une note supérieure à 8.5, du moins cher au plus cher.
+
+```{exec} sql
+:after: sql-jeu
+:editor: 78043a03-05f7-4cd7-86bb-aef0d1b3e039
+```
+
+````{solution}
+```{exec} sql
+:after: sql-jeu
+select titre, prix from jeu where prix < 20 and annee > 2014 and note > 8.5
+order by prix asc;
+```
+Les trois conditions sont chaînées par deux `and`, et le `order by` se place toujours **après**
+l'ensemble du `where`.
+````
+
+### Exercice {num1}`exercice`
+Cet exercice fonctionne dans l'autre sens : les requêtes sont données, à vous de dire **ce
+qu'elles font**. Répondez en une phrase, en français, sans les exécuter. Elles portent sur la base
+de données de la bibliothèque.
+
+1.  `SELECT DISTINCT auteur FROM Livre ORDER BY auteur ASC`
+2.  `SELECT titre, prix FROM Livre WHERE prix > 15 OR auteur = 'Victor Hugo'`
+3.  `SELECT nom FROM Utilisateur WHERE role != 'élève'`
+4.  `SELECT * FROM Livre WHERE titre LIKE '%Potter%' AND prix < 10 AND date_pub > '2000-01-01'`
+5.  `SELECT titre, date_pub FROM Livre WHERE date_pub < '1900-01-01' ORDER BY date_pub ASC`
+
+````{solution}
+1.  Affiche la liste de tous les auteurs de la bibliothèque, sans doublon, par ordre alphabétique.
+2.  Affiche le titre et le prix des livres qui coûtent plus de 15 CHF, ainsi que ceux écrits par
+    Victor Hugo (même s'ils coûtent moins de 15 CHF).
+3.  Affiche le nom de tous les utilisateurs qui ne sont pas des élèves, c'est-à-dire les
+    enseignants et les bibliothécaires.
+4.  Affiche toutes les informations des livres de la saga Harry Potter qui coûtent moins de 10 CHF
+    et qui ont été publiés après le 1er janvier 2000. Un seul livre remplit les trois conditions.
+5.  Affiche le titre et la date de publication des livres publiés avant 1900, du plus ancien au
+    plus récent.
 ````

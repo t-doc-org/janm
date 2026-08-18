@@ -1,8 +1,18 @@
 <!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
-La base de données provient de [SQL Mysteries](https://github.com/NUKnightLab/sql-mysteries/tree/master), Joon Park & Cathy He CC- BY-SA 4.0
+Enquête adaptée de [SQL Murder Mystery](https://github.com/NUKnightLab/sql-mysteries), Joon Park & Cathy He, CC-BY-SA 4.0. Le schéma et le déroulé de l'enquête sont ceux de l'original ; les données ont été régénérées et traduites pour ce cours par le script `databases/generate_murder_db.py`.
 
+
+% La base de l'enquête est incluse telle quelle dans la page. Sans cette
+% option, Sphinx la colorie syntaxiquement balise par balise, ce qui fait
+% passer la page de 700 Ko à 4.4 Mo pour rien : le bloc est caché, et le seul
+% bloc visible est l'éditeur de l'élève, qui n'utilise pas cette coloration.
+```{metadata}
+exec:
+  sql:
+    highlight: text
+```
 
 # Un meurtre à SQL City
 

@@ -79,7 +79,7 @@ select * from Utilisateur;
 
 ### Clefs étrangères
 
-Lors de la création d'une table contenant des clefs étrangères, on doit également les spécifier avec `FOREIGN KEY ... REFERENCES ...`. Après le `FOREIGN KEY`, on spécifie entre parenthèses quelle colonne est la clef étrangère. Puis, après le `REFERENCES`, on donne le nom de la table et de sa colonne référencée. Dans l'exemple ci-dessous, `utilisateur` est une clef étrangère référençant la colonne `utilisateur_id` de la table `Utilisateur`. De plus, `livre` est une clef étrangère référançant la colonne `numero_isbn` de la table `livre`.
+Lors de la création d'une table contenant des clefs étrangères, on doit également les spécifier avec `FOREIGN KEY ... REFERENCES ...`. Après le `FOREIGN KEY`, on spécifie entre parenthèses quelle colonne est la clef étrangère. Puis, après le `REFERENCES`, on donne le nom de la table et de sa colonne référencée. Dans l'exemple ci-dessous, `utilisateur` est une clef étrangère référençant la colonne `id_utilisateur` de la table `Utilisateur`. De plus, `livre` est une clef étrangère référençant la colonne `numero_isbn` de la table `Livre`.
 
 ```{exec} sql
 :after: sql-user
@@ -136,6 +136,273 @@ INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Queloz', 'Aurélien', 'élè
 ```
 
 ## Exercices
+
+```{role} type(quiz-select)
+:right:
+:options: |
+: INTEGER
+: REAL
+: TEXT
+: DATE
+```
+
+```{role} auto(quiz-select)
+:right:
+:options: |
+: avec AUTOINCREMENT
+: sans AUTOINCREMENT
+```
+
+```{role} ouinon(quiz-select)
+:right:
+:options: |
+: oui
+: non
+```
+
+### Exercice {num1}`exercice`
+Quel type de données faut-il utiliser pour chacune de ces colonnes ?
+
+```{quiz}
+:style: max-width: 34rem;
+1. {type}`REAL`
+Le prix d'un article
+
+2. {type}`TEXT`
+Le nom d'une ville
+
+3. {type}`INTEGER`
+Le nombre d'habitants d'une ville
+
+4. {type}`DATE`
+La date de sortie d'un film
+
+5. {type}`TEXT`
+Le numéro de téléphone d'un client
+
+6. {type}`REAL`
+La note obtenue à une évaluation
+
+7. {type}`INTEGER`
+Le numéro de maillot d'un joueur
+
+8. {type}`TEXT`
+L'adresse e-mail d'un utilisateur
+```
+
+````{solution}
+Le numéro de téléphone (question 5) est le piège classique : bien qu'il ne soit composé que de
+chiffres, ce n'est **pas un nombre**. On ne fait jamais de calcul avec un numéro de téléphone, et
+surtout un `INTEGER` supprimerait le `0` du début (`0791234567` deviendrait `791234567`). La même
+logique s'applique aux numéros AVS et aux numéros IBAN.
+
+Retenez la question à se poser : *est-ce que je pourrais avoir envie de faire un calcul avec cette
+valeur ?* Si la réponse est non, c'est du `TEXT`.
+````
+
+### Exercice {num1}`exercice`
+Pour chacune de ces clefs primaires, déterminez si le mot-clef `AUTOINCREMENT` est nécessaire.
+
+```{quiz}
+:style: max-width: 34rem;
+1. {auto}`sans AUTOINCREMENT`
+`numero_isbn` dans une table `Livre`
+
+2. {auto}`avec AUTOINCREMENT`
+`id_commentaire` dans une table `Commentaire`
+
+3. {auto}`sans AUTOINCREMENT`
+`email` dans une table `Utilisateur`
+
+4. {auto}`avec AUTOINCREMENT`
+`id_emprunt` dans une table `Emprunt`
+
+5. {auto}`sans AUTOINCREMENT`
+`plaque` dans une table `Voiture`
+
+6. {auto}`avec AUTOINCREMENT`
+`id_video` dans une table `Video`
+```
+
+````{solution}
+La règle est toujours la même : `AUTOINCREMENT` sert uniquement lorsque la clef primaire est un
+**identifiant artificiel**, c'est-à-dire un numéro qui n'existe nulle part ailleurs et que l'on a
+créé uniquement pour identifier les lignes. C'est le cas des questions 2, 4 et 6.
+
+À l'inverse, un numéro ISBN, une adresse e-mail et une plaque d'immatriculation existent déjà
+dans le monde réel : c'est nous qui les fournissons au moment de l'insertion, SQL n'a rien à
+inventer. De plus, `AUTOINCREMENT` n'est possible que sur une colonne de type `INTEGER`, ce qui
+exclut d'office l'e-mail et la plaque.
+````
+
+### Exercice {num1}`exercice`
+Chacune des requêtes ci-dessous comporte **une erreur**. Parfois, l'erreur fait directement buguer
+la requête avec un message d'erreur rouge. D'autres fois, la requête s'exécute sans problème mais
+la table créée est mal conçue.
+
+Corrigez chacune de ces requêtes. Lisez bien les messages d'erreur, ils peuvent vous aider.
+
+```{exec} sql
+:name: select-fix-ville
+:when:
+:class: hidden
+SELECT * FROM Ville;
+```
+
+```{exec} sql
+:name: select-fix-pays
+:when:
+:class: hidden
+SELECT * FROM Pays;
+```
+
+```{exec} sql
+:name: select-fix-jeu
+:when:
+:class: hidden
+SELECT * FROM Jeu;
+```
+
+```{exec} sql
+:name: select-fix-film
+:when:
+:class: hidden
+SELECT * FROM Film;
+```
+
+```{exec} sql
+:name: select-fix-eleve
+:when:
+:class: hidden
+SELECT * FROM Eleve;
+```
+
+
+1.  ```{exec} sql
+    :editor: 08c3bb91-657c-4da2-9ea2-18d7b8cab7c2
+    :then: select-fix-ville
+    CREATE TABLE Ville (
+        nom TEXT,
+        canton TEXT,
+        population INTEGER,
+    );
+    ```
+
+2.  ```{exec} sql
+    :editor: 6f303eab-26b6-4c02-b63b-cbf3efca808d
+    :then: select-fix-pays
+    CREATE TABLE Pays (
+        nom TEXT,
+        capitale TEXT,
+        population INTEGER,
+        PRIMARY KEY(nom AUTOINCREMENT)
+    );
+    ```
+
+3.  ```{exec} sql
+    :editor: 245f5834-59b4-4589-97d8-d517923fe254
+    :then: select-fix-jeu
+    CREATE TABLE Jeu (
+        titre TEXT,
+        studio TEXT,
+        prix REAL,
+        PRIMARY KEY(id_jeu)
+    );
+    ```
+
+4.  ```{exec} sql
+    :editor: 49deaca9-1f65-4c93-8854-275950b52f5c
+    :then: select-fix-film
+    CREATE TABLE Film (
+        titre TEXT,
+        annee,
+        duree INTEGER,
+        id_film INTEGER,
+        PRIMARY KEY(id_film AUTOINCREMENT)
+    );
+    ```
+
+5.  ```{exec} sql
+    :editor: 2ae20379-1c15-402f-8617-45587544d342
+    :then: select-fix-eleve
+    CREATE TABLE Eleve (
+        nom TEXT,
+        prenom TEXT,
+        classe TEXT
+    );
+    ```
+
+````{solution}
+1.  Il y a une **virgule en trop** après `population INTEGER`. La dernière ligne avant la
+    parenthèse fermante ne doit pas être suivie d'une virgule. Au passage, cette table n'a pas de
+    clef primaire (voir la question 5).
+
+    ```{exec} sql
+    :then: select-fix-ville
+    CREATE TABLE Ville (
+        nom TEXT,
+        canton TEXT,
+        population INTEGER,
+        id_ville INTEGER,
+        PRIMARY KEY(id_ville AUTOINCREMENT)
+    );
+    ```
+
+2.  `AUTOINCREMENT` n'est possible que sur une clef primaire de type `INTEGER`, or `nom` est du
+    `TEXT`. Comme le nom d'un pays est unique, il suffit de retirer `AUTOINCREMENT`.
+
+    ```{exec} sql
+    :then: select-fix-pays
+    CREATE TABLE Pays (
+        nom TEXT,
+        capitale TEXT,
+        population INTEGER,
+        PRIMARY KEY(nom)
+    );
+    ```
+
+3.  La clef primaire `id_jeu` est référencée alors que **cette colonne n'a jamais été créée**. Il
+    faut la déclarer dans la liste des attributs.
+
+    ```{exec} sql
+    :then: select-fix-jeu
+    CREATE TABLE Jeu (
+        titre TEXT,
+        studio TEXT,
+        prix REAL,
+        id_jeu INTEGER,
+        PRIMARY KEY(id_jeu AUTOINCREMENT)
+    );
+    ```
+
+4.  Le **type de données de `annee` a été oublié**. Cette requête ne produit aucun message
+    d'erreur, mais la colonne acceptera alors n'importe quoi.
+
+    ```{exec} sql
+    :then: select-fix-film
+    CREATE TABLE Film (
+        titre TEXT,
+        annee INTEGER,
+        duree INTEGER,
+        id_film INTEGER,
+        PRIMARY KEY(id_film AUTOINCREMENT)
+    );
+    ```
+
+5.  Cette requête fonctionne, mais la table **n'a aucune clef primaire**. Aucune des trois colonnes
+    n'étant unique, il faut en créer une.
+
+    ```{exec} sql
+    :then: select-fix-eleve
+    CREATE TABLE Eleve (
+        nom TEXT,
+        prenom TEXT,
+        classe TEXT,
+        id_eleve INTEGER,
+        PRIMARY KEY(id_eleve AUTOINCREMENT)
+    );
+    ```
+````
 
 ### Exercice {num1}`exercice`
 Le schéma relationnel ci-dessous ne contient qu'une seule table et représente une base de données d'évaluations.
@@ -200,6 +467,227 @@ INSERT INTO Evaluation(branche, titre, note, date) VALUES('Informatique', 'Bases
 ```
 ````
 
+
+
+### Exercice {num1}`exercice`
+Le schéma relationnel ci-dessous est celui d'une plateforme de streaming musical.
+
+```{image} images/musique_schema.png
+:width: 45%
+:alt: Schéma relationnel de la plateforme de streaming musical
+:align: center
+```
+
+La table `Artiste` a déjà été créée et remplie pour vous. Exécutez le bloc ci-dessous pour voir
+son contenu.
+
+```{exec} sql
+:name: musique-artiste
+:then: musique-artiste-select
+CREATE TABLE Artiste (
+    nom TEXT,
+    pays TEXT,
+    id_artiste INTEGER,
+    PRIMARY KEY(id_artiste AUTOINCREMENT)
+);
+
+INSERT INTO Artiste(nom, pays) VALUES ('Stromae', 'Belgique');
+INSERT INTO Artiste(nom, pays) VALUES ('Angèle', 'Belgique');
+INSERT INTO Artiste(nom, pays) VALUES ('Orelsan', 'France');
+```
+
+```{exec} sql
+:name: musique-artiste-select
+:when:
+:class: hidden
+SELECT * FROM Artiste;
+```
+
+#### Partie A
+La création de la table `Album` est presque terminée : il ne reste que les **deux dernières
+lignes** à écrire. Remplacez les `...` par le code correct.
+
+```{exec} sql
+:editor: e55f5789-2934-4006-ba31-b331200b29d6
+:name: musique-album
+:after: musique-artiste
+:then: musique-album-select
+CREATE TABLE Album (
+    id_album INTEGER,
+    titre TEXT,
+    annee INTEGER,
+    nb_pistes INTEGER,
+    artiste INTEGER,
+    PRIMARY KEY(...),
+    FOREIGN KEY(...) REFERENCES ...
+);
+```
+
+```{exec} sql
+:name: musique-album-select
+:when:
+:class: hidden
+SELECT * FROM Album;
+```
+
+````{solution}
+```{exec} sql
+:name: musique-album-solution
+:after: musique-artiste
+:then: musique-album-select
+CREATE TABLE Album (
+    id_album INTEGER,
+    titre TEXT,
+    annee INTEGER,
+    nb_pistes INTEGER,
+    artiste INTEGER,
+    PRIMARY KEY(id_album AUTOINCREMENT),
+    FOREIGN KEY(artiste) REFERENCES Artiste(id_artiste)
+);
+```
+La clef étrangère `artiste` ne référence pas la table `Artiste` toute entière, mais bien **sa
+clef primaire** : `Artiste(id_artiste)`.
+````
+
+#### Partie B
+Si votre table est correctement créée, le bloc ci-dessous doit ajouter trois albums.
+
+```{exec} sql
+:after: musique-album
+:name: musique-album-insert
+:then: musique-album-select
+INSERT INTO Album(titre, annee, nb_pistes, artiste) VALUES ('Racine carrée', 2013, 15, 1);
+INSERT INTO Album(titre, annee, nb_pistes, artiste) VALUES ('Nonante-Cinq', 2021, 13, 2);
+INSERT INTO Album(titre, annee, nb_pistes, artiste) VALUES ('Civilisation', 2021, 15, 3);
+```
+
+Ajoutez maintenant vous-même l'album *Multitude* de Stromae, sorti en 2022 et contenant 12 pistes.
+
+```{exec} sql
+:editor: ebdb9456-f026-4a05-b7d8-63dc742ccee1
+:after: musique-album-insert
+:then: musique-album-select
+```
+
+````{solution}
+```{exec} sql
+:after: musique-album-insert
+:then: musique-album-select
+INSERT INTO Album(titre, annee, nb_pistes, artiste) VALUES ('Multitude', 2022, 12, 1);
+```
+Comme `id_album` a été déclaré avec `AUTOINCREMENT`, on ne l'écrit pas : SQL lui donne
+automatiquement la valeur 4. En revanche, la clef étrangère `artiste` doit bien être renseignée,
+et avec le **numéro** de Stromae (`1`), pas avec son nom.
+````
+
+### Exercice {num1}`exercice`
+On reprend la même plateforme de streaming, cette fois entièrement créée et remplie avec les trois
+artistes de l'exercice précédent. Pour chacune des requêtes ci-dessous, **prédisez d'abord** si
+elle va fonctionner, puis exécutez-la pour vérifier.
+
+```{exec} sql predict
+:name: predict-artiste-select
+:when:
+:class: hidden
+SELECT * FROM Artiste;
+```
+
+```{exec} sql predict
+:name: predict-album-select
+:when:
+:class: hidden
+SELECT * FROM Album;
+```
+
+```{exec} sql predict
+:name: musique-complet
+:when:
+:class: hidden
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE Artiste (
+    nom TEXT,
+    pays TEXT,
+    id_artiste INTEGER,
+    PRIMARY KEY(id_artiste AUTOINCREMENT)
+);
+
+CREATE TABLE Album (
+    id_album INTEGER,
+    titre TEXT,
+    annee INTEGER,
+    nb_pistes INTEGER,
+    artiste INTEGER,
+    PRIMARY KEY(id_album AUTOINCREMENT),
+    FOREIGN KEY(artiste) REFERENCES Artiste(id_artiste)
+);
+
+INSERT INTO Artiste(nom, pays) VALUES ('Stromae', 'Belgique');
+INSERT INTO Artiste(nom, pays) VALUES ('Angèle', 'Belgique');
+INSERT INTO Artiste(nom, pays) VALUES ('Orelsan', 'France');
+```
+
+```````{quiz}
+1.  {ouinon}`oui`
+    ```{exec} sql predict
+    :after: musique-complet
+    :then: predict-artiste-select
+    INSERT INTO Artiste(nom, pays) VALUES ('Damso', 'Belgique');
+    ```
+
+2.  {ouinon}`non`
+    ```{exec} sql predict
+    :after: musique-complet
+    :then: predict-artiste-select
+    INSERT INTO Artiste(nom, pays) VALUES (Damso, Belgique);
+    ```
+
+3.  {ouinon}`non`
+    ```{exec} sql predict
+    :after: musique-complet
+    :then: predict-album-select
+    INSERT INTO Album(titre, annee, nb_pistes, artiste)
+    VALUES ('Multitude', 2022, 12, 99);
+    ```
+
+4.  {ouinon}`oui`
+    ```{exec} sql predict
+    :after: musique-complet
+    :then: predict-album-select
+    INSERT INTO Album(titre, artiste) VALUES ('Racine carrée', 1);
+    ```
+
+5.  {ouinon}`non`
+    ```{exec} sql predict
+    :after: musique-complet
+    :then: predict-artiste-select
+    INSERT INTO Artiste(nom, pays, id_artiste) VALUES ('Zaho de Sagazan', 'France');
+    ```
+
+6.  {ouinon}`non`
+    ```{exec} sql predict
+    :after: musique-complet
+    :then: predict-album-select
+    INSERT INTO Album VALUES ('Nonante-Cinq', 2021, 13, 2);
+    ```
+```````
+
+````{solution}
+1.  **Fonctionne.** Les deux valeurs `TEXT` sont bien entre guillemets simples, et `id_artiste`
+    est omis car il est en `AUTOINCREMENT`.
+2.  **Ne fonctionne pas.** Les guillemets simples manquent. SQL cherche alors une *colonne*
+    appelée `Damso` et affiche `no such column: Damso`.
+3.  **Ne fonctionne pas.** La clef étrangère `artiste` vaut `99`, or aucun artiste ne porte le
+    numéro 99. C'est exactement le rôle de la clef étrangère que d'interdire cela :
+    `FOREIGN KEY constraint failed`.
+4.  **Fonctionne.** Rien n'oblige à remplir toutes les colonnes : `annee` et `nb_pistes` resteront
+    simplement vides.
+5.  **Ne fonctionne pas.** Trois colonnes sont annoncées mais seulement deux valeurs sont
+    fournies : `2 values for 3 columns`.
+6.  **Ne fonctionne pas.** Quand on n'écrit pas la liste des colonnes après le nom de la table, il
+    faut donner une valeur pour **toutes** les colonnes, `id_album` compris. La table en a 5, on
+    n'en donne que 4.
+````
 
 ### Exercice {num1}`exercice`
 Le schéma relationnel ci-dessous décrit une base de données d'équipes de foot et leurs joueur.euse.s. 
@@ -269,7 +757,15 @@ Créez maintenant la table `Joueur`. N'oubliez pas de référencer la clef étra
 :name: select-joueur
 SELECT * FROM Joueur
 ```
-Si votre code est correct, la requête `INSERT INTO` ci-dessous ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un 1er joueur à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
+Avant de l'exécuter, prédisez le résultat de la requête `INSERT INTO` ci-dessous.
+
+```{quiz}
+:style: max-width: 30rem;
+{ouinon}`non`
+Cette requête va-t-elle fonctionner ?
+```
+
+Si votre code est correct, cette requête ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un 1er joueur à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
 
 ```{exec} sql
 :when:

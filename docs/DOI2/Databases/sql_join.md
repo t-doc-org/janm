@@ -143,13 +143,6 @@ INSERT INTO Emprunt(livre, utilisateur, date_emprunt) VALUES
 
 ```
 
-```{exec} sql
-:name: sql-canton-select
-:class: hidden
-:when:
-select * from canton;
-```
-
 
 
 # SQL - Joindre plusieurs tables
@@ -162,7 +155,7 @@ select * from canton;
 ## Utilisation de JOIN ... ON ...
 Les requêtes `SELECT` vues jusqu'ici ont permis de rechercher des informations dans une seule table à la fois. Toutefois, certaines requêtes demandent des informations s'étalant sur plusieurs tables à la fois. Par exemple, si on souhaite rechercher tous les titres de livres qu'un certain utilisateur a emprunté, les trois tables devront être mises à contribution.
 
-Pour joindre deux tables entre elles, on commence par sélectionner la 1ère avec le `FROM` comme d'habitude. Puis, juste après ce `FROM`, on ajoute la seconde table nécessaire. Ce `JOIN` doit ensuite être complété par une égalité indiquant la logique reliant ces deux tables. Dans l'exemple de la bibliothèque, un emprunt est lié à un utilisateur grâce au `id_utilisateur` référencé dans les emprunts. Ainsi, la requête ci-dessous permet de coller chaque utilisateur à ses emprunts.
+Pour joindre deux tables entre elles, on commence par sélectionner la 1ère avec le `FROM` comme d'habitude. Puis, juste après ce `FROM`, on ajoute le mot-clef `JOIN` suivi du nom de la seconde table nécessaire. Ce `JOIN` doit ensuite être complété par le mot-clef `ON` et une égalité indiquant la logique reliant ces deux tables. Dans l'exemple de la bibliothèque, un emprunt est lié à un utilisateur grâce au `id_utilisateur` référencé dans les emprunts. Ainsi, la requête ci-dessous permet de coller chaque utilisateur à ses emprunts.
 
 Lorsqu'on utilise plusieurs tables en même temps dans une requête, il est parfois nécessaire de faire précéder le nom d'une colonne par sa table pour éviter les ambiguités (par exemple `Utilisateur.id_utilisateur` plutôt que juste `id_utilisateur`).
 
@@ -202,10 +195,391 @@ WHERE Utilisateur.prenom = 'Catherine'
 
 
 ## Exercices
+
 ```{role} input(quiz-input)
 :right: width: 18rem; clear: right;
 :check: split lowercase
 ```
+
+```{role} num(quiz-input)
+:right: width: 5rem; clear: right;
+:check: trim
+```
+
+```{role} on1(quiz-select)
+:options: |
+: Emprunt.livre = Livre.numero_isbn
+: Emprunt.livre = Livre.titre
+: Emprunt.id_emprunt = Livre.numero_isbn
+: Emprunt.livre = Emprunt.utilisateur
+```
+
+```{role} on2(quiz-select)
+:options: |
+: Seance.salle = Salle.id_salle
+: Seance.id_seance = Salle.id_salle
+: Seance.salle = Salle.nom
+: Salle.nb_places = Seance.salle
+```
+
+### Exercice {num1}`exercice`
+Avant d'écrire vos propres `JOIN`, il faut bien comprendre **ce qu'un `JOIN` produit**. Exécutez
+la requête ci-dessous, observez attentivement le résultat, puis répondez aux questions.
+
+```{exec} sql
+:after: sql-create-insert-all
+:name: sql-join-comprendre
+:output-style: max-height: 30rem
+SELECT *
+FROM Utilisateur
+JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
+```
+
+```{quiz}
+:style: max-width: 34rem;
+1. {num}`10`
+Combien de lignes le résultat contient-il ?
+
+2. {num}`3`
+Combien de fois *Catherine Leroy* apparaît-elle dans le résultat ?
+
+3. {num}`6`
+La table `Utilisateur` contient 10 utilisateurs. Combien d'entre eux apparaissent au moins une
+fois dans le résultat ?
+```
+
+````{solution}
+Un `JOIN` ne colle pas les tables l'une à côté de l'autre : il produit **une ligne par couple de
+lignes qui vérifient la condition du `ON`**.
+
+1.  La table `Emprunt` contient 10 lignes, et chacune correspond à exactement un utilisateur. Le
+    résultat contient donc 10 lignes, soit autant que la table `Emprunt`.
+2.  Catherine Leroy a emprunté 3 livres. Ses informations sont donc **recopiées 3 fois**, une fois
+    par emprunt. C'est normal et attendu.
+3.  Seuls 6 utilisateurs ont emprunté au moins un livre. Les 4 autres n'apparaissent **pas du
+    tout** dans le résultat : sans emprunt, aucun couple ne vérifie la condition du `ON`.
+
+Retenez ces deux effets : un `JOIN` peut **répéter** des lignes, et il peut aussi en **faire
+disparaître**.
+````
+
+### Exercice {num1}`exercice`
+Pour chacune des jointures ci-dessous, choisissez la condition `ON` correcte.
+
+```{quiz}
+:style: max-width: 40rem;
+1. Pour relier la table `Emprunt` à la table `Livre` de la bibliothèque :\
+   `SELECT * FROM Emprunt JOIN Livre ON` {on1}`Emprunt.livre = Livre.numero_isbn`
+
+2. Pour relier la table `Seance` à la table `Salle` d'un cinéma :\
+   `SELECT * FROM Seance JOIN Salle ON` {on2}`Seance.salle = Salle.id_salle`
+```
+
+````{solution}
+Une condition de `JOIN` met toujours en relation **la clef étrangère d'une table** avec **la clef
+primaire de l'autre**. C'est exactement ce que représente la flèche du schéma relationnel.
+
+Les autres propositions échouent car elles comparent deux clefs primaires entre elles, comparent
+des colonnes qui n'ont aucun rapport, ou comparent une clef étrangère à une colonne qui n'est pas
+celle qui est référencée.
+````
+
+### Exercice {num1}`exercice`
+Les requêtes ci-dessous portent sur la base de données de la bibliothèque, mais il leur manque les
+conditions des `JOIN`. Complétez les `______`.
+
+1.  Afficher les titres des livres empruntés par l'utilisateur dont le nom est *Petit*.
+
+```{exec} sql
+:after: sql-create-insert-all
+:editor: 3ccaaa86-04f7-45d9-b72c-b386369d1284
+SELECT Livre.titre
+FROM Utilisateur
+JOIN Emprunt ON ______ = ______
+JOIN Livre ON ______ = ______
+WHERE Utilisateur.nom = 'Petit'
+```
+
+````{solution}
+```{exec} sql
+:after: sql-create-insert-all
+SELECT Livre.titre
+FROM Utilisateur
+JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
+JOIN Livre ON Emprunt.livre = Livre.numero_isbn
+WHERE Utilisateur.nom = 'Petit'
+```
+````
+
+2.  Afficher le nom et le prénom de l'utilisateur qui a emprunté *1984*.
+
+```{exec} sql
+:after: sql-create-insert-all
+:editor: 7ea5d478-b0f8-4d6b-a4b6-997c0f3f4779
+SELECT Utilisateur.nom, Utilisateur.prenom
+FROM Livre
+JOIN Emprunt ON ______ = ______
+JOIN Utilisateur ON ______ = ______
+WHERE Livre.titre = '1984'
+```
+
+````{solution}
+```{exec} sql
+:after: sql-create-insert-all
+SELECT Utilisateur.nom, Utilisateur.prenom
+FROM Livre
+JOIN Emprunt ON Emprunt.livre = Livre.numero_isbn
+JOIN Utilisateur ON Emprunt.utilisateur = Utilisateur.id_utilisateur
+WHERE Livre.titre = '1984'
+```
+Remarquez que les deux conditions sont exactement les mêmes qu'à la question 1 : peu importe par
+quelle table on commence, ce sont toujours les mêmes flèches du schéma que l'on suit.
+````
+
+3.  Afficher la date et le titre de tous les emprunts faits par des enseignants.
+
+```{exec} sql
+:after: sql-create-insert-all
+:editor: c3696475-94c3-4264-b4b3-7607e3940cc2
+SELECT ______, ______
+FROM Utilisateur
+JOIN Emprunt ON ______ = ______
+JOIN Livre ON ______ = ______
+WHERE ______
+```
+
+````{solution}
+```{exec} sql
+:after: sql-create-insert-all
+SELECT Emprunt.date_emprunt, Livre.titre
+FROM Utilisateur
+JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
+JOIN Livre ON Emprunt.livre = Livre.numero_isbn
+WHERE Utilisateur.role = 'enseignant'
+```
+Cette requête retourne 4 emprunts.
+````
+
+### Exercice {num1}`exercice`
+Les deux exercices suivants portent sur la base de données d'un cinéma, dont voici le schéma
+relationnel.
+
+```{image} images/cinema_schema.png
+:width: 85%
+:alt: Schéma relationnel de la base de données du cinéma
+:align: center
+```
+
+```{exec} sql
+:include: databases/cinema.sql
+:name: cinema
+:when:
+:style: display: none;
+```
+
+Voici son contenu.
+
+```{exec} sql
+:after: cinema
+:class: hidden
+:when: load
+SELECT * FROM Film;
+```
+
+```{exec} sql
+:after: cinema
+:class: hidden
+:when: load
+SELECT * FROM Salle;
+```
+
+```{exec} sql
+:after: cinema
+:class: hidden
+:when: load
+SELECT * FROM Seance;
+```
+
+**Sans écrire aucune requête**, indiquez combien de `JOIN` seraient nécessaires pour répondre à
+chacune des questions ci-dessous. Aidez-vous du schéma : comptez le nombre de flèches à parcourir
+pour aller de la table de départ à la table d'arrivée.
+
+```{quiz}
+:style: max-width: 36rem;
+1. {num}`0`
+Quelles séances coûtent plus de 16 CHF ?
+
+2. {num}`1`
+Quel film est projeté à 10h30 ?
+
+3. {num}`0`
+Combien de places compte la salle *Rouge* ?
+
+4. {num}`2`
+Dans quelle salle *Parasite* est-il projeté à 21h00 ?
+
+5. {num}`1`
+Quel réalisateur est projeté à 22h00 ?
+
+6. {num}`2`
+Quel est le genre du film projeté dans la salle *Verte* à 14h00 ?
+```
+
+````{solution}
+Les questions 1 et 3 ne concernent qu'une seule table (`Seance` pour l'une, `Salle` pour l'autre) :
+aucun `JOIN` n'est nécessaire.
+
+Les questions 2 et 5 partent d'une séance et vont chercher une information dans `Film` : une seule
+flèche est parcourue, donc un seul `JOIN`.
+
+Les questions 4 et 6 relient `Film` et `Salle`, qui ne sont **pas** reliées directement. Il faut
+passer par la table `Seance` au milieu, donc parcourir deux flèches et écrire deux `JOIN`.
+````
+
+### Exercice {num1}`exercice`
+Écrivez maintenant les requêtes répondant aux questions ci-dessous, en n'utilisant **qu'une seule**
+requête par question. Les heures sont enregistrées comme des nombres : 10h30 s'écrit `1030` et
+21h00 s'écrit `2100`.
+
+```{note}
+Pour les questions qui demandent *le plus* ou *le moins* de quelque chose, triez le résultat avec
+un `ORDER BY` et lisez la **première ligne** affichée.
+```
+
+```````{quiz}
+1. Quel film est projeté à 10h30 ? {input}`Les Triplettes de Belleville`
+```{exec} sql
+:after: cinema
+:editor: 0c724ada-76b5-4c16-82af-b11266c2a9ed
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Film.titre FROM Film
+JOIN Seance ON Seance.film = Film.id_film
+WHERE Seance.heure = 1030
+```
+````
+```````
+
+```````{quiz}
+2. Dans quelle salle *Parasite* est-il projeté à 21h00 ? {input}`Bleue`
+```{exec} sql
+:after: cinema
+:editor: cedacee2-671e-45c9-9403-59ffa91ba3e9
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Salle.nom FROM Salle
+JOIN Seance ON Seance.salle = Salle.id_salle
+JOIN Film ON Seance.film = Film.id_film
+WHERE Film.titre = 'Parasite' AND Seance.heure = 2100
+```
+````
+```````
+
+```````{quiz}
+3. Combien de places compte la salle où *Interstellar* est projeté à 20h00 ? {input}`120`
+```{exec} sql
+:after: cinema
+:editor: ce2e9b60-40a5-412d-a8bc-60eb587d3019
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Salle.nb_places FROM Salle
+JOIN Seance ON Seance.salle = Salle.id_salle
+JOIN Film ON Seance.film = Film.id_film
+WHERE Film.titre = 'Interstellar' AND Seance.heure = 2000
+```
+````
+```````
+
+```````{quiz}
+4. Quel réalisateur est projeté à 22h00 ? {input}`Jean-Pierre Jeunet`
+```{exec} sql
+:after: cinema
+:editor: 408d63cd-31e6-4274-b12e-18107d1a9a91
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Film.realisateur FROM Film
+JOIN Seance ON Seance.film = Film.id_film
+WHERE Seance.heure = 2200
+```
+````
+```````
+
+```````{quiz}
+5. Dans quelle salle peut-on voir un film de *Christopher Nolan* à 11h00 ? {input}`Rouge`
+```{exec} sql
+:after: cinema
+:editor: 36d46adf-e819-4ecf-a6fc-575a70dfe50e
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Salle.nom FROM Salle
+JOIN Seance ON Seance.salle = Salle.id_salle
+JOIN Film ON Seance.film = Film.id_film
+WHERE Film.realisateur = 'Christopher Nolan' AND Seance.heure = 1100
+```
+````
+```````
+
+```````{quiz}
+6. Quel est le genre du film projeté dans la salle *Verte* à 14h00 ? {input}`Science-fiction`
+```{exec} sql
+:after: cinema
+:editor: fa18879a-d1f7-475c-bdcb-4601c6519f83
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Film.genre FROM Film
+JOIN Seance ON Seance.film = Film.id_film
+JOIN Salle ON Seance.salle = Salle.id_salle
+WHERE Salle.nom = 'Verte' AND Seance.heure = 1400
+```
+````
+```````
+
+```````{quiz}
+7. Quel est le nom de la salle qui accueille la séance la moins chère ? {input}`Verte`
+```{exec} sql
+:after: cinema
+:editor: 3a4cbd10-d2ac-424b-b73a-61dc30fcdd2a
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Salle.nom FROM Salle
+JOIN Seance ON Seance.salle = Salle.id_salle
+ORDER BY Seance.prix ASC
+```
+````
+```````
+
+```````{quiz}
+8. Quel est le film le plus long projeté dans la salle *Rouge* ? {input}`Interstellar`
+```{exec} sql
+:after: cinema
+:editor: 952844a2-eb71-4540-9f3c-c07f751641a0
+```
+````{solution}
+```{exec} sql
+:after: cinema
+SELECT Film.titre FROM Film
+JOIN Seance ON Seance.film = Film.id_film
+JOIN Salle ON Seance.salle = Salle.id_salle
+WHERE Salle.nom = 'Rouge'
+ORDER BY Film.duree_min DESC
+```
+````
+```````
+
 ```{exec} sql
 :include: databases/isa.sql
 :name: isa
@@ -223,6 +597,11 @@ Dans cet exercice, nous considérons la base de données d'ISA avec le schéma r
 ```
 
 Répondez aux questions ci-dessous en n'utilisant **qu'une seule** requête SQLite par question. Vérifiez à chaque fois votre réponse en l'entrant dans l'encadré à côté.
+
+```{note}
+Pour les questions qui demandent *le plus* ou *le moins* de quelque chose, triez le résultat avec
+un `ORDER BY` et lisez la **première ligne** affichée.
+```
 
 
 
@@ -273,8 +652,9 @@ WHERE Classe.nom = '1F2'
 ```{exec} sql
 :after: isa
 :output-style: max-height: 30rem
-SELECT Enseignant.nom FROM Enseignant JOIN Classe ON id_enseignant = mcl
-WHERE Classe.nom = '1F2'
+SELECT Classe.nom FROM Classe
+JOIN Enseignant ON Enseignant.id_enseignant = Classe.mcl
+WHERE Enseignant.prenom = 'Antoine'
 ```
 ````
 ```````
@@ -446,11 +826,11 @@ where eleve.nom='Durand' and eleve.prenom='Emma' and branche='Français'
 ```{exec} sql
 :after: isa
 :output-style: max-height: 30rem
-select cours.branche from cours
-join eleve on eleve.classe = classe.id_classe
-join classe on classe.id_classe = cours.classe
-where eleve.nom = 'Zaugg' and eleve.prenom = 'Clara'
-order by cours.heure_fin desc
+SELECT Cours.branche FROM Eleve
+JOIN Classe ON Eleve.classe = Classe.id_classe
+JOIN Cours ON Cours.classe = Classe.id_classe
+WHERE Eleve.nom = 'Zaugg' AND Eleve.prenom = 'Clara'
+ORDER BY Cours.heure_fin DESC
 ```
 ````
 ```````
