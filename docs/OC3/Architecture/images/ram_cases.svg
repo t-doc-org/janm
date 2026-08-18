@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360">
+<rect x="0" y="0" width="440" height="360" rx="14" fill="white"/>
+<text x="250.0" y="20" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">mémoire</text>
+<rect x="190" y="30" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="51.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#1a1a2e" text-anchor="middle" font-weight="600">1001</text>
+<text x="176" y="51.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">0</text>
+<rect x="190" y="68" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="89.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">vide</text>
+<text x="176" y="89.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">1</text>
+<rect x="190" y="106" width="120" height="32" rx="6" fill="#fdece1" stroke="#c2410c" stroke-width="3"/>
+<text x="250.0" y="127.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#1a1a2e" text-anchor="middle" font-weight="600">1100</text>
+<text x="176" y="127.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#c2410c" text-anchor="end" font-weight="700">2</text>
+<rect x="190" y="144" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="165.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">vide</text>
+<text x="176" y="165.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">3</text>
+<rect x="190" y="182" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="203.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">vide</text>
+<text x="176" y="203.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">4</text>
+<rect x="190" y="220" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="241.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#1a1a2e" text-anchor="middle" font-weight="600">0111</text>
+<text x="176" y="241.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">5</text>
+<rect x="190" y="258" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="279.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">vide</text>
+<text x="176" y="279.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">6</text>
+<rect x="190" y="296" width="120" height="32" rx="6" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2"/>
+<text x="250.0" y="317.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">vide</text>
+<text x="176" y="317.0" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6b7280" text-anchor="end" font-weight="400">7</text>
+<text x="130" y="26" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">adresse</text>
+<line x1="40" y1="162.0" x2="160" y2="122.0" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+<path d="M160,122.0 l-12,-3 l3,10 z" fill="#c2410c"/>
+<text x="40" y="180.0" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#c2410c" text-anchor="start" font-weight="700">adresse = 2</text>
+</svg>

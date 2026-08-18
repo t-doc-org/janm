@@ -82,7 +82,7 @@ se produire. Elle ne possède plus qu'une seule entrée de donnée, `D`, accompa
 d'une seconde entrée un peu particulière : l'**horloge**, notée `clk` (de l'anglais *clock*). Une horloge est
 un signal qui bat régulièrement, en alternant entre `0` et `1`, un peu comme le
 tic-tac d'une horloge murale ou le métronome qui donne la mesure à tout un
-orchestre. Lorsque l'horloge passe de `0` à `1`, on parle d'un **flanc montant**.
+orchestre. Lorsque l'horloge passe de `0` à `1`, on parle d'un **front montant**.
 
 ```{figure} images/bascule_d.svg
 :width: 55%
@@ -93,9 +93,9 @@ Le symbole de la bascule D : la donnée `D`, l'horloge `clk` (petit triangle), e
 la sortie `Q`.
 ```
 
-Le comportement de la bascule D tient en une phrase : sur le moment exact de chaque flanc montant de `clk`, la valeur de `D` est recopiée dans `Q`. Entre deux flancs montants, `Q` conserve sa valeur. Vous pouvez voir la bascule D comme une sorte d'appareil photo : même si l'image devant l'objectif change, on ne capture l'image que pile lorsqu'on appuie sur le déclencheur.
+Le comportement de la bascule D tient en une phrase : sur le moment exact de chaque front montant de `clk`, la valeur de `D` est recopiée dans `Q`. Entre deux fronts montants, `Q` conserve sa valeur. Vous pouvez voir la bascule D comme une sorte d'appareil photo : même si l'image devant l'objectif change, on ne capture l'image que pile lorsqu'on appuie sur le déclencheur.
 
-| `D`        | Flanc montant          | `Q`             |
+| `D`        | Front montant          | `Q`             |
 | :--------: | :---------------------: | :-------------: |
 | `0` ou `1` | non | garde sa valeur |
 | `0`        | oui                     | `0`             |
@@ -139,17 +139,17 @@ est désactivée : `Q = 0`. Complétez la valeur de `Q` après chaque étape.
 
 ### Exercice {num1}`exercice`
 Le même boîtier envoie l'état d'une porte à un petit écran, cette fois avec une
-**bascule D**. Une horloge interne génère un **top** toutes les secondes ; à
-chaque top, la bascule recopie sur `Q` la valeur qui se trouvait sur son entrée
-`D` juste avant (`D = 1` signifie "porte ouverte"). Entre deux tops, `Q` reste
+**bascule D**. Une horloge interne génère un **front montant** toutes les secondes ; à
+chaque front montant, la bascule recopie sur `Q` la valeur qui se trouvait sur son entrée
+`D` juste avant (`D = 1` signifie "porte ouverte"). Entre deux fronts montants, `Q` reste
 inchangé, même si `D` varie.
 
-Voici la valeur de `D` mesurée juste avant chacun des six tops. Au départ, avant
-le premier top, l'écran affiche `Q = 0`. Complétez `Q` après chaque top.
+Voici la valeur de `D` mesurée juste avant chacun des six fronts montants. Au départ, avant
+le premier front montant, l'écran affiche `Q = 0`. Complétez `Q` après chaque front montant.
 
 ```{quiz}
 :style: max-width: 22rem;
-| top | `D` | `Q`      |
+| front montant | `D` | `Q`      |
 | :-: | :-: | :------: |
 | 1   | `1` | {bit}`1` |
 | 2   | `0` | {bit}`0` |

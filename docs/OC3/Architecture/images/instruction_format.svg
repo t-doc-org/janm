@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 300">
+<rect width="580" height="300" rx="14" fill="white"/>
+<rect x="70" y="55" width="210" height="64" rx="8" fill="#fdece1" stroke="#c2410c" stroke-width="2.5"/>
+<text x="175.0" y="96.0" font-family="Consolas,Menlo,monospace" font-size="25" fill="#c2410c" text-anchor="middle" font-weight="700">0010</text>
+<rect x="280" y="55" width="105" height="64" rx="8" fill="#e6ecf7" stroke="#1e3a8a" stroke-width="2.5"/>
+<text x="332.5" y="96.0" font-family="Consolas,Menlo,monospace" font-size="25" fill="#1e3a8a" text-anchor="middle" font-weight="700">00</text>
+<rect x="385" y="55" width="105" height="64" rx="8" fill="#d5efe9" stroke="#0f766e" stroke-width="2.5"/>
+<text x="437.5" y="96.0" font-family="Consolas,Menlo,monospace" font-size="25" fill="#0f766e" text-anchor="middle" font-weight="700">01</text>
+<text x="175.0" y="43" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#c2410c" text-anchor="middle" font-weight="600">opcode (4 bits)</text>
+<text x="332.5" y="43" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#1e3a8a" text-anchor="middle" font-weight="600">Rd</text>
+<text x="437.5" y="43" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#0f766e" text-anchor="middle" font-weight="600">Rs</text>
+<text x="175.0" y="153" font-family="Consolas,Menlo,monospace" font-size="14" fill="#c2410c" text-anchor="middle" font-weight="600">"ADD"</text>
+<line x1="175.0" y1="125" x2="175.0" y2="137" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/>
+<path d="M175.0,137 l-5,-8.5 l10,0 z" fill="#c2410c"/>
+<text x="332.5" y="153" font-family="Consolas,Menlo,monospace" font-size="14" fill="#1e3a8a" text-anchor="middle" font-weight="600">r0</text>
+<line x1="332.5" y1="125" x2="332.5" y2="137" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<path d="M332.5,137 l-5,-8.5 l10,0 z" fill="#1e3a8a"/>
+<text x="437.5" y="153" font-family="Consolas,Menlo,monospace" font-size="14" fill="#0f766e" text-anchor="middle" font-weight="600">r1</text>
+<line x1="437.5" y1="125" x2="437.5" y2="137" stroke="#0f766e" stroke-width="2" stroke-linecap="round"/>
+<path d="M437.5,137 l-5,-8.5 l10,0 z" fill="#0f766e"/>
+<text x="290.0" y="187" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#1a1a2e" text-anchor="middle" font-weight="600">ADD r0, r1   :   r0 ← r0 + r1</text>
+<text x="290.0" y="215" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#6b7280" text-anchor="middle" font-weight="400">(LOAD occupe 2 octets : l'instruction, puis la valeur)</text>
+</svg>

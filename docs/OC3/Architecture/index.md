@@ -7,7 +7,12 @@ rules
 adder
 substracter
 mux
+alu
 sequential
+registers
+ram
+isa
+control
 ```
 
 ## Lien vers Logix
