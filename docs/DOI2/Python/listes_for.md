@@ -96,14 +96,80 @@ total = 0
 for n in nb_marga:
     total += n
 
-print(total, "pizza Margherita ont été commandées au total")
+print(total, "pizzas Margherita ont été commandées au total")
 ```
 
 
 ## Exercices
 
+```{role} val(quiz-input)
+:right: width: 7rem;
+:check: lowercase trim
+```
+
 ### Exercice {num1}`exercice-listes`
-Chacun des programmes suivant comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
+Pour chacun des programmes ci-dessous, indiquez ce que vaut la variable indiquée **à la fin** de
+l'exécution. Répondez sans exécuter les programmes : parcourez la liste à la main, élément par
+élément.
+
+```````{quiz}
+1.  {val}`21` Que vaut `total` ?
+    ```{code-block} python
+    nombres = [3, 7, 2, 9]
+    total = 0
+    for n in nombres:
+        total = total + n
+    ```
+
+2.  {val}`3` Que vaut `compteur` ?
+    ```{code-block} python
+    mots = ["chat", "chien", "rat", "souris"]
+    compteur = 0
+    for m in mots:
+        if len(m) > 3:
+            compteur = compteur + 1
+    ```
+
+3.  {val}`6` Que vaut `resultat` ?
+    ```{code-block} python
+    notes = [3, 5, 4, 6]
+    resultat = 0
+    for note in notes:
+        resultat = note
+    ```
+
+4.  {val}`24` Que vaut `produit` ?
+    ```{code-block} python
+    valeurs = [2, 3, 4]
+    produit = 1
+    for v in valeurs:
+        produit = produit * v
+    ```
+
+5.  {val}`PYTHON` Que vaut `mot` ?
+    ```{code-block} python
+    lettres = ["P", "Y", "T", "H", "O", "N"]
+    mot = ""
+    for l in lettres:
+        mot = mot + l
+    ```
+```````
+
+````{solution}
+1.  **21.** À chaque tour, la note est ajoutée au total : 0, puis 3, 10, 12 et enfin 21. C'est le
+    schéma de l'**accumulateur**, que l'on retrouve dans presque tous les exercices de cette page.
+2.  **3.** Seul `rat` fait 3 lettres ; `chat`, `chien` et `souris` en font plus de 3.
+3.  **6.** Piège classique : l'instruction est `resultat = note` et non `resultat = resultat +
+    note`. La variable est donc **écrasée** à chaque tour et ne conserve que la dernière valeur de
+    la liste. Une seule lettre de différence, et le programme ne fait plus du tout la même chose.
+4.  **24.** Même schéma que le n° 1, mais avec une multiplication. Notez que `produit` doit partir
+    de **1** et non de 0 : en partant de 0, tout produit vaudrait 0.
+5.  **PYTHON.** L'accumulateur fonctionne aussi avec du texte : `+` colle les chaînes les unes
+    après les autres. La variable doit alors partir de la chaîne vide `""`.
+````
+
+### Exercice {num1}`exercice-listes`
+Chacun des programmes suivants comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
 
 
 Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement et affichent un résultat logique.
@@ -154,9 +220,9 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
             non += 1
 
         if oui > non:
-            print("Les OUI l'emporte")
+            print("Les OUI l'emportent")
         elif non > oui:
-            print("Les NON l'emporte")
+            print("Les NON l'emportent")
         else:
             print("Egalité")
     ```
@@ -212,9 +278,9 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
             non += 1
 
     if oui > non:
-        print("Les OUI l'emporte")
+        print("Les OUI l'emportent")
     elif non > oui:
-        print("Les NON l'emporte")
+        print("Les NON l'emportent")
     else:
         print("Egalité")
     ```
@@ -371,7 +437,7 @@ Avec cette liste, calculez les valeurs suivantes :
 :editor: 7b52a83c-340a-4748-8f66-4b415d06aef6
 notes = execute_sql("SELECT note FROM Bulletin")
 
-# Complétez le progamme à partir de là
+# Complétez le programme à partir de là
 nb_bonnes_notes =
 moyenne =
 meilleure_note =
@@ -390,7 +456,7 @@ notes = execute_sql("SELECT note FROM Bulletin")
 #Calcul du nombre de bonnes notes
 nb_bonnes_notes = 0
 for note in notes:
-    if note > 4.5:
+    if note >= 4.5:
         nb_bonnes_notes += 1
 
 #Calcul de la moyenne

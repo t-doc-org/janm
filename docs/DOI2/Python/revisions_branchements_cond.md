@@ -1,3 +1,6 @@
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+
 ```{metadata}
 solutions: show
 ```
@@ -38,12 +41,12 @@ print("Fin du programme")
 ```
 
 ```{important}
-Les blocs d'instructions devant être exécutées dans un branchement conditionnels sont **indentés** sous le `if`. C'est-à-dire qu'ils sont légèrement décalés à droite. Une tabulation permet d'indenter de manière simple et claire.
+Les blocs d'instructions devant être exécutés dans un branchement conditionnel sont **indentés** sous le `if`. C'est-à-dire qu'ils sont légèrement décalés à droite. Une tabulation permet d'indenter de manière simple et claire.
 ```
 
 ## Si … Sinon
 
-Le mot-clef `else` permet d’exécuter un autre bloc d’instructions indenté si la condition du `if` est n'est pas respectée (`False`). Le `else` ne prend **jamais** de condition car il signifie *dans tous les autres cas*.
+Le mot-clef `else` permet d’exécuter un autre bloc d’instructions indenté si la condition du `if` n'est pas respectée (`False`). Le `else` ne prend **jamais** de condition car il signifie *dans tous les autres cas*.
 
 ```{exec} python
 :linenos:
@@ -72,14 +75,14 @@ else:
 ```
 
 ## Opérateurs logiques (et/ou)
-Lorsqu'une condition est plus complexe qu'une simple comparaison entre deux valeurs, il est possible de les chaîner. Ce chaînage peut à l'aide des opérateurs logiques `and` et `or`.
+Lorsqu'une condition est plus complexe qu'une simple comparaison entre deux valeurs, il est possible de les chaîner. Ce chaînage se fait à l'aide des opérateurs logiques `and` et `or`.
 
 | Opérateur | Description          | Exemples |
 | :-------: | :------------------: |:--------------------------------------: |
 | `and`       | donne `True` si **les deux** conditions sont vraies | `(4 > 1) and (5 == 4)` donne `False` car seulement la 1ère condition est vraie
 | `or`        | donne `True` si **une des deux** conditions est vraie    | `(4 > 1) or (5 == 4)` donne `True` car la 1ère condition est vraie
 
-Par exemple, le programme ci-dessous permet de déterminer le district d'origine de l'utilsateur en fonction d'un nom de ville.
+Par exemple, le programme ci-dessous permet de déterminer le district d'origine de l'utilisateur en fonction d'un nom de ville.
 
 ```{exec} python
 :linenos:
@@ -139,7 +142,7 @@ Est-ce que les conditions suivantes sont `True` (vrai) ou `False` (faux)?
 
 
 ### Exercice {num1}`exercice-revision`
-Est-ce que les conditions suivantes sont `True` (vrai) ou `False` (faux), sachant que la variable `pays` contenant la valeur `"Suisse"` et la variable `temperature` la valeur `26.2`
+Est-ce que les conditions suivantes sont `True` (vrai) ou `False` (faux), sachant que la variable `pays` contient la valeur `"Suisse"` et la variable `temperature` la valeur `26.2`
 
 
 
@@ -162,7 +165,7 @@ Est-ce que les conditions suivantes sont `True` (vrai) ou `False` (faux), sachan
 
 ### Exercice {num1}`exercice-revision`
 
-Chacun des programmes suivant comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
+Chacun des programmes suivants comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
 
 
 Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement et affichent un résultat logique.
@@ -295,7 +298,7 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
 
 
 ### Exercice {num1}`exercice-revision`
-Complétez le programme de commande de pizza suivant. Dans celui-ci, les clients doivent pouvoir entrer le nom de la pizza à commander et recevoir une confirmation de commande. Dans le cas où une pizza *hawaï est commandée, alors le programme affichera un message supplémentaire pour complimenter ce choix. Deux exemples d'exécution sont donnés ci-dessous.
+Complétez le programme de commande de pizza suivant. Dans celui-ci, les clients doivent pouvoir entrer le nom de la pizza à commander et recevoir une confirmation de commande. Dans le cas où une pizza *hawaï* est commandée, alors le programme affichera un message supplémentaire pour complimenter ce choix. Deux exemples d'exécution sont donnés ci-dessous.
 
 ```{code-block} text
 Quelle pizza souhaitez-vous commander ? <-- [prosciutto]
@@ -394,7 +397,7 @@ print("Je ne sais pas ce que vous devez prendre")
 :linenos:
 météo = input("Quel temps fait-il ?")
 
-if météo == "pluie" :
+if météo == "pluie":
     print("Prenez un parapluie")
 elif météo == "neige":
     print("Prenez une veste")
@@ -418,7 +421,7 @@ Un zoo pratique les tarifs suivants:
 Écrivez un programme qui demande l'âge de l'utilisateur et affiche le prix à payer. Le rendu du programme doit être le suivant:
 ```{code-block} text
 Quel est ton âge? <--- [16]
-Pour une personne de 16 ans, le prix à payer est de 22 francs.
+Pour une personne de 16 ans, le prix à payer est de 15 francs.
 ```
 
 Pour une solution optimale, essayez de n'utiliser qu'une seule fois la fonction `print()`
@@ -455,12 +458,12 @@ Complétez le programme de quiz ci-dessous qui doit fonctionner de la manière s
 
 ```{code-block} text
 Demander à l'utilisateur s'il souhaite répondre à un quiz
-Si l'utilisteur dit "oui" ou "ok"
+Si l'utilisateur dit "oui" ou "ok"
     Poser la question "Qui a écrit Les Misérables ?" et enregistrer la réponse dans une variable réponse
     Si la réponse est égale à "Victor Hugo"
         Afficher "Bonne réponse"
     Sinon
-        Afficher Mauvaise réponse
+        Afficher "Mauvaise réponse"
 Sinon
     Afficher "Pas de problème, au revoir"
 ```
@@ -491,12 +494,12 @@ else:
 
 
 ### Exercice {num1}`exercice-revision`
-Le programme ci-dessous demande 3 notes à l'utilisateur. Complétez le de manière à ce qu'il n'affiche `Tu n'as aucune note insufissante` que si ces 3 notes sont supérieure ou égales à 4.
+Le programme ci-dessous demande 3 notes à l'utilisateur. Complétez-le de manière à ce qu'il n'affiche `Tu n'as aucune note insuffisante` que si ces 3 notes sont supérieures ou égales à 4.
 
 
 ```{exec} python
 :editor: 019a206c-816e-74a4-8c0d-52340deef916
-math = float(input("Quelle note ta note de math ?"))
+math = float(input("Quelle est ta note de math ?"))
 français = float(input("Quelle est ta note de français ?"))
 allemand = float(input("Quelle est ta note d'allemand ?"))
 

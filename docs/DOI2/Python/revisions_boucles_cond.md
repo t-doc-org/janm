@@ -1,3 +1,6 @@
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+
 ```{metadata}
 solutions: show
 ```
@@ -6,7 +9,7 @@ solutions: show
 ```
 ## Qu'est-ce qu'une boucle conditionnelle ?
 
-Dans un programme, certaines instructions doivent s'exécuter plusieurs fois. Imaginez un programme dans lequel l'utilisateur doit entrer son mot de passe pour se connecter. Ici, l'instruction `print("Mot de pas incorrect")` doit être potentiellement exécutée plusieurs fois **tant que** l'utilisateur entre un mauvais mot de passe. C'est une boucle conditionnelle qui nous permettra de répéter des instructions de cette manière. Grâce à celle-ci, un bloc d'instructions peut être répété *en boucle* tant qu'une condition est respectée. 
+Dans un programme, certaines instructions doivent s'exécuter plusieurs fois. Imaginez un programme dans lequel l'utilisateur doit entrer son mot de passe pour se connecter. Ici, l'instruction `print("Mot de passe incorrect")` doit être potentiellement exécutée plusieurs fois **tant que** l'utilisateur entre un mauvais mot de passe. C'est une boucle conditionnelle qui nous permettra de répéter des instructions de cette manière. Grâce à celle-ci, un bloc d'instructions peut être répété *en boucle* tant qu'une condition est respectée. 
 
 En pseudocode, l'exemple du programme de connexion avec une boucle conditionnelle pourrait donc s'écrire de la manière suivante :
 ```{code-block} text
@@ -30,18 +33,18 @@ L'exemple du programme de connexion décrit précédemment en pseudocode peut al
 ```{exec} python
 :linenos:
 mdp = input("Entrez le mot de passe")
-while mdp != "Fr1B0urg" :
+while mdp != "Fr1B0urg":
     print("Mot de passe incorrect")
     mdp = input("Entrez à nouveau le mot de passe")
-print("Mot de passe correct")
+print("Connexion réussie")
 ```
 
-Le boucle `while` peut également être utilisée pour répéter un bloc d'instructions un nombre déterminé de fois, comme dans le programme ci-dessous qui permet de compter jusqu'à 10.
+La boucle `while` peut également être utilisée pour répéter un bloc d'instructions un nombre déterminé de fois, comme dans le programme ci-dessous qui permet de compter jusqu'à 10.
 
 ```{exec} python
 :linenos:
 compteur = 1
-while compteur <= 10 :
+while compteur <= 10:
     print(compteur)
     compteur = compteur + 1
 ```
@@ -49,9 +52,149 @@ while compteur <= 10 :
 
 ## Exercices
 
+```{role} tours(quiz-input)
+:right: width: 5rem;
+:check: lowercase trim
+```
+
+```{role} arret(quiz-select)
+:right:
+:options: |
+: s'arrête
+: ne s'arrête jamais
+```
+
 ### Exercice {num1}`exercice-revision`
 
-Chacun des programmes suivant comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
+Combien de fois le bloc indenté de chaque boucle ci-dessous est-il exécuté ? Répondez **sans
+exécuter les programmes** : suivez la valeur du compteur à la main, tour après tour. Si la boucle
+ne s'arrête jamais, écrivez `infini`.
+
+```````{quiz}
+1.  {tours}`4`
+    ```{code-block} python
+    compteur = 0
+    while compteur < 10:
+        compteur = compteur + 3
+    ```
+
+2.  {tours}`10`
+    ```{code-block} python
+    compteur = 10
+    while compteur > 0:
+        compteur = compteur - 1
+    ```
+
+3.  {tours}`0`
+    ```{code-block} python
+    compteur = 5
+    while compteur < 5:
+        compteur = compteur + 1
+    ```
+
+4.  {tours}`7`
+    ```{code-block} python
+    compteur = 1
+    while compteur <= 100:
+        compteur = compteur * 2
+    ```
+
+5.  {tours}`4`
+    ```{code-block} python
+    compteur = 20
+    while compteur != 0:
+        compteur = compteur - 5
+    ```
+
+6.  {tours}`infini`
+    ```{code-block} python
+    compteur = 3
+    while compteur < 20:
+        print(compteur)
+    ```
+```````
+
+````{solution}
+1.  **4 tours.** Le compteur prend les valeurs 0, 3, 6, 9 puis 12. C'est avec la valeur 12 que la
+    condition devient fausse. Attention : le compteur ne vaut pas 10 à la fin, il l'a *dépassé*.
+2.  **10 tours.** Le compteur descend de 10 à 0, une unité à la fois.
+3.  **0 tour.** La condition `5 < 5` est fausse **dès le premier passage** : on n'entre jamais
+    dans la boucle. Une boucle peut donc parfaitement ne s'exécuter aucune fois.
+4.  **7 tours.** Le compteur double à chaque tour : 1, 2, 4, 8, 16, 32, 64, puis 128 qui fait
+    sortir de la boucle.
+5.  **4 tours.** Le compteur passe par 20, 15, 10, 5 puis atteint exactement 0. Ici le `!=`
+    fonctionne parce que le compteur **tombe pile** sur 0 (voir l'exercice suivant pour le cas où
+    ce n'est pas le cas).
+6.  **Infini.** Le compteur n'est jamais modifié à l'intérieur de la boucle : il vaut 3 pour
+    toujours, donc la condition reste vraie pour toujours.
+````
+
+### Exercice {num1}`exercice-revision`
+
+Pour chacun des programmes ci-dessous, déterminez **sans l'exécuter** s'il se termine ou s'il
+tourne indéfiniment.
+
+```````{quiz}
+1.  {arret}`s'arrête`
+    ```{code-block} python
+    n = 10
+    while n > 0:
+        print(n)
+        n = n - 1
+    ```
+
+2.  {arret}`ne s'arrête jamais`
+    ```{code-block} python
+    n = 10
+    while n > 0:
+        print(n)
+    ```
+
+3.  {arret}`s'arrête`
+    ```{code-block} python
+    total = 0
+    compteur = 1
+    while compteur <= 5:
+        total = total + compteur
+        compteur = compteur + 1
+    ```
+
+4.  {arret}`ne s'arrête jamais`
+    ```{code-block} python
+    compteur = 10
+    while compteur > 0:
+        compteur = compteur + 1
+    ```
+
+5.  {arret}`ne s'arrête jamais`
+    ```{code-block} python
+    compteur = 0
+    while compteur != 10:
+        compteur = compteur + 3
+    ```
+```````
+
+````{solution}
+Une boucle `while` ne s'arrête que si son bloc indenté finit par rendre la condition fausse. Les
+trois programmes qui tournent indéfiniment illustrent les trois manières de rater cela.
+
+2.  **La variable de la condition n'est jamais modifiée.** On affiche `n` mais on ne le décrémente
+    pas : `n` vaut 10 pour toujours. C'est l'oubli le plus fréquent.
+4.  **Elle est modifiée dans le mauvais sens.** La condition demande que le compteur reste
+    supérieur à 0, et on l'augmente à chaque tour : il s'en éloigne au lieu de s'en rapprocher.
+5.  **La condition utilise `!=` et le compteur saute par-dessus la valeur cherchée.** Il prend les
+    valeurs 0, 3, 6, 9, 12, 15… et ne vaut donc *jamais* exactement 10. Avec `while compteur < 10`
+    le programme se serait arrêté. Retenez-le : avec un `!=`, il faut être certain que le compteur
+    tombe pile sur la valeur de sortie.
+
+Les programmes 1 et 3 se terminent : dans les deux cas, la variable testée par la condition est
+bien modifiée à chaque tour, et dans la bonne direction.
+````
+
+
+### Exercice {num1}`exercice-revision`
+
+Chacun des programmes suivants comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
 
 
 Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement et affichent un résultat logique.
@@ -77,7 +220,7 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
 
 3.  ```{exec} python
     :editor:
-    #Compte de 1 à 20 de 2 en 2
+    #Compte de 2 à 20 de 2 en 2
     compteur = 0
     while compteur >= 20:
         compteur = compteur + 2
@@ -100,9 +243,9 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
 1.  ```{exec} python
     :linenos:
     réponse = input("Tu aimes la pizza avec ananas ?")
-    while réponse != "oui" and réponse != "Oui"
+    while réponse != "oui" and réponse != "Oui":
         réponse = input("Réfléchis bien ! Tu aimes la pizza ananas ?")
-    print("Je savais que tu aimais ça !") 
+    print("Je savais que tu aimais ça !")
     ```
 
 2.  ```{exec} python
@@ -116,7 +259,7 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
 
 3.  ```{exec} python
     :linenos:
-    #Compte de 1 à 20 de 2 en 2
+    #Compte de 2 à 20 de 2 en 2
     compteur = 0
     while compteur < 20:
         compteur = compteur + 2
@@ -159,9 +302,9 @@ BOOM
 99
 98
 ...
-2 FUYEZ
-1 FUYEZ
-0 FUYEZ
+2 FUYEZ !
+1 FUYEZ !
+0 FUYEZ !
 BOOM
 ```
 
@@ -169,7 +312,7 @@ BOOM
 1. 
 ```{exec} python
 :linenos:
-compte_a_rebours = 1000
+compte_a_rebours = 100
 while compte_a_rebours >= 0:
     print(compte_a_rebours)
     compte_a_rebours -= 1
@@ -179,7 +322,7 @@ print("BOOM")
 2. 
 ```{exec} python
 :linenos:
-compte_a_rebours = 1000
+compte_a_rebours = 100
 while compte_a_rebours >= 0:
     if compte_a_rebours < 10:
         print(compte_a_rebours, "FUYEZ !")
@@ -191,15 +334,15 @@ print("BOOM")
 ````
 
 ### Exercice {num1}`exercice-revision`
-Écrivez un programme dans lequel l'utilisateur peut choisir un nombre pour lequel il souhaite voir apparaître sa table de multiplication. Un message d'au revoir sera également affiché à la fin. Votre programme ne doit utiliser que **une seule** instruction `print()`. Un exemple d'exécution pourrait être le suivant :
+Écrivez un programme dans lequel l'utilisateur peut choisir un nombre pour lequel il souhaite voir apparaître sa table de multiplication. Votre programme ne doit utiliser que **une seule** instruction `print()`. Un exemple d'exécution pourrait être le suivant :
 
 ```{code-block} text
 Quelle table de multiplication voulez-vous voir ? <--- [4]
-1x4 = 4
-2x4 = 8
-3x4 = 12
+1 * 4 = 4
+2 * 4 = 8
+3 * 4 = 12
 ...
-10x4 = 40
+10 * 4 = 40
 ```
 
 

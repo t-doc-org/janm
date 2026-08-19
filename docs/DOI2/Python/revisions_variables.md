@@ -185,7 +185,7 @@ Quel est le résultat des expressions suivantes en Python?
 
 ```{quiz}
 :style: max-width: 30rem;
-1.  {input}`{"5": true}`
+1.  {input}`{"5.0": true, "5": true}`
     {quiz-hint}`Il faut effectuer la division de 15 par 3.`
     `15 / 3`
 2.  {input}`{"21": true}`

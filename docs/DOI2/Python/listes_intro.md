@@ -11,7 +11,7 @@ exec:
 # Listes - Notions de base
 
 ## Lecture d'une base de données en Python
-Une base de données est particulièrement utile quand elle connectée à une application. Avec Python, cela est par exemple possible grâce au module `sqlite3`. Sur cette page, ce module a déjà été chargé. De plus, la base de données de l'application de commande d'une pizzeria a été créée. Son schéma relationnel est donné ci-dessous.
+Une base de données est particulièrement utile quand elle est connectée à une application. Avec Python, cela est par exemple possible grâce au module `sqlite3`. Sur cette page, ce module a déjà été chargé. De plus, la base de données de l'application de commande d'une pizzeria a été créée. Son schéma relationnel est donné ci-dessous.
 ```{image} images/pizzeria.png
 :width: 75%
 :alt: Schéma pizzeria
@@ -71,11 +71,11 @@ print("Les pizzas les moins chères sont :", cheap_pizzas)
 ```
 
 ## Qu'est-ce qu'une liste ?
-Comme vous pouvez le constater dans les exemples ci-dessus, le code Python contient à chaque fois une seule variable (`noms`, `résultats`, `cheap_pizzas`). Cependant, lorsqu'on affiche cette variable, de nombreuses valeures sont affichées. C'est parce que ces variables sont des **listes**. 
+Comme vous pouvez le constater dans les exemples ci-dessus, le code Python contient à chaque fois une seule variable (`noms`, `résultats`, `cheap_pizzas`). Cependant, lorsqu'on affiche cette variable, de nombreuses valeurs sont affichées. C'est parce que ces variables sont des **listes**. 
 
 Là où une variable de type `int`, `float`, `str`, ou `bool` ne pouvait contenir qu'une seule valeur, une `list` peut en contenir plusieurs. Celles-ci sont très pratiques quand un programme contient une grande quantité de données, afin de toutes les enregistrer dans une seule variable.
 
-Les listes précédentes ont été créées via la base de données, mais il est également possible de les créer sois-même. Une liste est entourée de crochets `[]` et les valeurs sont séparées par des virgules `,`.
+Les listes précédentes ont été créées via la base de données, mais il est également possible de les créer soi-même. Une liste est entourée de crochets `[]` et les valeurs sont séparées par des virgules `,`.
 ```{exec} python
 panier = ["Poires", "Champignons", "Raviolis", "Pêches"]
 print("Dans le panier il y a :", panier)
@@ -95,7 +95,7 @@ Pour écrire des crochets sur :
 
 
 ## Indexation
-L'indexation permet d'accéder à **un élément précis** d'une liste. Pour ce faire, on peut faire suivre une liste d'une paire de crochets `[]` entre lesquelles on écrit l'index de l'élément souhaité. L'index correspond à la *position* de l'élément dans la liste, sachant que le premier élément à l'index `0`, le deuxième l'index `1`, etc. 
+L'indexation permet d'accéder à **un élément précis** d'une liste. Pour ce faire, on peut faire suivre une liste d'une paire de crochets `[]` entre lesquelles on écrit l'index de l'élément souhaité. L'index correspond à la *position* de l'élément dans la liste, sachant que le premier élément a l'index `0`, le deuxième l'index `1`, etc. 
 
 
 ```{exec} python
@@ -108,7 +108,7 @@ print("Premier utilisateur", utilisateurs[0])
 print("5ème utilisateur :", utilisateurs[4])
 ```
 
-Avec l'exemple suivant, on peut sélectionné n'importe quel utilisateur grâce à son index.
+Avec l'exemple suivant, on peut sélectionner n'importe quel utilisateur grâce à son index.
 ```{exec} python
 :after: pizzeria
 utilisateurs = execute_sql("SELECT nom FROM Utilisateur")
@@ -124,7 +124,7 @@ print("Tu as sélectionné :", utilisateur_sélectionné)
 ```
 
 ## Fonctions sur les listes
-En Python, il existe de nombreuses fonctions très pratiques pouvant être utilisées sur les listes. En voici quelques unes qui seront utiles dans le cadre de ce cours.
+En Python, il existe de nombreuses fonctions très pratiques pouvant être utilisées sur les listes. En voici quelques-unes qui seront utiles dans le cadre de ce cours.
 
  - `len(ma_liste)` : retourne le nombre (=la longueur) d'éléments dans `ma_liste`
     ```{exec} python
@@ -140,7 +140,7 @@ En Python, il existe de nombreuses fonctions très pratiques pouvant être utili
     print(outils)
     ```
 
- - `ma_liste.remove(element)` : retire **1x** l'élément à `ma_liste`
+ - `ma_liste.remove(element)` : retire **1x** l'élément de `ma_liste`
     ```{exec} python
     outils = ["tournevis", "vis", "vis", "vis", "clous", "marteau"]
     outils.remove("clous")
@@ -150,8 +150,83 @@ En Python, il existe de nombreuses fonctions très pratiques pouvant être utili
 
 
 ## Exercices
+
+```{role} rep(quiz-input)
+:right: width: 7rem;
+:check: lowercase trim
+```
+
 ### Exercice {num1}`exercice-listes`
-Chacun des programmes suivant comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
+Répondez aux questions ci-dessous **sans exécuter de programme**, en lisant simplement la liste.
+
+```{code-block} python
+animaux = ["chat", "chien", "lapin", "hamster", "furet"]
+```
+
+```{quiz}
+:style: max-width: 32rem;
+1. {rep}`chat`
+Que vaut `animaux[0]` ?
+
+2. {rep}`hamster`
+Que vaut `animaux[3]` ?
+
+3. {rep}`5`
+Que vaut `len(animaux)` ?
+
+4. {rep}`furet`
+Que vaut `animaux[len(animaux) - 1]` ?
+
+5. {rep}`erreur`
+Que vaut `animaux[5]` ? (écrivez `erreur` si cette instruction ne fonctionne pas)
+```
+
+````{solution}
+Le premier élément est à l'index `0`, donc le quatrième est à l'index `3`.
+
+La liste contient 5 éléments, mais le dernier est à l'index **4** : `animaux[len(animaux) - 1]`
+est la façon habituelle d'atteindre le dernier élément d'une liste sans connaître sa longueur à
+l'avance.
+
+`animaux[5]` provoque une erreur `list index out of range` : c'est l'erreur la plus courante avec
+les listes. Dans une liste de n éléments, les index valides vont de `0` à `n-1`.
+````
+
+### Exercice {num1}`exercice-listes`
+Les trois instructions ci-dessous sont exécutées **l'une après l'autre**. Suivez le contenu de la
+liste à la main, puis répondez.
+
+```{code-block} python
+sac = ["pomme", "pain", "eau"]
+sac.append("pomme")
+sac.remove("pomme")
+```
+
+```{quiz}
+:style: max-width: 32rem;
+1. {rep}`3`
+À la fin, que vaut `len(sac)` ?
+
+2. {rep}`pain`
+À la fin, que vaut `sac[0]` ?
+
+3. {rep}`pomme`
+À la fin, que vaut `sac[2]` ?
+```
+
+````{solution}
+Après le `append`, la liste vaut `["pomme", "pain", "eau", "pomme"]`.
+
+Le `remove` ne retire qu'**une seule** occurrence, et c'est la **première** rencontrée : c'est
+donc la pomme du début qui disparaît, pas celle de la fin. La liste finale vaut
+`["pain", "eau", "pomme"]`.
+
+La liste a donc bien retrouvé sa longueur de départ, mais son contenu a changé d'ordre : le
+premier élément n'est plus `pomme` mais `pain`.
+````
+
+### Exercice {num1}`exercice-listes`
+Chacun des programmes suivants comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
 
 
 Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement et affichent un résultat logique.
@@ -252,10 +327,14 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
     bits.remove(0)
     print(bits)
     ```
+    `remove()` ne retire qu'**une seule** occurrence de la valeur, et la liste en contient
+    trois : il faut donc l'appeler trois fois. Répéter une instruction autant de fois que
+    nécessaire n'est évidemment pas satisfaisant — à la page suivante, `if ... in ...` permettra
+    d'écrire `while 0 in bits: bits.remove(0)`, qui fonctionne quel que soit le nombre de zéros.
 ````
 
 ### Exercice {num1}`exercice-listes`
- 1. Ecrivez un programme qui recherche toutes les adresses emails des utilisateurs de l'application de la pizzeria, les stocke dans une variables `emails`, puis les affiche.
+ 1. Ecrivez un programme qui recherche toutes les adresses emails des utilisateurs de l'application de la pizzeria, les stocke dans une variable `emails`, puis les affiche.
 ```{exec} python
     :editor: 019a6a81-5b11-7669-9fd0-7aa50dc31aee
     :after: pizzeria
@@ -273,15 +352,16 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
 1. 
 ```{exec} python
 :linenos:
+:after: pizzeria
 emails = execute_sql("SELECT email FROM Utilisateur")
 print("Emails :", emails)
 ```
 
 2.
 ```{exec} python
-
 :linenos:
-tel = execute_sql("SELECT telephone1 FROM Utilisateur WHERE telephone LIKE '078%'")
+:after: pizzeria
+tel = execute_sql("SELECT telephone FROM Utilisateur WHERE telephone LIKE '078%'")
 print("n° de téléphone commençant par 078 :", tel)
 ```
 
@@ -322,7 +402,7 @@ print(couleurs[6])
 
 
 ### Exercice {num1}`exercice-listes`
-Le programme ci-dessous recherche tous les prix des pizzas et, avec le `ORDER BY`, les trie du plus petit au plus grand. Complétez ce programme de manière qu'il affiche uniquement le prix le plus bas et le plus élevée. Souvenez-vous que :
+Le programme ci-dessous recherche tous les prix des pizzas et, avec le `ORDER BY`, les trie du plus petit au plus grand. Complétez ce programme de manière qu'il affiche uniquement le prix le plus bas et le plus élevé. Souvenez-vous que :
 
  - Le 1er élément d'une liste est toujours à l'index 0
  - Le dernier élément d'une liste de longueur n est à l'index n-1
@@ -336,6 +416,21 @@ prix = execute_sql("SELECT prix FROM Pizza ORDER BY prix ASC")
 print("Prix le plus bas :")
 print("Prix le plus haut:")
 ```
+
+````{solution}
+```{exec} python
+:linenos:
+:after: pizzeria
+prix = execute_sql("SELECT prix FROM Pizza ORDER BY prix ASC")
+
+print("Prix le plus bas :", prix[0])
+print("Prix le plus haut:", prix[len(prix) - 1])
+```
+Comme la requête trie les prix du plus petit au plus grand, le prix le plus bas est
+forcément le **premier** élément de la liste, donc celui d'index `0`. Le prix le plus haut est
+le **dernier**, donc celui d'index `len(prix) - 1`. Écrire `prix[len(prix)]` provoquerait une
+erreur, car cet index n'existe pas.
+````
 
 ### Exercice {num1}`exercice-listes`
 
@@ -386,6 +481,25 @@ else:
     print("Il y a plus de pizzas avec du jambon")
 ```
 
+````{solution}
+```{exec} python
+:linenos:
+:after: pizzeria
+pizza_avec_jambon = execute_sql("SELECT nom FROM Pizza WHERE description LIKE '%jambon%'")
+pizza_avec_champignons = execute_sql("SELECT nom FROM Pizza WHERE description LIKE '%champignon%'")
+
+print("Nombre de pizzas avec du jambon :", len(pizza_avec_jambon))
+print("Nombre de pizzas avec des champignons :", len(pizza_avec_champignons))
+
+if len(pizza_avec_champignons) > len(pizza_avec_jambon):
+    print("Il y a plus de pizzas avec champignons")
+else:
+    print("Il y a plus de pizzas avec du jambon")
+```
+Il y a 10 pizzas au jambon et 6 aux champignons. Notez le `%` de part et d'autre du mot
+recherché : sans lui, le `LIKE` chercherait une description **exactement** égale à `jambon`.
+````
+
 
 
 
@@ -421,8 +535,8 @@ Ecrivez ce programme au complet ci-dessous
 ```
 
 ````{solution}
-Ecrivez ce programme au complet ci-dessous
 ```{exec} python
+:linenos:
 ingredients = ["sauce tomate", "mozzarella"]
 ingredient = input("Quel ingredient veux-tu ajouter ?")
 while ingredient != "STOP":

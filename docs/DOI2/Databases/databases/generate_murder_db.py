@@ -1051,8 +1051,11 @@ parties.append(TRIGGER.format(
     msg_faux=esc(TEXTES["solution_faux"])))
 
 sql = "".join(parties)
-with open(SORTIE, "w", encoding="utf-8") as f:
+# Le dépôt est sous Windows et ses fichiers sont en CRLF : on respecte cette
+# convention, sinon la moindre régénération produit un diff sur toutes les lignes.
+with open(SORTIE, "w", encoding="utf-8", newline="\r\n") as f:
     f.write(sql)
+taille_octets = len(sql.replace("\n", "\r\n").encode("utf-8"))
 
 # ===========================================================================
 # VÉRIFICATIONS
@@ -1077,7 +1080,7 @@ def verifier(libelle, obtenu, attendu):
     return obtenu == attendu
 
 
-print(f"\nFichier écrit : {SORTIE}  ({len(sql.encode('utf-8')) / 1024:.0f} Ko, "
+print(f"\nFichier écrit : {SORTIE}  ({taille_octets / 1024:.0f} Ko, "
       f"{sql.count(chr(10))} lignes)")
 print("\nTailles des tables")
 for t in ["crime_scene_report", "driver_license", "facebook_event_checkin",
@@ -1243,7 +1246,7 @@ cer = db.execute(f"""select p.name from person p
 ok &= verifier(f"commanditaire = {COMMANDITAIRE}",
                len(cer) == 1 and cer[0][0] == COMMANDITAIRE, True)
 
-taille_ko = len(sql.encode("utf-8")) / 1024
+taille_ko = taille_octets / 1024
 ok &= verifier("taille du fichier sous 1 Mo", taille_ko < 1024, True)
 
 print("\n" + ("Toutes les vérifications passent." if ok

@@ -1,3 +1,6 @@
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+
 # Fonctions sans valeur de retour
 
 ## Qu'est-ce qu'une fonction ?
@@ -14,11 +17,11 @@ On pourrait simplement copier/coller ces dix lignes à ces deux endroits du prog
 
 Toutefois, recopier les mêmes instructions plusieurs fois vient avec des désavantages
  - Si le code doit être modifié, il faudra aller le changer partout où il a été copié/collé
- - Du point de vue d'un programmeur qui découvre le code,  il n'est pas clair au 1er coup d'oeil que ces lignes copiées/collées sont les mêmes et qu'elles doivent le rester
- - Pour ce même programmeur, l'utilité de ces lignes n'est non plus pas directement clair. Il devra lire ces lignes pour les analyser et les comprendre.
+ - Du point de vue d'un programmeur qui découvre le code, il n'est pas clair au 1er coup d'oeil que ces lignes copiées/collées sont les mêmes et qu'elles doivent le rester
+ - Pour ce même programmeur, l'utilité de ces lignes n'est pas directement claire non plus : il devra les lire pour les analyser et les comprendre.
 
 
-Pour pallier à ces problèmes, le code utilisé 2x ne doit pas être copié/collé, mais déplacé "en marge" du programme principale dans une **fonction**. Lorsque, dans notre programme, on souhaite utiliser ces instructions mises en marge, on ne fait alors qu'un appel à cette fonction. Le programme ressemblera dès lors à cela :
+Pour pallier ces problèmes, le code utilisé 2x ne doit pas être copié/collé, mais déplacé "en marge" du programme principal dans une **fonction**. Lorsque, dans notre programme, on souhaite utiliser ces instructions mises en marge, on ne fait alors qu'un appel à cette fonction. Le programme ressemblera dès lors à cela :
 
 ```{image} images/func_side.png
 :width: 50%
@@ -30,7 +33,7 @@ Avec cela, lorsqu'on modifie une fois le code à réutiliser, la modification im
 
 ## Définir une fonction
 
-Les fonctions se définissent en général dans un fichier distinct, ou, pour ce cours, au début du code. Le mot-clef permettant de définir une fonction est `def`. Celui-ci est suivi du nom de la fonction puis d'une paire de parenthèse (vide pour l'instant) et de deux-points. Les instructions indentées sous la définition constituent *corps* de la fonction, c'est-à-dire le bloc d'instructions à exécuter lorsque la fonction est appelée.
+Les fonctions se définissent en général dans un fichier distinct, ou, pour ce cours, au début du code. Le mot-clef permettant de définir une fonction est `def`. Celui-ci est suivi du nom de la fonction puis d'une paire de parenthèses (vides pour l'instant) et de deux-points. Les instructions indentées sous la définition constituent le *corps* de la fonction, c'est-à-dire le bloc d'instructions à exécuter lorsque la fonction est appelée.
 
 Dans l'exemple ci-dessous, on définit une fonction nommée `affiche_salutations` dont le corps affiche simplement 2 textes.
 
@@ -41,7 +44,7 @@ def affiche_salutations():
     print("Comment allez-vous ?")
 ```
 
-Lorsqu'on exécute ce code, rien ne se passe. En effet, ici la fonction `affiche_salutations` a été définie, mais **jamais appelée**. Pour appeler une fonction, on écrit simplement son nom suivi d'une paire de parenthèses. Dans l'exemple ci-dessous, la fonction est appelée 2x à différents endroits du programme
+Lorsqu'on exécute ce code, rien ne se passe. En effet, ici la fonction `affiche_salutations` a été définie, mais **jamais appelée**. Pour appeler une fonction, on écrit simplement son nom suivi d'une paire de parenthèses. Dans l'exemple ci-dessous, la fonction est appelée 2x à différents endroits du programme.
 
 ```{exec} python
 :linenos:
@@ -56,7 +59,7 @@ affiche_salutations()
 ```
 
 ## Fonction avec paramètres
-Les fonctions peuvent être *paramétrées*. C'est-à-dire que leur exécution va dépendre de valeurs qui seront précisées au moment de l'appel. Par exemple, une fonction `calcul_et_affiche_aire_triangle` doit pouvoir être par paramétrée par la base et la hauteur du triangle. Ces paramètres se placent entre les parenthèses de la définition de la fonction et sont séparés par une virgule. Ils peuvent ensuite être réutilisés dans le corps de la fonction.
+Les fonctions peuvent être *paramétrées*. C'est-à-dire que leur exécution va dépendre de valeurs qui seront précisées au moment de l'appel. Par exemple, une fonction `calcul_et_affiche_aire_triangle` doit pouvoir être paramétrée par la base et la hauteur du triangle. Ces paramètres se placent entre les parenthèses de la définition de la fonction et sont séparés par une virgule. Ils peuvent ensuite être réutilisés dans le corps de la fonction.
 
 ```{exec} python
 :linenos:
@@ -79,6 +82,63 @@ calcul_et_affiche_aire_triangle(35, 54)
 
 
 ## Exercices
+
+```{role} ordre(quiz-input)
+:right: width: 8rem;
+:check: uppercase remove
+```
+
+```{role} nb(quiz-input)
+:right: width: 5rem;
+:check: trim
+```
+
+### Exercice {num1}`exercice`
+Définir une fonction et l'appeler sont deux choses différentes, et les lignes d'un programme ne
+s'exécutent plus forcément de haut en bas. Lisez attentivement le programme ci-dessous et
+répondez **sans l'exécuter**.
+
+```{code-block} python
+:linenos:
+def bonjour():
+    print("B")
+    print("C")
+
+print("A")
+bonjour()
+print("D")
+bonjour()
+print("E")
+```
+
+```{quiz}
+:style: max-width: 36rem;
+1. {ordre}`ABCDBCE`
+Dans quel ordre les lettres s'affichent-elles ? Écrivez-les à la suite, sans espaces.
+
+2. {nb}`5`
+Quelle est la **première** ligne exécutée par le programme ?
+
+3. {nb}`2`
+Combien de fois la ligne 3 est-elle exécutée ?
+
+4. {nb}`1`
+Combien de fois la ligne 5 est-elle exécutée ?
+```
+
+````{solution}
+La réponse est **ABCDBCE**.
+
+Les lignes 1 à 3 ne font que **définir** la fonction : elles ne s'exécutent pas au moment où
+Python les lit. La première ligne réellement exécutée est donc la **ligne 5**, qui affiche `A`.
+
+Arrivé à la ligne 6, Python saute dans le corps de la fonction, exécute les lignes 2 et 3
+(`B` puis `C`), **revient** à la ligne 6, puis continue avec la ligne 7 (`D`). Le deuxième appel,
+ligne 8, refait exactement le même détour : `B` puis `C` à nouveau. Enfin la ligne 9 affiche `E`.
+
+Les lignes 2 et 3 s'exécutent donc **deux** fois chacune, alors qu'elles ne sont écrites qu'une
+seule fois : c'est précisément l'intérêt d'une fonction.
+````
 
 ### Exercice {num1}`exercice`
 Le code ci-dessous définit 3 fonctions. Il contient également un petit programme demandant à l'utilisateur son humeur de 1 à 10 (10 étant la meilleure humeur possible). Complétez le programme **uniquement en appelant les fonctions** adéquates.
@@ -116,11 +176,11 @@ def affiche_triste():
 humeur = int(input("De 1 à 10, comment vas-tu ?"))
 
 if humeur < 3:
-    affiche_content()
+    affiche_triste()
 elif humeur < 6:
     affiche_neutre()
 else:
-    affiche_triste()
+    affiche_content()
 ```
 ````
 
@@ -144,7 +204,7 @@ BOOOOOM
 #Définissez vos fonctions ici
 
 compteur = 10
-print("Bombe amorcée !")
+print("Bombe amorcée")
 while compteur > 0:
     compteur -= 1
     tic_tac()
@@ -155,12 +215,14 @@ explosion()
 ```{exec} python
 :linenos:
 def tic_tac():
-    print("TIC TAC")
+    print("TIC")
+    print("TAC")
+
 def explosion():
-    print("BOOM")
+    print("BOOOOOM")
 
 compteur = 10
-print("Bombe amorcée !")
+print("Bombe amorcée")
 while compteur > 0:
     compteur -= 1
     tic_tac()
@@ -194,7 +256,7 @@ calcule_et_affiche_aire_cercle(80)
 
 
 ### Exercice {num1}`exercice`
-Définissez une fonction nommée `affiche_prévision_météo` paramétrée par une température (en °C) et une pression (en hPa). En fonction de ces deux paramètres, le corps de la fonction affichera différents texte :
+Définissez une fonction nommée `affiche_prévision_météo` paramétrée par une température (en °C) et une pression (en hPa). En fonction de ces deux paramètres, le corps de la fonction affichera différents textes :
 
 - Si la température est supérieure à 25 et que la pression est supérieure à 1015 : `Grand ciel bleu`.
 
@@ -204,7 +266,7 @@ Définissez une fonction nommée `affiche_prévision_météo` paramétrée par u
 
 - Dans les autres cas : `Météo changeante`.
 
-Appelez finalement cette fonction pour afficher les prévisions pour un température de 27°C une pression de 1011 hPa, puis pour 15°C et 990 hPa
+Appelez finalement cette fonction pour afficher les prévisions pour une température de 27 °C et une pression de 1011 hPa, puis pour 15 °C et 990 hPa.
 ```{exec} python
 :editor: fb686542-d77d-4ef5-9393-eee131e686c8
 #Ecrivez votre code ici
@@ -226,6 +288,7 @@ def affiche_prévision_météo(temperature, pression):
 
 affiche_prévision_météo(27, 1011)
 affiche_prévision_météo(15, 990)
+```
 ````
 
 ### Exercice {num1}`exercice`
@@ -257,6 +320,7 @@ multiple = 2
 while multiple <= 10:
     affiche_livret(multiple)
     multiple += 1
+```
 ````
 
 

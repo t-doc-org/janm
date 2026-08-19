@@ -42,7 +42,7 @@ def execute_sql(request):
 
 
 ## Contrôler si un élément est dans une liste
-Sans lire manuellement chaque élément d'une liste, il est possible de tester si un élément en fait partie grâce à la structure `if element in liste`. Par exemple, le programme ci-dessous recherche tous les noms d'utilisateur et contrôle si `Mila Schaller` personnes en font partie ou non.
+Sans lire manuellement chaque élément d'une liste, il est possible de tester si un élément en fait partie grâce à la structure `if element in liste`. Par exemple, le programme ci-dessous recherche tous les noms d'utilisateur et contrôle si `Mila Schaller` en fait partie ou non.
 
 ```{exec} python
 :after: pizzeria
@@ -110,7 +110,7 @@ else:
 ````
 
 ### Exercice {num1}`exercice-listes`
-Le programme ci-dessous recherche les noms de toutes les pizzas de la base de données. Complétez le programme de sorte qu'il demande à l'utilisateur quelle pizza il souhaite commande. Si cette pizza (par exemple `Hawaï`) existe dans la liste, le programme affichera `Commande confirmée pour 1x pizza Hawaï`. Sinon, il affichera `La pizza Hawaï n'existe pas`.
+Le programme ci-dessous recherche les noms de toutes les pizzas de la base de données. Complétez le programme de sorte qu'il demande à l'utilisateur quelle pizza il souhaite commander. Si cette pizza (par exemple `Hawaï`) existe dans la liste, le programme affichera `Commande confirmée pour 1x pizza Hawaï`. Sinon, il affichera `La pizza Hawaï n'existe pas`.
 
 ```{exec} python
 :after: pizzeria
@@ -131,9 +131,9 @@ pizzas = execute_sql("SELECT nom from Pizza")
 choix = input("Quelle pizza veux-tu commander ?")
 
 if choix in pizzas:
-    print("Commande confirmée pour 1x", choix)
+    print("Commande confirmée pour 1x pizza", choix)
 else:
-    print("Cette pizza n'existe pas")
+    print("La pizza", choix, "n'existe pas")
 ```
 ````
 
@@ -144,8 +144,7 @@ else:
 Le programme ci-dessous demande à l'utilisateur quel moyen de locomotion il utilise pour se rendre au travail et doit ensuite afficher un message en conséquence.
 
 - `C'est très écologique!` lorsque l'utilisateur entre la valeur `à pied`, `trottinette`, `skateboard` ou `vélo`
-- `C'est un bon geste!` lorsque l'utilisateur entre la valeur `bus", `train` ou
-`tram`
+- `C'est un bon geste!` lorsque l'utilisateur entre la valeur `bus`, `train` ou `tram`
 - `C'est acceptable!` s'il entre la valeur `voiture`, `moto`, `scooter`,
 `sidecar` ou `vespa`.
 - `Sans commentaire.` s'il entre la valeur `avion`
@@ -168,15 +167,15 @@ print("Sans avis.")
 ````{solution}
 ```{exec} python
 :linenos:
-locomotion = input("Quel moyen de locomotion utilises-tu pour aller au travail: ")
+véhicule = input("Quel moyen de locomotion utilises-tu pour te rendre au travail ?")
 
-if locomotion in ["à pied", "trottinette", "skateboard", "vélo"]:
+if véhicule in ["à pied", "trottinette", "skateboard", "vélo"]:
     print("C'est très écologique!")
-elif locomotion in ["bus", "train", "tram"]:
+elif véhicule in ["bus", "train", "tram"]:
     print("C'est un bon geste!")
-elif locomotion in ["voiture", "sidecar", "vespa", "moto", "scooter"]:
+elif véhicule in ["voiture", "sidecar", "vespa", "moto", "scooter"]:
     print("C'est acceptable!")
-elif locomotion == "avion":
+elif véhicule == "avion":
     print("Sans commentaire.")
 else:
     print("Sans avis.")
@@ -238,7 +237,7 @@ des codes postaux est simplement affichée.
 codes_postaux = []
 code_postal = int(input("Entre un code postal: "))
 
-while code_postal > 0:
+while code_postal >= 0:
     # Complétez le programme à partir de là
 ```
 

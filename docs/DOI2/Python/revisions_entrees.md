@@ -1,3 +1,6 @@
+<!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+
 ```{metadata}
 solutions: show
 ```
@@ -9,11 +12,11 @@ solutions: show
 
 ## Qu'est-ce qu'une entrée utilisateur ?
 
-Dans les programmes que nous avons écrit jusqu'à présent, l'utilisateur n'avait jamais son mot à dire sur ce qu'il se passait : il cliquait sur *Play* et voyait le résultat s'afficher. Toutefois, dans la grande majorité des programmes, l'utilisateur doit pouvoir **intéragir** avec le programme avec son clavier, sa souris, sa manette de jeu, son microphone, etc. Toutes ces intéractions que l'utilisateur peut avoir avec le programme **durant son exécution** sont appelées des entrées utilisateur. Dans ce cours, nous n'allons traiter qu'un seul type d'entrée utilisateur : l'écriture de texte au clavier.
+Dans les programmes que nous avons écrits jusqu'à présent, l'utilisateur n'avait jamais son mot à dire sur ce qu'il se passait : il cliquait sur *Play* et voyait le résultat s'afficher. Toutefois, dans la grande majorité des programmes, l'utilisateur doit pouvoir **interagir** avec le programme avec son clavier, sa souris, sa manette de jeu, son microphone, etc. Toutes ces interactions que l'utilisateur peut avoir avec le programme **durant son exécution** sont appelées des entrées utilisateur. Dans ce cours, nous n'allons traiter qu'un seul type d'entrée utilisateur : l'écriture de texte au clavier.
 
 ## La fonction input
 
-Pour que l'utilisateur puisse écrire une valeur au clavier durant l'exécution du programme, on utilise la fonction `input()`. Entre ses parenthèses, on met le texte à afficher à l'utilisateur pour lui indiquer ce qu'il doit écrire. Finalement, l'entrée de l'utilisateur doit être enregistré dans une variable. De ce fait, le `input()` est toujours mis comme la valeur d'une variable, c'est-à-dire sous la forme `variable = input()`. L'exemple ci-dessous permet par exemple de demander le prénom de l'utilisateur, puis de le saluer.
+Pour que l'utilisateur puisse écrire une valeur au clavier durant l'exécution du programme, on utilise la fonction `input()`. Entre ses parenthèses, on met le texte à afficher à l'utilisateur pour lui indiquer ce qu'il doit écrire. Finalement, l'entrée de l'utilisateur doit être enregistrée dans une variable. De ce fait, le `input()` est toujours mis comme la valeur d'une variable, c'est-à-dire sous la forme `variable = input()`. L'exemple ci-dessous permet par exemple de demander le prénom de l'utilisateur, puis de le saluer.
 
 ```{exec} python
 :linenos:
@@ -22,7 +25,7 @@ print("Bonjour", prénom)
 ```
 
 ## Fonctions de conversion de types
-Lorsque l'utilisateur doit rentré une valeur numérique (c'est-à-dire une valeur `int` ou `float`), la fonction `input()` doit être contenue dans la fonction de conversion `int()` ou `float()` correspondante comme ci-dessous 
+Lorsque l'utilisateur doit entrer une valeur numérique (c'est-à-dire une valeur `int` ou `float`), la fonction `input()` doit être contenue dans la fonction de conversion `int()` ou `float()` correspondante comme ci-dessous 
 ```{exec} python
 :linenos:
 nb_invités = int(input("Combien de personnes sont invitées ?"))
@@ -34,7 +37,7 @@ print("Le prix total est de", total, "CHF")
 
 ### Exercice {num1}`exercice-revision`
 
-Chacun des programmes suivant comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
+Chacun des programmes suivants comporte au moins une erreur. Parfois, cette erreur fait directement buguer le programme avec un message d'erreur rouge. D'autres fois, le programme s'exécute correctement, mais son résultat n'est pas logique.
 
 
 Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement et affichent un résultat logique.
@@ -115,7 +118,7 @@ Je vois que tu habites à {afficher le lieu}.
 nom = input("Quel est votre nom ?")
 prenom = input("Quel est votre prénom ?")
 ville = input("Où habitez-vous ?")
-print("Bonjour", prenom, nom, ", heureux de faire ta connaissance")
+print("Bonjour", prenom, nom + ", heureux de faire ta connaissance.")
 print("Je vois que tu habites à", ville)
 ```
 ````
@@ -141,14 +144,16 @@ print("Le périmètre vaut")
 ```{exec} python
 :linenos:
 # Ne pas oublier de convertir les inputs en float
-largeur = float(input("Quelle est la largeur du rectangle"))
-longueur = float(input("Quelle est la longueur du rectangle"))
+largeur = float(input("Quelle est la largeur du rectangle en cm ?"))
+longueur = float(input("Quelle est la longueur du rectangle en cm ?"))
 
-# Calcul de l'aire
+# Calcul de l'aire et du périmètre
 aire = largeur * longueur
+périmètre = 2 * (largeur + longueur)
 
-# Affichage de la réponse
-print("L'aire vaut", aire)
+# Affichage des réponses
+print("L'aire vaut", aire, "cm2")
+print("Le périmètre vaut", périmètre, "cm")
 ```
 ````
 
@@ -165,7 +170,7 @@ L'exécution du programme devrait ressembler à cela :
 Quelle température en Fahrenheit souhaitez-vous convertir ?
 Merci, xxx °F équivalent à yyy °C
 ```
-Vous pouvez vérifier votre programme en contrôlant que `60.2`°F valent bien `15.666`°C et que `100`°F valent `37.777`°C
+Vous pouvez vérifier votre programme en contrôlant que `60.2`°F valent bien `15.666666666666668`°C et que `100`°F valent `37.77777777777778`°C. Ces longues suites de décimales sont normales : c'est ainsi que Python affiche le résultat d'une division.
 
 ```{exec} python
 :editor: 019a2068-49bb-7fcb-9342-d30ee491fdec
@@ -214,10 +219,10 @@ nb_cakes = int(input("Combien de cakes voulez-vous faire ?"))
 
 print("Vous avez besoin de :")
 
-print(nb_oeufs * nb_cakes, "oeufs")
-print(nb_citrons * nb_cakes, "citrons")
-print(kg_farine * nb_cakes, "kg de farine")
-print(kg_sucre * nb_cakes, "kg de sucre")
+print(" -", nb_oeufs * nb_cakes, "oeufs")
+print(" -", nb_citrons * nb_cakes, "citrons")
+print(" -", kg_farine * nb_cakes, "kg de farine")
+print(" -", kg_sucre * nb_cakes, "kg de sucre")
 
 ```
 ````
