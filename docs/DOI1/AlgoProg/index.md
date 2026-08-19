@@ -1,7 +1,7 @@
 <!-- Copyright 2024 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
-# 1.1 Programmation Python
+# 1.3 Programmation Python
 
 Cette section contient toute la théorie et les exercices du chapitre d'algorithmique et de programmation en Python.
 

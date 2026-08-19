@@ -1,4 +1,4 @@
-
+% Copyright 2024 Maxime Jan <maxime.jan@edufr.ch>
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ```{role} html(code)
@@ -8,7 +8,7 @@
 # Bootstrap
 
 ## Qu'est-ce que Bootstrap ?
-Bootstrap est un *framework* CSS open-source qui permet de créer facilement mettre en forme des applications web modernes, réactives et élégantes. Il a été développé initialement par Twitter et est désormais largement utilisé dans le développement web. Il permet notamment de simplifier la création de mises en page adaptatives grâce à son système de grille flexible et fluide. Cela garantit que les sites web s'affichent correctement sur une variété d'appareils, qu'il s'agisse de téléphones, de tablettes ou d'ordinateurs. Bootstrap propose également une collection riche de composants prédéfinis tels que des boutons, des barres de navigation, des fenêtres modales et des carrousels, permettant de gagner du temps lors du développement.
+Bootstrap est un *framework* CSS open-source qui permet de créer et de mettre en forme facilement des applications web modernes, réactives et élégantes. Il a été développé initialement par Twitter et est désormais largement utilisé dans le développement web. Il permet notamment de simplifier la création de mises en page adaptatives grâce à son système de grille flexible et fluide. Cela garantit que les sites web s'affichent correctement sur une variété d'appareils, qu'il s'agisse de téléphones, de tablettes ou d'ordinateurs. Bootstrap propose également une collection riche de composants prédéfinis tels que des boutons, des barres de navigation, des fenêtres modales et des carrousels, permettant de gagner du temps lors du développement.
 
 ## Installer Bootstrap
 
@@ -97,6 +97,41 @@ Maintenant, au sein de chaque ligne, entourez chaque élément par une `div` aya
         </div>
     </div>
 </body>
+```
+
+Voici cet exemple **rendu par le navigateur**. Chaque colonne est colorée pour bien voir comment
+la grille répartit l'espace : trois colonnes égales sur la première ligne, deux sur la deuxième,
+une seule (toute la largeur) sur la troisième.
+
+```{exec} html
+:when: load
+:style: height: 16rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+      .col { background-color: #d0e6ff; border: 1px solid #4a90d9; padding: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col"><p>1re colonne</p></div>
+        <div class="col"><p>2e colonne</p></div>
+        <div class="col"><h2>3e colonne</h2></div>
+      </div>
+      <div class="row">
+        <div class="col"><h1>La 1re de 2 colonnes</h1></div>
+        <div class="col"><h1>La 2e de 2 colonnes</h1></div>
+      </div>
+      <div class="row">
+        <div class="col"><p>Sur cette ligne il n'y a qu'une colonne</p></div>
+      </div>
+    </div>
+  </body>
+</html>
 ```
 
 ### Exercice

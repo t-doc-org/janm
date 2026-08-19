@@ -15,7 +15,9 @@ document en page, afin que le navigateur puisse l'afficher correctement.
 
 Les balises ont la forme suivante:
 
-```{code} html
+```{exec} html
+:when: never
+:style: height: 4rem;
 <h1>Bienvenue sur notre site Web</h1>
 ```
 
@@ -96,11 +98,16 @@ manière hiérarchique, comme les chapitres et sous-chapitres d'un livre.
 - `<h3> ... </h3>`: sous-sous-titre
 - `<h4> ... </h4>` à `<h6> ... </h6>`: niveaux de titres supplémentaires
 
-```{code} html
-:number-lines:
+```{exec} html
+:when: load
+:style: height: 9rem;
+:output-style: height:20rem;
 <h1>Titre principal</h1>
 <h2>Sous-titre</h2>
 <h3>Sous-sous-titre</h3>
+<h4>Niveau 4</h4>
+<h5>Niveau 5</h5>
+<h6>Niveau 6</h6>
 ```
 
 Il est important de respecter la hiérarchie des titres : ne pas passer
@@ -113,8 +120,10 @@ La balise `<p>` permet de définir un **paragraphe** de texte. Le navigateur
 ajoute automatiquement un espace avant et après chaque paragraphe pour aérer
 le contenu.
 
-```{code} html
-:number-lines:
+```{exec} html
+:when: load
+:style: height: 5rem;
+:output-style: height:6rem;
 <p>Ceci est un premier paragraphe. Le navigateur va
 automatiquement ajouter un espace après ce paragraphe.</p>
 <p>Ceci est un deuxième paragraphe.</p>
@@ -162,8 +171,10 @@ La balise `<a>` permet de créer un  **hyperlien**, c'est-à-dire un texte sur l
 il faut cliquer pour accéder à une autre page. Il faut indiquer le lien dans
 l'attribut href: {html}`<a href="lien">Texte</a>`
 
-```{code} html
-:number-lines:
+```{exec} html
+:when: load
+:style: height: 6rem;
+:output-style: height:4rem;
 <p>
   Pour accéder au site du collège,
   cliquez <a href="https://www.cscfr.ch/index.php/fr/">ici</a>
@@ -177,7 +188,6 @@ Pour ouvrir la nouvelle page dans un nouvel onglet, il faut ajouter l'attribut
 <a href="lien" target="_blank">Texte</a>
 ```
 
-[Tuto](https://developer.mozilla.org/fr/docs/Web/HTML/Element/a) élément `<a>`.
 
 (listes)=
 ## Balises `<ul> <ol> <li>` 
@@ -185,25 +195,28 @@ Pour ouvrir la nouvelle page dans un nouvel onglet, il faut ajouter l'attribut
 Il existe deux types de listes:
 
 1.  Listes numérotées (ordered) `<ol>`
-    ```{code} html
-    :number-lines:
+    ```{exec} html
+    :when: load
+    :style: height: 7rem;
+    :output-style: height:7rem;
     <ol>
       <li>Mettre 1L d'eau dans une casserole</li>
       <li>Porter à ébullition</li>
-      ...
+      <li>Ajouter les pâtes</li>
     </ol>
     ```
 2.  Listes à puces (unordered) `<ul>`
-    ```{code} html
-    :number-lines:
+    ```{exec} html
+    :when: load
+    :style: height: 7rem;
+    :output-style: height:7rem;
     <ul>
       <li>Tomates</li>
       <li>Courgettes</li>
-      ...
+      <li>Aubergines</li>
     </ul>
     ```
 
-[Tuto](https://developer.mozilla.org/fr/docs/Web/HTML/Element/li) listes.
 
 (images)=
 ## Balise `<img>`
@@ -218,12 +231,13 @@ URL, soit le chemin local.
 Cette balise peut contenir aussi les attributs height ou width qui permettent de
 déterminer la hauteur et/ou la largeur de l'image en pixels.
 
-```{code} html
-<img src= "images/mon_image.png" width="300">
+```{exec} html
+:when: load
+:style: height: 2rem;
+:output-style: height:15rem;
+<img src="https://picsum.photos/id/237/300/200" width="300">
 ```
 
-[Tuto](https://developer.mozilla.org/fr/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML)
-images.
 
 ## Balise `<br>`
 
@@ -231,8 +245,12 @@ La balise `<br>` permet de faire un saut de ligne (break). Comme cette balise ne
 contient pas de contenu, c'est une balise unique (pas de balise ouvrante et
 fermante).
 
-```{code} html
-À la fin de cette ligne, il y aura un saut de ligne. <br>
+```{exec} html
+:when: load
+:style: height: 4rem;
+:output-style: height:5rem;
+Avant le saut de ligne. <br>
+Après le saut de ligne.
 ```
 
 ## Balise `<table>`
@@ -242,9 +260,11 @@ La balise `<table>` permet de représenter des tableaux de données (tableaux en
   page, par exemple mettre du texte à côté d'une image ou mettre plusieurs
   images l'une à côté de l'autre.
 
-```{code} html
-:number-lines:
-<table>
+```{exec} html
+:when: load
+:style: height: 17rem;
+:output-style: height:6rem;
+<table border="1">
   <tr>                        <!-- Première ligne -->
     <th>Ingrédients</th>      <!-- entête première colonne -->
     <th>Quantité</th>         <!-- entête deuxième colonne -->
@@ -260,8 +280,6 @@ La balise `<table>` permet de représenter des tableaux de données (tableaux en
 </table>
 ```
  
-[Tuto](https://developer.mozilla.org/fr/docs/Web/HTML/Element/table) tables et
-tableaux
 
 
 ## Exercice {num2}`exercice`
@@ -329,6 +347,90 @@ Dans quelle partie les balises suivantes se trouvent-elles?
 ```
 
 
+
+## Exercice {num2}`exercice`
+
+Chacune des pages ci-dessous contient **une erreur** qui fait que le résultat affiché n'est pas
+celui attendu. Exécutez chaque code pour observer le problème, puis corrigez-le.
+
+1.  Ce titre devrait être suivi d'un paragraphe de taille normale, mais tout s'affiche en énorme.
+    ```{exec} html
+    :editor: c1a2b3c4-0001-4a1a-9b1a-100000000001
+    :style: height: 7rem;
+    :output-style: height:10rem;
+    <h1>Ma passion : le vélo
+    <p>J'adore faire du vélo le week-end.</p>
+    ```
+
+2.  Le mot « Wikipédia » devrait être un lien cliquable, mais ce n'est que du texte.
+    ```{exec} html
+    :editor: c1a2b3c4-0002-4a1a-9b1a-100000000002
+    :style: height: 5rem;
+    :output-style: height:10rem;
+    <p>Pour en savoir plus, consultez <a>Wikipédia</a>.</p>
+    ```
+
+3.  Ces trois fruits devraient apparaître comme une liste à puces, mais ils se suivent sur une
+    seule ligne.
+    ```{exec} html
+    :editor: c1a2b3c4-0003-4a1a-9b1a-100000000003
+    :style: height: 10rem;
+    :output-style: height:10rem;
+    <ul>
+      Pomme
+      Poire
+      Cerise
+    </ul>
+    ```
+
+4.  Au lieu d'afficher l'image, cette balise affiche son lien
+    ```{exec} html
+    :editor: c1a2b3c4-0004-4a1a-9b1a-100000000004
+    :style: height: 6rem;
+    :output-style: height:10rem;
+    <p>Photo de l'ENIAC par M. Weik</p>
+    <img width="200"> https://upload.wikimedia.org/wikipedia/commons/0/0c/ENIAC-changing_a_tube_%28cropped%29.jpg</img>
+    ```
+
+````{solution}
+1.  Il manque la balise **fermante** `</h1>`. Sans elle, le navigateur considère que tout ce qui
+    suit fait encore partie du titre, et l'affiche donc en très grand.
+    ```{exec} html
+    :when: load click
+    :style: height: 7rem;
+    <h1>Ma passion : le vélo</h1>
+    <p>J'adore faire du vélo le week-end.</p>
+    ```
+
+2.  Un lien a besoin de l'attribut `href` pour indiquer **vers où** il pointe. Sans lui, la balise
+    `<a>` n'est pas cliquable.
+    ```{exec} html
+    :when: load click
+    :style: height: 5rem;
+    <p>Pour en savoir plus, consultez <a href="https://fr.wikipedia.org">Wikipédia</a>.</p>
+    ```
+
+3.  Dans une liste, **chaque élément** doit être entouré d'une balise `<li> ... </li>`. Le texte
+    placé directement dans le `<ul>` n'est pas traité comme des éléments de liste.
+    ```{exec} html
+    :when: load click
+    :style: height: 6rem;
+    <ul>
+      <li>Pomme</li>
+      <li>Poire</li>
+      <li>Cerise</li>
+    </ul>
+    ```
+
+4.  Une image a besoin de l'attribut `src` pour indiquer **quel fichier** afficher. Sans lui, le
+    navigateur ne sait pas quoi montrer. De plus, la balise `<img>` est une balise indépendante et n'a donc pas de balise fermante.
+    ```{exec} html
+    :when: load click
+    :style: height: 12rem;
+        <p>Photo de l'ENIAC par M. Weik</p>
+    <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/ENIAC-changing_a_tube_%28cropped%29.jpg">
+    ```
+````
 
 ## Exercice {num2}`exercice`
 

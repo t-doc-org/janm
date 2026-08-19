@@ -3,8 +3,8 @@
 # 1{sup}`ère` année
 
 ```{toctree}
-AlgoProg/index
-ReprInf/index
 HTML_CSS/index
+ReprInf/index
+AlgoProg/index
 ArchOrdi/index
 ```

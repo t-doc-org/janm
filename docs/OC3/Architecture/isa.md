@@ -59,12 +59,10 @@ d'instructions*. Voici le nôtre :
 | `0011` | `SUB Rd, Rs` | `Rd` reçoit `Rd - Rs` |
 | `0100` | `COPY Rd, Rs` | `Rd` reçoit une copie de `Rs` |
 | `0101` | `OUT Rd` | affiche le contenu de `Rd` |
-| `0110` | `ET Rd, Rs` | `Rd` reçoit `Rd ET Rs` (bit à bit) |
-| `0111` | `OU Rd, Rs` | `Rd` reçoit `Rd OU Rs` (bit à bit) |
 
-On retrouve nos composants : `ADD`, `SUB`, `ET` et `OU` font travailler l'ALU sur
-deux registres (ce sont ses quatre opérations, vues au chapitre précédent), `COPY`
-recopie un registre dans un autre, et `LOAD` fait entrer une valeur de l'extérieur.
+On retrouve nos composants : `ADD`, `SUB` font travailler l'ALU sur deux
+registres, `COPY` recopie un registre dans un autre, et `LOAD` fait entrer une
+valeur de l'extérieur.
 
 ```{important}
 - Un registre se nomme sur `2` bits : `r0 = 00`, `r1 = 01`, `r2 = 10`, `r3 = 11`.
@@ -80,24 +78,21 @@ que d'autres.
 
 ## Le cycle d'exécution
 Comment le processeur enchaîne-t-il les instructions ? Il répète sans fin un même
-*cycle* en trois temps. Le *program counter* (`pc`) garde l'adresse de la
+*cycle* en trois temps. Le *compteur ordinal* (`pc`) garde l'adresse de la
 prochaine instruction.
 
 ```{figure} images/cycle.svg
 :width: 70%
-:alt: Le cycle en trois étapes en anglais : Fetch (lire l'instruction pointée par le program counter), Decode (séparer opcode et registres), Execute (exécuter puis avancer le pc), en boucle
+:alt: Le cycle en trois étapes : Chercher (lire l'instruction pointée par le compteur ordinal), Décoder (séparer opcode et registres), Exécuter (agir puis passer à la suivante), en boucle
 :align: center
 
-Le processeur répète sans fin le même cycle : *fetch*, *decode*, *execute*
-(chercher, décoder, exécuter).
+Le processeur répète sans fin le même cycle : chercher, décoder, exécuter.
 ```
 
-1.  **Fetch** (chercher) : lire dans la mémoire l'instruction à l'adresse indiquée
-    par `pc`, et faire avancer `pc`.
-2.  **Decode** (décoder) : séparer l'opcode et les registres ; l'opcode détermine
-    l'action.
-3.  **Execute** (exécuter) : réaliser l'action, en pilotant les composants
-    concernés.
+1.  **Chercher** : lire dans la mémoire l'instruction à l'adresse indiquée par
+    `pc`, et faire avancer `pc`.
+2.  **Décoder** : séparer l'opcode et les registres ; l'opcode détermine l'action.
+3.  **Exécuter** : réaliser l'action, en pilotant les composants concernés.
 
 Pour une instruction `LOAD`, l'étape d'exécution va simplement lire **l'octet
 suivant** (la valeur) et la ranger dans le registre, en faisant à nouveau avancer
@@ -125,7 +120,7 @@ pourtant jamais rien de compliqué : il répète chercher, décoder, exécuter.
 - Un programme est une suite de **nombres** en mémoire ; chacun est une
   instruction faite d'un **opcode** et de **registres**.
 - Le processeur répète sans fin le cycle **chercher, décoder, exécuter**, en
-  suivant le **program counter**.
+  suivant le **compteur ordinal**.
 ```
 
 ## Exercices

@@ -111,9 +111,6 @@ p {                       /* Cette règle définit le style des paragraphes. */
 Les **couleurs** peuvent être indiquées de trois façons:
 - Par leur **nom en anglais**: `red`, `green`, `blue`, `black`, `white`, `cornsilk`...
 - En **code RGB**: `rgb(255, 0, 0)` pour le rouge pur
-- En **code hexadécimal**: `#ff0000` pour le rouge pur
-
-[Liste des couleurs](https://htmlcolorcodes.com/color-names/) disponibles en HTML/CSS.
 
 ## Sélecteurs
 
@@ -174,18 +171,16 @@ espace:
 <p class="centre rouge">Ce texte est centré et rouge.</p>
 ```
 
-[Tuto](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/CSS_basics)
-bases du CSS.
 
 ## Conteneurs `<div>`
 
 La balise `<div>` est un élément **bloc** qui permet de regrouper plusieurs
-éléments HTML. Seul, un `<div>` n'a aucun effet visuel — c'est le CSS qui lui
+éléments HTML. Seul, un `<div>` n'a aucun effet visuel : c'est le CSS qui lui
 donne une apparence.
 
 L'intérêt du `<div>` apparaît lorsqu'on le combine avec un **sélecteur de
 classe**: on peut ainsi styliser indépendamment différentes zones d'une même
-page.
+pageet regrouper des balises entre elles.
 
 <table><tr style="text-align: center">
   <th>Fichier HTML</th><th>Fichier CSS</th>
@@ -208,15 +203,14 @@ page.
 
 ```{code} css
 .alerte {
-  background-color: #ffe0e0;
-  border-left: 4px solid red;
+  background-color: pink;
+  border: 4px solid red;
   padding: 10px;
   margin: 10px 0;
 }
-
 .info {
-  background-color: #e0f0ff;
-  border-left: 4px solid blue;
+  background-color: lightblue;
+  border: 4px solid blue;
   padding: 10px;
   margin: 10px 0;
 }
@@ -226,6 +220,44 @@ page.
 
 Les deux `<div>` ont une structure HTML identique, mais chacun reçoit un style
 différent grâce à sa classe.
+
+Voici le résultat produit par le HTML et le CSS ci-dessus :
+
+```{exec} html
+:when: load
+:style: height: 30rem;
+:output-style: height:18rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .alerte {
+        background-color: pink;
+        border: 4px solid red;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      .info {
+        background-color: lightblue;
+        border: 4px solid blue;
+        padding: 10px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="alerte">
+      <h2>Attention</h2>
+      <p>Le site sera en maintenance ce soir de 22h à 23h.</p>
+    </div>
+    <div class="info">
+      <h2>Information</h2>
+      <p>Les inscriptions sont ouvertes.</p>
+    </div>
+  </body>
+</html>
+```
 
 ## Exercices
 
@@ -262,32 +294,150 @@ Notez la propriété CSS qui permet de:
     ... souligner du texte?
 ```
 
+
 ### Exercice {num2}`exercice`
 
-Quel type de sélecteur faut-il utiliser?
+Lisez le code ci-dessous **sans l'exécuter** et prédisez le résultat. Rappelez-vous qu'un
+sélecteur de classe l'emporte sur un sélecteur de type lorsque les deux s'appliquent au même
+élément.
 
-```{role} choix(quiz-select)
+```{code-block} html
+<style>
+  p  { color: blue; }
+  h2 { text-align: center; }
+  .vedette { color: red; }
+</style>
+
+<h2>Bienvenue</h2>
+<p>Premier paragraphe.</p>
+<p class="vedette">Deuxième paragraphe.</p>
+<p class="autre">Troisième paragraphe.</p>
+```
+
+```{role} rep(quiz-input)
+:right: width: 7rem;
+:check: lowercase trim
+```
+
+```{role} ouinon(quiz-select)
 :right:
 :options: |
-: sélecteur de type
-: sélecteur de classe
+: oui
+: non
 ```
 
 ```{quiz}
 :style: max-width: 40rem;
-1.  {choix}`sélecteur de type`
-    Appliquer un style à tous les `<h1>` de la page
-2.  {choix}`sélecteur de classe`
-    Appliquer un style à certains `<p>` seulement
-3.  {choix}`sélecteur de type`
-    Appliquer un style à tous les `<p>` de la page
-4.  {choix}`sélecteur de classe`
-    Appliquer un style à plusieurs éléments de types différents
-5.  {choix}`sélecteur de type`
-    Appliquer un style à tous les `<h2>` de la page
-6.  {choix}`sélecteur de classe`
-    Mettre en évidence certains mots dans différents paragraphes
+1. {rep}`bleu`
+De quelle couleur s'affiche le **premier** paragraphe ?
+
+2. {rep}`rouge`
+De quelle couleur s'affiche le **deuxième** paragraphe (classe `vedette`) ?
+
+3. {rep}`bleu`
+De quelle couleur s'affiche le **troisième** paragraphe (classe `autre`) ?
+
+4. {ouinon}`oui`
+Le titre « Bienvenue » est-il centré ?
+
+5. {ouinon}`non`
+Le troisième paragraphe est-il centré ?
 ```
+
+````{solution}
+1.  **Bleu.** La règle `p { color: blue; }` s'applique à tous les paragraphes.
+2.  **Rouge.** Deux règles concernent ce paragraphe : `p` (bleu) et `.vedette` (rouge). Quand un
+    sélecteur de type et un sélecteur de classe s'appliquent au même élément, **c'est la classe qui
+    l'emporte**. Le paragraphe est donc rouge.
+3.  **Bleu.** La classe `autre` n'a **aucune règle** définie, elle ne change donc rien. Le
+    paragraphe reste bleu grâce à la règle `p`.
+4.  **Oui.** La règle `h2 { text-align: center; }` centre le titre.
+5.  **Non.** Le centrage n'a été défini que pour les `h2`, pas pour les `p`.
+````
+
+### Exercice {num2}`exercice`
+
+Dans la page ci-dessous, **aucune** des règles CSS ne produit l'effet attendu : le titre devrait
+être bleu et centré, les sous-titres orange, les paragraphes en taille 18px, et le paragraphe de
+classe `encadre` sur fond jaune. Chaque règle contient **une erreur**. Exécutez le code pour voir
+le problème, puis corrigez les quatre erreurs.
+
+```{exec} html
+:editor: d1e2f3a4-0001-4b2b-9c2b-200000000001
+:style: height: 20rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      h1 {
+        color: blue
+        text-align: center;
+      }
+      h2 {
+        color: ff6600;
+      }
+      p {
+        font-size: 18;
+      }
+      encadre {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Le monde des océans</h1>
+    <h2>Les profondeurs</h2>
+    <p>Les océans couvrent plus de 70% de la surface de la Terre.</p>
+    <p class="encadre">Le point le plus profond est la fosse des Mariannes.</p>
+  </body>
+</html>
+```
+
+````{solution}
+Les quatre erreurs, dans l'ordre :
+
+1.  Il manque un **point-virgule** après `color: blue`. Du coup, le navigateur lit
+    `color: blue text-align: center` comme une seule valeur invalide et ignore les deux propriétés.
+2.  La couleur `ff6600` doit être précédée d'un **`#`** : `#ff6600`. Sans lui, ce n'est pas une
+    couleur valide et la règle est ignorée.
+3.  La taille `18` doit avoir une **unité** : `18px`. Un nombre sans unité n'est pas accepté pour
+    `font-size`.
+4.  Le sélecteur de classe doit commencer par un **point** : `.encadre`. Écrit sans le point,
+    `encadre` cherche une balise `<encadre>` qui n'existe pas.
+
+```{exec} html
+:when: load click
+:style: height: 20rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      h1 {
+        color: blue;
+        text-align: center;
+      }
+      h2 {
+        color: #ff6600;
+      }
+      p {
+        font-size: 18px;
+      }
+      .encadre {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Le monde des océans</h1>
+    <h2>Les profondeurs</h2>
+    <p>Les océans couvrent plus de 70% de la surface de la Terre.</p>
+    <p class="encadre">Le point le plus profond est la fosse des Mariannes.</p>
+  </body>
+</html>
+```
+````
 
 ### Exercice {num2}`exercice`
 
