@@ -16,7 +16,7 @@ document en page, afin que le navigateur puisse l'afficher correctement.
 Les balises ont la forme suivante:
 
 ```{exec} html
-:when: never
+:when:
 :style: height: 4rem;
 <h1>Bienvenue sur notre site Web</h1>
 ```
