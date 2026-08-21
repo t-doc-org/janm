@@ -15,8 +15,7 @@ bootstrap
 ## Travaux pratiques
 ```{toctree}
 vscode
-TP_escape/organisation_tp
-TP_escape/consigne_tp
-TP_escape/createur_schema
+TP_sujet_perso/organisation_tp
+TP_sujet_perso/consigne_tp
 ```
 

@@ -1,6 +1,4 @@
-```{metadata}
-orphan: true
-```
+
 # Organisation TP
 
 ## 1BP1
