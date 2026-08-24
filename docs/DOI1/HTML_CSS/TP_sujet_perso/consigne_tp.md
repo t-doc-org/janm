@@ -35,7 +35,7 @@ Laissez cours à votre imagination. Veillez simplement à **valider votre sujet 
 
 1. Sur votre ordinateur, idéalement sur OneDrive, créez un nouveau dossier qui contiendra tous les fichiers de votre site Web
 2. Ouvrez (Visual Studio Code)[../vscode.md] et cliquez en haut à gauche sur *File* (ou *Fichier* en français)
-3. Cliquez ensuite sur *Open Folder* ou *Ouvrir un dossier* et sélectionnez le dossier que vous avez créé 
+3. Cliquez ensuite sur *Open Folder* (*Ouvrir un dossier*) et sélectionnez le dossier que vous avez créé 
 ```{figure} ../images/openfolder.png
 :alt: Ouvrir un dossier sur VSCode
 :width: 40%
@@ -69,9 +69,33 @@ h1 {
 }
 ```
 
+9. Faites un clic-droite dans l'explorateur de fichiers sur `index.html` et cliquez sur `Open in Integreated Browser`. Si une nouvelle fenêtre s'ouvre avec une page contenant le mot *TEST* en violet, la mise en place est terminée.
 
+```{figure} ../images/htmlpreview.png
+:alt: Ouvrir un fichier HTML sur VSCode
+:width: 60%
+:align: center
+```
 
+## Recherche documentaire
+Lors de la visite de la bibliothécaire, vous effectuerez une recherche documentaire sur votre sujet. Celui-ci peut être élargi afin de trouver des documents pertinents. Durant ces 2 périodes, vous êtes chargés de :
 
+- Trouver 3 sources pertinentes concernant votre sujet sur les plateformes présentées, dont au moins une présente à la biliothèque de STX
+- Rédiger une très courte bibliographie contenant ces 3 sources au format demandé dans [le guide du Travail de Maturité](https://new.cscfr.ch/images/stories/media/tm/TM_Guide_2026_27_F.pdf)
+- Présenter ces 3 sources à l'enseignant au plus tard durant le dernier TP consacré à ce projet. La source de la bibliothèque doit être présentée en "physique"
+- Pour chaque source, rédiger quelques phrases résumant les informations que vous y avez trouvées
+
+## Développement et objectifs
+
+Une fois la mise en place effectuée, développez votre site Web en respectant les conditions suivantes :
+
+ - Le site Web contient au moins 3 pages HTML dont le contenu (images, textes, vidéos, ...) est pertinent dans le sujet choisi
+ - Le site Web contient une page HTML contenant votre résultat de la recherche documentaire (bibliographie et résumés)
+ - Le site Web utilise correctement au moins une fois toutes les balises HTML travaillées en cours (voir [théorie HTML](../html.md)) de manière pertinente
+ - Le site Web utilise correctement au moins 10 propriétés CSS différentes
+ - Le site Web utilise des classes et des `div` de manière pertinente
+ - Le style visuel du site Web est soigné
+ - L'orthographe et la grammaire du site Web sont irréprochables
 
 ## Évaluation
 
@@ -82,7 +106,7 @@ valeur maximale indiquée.
 | Critère | Points |
 |---------|:------:|
 | **Conception et organisation** | |
-| Sujet culturel pertinent (validé par l'enseignant) et plan des 3 pages préparé | 2 |
+| Sujet pertinent (validé par l'enseignant) et plan des pages préparé | 2 |
 | Organisation des fichiers conforme (dossier, `index.html`, `style.css`) | 2 |
 | **HTML** | |
 | Le site comporte 3 pages reliées par un même menu de navigation présent sur chaque page. `index.html` est la page d'accueil | 3 |
@@ -99,18 +123,16 @@ valeur maximale indiquée.
 | Contenu informatif exact, suffisant et intéressant | 3 |
 | Orthographe et grammaire correctes | 2 |
 | Style visuel soigné et cohérent entre les 3 pages | 3 |
-| **Total** | **36** |
+| **Recherche documentaire** | |
+| 3 sources pertinentes trouvées, dont au moins une empruntée à la bibliothèque de STX et présentée physiquement | 3 |
+| Bibliographie rédigée au format demandé dans le guide du Travail de Maturité | 2 |
+| Résumé pertinent des informations trouvées pour chacune des 3 sources | 3 |
+| La recherche documentaire est présentée sur une page dédiée du site | 1 |
+| **Total** | **45** |
 
 ## Rendu
 
-1. Vérifiez que votre site fonctionne : ouvrez `index.html` et naviguez entre
-   les 3 pages, dans les deux sens.
-2. Faites un clic-droit sur le dossier `mon_site` contenant tout le projet.
-3. Windows : cliquez sur `Compresser vers... --> Fichier ZIP`.
-   MacOS : cliquez sur `Compresser`.
-4. Renommez ce fichier ZIP en `prenom_nom_classe.zip`.
-   Par exemple `Maxime_Jan_1F8.zip`.
-5. Envoyez ce fichier ZIP par email à `maxime.jan@edufr.ch`.
+[TODO]
 
 ## Note sur le plagiat
 
