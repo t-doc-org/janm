@@ -2,15 +2,16 @@
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
 ```{metadata}
 orphan: true
-```
+````
+
 # Check-in numérique
 
 Afin de pouvoir utiliser votre ordinateur de manière optimale pendant les cours,
 il est nécessaire de faire certaines configurations ou installations.
 
-## {nump}`section`. Adresse et mot de passe de l'école
+## 1. Adresse et mot de passe de l'école
 
-```{poll} 0e9fd553-5be5-4997-953e-4dab3686b5b6
+```{poll} 0ae5ca67-954e-49fc-b222-44060cd90d38
 :number: none
 Vous souvenez-vous de votre adresse et de votre mot de passe de l'école?
 
@@ -26,7 +27,7 @@ ensuite pouvoir se connecter au wifi (utiliser un ordi de l'école pour changer
 le mot de passe).
 ```
 
-## {nump}`section`. Connexion au wifi de l'école
+## 2. Connexion au wifi de l'école
 
 1.  Activez votre wifi.
     ```{figure} images/wifi.png
@@ -43,7 +44,7 @@ le mot de passe).
     ```
 4.  Identifiez-vous avec votre adresse et votre mot de passe de l'école.
 
-```{poll} a3c0142a-bf21-41f3-b287-3907daa19f28
+```{poll} e8dee7fa-6d5d-47bf-bd6d-351adfe3a068
 :number: none
 Êtes-vous connecté au réseau de l'école?
 
@@ -51,7 +52,7 @@ le mot de passe).
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Troisième méthode d'authentification
+## 3. Troisième méthode d'authentification
 
 La troisième méthode d'authentification est une méthode de secours en cas de
 perte de votre smartphone.
@@ -66,7 +67,7 @@ perte de votre smartphone.
 
 En cas de problème de connexion [https://eduetatfr.sharepoint.com/sites/FRITIC-M365usages/SitePages/FAQ-MFA-SSPR.aspx/](https://eduetatfr.sharepoint.com/sites/FRITIC-M365usages/SitePages/FAQ-MFA-SSPR.aspx/)
 
-```{poll} 67c5fa55-f8e3-4a9b-9045-3c123028da0a
+```{poll} 1d2ab1ee-bee1-40db-92ec-bcc0ba70f484
 :number: none
 Avez-vous ajouté une troisième méthode d'authentification?
 
@@ -74,7 +75,7 @@ Avez-vous ajouté une troisième méthode d'authentification?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Installation de la suite office
+## 4. Installation de la suite office
 
 Il est obligatoire d'installer la suite office (Outlook, Word, PowerPoint,
 Excel, OneNote, ...) en local sur votre machine, **même si vous avez déjà les
@@ -91,7 +92,7 @@ applications de votre compte privé**.
     ```
 5.  Ouvrez Outlook et envoyez un mail à votre professeur.e de classe.
 
-```{poll} ce974b7c-10e5-4fab-8662-1cdde5471daf
+```{poll} eedc385b-9d1e-48c8-b233-d34eb5196f78
 :number: none
 Avez-vous installé les applications office?
 
@@ -99,12 +100,12 @@ Avez-vous installé les applications office?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Installation de Teams
+## 5. Installation de Teams
 
 1.  Retournez sur [https://m365.cloud.microsoft/apps](https://m365.cloud.microsoft/apps/)
     et installez Teams si cette application n'est pas encore installée.
 
-```{poll} 6d7fc88b-bda6-4b04-9444-53bbe7bba5c5
+```{poll} 5c842cbc-047c-4352-8b82-41ac7a7b5132
 :number: none
 Avez-vous installé Teams?
 
@@ -113,7 +114,7 @@ Avez-vous installé Teams?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Installation de Safe Exam Browser
+## 6. Installation de Safe Exam Browser
 
 Version Windows:
 
@@ -131,7 +132,7 @@ Version Mac:
 3.  Vérifiez que Safe Exam Browser se trouve dans vos applications.
 4.  Installez aussi l'[application Exam.net](https://apps.apple.com/fr/app/exam-net/id1496582158?platform=mac)  depuis le store Apple.
 
-```{poll} 044a2472-a206-4a6d-add5-99c11eb8c978
+```{poll} cec7a4e7-2c67-48f9-9deb-464e77c897bd
 :number: none
 Avez-vous installé Safe Exam Browser?
 
@@ -139,7 +140,7 @@ Avez-vous installé Safe Exam Browser?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Connexion à OneDrive
+## 7. Connexion à OneDrive
 
 1.  Vérifiez que votre OneDrive `EDUETATFR` est bien connecté et
     synchronisé.
@@ -150,7 +151,7 @@ Avez-vous installé Safe Exam Browser?
     - Si le compte `EDUETATFR` n'apparaît pas, allez dans les `paramètres/compte`
         et ajoutez un compte.
 
-```{poll} 2196a474-977f-460a-8430-e0cf067af253
+```{poll} 6910641b-8303-4240-9b7e-176fd0268c78
 :number: none
 Votre OneDrive `EDUETATFR` est-il connecté et synchronisé?
 
@@ -159,12 +160,12 @@ Votre OneDrive `EDUETATFR` est-il connecté et synchronisé?
 ```
 
 
-## {nump}`section`. Installation de Teams et Outlook sur votre smartphone (optionnel)
+## 8. Installation de Teams et Outlook sur votre smartphone (optionnel)
 
 Afin d'avoir les informations directement sur votre smartphone, vous pouvez y
 installer Teams et Outlook à partir du store.
 
-## {nump}`section`. Utilisation des imprimantes/photocopieuses de l'école
+## 9. Utilisation des imprimantes/photocopieuses de l'école
 
 Vous avez reçu un badge qui vous permet d'imprimer sur les imprimantes de
 l'école, pour cela il faut associer votre badge et votre compte.

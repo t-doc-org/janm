@@ -2,7 +2,7 @@
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
 ```{metadata}
 orphan: true
-```
+````
 # Check-in numérique
 
 Afin de pouvoir utiliser votre ordinateur de manière optimale pendant les cours,
@@ -10,7 +10,7 @@ il est nécessaire de faire certaines configurations ou installations.
 
 Merci de compléter [ce questionnaire](https://forms.cloud.microsoft/pages/responsepage.aspx?id=U7FzJeG_q0Ore4wlU12BmaHr-tex21lNqAwjFyfkFl5UM1ZCNDJTV1hRTllNRkJCQzVXVkpESkYzWS4u&route=shorturl) tout au long de la séance afin de vérifier que votre check-in a correctement été effectué.
 
-## {nump}`section`. Adresse et mot de passe de l'école
+## 1. Adresse et mot de passe de l'école
 
 ```{poll} 0e9fd553-5be5-4997-953e-4dab3686b5b6
 :number: none
@@ -28,7 +28,7 @@ ensuite pouvoir se connecter au wifi (utiliser un ordi de l'école pour changer
 le mot de passe).
 ```
 
-## {nump}`section`. Connexion au wifi de l'école
+## 2. Connexion au wifi de l'école
 
 1.  Activez votre wifi.
     ```{figure} images/wifi.png
@@ -53,7 +53,7 @@ le mot de passe).
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Troisième méthode d'authentification
+## 3. Troisième méthode d'authentification
 
 La troisième méthode d'authentification est une méthode de secours en cas de
 perte de votre smartphone.
@@ -76,7 +76,7 @@ Avez-vous ajouté une troisième méthode d'authentification?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Installation de la suite office
+## 4. Installation de la suite office
 
 Il est obligatoire d'installer la suite office (Outlook, Word, PowerPoint,
 Excel, OneNote, ...) en local sur votre machine, **même si vous avez déjà les
@@ -101,7 +101,7 @@ Avez-vous installé les applications office?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Installation de Teams
+## 5. Installation de Teams
 
 1.  Retournez sur [https://m365.cloud.microsoft/apps](https://m365.cloud.microsoft/apps/)
     et installez Teams si cette application n'est pas encore installée.
@@ -115,7 +115,7 @@ Avez-vous installé Teams?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Installation de Safe Exam Browser
+## 6. Installation de Safe Exam Browser
 
 Version Windows:
 
@@ -141,7 +141,7 @@ Avez-vous installé Safe Exam Browser?
 - non (informez l'enseignant.e)
 ```
 
-## {nump}`section`. Connexion à OneDrive
+## 7. Connexion à OneDrive
 
 1.  Vérifiez que votre OneDrive `EDUETATFR` est bien connecté et
     synchronisé.
@@ -161,12 +161,12 @@ Votre OneDrive `EDUETATFR` est-il connecté et synchronisé?
 ```
 
 
-## {nump}`section`. Installation de Teams et Outlook sur votre smartphone (optionnel)
+## 8. Installation de Teams et Outlook sur votre smartphone (optionnel)
 
 Afin d'avoir les informations directement sur votre smartphone, vous pouvez y
 installer Teams et Outlook à partir du store.
 
-## {nump}`section`. Utilisation des imprimantes/photocopieuses de l'école
+## 9. Utilisation des imprimantes/photocopieuses de l'école
 
 Vous avez reçu un badge qui vous permet d'imprimer sur les imprimantes de
 l'école, pour cela il faut associer votre badge et votre compte.
