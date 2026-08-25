@@ -1,6 +1,8 @@
 % Copyright 2026 Caroline Blank <caro@c-space.org>
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
-
+```{metadata}
+orphan: true
+```
 # Check-in numérique
 
 Afin de pouvoir utiliser votre ordinateur de manière optimale pendant les cours,

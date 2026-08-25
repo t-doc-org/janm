@@ -1,10 +1,14 @@
 % Copyright 2026 Caroline Blank <caro@c-space.org>
 % SPDX-License-Identifier: CC-BY-NC-SA-4.0
-
+```{metadata}
+orphan: true
+```
 # Check-in numérique
 
 Afin de pouvoir utiliser votre ordinateur de manière optimale pendant les cours,
 il est nécessaire de faire certaines configurations ou installations.
+
+Merci de compléter [ce questionnaire](https://forms.cloud.microsoft/pages/responsepage.aspx?id=U7FzJeG_q0Ore4wlU12BmaHr-tex21lNqAwjFyfkFl5UM1ZCNDJTV1hRTllNRkJCQzVXVkpESkYzWS4u&route=shorturl) tout au long de la séance afin de vérifier que votre check-in a correctement été effectué.
 
 ## {nump}`section`. Adresse et mot de passe de l'école
 
