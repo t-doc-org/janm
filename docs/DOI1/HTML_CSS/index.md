@@ -5,6 +5,9 @@
 
 Cette section contient toute la théorie et les exercices du chapitre de développement Web
 
+## Introduction
+[Bac à sable HTML](https://maximejan.github.io/html-sandbox/)
+
 ## Cours et exercices
 ```{toctree}
 html
