@@ -118,16 +118,16 @@ Avez-vous installé Teams?
 
 Version Windows:
 
-1.  Téléchargez Safe Exam Browser avec le lien suivant:
-    [SEB pour Windows](https://eduetatfr-my.sharepoint.com/:u:/g/personal/caroline_blank_edufr_ch/IQB0dbWwin6hQZpRTQUXUXwyAa134O3kCpeoO1I966hdAkE?e=bNlJbc)
+1.  Téléchargez Safe Exam Browser pour Windows avec le lien suivant:
+    [Télécharger SEB](https://safeexambrowser.org/download_en.html)
 2.  Cliquez sur le fichier `SEB_3.10.2.920_SetupBundle.exe` et suivez les
     instructions de l'installateur.
 3.  Vérifiez que Safe Exam Browser se trouve dans vos applications.
 
 Version Mac:
 
-1.  Téléchargez Safe Exam Browser avec le lien suivant:
-     [SEB pour mac](https://eduetatfr-my.sharepoint.com/:u:/g/personal/caroline_blank_edufr_ch/IQBB-bHJPthCTJbhcOlIt8v9ATszEGBPZfYQudN_ihZXubc?e=zeCpaj)
+1.  Téléchargez Safe Exam Browser pour MacOS avec le lien suivant:
+     [Télécharger SEB](https://safeexambrowser.org/download_en.html)
 2.  Glissez le fichier `SafeExamBrowser-3.7.dmg` dans le dossier `Applications`.
 3.  Vérifiez que Safe Exam Browser se trouve dans vos applications.
 4.  Installez aussi l'[application Exam.net](https://apps.apple.com/fr/app/exam-net/id1496582158?platform=mac)  depuis le store Apple.
@@ -181,3 +181,6 @@ l'école, pour cela il faut associer votre badge et votre compte.
 2.  Activez votre badge sur une photocopieuse et entrez votre PIN à 6 chiffres (à
     faire une seule fois)
 3.  Pour savoir comment imprimer, consultez [https://eduetatfr.sharepoint.com/sites/FRITIC-M365usages/SitePages/Uniflow-Online.aspx](https://eduetatfr.sharepoint.com/sites/FRITIC-M365usages/SitePages/Uniflow-Online.aspx).
+
+## Cours "Outils de prise de notes et d'annotation de PDFs"
+Si vous souhaitez vous inscrire au cours des TechDucks, remplissez [ce formulaire](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=U7FzJeG_q0Ore4wlU12BmX9tXBBJZctBqooPGtIoJ95UOU5IWk9aV0tKUUdZQkwyREdUQjhNS0tWWS4u)
