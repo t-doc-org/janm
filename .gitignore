@@ -1,12 +1,17 @@
+# BEGIN-COMMON
+# The lines between BEGIN-COMMON and END-COMMON are updated automatically.
+# Do not edit manually; add site-specific patterns below.
+*~
+*.autosave.xopp
 *.local.*
 *.orig
+*.swp
+.DS_Store
 __pycache__
 
 /_*/
 /docs/_build/
 /tmp/
+# END-COMMON
 
-# Exam sources injected by exam-server/build_exam.py. Only the mock exam
-# (demo) is committed; real exam sources must never reach GitHub.
-/docs/_exam/*
-!/docs/_exam/mock/
+# Site-specific patterns.
