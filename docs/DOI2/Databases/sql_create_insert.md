@@ -802,6 +802,24 @@ CREATE TABLE Joueur(
 
 Le `INSERT INTO` ne fonctionne pas car la clef étrangère `equipe` qui devrait ici prendre la valeur `Real Madrid` ferait  référence à une valeur qui n'existe pas dans la colonne `nom` de la table `Equipe`. 
 ````
+```{exec} sql
+:name: foot-db
+:when:
+:class: hidden
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE Equipe(nom TEXT, entraineur TEXT, budget REAL, PRIMARY KEY(nom));
+INSERT INTO Equipe(nom, entraineur, budget) VALUES('PSG', 'Luis Enrique', 850000000);
+INSERT INTO Equipe(nom, entraineur, budget) VALUES('FC Gottéron', 'Jean-Marc Genoud', 2500);
+INSERT INTO Equipe(nom, entraineur, budget) VALUES('Young Boys', 'Giorgio Contini', 77900000);
+
+CREATE TABLE Joueur(
+    prénom TEXT, nom TEXT, numéro_maillot INTEGER, equipe TEXT, id_joueur INTEGER,
+    PRIMARY KEY(id_joueur AUTOINCREMENT),
+    FOREIGN KEY(equipe) REFERENCES Equipe(nom)
+);
+```
+
 #### Partie C
 Ajoutez maintenant 3 nouveaux joueurs dans cette base de données.
  - Aurélien Queloz (n° 12) est dans l'équipe entrainée par Jean-Marc Genoud
@@ -811,7 +829,7 @@ Ajoutez maintenant 3 nouveaux joueurs dans cette base de données.
 Grâce au `AUTOINCREMENT`, ces joueurs devraient avoir **automatiquement** les `id_joueur` 1, 2, 3.
  ```{exec} sql
 :editor: 01992e4a-8378-79be-a44a-551312f61caa
-:after: pragma-CE
+:after: foot-db
 :then: select-joueur
 
 
@@ -819,7 +837,7 @@ Grâce au `AUTOINCREMENT`, ces joueurs devraient avoir **automatiquement** les `
 
 ````{solution}
 ```{exec} sql
-:after: solution-create-joueur
+:after: foot-db
 :then: select-joueur
 INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
 VALUES('Queloz', 'Aurélien', 12, 'FC Gottéron');
