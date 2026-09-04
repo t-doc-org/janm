@@ -820,7 +820,6 @@ Avant de l'exécuter, prédisez le résultat de la requête `INSERT INTO` ci-des
 Cette requête va-t-elle fonctionner ?
 ```
 
-Si votre code est correct, cette requête ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un 1er joueur à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
 
 ```{exec} sql
 :when:
@@ -839,6 +838,7 @@ PRAGMA foreign_keys = ON;
 INSERT INTO Joueur(prénom, nom, numéro_maillot, equipe)
 VALUES('Kylian', 'Mbappé', 10, 'Real Madrid')
 ```
+
 
 
 ````{solution}
@@ -966,8 +966,6 @@ Avant de l'exécuter, prédisez le résultat de la requête `INSERT INTO` ci-des
 Cette requête va-t-elle fonctionner ?
 ```
 
-Si votre code est correct, cette requête ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un manga à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
-
 ```{exec} sql
 :when:
 :class: hidden
@@ -982,6 +980,7 @@ PRAGMA foreign_keys = ON;
 INSERT INTO Manga(titre, nb_tomes, prix, editeur)
 VALUES ('Berserk', 41, 8.50, 99)
 ```
+
 
 ````{solution}
 ```{exec} sql
