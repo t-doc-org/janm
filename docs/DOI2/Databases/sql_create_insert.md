@@ -51,49 +51,6 @@ CREATE TABLE Livre (
 select * from Livre;
 ```
 
-### Pourquoi une clef primaire ?
-
-À quoi sert la clef primaire ? Son rôle est de garantir que chaque ligne est **unique et
-identifiable**. Sans clef primaire, rien n'empêche d'enregistrer deux fois la même donnée. Exécutez
-le bloc ci-dessous : la table `Membre` n'a pas de clef primaire, et le même e-mail est enregistré
-**deux fois** sans que la base ne proteste.
-
-```{exec} sql
-:name: demo-pk-sans
-:then: demo-pk-sans-select
-CREATE TABLE Membre (
-    nom TEXT,
-    prenom TEXT,
-    email TEXT
-);
-
-INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
-INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
-```
-
-```{exec} sql
-:name: demo-pk-sans-select
-:when:
-:class: hidden
-SELECT * FROM Membre;
-```
-
-En déclarant l'e-mail comme clef primaire, la base **refuse** d'enregistrer deux membres avec le
-même e-mail : elle renvoie le message `UNIQUE constraint failed`. La clef primaire agit comme un
-garde-fou : deux lignes ne peuvent jamais partager la même clef.
-
-```{exec} sql
-:name: demo-pk-avec
-CREATE TABLE Membre (
-    nom TEXT,
-    prenom TEXT,
-    email TEXT,
-    PRIMARY KEY(email)
-);
-
-INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
-INSERT INTO Membre(nom, prenom, email) VALUES ('Queloz', 'Aurélien', 'maxime@exemple.ch');
-```
 
 ### Identifiants artificiels numériques
 
@@ -149,7 +106,57 @@ select * from Emprunt;
 ```
 
 
-### Pourquoi une clef étrangère ?
+
+
+## Insertion de données
+
+Pour insérer une ligne dans une table, il faut utiliser l'instruction
+`INSERT INTO ... VALUES ...`. Après `INSERT INTO`, il faut préciser le nom de la table dans laquelle nous souhaitons ajoutons une ligne, ainsi que les colonnes à remplir. Nous ajoutons ensuite le mot-clef `VALUES` et une paire de parenthèses entre lesquelles nous indiquons
+les valeurs à insérer dans chaque colonne. L'ordre des valeurs doit être le même que celui établi plus tôt dans la requête.
+
+Les valeurs de type `TEXT` et `DATE` doivent être entre guillemets simples, et la séparation entre les unités et les décimales d'une valeur `REAL` se fait avec un point.
+
+```{exec} sql
+:after: sql-livre
+:name: sql-livre-insert1
+:then: sql-livre-select
+:editor:
+INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix)
+VALUES ('La Vérité sur l`Affaire Harry Québert', 'Joël Dicker', '2012-03-01', 9782877068161, 23.95);
+```
+
+Lorsqu'on insère des données dans une table contenant une clef primaire qui a été définie avec `AUTOINCREMENT`, on peut omettre sa valeur et SQL se charge de l'attribuer automatiquement.
+
+
+```{exec} sql
+:after: sql-user
+:name: sql-user-insert1
+:then: sql-user-select
+:editor:
+INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Jan', 'Maxime', 'enseignant');
+
+INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Queloz', 'Aurélien', 'élève');
+```
+
+### L'intérêt de la clef primaire
+
+À quoi sert la clef primaire ? Son rôle est de garantir que chaque ligne soit **unique**. Sans clef primaire, rien n'empêche d'enregistrer deux fois la même donnée. Exécutez la cellule ci-dessous. Celle-ci essaie d'insérer 2x un utilisateur
+avec la même adresse email. Comme l'attribut `email` avait été déclaré comme `PRIMARY KEY`, la requête échoue avec l'erreur `UNIQUE constraint failed`.
+
+
+```{exec} sql
+:name: demo-pk-avec
+CREATE TABLE Membre (
+    nom TEXT,
+    prenom TEXT,
+    email TEXT,
+    PRIMARY KEY(email)
+);
+
+INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
+INSERT INTO Membre(nom, prenom, email) VALUES ('Queloz', 'Aurélien', 'maxime@exemple.ch');
+```
+### L'intérêt de la clef étrangère
 
 La clef étrangère empêche d'enregistrer une donnée incohérente. Dans l'exemple ci-dessous, on essaie
 d'ajouter un emprunt pour l'utilisateur n°`999`, qui n'existe pas dans la table `Utilisateur`. La
@@ -181,36 +188,6 @@ CREATE TABLE Emprunt (
 ```{exec} sql
 :after: demo-fk-setup
 INSERT INTO Emprunt(livre, utilisateur) VALUES (12, 999);
-```
-
-## Insertion de données
-
-Pour insérer une ligne dans une table, il faut utiliser l'instruction
-`INSERT INTO ... VALUES ...`. Après `INSERT INTO`, il faut préciser le nom de la table dans laquelle nous souhaitons ajoutons une ligne, ainsi que les colonnes à remplir. Nous ajoutons ensuite le mot-clef `VALUES` et une paire de parenthèses entre lesquelles nous indiquons
-les valeurs à insérer dans chaque colonne. L'ordre des valeurs doit être le même que celui établi plus tôt dans la requête.
-
-Les valeurs de type `TEXT` et `DATE` doivent être entre guillemets simples, et la séparation entre les unités et les décimales d'une valeur `REAL` se fait avec un point.
-
-```{exec} sql
-:after: sql-livre
-:name: sql-livre-insert1
-:then: sql-livre-select
-:editor:
-INSERT INTO Livre(titre, auteur, date_pub, numero_isbn, prix)
-VALUES ('La Vérité sur l`Affaire Harry Québert', 'Joël Dicker', '2012-03-01', 9782877068161, 23.95);
-```
-
-Lorsqu'on insère des données dans une table contenant une clef primaire qui a été définie avec `AUTOINCREMENT`, on peut omettre sa valeur et SQL se charge de l'attribuer automatiquement.
-
-
-```{exec} sql
-:after: sql-user
-:name: sql-user-insert1
-:then: sql-user-select
-:editor:
-INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Jan', 'Maxime', 'enseignant');
-
-INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Queloz', 'Aurélien', 'élève');
 ```
 
 ## Exercices
@@ -862,6 +839,8 @@ PRAGMA foreign_keys = ON;
 INSERT INTO Joueur(prénom, nom, numéro_maillot, equipe)
 VALUES('Kylian', 'Mbappé', 10, 'Real Madrid')
 ```
+
+
 ````{solution}
 ```{exec} sql
 :name: solution-create-joueur
