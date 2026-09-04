@@ -51,6 +51,50 @@ CREATE TABLE Livre (
 select * from Livre;
 ```
 
+### Pourquoi une clef primaire ?
+
+À quoi sert la clef primaire ? Son rôle est de garantir que chaque ligne est **unique et
+identifiable**. Sans clef primaire, rien n'empêche d'enregistrer deux fois la même donnée. Exécutez
+le bloc ci-dessous : la table `Membre` n'a pas de clef primaire, et le même e-mail est enregistré
+**deux fois** sans que la base ne proteste.
+
+```{exec} sql
+:name: demo-pk-sans
+:then: demo-pk-sans-select
+CREATE TABLE Membre (
+    nom TEXT,
+    prenom TEXT,
+    email TEXT
+);
+
+INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
+INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
+```
+
+```{exec} sql
+:name: demo-pk-sans-select
+:when:
+:class: hidden
+SELECT * FROM Membre;
+```
+
+En déclarant l'e-mail comme clef primaire, la base **refuse** d'enregistrer deux membres avec le
+même e-mail : elle renvoie le message `UNIQUE constraint failed`. La clef primaire agit comme un
+garde-fou : deux lignes ne peuvent jamais partager la même clef.
+
+```{exec} sql
+:name: demo-pk-avec
+CREATE TABLE Membre (
+    nom TEXT,
+    prenom TEXT,
+    email TEXT,
+    PRIMARY KEY(email)
+);
+
+INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
+INSERT INTO Membre(nom, prenom, email) VALUES ('Queloz', 'Aurélien', 'maxime@exemple.ch');
+```
+
 ### Identifiants artificiels numériques
 
 Lorsque la clef primaire d'une table est un identifiant artificiel créé uniquement pour ce rôle, on peut utiliser le mot-clef `AUTOINCREMENT` dans la définition de la `PRIMARY KEY` afin que SQL se charge lui-même d'attribuer ce numéro unique aux futures lignes de la table. La valeur de cet identifiant doit obligatoirement être `INTEGER`
@@ -104,6 +148,40 @@ CREATE TABLE Emprunt (
 select * from Emprunt;
 ```
 
+
+### Pourquoi une clef étrangère ?
+
+La clef étrangère empêche d'enregistrer une donnée incohérente. Dans l'exemple ci-dessous, on essaie
+d'ajouter un emprunt pour l'utilisateur n°`999`, qui n'existe pas dans la table `Utilisateur`. La
+base **refuse** l'insertion avec le message `FOREIGN KEY constraint failed`.
+
+```{exec} sql
+:name: demo-fk-setup
+:when:
+:class: hidden
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE Utilisateur (
+    nom TEXT,
+    id_utilisateur INTEGER,
+    PRIMARY KEY(id_utilisateur AUTOINCREMENT)
+);
+
+INSERT INTO Utilisateur(nom) VALUES ('Alice');
+
+CREATE TABLE Emprunt (
+    livre INTEGER,
+    utilisateur INTEGER,
+    id_emprunt INTEGER,
+    PRIMARY KEY(id_emprunt AUTOINCREMENT),
+    FOREIGN KEY(utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+```
+
+```{exec} sql
+:after: demo-fk-setup
+INSERT INTO Emprunt(livre, utilisateur) VALUES (12, 999);
+```
 
 ## Insertion de données
 
@@ -830,4 +908,144 @@ VALUES('Genoud', 'Isaac', 7, 'FC Gottéron');
 INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
 VALUES('Dupasquier', 'Maxime', 3, 'Young Boys');
 ```
+````
+
+
+### Exercice {num1}`exercice`
+Le schéma relationnel ci-dessous décrit une base de données d'une bibliothèque de mangas et de leurs éditeurs.
+
+```{image} images/manga_schema.png
+:width: 45%
+:alt: Schéma relationnel d'une bibliothèque de mangas et de leurs éditeurs
+:align: center
+```
+
+#### Partie A
+Commencez par écrire, ci-dessous, la requête permettant de créer la table `Editeur`.
+
+```{exec} sql
+:editor: 6df5ff6c-1a8a-4bdc-9dbf-c6dfa1ba24c1
+:name: eleve-create-editeur
+:then: select-editeur
+```
+
+```{exec} sql
+:when:
+:class: hidden
+:name: select-editeur
+SELECT * FROM Editeur
+```
+
+Si votre code SQL est correct, le bloc ci-dessous devrait permettre de créer et enregistrer 3 nouveaux éditeurs.
+
+```{exec} sql
+:after: eleve-create-editeur
+:name: insert-editeur
+:then: select-editeur
+INSERT INTO Editeur(nom, pays) VALUES ('Glénat', 'France');
+
+INSERT INTO Editeur(nom, pays) VALUES ('Kana', 'Belgique');
+
+INSERT INTO Editeur(nom, pays) VALUES ('Kazé', 'France');
+```
+
+````{solution}
+```{exec} sql
+:name: solution-create-editeur
+:then: select-editeur
+CREATE TABLE Editeur(
+    nom TEXT,
+    pays TEXT,
+    id_editeur INTEGER,
+    PRIMARY KEY(id_editeur AUTOINCREMENT)
+)
+```
+````
+
+#### Partie B
+Créez maintenant la table `Manga`. N'oubliez pas de référencer la clef étrangère avec `FOREIGN KEY ... REFERENCES ...`.
+
+```{exec} sql
+:editor: b17d2a7f-3897-4694-bcec-98983127be46
+:name: eleve-create-manga
+:after: insert-editeur
+:then: select-manga
+```
+
+```{exec} sql
+:when:
+:class: hidden
+:name: select-manga
+SELECT * FROM Manga
+```
+
+Avant de l'exécuter, prédisez le résultat de la requête `INSERT INTO` ci-dessous.
+
+```{quiz}
+:style: max-width: 30rem;
+{ouinon}`non`
+Cette requête va-t-elle fonctionner ?
+```
+
+Si votre code est correct, cette requête ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un manga à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
+
+```{exec} sql
+:when:
+:class: hidden
+:name: pragma-manga
+:after: eleve-create-manga
+PRAGMA foreign_keys = ON;
+```
+
+```{exec} sql
+:after: pragma-manga
+:then: select-manga
+INSERT INTO Manga(titre, nb_tomes, prix, editeur)
+VALUES ('Berserk', 41, 8.50, 99)
+```
+
+````{solution}
+```{exec} sql
+:name: solution-create-manga
+:after: solution-create-editeur
+:then: select-manga
+CREATE TABLE Manga(
+    titre TEXT,
+    nb_tomes INTEGER,
+    prix REAL,
+    editeur INTEGER,
+    id_manga INTEGER,
+    PRIMARY KEY(id_manga AUTOINCREMENT),
+    FOREIGN KEY(editeur) REFERENCES Editeur(id_editeur)
+)
+```
+
+Le `INSERT INTO` ne fonctionne pas car la clef étrangère `editeur` prendrait ici la valeur `99`, qui ne correspond à aucun `id_editeur` existant dans la table `Editeur`. La clef étrangère `editeur` ne référence pas la table `Editeur` toute entière, mais bien **sa clef primaire** : `Editeur(id_editeur)`.
+````
+
+#### Partie C
+Ajoutez maintenant 3 nouveaux mangas dans cette base de données.
+ - *One Piece* (108 tomes, 7.60 CHF) est publié par Glénat
+ - *Naruto* (72 tomes, 7.60 CHF) est publié par Kana
+ - *Fullmetal Alchemist* (27 tomes, 8.95 CHF) est publié par Kazé
+
+Grâce au `AUTOINCREMENT`, les éditeurs Glénat, Kana et Kazé ont reçu **automatiquement** les `id_editeur` 1, 2 et 3.
+
+```{exec} sql
+:editor: c5e2657d-92f2-4e54-b03d-8ea36efa458e
+:after: pragma-manga
+:then: select-manga
+```
+
+````{solution}
+```{exec} sql
+:after: solution-create-manga
+:then: select-manga
+INSERT INTO Manga(titre, nb_tomes, prix, editeur) VALUES ('One Piece', 108, 7.60, 1);
+
+INSERT INTO Manga(titre, nb_tomes, prix, editeur) VALUES ('Naruto', 72, 7.60, 2);
+
+INSERT INTO Manga(titre, nb_tomes, prix, editeur) VALUES ('Fullmetal Alchemist', 27, 8.95, 3);
+```
+La clef étrangère `editeur` doit être renseignée avec le **numéro** de l'éditeur (`1`, `2` ou `3`), pas avec son nom.
 ````
