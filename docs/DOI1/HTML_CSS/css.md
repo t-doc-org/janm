@@ -318,7 +318,7 @@ les quatre erreurs.
         text-align: center;
       }
       h2 {
-        color darkorange;
+        font-color: darkorange;
       }
       p {
         font-size: 18;
@@ -341,8 +341,8 @@ Les quatre erreurs, dans l'ordre :
     anglais**. Il faut donc écrire `yellow`.
 2.  Il manque un **point-virgule** après `color: blue`. Du coup, le navigateur lit
     `color: blue text-align: center` comme une seule valeur invalide et ignore les deux propriétés.
-3.  Il manque le **deux-points** `:` entre la propriété `color` et sa valeur : il faut écrire
-    `color: darkorange;`.
+3.  La propriété `font-color` n'existe pas en CSS : pour changer la couleur du texte, la propriété
+    s'appelle simplement `color`. Il faut donc écrire `color: darkorange;`.
 4.  La taille `18` doit avoir une **unité** : `18px`. Un nombre sans unité n'est pas accepté pour
     `font-size`.
 
