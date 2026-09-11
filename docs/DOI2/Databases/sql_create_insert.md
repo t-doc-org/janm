@@ -824,7 +824,7 @@ Cette requête va-t-elle fonctionner ?
 ```{exec} sql
 :when:
 :class: hidden
-:name: pragma-CE
+:name: pragma-ce
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE Equipe(
@@ -852,7 +852,7 @@ CREATE TABLE Joueur(
 
 
 ```{exec} sql
-:after: pragma-CE
+:after: pragma-ce
 :then: select-joueur
 
 INSERT INTO Joueur(prénom, nom, numéro_maillot, equipe)
@@ -888,7 +888,7 @@ Ajoutez maintenant 3 nouveaux joueurs dans cette base de données.
 Grâce au `AUTOINCREMENT`, ces joueurs devraient avoir **automatiquement** les `id_joueur` 1, 2, 3.
  ```{exec} sql
 :editor: 01992e4a-8378-79be-a44a-551312f61caa
-:after: pragma-CE
+:after: pragma-ce
 :then: select-joueur
 
 
