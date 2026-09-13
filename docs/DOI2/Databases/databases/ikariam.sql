@@ -34,8 +34,6 @@ CREATE TABLE IF NOT EXISTS batiment (
 );
 
 
-PRAGMA foreign_keys = ON;
-
 -- ======================================
 -- 1) JOUEURS (10 joueurs)
 -- ======================================

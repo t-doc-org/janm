@@ -166,8 +166,6 @@ base **refuse** l'insertion avec le message `FOREIGN KEY constraint failed`.
 :name: demo-fk-setup
 :when:
 :class: hidden
-PRAGMA foreign_keys = ON;
-
 CREATE TABLE Utilisateur (
     nom TEXT,
     id_utilisateur INTEGER,
@@ -259,7 +257,7 @@ valeur ?* Si la réponse est non, c'est du `TEXT`.
 Pour chacune de ces clefs primaires, déterminez si le mot-clef `AUTOINCREMENT` est nécessaire.
 
 ```{quiz}
-:style: max-width: 34rem;
+:style: max-width: 42rem;
 1. {auto}`sans AUTOINCREMENT`
 `numero_isbn` dans une table `Livre`
 
@@ -658,8 +656,6 @@ SELECT * FROM Album;
 :name: musique-complet
 :when:
 :class: hidden
-PRAGMA foreign_keys = ON;
-
 CREATE TABLE Artiste (
     nom TEXT,
     pays TEXT,
@@ -825,8 +821,6 @@ Cette requête va-t-elle fonctionner ?
 :when:
 :class: hidden
 :name: pragma-ce
-PRAGMA foreign_keys = ON;
-
 CREATE TABLE Equipe(
     nom TEXT,
     entraineur TEXT,
@@ -990,8 +984,6 @@ Cette requête va-t-elle fonctionner ?
 :when:
 :class: hidden
 :name: pragma-manga
-PRAGMA foreign_keys = ON;
-
 CREATE TABLE Editeur(
     nom TEXT,
     pays TEXT,
