@@ -640,21 +640,21 @@ On reprend la même plateforme de streaming, cette fois entièrement créée et 
 artistes de l'exercice précédent. Pour chacune des requêtes ci-dessous, **prédisez d'abord** si
 elle va fonctionner, puis exécutez-la pour vérifier.
 
-```{exec} sql predict
+```{exec} sql
 :name: predict-artiste-select
 :when:
 :class: hidden
 SELECT * FROM Artiste;
 ```
 
-```{exec} sql predict
+```{exec} sql
 :name: predict-album-select
 :when:
 :class: hidden
 SELECT * FROM Album;
 ```
 
-```{exec} sql predict
+```{exec} sql
 :name: musique-complet
 :when:
 :class: hidden
@@ -684,21 +684,21 @@ INSERT INTO Artiste(nom, pays) VALUES ('Orelsan', 'France');
 
 ```````{quiz}
 1.  {ouinon}`oui`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-artiste-select
     INSERT INTO Artiste(nom, pays) VALUES ('Damso', 'Belgique');
     ```
 
 2.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-artiste-select
     INSERT INTO Artiste(nom, pays) VALUES (Damso, Belgique);
     ```
 
 3.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-album-select
     INSERT INTO Album(titre, annee, nb_pistes, artiste)
@@ -706,21 +706,21 @@ INSERT INTO Artiste(nom, pays) VALUES ('Orelsan', 'France');
     ```
 
 4.  {ouinon}`oui`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-album-select
     INSERT INTO Album(titre, artiste) VALUES ('Racine carrée', 1);
     ```
 
 5.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-artiste-select
     INSERT INTO Artiste(nom, pays, id_artiste) VALUES ('Zaho de Sagazan', 'France');
     ```
 
 6.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-album-select
     INSERT INTO Album VALUES ('Nonante-Cinq', 2021, 13, 2);
