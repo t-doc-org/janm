@@ -189,10 +189,16 @@ Dans le simulateur ci-dessous, transformez un **additionneur 4 bits** en
 **soustracteur** `a - b`. Les quatre « Additionneur complet » sont déjà en ligne
 (comme sur le schéma), avec `a` et `b` au-dessus et `s` en dessous. Rappel :
 `a - b = a + ¬b + 1`. Ajoutez donc une **porte NON** sur chaque `b`, reliez `a`
-directement à son additionneur, et forcez la première retenue entrante (à droite,
-celle de `a0`) à `1` avec une **entrée réglée sur `1`**. Chaînez ensuite les
-retenues et reliez les sorties. Testez sur `6 - 3`, `4 - 7` et `5 - 5` : le
-résultat est en complément à deux.
+directement à son additionneur, puis chaînez les retenues et reliez les sorties.
+
+Il reste le `+ 1` : chaque additionneur complet possède une entrée de retenue
+`Cin`, mais celle du premier (à droite, celle de `a0`) n'est reliée à rien. Comme
+Logix n'a pas de composant "constante", c'est à vous de fournir ce `1` : **ajoutez
+une entrée, réglez-la sur `1`, et reliez-la au `Cin` de l'additionneur de droite**.
+C'est elle qui réalise le `+ 1` du complément à deux. Les autres `Cin`, laissés non
+reliés, valent `0`.
+
+Testez sur `6 - 3`, `4 - 7` et `5 - 5` : le résultat est en complément à deux.
 
 ```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiU291c3RyYWN0ZXVyIDQgYml0cyBhdmVjIGRlcyBhZGRpdGlvbm5ldXJzIGNvbXBsZXRzIiwibyI6IlRyYW5zZm9ybWV6IGNldCBhZGRpdGlvbm5ldXIgNCBiaXRzIGVuIHNvdXN0cmFjdGV1ciBhIC0gYiAoYSAtIGIgPSBhICsgwqxiICsgMSkuIEludmVyc2V6IGNoYXF1ZSBiX2kgYXZlYyB1bmUgcG9ydGUgTk9OIGF2YW50IHNvbiBhZGRpdGlvbm5ldXIsIGV0IGZvcmNleiBsZSBwcmVtaWVyIENpbiAow6AgZHJvaXRlKSDDoCAxIGF2ZWMgdW5lIGVudHLDqWUgcsOpZ2zDqWUgc3VyIDEuIiwicyI6WyJBam91dGV6IHVuZSBwb3J0ZSBOT04gc3VyIGNoYXF1ZSBiX2kgKGVudHJlIGJfaSBldCBsJ2VudHLDqWUgQikuIiwiUmVsaWV6IGNoYXF1ZSBhX2kgw6AgQSBkaXJlY3RlbWVudC4iLCJQbGFjZXogdW5lIGVudHLDqWUgw6AgMSBldCByZWxpZXotbGEgYXUgQ2luIGRlIGwnYWRkaXRpb25uZXVyIGRlIGRyb2l0ZSAoYTApLiIsIkNoYcOubmV6IGxlcyByZXRlbnVlcyBldCByZWxpZXogbGVzIHNvcnRpZXMgUyDDoCBzX2ksIGxhIGRlcm5pw6hyZSByZXRlbnVlIMOgIGNvdXQuIiwiVGVzdGV6IGEgLSBiIHN1ciBxdWVscXVlcyB2YWxldXJzIDsgbGUgcsOpc3VsdGF0IGVzdCBlbiBjb21wbMOpbWVudCDDoCBkZXV4LiJdLCJhIjpbIkZVTExBRERFUiIsIk5PVCJdLCJpIjpbXSwidSI6W10sImsiOiJub25lIiwiciI6W10sImMiOnsidmVyc2lvbiI6MiwibmFtZSI6ImNpcmN1aXQiLCJjb21wb25lbnRzIjpbeyJpZCI6ImEwIiwidHlwZSI6IklOUFVUIiwieCI6NDYwLCJ5Ijo0MCwibGFiZWwiOiJhMCJ9LHsiaWQiOiJhMSIsInR5cGUiOiJJTlBVVCIsIngiOjM0MCwieSI6NDAsImxhYmVsIjoiYTEifSx7ImlkIjoiYTIiLCJ0eXBlIjoiSU5QVVQiLCJ4IjoyMDAsInkiOjQwLCJsYWJlbCI6ImEyIn0seyJpZCI6ImEzIiwidHlwZSI6IklOUFVUIiwieCI6NjAsInkiOjQwLCJsYWJlbCI6ImEzIn0seyJpZCI6ImIwIiwidHlwZSI6IklOUFVUIiwieCI6NDYwLCJ5IjoxMjAsImxhYmVsIjoiYjAifSx7ImlkIjoiYjEiLCJ0eXBlIjoiSU5QVVQiLCJ4IjozNDAsInkiOjEyMCwibGFiZWwiOiJiMSJ9LHsiaWQiOiJiMiIsInR5cGUiOiJJTlBVVCIsIngiOjIwMCwieSI6MTIwLCJsYWJlbCI6ImIyIn0seyJpZCI6ImIzIiwidHlwZSI6IklOUFVUIiwieCI6NjAsInkiOjEyMCwibGFiZWwiOiJiMyJ9LHsiaWQiOiJmYTAiLCJ0eXBlIjoiRlVMTEFEREVSIiwieCI6NDQwLCJ5IjoyMDAsInN0YXRlIjp7Im9yaWVudGF0aW9uIjoiZG93biJ9fSx7ImlkIjoiZmExIiwidHlwZSI6IkZVTExBRERFUiIsIngiOjMwMCwieSI6MjAwLCJzdGF0ZSI6eyJvcmllbnRhdGlvbiI6ImRvd24ifX0seyJpZCI6ImZhMiIsInR5cGUiOiJGVUxMQURERVIiLCJ4IjoxNjAsInkiOjIwMCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn19LHsiaWQiOiJmYTMiLCJ0eXBlIjoiRlVMTEFEREVSIiwieCI6NDAsInkiOjIwMCwic3RhdGUiOnsib3JpZW50YXRpb24iOiJkb3duIn19LHsiaWQiOiJzMCIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo0ODAsInkiOjM2MCwibGFiZWwiOiJzMCJ9LHsiaWQiOiJzMSIsInR5cGUiOiJPVVRQVVQiLCJ4IjozNDAsInkiOjM2MCwibGFiZWwiOiJzMSJ9LHsiaWQiOiJzMiIsInR5cGUiOiJPVVRQVVQiLCJ4IjoyMDAsInkiOjM2MCwibGFiZWwiOiJzMiJ9LHsiaWQiOiJzMyIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo4MCwieSI6MzYwLCJsYWJlbCI6InMzIn0seyJpZCI6ImNvdXQiLCJ0eXBlIjoiT1VUUFVUIiwieCI6MCwieSI6MzYwLCJsYWJlbCI6ImNvdXQifV0sIndpcmVzIjpbXSwiY3VzdG9tRGVmaW5pdGlvbnMiOnt9fX0&embed=1
 :style: height: 580px; aspect-ratio: auto; border: 1px solid black;
