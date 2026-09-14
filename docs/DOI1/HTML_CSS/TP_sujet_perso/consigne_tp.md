@@ -22,7 +22,7 @@ Voici quelques exemples de thématiques pour vous inspirer :
  - Site Web pour votre société locale (club de sport, groupe de musique, ...)
  - Blog de critiques (livres, jeux-vidéos, films, ...)
  - Blog de cuisine / voyage / ...
- - Site Web présentant quoi que ce soit (un hobby, un jeu-vidéo, un réalisateur, un mouvement musical, un évènement, un groupe de musique, ...)
+ - Site Web présentant quoi que ce soit (un hobby, un jeu-vidéo, un réalisateur, un mouvement musical, un évènement, ...)
  - Guide touristique pour une ville, un pays
  - Portfolio de créations personnelles (dessins, peinture, textes, photographies, ...)
  - ...
