@@ -350,90 +350,6 @@ Dans quelle partie les balises suivantes se trouvent-elles?
 
 ## Exercice {num2}`exercice`
 
-Chacune des pages ci-dessous contient **une erreur** qui fait que le résultat affiché n'est pas
-celui attendu. Exécutez chaque code pour observer le problème, puis corrigez-le.
-
-1.  Ce titre devrait être suivi d'un paragraphe de taille normale, mais tout s'affiche en énorme.
-    ```{exec} html
-    :editor: c1a2b3c4-0001-4a1a-9b1a-100000000001
-    :style: height: 7rem;
-    :output-style: height:10rem;
-    <h1>Ma passion : le vélo
-    <p>J'adore faire du vélo le week-end.</p>
-    ```
-
-2.  Le mot « Wikipédia » devrait être un lien cliquable, mais ce n'est que du texte.
-    ```{exec} html
-    :editor: c1a2b3c4-0002-4a1a-9b1a-100000000002
-    :style: height: 5rem;
-    :output-style: height:10rem;
-    <p>Pour en savoir plus, consultez <a>Wikipédia</a>.</p>
-    ```
-
-3.  Ces trois fruits devraient apparaître comme une liste à puces, mais ils se suivent sur une
-    seule ligne.
-    ```{exec} html
-    :editor: c1a2b3c4-0003-4a1a-9b1a-100000000003
-    :style: height: 10rem;
-    :output-style: height:10rem;
-    <ul>
-      Pomme
-      Poire
-      Cerise
-    </ul>
-    ```
-
-4.  Au lieu d'afficher l'image, cette balise affiche son lien
-    ```{exec} html
-    :editor: c1a2b3c4-0004-4a1a-9b1a-100000000004
-    :style: height: 6rem;
-    :output-style: height:10rem;
-    <p>Photo de l'ENIAC par M. Weik</p>
-    <img width="200"> https://upload.wikimedia.org/wikipedia/commons/0/0c/ENIAC-changing_a_tube_%28cropped%29.jpg</img>
-    ```
-
-````{solution}
-1.  Il manque la balise **fermante** `</h1>`. Sans elle, le navigateur considère que tout ce qui
-    suit fait encore partie du titre, et l'affiche donc en très grand.
-    ```{exec} html
-    :when: load click
-    :style: height: 7rem;
-    <h1>Ma passion : le vélo</h1>
-    <p>J'adore faire du vélo le week-end.</p>
-    ```
-
-2.  Un lien a besoin de l'attribut `href` pour indiquer **vers où** il pointe. Sans lui, la balise
-    `<a>` n'est pas cliquable.
-    ```{exec} html
-    :when: load click
-    :style: height: 5rem;
-    <p>Pour en savoir plus, consultez <a href="https://fr.wikipedia.org">Wikipédia</a>.</p>
-    ```
-
-3.  Dans une liste, **chaque élément** doit être entouré d'une balise `<li> ... </li>`. Le texte
-    placé directement dans le `<ul>` n'est pas traité comme des éléments de liste.
-    ```{exec} html
-    :when: load click
-    :style: height: 6rem;
-    <ul>
-      <li>Pomme</li>
-      <li>Poire</li>
-      <li>Cerise</li>
-    </ul>
-    ```
-
-4.  Une image a besoin de l'attribut `src` pour indiquer **quel fichier** afficher. Sans lui, le
-    navigateur ne sait pas quoi montrer. De plus, la balise `<img>` est une balise indépendante et n'a donc pas de balise fermante.
-    ```{exec} html
-    :when: load click
-    :style: height: 12rem;
-        <p>Photo de l'ENIAC par M. Weik</p>
-    <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/ENIAC-changing_a_tube_%28cropped%29.jpg">
-    ```
-````
-
-## Exercice {num2}`exercice`
-
 En utilisant l'éditeur ci-dessous, complétez le `<body>` pour créer une page HTML contenant :
 
 1. Un titre principal `<h1>` avec le texte "Ma page"
@@ -481,6 +397,300 @@ Observez la différence de taille entre les niveaux de titres.
   </body>
 </html>
 ```
+````
+
+## Exercice {num2}`exercice`
+
+Chacune des pages ci-dessous contient **une erreur** qui fait que le résultat affiché n'est pas
+celui attendu. Exécutez chaque code pour observer le problème, puis corrigez-le.
+
+1.  Le titre et le paragraphe devraient avoir des tailles différentes, mais tout s'affiche en énorme.
+    ```{exec} html
+    :editor: c1a2b3c4-0001-4a1a-9b1a-100000000001
+    :style: height: 13rem;
+    :output-style: height:10rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Ma passion</title>
+      </head>
+      <body>
+        <h1>Ma passion : le vélo
+        <p>J'adore faire du vélo le week-end.</p>
+      </body>
+    </html>
+    ```
+
+2.  « Ingrédients » devrait être un sous-titre plus petit que le titre principal, mais il s'affiche
+    à la même taille.
+    ```{exec} html
+    :editor: d1e2f3a4-0002-4b1a-9c1a-200000000002
+    :style: height: 14rem;
+    :output-style: height:10rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Recette</title>
+      </head>
+      <body>
+        <h1>Recette de crêpes</h1>
+        <h1>Ingrédients</h1>
+        <p>Farine, lait, oeufs.</p>
+      </body>
+    </html>
+    ```
+
+3.  Cette page devrait afficher un titre et un paragraphe, mais rien ne s'affiche.
+    ```{exec} html
+    :editor: d1e2f3a4-0003-4b1a-9c1a-200000000003
+    :style: height: 13rem;
+    :output-style: height:10rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Mon site
+      </head>
+      <body>
+        <h1>Bienvenue</h1>
+        <p>Voici ma première page.</p>
+      </body>
+    </html>
+    ```
+
+````{solution}
+1.  Il manque la balise **fermante** `</h1>`. Sans elle, le navigateur considère que le paragraphe
+    fait encore partie du titre, et l'affiche donc en très grand.
+    ```{exec} html
+    :when: load click
+    :style: height: 12rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Ma passion</title>
+      </head>
+      <body>
+        <h1>Ma passion : le vélo</h1>
+        <p>J'adore faire du vélo le week-end.</p>
+      </body>
+    </html>
+    ```
+
+2.  Un sous-titre doit utiliser un niveau de titre inférieur. Ici les deux lignes sont des `<h1>` :
+    il faut transformer le second en `<h2>` pour qu'il devienne un sous-titre plus petit.
+    ```{exec} html
+    :when: load click
+    :style: height: 12rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Recette</title>
+      </head>
+      <body>
+        <h1>Recette de crêpes</h1>
+        <h2>Ingrédients</h2>
+        <p>Farine, lait, oeufs.</p>
+      </body>
+    </html>
+    ```
+
+3.  Il manque la balise **fermante** `</title>`. Sans elle, tout le reste de la page est considéré
+    comme faisant partie du titre de l'onglet, et le contenu ne s'affiche donc pas.
+    ```{exec} html
+    :when: load click
+    :style: height: 12rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Mon site</title>
+      </head>
+      <body>
+        <h1>Bienvenue</h1>
+        <p>Voici ma première page.</p>
+      </body>
+    </html>
+    ```
+````
+
+## Exercice {num2}`exercice`
+
+En utilisant l'éditeur ci-dessous, complétez le `<body>` pour présenter votre animal préféré.
+Ajoutez :
+
+1. Un sous-titre `<h2>` avec le texte "Description"
+2. Un paragraphe `<p>` qui décrit l'animal
+3. Un sous-titre `<h2>` avec le texte "Pourquoi je l'aime"
+4. Un paragraphe `<p>`
+5. Un sous-sous-titre `<h3>` avec le texte "Anecdote"
+6. Un dernier paragraphe `<p>`
+
+```{exec} html
+:editor: e2f3a4b5-6c7d-8e9f-0a1b-300000000001
+:style: height: 16rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mon animal préféré</title>
+  </head>
+  <body>
+    <h1>Mon animal préféré</h1>
+  </body>
+</html>
+```
+
+````{solution}
+```{exec} html
+:when: load click
+:editor:
+:style: height: 20rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mon animal préféré</title>
+  </head>
+  <body>
+    <h1>Mon animal préféré</h1>
+    <h2>Description</h2>
+    <p>Le chat est un petit animal domestique au pelage doux.</p>
+    <h2>Pourquoi je l'aime</h2>
+    <p>Il est affectueux et très indépendant.</p>
+    <h3>Anecdote</h3>
+    <p>Mon chat dort plus de seize heures par jour.</p>
+  </body>
+</html>
+```
+````
+
+
+## Exercice {num2}`exercice`
+
+Chacune des pages ci-dessous contient **une erreur**. Exécutez chaque code pour observer le
+problème, puis corrigez-le.
+
+1.  Le mot « Wikipédia » devrait être un lien cliquable, mais ce n'est que du texte.
+    ```{exec} html
+    :editor: c1a2b3c4-0002-4a1a-9b1a-100000000002
+    :style: height: 13rem;
+    :output-style: height:8rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Lien</title>
+      </head>
+      <body>
+        <p>Pour en savoir plus, consultez <a>Wikipédia</a>.</p>
+      </body>
+    </html>
+    ```
+
+2.  Ces trois fruits devraient apparaître comme une liste à puces, mais ils se suivent sur une
+    seule ligne.
+    ```{exec} html
+    :editor: c1a2b3c4-0003-4a1a-9b1a-100000000003
+    :style: height: 16rem;
+    :output-style: height:8rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Fruits</title>
+      </head>
+      <body>
+        <h2>Mes fruits préférés</h2>
+        <ul>
+          Pomme
+          Poire
+          Cerise
+        </ul>
+      </body>
+    </html>
+    ```
+
+3.  Au lieu d'afficher l'image, la page affiche le lien sous forme de texte.
+    ```{exec} html
+    :editor: c1a2b3c4-0004-4a1a-9b1a-100000000004
+    :style: height: 15rem;
+    :output-style: height:10rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Image</title>
+      </head>
+      <body>
+        <p>Photo de l'ENIAC</p>
+        <img width="200">
+        https://upload.wikimedia.org/wikipedia/commons/0/0c/ENIAC-changing_a_tube_%28cropped%29.jpg
+      </body>
+    </html>
+    ```
+
+````{solution}
+1.  Un lien a besoin de l'attribut `href` pour indiquer **vers où** il pointe. Sans lui, la balise
+    `<a>` n'est pas cliquable.
+    ```{exec} html
+    :when: load click
+    :style: height: 13rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Lien</title>
+      </head>
+      <body>
+        <p>Pour en savoir plus, consultez <a href="https://fr.wikipedia.org">Wikipédia</a>.</p>
+      </body>
+    </html>
+    ```
+
+2.  Dans une liste, **chaque élément** doit être entouré d'une balise `<li> ... </li>`. Le texte
+    placé directement dans le `<ul>` n'est pas traité comme des éléments de liste.
+    ```{exec} html
+    :when: load click
+    :style: height: 15rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Fruits</title>
+      </head>
+      <body>
+        <h2>Mes fruits préférés</h2>
+        <ul>
+          <li>Pomme</li>
+          <li>Poire</li>
+          <li>Cerise</li>
+        </ul>
+      </body>
+    </html>
+    ```
+
+3.  Une image a besoin de l'attribut `src` pour indiquer **quel fichier** afficher. Le lien doit
+    être placé dans cet attribut, et non écrit comme du texte à côté de la balise. La balise `<img>`
+    est une balise unique : elle n'a pas de balise fermante.
+    ```{exec} html
+    :when: load click
+    :style: height: 14rem;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Image</title>
+      </head>
+      <body>
+        <p>Photo de l'ENIAC</p>
+        <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/ENIAC-changing_a_tube_%28cropped%29.jpg">
+      </body>
+    </html>
+    ```
 ````
 
 ## Exercice {num2}`exercice`
@@ -684,3 +894,5 @@ En utilisant l'éditeur ci-dessous, complétez le tableau pour représenter votr
 </html>
 ```
 ````
+
+

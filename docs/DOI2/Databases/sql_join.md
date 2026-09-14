@@ -5,8 +5,6 @@
 :name: sql-create-insert-all
 :when:
 :class: hidden
-PRAGMA foreign_keys = ON;
-
 CREATE TABLE Livre (
     titre TEXT,
     auteur TEXT,
@@ -236,7 +234,6 @@ JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
 ```
 
 ```{quiz}
-:style: max-width: 34rem;
 1. {num}`10`
 Combien de lignes le résultat contient-il ?
 
@@ -267,7 +264,6 @@ disparaître**.
 Pour chacune des jointures ci-dessous, choisissez la condition `ON` correcte.
 
 ```{quiz}
-:style: max-width: 40rem;
 1. Pour relier la table `Emprunt` à la table `Livre` de la bibliothèque :\
    `SELECT * FROM Emprunt JOIN Livre ON` {on1}`Emprunt.livre = Livre.numero_isbn`
 
@@ -374,7 +370,7 @@ relationnel.
 :include: databases/cinema.sql
 :name: cinema
 :when:
-:style: display: none;
+:class: hidden
 ```
 
 Voici son contenu.
@@ -584,8 +580,7 @@ ORDER BY Film.duree_min DESC
 :include: databases/isa.sql
 :name: isa
 :when:
-:style: display: none;
-
+:class: hidden
 ```
 ### Exercice {num1}`exercice`
 Dans cet exercice, nous considérons la base de données d'ISA avec le schéma relationnel ci-dessous.
@@ -642,7 +637,7 @@ WHERE Classe.nom = '1F2'
 ```````
 
 ```````{quiz}
-3. Quel est le nom de la classe ayant comme MCL un enseignant dont le prénom est *Antoine* . {input}`1bp1`
+3. Quel est le nom de la classe ayant comme MCL un enseignant dont le prénom est *Antoine*. {input}`1bp1`
 ```{exec} sql
 :editor: 019985c1-9110-7e3d-a352-36ad2dfe1a20
 :after: isa

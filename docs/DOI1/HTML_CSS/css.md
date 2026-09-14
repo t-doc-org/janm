@@ -87,8 +87,8 @@ p {                       /* Cette règle définit le style des paragraphes. */
 
 | Propriété | Description | Exemple de valeur |
 |-----------|-------------|-------------------|
-| `color` | Couleur du texte | `red`, `rgb(255,0,0)`, `#ff0000` |
-| `background-color` | Couleur de fond de l'élément | `yellow`, `lightblue`, `#faebd7` |
+| `color` | Couleur du texte | `red`, `rgb(255, 0, 0)` |
+| `background-color` | Couleur de fond de l'élément | `yellow`, `lightblue`, `antiquewhite` |
 | `font-family` | Police de caractères | `Arial`, `verdana`, `fantasy` |
 | `font-size` | Taille de la police | `20px`, `1.5em`, `120%` |
 | `font-weight` | Graisse du texte (épaisseur) | `bold`, `normal`, `600` |
@@ -108,7 +108,7 @@ p {                       /* Cette règle définit le style des paragraphes. */
 | `list-style` | Style des puces de liste | `none`, `disc`, `square` |
 | `cursor` | Forme du curseur au survol | `pointer`, `default`, `crosshair` |
 
-Les **couleurs** peuvent être indiquées de trois façons:
+Les **couleurs** peuvent être indiquées de deux façons:
 - Par leur **nom en anglais**: `red`, `green`, `blue`, `black`, `white`, `cornsilk`...
 - En **code RGB**: `rgb(255, 0, 0)` pour le rouge pur
 
@@ -297,91 +297,31 @@ Notez la propriété CSS qui permet de:
 
 ### Exercice {num2}`exercice`
 
-Lisez le code ci-dessous **sans l'exécuter** et prédisez le résultat. Rappelez-vous qu'un
-sélecteur de classe l'emporte sur un sélecteur de type lorsque les deux s'appliquent au même
-élément.
-
-```{code-block} html
-<style>
-  p  { color: blue; }
-  h2 { text-align: center; }
-  .vedette { color: red; }
-</style>
-
-<h2>Bienvenue</h2>
-<p>Premier paragraphe.</p>
-<p class="vedette">Deuxième paragraphe.</p>
-<p class="autre">Troisième paragraphe.</p>
-```
-
-```{role} rep(quiz-input)
-:right: width: 7rem;
-:check: lowercase trim
-```
-
-```{role} ouinon(quiz-select)
-:right:
-:options: |
-: oui
-: non
-```
-
-```{quiz}
-:style: max-width: 40rem;
-1. {rep}`bleu`
-De quelle couleur s'affiche le **premier** paragraphe ?
-
-2. {rep}`rouge`
-De quelle couleur s'affiche le **deuxième** paragraphe (classe `vedette`) ?
-
-3. {rep}`bleu`
-De quelle couleur s'affiche le **troisième** paragraphe (classe `autre`) ?
-
-4. {ouinon}`oui`
-Le titre « Bienvenue » est-il centré ?
-
-5. {ouinon}`non`
-Le troisième paragraphe est-il centré ?
-```
-
-````{solution}
-1.  **Bleu.** La règle `p { color: blue; }` s'applique à tous les paragraphes.
-2.  **Rouge.** Deux règles concernent ce paragraphe : `p` (bleu) et `.vedette` (rouge). Quand un
-    sélecteur de type et un sélecteur de classe s'appliquent au même élément, **c'est la classe qui
-    l'emporte**. Le paragraphe est donc rouge.
-3.  **Bleu.** La classe `autre` n'a **aucune règle** définie, elle ne change donc rien. Le
-    paragraphe reste bleu grâce à la règle `p`.
-4.  **Oui.** La règle `h2 { text-align: center; }` centre le titre.
-5.  **Non.** Le centrage n'a été défini que pour les `h2`, pas pour les `p`.
-````
-
-### Exercice {num2}`exercice`
-
-Dans la page ci-dessous, **aucune** des règles CSS ne produit l'effet attendu : le titre devrait
-être bleu et centré, les sous-titres orange, les paragraphes en taille 18px, et le paragraphe de
-classe `encadre` sur fond jaune. Chaque règle contient **une erreur**. Exécutez le code pour voir
-le problème, puis corrigez les quatre erreurs.
+Dans la page ci-dessous, **aucune** des règles CSS ne produit l'effet attendu : le fond de la page
+devrait être jaune, le titre bleu et centré, les sous-titres orange et les paragraphes en taille
+18px. Chaque règle contient **une erreur**. Exécutez le code pour voir le problème, puis corrigez
+les quatre erreurs.
 
 ```{exec} html
 :editor: d1e2f3a4-0001-4b2b-9c2b-200000000001
-:style: height: 20rem;
+:style: height: 22rem;
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <style>
+      body {
+        background-color: jaune;
+      }
       h1 {
         color: blue
         text-align: center;
       }
       h2 {
-        color: ff6600;
+        font-color: darkorange;
       }
       p {
         font-size: 18;
-      }
-      encadre {
-        background-color: yellow;
       }
     </style>
   </head>
@@ -389,7 +329,7 @@ le problème, puis corrigez les quatre erreurs.
     <h1>Le monde des océans</h1>
     <h2>Les profondeurs</h2>
     <p>Les océans couvrent plus de 70% de la surface de la Terre.</p>
-    <p class="encadre">Le point le plus profond est la fosse des Mariannes.</p>
+    <p>Le point le plus profond est la fosse des Mariannes.</p>
   </body>
 </html>
 ```
@@ -397,35 +337,35 @@ le problème, puis corrigez les quatre erreurs.
 ````{solution}
 Les quatre erreurs, dans l'ordre :
 
-1.  Il manque un **point-virgule** après `color: blue`. Du coup, le navigateur lit
+1.  `jaune` n'est pas un nom de couleur valide : en CSS, **les noms de couleurs s'écrivent en
+    anglais**. Il faut donc écrire `yellow`.
+2.  Il manque un **point-virgule** après `color: blue`. Du coup, le navigateur lit
     `color: blue text-align: center` comme une seule valeur invalide et ignore les deux propriétés.
-2.  La couleur `ff6600` doit être précédée d'un **`#`** : `#ff6600`. Sans lui, ce n'est pas une
-    couleur valide et la règle est ignorée.
-3.  La taille `18` doit avoir une **unité** : `18px`. Un nombre sans unité n'est pas accepté pour
+3.  La propriété `font-color` n'existe pas en CSS : pour changer la couleur du texte, la propriété
+    s'appelle simplement `color`. Il faut donc écrire `color: darkorange;`.
+4.  La taille `18` doit avoir une **unité** : `18px`. Un nombre sans unité n'est pas accepté pour
     `font-size`.
-4.  Le sélecteur de classe doit commencer par un **point** : `.encadre`. Écrit sans le point,
-    `encadre` cherche une balise `<encadre>` qui n'existe pas.
 
 ```{exec} html
 :when: load click
-:style: height: 20rem;
+:style: height: 22rem;
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <style>
+      body {
+        background-color: yellow;
+      }
       h1 {
         color: blue;
         text-align: center;
       }
       h2 {
-        color: #ff6600;
+        color: darkorange;
       }
       p {
         font-size: 18px;
-      }
-      .encadre {
-        background-color: yellow;
       }
     </style>
   </head>
@@ -433,7 +373,7 @@ Les quatre erreurs, dans l'ordre :
     <h1>Le monde des océans</h1>
     <h2>Les profondeurs</h2>
     <p>Les océans couvrent plus de 70% de la surface de la Terre.</p>
-    <p class="encadre">Le point le plus profond est la fosse des Mariannes.</p>
+    <p>Le point le plus profond est la fosse des Mariannes.</p>
   </body>
 </html>
 ```
@@ -502,69 +442,6 @@ Complétez les règles CSS pour:
     <p>Mercure, Vénus, la Terre et Mars sont des planètes rocheuses.</p>
     <h2>Les géantes gazeuses</h2>
     <p>Jupiter, Saturne, Uranus et Neptune sont composées principalement de gaz.</p>
-  </body>
-</html>
-```
-````
-
-### Exercice {num2}`exercice`
-
-Complétez le CSS pour:
-
-1. Donner à `<body>` une couleur de fond `lightyellow`
-2. Définir la classe `encadre`: bordure `2px solid steelblue`, `padding` de
-   `8px`, couleur de fond `#e8f4f8`
-
-```{exec} html
-:editor: 07b8c9d0-e1f2-3456-0abc-789012345678
-:style: height: 16rem;
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <style>
-      body {
-      }
-      .encadre {
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Mes matières préférées</h1>
-    <p>J'aime beaucoup les mathématiques.</p>
-    <p class="encadre">L'informatique est ma matière favorite.</p>
-    <p>Le français est important pour communiquer.</p>
-    <p class="encadre">La physique explique comment fonctionne le monde.</p>
-  </body>
-</html>
-```
-
-````{solution}
-```{exec} html
-:when: load click
-:editor: 019d199d-d1ca-7f08-aaaa-7f7f6c6c5033
-:style: height: 16rem;
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <style>
-      body {
-        background-color: lightyellow;
-      }
-      .encadre {
-        border: 2px solid steelblue;
-        padding: 8px;
-        background-color: #e8f4f8;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Mes matières préférées</h1>
-    <p>J'aime beaucoup les mathématiques.</p>
-    <p class="encadre">L'informatique est ma matière favorite.</p>
-    <p>Le français est important pour communiquer.</p>
-    <p class="encadre">La physique explique comment fonctionne le monde.</p>
   </body>
 </html>
 ```
@@ -671,6 +548,129 @@ Au moyen du CSS, modifiez les éléments suivants:
 
 ### Exercice {num2}`exercice`
 
+Lisez le code ci-dessous **sans l'exécuter** et prédisez le résultat. Rappelez-vous qu'un
+sélecteur de classe l'emporte sur un sélecteur de type lorsque les deux s'appliquent au même
+élément.
+
+```{code-block} html
+<style>
+  p  { color: blue; }
+  h2 { text-align: center; }
+  .vedette { color: red; }
+</style>
+
+<h2>Bienvenue</h2>
+<p>Premier paragraphe.</p>
+<p class="vedette">Deuxième paragraphe.</p>
+<p class="autre">Troisième paragraphe.</p>
+```
+
+```{role} rep(quiz-input)
+:right: width: 7rem;
+:check: json lowercase trim
+```
+
+```{role} ouinon(quiz-select)
+:right:
+:options: |
+: oui
+: non
+```
+
+```{quiz}
+:style: max-width: 40rem;
+1. {rep}`{"bleu": true, "blue": true}`
+De quelle couleur s'affiche le **premier** paragraphe ?
+
+2. {rep}`{"rouge": true, "red": true}`
+De quelle couleur s'affiche le **deuxième** paragraphe (classe `vedette`) ?
+
+3. {rep}`{"bleu": true, "blue": true}`
+De quelle couleur s'affiche le **troisième** paragraphe (classe `autre`) ?
+
+4. {ouinon}`oui`
+Le titre « Bienvenue » est-il centré ?
+
+5. {ouinon}`non`
+Le troisième paragraphe est-il centré ?
+```
+
+````{solution}
+1.  **Bleu (blue).** La règle `p { color: blue; }` s'applique à tous les paragraphes.
+2.  **Rouge (red).** Deux règles concernent ce paragraphe : `p` (bleu) et `.vedette` (rouge). Quand un
+    sélecteur de type et un sélecteur de classe s'appliquent au même élément, **c'est la classe qui
+    l'emporte**. Le paragraphe est donc rouge.
+3.  **Bleu (blue).** La classe `autre` n'a **aucune règle** définie, elle ne change donc rien. Le
+    paragraphe reste bleu grâce à la règle `p`.
+4.  **Oui (yes).** La règle `h2 { text-align: center; }` centre le titre.
+5.  **Non (no).** Le centrage n'a été défini que pour les `h2`, pas pour les `p`.
+````
+
+### Exercice {num2}`exercice`
+
+Complétez le CSS pour:
+
+1. Donner à `<body>` une couleur de fond `lightyellow`
+2. Définir la classe `encadre`: bordure `2px solid steelblue`, `padding` de
+   `8px`, couleur de fond `aliceblue`
+
+```{exec} html
+:editor: 07b8c9d0-e1f2-3456-0abc-789012345678
+:style: height: 16rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+      }
+      .encadre {
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mes matières préférées</h1>
+    <p>J'aime beaucoup les mathématiques.</p>
+    <p class="encadre">L'informatique est ma matière favorite.</p>
+    <p>Le français est important pour communiquer.</p>
+    <p class="encadre">La physique explique comment fonctionne le monde.</p>
+  </body>
+</html>
+```
+
+````{solution}
+```{exec} html
+:when: load click
+:editor: 019d199d-d1ca-7f08-aaaa-7f7f6c6c5033
+:style: height: 16rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background-color: lightyellow;
+      }
+      .encadre {
+        border: 2px solid steelblue;
+        padding: 8px;
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mes matières préférées</h1>
+    <p>J'aime beaucoup les mathématiques.</p>
+    <p class="encadre">L'informatique est ma matière favorite.</p>
+    <p>Le français est important pour communiquer.</p>
+    <p class="encadre">La physique explique comment fonctionne le monde.</p>
+  </body>
+</html>
+```
+````
+
+### Exercice {num2}`exercice`
+
 Le contenu d'une page a été défini en HTML de la manière suivante.
 
 ```{exec} html
@@ -713,12 +713,12 @@ La page contient deux classes CSS à définir:
 
 Au moyen du CSS:
 
-1.  Le `<h1>` doit être centré et en couleur `#2c3e50`.
-2.  Les `<h2>` doivent être en couleur `#e67e22`.
-3.  La classe `discipline` doit avoir: fond `#eaf4fb`, bordure gauche
-    `4px solid #2980b9` (`border-left`) et un `padding` de `8px`.
+1.  Le `<h1>` doit être centré et en couleur `rgb(44, 62, 80)`.
+2.  Les `<h2>` doivent être en couleur `rgb(230, 126, 34)`.
+3.  La classe `discipline` doit avoir: fond `aliceblue`, bordure gauche
+    `4px solid steelblue` (`border-left`) et un `padding` de `8px`.
 4.  La classe `source` doit être en italique, couleur `gray` et taille `12px`.
-5.  La couleur de fond de la page doit être `#f9f9f9`.
+5.  La couleur de fond de la page doit être `whitesmoke`.
 
 ```{exec} html
 :editor: 1a2b3c4d-5e6f-7890-abcd-ef0123456789
@@ -738,14 +738,14 @@ Au moyen du CSS:
 <style>
   h1 {
     text-align: center;
-    color: #2c3e50;
+    color: rgb(44, 62, 80);
   }
   h2 {
-    color: #e67e22;
+    color: rgb(230, 126, 34);
   }
   .discipline {
-    background-color: #eaf4fb;
-    border-left: 4px solid #2980b9;
+    background-color: aliceblue;
+    border-left: 4px solid steelblue;
     padding: 8px;
   }
   .source {
@@ -754,7 +754,7 @@ Au moyen du CSS:
     font-size: 12px;
   }
   body {
-    background-color: #f9f9f9;
+    background-color: whitesmoke;
   }
 </style>
 ```
@@ -823,13 +823,13 @@ La page contient deux classes CSS à définir:
 
 Au moyen du CSS:
 
-1.  Le `<h1>` doit être centré, en blanc (`color: white`) sur fond `#1a1a2e`.
-2.  Les `<h2>` doivent être en couleur `#e94560`.
+1.  Le `<h1>` doit être centré, en blanc (`color: white`) sur fond `rgb(26, 26, 46)`.
+2.  Les `<h2>` doivent être en couleur `rgb(233, 69, 96)`.
 3.  La table doit occuper `100%` de la largeur, avec `border-collapse: collapse`
-    et une bordure `1px solid #ccc` sur chaque cellule (`td` et `th`).
-4.  La classe `vedette` doit être en gras, avec fond `#fff3cd` et `padding` de `6px`.
-5.  La classe `info` doit être centrée, en italique et de couleur `#555`.
-6.  Le fond de la page doit être `#f4f4f4`.
+    et une bordure `1px solid lightgray` sur chaque cellule (`td` et `th`).
+4.  La classe `vedette` doit être en gras, avec fond `lemonchiffon` et `padding` de `6px`.
+5.  La classe `info` doit être centrée, en italique et de couleur `dimgray`.
+6.  Le fond de la page doit être `whitesmoke`.
 
 ```{exec} html
 :editor: b2c3d4e5-f6a7-8901-bcde-f23456789012
@@ -850,31 +850,31 @@ Au moyen du CSS:
   h1 {
     text-align: center;
     color: white;
-    background-color: #1a1a2e;
+    background-color: rgb(26, 26, 46);
   }
   h2 {
-    color: #e94560;
+    color: rgb(233, 69, 96);
   }
   table {
     width: 100%;
     border-collapse: collapse;
   }
   td, th {
-    border: 1px solid #ccc;
+    border: 1px solid lightgray;
     padding: 6px;
   }
   .vedette {
     font-weight: bold;
-    background-color: #fff3cd;
+    background-color: lemonchiffon;
     padding: 6px;
   }
   .info {
     text-align: center;
     font-style: italic;
-    color: #555;
+    color: dimgray;
   }
   body {
-    background-color: #f4f4f4;
+    background-color: whitesmoke;
   }
 </style>
 ```

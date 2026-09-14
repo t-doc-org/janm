@@ -212,11 +212,7 @@ Combien d'artistes français sont programmés ?
 | 4       | 4          | 3          | 23:45       |
 | 5       | 3          | 1          | 22:45       |
 
-```{note}
-Pour répondre aux questions 5 à 8, vous avez dû **naviguer entre deux ou trois tables** : partir
-d'un artiste, passer par la programmation, puis arriver à une scène. C'est exactement ce travail
-que l'instruction `JOIN` fera automatiquement pour vous à la fin de ce chapitre.
-```
+
 
 
 ### Exercice {num1}`exercice`
@@ -247,15 +243,15 @@ défauts**. Retrouvez-les, puis proposez une version corrigée du schéma.
 ````
 
 ````{solution}
-**Défaut 1 — la table `Proprietaire` n'a pas de clef primaire.** Aucune de ses colonnes n'est
+**Défaut 1 : la table `Proprietaire` n'a pas de clef primaire.** Aucune de ses colonnes n'est
 soulignée. Deux propriétaires peuvent porter le même nom, il faut donc créer un
 `id_proprietaire`.
 
-**Défaut 2 — la clef primaire de `Animal` est mal choisie.** Le nom d'un animal n'a rien
+**Défaut 2 : la clef primaire de `Animal` est mal choisie.** Le nom d'un animal n'a rien
 d'unique : deux chats peuvent s'appeler *Minou*. Il faut créer un `id_animal`. Au passage, la
 table `Consultation` n'a elle non plus aucune clef primaire.
 
-**Défaut 3 — les informations du propriétaire sont enregistrées deux fois.** Les colonnes
+**Défaut 3 : les informations du propriétaire sont enregistrées deux fois.** Les colonnes
 `nom_proprietaire` et `telephone_proprietaire` de la table `Consultation` répètent des données
 qui se trouvent déjà dans la table `Proprietaire`. Si un propriétaire change de numéro de
 téléphone, il faudrait le modifier à des dizaines d'endroits, et on risque d'oublier. Ces deux

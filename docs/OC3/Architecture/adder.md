@@ -244,14 +244,11 @@ trois bits valent `1`.
 ````
 
 ### Exercice {num1}`exercice`
-Construisez vous-même un **demi-additionneur** dans le simulateur ci-dessous :
-deux entrées `A` et `B`, et deux sorties, la somme `S` et la retenue `C`. La
-consigne est rappelée dans le bandeau de gauche, et le bouton bleu vérifie votre
-circuit une fois qu'il est terminé.
+Construisez vous-même un **demi-additionneur** dans le simulateur ci-dessous
 
-```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ29uc3RydWlyZSB1biBkZW1pLWFkZGl0aW9ubmV1ciIsIm8iOiJSw6lhbGlzZXogbGUgY2lyY3VpdCBkJ3VuIGRlbWktYWRkaXRpb25uZXVyIDogbGEgc29ydGllIFMgZXN0IGxhIHNvbW1lIChBIOKKlSBCKSBldCBsYSBzb3J0aWUgQyBlc3QgbGEgcmV0ZW51ZSAoQSDiiKcgQikuIiwicyI6W10sImEiOlsiSU5QVVQiLCJPVVRQVVQiLCJBTkQiLCJPUiIsIk5PVCIsIlhPUiJdLCJpIjpbWyJBIiwxXSxbIkIiLDFdXSwidSI6W1siUyIsMV0sWyJDIiwxXV0sImsiOiJ0dCIsInIiOltbWzAsMF0sWzAsMF1dLFtbMCwxXSxbMSwwXV0sW1sxLDBdLFsxLDBdXSxbWzEsMV0sWzAsMV1dXX0=&embed=1
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiQ29uc3RydWlyZSB1biBkZW1pLWFkZGl0aW9ubmV1ciIsIm8iOiJBIGwnYWlkZSBkZXMgcG9ydGVzIGxvZ2lxdWVzIGNpLWRlc3NvdXMsIGNvbnN0cnVpc2V6IHVuIGNpcmN1aXQgcGVybWV0dGFudCBkJ2FkZGl0aW9ubmVyIDIgYml0cyBBIGV0IEIuIExhIHNvcnRpZSBTIGNvcnJlc3BvbmRhbnQgw6AgbGEgc29tbWUgKGxlcyB1bml0w6lzKSBldCBDIMOgIGxhIHJldGVudWUgKGNhcnJ5KSIsInMiOltdLCJhIjpbIklOUFVUIiwiT1VUUFVUIiwiQU5EIiwiT1IiLCJOT1QiLCJYT1IiXSwiaSI6W1siQSIsMV0sWyJCIiwxXV0sInUiOltbIlMiLDFdLFsiQyIsMV1dLCJrIjoidHQiLCJyIjpbW1swLDBdLFswLDBdXSxbWzAsMV0sWzEsMF1dLFtbMSwwXSxbMSwwXV0sW1sxLDFdLFswLDFdXV19&embed=1
 :style: height: 440px; aspect-ratio: auto; border: 1px solid black;
-:title: Simulateur Logix : construire un demi-additionneur (S = A ⊕ B, C = A ∧ B)
+:title: Simulateur Logix : construire un demi-additionneur
 ```
 
 ### Exercice {num1}`exercice`

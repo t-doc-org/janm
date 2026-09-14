@@ -51,6 +51,7 @@ CREATE TABLE Livre (
 select * from Livre;
 ```
 
+
 ### Identifiants artificiels numériques
 
 Lorsque la clef primaire d'une table est un identifiant artificiel créé uniquement pour ce rôle, on peut utiliser le mot-clef `AUTOINCREMENT` dans la définition de la `PRIMARY KEY` afin que SQL se charge lui-même d'attribuer ce numéro unique aux futures lignes de la table. La valeur de cet identifiant doit obligatoirement être `INTEGER`
@@ -105,6 +106,8 @@ select * from Emprunt;
 ```
 
 
+
+
 ## Insertion de données
 
 Pour insérer une ligne dans une table, il faut utiliser l'instruction
@@ -133,6 +136,56 @@ Lorsqu'on insère des données dans une table contenant une clef primaire qui a 
 INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Jan', 'Maxime', 'enseignant');
 
 INSERT INTO Utilisateur(nom, prenom, role) VALUES ('Queloz', 'Aurélien', 'élève');
+```
+
+### L'intérêt de la clef primaire
+
+À quoi sert la clef primaire ? Son rôle est de garantir que chaque ligne soit **unique**. Sans clef primaire, rien n'empêche d'enregistrer deux fois la même donnée. Exécutez la cellule ci-dessous. Celle-ci essaie d'insérer 2x un utilisateur
+avec la même adresse email. Comme l'attribut `email` avait été déclaré comme `PRIMARY KEY`, la requête échoue avec l'erreur `UNIQUE constraint failed`.
+
+
+```{exec} sql
+:name: demo-pk-avec
+CREATE TABLE Membre (
+    nom TEXT,
+    prenom TEXT,
+    email TEXT,
+    PRIMARY KEY(email)
+);
+
+INSERT INTO Membre(nom, prenom, email) VALUES ('Jan', 'Maxime', 'maxime@exemple.ch');
+INSERT INTO Membre(nom, prenom, email) VALUES ('Queloz', 'Aurélien', 'maxime@exemple.ch');
+```
+### L'intérêt de la clef étrangère
+
+La clef étrangère empêche d'enregistrer une donnée incohérente. Dans l'exemple ci-dessous, on essaie
+d'ajouter un emprunt pour l'utilisateur n°`999`, qui n'existe pas dans la table `Utilisateur`. La
+base **refuse** l'insertion avec le message `FOREIGN KEY constraint failed`.
+
+```{exec} sql
+:name: demo-fk-setup
+:when:
+:class: hidden
+CREATE TABLE Utilisateur (
+    nom TEXT,
+    id_utilisateur INTEGER,
+    PRIMARY KEY(id_utilisateur AUTOINCREMENT)
+);
+
+INSERT INTO Utilisateur(nom) VALUES ('Alice');
+
+CREATE TABLE Emprunt (
+    livre INTEGER,
+    utilisateur INTEGER,
+    id_emprunt INTEGER,
+    PRIMARY KEY(id_emprunt AUTOINCREMENT),
+    FOREIGN KEY(utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+```
+
+```{exec} sql
+:after: demo-fk-setup
+INSERT INTO Emprunt(livre, utilisateur) VALUES (12, 999);
 ```
 
 ## Exercices
@@ -204,7 +257,7 @@ valeur ?* Si la réponse est non, c'est du `TEXT`.
 Pour chacune de ces clefs primaires, déterminez si le mot-clef `AUTOINCREMENT` est nécessaire.
 
 ```{quiz}
-:style: max-width: 34rem;
+:style: max-width: 42rem;
 1. {auto}`sans AUTOINCREMENT`
 `numero_isbn` dans une table `Livre`
 
@@ -585,26 +638,24 @@ On reprend la même plateforme de streaming, cette fois entièrement créée et 
 artistes de l'exercice précédent. Pour chacune des requêtes ci-dessous, **prédisez d'abord** si
 elle va fonctionner, puis exécutez-la pour vérifier.
 
-```{exec} sql predict
+```{exec} sql
 :name: predict-artiste-select
 :when:
 :class: hidden
 SELECT * FROM Artiste;
 ```
 
-```{exec} sql predict
+```{exec} sql
 :name: predict-album-select
 :when:
 :class: hidden
 SELECT * FROM Album;
 ```
 
-```{exec} sql predict
+```{exec} sql
 :name: musique-complet
 :when:
 :class: hidden
-PRAGMA foreign_keys = ON;
-
 CREATE TABLE Artiste (
     nom TEXT,
     pays TEXT,
@@ -629,21 +680,21 @@ INSERT INTO Artiste(nom, pays) VALUES ('Orelsan', 'France');
 
 ```````{quiz}
 1.  {ouinon}`oui`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-artiste-select
     INSERT INTO Artiste(nom, pays) VALUES ('Damso', 'Belgique');
     ```
 
 2.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-artiste-select
     INSERT INTO Artiste(nom, pays) VALUES (Damso, Belgique);
     ```
 
 3.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-album-select
     INSERT INTO Album(titre, annee, nb_pistes, artiste)
@@ -651,21 +702,21 @@ INSERT INTO Artiste(nom, pays) VALUES ('Orelsan', 'France');
     ```
 
 4.  {ouinon}`oui`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-album-select
     INSERT INTO Album(titre, artiste) VALUES ('Racine carrée', 1);
     ```
 
 5.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-artiste-select
     INSERT INTO Artiste(nom, pays, id_artiste) VALUES ('Zaho de Sagazan', 'France');
     ```
 
 6.  {ouinon}`non`
-    ```{exec} sql predict
+    ```{exec} sql
     :after: musique-complet
     :then: predict-album-select
     INSERT INTO Album VALUES ('Nonante-Cinq', 2021, 13, 2);
@@ -765,25 +816,45 @@ Avant de l'exécuter, prédisez le résultat de la requête `INSERT INTO` ci-des
 Cette requête va-t-elle fonctionner ?
 ```
 
-Si votre code est correct, cette requête ne doit **PAS** fonctionner. Pourquoi est-ce le cas ? Si cette requête ajoute bel et bien un 1er joueur à cette table, retravaillez le référencement de la clef étrangère dans la création de table.
 
 ```{exec} sql
 :when:
 :class: hidden
-:name: pragma-CE
-:after: eleve-create-joueur
-PRAGMA foreign_keys = ON;
+:name: pragma-ce
+CREATE TABLE Equipe(
+    nom TEXT,
+    entraineur TEXT,
+    budget REAL,
+    PRIMARY KEY(nom)
+);
+
+INSERT INTO Equipe(nom, entraineur, budget) VALUES('PSG', 'Luis Enrique', 850000000);
+INSERT INTO Equipe(nom, entraineur, budget) VALUES('FC Gottéron', 'Jean-Marc Genoud', 2500);
+INSERT INTO Equipe(nom, entraineur, budget) VALUES('Young Boys', 'Giorgio Contini', 77900000);
+
+CREATE TABLE Joueur(
+    prénom TEXT,
+    nom TEXT,
+    numéro_maillot INTEGER,
+    equipe TEXT,
+    id_joueur INTEGER,
+    PRIMARY KEY(id_joueur AUTOINCREMENT),
+    FOREIGN KEY(equipe) REFERENCES Equipe(nom)
+);
 ```
 
 
 
 ```{exec} sql
-:after: pragma-CE
+:after: pragma-ce
 :then: select-joueur
 
 INSERT INTO Joueur(prénom, nom, numéro_maillot, equipe)
 VALUES('Kylian', 'Mbappé', 10, 'Real Madrid')
 ```
+
+
+
 ````{solution}
 ```{exec} sql
 :name: solution-create-joueur
@@ -802,24 +873,6 @@ CREATE TABLE Joueur(
 
 Le `INSERT INTO` ne fonctionne pas car la clef étrangère `equipe` qui devrait ici prendre la valeur `Real Madrid` ferait  référence à une valeur qui n'existe pas dans la colonne `nom` de la table `Equipe`. 
 ````
-```{exec} sql
-:name: foot-db
-:when:
-:class: hidden
-PRAGMA foreign_keys = ON;
-
-CREATE TABLE Equipe(nom TEXT, entraineur TEXT, budget REAL, PRIMARY KEY(nom));
-INSERT INTO Equipe(nom, entraineur, budget) VALUES('PSG', 'Luis Enrique', 850000000);
-INSERT INTO Equipe(nom, entraineur, budget) VALUES('FC Gottéron', 'Jean-Marc Genoud', 2500);
-INSERT INTO Equipe(nom, entraineur, budget) VALUES('Young Boys', 'Giorgio Contini', 77900000);
-
-CREATE TABLE Joueur(
-    prénom TEXT, nom TEXT, numéro_maillot INTEGER, equipe TEXT, id_joueur INTEGER,
-    PRIMARY KEY(id_joueur AUTOINCREMENT),
-    FOREIGN KEY(equipe) REFERENCES Equipe(nom)
-);
-```
-
 #### Partie C
 Ajoutez maintenant 3 nouveaux joueurs dans cette base de données.
  - Aurélien Queloz (n° 12) est dans l'équipe entrainée par Jean-Marc Genoud
@@ -829,7 +882,7 @@ Ajoutez maintenant 3 nouveaux joueurs dans cette base de données.
 Grâce au `AUTOINCREMENT`, ces joueurs devraient avoir **automatiquement** les `id_joueur` 1, 2, 3.
  ```{exec} sql
 :editor: 01992e4a-8378-79be-a44a-551312f61caa
-:after: foot-db
+:after: pragma-ce
 :then: select-joueur
 
 
@@ -837,7 +890,7 @@ Grâce au `AUTOINCREMENT`, ces joueurs devraient avoir **automatiquement** les `
 
 ````{solution}
 ```{exec} sql
-:after: foot-db
+:after: solution-create-joueur
 :then: select-joueur
 INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
 VALUES('Queloz', 'Aurélien', 12, 'FC Gottéron');
@@ -848,4 +901,161 @@ VALUES('Genoud', 'Isaac', 7, 'FC Gottéron');
 INSERT INTO joueur(nom, prénom, numéro_maillot, equipe)
 VALUES('Dupasquier', 'Maxime', 3, 'Young Boys');
 ```
+````
+
+
+### Exercice {num1}`exercice`
+Le schéma relationnel ci-dessous décrit une base de données d'une bibliothèque de mangas et de leurs éditeurs.
+
+```{image} images/manga_schema.png
+:width: 45%
+:alt: Schéma relationnel d'une bibliothèque de mangas et de leurs éditeurs
+:align: center
+```
+
+#### Partie A
+Commencez par écrire, ci-dessous, la requête permettant de créer la table `Editeur`.
+
+```{exec} sql
+:editor: 6df5ff6c-1a8a-4bdc-9dbf-c6dfa1ba24c1
+:name: eleve-create-editeur
+:then: select-editeur
+```
+
+```{exec} sql
+:when:
+:class: hidden
+:name: select-editeur
+SELECT * FROM Editeur
+```
+
+Si votre code SQL est correct, le bloc ci-dessous devrait permettre de créer et enregistrer 3 nouveaux éditeurs.
+
+```{exec} sql
+:after: eleve-create-editeur
+:name: insert-editeur
+:then: select-editeur
+INSERT INTO Editeur(nom, pays) VALUES ('Glénat', 'France');
+
+INSERT INTO Editeur(nom, pays) VALUES ('Kana', 'Belgique');
+
+INSERT INTO Editeur(nom, pays) VALUES ('Kazé', 'France');
+```
+
+````{solution}
+```{exec} sql
+:name: solution-create-editeur
+:then: select-editeur
+CREATE TABLE Editeur(
+    nom TEXT,
+    pays TEXT,
+    id_editeur INTEGER,
+    PRIMARY KEY(id_editeur AUTOINCREMENT)
+)
+```
+````
+
+#### Partie B
+Créez maintenant la table `Manga`. N'oubliez pas de référencer la clef étrangère avec `FOREIGN KEY ... REFERENCES ...`.
+
+```{exec} sql
+:editor: b17d2a7f-3897-4694-bcec-98983127be46
+:name: eleve-create-manga
+:after: insert-editeur
+:then: select-manga
+```
+
+```{exec} sql
+:when:
+:class: hidden
+:name: select-manga
+SELECT * FROM Manga
+```
+
+Avant de l'exécuter, prédisez le résultat de la requête `INSERT INTO` ci-dessous.
+
+```{quiz}
+:style: max-width: 30rem;
+{ouinon}`non`
+Cette requête va-t-elle fonctionner ?
+```
+
+```{exec} sql
+:when:
+:class: hidden
+:name: pragma-manga
+CREATE TABLE Editeur(
+    nom TEXT,
+    pays TEXT,
+    id_editeur INTEGER,
+    PRIMARY KEY(id_editeur AUTOINCREMENT)
+);
+
+INSERT INTO Editeur(nom, pays) VALUES ('Glénat', 'France');
+INSERT INTO Editeur(nom, pays) VALUES ('Kana', 'Belgique');
+INSERT INTO Editeur(nom, pays) VALUES ('Kazé', 'France');
+
+CREATE TABLE Manga(
+    titre TEXT,
+    nb_tomes INTEGER,
+    prix REAL,
+    editeur INTEGER,
+    id_manga INTEGER,
+    PRIMARY KEY(id_manga AUTOINCREMENT),
+    FOREIGN KEY(editeur) REFERENCES Editeur(id_editeur)
+);
+```
+
+```{exec} sql
+:after: pragma-manga
+:then: select-manga
+INSERT INTO Manga(titre, nb_tomes, prix, editeur)
+VALUES ('Berserk', 41, 8.50, 99)
+```
+
+
+````{solution}
+```{exec} sql
+:name: solution-create-manga
+:after: solution-create-editeur
+:then: select-manga
+CREATE TABLE Manga(
+    titre TEXT,
+    nb_tomes INTEGER,
+    prix REAL,
+    editeur INTEGER,
+    id_manga INTEGER,
+    PRIMARY KEY(id_manga AUTOINCREMENT),
+    FOREIGN KEY(editeur) REFERENCES Editeur(id_editeur)
+)
+```
+
+Le `INSERT INTO` ne fonctionne pas car la clef étrangère `editeur` prendrait ici la valeur `99`, qui ne correspond à aucun `id_editeur` existant dans la table `Editeur`. La clef étrangère `editeur` ne référence pas la table `Editeur` toute entière, mais bien **sa clef primaire** : `Editeur(id_editeur)`.
+````
+
+#### Partie C
+Ajoutez maintenant 3 nouveaux mangas dans cette base de données.
+ - *One Piece* (108 tomes, 7.60 CHF) est publié par Glénat
+ - *Naruto* (72 tomes, 7.60 CHF) est publié par Kana
+ - *Fullmetal Alchemist* (27 tomes, 8.95 CHF) est publié par Kazé
+
+Grâce au `AUTOINCREMENT`, les éditeurs Glénat, Kana et Kazé ont reçu **automatiquement** les `id_editeur` 1, 2 et 3.
+
+```{exec} sql
+:editor: c5e2657d-92f2-4e54-b03d-8ea36efa458e
+:after: pragma-manga
+:then: select-manga
+```
+
+````{solution}
+```{exec} sql
+:after: solution-create-manga
+:then: select-manga
+INSERT INTO Manga(titre, nb_tomes, prix, editeur) VALUES ('One Piece', 108, 7.60, 1);
+
+INSERT INTO Manga(titre, nb_tomes, prix, editeur) VALUES ('Naruto', 72, 7.60, 2);
+
+INSERT INTO Manga(titre, nb_tomes, prix, editeur) VALUES ('Fullmetal Alchemist', 27, 8.95, 3);
+```
+La clef étrangère `editeur` doit être renseignée avec le **numéro** de l'éditeur (`1`, `2` ou `3`), pas avec son nom.
 ````

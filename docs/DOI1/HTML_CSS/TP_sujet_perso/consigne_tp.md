@@ -20,13 +20,14 @@ Vous avez une grande liberté dans le choix de votre sujet. Prenez-en un qui vou
 Voici quelques exemples de thématiques pour vous inspirer :
 
  - Site Web pour votre société locale (club de sport, groupe de musique, ...)
- - Site Web fictif pour une équipe de sport, un groupe de musique, ...
  - Blog de critiques (livres, jeux-vidéos, films, ...)
  - Blog de cuisine / voyage / ...
- - Site Web présentant quoi que ce soit (un jeu-vidéo, un réalisateur, un mouvement musical, un évènement, un groupe de musique, ...)
+ - Site Web présentant quoi que ce soit (un hobby, un jeu-vidéo, un réalisateur, un mouvement musical, un évènement, ...)
  - Guide touristique pour une ville, un pays
  - Portfolio de créations personnelles (dessins, peinture, textes, photographies, ...)
  - ...
+
+Les thèmes tel que "un footballeur" ou "une chanteuse" ne sont pas autorisés.
 
 Laissez cours à votre imagination. Veillez simplement à **valider votre sujet auprès de l'enseignant** avant de vous lancer dans la suite du processus.
 

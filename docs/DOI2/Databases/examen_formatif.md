@@ -10,10 +10,6 @@ hide: [navbar, primary-sidebar, prev-next, footer]
 :name: sql-insert-bank
 :class: hidden
 :when:
--- Activer l’intégrité référentielle dans SQLite
-PRAGMA foreign_keys = ON;
-
-
 -- =======================
 -- Tables
 -- =======================
