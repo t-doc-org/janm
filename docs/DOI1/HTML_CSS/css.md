@@ -487,7 +487,7 @@ Le contenu d'une page a été défini en HTML de la manière suivante.
     familial.</p>
 
     <h2>Photo</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1024px-Labrador_Retriever_portrait.jpg">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Golden_retriever_stehfoto.jpg/1280px-Golden_retriever_stehfoto.jpg?utm_source=fr.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail">
 
     <p>Source: texte généré par Copilot.</p>
 </body>
@@ -502,7 +502,7 @@ Au moyen du CSS, modifiez les éléments suivants:
 3.  La table doit avoir une bordure (propriétés: `border` et `border-collapse`).
 4.  La table doit prendre `100%` de la largeur de la page.
 5.  L'image doit avoir une largeur de `300px`.
-6.  La propriété `font-family` des paragraphes doit être `"Goudy Bookletter 1911"`.
+6.  La propriété `font-family` des paragraphes doit être `"consolas"`.
 7.  La couleur de fond `background-color` de la page doit être `cornsilk`.
 
 ```{exec} html
@@ -537,7 +537,7 @@ Au moyen du CSS, modifiez les éléments suivants:
     width: 300px;
   }
   p {
-    font-family: "Goudy Bookletter 1911";
+    font-family: "consolas";
   }
   body {
     background-color: cornsilk;
