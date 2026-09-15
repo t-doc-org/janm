@@ -537,6 +537,8 @@ son contenu.
 ```{exec} sql
 :name: musique-artiste
 :then: musique-artiste-select
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE Artiste (
     nom TEXT,
     pays TEXT,
@@ -656,6 +658,8 @@ SELECT * FROM Album;
 :name: musique-complet
 :when:
 :class: hidden
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE Artiste (
     nom TEXT,
     pays TEXT,
