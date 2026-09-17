@@ -4,10 +4,6 @@
 Enquête adaptée de [SQL Murder Mystery](https://github.com/NUKnightLab/sql-mysteries), Joon Park & Cathy He, CC-BY-SA 4.0. Le schéma et le déroulé de l'enquête sont ceux de l'original ; les données ont été régénérées et traduites pour ce cours par le script `databases/generate_murder_db.py`.
 
 
-% La base de l'enquête est incluse telle quelle dans la page. Sans cette
-% option, Sphinx la colorie syntaxiquement balise par balise, ce qui fait
-% passer la page de 700 Ko à 4.4 Mo pour rien : le bloc est caché, et le seul
-% bloc visible est l'éditeur de l'élève, qui n'utilise pas cette coloration.
 ```{metadata}
 exec:
   sql:
@@ -18,7 +14,7 @@ exec:
 
 Un crime a eu lieu à SQL City et vous devez jouer les détectives pour trouver le meurtrier. Pour résoudre ce mystère, vous avez accès à toute la base de données que détient la police criminelle. Le schéma relationnel de cette base de données se trouve plus bas sur cette page.
 
-Pour débuter votre enquête, la police ne vous donne aucun indice, mais savez simplement que le crime que vous devez investiguer a eu lieu le **15 janvier 2018 à SQL City**. Commencez par investiguer la table `crime_scene_report` pour trouver le rapport établi sur la scène du crime.
+Pour débuter votre enquête, la police ne vous donne aucun indice, mais savez simplement que le crime que vous devez investiguer est un **meurtre** qui a eu lieu le **15 janvier 2018 à SQL City**. Commencez par investiguer la table `crime_scene_report` pour trouver le rapport établi sur la scène du crime.
 
 
 Quand vous aurez trouvé le coupable, vérifiez votre solution en bas de la page. Bonne chance !
