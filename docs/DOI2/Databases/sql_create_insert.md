@@ -825,26 +825,8 @@ Cette requête va-t-elle fonctionner ?
 :when:
 :class: hidden
 :name: pragma-ce
-CREATE TABLE Equipe(
-    nom TEXT,
-    entraineur TEXT,
-    budget REAL,
-    PRIMARY KEY(nom)
-);
-
-INSERT INTO Equipe(nom, entraineur, budget) VALUES('PSG', 'Luis Enrique', 850000000);
-INSERT INTO Equipe(nom, entraineur, budget) VALUES('FC Gottéron', 'Jean-Marc Genoud', 2500);
-INSERT INTO Equipe(nom, entraineur, budget) VALUES('Young Boys', 'Giorgio Contini', 77900000);
-
-CREATE TABLE Joueur(
-    prénom TEXT,
-    nom TEXT,
-    numéro_maillot INTEGER,
-    equipe TEXT,
-    id_joueur INTEGER,
-    PRIMARY KEY(id_joueur AUTOINCREMENT),
-    FOREIGN KEY(equipe) REFERENCES Equipe(nom)
-);
+:after: eleve-create-joueur
+PRAGMA foreign_keys = ON;
 ```
 
 
@@ -988,26 +970,8 @@ Cette requête va-t-elle fonctionner ?
 :when:
 :class: hidden
 :name: pragma-manga
-CREATE TABLE Editeur(
-    nom TEXT,
-    pays TEXT,
-    id_editeur INTEGER,
-    PRIMARY KEY(id_editeur AUTOINCREMENT)
-);
-
-INSERT INTO Editeur(nom, pays) VALUES ('Glénat', 'France');
-INSERT INTO Editeur(nom, pays) VALUES ('Kana', 'Belgique');
-INSERT INTO Editeur(nom, pays) VALUES ('Kazé', 'France');
-
-CREATE TABLE Manga(
-    titre TEXT,
-    nb_tomes INTEGER,
-    prix REAL,
-    editeur INTEGER,
-    id_manga INTEGER,
-    PRIMARY KEY(id_manga AUTOINCREMENT),
-    FOREIGN KEY(editeur) REFERENCES Editeur(id_editeur)
-);
+:after: eleve-create-manga
+PRAGMA foreign_keys = ON;
 ```
 
 ```{exec} sql

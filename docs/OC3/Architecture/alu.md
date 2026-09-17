@@ -125,19 +125,32 @@ multiplexeur commandé par `op`. Le bouton de contrôle vérifie votre circuit.
 
 ## TP : construire l'ALU dans Logix
 Ouvrez [Logix](https://maximejan.github.io/logix/) dans un nouvel onglet et construisez l'ALU de ce chapitre, celle qui
-servira au processeur. **N'enregistrez pas ce TP en tant qu'exercice** : c'est un
-circuit libre, que vous garderez pour la suite.
+servira au processeur.
 
 1.  Placez deux entrées `A` et `B` (largeur **8 bits**) et une entrée `op` sur
     **2 bits** : `00` = addition, `01` = soustraction, `10` = ET, `11` = OU.
 2.  Calculez les quatre résultats **en parallèle** : l'addition et la soustraction
     avec l'additionneur (et l'astuce du complément à deux pour `A - B`), le `ET` et
-    le `OU` avec des portes appliquées bit à bit.
+    le `OU` avec des portes appliquées bit à bit. Comme `A` et `B` sont des bus de
+    **8 bits** alors qu'une porte logique travaille sur des fils de **1 bit**,
+    servez-vous d'un **séparateur** pour éclater chaque bus en 8 fils individuels,
+    appliquez la porte sur chaque paire de bits, puis d'un **fusionneur** pour
+    rassembler les 8 sorties en un bus de 8 bits.
 3.  Réunissez les quatre résultats dans un **multiplexeur** commandé par `op` : sa
     sortie est le résultat de l'ALU.
-4.  Testez chaque opération sur quelques valeurs (vérifiez par exemple `A + B`,
-    `A - B`, `A ET B`, `A OU B`).
+4.  Testez chaque opération sur des valeurs qui vérifient vraiment le câblage, et
+    pas seulement un bit :
+
+    - `A + B` : essayez `0000 1111 + 0000 0001 = 0001 0000`, où la retenue se
+      propage sur les quatre bits de poids faible et contrôle ainsi toute la
+      chaîne de l'additionneur.
+    - `A - B` : essayez `0001 0000 - 0000 0001 = 0000 1111`, où l'emprunt se
+      propage de la même façon.
+    - `A ET B` et `A OU B` : prenez `A = 1100 1100` et `B = 1010 1010`. Ce couple
+      fait apparaître les quatre combinaisons de bits possibles, donc un seul essai
+      teste chaque fil : `A ET B = 1000 1000` et `A OU B = 1110 1110`.
 5.  **Encapsulez** votre circuit en un seul composant réutilisable nommé `ALU`
     (fonction de création de composant / sous-circuit de Logix). Vous le
     réutiliserez tel quel, comme une boîte noire, à la fin du chapitre.
-6.  **Enregistrez** votre travail.
+6.  **Enregistrez** votre circuit, et veillez à bien conserver le fichier JSON
+    exporté : il vous permettra de rouvrir votre ALU plus tard.

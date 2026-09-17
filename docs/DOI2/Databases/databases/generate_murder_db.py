@@ -908,7 +908,8 @@ rng.shuffle(revenus)
 # ===========================================================================
 # ÉCRITURE DU FICHIER SQL
 # ===========================================================================
-SCHEMA = '''BEGIN TRANSACTION;
+SCHEMA = '''PRAGMA foreign_keys = OFF;
+BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "crime_scene_report" (
 \t"date"\tinteger,
 \t"type"\ttext,
