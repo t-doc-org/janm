@@ -1,7 +1,7 @@
 <!-- Copyright 2025 Maxime Jan <maxime.jan@edufr.ch> -->
 <!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
 
-Enquête adaptée de [SQL Murder Mystery](https://github.com/NUKnightLab/sql-mysteries), Joon Park & Cathy He, CC-BY-SA 4.0. Le schéma et le déroulé de l'enquête sont ceux de l'original ; les données ont été régénérées et traduites pour ce cours par le script `databases/generate_murder_db.py`.
+Enquête adaptée de [SQL Murder Mystery](https://github.com/NUKnightLab/sql-mysteries), Joon Park & Cathy He, CC-BY-SA 4.0. Le schéma et le déroulé de l'enquête sont ceux de l'original ; les données ont été régénérées et traduites pour ce cours.
 
 
 ```{metadata}
