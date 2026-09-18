@@ -220,45 +220,6 @@ WHERE Utilisateur.prenom = 'Catherine'
 : Salle.nb_places = Seance.salle
 ```
 
-### Exercice {num1}`exercice`
-Avant d'écrire vos propres `JOIN`, il faut bien comprendre **ce qu'un `JOIN` produit**. Exécutez
-la requête ci-dessous, observez attentivement le résultat, puis répondez aux questions.
-
-```{exec} sql
-:after: sql-create-insert-all
-:name: sql-join-comprendre
-:output-style: max-height: 30rem
-SELECT *
-FROM Utilisateur
-JOIN Emprunt ON Emprunt.utilisateur = Utilisateur.id_utilisateur
-```
-
-```{quiz}
-1. {num}`10`
-Combien de lignes le résultat contient-il ?
-
-2. {num}`3`
-Combien de fois *Catherine Leroy* apparaît-elle dans le résultat ?
-
-3. {num}`6`
-La table `Utilisateur` contient 10 utilisateurs. Combien d'entre eux apparaissent au moins une
-fois dans le résultat ?
-```
-
-````{solution}
-Un `JOIN` ne colle pas les tables l'une à côté de l'autre : il produit **une ligne par couple de
-lignes qui vérifient la condition du `ON`**.
-
-1.  La table `Emprunt` contient 10 lignes, et chacune correspond à exactement un utilisateur. Le
-    résultat contient donc 10 lignes, soit autant que la table `Emprunt`.
-2.  Catherine Leroy a emprunté 3 livres. Ses informations sont donc **recopiées 3 fois**, une fois
-    par emprunt. C'est normal et attendu.
-3.  Seuls 6 utilisateurs ont emprunté au moins un livre. Les 4 autres n'apparaissent **pas du
-    tout** dans le résultat : sans emprunt, aucun couple ne vérifie la condition du `ON`.
-
-Retenez ces deux effets : un `JOIN` peut **répéter** des lignes, et il peut aussi en **faire
-disparaître**.
-````
 
 ### Exercice {num1}`exercice`
 Pour chacune des jointures ci-dessous, choisissez la condition `ON` correcte.
