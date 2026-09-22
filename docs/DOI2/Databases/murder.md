@@ -67,7 +67,7 @@ Nous ne connaissons pas encore les jointures (`JOIN`) : nous allons donc croiser
 les tables **à la main**. À chaque étape, on note les identifiants (`id`) trouvés,
 et on les réutilise dans la requête suivante.
 
-### Partie 1 — Trouver le meurtrier
+### Partie 1 : Trouver le meurtrier
 
 **1. Lire le rapport du crime.** C'est un meurtre commis le 15 janvier 2018 à
 SQL City.
@@ -164,7 +164,7 @@ SELECT plate_number FROM driver_license WHERE id = <license_id_trouvé>;
 Un seul des cinq suspects a une plaque contenant `H42W` : **Jeremy Bowers**.
 C'est le meurtrier. 🔍
 
-### Partie 2 — Trouver le commanditaire
+### Partie 2 : Trouver le commanditaire
 
 **9. Lire la déposition du meurtrier** (avec son `person_id`, trouvé à l'étape 8).
 

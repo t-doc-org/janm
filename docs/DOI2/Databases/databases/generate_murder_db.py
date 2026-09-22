@@ -869,7 +869,7 @@ while len(checkins_gym) < N_CHECKINS_GYM:
 # sans Tesla) et quelques autres rousses, pour que « concert + rousse » ne donne
 # pas encore la réponse. Beaucoup d'autres gens (voir plus bas) y sont allés une
 # ou deux fois : une requête « concert » sans le signalement physique renvoie
-# donc une longue liste inexploitable à la main — c'est voulu.
+# donc une longue liste inexploitable à la main : c'est voulu.
 _leurre_taille = rng.sample(C_TAILLE, ENTONNOIRS["concert_3x_rousses_taille"] - 1)
 _leurre_rousses = rng.sample(C_ROUSSES, ENTONNOIRS["concert_3x_rousses"]
                              - ENTONNOIRS["concert_3x_rousses_taille"])
