@@ -195,7 +195,7 @@ chaque appel de fonction. Si le programme n'affiche rien, écrivez `rien`.
 2.  **`10`**. Cette fois l'appel est capté dans la variable `resultat`, que le `print` affiche
     ensuite.
 
-3.  **`10`** également — mais pour une raison **opposée** au programme 2 ! Ici la fonction ne
+3.  **`10`** également, mais pour une raison **opposée** au programme 2 ! Ici la fonction ne
     retourne rien : c'est elle-même qui contient le `print`. Le résultat s'affiche donc pendant
     l'appel. Les programmes 2 et 3 affichent la même chose, mais dans le programme 3 on ne
     pourrait **pas** réutiliser la valeur `10` ailleurs, alors que dans le programme 2, oui.

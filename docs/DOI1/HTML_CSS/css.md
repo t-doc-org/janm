@@ -807,12 +807,12 @@ Le contenu d'une page a été défini en HTML de la manière suivante.
     </table>
 
     <h2>Têtes d'affiche</h2>
-    <p class="vedette">Coldplay — Grande Scène, vendredi soir</p>
-    <p class="vedette">Stromae — Grande Scène, samedi soir</p>
+    <p class="vedette">Coldplay : Grande Scène, vendredi soir</p>
+    <p class="vedette">Stromae : Grande Scène, samedi soir</p>
     <p>Des dizaines d'autres artistes se produisent sur les six scènes
     tout au long de la semaine.</p>
 
-    <p class="info">Billetterie: paleo.ch — Prochaine édition: juillet 2026</p>
+    <p class="info">Billetterie: paleo.ch | Prochaine édition: juillet 2026</p>
 </body>
 </html>
 ```

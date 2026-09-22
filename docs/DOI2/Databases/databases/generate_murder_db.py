@@ -999,7 +999,7 @@ def insert(table, lignes):
     return f'INSERT INTO "{table}" VALUES ' + "".join(corps) + ";\n"
 
 
-# ORDRE DES LIGNES — important.
+# ORDRE DES LIGNES : important.
 # Les personnages de l'enquête sont créés en premier dans ce script. Si on les
 # écrivait dans cet ordre, un simple SELECT * les afficherait en tête de table
 # et l'énigme se résoudrait à l'œil. Les tables munies d'une clef primaire sont

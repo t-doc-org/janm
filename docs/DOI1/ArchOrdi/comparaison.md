@@ -9,7 +9,7 @@ solutions: dynamic
 # Comparer plusieurs ordinateurs
 
 Acheter un ordinateur, c'est choisir **composant par composant** selon
-l'**usage** visé — et non se fier à un seul chiffre (le prix ou la fréquence du
+l'**usage** visé, et non se fier à un seul chiffre (le prix ou la fréquence du
 processeur). Voici des repères concrets pour une machine destinée aux **études**
 en 2026.
 
