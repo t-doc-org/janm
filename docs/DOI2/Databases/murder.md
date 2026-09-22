@@ -60,3 +60,143 @@ Si vous avez trouvé le meurtrier, félicitations ! Toutefois, bien que vous aye
 Le commanditaire est :
 
 ```
+
+
+`````{solution}
+Nous ne connaissons pas encore les jointures (`JOIN`) : nous allons donc croiser
+les tables **à la main**. À chaque étape, on note les identifiants (`id`) trouvés,
+et on les réutilise dans la requête suivante.
+
+### Partie 1 — Trouver le meurtrier
+
+**1. Lire le rapport du crime.** C'est un meurtre commis le 15 janvier 2018 à
+SQL City.
+
+```{code} sql
+SELECT * FROM crime_scene_report
+WHERE city = 'SQL City' AND date = 20180115 AND type = 'murder';
+```
+
+Le rapport parle de deux témoins : le premier habite **la dernière maison de
+Northwestern Dr**, le second, prénommé **Annabel**, habite sur **Franklin Ave**.
+
+**2. Retrouver le premier témoin.** « La dernière maison » = le plus grand
+numéro. On trie donc par `address_number` décroissant et on regarde la première
+ligne.
+
+```{code} sql
+SELECT * FROM person
+WHERE address_street_name = 'Northwestern Dr'
+ORDER BY address_number DESC;
+```
+
+La première ligne est **Morty Schapiro** (numéro 4919). On note son `id`.
+
+**3. Retrouver le second témoin.** On combine le prénom et la rue.
+
+```{code} sql
+SELECT * FROM person
+WHERE name LIKE 'Annabel%' AND address_street_name = 'Franklin Ave';
+```
+
+Une seule personne : **Annabel Miller**. On note son `id`.
+
+**4. Lire les deux dépositions.** On réutilise les deux `id` notés (remplacez
+`<id_morty>` et `<id_annabel>` par les valeurs trouvées aux étapes 2 et 3).
+
+```{code} sql
+SELECT * FROM interview WHERE person_id = <id_morty>;
+```
+
+```{code} sql
+SELECT * FROM interview WHERE person_id = <id_annabel>;
+```
+
+Morty décrit le tueur : un homme, membre **gold** de la salle « Get Fit Now »,
+dont le numéro de sac commence par **48Z**, et qui est monté dans une voiture
+dont la plaque contient **H42W**. Annabel précise qu'elle l'a croisé à la salle
+**le 9 janvier** (`20180109`).
+
+**5. Les membres « gold » dont le numéro commence par 48Z.**
+
+```{code} sql
+SELECT * FROM get_fit_now_member
+WHERE id LIKE '48Z%' AND membership_status = 'gold';
+```
+
+Il y en a **quatre**. On note leur `id` de membre et leur `person_id`.
+
+**6. Qui est venu à la salle le 9 janvier ?**
+
+```{code} sql
+SELECT * FROM get_fit_now_check_in WHERE check_in_date = 20180109;
+```
+
+**7. Croiser à la main.** Parmi les 4 membres de l'étape 5, on ne garde que ceux
+dont l'`id` de membre apparaît **aussi** dans la liste du 9 janvier. Il en reste
+**trois** suspects.
+
+**8. Départager grâce à la plaque.** On liste d'abord les plaques contenant
+`H42W` :
+
+```{code} sql
+SELECT * FROM driver_license WHERE plate_number LIKE '%H42W%';
+```
+
+Puis, pour chacun des trois suspects, on remonte à son permis : on lit d'abord
+son `license_id` dans `person`, puis sa plaque dans `driver_license`.
+
+```{code} sql
+SELECT license_id FROM person WHERE id = <person_id_du_suspect>;
+```
+
+```{code} sql
+SELECT plate_number FROM driver_license WHERE id = <license_id_trouvé>;
+```
+
+Un seul des trois suspects a une plaque contenant `H42W` : **Jeremy Bowers**.
+C'est le meurtrier. 🔍
+
+### Partie 2 — Trouver le commanditaire
+
+**9. Lire la déposition du meurtrier** (avec son `person_id`, trouvé à l'étape 8).
+
+```{code} sql
+SELECT * FROM interview WHERE person_id = <id_jeremy_bowers>;
+```
+
+Il décrit la personne qui l'a engagé : une **femme**, aux cheveux **roux**,
+mesurant **entre 65 et 67**, qui conduit une **Tesla Model S** et qui est allée
+**trois fois** au **SQL Symphony Concert** en décembre 2017.
+
+**10. Filtrer les permis avec tout le signalement physique.**
+
+```{code} sql
+SELECT * FROM driver_license
+WHERE gender = 'female' AND hair_color = 'red'
+  AND height >= 65 AND height <= 67
+  AND car_make = 'Tesla' AND car_model = 'Model S';
+```
+
+**Cinq** femmes correspondent. On note leur `id` de permis.
+
+**11. Retrouver chaque personne, puis vérifier le concert.** Pour chaque permis,
+on retrouve la personne grâce à son `license_id`, on note son `id`...
+
+```{code} sql
+SELECT * FROM person WHERE license_id = <id_du_permis>;
+```
+
+... puis on regarde combien de fois cette personne est allée au concert en
+décembre 2017 :
+
+```{code} sql
+SELECT * FROM facebook_event_checkin
+WHERE person_id = <id_de_la_personne>
+  AND event_name = 'SQL Symphony Concert'
+  AND date >= 20171201 AND date <= 20171231;
+```
+
+Une seule des cinq femmes y est allée **trois fois** : **Miranda Priestly**.
+C'est elle, le cerveau de l'affaire. 🎻
+`````

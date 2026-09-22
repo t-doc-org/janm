@@ -69,24 +69,29 @@ NB_CONCERTS = 3
 
 # --- Tailles des chausse-trappes (le « bruit utile ») -----------------------
 # Chaque nombre est vérifié par une assertion à la fin du script.
+# Objectif pédagogique : chaque indice, pris seul, ne doit renvoyer qu'une
+# petite poignée de lignes (au plus ~6), assez pour ne pas donner la réponse
+# tout de suite, mais assez peu pour être dépouillée à l'œil sans GROUP BY ni
+# JOIN. Ce n'est que le RECOUPEMENT de tous les indices d'une branche qui
+# laisse un seul nom. Les nombres ci-dessous sont donc volontairement bas.
 ENTONNOIRS = {
-    "rapports_ville": 400,        # city = 'SQL City'
-    "rapports_ville_date": 30,    # ... and date = 20180115
-    "rapports_ville_meurtre": 15, # city = 'SQL City' and type = 'murder'
-    "habitants_rue1": 60,         # address_street_name = 'Northwestern Dr'
-    "habitants_rue2": 50,         # address_street_name = 'Franklin Ave'
-    "prenoms_annabel": 25,        # name like 'Annabel%'
-    "membres_48z": 40,            # get_fit_now_member.id like '48Z%'
-    "membres_48z_gold": 15,       # ... and membership_status = 'gold'
-    "checkins_gym_date": 30,      # check_in_date = 20180109
-    "membres_48z_gold_date": 4,   # les trois conditions réunies
-    "plaques_h42w": 25,           # plate_number like '%H42W%'
-    "femmes_rousses": 300,        # gender = 'female' and hair_color = 'red'
-    "femmes_rousses_taille": 80,  # ... and height between 65 and 67
-    "femmes_rousses_tesla": 12,   # ... and car = Tesla Model S
-    "tesla_model_s": 70,          # Tesla Model S, toutes personnes confondues
-    "concert_3x": 40,             # 3 présences au concert en décembre 2017
-    "concert_3x_rousses": 6,      # ... et femme rousse
+    "rapports_ville": 30,         # city = 'SQL City'
+    "rapports_ville_date": 6,     # ... and date = 20180115
+    "rapports_ville_meurtre": 6,  # city = 'SQL City' and type = 'murder'
+    "habitants_rue1": 7,          # address_street_name = 'Northwestern Dr'
+    "habitants_rue2": 6,          # address_street_name = 'Franklin Ave'
+    "prenoms_annabel": 6,         # name like 'Annabel%'
+    "membres_48z": 6,             # get_fit_now_member.id like '48Z%'
+    "membres_48z_gold": 4,        # ... and membership_status = 'gold'
+    "checkins_gym_date": 6,       # check_in_date = 20180109
+    "membres_48z_gold_date": 3,   # les trois conditions réunies (48Z+gold+9 jan)
+    "plaques_h42w": 6,            # plate_number like '%H42W%'
+    "femmes_rousses": 12,         # gender = 'female' and hair_color = 'red'
+    "femmes_rousses_taille": 8,   # ... and height between 65 and 67
+    "femmes_rousses_tesla": 5,    # ... and car = Tesla Model S
+    "tesla_model_s": 10,          # Tesla Model S, toutes personnes confondues
+    "concert_3x": 6,              # 3 présences au concert en décembre 2017
+    "concert_3x_rousses": 3,      # ... et femme rousse
     "concert_3x_rousses_taille": 2,  # ... et taille 65-67
     "revenus_superieurs": 15,     # au moins N personnes plus riches que la
 }                                 # commanditaire (pour qu'un tri par revenu
@@ -688,8 +693,9 @@ I_TEMOIN1 = ajouter(nom_complet=TEMOIN1, rue=RUE_TEMOIN1, numero=4919)
 I_TEMOIN2 = ajouter(nom_complet=TEMOIN2, rue=RUE_TEMOIN2)
 
 # --- 2. Cohortes de bruit ciblé ---------------------------------------------
-# 2a. Les voisins du témoin 1. Sans ORDER BY, l'élève voit 60 lignes ; les
-#     numéros les plus élevés sont volontairement proches de 4919.
+# 2a. Les voisins du témoin 1. La rue ne compte qu'une poignée de maisons ;
+#     leurs numéros sont volontairement proches de 4919 pour que « la dernière
+#     maison » (le plus grand numéro) demande vraiment un ORDER BY ... DESC.
 numeros = rng.sample(range(100, 4890), ENTONNOIRS["habitants_rue1"] - 1)
 numeros[:6] = [4901, 4888, 4877, 4860, 4842, 4831]
 C_RUE1 = [ajouter(rue=RUE_TEMOIN1, numero=n) for n in numeros]
@@ -762,14 +768,14 @@ _ids_gym.add(ID_GYM_TUEUR)
 M_TUEUR = (ID_GYM_TUEUR, I_TUEUR, "gold")
 membres.append(M_TUEUR)
 
-# 14 autres membres « gold » dont le numéro commence par 48Z. Aucun d'eux n'a
+# Les autres membres « gold » dont le numéro commence par 48Z. Aucun d'eux n'a
 # de plaque suspecte : c'est ce qui rend la solution finale unique.
 _dispo = [i for i in C_QUELCONQUE if i not in INTERDITS_PLAQUE]
 rng.shuffle(_dispo)
 _pool = iter(_dispo)
 M_48Z_GOLD = [membre(next(_pool), True, "gold")
               for _ in range(ENTONNOIRS["membres_48z_gold"] - 1)]
-# 25 membres 48Z qui ne sont pas « gold »
+# Les membres 48Z qui ne sont pas « gold »
 M_48Z_AUTRES = [membre(next(_pool), True, rng.choice(["silver", "regular"]))
                 for _ in range(ENTONNOIRS["membres_48z"] - ENTONNOIRS["membres_48z_gold"])]
 # Le témoin 2 est membre : c'est là qu'elle a reconnu le tueur.
@@ -786,7 +792,8 @@ def checkin(id_membre, d):
     checkins_gym.append((id_membre, d, e, e + rng.randrange(20, 120)))
 
 
-# Le 9 janvier : 30 passages, dont exactement 4 membres « gold » en 48Z.
+# Le 9 janvier : quelques passages, dont exactement membres_48z_gold_date
+# membres « gold » en 48Z (le tueur compris).
 checkin(ID_GYM_TUEUR, DATE_GYM)
 for m in rng.sample(M_48Z_GOLD, ENTONNOIRS["membres_48z_gold_date"] - 1):
     checkin(m[0], DATE_GYM)
@@ -802,12 +809,12 @@ while len(checkins_gym) < N_CHECKINS_GYM:
         checkin(rng.choice(membres)[0], d)
 
 # --- 5. Événements Facebook -------------------------------------------------
-# 40 personnes sont allées 3 fois au concert en décembre 2017. Ce critère seul
-# ne suffit donc pas : il faut le croiser avec le signalement physique.
-# La composition des 40 est choisie exprès : on y place une femme rousse de la
-# bonne taille (mais qui ne conduit pas de Tesla) et quelques autres rousses.
-# Ainsi, en partant du concert, l'élève descend 40 -> 6 -> 2 -> 1 : chaque
-# critère du signalement sert vraiment à quelque chose.
+# Seules quelques personnes (concert_3x) sont allées au SQL Symphony Concert en
+# décembre 2017, chacune exactement 3 fois. Ce petit groupe est scrutable à
+# l'œil (chaque personne y apparaît 3 fois), sans GROUP BY. Ce critère seul ne
+# suffit pas : il faut le croiser avec le signalement physique. On glisse dans
+# le groupe une femme rousse de la bonne taille (mais sans Tesla) et une autre
+# rousse, pour que « concert + rousse » ne donne pas encore la réponse.
 _leurre_taille = rng.sample(C_TAILLE, ENTONNOIRS["concert_3x_rousses_taille"] - 1)
 _leurre_rousses = rng.sample(C_ROUSSES, ENTONNOIRS["concert_3x_rousses"]
                              - ENTONNOIRS["concert_3x_rousses_taille"])
@@ -830,11 +837,9 @@ for i in C_CONCERT:
     for j in rng.sample(range(1, 32), NB_CONCERTS):
         checkin_fb(i, EVENEMENT_CIBLE, 20171200 + j)
 
-# 250 personnes y sont allées une ou deux fois seulement.
-for i in _candidats[:250]:
-    for j in rng.sample(range(1, 32), rng.randrange(1, NB_CONCERTS)):
-        checkin_fb(i, EVENEMENT_CIBLE, 20171200 + j)
-    _deja_concert.add(i)
+# Personne d'autre n'est allé au SQL Symphony Concert en décembre 2017 : la
+# liste de ce concert reste donc courte et lisible à l'œil (concert_3x
+# personnes, 3 lignes chacune).
 
 # Le concert existe aussi en dehors de décembre 2017.
 _autres_evts = [e for e in EVENEMENTS if e != EVENEMENT_CIBLE]
@@ -874,11 +879,11 @@ def fait(type_crime):
     return texte(FAITS_DIVERS[type_crime], COMPLEMENTS_FAIT)
 
 
-# 29 autres faits le jour du crime, à SQL City
+# Les autres faits le jour du crime, à SQL City (aucun n'est un meurtre)
 for _ in range(ENTONNOIRS["rapports_ville_date"] - 1):
     t = rng.choice(_pas_meurtre)
     rapports.append((DATE_CRIME, t, fait(t), VILLE))
-# 14 autres meurtres à SQL City, mais à d'autres dates
+# Les autres meurtres à SQL City, mais à d'autres dates
 for _ in range(ENTONNOIRS["rapports_ville_meurtre"] - 1):
     d = jour()
     while d == DATE_CRIME:
