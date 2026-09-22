@@ -80,9 +80,10 @@ WHERE city = 'SQL City' AND date = 20180115 AND type = 'murder';
 Le rapport parle de deux témoins : le premier habite **la dernière maison de
 Northwestern Dr**, le second, prénommé **Annabel**, habite sur **Franklin Ave**.
 
-**2. Retrouver le premier témoin.** « La dernière maison » = le plus grand
-numéro. On trie donc par `address_number` décroissant et on regarde la première
-ligne.
+**2. Retrouver le premier témoin.** La rue compte une centaine de maisons : on
+ne peut pas deviner « la dernière » à l'œil. « La dernière maison » = le plus
+grand numéro, donc on trie par `address_number` décroissant et on ne regarde que
+la première ligne.
 
 ```{code} sql
 SELECT * FROM person
@@ -92,7 +93,9 @@ ORDER BY address_number DESC;
 
 La première ligne est **Morty Schapiro** (numéro 4919). On note son `id`.
 
-**3. Retrouver le second témoin.** On combine le prénom et la rue.
+**3. Retrouver le second témoin.** La rue Franklin Ave compte elle aussi une
+centaine d'habitants, et il y a une vingtaine de personnes prénommées Annabel :
+il faut donc **combiner** le prénom **et** la rue.
 
 ```{code} sql
 SELECT * FROM person
@@ -124,7 +127,8 @@ SELECT * FROM get_fit_now_member
 WHERE id LIKE '48Z%' AND membership_status = 'gold';
 ```
 
-Il y en a **quatre**. On note leur `id` de membre et leur `person_id`.
+On obtient **six** membres (chercher juste `48Z`, ou juste `gold`, en renverrait
+beaucoup plus). On note leur `id` de membre et leur `person_id`.
 
 **6. Qui est venu à la salle le 9 janvier ?**
 
@@ -132,9 +136,12 @@ Il y en a **quatre**. On note leur `id` de membre et leur `person_id`.
 SELECT * FROM get_fit_now_check_in WHERE check_in_date = 20180109;
 ```
 
-**7. Croiser à la main.** Parmi les 4 membres de l'étape 5, on ne garde que ceux
-dont l'`id` de membre apparaît **aussi** dans la liste du 9 janvier. Il en reste
-**trois** suspects.
+Cette liste est longue (une centaine de passages) : impossible d'y repérer le
+tueur directement. C'est le **croisement** avec l'étape 5 qui va la réduire.
+
+**7. Croiser à la main.** Parmi les six membres de l'étape 5, on ne garde que ceux
+dont l'`id` de membre apparaît **aussi** dans la liste du 9 janvier. Il n'en reste
+que **cinq** suspects.
 
 **8. Départager grâce à la plaque.** On liste d'abord les plaques contenant
 `H42W` :
@@ -143,7 +150,7 @@ dont l'`id` de membre apparaît **aussi** dans la liste du 9 janvier. Il en rest
 SELECT * FROM driver_license WHERE plate_number LIKE '%H42W%';
 ```
 
-Puis, pour chacun des trois suspects, on remonte à son permis : on lit d'abord
+Puis, pour chacun des cinq suspects, on remonte à son permis : on lit d'abord
 son `license_id` dans `person`, puis sa plaque dans `driver_license`.
 
 ```{code} sql
@@ -154,7 +161,7 @@ SELECT license_id FROM person WHERE id = <person_id_du_suspect>;
 SELECT plate_number FROM driver_license WHERE id = <license_id_trouvé>;
 ```
 
-Un seul des trois suspects a une plaque contenant `H42W` : **Jeremy Bowers**.
+Un seul des cinq suspects a une plaque contenant `H42W` : **Jeremy Bowers**.
 C'est le meurtrier. 🔍
 
 ### Partie 2 — Trouver le commanditaire
@@ -169,7 +176,9 @@ Il décrit la personne qui l'a engagé : une **femme**, aux cheveux **roux**,
 mesurant **entre 65 et 67**, qui conduit une **Tesla Model S** et qui est allée
 **trois fois** au **SQL Symphony Concert** en décembre 2017.
 
-**10. Filtrer les permis avec tout le signalement physique.**
+**10. Filtrer les permis avec tout le signalement physique.** Pris séparément,
+chaque critère renvoie une centaine de lignes (une centaine de Tesla Model S,
+une centaine de femmes rousses...). Il faut donc les cumuler tous avec `AND`.
 
 ```{code} sql
 SELECT * FROM driver_license
@@ -178,7 +187,7 @@ WHERE gender = 'female' AND hair_color = 'red'
   AND car_make = 'Tesla' AND car_model = 'Model S';
 ```
 
-**Cinq** femmes correspondent. On note leur `id` de permis.
+Il ne reste que **six** femmes. On note leur `id` de permis.
 
 **11. Retrouver chaque personne, puis vérifier le concert.** Pour chaque permis,
 on retrouve la personne grâce à son `license_id`, on note son `id`...

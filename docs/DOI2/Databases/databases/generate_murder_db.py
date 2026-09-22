@@ -67,32 +67,63 @@ CHEVEUX_C, GENRE_C = "red", "female"
 VOITURE_C = ("Tesla", "Model S")
 NB_CONCERTS = 3
 
-# --- Tailles des chausse-trappes (le « bruit utile ») -----------------------
-# Chaque nombre est vérifié par une assertion à la fin du script.
-# Objectif pédagogique : chaque indice, pris seul, ne doit renvoyer qu'une
-# petite poignée de lignes (au plus ~6), assez pour ne pas donner la réponse
-# tout de suite, mais assez peu pour être dépouillée à l'œil sans GROUP BY ni
-# JOIN. Ce n'est que le RECOUPEMENT de tous les indices d'une branche qui
-# laisse un seul nom. Les nombres ci-dessous sont donc volontairement bas.
+# ===========================================================================
+# COMMENT LE BRUIT EST « RÉGLÉ » (à lire avant de toucher aux nombres)
+# ===========================================================================
+# Toute la difficulté de l'enquête tient dans UN dictionnaire : ENTONNOIRS.
+# Chaque clef répond à la question « combien de lignes renvoie une requête qui
+# utilise TELLE combinaison de conditions ? ». Le script fabrique ensuite
+# EXACTEMENT ce nombre de personnes (ou de lignes) qui vérifient ces conditions,
+# et l'assertion correspondante, à la fin du fichier, le revérifie sur la base
+# réellement écrite. Changer la difficulté = changer un nombre ici.
+#
+# Le principe est celui d'un ENTONNOIR (d'où le nom) :
+#
+#   • Une requête INCOMPLÈTE (une seule condition) doit renvoyer BEAUCOUP de
+#     lignes (~100). L'élève voit tout de suite qu'il ne peut pas dépouiller
+#     ça à l'œil : il est OBLIGÉ d'ajouter des conditions avec AND.
+#         ex. address_street_name = 'Franklin Ave'      -> ~100
+#             check_in_date = 20180109                  -> ~100
+#             car_make = 'Tesla' and car_model='Model S'-> ~100
+#
+#   • En AJOUTANT les conditions, la liste rétrécit vite (l'entonnoir se
+#     resserre) jusqu'à une petite poignée de suspects.
+#         ex. 'Franklin Ave' + prénom 'Annabel'         -> 1
+#             '48Z' + gold + passage le 9 janvier       -> 4
+#             femme + rousse + taille + Tesla           -> 6
+#
+#   • Le RECOUPEMENT de tous les indices d'une branche ne laisse qu'UN nom
+#     (le meurtrier, puis le commanditaire). C'est garanti par les assertions.
+#
+# Chaque ligne ci-dessous se lit « … » = « une condition de plus que la ligne
+# précédente ». Le premier nombre de chaque groupe est le gros (~100) : c'est
+# lui qui force l'élève à compléter sa requête.
 ENTONNOIRS = {
-    "rapports_ville": 30,         # city = 'SQL City'
-    "rapports_ville_date": 6,     # ... and date = 20180115
-    "rapports_ville_meurtre": 6,  # city = 'SQL City' and type = 'murder'
-    "habitants_rue1": 7,          # address_street_name = 'Northwestern Dr'
-    "habitants_rue2": 6,          # address_street_name = 'Franklin Ave'
-    "prenoms_annabel": 6,         # name like 'Annabel%'
-    "membres_48z": 6,             # get_fit_now_member.id like '48Z%'
-    "membres_48z_gold": 4,        # ... and membership_status = 'gold'
-    "checkins_gym_date": 6,       # check_in_date = 20180109
-    "membres_48z_gold_date": 3,   # les trois conditions réunies (48Z+gold+9 jan)
-    "plaques_h42w": 6,            # plate_number like '%H42W%'
-    "femmes_rousses": 12,         # gender = 'female' and hair_color = 'red'
-    "femmes_rousses_taille": 8,   # ... and height between 65 and 67
-    "femmes_rousses_tesla": 5,    # ... and car = Tesla Model S
-    "tesla_model_s": 10,          # Tesla Model S, toutes personnes confondues
-    "concert_3x": 6,              # 3 présences au concert en décembre 2017
-    "concert_3x_rousses": 3,      # ... et femme rousse
+    "rapports_ville": 120,        # city = 'SQL City'                      (gros)
+    "rapports_ville_date": 15,    # ... and date = 20180115
+    "rapports_ville_meurtre": 15, # city = 'SQL City' and type = 'murder'
+    #                             # city + date + type='murder'            -> 1
+    "habitants_rue1": 100,        # address_street_name = 'Northwestern Dr'(gros)
+    #                             # ... + ORDER BY address_number DESC -> 1re ligne
+    "habitants_rue2": 100,        # address_street_name = 'Franklin Ave'   (gros)
+    "prenoms_annabel": 25,        # name like 'Annabel%'
+    #                             # 'Franklin Ave' + 'Annabel%'            -> 1
+    "membres_48z": 40,            # get_fit_now_member.id like '48Z%'
+    "membres_48z_gold": 6,        # ... and membership_status = 'gold'  (à croiser)
+    "checkins_gym_date": 100,     # check_in_date = 20180109               (gros)
+    "membres_48z_date": 8,        # 48Z + le 9 janvier (dont 3 NON-gold : le
+    #                             #   statut « gold » sert donc vraiment à filtrer)
+    "membres_48z_gold_date": 5,   # 48Z + gold + le 9 janvier (les 5 à départager)
+    "plaques_h42w": 25,           # plate_number like '%H42W%'
+    #                             # 48Z + gold + 9 janvier + plaque H42W   -> 1
+    "femmes_rousses": 100,        # gender = 'female' and hair_color = 'red'(gros)
+    "femmes_rousses_taille": 30,  # ... and height between 65 and 67
+    "femmes_rousses_tesla": 6,    # ... and car = Tesla Model S
+    "tesla_model_s": 100,         # Tesla Model S, toutes personnes confondues (gros)
+    "concert_3x": 40,             # 3 présences au concert en décembre 2017
+    "concert_3x_rousses": 6,      # ... et femme rousse
     "concert_3x_rousses_taille": 2,  # ... et taille 65-67
+    #                             # femme+rousse+taille+Tesla + concert 3x -> 1
     "revenus_superieurs": 15,     # au moins N personnes plus riches que la
 }                                 # commanditaire (pour qu'un tri par revenu
                                   # ne donne pas la réponse)
@@ -693,9 +724,10 @@ I_TEMOIN1 = ajouter(nom_complet=TEMOIN1, rue=RUE_TEMOIN1, numero=4919)
 I_TEMOIN2 = ajouter(nom_complet=TEMOIN2, rue=RUE_TEMOIN2)
 
 # --- 2. Cohortes de bruit ciblé ---------------------------------------------
-# 2a. Les voisins du témoin 1. La rue ne compte qu'une poignée de maisons ;
-#     leurs numéros sont volontairement proches de 4919 pour que « la dernière
-#     maison » (le plus grand numéro) demande vraiment un ORDER BY ... DESC.
+# 2a. Les voisins du témoin 1. La rue compte une centaine de maisons : sans
+#     ORDER BY, l'élève voit ~100 lignes et ne peut pas deviner « la dernière ».
+#     Les 6 plus grands numéros sont volontairement proches de 4919 pour que
+#     « la dernière maison » (le plus grand numéro) exige un ORDER BY ... DESC.
 numeros = rng.sample(range(100, 4890), ENTONNOIRS["habitants_rue1"] - 1)
 numeros[:6] = [4901, 4888, 4877, 4860, 4842, 4831]
 C_RUE1 = [ajouter(rue=RUE_TEMOIN1, numero=n) for n in numeros]
@@ -787,21 +819,43 @@ M_AUTRES = [membre(next(_pool), False, rng.choice(STATUTS_GYM))
 checkins_gym = []      # (id_membre, date, entree, sortie)
 
 
-def checkin(id_membre, d):
-    e = rng.randrange(300, 1300)
-    checkins_gym.append((id_membre, d, e, e + rng.randrange(20, 120)))
+def checkin(id_membre, d, entree=None, duree=None):
+    e = entree if entree is not None else rng.randrange(300, 1300)
+    s = e + (duree if duree is not None else rng.randrange(20, 120))
+    checkins_gym.append((id_membre, d, e, s))
 
 
-# Le 9 janvier : quelques passages, dont exactement membres_48z_gold_date
-# membres « gold » en 48Z (le tueur compris).
-checkin(ID_GYM_TUEUR, DATE_GYM)
+# Le 9 janvier : ~100 passages (checkins_gym_date). Deux pièges à désamorcer :
+#
+#  • le STATUT : parmi les membres 48Z présents ce jour-là, tous ne sont pas
+#    « gold » (membres_48z_date - membres_48z_gold_date en sont dépourvus). Ainsi
+#    « 48Z + 9 janvier » renvoie plus de lignes que « 48Z + gold + 9 janvier » :
+#    la condition gold sert vraiment à quelque chose.
+#
+#  • l'HEURE : Annabel a vu le tueur, donc il est présent pendant son créneau.
+#    Mais si l'on regroupe tous les passages du jour dans la même plage horaire,
+#    des dizaines de personnes se chevauchent avec elle : filtrer sur son heure
+#    de passage ne suffit donc PAS à isoler le tueur.
+HEURE_ANNABEL = (815, 930)          # check_in_time / check_out_time du témoin 2
+PLAGE = lambda: (rng.randrange(700, 1050), rng.randrange(60, 170))  # (entrée, durée)
+
+# Le témoin 2 (Annabel) est à la salle ce jour-là : c'est là qu'elle voit le tueur.
+checkin(M_TEMOIN2[0], DATE_GYM, entree=HEURE_ANNABEL[0],
+        duree=HEURE_ANNABEL[1] - HEURE_ANNABEL[0])
+# Le tueur, forcément présent pendant qu'Annabel est là.
+checkin(ID_GYM_TUEUR, DATE_GYM, entree=850, duree=70)
+# Les autres membres « gold » 48Z présents (avec le tueur : membres_48z_gold_date).
 for m in rng.sample(M_48Z_GOLD, ENTONNOIRS["membres_48z_gold_date"] - 1):
-    checkin(m[0], DATE_GYM)
-checkin(M_TEMOIN2[0], DATE_GYM)
-_non_suspects = [m for m in M_48Z_AUTRES + M_AUTRES if m is not M_TEMOIN2]
-for m in rng.sample(_non_suspects,
-                    ENTONNOIRS["checkins_gym_date"] - ENTONNOIRS["membres_48z_gold_date"] - 1):
-    checkin(m[0], DATE_GYM)
+    e, d = PLAGE(); checkin(m[0], DATE_GYM, entree=e, duree=d)
+# Des membres 48Z NON-gold présents (pour que « gold » filtre réellement).
+for m in rng.sample(M_48Z_AUTRES,
+                    ENTONNOIRS["membres_48z_date"] - ENTONNOIRS["membres_48z_gold_date"]):
+    e, d = PLAGE(); checkin(m[0], DATE_GYM, entree=e, duree=d)
+# Le reste des passages du jour : des membres NON-48Z, même plage horaire.
+_non_48z = [m for m in M_AUTRES if m is not M_TEMOIN2]
+for m in rng.sample(_non_48z,
+                    ENTONNOIRS["checkins_gym_date"] - ENTONNOIRS["membres_48z_date"] - 1):
+    e, d = PLAGE(); checkin(m[0], DATE_GYM, entree=e, duree=d)
 
 while len(checkins_gym) < N_CHECKINS_GYM:
     d = jour("2017-06-01", "2018-06-30")
@@ -809,12 +863,13 @@ while len(checkins_gym) < N_CHECKINS_GYM:
         checkin(rng.choice(membres)[0], d)
 
 # --- 5. Événements Facebook -------------------------------------------------
-# Seules quelques personnes (concert_3x) sont allées au SQL Symphony Concert en
-# décembre 2017, chacune exactement 3 fois. Ce petit groupe est scrutable à
-# l'œil (chaque personne y apparaît 3 fois), sans GROUP BY. Ce critère seul ne
-# suffit pas : il faut le croiser avec le signalement physique. On glisse dans
-# le groupe une femme rousse de la bonne taille (mais sans Tesla) et une autre
-# rousse, pour que « concert + rousse » ne donne pas encore la réponse.
+# concert_3x personnes sont allées 3 fois au SQL Symphony Concert en décembre
+# 2017. Ce critère seul ne suffit pas : il faut le croiser avec le signalement
+# physique. On glisse dans le groupe une femme rousse de la bonne taille (mais
+# sans Tesla) et quelques autres rousses, pour que « concert + rousse » ne donne
+# pas encore la réponse. Beaucoup d'autres gens (voir plus bas) y sont allés une
+# ou deux fois : une requête « concert » sans le signalement physique renvoie
+# donc une longue liste inexploitable à la main — c'est voulu.
 _leurre_taille = rng.sample(C_TAILLE, ENTONNOIRS["concert_3x_rousses_taille"] - 1)
 _leurre_rousses = rng.sample(C_ROUSSES, ENTONNOIRS["concert_3x_rousses"]
                              - ENTONNOIRS["concert_3x_rousses_taille"])
@@ -837,9 +892,13 @@ for i in C_CONCERT:
     for j in rng.sample(range(1, 32), NB_CONCERTS):
         checkin_fb(i, EVENEMENT_CIBLE, 20171200 + j)
 
-# Personne d'autre n'est allé au SQL Symphony Concert en décembre 2017 : la
-# liste de ce concert reste donc courte et lisible à l'œil (concert_3x
-# personnes, 3 lignes chacune).
+# 250 personnes y sont allées une ou deux fois seulement, en décembre 2017 elles
+# aussi. C'est ce qui gonfle la requête « concert en décembre » : sans le
+# signalement physique, l'élève tombe sur des centaines de lignes.
+for i in _candidats[:250]:
+    for j in rng.sample(range(1, 32), rng.randrange(1, NB_CONCERTS)):
+        checkin_fb(i, EVENEMENT_CIBLE, 20171200 + j)
+    _deja_concert.add(i)
 
 # Le concert existe aussi en dehors de décembre 2017.
 _autres_evts = [e for e in EVENEMENTS if e != EVENEMENT_CIBLE]
@@ -1129,11 +1188,24 @@ ok &= verifier("... + statut gold", un(
 ok &= verifier("passages au fitness le 9 janvier", un(
     f"select count(*) from get_fit_now_check_in where check_in_date={DATE_GYM}"),
     ENTONNOIRS["checkins_gym_date"])
+ok &= verifier("... + 48Z (le 9 janvier)", un(
+    f"select count(*) from get_fit_now_member m join get_fit_now_check_in c "
+    f"on c.membership_id=m.id where m.id like '{PREFIXE_SAC}%' "
+    f"and c.check_in_date={DATE_GYM}"), ENTONNOIRS["membres_48z_date"])
 ok &= verifier("... + 48Z + gold (les 3 conditions)", un(
     f"select count(*) from get_fit_now_member m join get_fit_now_check_in c "
     f"on c.membership_id=m.id where m.id like '{PREFIXE_SAC}%' "
     f"and m.membership_status='gold' and c.check_in_date={DATE_GYM}"),
     ENTONNOIRS["membres_48z_gold_date"])
+# Le statut « gold » doit RÉELLEMENT filtrer : il y a des 48Z non-gold le 9 jan.
+ok &= verifier("... dont NON-gold (gold sert à filtrer)",
+    ENTONNOIRS["membres_48z_date"] - ENTONNOIRS["membres_48z_gold_date"] >= 1, True)
+# L'heure ne doit pas trahir le tueur : beaucoup de monde chevauche le créneau
+# d'Annabel (check_in_time < sa sortie ET check_out_time > son entrée).
+_a_in, _a_out = 815, 930
+ok &= verifier("passages chevauchant l'heure d'Annabel (>=8)",
+    un(f"select count(*) >= 8 from get_fit_now_check_in where check_in_date={DATE_GYM} "
+       f"and check_in_time < {_a_out} and check_out_time > {_a_in}"), 1)
 ok &= verifier("plaques contenant H42W", un(
     f"select count(*) from driver_license where plate_number like '%{FRAGMENT_PLAQUE}%'"),
     ENTONNOIRS["plaques_h42w"])
