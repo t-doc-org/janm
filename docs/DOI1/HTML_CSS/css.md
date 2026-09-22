@@ -487,7 +487,7 @@ Le contenu d'une page a été défini en HTML de la manière suivante.
     familial.</p>
 
     <h2>Photo</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1024px-Labrador_Retriever_portrait.jpg">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Golden_retriever_stehfoto.jpg/1280px-Golden_retriever_stehfoto.jpg?utm_source=fr.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail">
 
     <p>Source: texte généré par Copilot.</p>
 </body>
@@ -502,7 +502,7 @@ Au moyen du CSS, modifiez les éléments suivants:
 3.  La table doit avoir une bordure (propriétés: `border` et `border-collapse`).
 4.  La table doit prendre `100%` de la largeur de la page.
 5.  L'image doit avoir une largeur de `300px`.
-6.  La propriété `font-family` des paragraphes doit être `"Goudy Bookletter 1911"`.
+6.  La propriété `font-family` des paragraphes doit être `"consolas"`.
 7.  La couleur de fond `background-color` de la page doit être `cornsilk`.
 
 ```{exec} html
@@ -537,7 +537,7 @@ Au moyen du CSS, modifiez les éléments suivants:
     width: 300px;
   }
   p {
-    font-family: "Goudy Bookletter 1911";
+    font-family: "consolas";
   }
   body {
     background-color: cornsilk;
@@ -762,120 +762,65 @@ Au moyen du CSS:
 
 ### Exercice {num2}`exercice`
 
-Le contenu d'une page a été défini en HTML de la manière suivante.
+
+Dans la page ci-dessous :
+
+1.  Le `<h1>` doit être centré et de couleur `teal`.
+2.  Créez une classe en CSS `surligne` qui met le fond en `yellow` et le texte en gras.
+    **Ajoutez cette classe** dans le HTML aux deux phrases importantes :
+    "Rendez vos devoirs avant vendredi." et "L'examen aura lieu le 20 juin."
 
 ```{exec} html
-:name: ex-paleo-html
-:when:
-:style: height: 30rem;
+:editor: 101cf45e-77c9-45c5-87bc-f827bfc3784d
+:style: height: 18rem;
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>Paléo Festival</title>
-</head>
-<body>
-    <h1>Paléo Festival de Nyon</h1>
-
-    <h2>Présentation</h2>
-    <p>Le Paléo Festival de Nyon est le plus grand festival de musique en plein
-    air de Suisse. Il se tient chaque année en juillet sur la plaine de l'Asse,
-    à Nyon, et accueille environ 230 000 spectateurs sur six jours.</p>
-
-    <h2>Les scènes</h2>
-    <table>
-      <tr>
-        <th>Scène</th>
-        <th>Capacité</th>
-        <th>Style musical</th>
-      </tr>
-      <tr>
-        <td>Grande Scène</td>
-        <td>40 000 personnes</td>
-        <td>Pop, rock, world</td>
-      </tr>
-      <tr>
-        <td>La Ruche</td>
-        <td>12 000 personnes</td>
-        <td>Électro, hip-hop</td>
-      </tr>
-      <tr>
-        <td>Le Village du Monde</td>
-        <td>8 000 personnes</td>
-        <td>Musiques du monde</td>
-      </tr>
-    </table>
-
-    <h2>Têtes d'affiche</h2>
-    <p class="vedette">Coldplay : Grande Scène, vendredi soir</p>
-    <p class="vedette">Stromae : Grande Scène, samedi soir</p>
-    <p>Des dizaines d'autres artistes se produisent sur les six scènes
-    tout au long de la semaine.</p>
-
-    <p class="info">Billetterie: paleo.ch | Prochaine édition: juillet 2026</p>
-</body>
+    <style>
+      /* Écrivez le CSS ici */
+    </style>
+  </head>
+  <body>
+    <h1>Informations de la classe</h1>
+    <p>Bienvenue sur la page de la classe.</p>
+    <p>Rendez vos devoirs avant vendredi.</p>
+    <p>Pensez à consulter le site régulièrement.</p>
+    <p>L'examen aura lieu le 20 juin.</p>
+  </body>
 </html>
 ```
 
-La page contient deux classes CSS à définir:
-- `vedette`: pour les artistes principaux
-- `info`: pour les informations pratiques
-
-Au moyen du CSS:
-
-1.  Le `<h1>` doit être centré, en blanc (`color: white`) sur fond `rgb(26, 26, 46)`.
-2.  Les `<h2>` doivent être en couleur `rgb(233, 69, 96)`.
-3.  La table doit occuper `100%` de la largeur, avec `border-collapse: collapse`
-    et une bordure `1px solid lightgray` sur chaque cellule (`td` et `th`).
-4.  La classe `vedette` doit être en gras, avec fond `lemonchiffon` et `padding` de `6px`.
-5.  La classe `info` doit être centrée, en italique et de couleur `dimgray`.
-6.  Le fond de la page doit être `whitesmoke`.
-
-```{exec} html
-:editor: b2c3d4e5-f6a7-8901-bcde-f23456789012
-:after: ex-paleo-html
-:when: load click
-:reset: hide
-<style>
-  /* Écrivez le CSS ici */
-</style>
-```
-
 ````{solution}
+Il faut **ajouter `class="surligne"`** sur les deux paragraphes concernés (dans le
+HTML) **et** écrire les règles CSS correspondantes.
+
 ```{exec} html
-:after: ex-paleo-html
 :when: load click
-:reset: hide
-<style>
-  h1 {
-    text-align: center;
-    color: white;
-    background-color: rgb(26, 26, 46);
-  }
-  h2 {
-    color: rgb(233, 69, 96);
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  td, th {
-    border: 1px solid lightgray;
-    padding: 6px;
-  }
-  .vedette {
-    font-weight: bold;
-    background-color: lemonchiffon;
-    padding: 6px;
-  }
-  .info {
-    text-align: center;
-    font-style: italic;
-    color: dimgray;
-  }
-  body {
-    background-color: whitesmoke;
-  }
-</style>
+:editor: 9c78d09c-5202-4502-b3ec-126ebd08a3be
+:style: height: 18rem;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      h1 {
+        text-align: center;
+        color: teal;
+      }
+      .surligne {
+        background-color: yellow;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Informations de la classe</h1>
+    <p>Bienvenue sur la page de la classe.</p>
+    <p class="surligne">Rendez vos devoirs avant vendredi.</p>
+    <p>Pensez à consulter le site régulièrement.</p>
+    <p class="surligne">L'examen aura lieu le 20 juin.</p>
+  </body>
+</html>
 ```
 ````
