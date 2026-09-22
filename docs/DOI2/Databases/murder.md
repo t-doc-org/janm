@@ -162,7 +162,7 @@ SELECT plate_number FROM driver_license WHERE id = <license_id_trouvé>;
 ```
 
 Un seul des cinq suspects a une plaque contenant `H42W` : **Jeremy Bowers**.
-C'est le meurtrier. 🔍
+C'est le meurtrier.
 
 ### Partie 2 : Trouver le commanditaire
 
@@ -207,5 +207,5 @@ WHERE person_id = <id_de_la_personne>
 ```
 
 Une seule des cinq femmes y est allée **trois fois** : **Miranda Priestly**.
-C'est elle, le cerveau de l'affaire. 🎻
+C'est elle, le cerveau de l'affaire.
 `````
