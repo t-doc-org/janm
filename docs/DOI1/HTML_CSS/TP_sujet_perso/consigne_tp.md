@@ -79,7 +79,7 @@ h1 {
 ```
 
 ## Recherche documentaire
-Lors de la visite de la bibliothécaire, vous effectuerez une recherche documentaire sur votre sujet. Celui-ci peut être élargi afin de trouver des documents pertinents. Durant ces 2 périodes, vous êtes chargés de :
+Lors de la visite de la bibliothécaire, vous effectuerez une recherche documentaire sur votre sujet. Celui-ci peut être élargi afin de trouver des documents pertinents. Durant ces 2 périodes, et durant les TP consacrés au projet vous êtes chargés de :
 
 - Trouver 3 sources pertinentes concernant votre sujet sur les plateformes présentées, dont au moins une présente à la biliothèque de STX
 - Rédiger une très courte bibliographie contenant ces 3 sources au format demandé dans [le guide du Travail de Maturité](https://new.cscfr.ch/images/stories/media/tm/TM_Guide_2026_27_F.pdf)
