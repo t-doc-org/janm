@@ -91,9 +91,9 @@ Lors de la visite de la bibliothécaire, vous effectuerez une recherche document
 Une fois la mise en place effectuée, développez votre site Web en respectant les conditions suivantes :
 
  - Le site Web contient au moins 3 pages HTML dont le contenu (images, textes, vidéos, ...) est pertinent dans le sujet choisi
- - Le site Web contient une page HTML contenant votre résultat de la recherche documentaire (bibliographie et résumés)
+ - Le site Web contient une autre page HTML contenant votre résultat de la recherche documentaire (bibliographie et résumés)
  - Le site Web utilise correctement au moins une fois toutes les balises HTML travaillées en cours (voir [théorie HTML](../html.md)) de manière pertinente
- - Le site Web utilise correctement au moins 10 propriétés CSS différentes
+ - Le site Web utilise correctement au moins 10 propriétés CSS différentes<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span>
  - Le site Web utilise des classes et des `div` de manière pertinente
  - Le style visuel du site Web est soigné
  - L'orthographe et la grammaire du site Web sont irréprochables
@@ -117,7 +117,7 @@ valeur maximale indiquée.
 | Tous les liens du menu sont fonctionnels sur les 3 pages | 2 |
 | **CSS** | |
 | Un unique fichier `style.css` est lié à toutes les pages | 1 |
-| Au moins 10 propriétés CSS différentes sont utilisées correctement | 5 |
+| Au moins 10 propriétés CSS différentes sont utilisées correctement<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span> | 5 |
 | Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois | 3 |
 | Les balises `<div>` sont utilisées au moins 2 fois de manière pertinente, en lien avec une classe et du CSS, pour styliser un groupe | 2 |
 | **Contenu et soin** | |
