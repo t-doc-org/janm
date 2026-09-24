@@ -15,3 +15,6 @@ __pycache__
 # END-COMMON
 
 # Site-specific patterns.
+
+# Temporary pages injected at build time by an external tool; never committed.
+/docs/_exam/

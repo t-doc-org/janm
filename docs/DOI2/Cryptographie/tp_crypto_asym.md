@@ -168,7 +168,7 @@ $$t = c^d \mod n$$
 
 ## Étape 5 : Mais qui a vraiment envoyé ce message ?
 
-Vous avez reçu un message avec un nom d'expéditeur écrit dessus. Mais **comment être sûr** que c'est bien cette personne qui l'a envoyé ? N'importe qui aurait pu écrire un faux nom sur le papier et chiffrer un message avec la clef publique du destinataire — celle-ci est au tableau, visible par tous.
+Vous avez reçu un message avec un nom d'expéditeur écrit dessus. Mais **comment être sûr** que c'est bien cette personne qui l'a envoyé ? N'importe qui aurait pu écrire un faux nom sur le papier et chiffrer un message avec la clef publique du destinataire : celle-ci est au tableau, visible par tous.
 
 Le chiffrement RSA garantit la **confidentialité** (seul le destinataire peut lire), mais il ne garantit pas l'**authenticité** de l'expéditeur.
 

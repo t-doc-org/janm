@@ -18,3 +18,7 @@ tmp/
 
 # Site-specific patterns.
 .*
+
+# Temporary pages injected at build time by an external tool; never committed.
+syntax: regexp
+^docs/_exam/

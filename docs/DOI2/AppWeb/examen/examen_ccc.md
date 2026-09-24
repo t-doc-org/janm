@@ -79,7 +79,7 @@ Dans cette question, vous allez reproduire 2 fonctionnalités de base de l'usine
     // Renvoie le CODE COURANT d'un bloc {exec} : le contenu vivant de l'éditeur
     // CodeMirror s'il existe, sinon le <pre> d'origine.
     // ⚠ Ne PAS lire pre.innerText quand un éditeur est présent : t-doc masque ce
-    // <pre> mais y laisse le code de BASE — on copierait alors l'énoncé, pas la
+    // <pre> mais y laisse le code de BASE : on copierait alors l'énoncé, pas la
     // réponse de l'élève.
     const liveCode = (block) => {
       const view = block.querySelector("div.cm-editor")?.tdocEditor;

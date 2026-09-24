@@ -329,7 +329,7 @@ Corrigez chacun de ces codes de manière à ce qu'ils s'exécutent correctement 
     ```
     `remove()` ne retire qu'**une seule** occurrence de la valeur, et la liste en contient
     trois : il faut donc l'appeler trois fois. Répéter une instruction autant de fois que
-    nécessaire n'est évidemment pas satisfaisant — à la page suivante, `if ... in ...` permettra
+    nécessaire n'est évidemment pas satisfaisant : à la page suivante, `if ... in ...` permettra
     d'écrire `while 0 in bits: bits.remove(0)`, qui fonctionne quel que soit le nombre de zéros.
 ````
 

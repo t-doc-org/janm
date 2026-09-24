@@ -787,7 +787,7 @@ h1 {
 <div class="tabs-container">
   <div class="tab-bar">
     <button class="tab-btn active" onclick="switchTab('machine')">Enigma M3</button>
-    <button class="tab-btn" onclick="switchTab('codebook')">Schlüsseltafel — Livret du Jour</button>
+    <button class="tab-btn" onclick="switchTab('codebook')">Schlüsseltafel : Livret du Jour</button>
   </div>
 
   <div class="tab-content active" id="tab-machine">
@@ -803,7 +803,7 @@ h1 {
 
       <!-- Plugboard -->
       <div class="plugboard-section">
-        <div class="plugboard-title">Steckerbrett — Tableau de Fiches</div>
+        <div class="plugboard-title">Steckerbrett : Tableau de Fiches</div>
         <div style="text-align:center;font-size:0.55rem;color:#666;margin-bottom:6px;">Cliquez deux lettres pour les relier · Cliquez une prise connectée pour la retirer</div>
         <div class="plugboard" id="plugboard"></div>
         <div class="plug-connections" id="plugConnections"></div>
@@ -863,11 +863,11 @@ h1 {
           </div>
           <div class="explanation-item">
             <div class="explanation-label">Kenngruppen</div>
-            <div class="explanation-desc">Des trigrammes d'identification insérés dans l'en-tête du message. Permettaient au destinataire d'identifier quel jour (et donc quels réglages) avait été utilisé — utile si un message arrivait en retard.</div>
+            <div class="explanation-desc">Des trigrammes d'identification insérés dans l'en-tête du message. Permettaient au destinataire d'identifier quel jour (et donc quels réglages) avait été utilisé, utile si un message arrivait en retard.</div>
           </div>
         </div>
         <p style="margin-top:12px;">
-          La <em>Spruchschlüssel</em> (clé de message), elle, n'apparaissait <strong>pas</strong> dans le livret — c'est précisément la partie que chaque opérateur devait improviser, d'où les fameuses <em>cillies</em>.
+          La <em>Spruchschlüssel</em> (clé de message), elle, n'apparaissait <strong>pas</strong> dans le livret : c'est précisément la partie que chaque opérateur devait improviser, d'où les fameuses <em>cillies</em>.
         </p>
         <p style="margin-top:8px;color:var(--brass-dark);font-size:0.7rem;">
           <strong>Sécurité :</strong> les livrets de la Kriegsmarine étaient imprimés à l'encre soluble dans l'eau, pour pouvoir être détruits instantanément en cas de capture. Les feuilles de la Luftwaffe étaient interdites à bord des avions.
@@ -1157,7 +1157,7 @@ function wheelRotor(e, idx) {
 }
 
 function changeRotor(idx, val) {
-  // Check for duplicate — real Enigma couldn't use same rotor twice
+  // Check for duplicate: real Enigma couldn't use same rotor twice
   const otherRotors = state.rotorChoices.filter((_, i) => i !== idx);
   if (otherRotors.includes(val)) {
     alert('Impossible : chaque rotor ne peut être utilisé qu\'une seule fois !\n(La machine Enigma ne contenait qu\'un exemplaire de chaque rotor.)');
@@ -1226,21 +1226,21 @@ function clickPlug(letter) {
     return;
   }
 
-  // Nothing selected yet — select this one
+  // Nothing selected yet: select this one
   if (state.selectedPlug === null) {
     state.selectedPlug = letter;
     updatePlugDisplay();
     return;
   }
 
-  // Clicking the same letter again — deselect
+  // Clicking the same letter again: deselect
   if (state.selectedPlug === letter) {
     state.selectedPlug = null;
     updatePlugDisplay();
     return;
   }
 
-  // Second letter clicked — check it's not already connected elsewhere
+  // Second letter clicked: check it's not already connected elsewhere
   if (state.plugboard[state.selectedPlug]) {
     state.selectedPlug = letter;
     updatePlugDisplay();
@@ -1430,7 +1430,7 @@ function generateCodebook() {
     codebookData.push({ day: d, rotors, rings, plugs, grund, kenn });
   }
 
-  // Render table (reversed — day 31 at top, day 1 at bottom, like the real sheets)
+  // Render table (reversed: day 31 at top, day 1 at bottom, like the real sheets)
   const tbody = document.getElementById('codebookBody');
   tbody.innerHTML = '';
   for (let i = codebookData.length - 1; i >= 0; i--) {
