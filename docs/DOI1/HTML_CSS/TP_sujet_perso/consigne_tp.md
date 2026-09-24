@@ -35,7 +35,7 @@ Laissez cours à votre imagination. Veillez simplement à **valider votre sujet 
 ## Mise en place
 
 1. Sur votre ordinateur, idéalement sur OneDrive, créez un nouveau dossier qui contiendra tous les fichiers de votre site Web
-2. Ouvrez (Visual Studio Code)[../vscode.md] et cliquez en haut à gauche sur *File* (ou *Fichier* en français)
+2. Ouvrez [Visual Studio Code](../vscode.md) et cliquez en haut à gauche sur *File* (ou *Fichier* en français)
 3. Cliquez ensuite sur *Open Folder* (*Ouvrir un dossier*) et sélectionnez le dossier que vous avez créé 
 ```{figure} ../images/openfolder.png
 :alt: Ouvrir un dossier sur VSCode
