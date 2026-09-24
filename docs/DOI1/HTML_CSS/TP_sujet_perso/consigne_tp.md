@@ -50,15 +50,18 @@ Laissez cours à votre imagination. Veillez simplement à **valider votre sujet 
 ```
 5. Entrez le nom **exact** `index.html` : il s'agira de la page d'accueil de votre site Web. Vous répétrez ce processus à chaque fois que vous voudrez créer un nouveau fichier
 6. Répétez donc tout de suite cette opération pour créer un fichier `style.css`
-7. Dans le fichier HTML, collez le squelette ci-dessous :
+7. Dans le fichier HTML, collez le squelette ci-dessous. Il inclut déjà [Bootstrap](../bootstrap.md) : laissez le lien vers `style.css` **après** celui de Bootstrap, pour que vos propres règles CSS restent prioritaires.
 ```{code} html
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>TEST</h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
 ```
