@@ -14,3 +14,6 @@ DOI2/index
 OC3/index
 ```
 
+## Plateforme d'examen
+[Vers la plateforme d'examen](https://examen-janm.duckdns.org/)
+
