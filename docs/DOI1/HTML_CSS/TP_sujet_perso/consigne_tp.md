@@ -11,7 +11,7 @@ compétences acquises en HTML et CSS afin de créer votre propre site Web consac
 Vos tâches seront :
 
 1. Trouver un sujet adéquat et motivant
-2. Créer une site Web avec HTML et CSS sur ce sujet
+2. Créer un site Web avec HTML et CSS sur ce sujet
 3. Effectuer une recherche documentaire sur ce sujet pour compléter votre site
 
 
@@ -36,6 +36,7 @@ Laissez cours à votre imagination. Veillez simplement à **valider votre sujet 
 
 1. Sur votre ordinateur, idéalement sur OneDrive, créez un nouveau dossier qui contiendra tous les fichiers de votre site Web
 2. Ouvrez [Visual Studio Code](../vscode.md) et cliquez en haut à gauche sur *File* (ou *Fichier* en français)
+3. Activez la sauvegarde automatique en cliquant sur *File -> Auto save*
 3. Cliquez ensuite sur *Open Folder* (*Ouvrir un dossier*) et sélectionnez le dossier que vous avez créé 
 ```{figure} ../images/openfolder.png
 :alt: Ouvrir un dossier sur VSCode
@@ -73,7 +74,7 @@ h1 {
 }
 ```
 
-9. Faites un clic-droite dans l'explorateur de fichiers sur `index.html` et cliquez sur `Open in Integreated Browser`. Si une nouvelle fenêtre s'ouvre avec une page contenant le mot *TEST* en violet, la mise en place est terminée.
+9. Faites un clic-droite dans l'explorateur de fichiers sur `index.html` et cliquez sur `Open in File Explorer/Finder`. Votre dossier avec les 2 fichiers créés doit apparaître. Double-cliquez sur `index.html`. Si une nouvelle fenêtre s'ouvre dans votre navigateur Web avec une page contenant le mot *TEST* en violet, la mise en place est terminée.
 
 ```{figure} ../images/htmlpreview.png
 :alt: Ouvrir un fichier HTML sur VSCode
