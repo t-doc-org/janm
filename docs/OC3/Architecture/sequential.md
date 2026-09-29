@@ -139,25 +139,45 @@ est désactivée : `Q = 0`. Complétez la valeur de `Q` après chaque étape.
 
 ### Exercice {num1}`exercice`
 Le même boîtier envoie l'état d'une porte à un petit écran, cette fois avec une
-**bascule D**. Une horloge interne génère un **front montant** toutes les secondes ; à
-chaque front montant, la bascule recopie sur `Q` la valeur qui se trouvait sur son entrée
-`D` juste avant (`D = 1` signifie "porte ouverte"). Entre deux fronts montants, `Q` reste
-inchangé, même si `D` varie.
+**bascule D**. On ne vous donne plus les fronts montants tout faits : à chaque
+étape, on vous donne la valeur de l'horloge `clk` et celle de la donnée `D`
+(`D = 1` signifie "porte ouverte").
 
-Voici la valeur de `D` mesurée juste avant chacun des six fronts montants. Au départ, avant
-le premier front montant, l'écran affiche `Q = 0`. Complétez `Q` après chaque front montant.
+Rappel : la bascule ne recopie `D` sur `Q` **qu'au moment où `clk` passe de `0` à
+`1`** (front montant). Tant que `clk` ne fait pas cette transition (elle reste à
+`1`, reste à `0`, ou repasse de `1` à `0`), `Q` **garde sa valeur**, même si `D`
+change.
+
+Au départ, avant l'étape 1, l'horloge est à `0` et l'écran affiche `Q = 0`.
+Complétez `Q` après chaque étape.
 
 ```{quiz}
-:style: max-width: 22rem;
-| front montant | `D` | `Q`      |
-| :-: | :-: | :------: |
-| 1   | `1` | {bit}`1` |
-| 2   | `0` | {bit}`0` |
-| 3   | `0` | {bit}`0` |
-| 4   | `1` | {bit}`1` |
-| 5   | `1` | {bit}`1` |
-| 6   | `0` | {bit}`0` |
+:style: max-width: 26rem;
+| étape | `clk` | `D` | `Q`      |
+| :---: | :---: | :-: | :------: |
+| 1     | `1`   | `1` | {bit}`1` |
+| 2     | `1`   | `0` | {bit}`1` |
+| 3     | `0`   | `0` | {bit}`1` |
+| 4     | `1`   | `0` | {bit}`0` |
+| 5     | `1`   | `1` | {bit}`0` |
+| 6     | `0`   | `1` | {bit}`0` |
+| 7     | `1`   | `1` | {bit}`1` |
+| 8     | `0`   | `0` | {bit}`1` |
 ```
+
+````{solution}
+`Q` ne change **qu'aux étapes où `clk` passe de `0` à `1`** (étapes 1, 4 et 7).
+Partout ailleurs, `Q` conserve sa valeur.
+
+- Étape 1 : `clk` passe de `0` (état initial) à `1`, front montant : `Q` prend `D = 1`.
+- Étape 2 : `clk` reste à `1`, pas de front montant : `Q` garde `1` même si `D` est passé à `0`.
+- Étape 3 : `clk` repasse à `0` : `Q` garde `1`.
+- Étape 4 : `clk` passe de `0` à `1`, front montant : `Q` prend `D = 0`.
+- Étape 5 : `clk` reste à `1` : `Q` garde `0`, le passage de `D` à `1` est ignoré.
+- Étape 6 : `clk` repasse à `0` : `Q` garde `0`.
+- Étape 7 : `clk` passe de `0` à `1`, front montant : `Q` prend `D = 1`.
+- Étape 8 : `clk` repasse à `0` : `Q` garde `1`.
+````
 
 ### Exercice {num1}`exercice`
 

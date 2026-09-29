@@ -131,11 +131,11 @@ servira au processeur.
     **2 bits** : `00` = addition, `01` = soustraction, `10` = ET, `11` = OU.
 2.  Calculez les quatre résultats **en parallèle** : l'addition et la soustraction
     avec l'additionneur (et l'astuce du complément à deux pour `A - B`), le `ET` et
-    le `OU` avec des portes appliquées bit à bit. Comme `A` et `B` sont des bus de
+    le `OU` avec des portes appliquées bit à bit. Comme `A` et `B` sont des faisceaux de
     **8 bits** alors qu'une porte logique travaille sur des fils de **1 bit**,
-    servez-vous d'un **séparateur** pour éclater chaque bus en 8 fils individuels,
+    servez-vous d'un **séparateur** pour éclater chaque faisceau en 8 fils individuels,
     appliquez la porte sur chaque paire de bits, puis d'un **fusionneur** pour
-    rassembler les 8 sorties en un bus de 8 bits.
+    rassembler les 8 sorties en un faisceau de 8 bits.
 3.  Réunissez les quatre résultats dans un **multiplexeur** commandé par `op` : sa
     sortie est le résultat de l'ALU.
 4.  Testez chaque opération sur des valeurs qui vérifient vraiment le câblage, et

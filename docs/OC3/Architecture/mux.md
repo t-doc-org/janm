@@ -8,8 +8,9 @@ Jusqu'ici, nos circuits *calculaient* : ils prenaient des bits en entrée et en
 produisaient d'autres. Un processeur a besoin d'un autre type de brique, capable
 de **choisir** quel signal laisser passer. Par exemple, l'unité de calcul devra
 décider si elle envoie en sortie le résultat d'une addition ou celui d'une
-soustraction ; et plusieurs composants devront, chacun à leur tour, poser leur
-valeur sur un fil partagé, le *bus*.
+soustraction ; et le processeur devra choisir quelle valeur ranger dans un
+registre : le résultat d'un calcul, une valeur lue en mémoire ou le contenu d'un
+autre registre.
 
 Le composant qui réalise ce choix s'appelle un *multiplexeur* (souvent abrégé
 *mux*). On peut le voir comme un **sélecteur**, à la manière d'un bouton rotatif :
@@ -161,7 +162,7 @@ pour chacune des huit lignes.
 ### Exercice {num1}`exercice`
 Une console de mixage possède quatre entrées audio `e0`, `e1`, `e2` et `e3`,
 branchées sur un multiplexeur 4 vers 1 (le même type de circuit qui, plus tard,
-servira à choisir quelle donnée poser sur le bus). L'ingénieur du son a réglé les
+servira à choisir quelle donnée ranger dans un registre). L'ingénieur du son a réglé les
 niveaux suivants : `e0 = 1`, `e1 = 0`, `e2 = 1`, `e3 = 0`.
 
 Pour chaque position du sélecteur `s1 s0`, complétez l'entrée sélectionnée et la

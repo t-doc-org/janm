@@ -195,7 +195,7 @@ Ouvrez [Logix](https://maximejan.github.io/logix/) et préparez la mémoire qui 
 1.  Placez un composant `RAM` et réglez-le sur des **adresses de 4 bits** et des
     **données de 8 bits** (16 cases d'un octet chacune).
 2.  Ajoutez devant elle un **registre d'adresse** (registre 4 bits) qui fournira
-    l'adresse à la RAM (dans le processeur final, il la recevra du bus), ainsi
+    l'adresse à la RAM (dans le processeur final, il la recevra du compteur de programme), ainsi
     qu'une entrée de donnée et le signal `écrire`.
 3.  Testez : écrivez quelques octets à différentes adresses, puis relisez-les en
     changeant seulement l'adresse (la lecture est immédiate, sans front montant).

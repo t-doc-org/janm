@@ -4,7 +4,8 @@
 # Le jeu d'instructions
 
 Nous avons toutes les pièces d'un processeur : des registres pour retenir, une
-mémoire pour ranger, une ALU pour calculer, un bus pour tout relier. Il nous
+mémoire pour ranger, une ALU pour calculer, des multiplexeurs pour aiguiller les
+données. Il nous
 manque une question : qu'est-ce qu'un *programme*, vu par le processeur ? La
 réponse tient en une phrase : une suite de nombres rangés dans la mémoire.
 
