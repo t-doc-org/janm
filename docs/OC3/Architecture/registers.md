@@ -188,7 +188,7 @@ Ce TP part du précédent : ouvrez dans [Logix](https://maximejan.github.io/logi
 votre circuit **ALU** enregistré la dernière fois. Vous allez lui ajouter quatre
 registres pour en faire la mémoire de travail du processeur.
 
-1.  **Quatre registres.** Placez quatre registres (`REG`) `r0` à `r3`, tous reliés
+1.  **Quatre registres.** Placez quatre registres (`REG`) `r0` à `r3` contenant des données de 8 bits, tous reliés
     à la **même** horloge `clk`.
 2.  **Choisir où écrire.** Ajoutez un **décodeur** : il reçoit un numéro `Rd`
     (2 bits) et envoie le signal `LD` vers **un seul** registre. Seul celui-là
