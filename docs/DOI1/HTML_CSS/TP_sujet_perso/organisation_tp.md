@@ -52,13 +52,38 @@ Dates :
 
 ## 1F7
 Groupe A :
- -
+ - Blakaj Loris
+ - Burbidge Catherine
+ - Dugué Arsène
+ - Fotsing Daphné
+ - Ghebremedihin Heaven
+ - Häsler Laetitia
+ - Hémeryck Victor
+ - Hervé Louise
+ - Hussein Beriva
+ - Idieder Dorian
+ - Jamet Lionel
+ 
 
 Groupe B :
- -
+ - Kaassis Neyla
+ - Kawu Christ
+ - Leon Morgan
+ - Maillard Elena
+ - Morinaj Matis
+ - Nagy Dorothée
+ - Neuhaus Tim
+ - Redzic Alma
+ - Rochat Théliau
+ - Rosinach Maï
+ - Semuhire Justine
 
 Dates :
- -
+ - 27.10.26 : Groupe A
+ - 03.11.26 : Groupe B
+ - 10.11.26 : Groupe A
+ - 17.11.26 : Groupe B
+ - 24.11.26 : Groupe A + B
 
 ## 1F8
 Groupe A :
