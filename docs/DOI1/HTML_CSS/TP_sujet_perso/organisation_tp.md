@@ -42,13 +42,38 @@ Dates :
 
 ## 1F5
 Groupe A :
- -
+ - Braillard Juliette
+ - Carletta Emma
+ - Dessonnaz Line
+ - Dorthe Jean
+ - Dumas Léanne
+ - Eltschinger Raphaël
+ - Ferri Clara
+ - Gasca Almonacid Silvana
+ - Gaume Adrien
+ - Gervasoni Louis
+ - Golightly Nolan
+ - Idoux Michelle
 
 Groupe B :
- -
+ - Isoz Alena
+ - Meienberger Dario
+ - Mettraux Raphaël
+ - Neuenschwander Danaé
+ - Oliveira Resende Yoann
+ - Resende Leonor
+ - Riley Lemmy
+ - Romming Aimé
+ - Santos Mariana
+ - Steulet Sarah
+ - Tinguely Kassandra
 
 Dates :
- -
+ - 26.10.2026 : Groupe A
+ - 02.11.2026 : Groupe B
+ - 09.11.2026 : Groupe A
+ - 16.11.2026 : Groupe B
+ - 23.11.2026 : Groupe A + B
 
 ## 1F7
 Groupe A :
