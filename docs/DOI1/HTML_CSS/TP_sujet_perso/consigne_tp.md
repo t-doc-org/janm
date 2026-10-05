@@ -6,12 +6,12 @@
 ## Introduction
 
 Durant les premières séances de TP de cette année, vous allez mettre en pratique les connaissances et
-compétences acquises en HTML et CSS afin de créer votre propre site Web consacré à un sujet de votre choix.
+compétences acquises en HTML, en CSS et avec Bootstrap afin de créer votre propre site Web consacré à un sujet de votre choix.
 
 Vos tâches seront :
 
 1. Trouver un sujet adéquat et motivant
-2. Créer un site Web avec HTML et CSS sur ce sujet
+2. Créer un site Web avec HTML, CSS et Bootstrap sur ce sujet
 3. Effectuer une recherche documentaire sur ce sujet pour compléter votre site
 
 
@@ -99,6 +99,7 @@ Une fois la mise en place effectuée, développez votre site Web en respectant l
  - Le site Web utilise correctement au moins une fois toutes les balises HTML travaillées en cours (voir [théorie HTML](../html.md)) de manière pertinente
  - Le site Web utilise correctement au moins 10 propriétés CSS différentes<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span>
  - Le site Web utilise des classes et des `div` de manière pertinente
+ - Le site Web utilise la grille de [Bootstrap](../bootstrap.md) (`container`, `row`, `col`) pour organiser le contenu de ses pages, avec au moins deux lignes à plusieurs colonnes
  - Le style visuel du site Web est soigné
  - L'orthographe et la grammaire du site Web sont irréprochables
 
@@ -112,18 +113,21 @@ valeur maximale indiquée.
 |---------|:------:|
 | **Conception et organisation** | |
 | Sujet pertinent (validé par l'enseignant) et plan des pages préparé | 2 |
-| Organisation des fichiers conforme (dossier, `index.html`, `style.css`) | 2 |
+| Organisation des fichiers conforme (dossier, `index.html`, `style.css`) | 1 |
 | **HTML** | |
-| Le site comporte 3 pages reliées par un même menu de navigation présent sur chaque page. `index.html` est la page d'accueil | 3 |
+| Le site comporte 3 pages reliées par un même menu de navigation fonctionnel, présent sur chaque page. `index.html` est la page d'accueil | 3 |
 | Structure HTML complète sur chaque page (`<html>`, `<head>`, `<meta>`, `<title>`, `<body>`) | 2 |
 | Les balises travaillées en cours (titres, paragraphes, listes, images, liens) sont utilisées de manière pertinente | 4 |
 | Au moins un `<table>` pertinent et au moins une liste (`<ul>` ou `<ol>`) pertinente | 2 |
-| Tous les liens du menu sont fonctionnels sur les 3 pages | 2 |
 | **CSS** | |
 | Un unique fichier `style.css` est lié à toutes les pages | 1 |
-| Au moins 10 propriétés CSS différentes sont utilisées correctement<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span> | 5 |
-| Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois | 3 |
+| Au moins 10 propriétés CSS différentes sont utilisées correctement<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span> | 3 |
+| Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois (classes définies dans `style.css` ; les classes de Bootstrap ne comptent pas) | 3 |
 | Les balises `<div>` sont utilisées au moins 2 fois de manière pertinente, en lien avec une classe et du CSS, pour styliser un groupe | 2 |
+| **Bootstrap** | |
+| Bootstrap est installé correctement sur chaque page (`<link>` dans le `<head>`, avant celui de `style.css` ; `<script>` juste avant `</body>`) | 1 |
+| Le contenu de chaque page est placé dans un `container`, et les `row` et `col` sont correctement imbriquées (`col` dans une `row`, `row` dans le `container`) | 2 |
+| Au moins deux lignes à plusieurs colonnes sont utilisées de manière pertinente (par exemple une image et son texte côte à côte, une galerie) | 2 |
 | **Contenu et soin** | |
 | Contenu informatif exact, suffisant et intéressant | 3 |
 | Orthographe et grammaire correctes | 2 |
@@ -149,8 +153,9 @@ périodes mises à disposition. En **aucun cas** vous n'avez le droit de :
 - Faire appel à une aide externe au cours pour vous aider à avancer
   (intelligence artificielle, membre de la famille, ...).
 - Utiliser des concepts HTML ou CSS qui n'ont pas été travaillés en cours cette
-  année (balises non vues en cours, JavaScript, frameworks, pseudo-classes
-  avancées, flexbox, grid, ...).
+  année (balises non vues en cours, JavaScript écrit par vous-même, frameworks
+  autres que Bootstrap, éléments de Bootstrap autres que la grille `container` /
+  `row` / `col`, pseudo-classes avancées, flexbox ou grid en CSS, ...).
 
 L'entre-aide entre élèves est acceptée pour autant que cela n'implique pas de
 copier le code de quelqu'un d'autre. Tout manquement à ces règles entraînera
