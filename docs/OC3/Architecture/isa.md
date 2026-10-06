@@ -56,16 +56,15 @@ d'instructions*. Voici le nôtre :
 | :----: | :---------- | :---- |
 | `0000` | `STOP` | arrête le processeur |
 | `0001` | `LOAD Rd, valeur` | `Rd` reçoit la `valeur` (sur 2 octets, voir plus bas) |
-| `0010` | `COPY Rd, Rs` | `Rd` reçoit une copie de `Rs` |
-| `0011` | `OUT Rd` | affiche le contenu de `Rd` |
+| `0010` | `OUT Rd` | affiche le contenu de `Rd` |
 | `0100` | `ADD Rd, Rs` | `Rd` reçoit `Rd + Rs` |
 | `0101` | `SUB Rd, Rs` | `Rd` reçoit `Rd - Rs` |
 | `0110` | `AND Rd, Rs` | `Rd` reçoit `Rd ET Rs` |
 | `0111` | `OR Rd, Rs` | `Rd` reçoit `Rd OU Rs` |
 
 On retrouve nos composants : `ADD`, `SUB`, `AND` et `OR` font travailler l'ALU
-sur deux registres, `COPY` recopie un registre dans un autre, et `LOAD` fait
-entrer une valeur de l'extérieur.
+sur deux registres, `LOAD` fait entrer une valeur depuis la mémoire, et `OUT`
+montre un résultat. L'opcode `0011` n'est pas utilisé.
 
 Les opcodes ne sont pas choisis au hasard. Les quatre instructions de calcul
 commencent toutes par `01`, et leurs **deux bits de droite** sont exactement le
@@ -119,7 +118,7 @@ le contenu que vous avez rangé dans votre RAM au TP mémoire. Il met `13` dans
 | `2` | `0001 01 00` | `LOAD r1, …` |
 | `3` | `0000 0010` | (valeur : `2`) |
 | `4` | `0100 00 01` | `ADD r0, r1` |
-| `5` | `0011 00 00` | `OUT r0` |
+| `5` | `0010 00 00` | `OUT r0` |
 | `6` | `0000 0000` | `STOP` |
 
 En suivant le cycle, `r0` prend la valeur `13`, `r1` prend `2`, puis `ADD r0, r1`
@@ -145,7 +144,6 @@ d'instructions.
 :options: |
 : STOP
 : LOAD
-: COPY
 : OUT
 : ADD
 : SUB
@@ -161,8 +159,8 @@ d'instructions.
 ```{quiz}
 :style: max-width: 34rem;
 1.  `0100 01 11` : {nom}`ADD` avec Rd = {r}`{"1": true}` et Rs = {r}`{"3": true}`
-2.  `0010 00 10` : {nom}`COPY` avec Rd = {r}`{"0": true}` et Rs = {r}`{"2": true}`
-3.  `0011 11 00` : {nom}`OUT` sur le registre {r}`{"3": true}`
+2.  `0101 00 10` : {nom}`SUB` avec Rd = {r}`{"0": true}` et Rs = {r}`{"2": true}`
+3.  `0010 11 00` : {nom}`OUT` sur le registre {r}`{"3": true}`
 4.  `0001 10 00` : {nom}`LOAD` sur le registre {r}`{"2": true}`
 ```
 
@@ -173,10 +171,11 @@ On exécute ce programme. Au départ, tous les registres valent `0`.
 | :-----: | :---------- |
 | `0` | `LOAD r0, 5` |
 | `2` | `LOAD r1, 3` |
-| `4` | `COPY r2, r0` |
-| `5` | `ADD r0, r1` |
-| `6` | `OUT r0` |
-| `7` | `STOP` |
+| `4` | `LOAD r2, 0` |
+| `6` | `ADD r2, r0` |
+| `7` | `ADD r0, r1` |
+| `8` | `OUT r0` |
+| `9` | `STOP` |
 
 Donnez le contenu des registres demandés à la fin, ainsi que la valeur affichée.
 
@@ -191,8 +190,9 @@ Donnez le contenu des registres demandés à la fin, ainsi que la valeur affich�
 ````{solution}
 - `LOAD r0, 5` : `r0 = 5`.
 - `LOAD r1, 3` : `r1 = 3`.
-- `COPY r2, r0` : `r2` reçoit une copie de `r0`, donc `r2 = 5` (et `r0` ne change
-  pas).
+- `LOAD r2, 0` : `r2 = 0`.
+- `ADD r2, r0` : `r2` reçoit `0 + 5 = 5` : c'est une copie de `r0` (et `r0` ne
+  change pas).
 - `ADD r0, r1` : `r0` reçoit `5 + 3 = 8`.
 - `OUT r0` affiche donc `8`. À la fin : `r0 = 8`, `r1 = 3`, `r2 = 5`.
 ````
@@ -206,7 +206,8 @@ et `4` dans `r1`, **garde une copie** de `r0` dans `r2`, calcule `r0 - r1` dans
 ```{code-block} text
 LOAD r0, 10     r0 = 10
 LOAD r1, 4      r1 = 4
-COPY r2, r0     r2 = 10  (on garde l'ancienne valeur de r0)
+LOAD r2, 0      r2 = 0
+ADD r2, r0      r2 = 0 + 10 = 10  (copie de r0)
 SUB r0, r1      r0 = 10 - 4 = 6
 OUT r0          affiche 6
 OUT r2          affiche 10
@@ -223,8 +224,11 @@ valeurs de `r0` et de `r1`. Expliquez comment y arriver avec les instructions du
 cours.
 
 ````{solution}
-On recopie d'abord `r0` dans un registre libre, par exemple `COPY r2, r0`, puis on
-fait l'addition dans cette copie : `ADD r2, r1`. À la fin, `r2` contient `r0 + r1`,
-tandis que `r0` et `r1` sont inchangés. C'est le rôle typique de `COPY` : préserver
-une valeur avant une opération qui écraserait un registre.
+On fait le calcul dans un registre libre, par exemple `r2` : `LOAD r2, 0`, puis
+`ADD r2, r0` (`r2` devient une copie de `r0`), puis `ADD r2, r1`. À la fin, `r2`
+contient `r0 + r1`, tandis que `r0` et `r1` sont inchangés.
+
+Remarquez qu'il n'y a pas besoin d'une instruction « copier » : charger `0` puis
+additionner fait le même travail. Moins d'instructions, c'est un processeur plus
+simple à construire.
 ````

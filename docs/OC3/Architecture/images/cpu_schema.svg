@@ -1,13 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 600" role="img" aria-label="Le processeur complet : compteur de programme, registre d'adresse, RAM, registre d'instruction, unité de commande, multiplexeur d'écriture, banc de registres, ALU et registre de sortie, avec les signaux de commande en bleu">
-  <rect x="2" y="2" width="1056" height="596" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
-  <rect x="40" y="65" width="120" height="70" rx="8" fill="#dbeafe" stroke="#111827" stroke-width="2.5"/>
-  <text x="100.0" y="96.0" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="bold" text-anchor="middle">pc</text>
-  <text x="100.0" y="115.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">compteur de</text>
-  <text x="100.0" y="129.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">programme</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 560" role="img" aria-label="Le processeur complet : compteur de programme, registre d'adresse, RAM, registre d'instruction, unité de commande, multiplexeur d'écriture, banc de registres, ALU et registre de sortie, avec les signaux de commande en bleu">
+  <rect x="2" y="2" width="1056" height="556" rx="10" fill="#ffffff" stroke="#e5e7eb"/>
   <rect x="220" y="65" width="120" height="70" rx="8" fill="#dbeafe" stroke="#111827" stroke-width="2.5"/>
-  <text x="280.0" y="96.0" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="bold" text-anchor="middle">RA</text>
-  <text x="280.0" y="115.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">registre</text>
-  <text x="280.0" y="129.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">d'adresse</text>
+  <text x="280.0" y="96.0" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="bold" text-anchor="middle">pc</text>
+  <text x="280.0" y="115.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">compteur de</text>
+  <text x="280.0" y="129.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">programme</text>
   <rect x="400" y="50" width="140" height="100" rx="8" fill="#f8fafc" stroke="#111827" stroke-width="2.5"/>
   <text x="470.0" y="96.0" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="bold" text-anchor="middle">RAM</text>
   <text x="470.0" y="115.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">contient le</text>
@@ -22,11 +18,7 @@
   <text x="940" y="108" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#2563eb" font-weight="normal" text-anchor="middle">produit les signaux bleus</text>
   <rect x="868" y="128" width="144" height="52" rx="7" fill="#ffffff" stroke="#111827" stroke-width="1.8"/>
   <text x="940" y="149" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle">compteur d'étapes</text>
-  <text x="940" y="168" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">T1 … T8</text>
-  <path d="M 160,100 L 218,100" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="220,100 208.8,93 208.8,107" fill="#111827"/>
-  <line x1="182" y1="106" x2="194" y2="94" stroke="#111827" stroke-width="2"/>
-  <text x="188" y="90" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#6b7280" font-weight="normal" text-anchor="middle">4</text>
+  <text x="940" y="168" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">T1, T2</text>
   <path d="M 340,100 L 398,100" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="400,100 388.8,93 388.8,107" fill="#111827"/>
   <line x1="362" y1="106" x2="374" y2="94" stroke="#111827" stroke-width="2"/>
@@ -42,12 +34,9 @@
   <text x="792" y="90" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle">opcode</text>
   <line x1="822" y1="106" x2="834" y2="94" stroke="#111827" stroke-width="2"/>
   <text x="828" y="90" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#6b7280" font-weight="normal" text-anchor="middle">4</text>
-  <path d="M 100,30 L 100,64" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="100,65 93,53.8 107,53.8" fill="#2563eb"/>
-  <text x="106" y="34" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#2563eb" font-weight="normal" text-anchor="start">incrémenter pc</text>
   <path d="M 280,30 L 280,64" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="280,65 273,53.8 287,53.8" fill="#2563eb"/>
-  <text x="286" y="34" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#2563eb" font-weight="normal" text-anchor="start">LD RA</text>
+  <text x="286" y="34" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#2563eb" font-weight="normal" text-anchor="start">incrémenter pc</text>
   <path d="M 680,30 L 680,64" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="680,65 673,53.8 687,53.8" fill="#2563eb"/>
   <text x="686" y="34" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#2563eb" font-weight="normal" text-anchor="start">LD RI</text>
@@ -55,12 +44,11 @@
   <text x="680" y="378" font-family="'Segoe UI',Arial,sans-serif" font-size="15" fill="#111827" font-weight="bold" text-anchor="middle">banc de</text>
   <text x="680" y="396" font-family="'Segoe UI',Arial,sans-serif" font-size="15" fill="#111827" font-weight="bold" text-anchor="middle">registres</text>
   <text x="680" y="418" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">r0  r1  r2  r3</text>
-  <path d="M 455,305 L 515,335 L 515,435 L 455,465 Z" fill="#dbeafe" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <text x="486" y="380" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">mux</text>
-  <text x="486" y="396" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="middle">écriture</text>
-  <text x="461" y="339" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="start">0</text>
-  <text x="461" y="389" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="start">1</text>
-  <text x="461" y="439" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="start">2</text>
+  <path d="M 455,315 L 515,340 L 515,390 L 455,415 Z" fill="#dbeafe" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="486" y="362" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle">mux</text>
+  <text x="486" y="378" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="middle">écriture</text>
+  <text x="461" y="344" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="start">0</text>
+  <text x="461" y="394" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="start">1</text>
   <path d="M 850,300 L 910,345 L 910,425 L 850,470 Z" fill="#f8fafc" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
   <text x="882" y="390" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#111827" font-weight="bold" text-anchor="middle">ALU</text>
   <text x="858" y="339" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#6b7280" font-weight="normal" text-anchor="start">A</text>
@@ -76,40 +64,32 @@
   <line x1="714" y1="186" x2="726" y2="174" stroke="#111827" stroke-width="2"/>
   <text x="730" y="184" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#6b7280" font-weight="normal" text-anchor="start">2</text>
   <circle cx="575" cy="100" r="4.5" fill="#111827"/>
-  <path d="M 575,100 L 575,255 L 430,255 L 430,335 L 453,335" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="455,335 443.8,328 443.8,342" fill="#111827"/>
+  <path d="M 575,100 L 575,255 L 430,255 L 430,340 L 453,340" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="455,340 443.8,333 443.8,347" fill="#111827"/>
   <text x="505" y="247" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" font-style="italic">case lue</text>
-  <path d="M 515,385 L 588,385" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="590,385 578.8,378 578.8,392" fill="#111827"/>
-  <text x="552" y="377" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle" font-style="italic">donnée</text>
+  <path d="M 515,365 L 588,365" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="590,365 578.8,358 578.8,372" fill="#111827"/>
+  <text x="552" y="357" font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#6b7280" font-weight="normal" text-anchor="middle" font-style="italic">donnée</text>
   <path d="M 770,335 L 848,335" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="850,335 838.8,328 838.8,342" fill="#111827"/>
   <path d="M 770,435 L 848,435" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="850,435 838.8,428 838.8,442" fill="#111827"/>
   <text x="778" y="352" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#6b7280" font-weight="normal" text-anchor="start" font-style="italic">lecture Rd</text>
   <text x="778" y="427" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" fill="#6b7280" font-weight="normal" text-anchor="start" font-style="italic">lecture Rs</text>
-  <circle cx="815" cy="435" r="4.5" fill="#111827"/>
-  <path d="M 815,435 L 815,515 L 430,515 L 430,435 L 453,435" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="455,435 443.8,428 443.8,442" fill="#111827"/>
-  <path d="M 910,385 L 945,385 L 945,545 L 405,545 L 405,385 L 453,385" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="455,385 443.8,378 443.8,392" fill="#111827"/>
-  <text x="675" y="538" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" font-style="italic">résultat de l'ALU</text>
-  <text x="620" y="508" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" font-style="italic">registre Rs</text>
+  <path d="M 910,385 L 945,385 L 945,525 L 405,525 L 405,390 L 453,390" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="455,390 443.8,383 443.8,397" fill="#111827"/>
+  <text x="675" y="518" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#6b7280" font-weight="normal" text-anchor="middle" font-style="italic">résultat de l'ALU</text>
   <circle cx="800" cy="335" r="4.5" fill="#111827"/>
   <path d="M 800,335 L 800,270 L 928,270" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="930,270 918.8,263 918.8,277" fill="#111827"/>
-  <rect x="930" y="245" width="100" height="50" rx="8" fill="#dbeafe" stroke="#111827" stroke-width="2.5"/>
-  <text x="980.0" y="266.0" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="bold" text-anchor="middle">sortie</text>
-  <text x="980.0" y="285.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">registre</text>
-  <path d="M 980,295 L 980,328" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="980,330 973,318.8 987,318.8" fill="#111827"/>
-  <rect x="938" y="330" width="84" height="34" rx="6" fill="#ffffff" stroke="#111827" stroke-width="1.8"/>
-  <text x="980" y="352" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="#111827" font-weight="normal" text-anchor="middle">afficheur</text>
+  <rect x="930" y="245" width="100" height="60" rx="8" fill="#dbeafe" stroke="#111827" stroke-width="2.5"/>
+  <text x="980.0" y="271.0" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="#111827" font-weight="bold" text-anchor="middle">sortie</text>
+  <text x="980.0" y="290.0" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#6b7280" font-weight="normal" text-anchor="middle">affiche sa valeur</text>
   <path d="M 615,268 L 615,299" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
   <polygon points="615,300 608,288.8 622,288.8" fill="#2563eb"/>
   <text x="609" y="272" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#2563eb" font-weight="normal" text-anchor="end">LD Rd</text>
-  <path d="M 492,280 L 492,321" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="492,322 485,310.8 499,310.8" fill="#2563eb"/>
+  <path d="M 492,280 L 492,327" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="492,328 485,316.8 499,316.8" fill="#2563eb"/>
   <text x="486" y="284" font-family="'Segoe UI',Arial,sans-serif" font-size="11.5" fill="#2563eb" font-weight="normal" text-anchor="end">src</text>
   <circle cx="772" cy="100" r="4.5" fill="#111827"/>
   <path d="M 772,100 L 772,222 L 893,222 L 893,262 A 8,8 0 0 1 893,278 L 893,331" fill="none" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>

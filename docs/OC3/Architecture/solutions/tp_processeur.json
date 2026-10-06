@@ -117,7 +117,7 @@
       "x": 200,
       "y": 60,
       "state": {
-        "selectWidth": 2,
+        "selectWidth": 1,
         "dataWidth": 8
       },
       "label": "mux d'écriture"
@@ -126,26 +126,16 @@
       "id": "sortie",
       "type": "REG",
       "x": 1120,
-      "y": 420,
+      "y": 440,
       "state": {
         "width": 8
       },
       "label": "sortie"
     },
     {
-      "id": "aff",
-      "type": "OUTPUT",
-      "x": 1120,
-      "y": 580,
-      "state": {
-        "width": 8
-      },
-      "label": "afficheur"
-    },
-    {
       "id": "pc",
       "type": "COUNTER",
-      "x": 160,
+      "x": 200,
       "y": 760,
       "state": {
         "width": 4
@@ -153,19 +143,9 @@
       "label": "pc"
     },
     {
-      "id": "RA",
-      "type": "REG",
-      "x": 380,
-      "y": 760,
-      "state": {
-        "width": 4
-      },
-      "label": "RA"
-    },
-    {
       "id": "ram",
       "type": "RAM",
-      "x": 640,
+      "x": 440,
       "y": 760,
       "state": {
         "addrWidth": 4,
@@ -176,7 +156,7 @@
           20,
           2,
           65,
-          48,
+          32,
           0,
           0,
           0,
@@ -194,7 +174,7 @@
     {
       "id": "RI",
       "type": "REG",
-      "x": 900,
+      "x": 720,
       "y": 760,
       "state": {
         "width": 8
@@ -202,17 +182,10 @@
       "label": "RI"
     },
     {
-      "id": "ecrire",
-      "type": "INPUT",
-      "x": 560,
-      "y": 880,
-      "label": "écrire"
-    },
-    {
       "id": "slopcode",
       "type": "SLICE",
-      "x": 1180,
-      "y": 660,
+      "x": 1000,
+      "y": 700,
       "state": {
         "width": 8,
         "hi": 7,
@@ -223,8 +196,8 @@
     {
       "id": "slRd",
       "type": "SLICE",
-      "x": 1180,
-      "y": 770,
+      "x": 1000,
+      "y": 810,
       "state": {
         "width": 8,
         "hi": 3,
@@ -235,8 +208,8 @@
     {
       "id": "slRs",
       "type": "SLICE",
-      "x": 1180,
-      "y": 880,
+      "x": 1000,
+      "y": 920,
       "state": {
         "width": 8,
         "hi": 1,
@@ -247,8 +220,8 @@
     {
       "id": "slop",
       "type": "SLICE",
-      "x": 1180,
-      "y": 990,
+      "x": 1000,
+      "y": 1030,
       "state": {
         "width": 8,
         "hi": 5,
@@ -259,8 +232,8 @@
     {
       "id": "slcalcul",
       "type": "SLICE",
-      "x": 1180,
-      "y": 1100,
+      "x": 1000,
+      "y": 1140,
       "state": {
         "width": 8,
         "hi": 6,
@@ -272,7 +245,7 @@
       "id": "reset",
       "type": "INPUT",
       "x": 20,
-      "y": 940,
+      "y": 920,
       "label": "reset"
     },
     {
@@ -281,7 +254,7 @@
       "x": 160,
       "y": 1000,
       "state": {
-        "width": 3
+        "width": 1
       },
       "label": "compteur d'étapes"
     },
@@ -291,93 +264,59 @@
       "x": 360,
       "y": 1000,
       "state": {
-        "width": 3
+        "width": 1
       }
     },
     {
       "id": "decOp",
       "type": "DECODER",
       "x": 360,
-      "y": 1240,
+      "y": 1160,
       "state": {
         "width": 4
       }
     },
     {
-      "id": "LOADetT4",
+      "id": "LOADetT2",
       "type": "AND",
       "x": 560,
       "y": 1020
     },
     {
-      "id": "LOADetT5",
-      "type": "AND",
-      "x": 560,
-      "y": 1080
-    },
-    {
-      "id": "LOADetT6",
-      "type": "AND",
-      "x": 560,
-      "y": 1140
-    },
-    {
-      "id": "ldRA",
+      "id": "incPC",
       "type": "OR",
-      "x": 700,
+      "x": 720,
       "y": 1000
     },
     {
-      "id": "incPC",
-      "type": "OR",
-      "x": 700,
-      "y": 1070
-    },
-    {
-      "id": "calcOUcopy",
+      "id": "calcOUload",
       "type": "OR",
       "x": 560,
-      "y": 1220
-    },
-    {
-      "id": "ecrT4",
-      "type": "AND",
-      "x": 700,
-      "y": 1200
+      "y": 1100
     },
     {
       "id": "ldRd",
-      "type": "OR",
-      "x": 840,
-      "y": 1160
+      "type": "AND",
+      "x": 720,
+      "y": 1100
     },
     {
       "id": "ldSortie",
       "type": "AND",
       "x": 560,
-      "y": 1300
+      "y": 1180
     },
     {
-      "id": "STOPetT4",
+      "id": "STOPetT2",
       "type": "AND",
       "x": 560,
-      "y": 1380
+      "y": 1260
     },
     {
       "id": "avancer",
       "type": "NOT",
-      "x": 700,
-      "y": 1380
-    },
-    {
-      "id": "src",
-      "type": "MERGER",
-      "x": 700,
-      "y": 1460,
-      "state": {
-        "width": 2
-      },
-      "label": "src"
+      "x": 720,
+      "y": 1260
     }
   ],
   "wires": [
@@ -681,17 +620,6 @@
     {
       "id": "w28",
       "from": {
-        "componentId": "muxRs",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "muxW",
-        "port": "in2"
-      }
-    },
-    {
-      "id": "w29",
-      "from": {
         "componentId": "muxRd",
         "port": "out"
       },
@@ -701,7 +629,7 @@
       }
     },
     {
-      "id": "w30",
+      "id": "w29",
       "from": {
         "componentId": "clk",
         "port": "CLK"
@@ -712,42 +640,9 @@
       }
     },
     {
-      "id": "w31",
-      "from": {
-        "componentId": "sortie",
-        "port": "Q"
-      },
-      "to": {
-        "componentId": "aff",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w32",
-      "from": {
-        "componentId": "ecrire",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "ram",
-        "port": "WE"
-      }
-    },
-    {
-      "id": "w33",
+      "id": "w30",
       "from": {
         "componentId": "pc",
-        "port": "Q"
-      },
-      "to": {
-        "componentId": "RA",
-        "port": "D"
-      }
-    },
-    {
-      "id": "w34",
-      "from": {
-        "componentId": "RA",
         "port": "Q"
       },
       "to": {
@@ -756,7 +651,7 @@
       }
     },
     {
-      "id": "w35",
+      "id": "w31",
       "from": {
         "componentId": "ram",
         "port": "DATA_OUT"
@@ -767,7 +662,7 @@
       }
     },
     {
-      "id": "w36",
+      "id": "w32",
       "from": {
         "componentId": "ram",
         "port": "DATA_OUT"
@@ -778,7 +673,7 @@
       }
     },
     {
-      "id": "w37",
+      "id": "w33",
       "from": {
         "componentId": "clk",
         "port": "CLK"
@@ -789,18 +684,7 @@
       }
     },
     {
-      "id": "w38",
-      "from": {
-        "componentId": "clk",
-        "port": "CLK"
-      },
-      "to": {
-        "componentId": "RA",
-        "port": "CLK"
-      }
-    },
-    {
-      "id": "w39",
+      "id": "w34",
       "from": {
         "componentId": "clk",
         "port": "CLK"
@@ -811,7 +695,7 @@
       }
     },
     {
-      "id": "w40",
+      "id": "w35",
       "from": {
         "componentId": "clk",
         "port": "CLK"
@@ -822,7 +706,7 @@
       }
     },
     {
-      "id": "w41",
+      "id": "w36",
       "from": {
         "componentId": "RI",
         "port": "Q"
@@ -833,7 +717,7 @@
       }
     },
     {
-      "id": "w42",
+      "id": "w37",
       "from": {
         "componentId": "RI",
         "port": "Q"
@@ -844,7 +728,7 @@
       }
     },
     {
-      "id": "w43",
+      "id": "w38",
       "from": {
         "componentId": "RI",
         "port": "Q"
@@ -855,7 +739,7 @@
       }
     },
     {
-      "id": "w44",
+      "id": "w39",
       "from": {
         "componentId": "RI",
         "port": "Q"
@@ -866,7 +750,7 @@
       }
     },
     {
-      "id": "w45",
+      "id": "w40",
       "from": {
         "componentId": "RI",
         "port": "Q"
@@ -877,7 +761,7 @@
       }
     },
     {
-      "id": "w46",
+      "id": "w41",
       "from": {
         "componentId": "slRd",
         "port": "out"
@@ -888,7 +772,7 @@
       }
     },
     {
-      "id": "w47",
+      "id": "w42",
       "from": {
         "componentId": "slRd",
         "port": "out"
@@ -899,7 +783,7 @@
       }
     },
     {
-      "id": "w48",
+      "id": "w43",
       "from": {
         "componentId": "slRs",
         "port": "out"
@@ -910,7 +794,7 @@
       }
     },
     {
-      "id": "w49",
+      "id": "w44",
       "from": {
         "componentId": "slop",
         "port": "out"
@@ -921,7 +805,18 @@
       }
     },
     {
-      "id": "w50",
+      "id": "w45",
+      "from": {
+        "componentId": "slcalcul",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "muxW",
+        "port": "sel"
+      }
+    },
+    {
+      "id": "w46",
       "from": {
         "componentId": "reset",
         "port": "out"
@@ -932,7 +827,7 @@
       }
     },
     {
-      "id": "w51",
+      "id": "w47",
       "from": {
         "componentId": "clk",
         "port": "CLK"
@@ -943,7 +838,7 @@
       }
     },
     {
-      "id": "w52",
+      "id": "w48",
       "from": {
         "componentId": "reset",
         "port": "out"
@@ -954,7 +849,7 @@
       }
     },
     {
-      "id": "w53",
+      "id": "w49",
       "from": {
         "componentId": "etapes",
         "port": "Q"
@@ -965,7 +860,7 @@
       }
     },
     {
-      "id": "w54",
+      "id": "w50",
       "from": {
         "componentId": "slopcode",
         "port": "out"
@@ -976,119 +871,53 @@
       }
     },
     {
-      "id": "w55",
-      "from": {
-        "componentId": "decOp",
-        "port": "out1"
-      },
-      "to": {
-        "componentId": "LOADetT4",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w56",
-      "from": {
-        "componentId": "decT",
-        "port": "out3"
-      },
-      "to": {
-        "componentId": "LOADetT4",
-        "port": "in1"
-      }
-    },
-    {
-      "id": "w57",
-      "from": {
-        "componentId": "decOp",
-        "port": "out1"
-      },
-      "to": {
-        "componentId": "LOADetT5",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w58",
-      "from": {
-        "componentId": "decT",
-        "port": "out4"
-      },
-      "to": {
-        "componentId": "LOADetT5",
-        "port": "in1"
-      }
-    },
-    {
-      "id": "w59",
-      "from": {
-        "componentId": "decOp",
-        "port": "out1"
-      },
-      "to": {
-        "componentId": "LOADetT6",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w60",
-      "from": {
-        "componentId": "decT",
-        "port": "out5"
-      },
-      "to": {
-        "componentId": "LOADetT6",
-        "port": "in1"
-      }
-    },
-    {
-      "id": "w61",
+      "id": "w51",
       "from": {
         "componentId": "decT",
         "port": "out0"
       },
       "to": {
-        "componentId": "ldRA",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w62",
-      "from": {
-        "componentId": "LOADetT4",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "ldRA",
-        "port": "in1"
-      }
-    },
-    {
-      "id": "w63",
-      "from": {
-        "componentId": "ldRA",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "RA",
+        "componentId": "RI",
         "port": "LD"
       }
     },
     {
-      "id": "w64",
+      "id": "w52",
+      "from": {
+        "componentId": "decOp",
+        "port": "out1"
+      },
+      "to": {
+        "componentId": "LOADetT2",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w53",
       "from": {
         "componentId": "decT",
         "port": "out1"
       },
       "to": {
+        "componentId": "LOADetT2",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w54",
+      "from": {
+        "componentId": "decT",
+        "port": "out0"
+      },
+      "to": {
         "componentId": "incPC",
         "port": "in0"
       }
     },
     {
-      "id": "w65",
+      "id": "w55",
       "from": {
-        "componentId": "LOADetT5",
+        "componentId": "LOADetT2",
         "port": "out"
       },
       "to": {
@@ -1097,7 +926,7 @@
       }
     },
     {
-      "id": "w66",
+      "id": "w56",
       "from": {
         "componentId": "incPC",
         "port": "out"
@@ -1108,76 +937,43 @@
       }
     },
     {
-      "id": "w67",
-      "from": {
-        "componentId": "decT",
-        "port": "out2"
-      },
-      "to": {
-        "componentId": "RI",
-        "port": "LD"
-      }
-    },
-    {
-      "id": "w68",
+      "id": "w57",
       "from": {
         "componentId": "slcalcul",
         "port": "out"
       },
       "to": {
-        "componentId": "calcOUcopy",
+        "componentId": "calcOUload",
         "port": "in0"
       }
     },
     {
-      "id": "w69",
+      "id": "w58",
       "from": {
         "componentId": "decOp",
-        "port": "out2"
+        "port": "out1"
       },
       "to": {
-        "componentId": "calcOUcopy",
+        "componentId": "calcOUload",
         "port": "in1"
       }
     },
     {
-      "id": "w70",
+      "id": "w59",
       "from": {
-        "componentId": "calcOUcopy",
+        "componentId": "calcOUload",
         "port": "out"
       },
       "to": {
-        "componentId": "ecrT4",
+        "componentId": "ldRd",
         "port": "in0"
       }
     },
     {
-      "id": "w71",
+      "id": "w60",
       "from": {
         "componentId": "decT",
-        "port": "out3"
-      },
-      "to": {
-        "componentId": "ecrT4",
-        "port": "in1"
-      }
-    },
-    {
-      "id": "w72",
-      "from": {
-        "componentId": "ecrT4",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "ldRd",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w73",
-      "from": {
-        "componentId": "LOADetT6",
-        "port": "out"
+        "port": "out1"
       },
       "to": {
         "componentId": "ldRd",
@@ -1185,7 +981,7 @@
       }
     },
     {
-      "id": "w74",
+      "id": "w61",
       "from": {
         "componentId": "ldRd",
         "port": "out"
@@ -1196,7 +992,7 @@
       }
     },
     {
-      "id": "w75",
+      "id": "w62",
       "from": {
         "componentId": "ldRd",
         "port": "out"
@@ -1207,7 +1003,7 @@
       }
     },
     {
-      "id": "w76",
+      "id": "w63",
       "from": {
         "componentId": "ldRd",
         "port": "out"
@@ -1218,7 +1014,7 @@
       }
     },
     {
-      "id": "w77",
+      "id": "w64",
       "from": {
         "componentId": "ldRd",
         "port": "out"
@@ -1229,10 +1025,10 @@
       }
     },
     {
-      "id": "w78",
+      "id": "w65",
       "from": {
         "componentId": "decOp",
-        "port": "out3"
+        "port": "out2"
       },
       "to": {
         "componentId": "ldSortie",
@@ -1240,10 +1036,10 @@
       }
     },
     {
-      "id": "w79",
+      "id": "w66",
       "from": {
         "componentId": "decT",
-        "port": "out3"
+        "port": "out1"
       },
       "to": {
         "componentId": "ldSortie",
@@ -1251,7 +1047,7 @@
       }
     },
     {
-      "id": "w80",
+      "id": "w67",
       "from": {
         "componentId": "ldSortie",
         "port": "out"
@@ -1262,31 +1058,31 @@
       }
     },
     {
-      "id": "w81",
+      "id": "w68",
       "from": {
         "componentId": "decOp",
         "port": "out0"
       },
       "to": {
-        "componentId": "STOPetT4",
+        "componentId": "STOPetT2",
         "port": "in0"
       }
     },
     {
-      "id": "w82",
+      "id": "w69",
       "from": {
         "componentId": "decT",
-        "port": "out3"
+        "port": "out1"
       },
       "to": {
-        "componentId": "STOPetT4",
+        "componentId": "STOPetT2",
         "port": "in1"
       }
     },
     {
-      "id": "w83",
+      "id": "w70",
       "from": {
-        "componentId": "STOPetT4",
+        "componentId": "STOPetT2",
         "port": "out"
       },
       "to": {
@@ -1295,7 +1091,7 @@
       }
     },
     {
-      "id": "w84",
+      "id": "w71",
       "from": {
         "componentId": "avancer",
         "port": "out"
@@ -1303,39 +1099,6 @@
       "to": {
         "componentId": "etapes",
         "port": "EN"
-      }
-    },
-    {
-      "id": "w85",
-      "from": {
-        "componentId": "slcalcul",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "src",
-        "port": "b0"
-      }
-    },
-    {
-      "id": "w86",
-      "from": {
-        "componentId": "decOp",
-        "port": "out2"
-      },
-      "to": {
-        "componentId": "src",
-        "port": "b1"
-      }
-    },
-    {
-      "id": "w87",
-      "from": {
-        "componentId": "src",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "muxW",
-        "port": "sel"
       }
     }
   ],

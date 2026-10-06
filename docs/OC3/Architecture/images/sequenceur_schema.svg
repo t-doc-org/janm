@@ -34,13 +34,9 @@
 <path d="M343,417 l-8.5,-5 l0,10 z" fill="#1a1a2e"/>
 <rect x="345" y="393" width="110" height="48" rx="8" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2.5"/>
 <text x="400" y="421" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#1a1a2e" text-anchor="middle" font-weight="600">décodeur</text>
-<line x1="372" y1="393" x2="372" y2="270" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
-<path d="M372,270 l-5,8.5 l10,0 z" fill="#1a1a2e"/>
 <line x1="392" y1="393" x2="392" y2="270" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M392,270 l-5,8.5 l10,0 z" fill="#1a1a2e"/>
 <line x1="412" y1="393" x2="412" y2="270" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M412,270 l-5,8.5 l10,0 z" fill="#1a1a2e"/>
-<line x1="432" y1="393" x2="432" y2="270" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
-<path d="M432,270 l-5,8.5 l10,0 z" fill="#1a1a2e"/>
-<text x="470" y="360" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#c2410c" text-anchor="start" font-weight="600">étapes T1 … T8</text>
+<text x="470" y="360" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#c2410c" text-anchor="start" font-weight="600">étapes T1, T2</text>
 </svg>
