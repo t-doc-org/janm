@@ -215,3 +215,19 @@ registres pour en faire la mémoire de travail du processeur.
     Changez `op` pour voir les autres opérations sur ces deux mêmes registres.
 7.  **Enregistrez** votre circuit et **gardez le fichier JSON** : il servira à
     l'assemblage du processeur.
+
+````{solution}
+Circuit corrigé : {download}`tp_registres.json <solutions/tp_registres.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
+
+- Le décodeur reçoit `Rd`. Sa sortie `i` passe dans une porte `ET` avec l'entrée
+  `LD` : la sortie de cette porte va sur l'entrée `LD` du registre `ri`. Seul le
+  registre choisi capture, et seulement si `LD = 1`.
+- L'entrée `donnée` va sur l'entrée `D` des quatre registres, l'horloge sur leurs
+  quatre entrées `CLK`.
+- Les sorties de `r0` à `r3` vont sur les entrées `0` à `3` des **deux**
+  multiplexeurs. Le premier est commandé par `Rd` (lecture `Rd`, vers `A` de
+  l'ALU), le second par `Rs` (lecture `Rs`, vers `B`).
+- Avec `r0 = 0000 0101` et `r1 = 0000 0011`, `Rd = 00`, `Rs = 01` : l'afficheur
+  montre `0000 1000` (`op = 00`), `0000 0010` (`01`), `0000 0001` (`10`) et
+  `0000 0111` (`11`).
+````

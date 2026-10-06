@@ -154,3 +154,17 @@ servira au processeur.
     réutiliserez tel quel, comme une boîte noire, à la fin du chapitre.
 6.  **Enregistrez** votre circuit, et veillez à bien conserver le fichier JSON
     exporté : il vous permettra de rouvrir votre ALU plus tard.
+
+````{solution}
+Circuit corrigé : {download}`tp_alu.json <solutions/tp_alu.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
+Le fichier contient aussi le composant `ALU` déjà encapsulé (catégorie *Custom*).
+
+- `A + B` : un additionneur (`ADDER`) 8 bits, retenue entrante non branchée.
+- `A - B` : un séparateur éclate `B`, chaque bit passe par une porte `NON`, un
+  fusionneur reforme `¬B`, et un second additionneur calcule `A + ¬B + 1` : sa
+  retenue entrante `Cin` est reliée à une entrée laissée à `1`.
+- `A ET B` et `A OU B` : pour chacun, un séparateur pour `A`, un pour `B`, 8
+  portes (le bit `i` de `A` avec le bit `i` de `B`) et un fusionneur.
+- Un multiplexeur (sélection 2 bits, données 8 bits) : entrée `0` = `A + B`,
+  `1` = `A - B`, `2` = `A ET B`, `3` = `A OU B`, sélection = `op`.
+````

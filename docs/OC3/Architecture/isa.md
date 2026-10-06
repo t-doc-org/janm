@@ -28,7 +28,7 @@ donc les 4 bits de gauche à l'opcode, puis 2 bits pour le registre de destinati
 
 ```{figure} images/instruction_format.svg
 :width: 80%
-:alt: Une instruction de 8 bits découpée en trois champs : opcode 0010 (4 bits), Rd 00 (2 bits) et Rs 01 (2 bits), qui se décode en "ADD r0, r1 : r0 reçoit r0 + r1"
+:alt: Une instruction de 8 bits découpée en trois champs : opcode 0100 (4 bits), Rd 00 (2 bits) et Rs 01 (2 bits), qui se décode en "ADD r0, r1 : r0 reçoit r0 + r1"
 :align: center
 
 Une instruction se lit en trois morceaux : l'opcode (l'action), puis les deux
@@ -43,7 +43,7 @@ Dans Logix, un composant *SLICE* fait exactement ce découpage : il extrait
 d'un mot un champ de bits choisi. Changez l'instruction ci-dessous et regardez ses
 trois champs apparaître.
 
-```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBkw6ljb2RlciB1bmUgaW5zdHJ1Y3Rpb24iLCJvIjoiQ2hhbmdleiBsYSB2YWxldXIgZGUgbCdpbnN0cnVjdGlvbiAoOCBiaXRzKSA6IGxlIGNvbXBvc2FudCBTTElDRSBlbiBleHRyYWl0IGxlcyB0cm9pcyBjaGFtcHMsIGwnb3Bjb2RlIChiaXRzIDcgw6AgNCksIFJkIChiaXRzIDMgZXQgMikgZXQgUnMgKGJpdHMgMSBldCAwKS4gRXNzYXlleiAwMDEwMDAwMSAoQUREIHIwLCByMSkgOiBvcGNvZGUgPSAwMDEwLCBSZCA9IDAwLCBScyA9IDAxLiIsInMiOltdLCJhIjpbXSwiaSI6W10sInUiOltdLCJrIjoibm9uZSIsInIiOltdLCJsIjoxLCJjIjp7InZlcnNpb24iOjIsIm5hbWUiOiJjaXJjdWl0IiwiY29tcG9uZW50cyI6W3siaWQiOiJJIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjEyMCwic3RhdGUiOnsid2lkdGgiOjgsInZhbHVlIjozM30sImxhYmVsIjoiaW5zdHJ1Y3Rpb24ifSx7ImlkIjoib3AiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjQwLCJzdGF0ZSI6eyJ3aWR0aCI6OCwiaGkiOjcsImxvIjo0fX0seyJpZCI6InJkIiwidHlwZSI6IlNMSUNFIiwieCI6MjYwLCJ5IjoxMjAsInN0YXRlIjp7IndpZHRoIjo4LCJoaSI6MywibG8iOjJ9fSx7ImlkIjoicnMiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjIwMCwic3RhdGUiOnsid2lkdGgiOjgsImhpIjoxLCJsbyI6MH19LHsiaWQiOiJvbyIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo0NDAsInkiOjYwLCJzdGF0ZSI6eyJ3aWR0aCI6NH0sImxhYmVsIjoib3Bjb2RlIn0seyJpZCI6Im9kIiwidHlwZSI6Ik9VVFBVVCIsIngiOjQ0MCwieSI6MTQwLCJzdGF0ZSI6eyJ3aWR0aCI6Mn0sImxhYmVsIjoiUmQifSx7ImlkIjoib3MiLCJ0eXBlIjoiT1VUUFVUIiwieCI6NDQwLCJ5IjoyMjAsInN0YXRlIjp7IndpZHRoIjoyfSwibGFiZWwiOiJScyJ9XSwid2lyZXMiOlt7ImlkIjoidzEiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvcCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzIiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzMiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJycyIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzQiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoib3AiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib28iLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NSIsImZyb20iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvZCIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc2IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6InJzIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9zIiwicG9ydCI6ImluMCJ9fV0sImN1c3RvbURlZmluaXRpb25zIjp7fX19&embed=1
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBkw6ljb2RlciB1bmUgaW5zdHJ1Y3Rpb24iLCJvIjoiQ2hhbmdleiBsYSB2YWxldXIgZGUgbCdpbnN0cnVjdGlvbiAoOCBiaXRzKSA6IGxlIGNvbXBvc2FudCBTTElDRSBlbiBleHRyYWl0IGxlcyB0cm9pcyBjaGFtcHMsIGwnb3Bjb2RlIChiaXRzIDcgw6AgNCksIFJkIChiaXRzIDMgZXQgMikgZXQgUnMgKGJpdHMgMSBldCAwKS4gRXNzYXlleiAwMTAwMDAwMSAoQUREIHIwLCByMSkgOiBvcGNvZGUgPSAwMTAwLCBSZCA9IDAwLCBScyA9IDAxLiIsInMiOltdLCJhIjpbXSwiaSI6W10sInUiOltdLCJrIjoibm9uZSIsInIiOltdLCJsIjoxLCJjIjp7InZlcnNpb24iOjIsIm5hbWUiOiJjaXJjdWl0IiwiY29tcG9uZW50cyI6W3siaWQiOiJJIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjEyMCwic3RhdGUiOnsid2lkdGgiOjgsInZhbHVlIjo2NX0sImxhYmVsIjoiaW5zdHJ1Y3Rpb24ifSx7ImlkIjoib3AiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjQwLCJzdGF0ZSI6eyJ3aWR0aCI6OCwiaGkiOjcsImxvIjo0fX0seyJpZCI6InJkIiwidHlwZSI6IlNMSUNFIiwieCI6MjYwLCJ5IjoxMjAsInN0YXRlIjp7IndpZHRoIjo4LCJoaSI6MywibG8iOjJ9fSx7ImlkIjoicnMiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjIwMCwic3RhdGUiOnsid2lkdGgiOjgsImhpIjoxLCJsbyI6MH19LHsiaWQiOiJvbyIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo0NDAsInkiOjYwLCJzdGF0ZSI6eyJ3aWR0aCI6NH0sImxhYmVsIjoib3Bjb2RlIn0seyJpZCI6Im9kIiwidHlwZSI6Ik9VVFBVVCIsIngiOjQ0MCwieSI6MTQwLCJzdGF0ZSI6eyJ3aWR0aCI6Mn0sImxhYmVsIjoiUmQifSx7ImlkIjoib3MiLCJ0eXBlIjoiT1VUUFVUIiwieCI6NDQwLCJ5IjoyMjAsInN0YXRlIjp7IndpZHRoIjoyfSwibGFiZWwiOiJScyJ9XSwid2lyZXMiOlt7ImlkIjoidzEiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvcCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzIiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzMiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJycyIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzQiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoib3AiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib28iLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NSIsImZyb20iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvZCIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc2IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6InJzIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9zIiwicG9ydCI6ImluMCJ9fV0sImN1c3RvbURlZmluaXRpb25zIjp7fX19&embed=1
 :style: height: 320px; aspect-ratio: auto; border: 1px solid black;
 :title: Démonstration Logix : un composant SLICE extrait l'opcode, Rd et Rs d'une instruction
 ```
@@ -56,14 +56,22 @@ d'instructions*. Voici le nôtre :
 | :----: | :---------- | :---- |
 | `0000` | `STOP` | arrête le processeur |
 | `0001` | `LOAD Rd, valeur` | `Rd` reçoit la `valeur` (sur 2 octets, voir plus bas) |
-| `0010` | `ADD Rd, Rs` | `Rd` reçoit `Rd + Rs` |
-| `0011` | `SUB Rd, Rs` | `Rd` reçoit `Rd - Rs` |
-| `0100` | `COPY Rd, Rs` | `Rd` reçoit une copie de `Rs` |
-| `0101` | `OUT Rd` | affiche le contenu de `Rd` |
+| `0010` | `COPY Rd, Rs` | `Rd` reçoit une copie de `Rs` |
+| `0011` | `OUT Rd` | affiche le contenu de `Rd` |
+| `0100` | `ADD Rd, Rs` | `Rd` reçoit `Rd + Rs` |
+| `0101` | `SUB Rd, Rs` | `Rd` reçoit `Rd - Rs` |
+| `0110` | `AND Rd, Rs` | `Rd` reçoit `Rd ET Rs` |
+| `0111` | `OR Rd, Rs` | `Rd` reçoit `Rd OU Rs` |
 
-On retrouve nos composants : `ADD`, `SUB` font travailler l'ALU sur deux
-registres, `COPY` recopie un registre dans un autre, et `LOAD` fait entrer une
-valeur de l'extérieur.
+On retrouve nos composants : `ADD`, `SUB`, `AND` et `OR` font travailler l'ALU
+sur deux registres, `COPY` recopie un registre dans un autre, et `LOAD` fait
+entrer une valeur de l'extérieur.
+
+Les opcodes ne sont pas choisis au hasard. Les quatre instructions de calcul
+commencent toutes par `01`, et leurs **deux bits de droite** sont exactement le
+code opération de l'ALU : `00` = addition, `01` = soustraction, `10` = ET,
+`11` = OU. Le processeur n'aura donc rien à calculer pour régler l'ALU : il lui
+suffira de brancher ces deux bits de l'instruction sur l'entrée `op`.
 
 ```{important}
 - Un registre se nomme sur `2` bits : `r0 = 00`, `r1 = 01`, `r2 = 10`, `r3 = 11`.
@@ -100,7 +108,8 @@ suivant** (la valeur) et la ranger dans le registre, en faisant à nouveau avanc
 `pc`.
 
 ## Un programme complet
-Voici un programme rangé en mémoire à partir de l'adresse `0`. Il met `13` dans
+Voici un programme rangé en mémoire à partir de l'adresse `0` : c'est exactement
+le contenu que vous avez rangé dans votre RAM au TP mémoire. Il met `13` dans
 `r0`, `2` dans `r1`, les additionne dans `r0`, puis affiche le résultat.
 
 | adresse | contenu binaire | instruction |
@@ -109,8 +118,8 @@ Voici un programme rangé en mémoire à partir de l'adresse `0`. Il met `13` da
 | `1` | `0000 1101` | (valeur : `13`) |
 | `2` | `0001 01 00` | `LOAD r1, …` |
 | `3` | `0000 0010` | (valeur : `2`) |
-| `4` | `0010 00 01` | `ADD r0, r1` |
-| `5` | `0101 00 00` | `OUT r0` |
+| `4` | `0100 00 01` | `ADD r0, r1` |
+| `5` | `0011 00 00` | `OUT r0` |
 | `6` | `0000 0000` | `STOP` |
 
 En suivant le cycle, `r0` prend la valeur `13`, `r1` prend `2`, puis `ADD r0, r1`
@@ -136,10 +145,12 @@ d'instructions.
 :options: |
 : STOP
 : LOAD
-: ADD
-: SUB
 : COPY
 : OUT
+: ADD
+: SUB
+: AND
+: OR
 ```
 
 ```{role} r(quiz-input)
@@ -149,9 +160,9 @@ d'instructions.
 
 ```{quiz}
 :style: max-width: 34rem;
-1.  `0010 01 11` : {nom}`ADD` avec Rd = {r}`{"1": true}` et Rs = {r}`{"3": true}`
-2.  `0100 00 10` : {nom}`COPY` avec Rd = {r}`{"0": true}` et Rs = {r}`{"2": true}`
-3.  `0101 11 00` : {nom}`OUT` sur le registre {r}`{"3": true}`
+1.  `0100 01 11` : {nom}`ADD` avec Rd = {r}`{"1": true}` et Rs = {r}`{"3": true}`
+2.  `0010 00 10` : {nom}`COPY` avec Rd = {r}`{"0": true}` et Rs = {r}`{"2": true}`
+3.  `0011 11 00` : {nom}`OUT` sur le registre {r}`{"3": true}`
 4.  `0001 10 00` : {nom}`LOAD` sur le registre {r}`{"2": true}`
 ```
 

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 300">
 <rect width="580" height="300" rx="14" fill="white"/>
 <rect x="70" y="55" width="210" height="64" rx="8" fill="#fdece1" stroke="#c2410c" stroke-width="2.5"/>
-<text x="175.0" y="96.0" font-family="Consolas,Menlo,monospace" font-size="25" fill="#c2410c" text-anchor="middle" font-weight="700">0010</text>
+<text x="175.0" y="96.0" font-family="Consolas,Menlo,monospace" font-size="25" fill="#c2410c" text-anchor="middle" font-weight="700">0100</text>
 <rect x="280" y="55" width="105" height="64" rx="8" fill="#e6ecf7" stroke="#1e3a8a" stroke-width="2.5"/>
 <text x="332.5" y="96.0" font-family="Consolas,Menlo,monospace" font-size="25" fill="#1e3a8a" text-anchor="middle" font-weight="700">00</text>
 <rect x="385" y="55" width="105" height="64" rx="8" fill="#d5efe9" stroke="#0f766e" stroke-width="2.5"/>
