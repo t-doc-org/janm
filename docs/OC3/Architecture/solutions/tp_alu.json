@@ -1,0 +1,2395 @@
+{
+  "version": 2,
+  "name": "ALU",
+  "components": [
+    {
+      "id": "A",
+      "type": "INPUT",
+      "x": 20,
+      "y": 420,
+      "state": {
+        "width": 8
+      },
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "type": "INPUT",
+      "x": 20,
+      "y": 520,
+      "state": {
+        "width": 8
+      },
+      "label": "B"
+    },
+    {
+      "id": "op",
+      "type": "INPUT",
+      "x": 880,
+      "y": 760,
+      "state": {
+        "width": 2
+      },
+      "label": "op"
+    },
+    {
+      "id": "add",
+      "type": "ADDER",
+      "x": 780,
+      "y": 40,
+      "state": {
+        "width": 8
+      },
+      "label": "A + B"
+    },
+    {
+      "id": "spBs",
+      "type": "SPLITTER",
+      "x": 300,
+      "y": 220,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "mgN",
+      "type": "MERGER",
+      "x": 620,
+      "y": 220,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "not7",
+      "type": "NOT",
+      "x": 460,
+      "y": 165
+    },
+    {
+      "id": "not6",
+      "type": "NOT",
+      "x": 460,
+      "y": 210
+    },
+    {
+      "id": "not5",
+      "type": "NOT",
+      "x": 460,
+      "y": 255
+    },
+    {
+      "id": "not4",
+      "type": "NOT",
+      "x": 460,
+      "y": 300
+    },
+    {
+      "id": "not3",
+      "type": "NOT",
+      "x": 460,
+      "y": 345
+    },
+    {
+      "id": "not2",
+      "type": "NOT",
+      "x": 460,
+      "y": 390
+    },
+    {
+      "id": "not1",
+      "type": "NOT",
+      "x": 460,
+      "y": 435
+    },
+    {
+      "id": "not0",
+      "type": "NOT",
+      "x": 460,
+      "y": 480
+    },
+    {
+      "id": "un",
+      "type": "INPUT",
+      "x": 700,
+      "y": 460,
+      "state": {
+        "value": 1
+      },
+      "label": "1"
+    },
+    {
+      "id": "sub",
+      "type": "ADDER",
+      "x": 780,
+      "y": 260,
+      "state": {
+        "width": 8
+      },
+      "label": "A - B"
+    },
+    {
+      "id": "spAet",
+      "type": "SPLITTER",
+      "x": 300,
+      "y": 580,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "spBet",
+      "type": "SPLITTER",
+      "x": 300,
+      "y": 800,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "mget",
+      "type": "MERGER",
+      "x": 620,
+      "y": 690,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "et7",
+      "type": "AND",
+      "x": 460,
+      "y": 610
+    },
+    {
+      "id": "et6",
+      "type": "AND",
+      "x": 460,
+      "y": 655
+    },
+    {
+      "id": "et5",
+      "type": "AND",
+      "x": 460,
+      "y": 700
+    },
+    {
+      "id": "et4",
+      "type": "AND",
+      "x": 460,
+      "y": 745
+    },
+    {
+      "id": "et3",
+      "type": "AND",
+      "x": 460,
+      "y": 790
+    },
+    {
+      "id": "et2",
+      "type": "AND",
+      "x": 460,
+      "y": 835
+    },
+    {
+      "id": "et1",
+      "type": "AND",
+      "x": 460,
+      "y": 880
+    },
+    {
+      "id": "et0",
+      "type": "AND",
+      "x": 460,
+      "y": 925
+    },
+    {
+      "id": "spAou",
+      "type": "SPLITTER",
+      "x": 300,
+      "y": 1060,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "spBou",
+      "type": "SPLITTER",
+      "x": 300,
+      "y": 1280,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "mgou",
+      "type": "MERGER",
+      "x": 620,
+      "y": 1170,
+      "state": {
+        "width": 8
+      }
+    },
+    {
+      "id": "ou7",
+      "type": "OR",
+      "x": 460,
+      "y": 1090
+    },
+    {
+      "id": "ou6",
+      "type": "OR",
+      "x": 460,
+      "y": 1135
+    },
+    {
+      "id": "ou5",
+      "type": "OR",
+      "x": 460,
+      "y": 1180
+    },
+    {
+      "id": "ou4",
+      "type": "OR",
+      "x": 460,
+      "y": 1225
+    },
+    {
+      "id": "ou3",
+      "type": "OR",
+      "x": 460,
+      "y": 1270
+    },
+    {
+      "id": "ou2",
+      "type": "OR",
+      "x": 460,
+      "y": 1315
+    },
+    {
+      "id": "ou1",
+      "type": "OR",
+      "x": 460,
+      "y": 1360
+    },
+    {
+      "id": "ou0",
+      "type": "OR",
+      "x": 460,
+      "y": 1405
+    },
+    {
+      "id": "mux",
+      "type": "MUX",
+      "x": 1000,
+      "y": 580,
+      "state": {
+        "selectWidth": 2,
+        "dataWidth": 8
+      }
+    },
+    {
+      "id": "res",
+      "type": "OUTPUT",
+      "x": 1140,
+      "y": 620,
+      "state": {
+        "width": 8
+      },
+      "label": "résultat"
+    }
+  ],
+  "wires": [
+    {
+      "id": "w1",
+      "from": {
+        "componentId": "A",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "add",
+        "port": "A"
+      }
+    },
+    {
+      "id": "w2",
+      "from": {
+        "componentId": "B",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "add",
+        "port": "B"
+      }
+    },
+    {
+      "id": "w3",
+      "from": {
+        "componentId": "B",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "spBs",
+        "port": "in"
+      }
+    },
+    {
+      "id": "w4",
+      "from": {
+        "componentId": "spBs",
+        "port": "b7"
+      },
+      "to": {
+        "componentId": "not7",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w5",
+      "from": {
+        "componentId": "not7",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b7"
+      }
+    },
+    {
+      "id": "w6",
+      "from": {
+        "componentId": "spBs",
+        "port": "b6"
+      },
+      "to": {
+        "componentId": "not6",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w7",
+      "from": {
+        "componentId": "not6",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b6"
+      }
+    },
+    {
+      "id": "w8",
+      "from": {
+        "componentId": "spBs",
+        "port": "b5"
+      },
+      "to": {
+        "componentId": "not5",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w9",
+      "from": {
+        "componentId": "not5",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b5"
+      }
+    },
+    {
+      "id": "w10",
+      "from": {
+        "componentId": "spBs",
+        "port": "b4"
+      },
+      "to": {
+        "componentId": "not4",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w11",
+      "from": {
+        "componentId": "not4",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b4"
+      }
+    },
+    {
+      "id": "w12",
+      "from": {
+        "componentId": "spBs",
+        "port": "b3"
+      },
+      "to": {
+        "componentId": "not3",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w13",
+      "from": {
+        "componentId": "not3",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b3"
+      }
+    },
+    {
+      "id": "w14",
+      "from": {
+        "componentId": "spBs",
+        "port": "b2"
+      },
+      "to": {
+        "componentId": "not2",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w15",
+      "from": {
+        "componentId": "not2",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b2"
+      }
+    },
+    {
+      "id": "w16",
+      "from": {
+        "componentId": "spBs",
+        "port": "b1"
+      },
+      "to": {
+        "componentId": "not1",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w17",
+      "from": {
+        "componentId": "not1",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b1"
+      }
+    },
+    {
+      "id": "w18",
+      "from": {
+        "componentId": "spBs",
+        "port": "b0"
+      },
+      "to": {
+        "componentId": "not0",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w19",
+      "from": {
+        "componentId": "not0",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgN",
+        "port": "b0"
+      }
+    },
+    {
+      "id": "w20",
+      "from": {
+        "componentId": "A",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "sub",
+        "port": "A"
+      }
+    },
+    {
+      "id": "w21",
+      "from": {
+        "componentId": "mgN",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "sub",
+        "port": "B"
+      }
+    },
+    {
+      "id": "w22",
+      "from": {
+        "componentId": "un",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "sub",
+        "port": "Cin"
+      }
+    },
+    {
+      "id": "w23",
+      "from": {
+        "componentId": "A",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "spAet",
+        "port": "in"
+      }
+    },
+    {
+      "id": "w24",
+      "from": {
+        "componentId": "B",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "spBet",
+        "port": "in"
+      }
+    },
+    {
+      "id": "w25",
+      "from": {
+        "componentId": "spAet",
+        "port": "b7"
+      },
+      "to": {
+        "componentId": "et7",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w26",
+      "from": {
+        "componentId": "spBet",
+        "port": "b7"
+      },
+      "to": {
+        "componentId": "et7",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w27",
+      "from": {
+        "componentId": "et7",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b7"
+      }
+    },
+    {
+      "id": "w28",
+      "from": {
+        "componentId": "spAet",
+        "port": "b6"
+      },
+      "to": {
+        "componentId": "et6",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w29",
+      "from": {
+        "componentId": "spBet",
+        "port": "b6"
+      },
+      "to": {
+        "componentId": "et6",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w30",
+      "from": {
+        "componentId": "et6",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b6"
+      }
+    },
+    {
+      "id": "w31",
+      "from": {
+        "componentId": "spAet",
+        "port": "b5"
+      },
+      "to": {
+        "componentId": "et5",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w32",
+      "from": {
+        "componentId": "spBet",
+        "port": "b5"
+      },
+      "to": {
+        "componentId": "et5",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w33",
+      "from": {
+        "componentId": "et5",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b5"
+      }
+    },
+    {
+      "id": "w34",
+      "from": {
+        "componentId": "spAet",
+        "port": "b4"
+      },
+      "to": {
+        "componentId": "et4",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w35",
+      "from": {
+        "componentId": "spBet",
+        "port": "b4"
+      },
+      "to": {
+        "componentId": "et4",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w36",
+      "from": {
+        "componentId": "et4",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b4"
+      }
+    },
+    {
+      "id": "w37",
+      "from": {
+        "componentId": "spAet",
+        "port": "b3"
+      },
+      "to": {
+        "componentId": "et3",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w38",
+      "from": {
+        "componentId": "spBet",
+        "port": "b3"
+      },
+      "to": {
+        "componentId": "et3",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w39",
+      "from": {
+        "componentId": "et3",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b3"
+      }
+    },
+    {
+      "id": "w40",
+      "from": {
+        "componentId": "spAet",
+        "port": "b2"
+      },
+      "to": {
+        "componentId": "et2",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w41",
+      "from": {
+        "componentId": "spBet",
+        "port": "b2"
+      },
+      "to": {
+        "componentId": "et2",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w42",
+      "from": {
+        "componentId": "et2",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b2"
+      }
+    },
+    {
+      "id": "w43",
+      "from": {
+        "componentId": "spAet",
+        "port": "b1"
+      },
+      "to": {
+        "componentId": "et1",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w44",
+      "from": {
+        "componentId": "spBet",
+        "port": "b1"
+      },
+      "to": {
+        "componentId": "et1",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w45",
+      "from": {
+        "componentId": "et1",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b1"
+      }
+    },
+    {
+      "id": "w46",
+      "from": {
+        "componentId": "spAet",
+        "port": "b0"
+      },
+      "to": {
+        "componentId": "et0",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w47",
+      "from": {
+        "componentId": "spBet",
+        "port": "b0"
+      },
+      "to": {
+        "componentId": "et0",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w48",
+      "from": {
+        "componentId": "et0",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mget",
+        "port": "b0"
+      }
+    },
+    {
+      "id": "w49",
+      "from": {
+        "componentId": "A",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "spAou",
+        "port": "in"
+      }
+    },
+    {
+      "id": "w50",
+      "from": {
+        "componentId": "B",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "spBou",
+        "port": "in"
+      }
+    },
+    {
+      "id": "w51",
+      "from": {
+        "componentId": "spAou",
+        "port": "b7"
+      },
+      "to": {
+        "componentId": "ou7",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w52",
+      "from": {
+        "componentId": "spBou",
+        "port": "b7"
+      },
+      "to": {
+        "componentId": "ou7",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w53",
+      "from": {
+        "componentId": "ou7",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b7"
+      }
+    },
+    {
+      "id": "w54",
+      "from": {
+        "componentId": "spAou",
+        "port": "b6"
+      },
+      "to": {
+        "componentId": "ou6",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w55",
+      "from": {
+        "componentId": "spBou",
+        "port": "b6"
+      },
+      "to": {
+        "componentId": "ou6",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w56",
+      "from": {
+        "componentId": "ou6",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b6"
+      }
+    },
+    {
+      "id": "w57",
+      "from": {
+        "componentId": "spAou",
+        "port": "b5"
+      },
+      "to": {
+        "componentId": "ou5",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w58",
+      "from": {
+        "componentId": "spBou",
+        "port": "b5"
+      },
+      "to": {
+        "componentId": "ou5",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w59",
+      "from": {
+        "componentId": "ou5",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b5"
+      }
+    },
+    {
+      "id": "w60",
+      "from": {
+        "componentId": "spAou",
+        "port": "b4"
+      },
+      "to": {
+        "componentId": "ou4",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w61",
+      "from": {
+        "componentId": "spBou",
+        "port": "b4"
+      },
+      "to": {
+        "componentId": "ou4",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w62",
+      "from": {
+        "componentId": "ou4",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b4"
+      }
+    },
+    {
+      "id": "w63",
+      "from": {
+        "componentId": "spAou",
+        "port": "b3"
+      },
+      "to": {
+        "componentId": "ou3",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w64",
+      "from": {
+        "componentId": "spBou",
+        "port": "b3"
+      },
+      "to": {
+        "componentId": "ou3",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w65",
+      "from": {
+        "componentId": "ou3",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b3"
+      }
+    },
+    {
+      "id": "w66",
+      "from": {
+        "componentId": "spAou",
+        "port": "b2"
+      },
+      "to": {
+        "componentId": "ou2",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w67",
+      "from": {
+        "componentId": "spBou",
+        "port": "b2"
+      },
+      "to": {
+        "componentId": "ou2",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w68",
+      "from": {
+        "componentId": "ou2",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b2"
+      }
+    },
+    {
+      "id": "w69",
+      "from": {
+        "componentId": "spAou",
+        "port": "b1"
+      },
+      "to": {
+        "componentId": "ou1",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w70",
+      "from": {
+        "componentId": "spBou",
+        "port": "b1"
+      },
+      "to": {
+        "componentId": "ou1",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w71",
+      "from": {
+        "componentId": "ou1",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b1"
+      }
+    },
+    {
+      "id": "w72",
+      "from": {
+        "componentId": "spAou",
+        "port": "b0"
+      },
+      "to": {
+        "componentId": "ou0",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w73",
+      "from": {
+        "componentId": "spBou",
+        "port": "b0"
+      },
+      "to": {
+        "componentId": "ou0",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w74",
+      "from": {
+        "componentId": "ou0",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mgou",
+        "port": "b0"
+      }
+    },
+    {
+      "id": "w75",
+      "from": {
+        "componentId": "add",
+        "port": "S"
+      },
+      "to": {
+        "componentId": "mux",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "w76",
+      "from": {
+        "componentId": "sub",
+        "port": "S"
+      },
+      "to": {
+        "componentId": "mux",
+        "port": "in1"
+      }
+    },
+    {
+      "id": "w77",
+      "from": {
+        "componentId": "mget",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mux",
+        "port": "in2"
+      }
+    },
+    {
+      "id": "w78",
+      "from": {
+        "componentId": "mgou",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mux",
+        "port": "in3"
+      }
+    },
+    {
+      "id": "w79",
+      "from": {
+        "componentId": "op",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "mux",
+        "port": "sel"
+      }
+    },
+    {
+      "id": "w80",
+      "from": {
+        "componentId": "mux",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "res",
+        "port": "in0"
+      }
+    }
+  ],
+  "customDefinitions": {
+    "ALU": {
+      "name": "ALU",
+      "inputs": [
+        {
+          "name": "A",
+          "internalId": "A",
+          "width": 8
+        },
+        {
+          "name": "B",
+          "internalId": "B",
+          "width": 8
+        },
+        {
+          "name": "op",
+          "internalId": "op",
+          "width": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "résultat",
+          "internalId": "res",
+          "width": 8
+        }
+      ],
+      "circuit": {
+        "components": [
+          {
+            "id": "A",
+            "type": "INPUT",
+            "x": 20,
+            "y": 420,
+            "state": {
+              "width": 8
+            },
+            "label": "A"
+          },
+          {
+            "id": "B",
+            "type": "INPUT",
+            "x": 20,
+            "y": 520,
+            "state": {
+              "width": 8
+            },
+            "label": "B"
+          },
+          {
+            "id": "op",
+            "type": "INPUT",
+            "x": 880,
+            "y": 760,
+            "state": {
+              "width": 2
+            },
+            "label": "op"
+          },
+          {
+            "id": "add",
+            "type": "ADDER",
+            "x": 780,
+            "y": 40,
+            "state": {
+              "width": 8
+            },
+            "label": "A + B"
+          },
+          {
+            "id": "spBs",
+            "type": "SPLITTER",
+            "x": 300,
+            "y": 220,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "mgN",
+            "type": "MERGER",
+            "x": 620,
+            "y": 220,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "not7",
+            "type": "NOT",
+            "x": 460,
+            "y": 165
+          },
+          {
+            "id": "not6",
+            "type": "NOT",
+            "x": 460,
+            "y": 210
+          },
+          {
+            "id": "not5",
+            "type": "NOT",
+            "x": 460,
+            "y": 255
+          },
+          {
+            "id": "not4",
+            "type": "NOT",
+            "x": 460,
+            "y": 300
+          },
+          {
+            "id": "not3",
+            "type": "NOT",
+            "x": 460,
+            "y": 345
+          },
+          {
+            "id": "not2",
+            "type": "NOT",
+            "x": 460,
+            "y": 390
+          },
+          {
+            "id": "not1",
+            "type": "NOT",
+            "x": 460,
+            "y": 435
+          },
+          {
+            "id": "not0",
+            "type": "NOT",
+            "x": 460,
+            "y": 480
+          },
+          {
+            "id": "un",
+            "type": "INPUT",
+            "x": 700,
+            "y": 460,
+            "state": {
+              "value": 1
+            },
+            "label": "1"
+          },
+          {
+            "id": "sub",
+            "type": "ADDER",
+            "x": 780,
+            "y": 260,
+            "state": {
+              "width": 8
+            },
+            "label": "A - B"
+          },
+          {
+            "id": "spAet",
+            "type": "SPLITTER",
+            "x": 300,
+            "y": 580,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "spBet",
+            "type": "SPLITTER",
+            "x": 300,
+            "y": 800,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "mget",
+            "type": "MERGER",
+            "x": 620,
+            "y": 690,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "et7",
+            "type": "AND",
+            "x": 460,
+            "y": 610
+          },
+          {
+            "id": "et6",
+            "type": "AND",
+            "x": 460,
+            "y": 655
+          },
+          {
+            "id": "et5",
+            "type": "AND",
+            "x": 460,
+            "y": 700
+          },
+          {
+            "id": "et4",
+            "type": "AND",
+            "x": 460,
+            "y": 745
+          },
+          {
+            "id": "et3",
+            "type": "AND",
+            "x": 460,
+            "y": 790
+          },
+          {
+            "id": "et2",
+            "type": "AND",
+            "x": 460,
+            "y": 835
+          },
+          {
+            "id": "et1",
+            "type": "AND",
+            "x": 460,
+            "y": 880
+          },
+          {
+            "id": "et0",
+            "type": "AND",
+            "x": 460,
+            "y": 925
+          },
+          {
+            "id": "spAou",
+            "type": "SPLITTER",
+            "x": 300,
+            "y": 1060,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "spBou",
+            "type": "SPLITTER",
+            "x": 300,
+            "y": 1280,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "mgou",
+            "type": "MERGER",
+            "x": 620,
+            "y": 1170,
+            "state": {
+              "width": 8
+            }
+          },
+          {
+            "id": "ou7",
+            "type": "OR",
+            "x": 460,
+            "y": 1090
+          },
+          {
+            "id": "ou6",
+            "type": "OR",
+            "x": 460,
+            "y": 1135
+          },
+          {
+            "id": "ou5",
+            "type": "OR",
+            "x": 460,
+            "y": 1180
+          },
+          {
+            "id": "ou4",
+            "type": "OR",
+            "x": 460,
+            "y": 1225
+          },
+          {
+            "id": "ou3",
+            "type": "OR",
+            "x": 460,
+            "y": 1270
+          },
+          {
+            "id": "ou2",
+            "type": "OR",
+            "x": 460,
+            "y": 1315
+          },
+          {
+            "id": "ou1",
+            "type": "OR",
+            "x": 460,
+            "y": 1360
+          },
+          {
+            "id": "ou0",
+            "type": "OR",
+            "x": 460,
+            "y": 1405
+          },
+          {
+            "id": "mux",
+            "type": "MUX",
+            "x": 1000,
+            "y": 580,
+            "state": {
+              "selectWidth": 2,
+              "dataWidth": 8
+            }
+          },
+          {
+            "id": "res",
+            "type": "OUTPUT",
+            "x": 1140,
+            "y": 620,
+            "state": {
+              "width": 8
+            },
+            "label": "résultat"
+          }
+        ],
+        "wires": [
+          {
+            "id": "w1",
+            "from": {
+              "componentId": "A",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "add",
+              "port": "A"
+            }
+          },
+          {
+            "id": "w2",
+            "from": {
+              "componentId": "B",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "add",
+              "port": "B"
+            }
+          },
+          {
+            "id": "w3",
+            "from": {
+              "componentId": "B",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "spBs",
+              "port": "in"
+            }
+          },
+          {
+            "id": "w4",
+            "from": {
+              "componentId": "spBs",
+              "port": "b7"
+            },
+            "to": {
+              "componentId": "not7",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w5",
+            "from": {
+              "componentId": "not7",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b7"
+            }
+          },
+          {
+            "id": "w6",
+            "from": {
+              "componentId": "spBs",
+              "port": "b6"
+            },
+            "to": {
+              "componentId": "not6",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w7",
+            "from": {
+              "componentId": "not6",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b6"
+            }
+          },
+          {
+            "id": "w8",
+            "from": {
+              "componentId": "spBs",
+              "port": "b5"
+            },
+            "to": {
+              "componentId": "not5",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w9",
+            "from": {
+              "componentId": "not5",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b5"
+            }
+          },
+          {
+            "id": "w10",
+            "from": {
+              "componentId": "spBs",
+              "port": "b4"
+            },
+            "to": {
+              "componentId": "not4",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w11",
+            "from": {
+              "componentId": "not4",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b4"
+            }
+          },
+          {
+            "id": "w12",
+            "from": {
+              "componentId": "spBs",
+              "port": "b3"
+            },
+            "to": {
+              "componentId": "not3",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w13",
+            "from": {
+              "componentId": "not3",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b3"
+            }
+          },
+          {
+            "id": "w14",
+            "from": {
+              "componentId": "spBs",
+              "port": "b2"
+            },
+            "to": {
+              "componentId": "not2",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w15",
+            "from": {
+              "componentId": "not2",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b2"
+            }
+          },
+          {
+            "id": "w16",
+            "from": {
+              "componentId": "spBs",
+              "port": "b1"
+            },
+            "to": {
+              "componentId": "not1",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w17",
+            "from": {
+              "componentId": "not1",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b1"
+            }
+          },
+          {
+            "id": "w18",
+            "from": {
+              "componentId": "spBs",
+              "port": "b0"
+            },
+            "to": {
+              "componentId": "not0",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w19",
+            "from": {
+              "componentId": "not0",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgN",
+              "port": "b0"
+            }
+          },
+          {
+            "id": "w20",
+            "from": {
+              "componentId": "A",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "sub",
+              "port": "A"
+            }
+          },
+          {
+            "id": "w21",
+            "from": {
+              "componentId": "mgN",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "sub",
+              "port": "B"
+            }
+          },
+          {
+            "id": "w22",
+            "from": {
+              "componentId": "un",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "sub",
+              "port": "Cin"
+            }
+          },
+          {
+            "id": "w23",
+            "from": {
+              "componentId": "A",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "spAet",
+              "port": "in"
+            }
+          },
+          {
+            "id": "w24",
+            "from": {
+              "componentId": "B",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "spBet",
+              "port": "in"
+            }
+          },
+          {
+            "id": "w25",
+            "from": {
+              "componentId": "spAet",
+              "port": "b7"
+            },
+            "to": {
+              "componentId": "et7",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w26",
+            "from": {
+              "componentId": "spBet",
+              "port": "b7"
+            },
+            "to": {
+              "componentId": "et7",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w27",
+            "from": {
+              "componentId": "et7",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b7"
+            }
+          },
+          {
+            "id": "w28",
+            "from": {
+              "componentId": "spAet",
+              "port": "b6"
+            },
+            "to": {
+              "componentId": "et6",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w29",
+            "from": {
+              "componentId": "spBet",
+              "port": "b6"
+            },
+            "to": {
+              "componentId": "et6",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w30",
+            "from": {
+              "componentId": "et6",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b6"
+            }
+          },
+          {
+            "id": "w31",
+            "from": {
+              "componentId": "spAet",
+              "port": "b5"
+            },
+            "to": {
+              "componentId": "et5",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w32",
+            "from": {
+              "componentId": "spBet",
+              "port": "b5"
+            },
+            "to": {
+              "componentId": "et5",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w33",
+            "from": {
+              "componentId": "et5",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b5"
+            }
+          },
+          {
+            "id": "w34",
+            "from": {
+              "componentId": "spAet",
+              "port": "b4"
+            },
+            "to": {
+              "componentId": "et4",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w35",
+            "from": {
+              "componentId": "spBet",
+              "port": "b4"
+            },
+            "to": {
+              "componentId": "et4",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w36",
+            "from": {
+              "componentId": "et4",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b4"
+            }
+          },
+          {
+            "id": "w37",
+            "from": {
+              "componentId": "spAet",
+              "port": "b3"
+            },
+            "to": {
+              "componentId": "et3",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w38",
+            "from": {
+              "componentId": "spBet",
+              "port": "b3"
+            },
+            "to": {
+              "componentId": "et3",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w39",
+            "from": {
+              "componentId": "et3",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b3"
+            }
+          },
+          {
+            "id": "w40",
+            "from": {
+              "componentId": "spAet",
+              "port": "b2"
+            },
+            "to": {
+              "componentId": "et2",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w41",
+            "from": {
+              "componentId": "spBet",
+              "port": "b2"
+            },
+            "to": {
+              "componentId": "et2",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w42",
+            "from": {
+              "componentId": "et2",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b2"
+            }
+          },
+          {
+            "id": "w43",
+            "from": {
+              "componentId": "spAet",
+              "port": "b1"
+            },
+            "to": {
+              "componentId": "et1",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w44",
+            "from": {
+              "componentId": "spBet",
+              "port": "b1"
+            },
+            "to": {
+              "componentId": "et1",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w45",
+            "from": {
+              "componentId": "et1",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b1"
+            }
+          },
+          {
+            "id": "w46",
+            "from": {
+              "componentId": "spAet",
+              "port": "b0"
+            },
+            "to": {
+              "componentId": "et0",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w47",
+            "from": {
+              "componentId": "spBet",
+              "port": "b0"
+            },
+            "to": {
+              "componentId": "et0",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w48",
+            "from": {
+              "componentId": "et0",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mget",
+              "port": "b0"
+            }
+          },
+          {
+            "id": "w49",
+            "from": {
+              "componentId": "A",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "spAou",
+              "port": "in"
+            }
+          },
+          {
+            "id": "w50",
+            "from": {
+              "componentId": "B",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "spBou",
+              "port": "in"
+            }
+          },
+          {
+            "id": "w51",
+            "from": {
+              "componentId": "spAou",
+              "port": "b7"
+            },
+            "to": {
+              "componentId": "ou7",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w52",
+            "from": {
+              "componentId": "spBou",
+              "port": "b7"
+            },
+            "to": {
+              "componentId": "ou7",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w53",
+            "from": {
+              "componentId": "ou7",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b7"
+            }
+          },
+          {
+            "id": "w54",
+            "from": {
+              "componentId": "spAou",
+              "port": "b6"
+            },
+            "to": {
+              "componentId": "ou6",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w55",
+            "from": {
+              "componentId": "spBou",
+              "port": "b6"
+            },
+            "to": {
+              "componentId": "ou6",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w56",
+            "from": {
+              "componentId": "ou6",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b6"
+            }
+          },
+          {
+            "id": "w57",
+            "from": {
+              "componentId": "spAou",
+              "port": "b5"
+            },
+            "to": {
+              "componentId": "ou5",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w58",
+            "from": {
+              "componentId": "spBou",
+              "port": "b5"
+            },
+            "to": {
+              "componentId": "ou5",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w59",
+            "from": {
+              "componentId": "ou5",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b5"
+            }
+          },
+          {
+            "id": "w60",
+            "from": {
+              "componentId": "spAou",
+              "port": "b4"
+            },
+            "to": {
+              "componentId": "ou4",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w61",
+            "from": {
+              "componentId": "spBou",
+              "port": "b4"
+            },
+            "to": {
+              "componentId": "ou4",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w62",
+            "from": {
+              "componentId": "ou4",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b4"
+            }
+          },
+          {
+            "id": "w63",
+            "from": {
+              "componentId": "spAou",
+              "port": "b3"
+            },
+            "to": {
+              "componentId": "ou3",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w64",
+            "from": {
+              "componentId": "spBou",
+              "port": "b3"
+            },
+            "to": {
+              "componentId": "ou3",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w65",
+            "from": {
+              "componentId": "ou3",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b3"
+            }
+          },
+          {
+            "id": "w66",
+            "from": {
+              "componentId": "spAou",
+              "port": "b2"
+            },
+            "to": {
+              "componentId": "ou2",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w67",
+            "from": {
+              "componentId": "spBou",
+              "port": "b2"
+            },
+            "to": {
+              "componentId": "ou2",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w68",
+            "from": {
+              "componentId": "ou2",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b2"
+            }
+          },
+          {
+            "id": "w69",
+            "from": {
+              "componentId": "spAou",
+              "port": "b1"
+            },
+            "to": {
+              "componentId": "ou1",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w70",
+            "from": {
+              "componentId": "spBou",
+              "port": "b1"
+            },
+            "to": {
+              "componentId": "ou1",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w71",
+            "from": {
+              "componentId": "ou1",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b1"
+            }
+          },
+          {
+            "id": "w72",
+            "from": {
+              "componentId": "spAou",
+              "port": "b0"
+            },
+            "to": {
+              "componentId": "ou0",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w73",
+            "from": {
+              "componentId": "spBou",
+              "port": "b0"
+            },
+            "to": {
+              "componentId": "ou0",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w74",
+            "from": {
+              "componentId": "ou0",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mgou",
+              "port": "b0"
+            }
+          },
+          {
+            "id": "w75",
+            "from": {
+              "componentId": "add",
+              "port": "S"
+            },
+            "to": {
+              "componentId": "mux",
+              "port": "in0"
+            }
+          },
+          {
+            "id": "w76",
+            "from": {
+              "componentId": "sub",
+              "port": "S"
+            },
+            "to": {
+              "componentId": "mux",
+              "port": "in1"
+            }
+          },
+          {
+            "id": "w77",
+            "from": {
+              "componentId": "mget",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mux",
+              "port": "in2"
+            }
+          },
+          {
+            "id": "w78",
+            "from": {
+              "componentId": "mgou",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mux",
+              "port": "in3"
+            }
+          },
+          {
+            "id": "w79",
+            "from": {
+              "componentId": "op",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "mux",
+              "port": "sel"
+            }
+          },
+          {
+            "id": "w80",
+            "from": {
+              "componentId": "mux",
+              "port": "out"
+            },
+            "to": {
+              "componentId": "res",
+              "port": "in0"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
