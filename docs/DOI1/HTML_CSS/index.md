@@ -22,3 +22,8 @@ TP_sujet_perso/organisation_tp
 TP_sujet_perso/consigne_tp
 ```
 
+## Examen
+```{toctree}
+objectifs
+```
+
