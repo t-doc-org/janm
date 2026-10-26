@@ -4,4 +4,5 @@
 
 ```{toctree}
 Architecture/index
+AlgoProg/index
 ```
