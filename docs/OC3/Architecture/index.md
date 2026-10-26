@@ -14,6 +14,9 @@ ram
 isa
 control
 ```
-
+## Examen
+```{toctree}
+objectifs
+```
 ## Lien vers Logix
 [Logix](https://maximejan.github.io/logix/)

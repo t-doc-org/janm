@@ -159,7 +159,7 @@ servira au processeur.
 Circuit corrigé : {download}`tp_alu.json <solutions/tp_alu.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
 Le fichier contient aussi le composant `ALU` déjà encapsulé (catégorie *Custom*).
 
-- `A + B` : un additionneur (`ADDER`) 8 bits, retenue entrante non branchée.
+- `A + B` : un additionneur (*Additionneur*) 8 bits, retenue entrante non branchée.
 - `A - B` : un séparateur éclate `B`, chaque bit passe par une porte `NON`, un
   fusionneur reforme `¬B`, et un second additionneur calcule `A + ¬B + 1` : sa
   retenue entrante `Cin` est reliée à une entrée laissée à `1`.

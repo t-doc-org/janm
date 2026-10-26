@@ -39,13 +39,13 @@ Par convention, le **premier registre est toujours la destination** : c'est lui
 qui reçoit le résultat. Ainsi `ADD r0, r1` signifie "`r0` reçoit `r0 + r1`". C'est
 la même règle que dans les vrais assembleurs (x86, ARM).
 
-Dans Logix, un composant *SLICE* fait exactement ce découpage : il extrait
-d'un mot un champ de bits choisi. Changez l'instruction ci-dessous et regardez ses
+Dans Logix, un composant *Tranche* fait exactement ce découpage : il extrait
+d'un mot un champ de bits choisi (réglages *Bit haut* et *Bit bas*). Changez l'instruction ci-dessous et regardez ses
 trois champs apparaître.
 
 ```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBkw6ljb2RlciB1bmUgaW5zdHJ1Y3Rpb24iLCJvIjoiQ2hhbmdleiBsYSB2YWxldXIgZGUgbCdpbnN0cnVjdGlvbiAoOCBiaXRzKSA6IGxlIGNvbXBvc2FudCBTTElDRSBlbiBleHRyYWl0IGxlcyB0cm9pcyBjaGFtcHMsIGwnb3Bjb2RlIChiaXRzIDcgw6AgNCksIFJkIChiaXRzIDMgZXQgMikgZXQgUnMgKGJpdHMgMSBldCAwKS4gRXNzYXlleiAwMTAwMDAwMSAoQUREIHIwLCByMSkgOiBvcGNvZGUgPSAwMTAwLCBSZCA9IDAwLCBScyA9IDAxLiIsInMiOltdLCJhIjpbXSwiaSI6W10sInUiOltdLCJrIjoibm9uZSIsInIiOltdLCJsIjoxLCJjIjp7InZlcnNpb24iOjIsIm5hbWUiOiJjaXJjdWl0IiwiY29tcG9uZW50cyI6W3siaWQiOiJJIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjEyMCwic3RhdGUiOnsid2lkdGgiOjgsInZhbHVlIjo2NX0sImxhYmVsIjoiaW5zdHJ1Y3Rpb24ifSx7ImlkIjoib3AiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjQwLCJzdGF0ZSI6eyJ3aWR0aCI6OCwiaGkiOjcsImxvIjo0fX0seyJpZCI6InJkIiwidHlwZSI6IlNMSUNFIiwieCI6MjYwLCJ5IjoxMjAsInN0YXRlIjp7IndpZHRoIjo4LCJoaSI6MywibG8iOjJ9fSx7ImlkIjoicnMiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjIwMCwic3RhdGUiOnsid2lkdGgiOjgsImhpIjoxLCJsbyI6MH19LHsiaWQiOiJvbyIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo0NDAsInkiOjYwLCJzdGF0ZSI6eyJ3aWR0aCI6NH0sImxhYmVsIjoib3Bjb2RlIn0seyJpZCI6Im9kIiwidHlwZSI6Ik9VVFBVVCIsIngiOjQ0MCwieSI6MTQwLCJzdGF0ZSI6eyJ3aWR0aCI6Mn0sImxhYmVsIjoiUmQifSx7ImlkIjoib3MiLCJ0eXBlIjoiT1VUUFVUIiwieCI6NDQwLCJ5IjoyMjAsInN0YXRlIjp7IndpZHRoIjoyfSwibGFiZWwiOiJScyJ9XSwid2lyZXMiOlt7ImlkIjoidzEiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvcCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzIiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzMiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJycyIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzQiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoib3AiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib28iLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NSIsImZyb20iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvZCIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc2IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6InJzIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9zIiwicG9ydCI6ImluMCJ9fV0sImN1c3RvbURlZmluaXRpb25zIjp7fX19&embed=1
 :style: height: 320px; aspect-ratio: auto; border: 1px solid black;
-:title: Démonstration Logix : un composant SLICE extrait l'opcode, Rd et Rs d'une instruction
+:title: Démonstration Logix : trois composants Tranche extraient l'opcode, Rd et Rs d'une instruction
 ```
 
 ## Un petit jeu d'instructions
@@ -86,25 +86,37 @@ que d'autres.
 
 ## Le cycle d'exécution
 Comment le processeur enchaîne-t-il les instructions ? Il répète sans fin un même
-*cycle* en trois temps. Le *compteur ordinal* (`pc`) garde l'adresse de la
+*cycle* en trois temps. Le *program counter* (`pc`) garde l'adresse de la
 prochaine instruction.
 
 ```{figure} images/cycle.svg
 :width: 70%
-:alt: Le cycle en trois étapes : Chercher (lire l'instruction pointée par le compteur ordinal), Décoder (séparer opcode et registres), Exécuter (agir puis passer à la suivante), en boucle
+:alt: Le cycle en trois étapes : Fetch (lire l'instruction pointée par le program counter), Decode (séparer l'opcode et les registres), Execute (exécuter, puis avancer le pc), en boucle
 :align: center
 
 Le processeur répète sans fin le même cycle : chercher, décoder, exécuter.
 ```
 
-1.  **Chercher** : lire dans la mémoire l'instruction à l'adresse indiquée par
-    `pc`, et faire avancer `pc`.
-2.  **Décoder** : séparer l'opcode et les registres ; l'opcode détermine l'action.
-3.  **Exécuter** : réaliser l'action, en pilotant les composants concernés.
+1.  **Chercher** (*fetch*) : lire dans la mémoire l'instruction à l'adresse
+    indiquée par `pc`, et faire avancer `pc`.
+2.  **Décoder** (*decode*) : séparer l'opcode et les registres ; l'opcode
+    détermine l'action.
+3.  **Exécuter** (*execute*) : réaliser l'action, en pilotant les composants
+    concernés.
 
 Pour une instruction `LOAD`, l'étape d'exécution va simplement lire **l'octet
 suivant** (la valeur) et la ranger dans le registre, en faisant à nouveau avancer
 `pc`.
+
+```{admonition} Et dans notre processeur ?
+:class: tip
+Ce cycle en trois temps est la description classique du travail d'un processeur.
+Notre petit processeur, lui, n'aura besoin que de **deux** étapes : chercher, puis
+exécuter. Décoder une de nos instructions consiste seulement à découper ses 8 bits
+en champs : de simples fils et un décodeur le font **en continu**, sans attendre
+d'étape à part. Vous le verrez en construisant
+l'[unité de commande](control.md).
+```
 
 ## Un programme complet
 Voici un programme rangé en mémoire à partir de l'adresse `0` : c'est exactement
@@ -129,7 +141,7 @@ pourtant jamais rien de compliqué : il répète chercher, décoder, exécuter.
 - Un programme est une suite de **nombres** en mémoire ; chacun est une
   instruction faite d'un **opcode** et de **registres**.
 - Le processeur répète sans fin le cycle **chercher, décoder, exécuter**, en
-  suivant le **compteur ordinal**.
+  suivant le **program counter**.
 ```
 
 ## Exercices
@@ -228,7 +240,7 @@ On fait le calcul dans un registre libre, par exemple `r2` : `LOAD r2, 0`, puis
 `ADD r2, r0` (`r2` devient une copie de `r0`), puis `ADD r2, r1`. À la fin, `r2`
 contient `r0 + r1`, tandis que `r0` et `r1` sont inchangés.
 
-Remarquez qu'il n'y a pas besoin d'une instruction « copier » : charger `0` puis
+Remarquez qu'il n'y a pas besoin d'une instruction "copier" : charger `0` puis
 additionner fait le même travail. Moins d'instructions, c'est un processeur plus
 simple à construire.
 ````

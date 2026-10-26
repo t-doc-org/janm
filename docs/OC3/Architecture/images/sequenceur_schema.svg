@@ -8,16 +8,17 @@
 <text x="362.5" y="209.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">(portes ET, OU, NON)</text>
 <line x1="190" y1="93" x2="250" y2="150" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M250,150 l-8.5,-5 l0,10 z" fill="#1a1a2e"/>
-<text x="220" y="120" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#c2410c" text-anchor="middle" font-weight="600">opcode</text>
+<text x="212" y="100" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#c2410c" text-anchor="start" font-weight="600">opcode</text>
 <rect x="585" y="120" width="110" height="150" rx="8" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2.5"/>
-<text x="640" y="188" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#1a1a2e" text-anchor="middle" font-weight="400">pc, registres,</text>
-<text x="640" y="206" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#1a1a2e" text-anchor="middle" font-weight="400">mux</text>
+<text x="640" y="181.5" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#1a1a2e" text-anchor="middle" font-weight="400">pc, RI,</text>
+<text x="640" y="199.5" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#1a1a2e" text-anchor="middle" font-weight="400">registres,</text>
+<text x="640" y="217.5" font-family="Segoe UI,Arial,sans-serif" font-size="12.5" fill="#1a1a2e" text-anchor="middle" font-weight="400">sortie</text>
 <line x1="475" y1="152" x2="585" y2="152" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M585,152 l-8.5,-5 l0,10 z" fill="#1a1a2e"/>
-<text x="530.0" y="146" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">LD</text>
+<text x="530.0" y="146" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">LD RI, LD Rd</text>
 <line x1="475" y1="190" x2="585" y2="190" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M585,190 l-8.5,-5 l0,10 z" fill="#1a1a2e"/>
-<text x="530.0" y="184" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">src</text>
+<text x="530.0" y="184" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">LD sortie</text>
 <line x1="475" y1="228" x2="585" y2="228" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M585,228 l-8.5,-5 l0,10 z" fill="#1a1a2e"/>
 <text x="530.0" y="222" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">incrémenter pc</text>

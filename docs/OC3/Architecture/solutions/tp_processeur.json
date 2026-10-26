@@ -317,6 +317,30 @@
       "type": "NOT",
       "x": 720,
       "y": 1260
+    },
+    {
+      "id": "aff",
+      "type": "OUTPUT",
+      "x": 1120,
+      "y": 270,
+      "state": {
+        "width": 8
+      },
+      "label": "résultat"
+    },
+    {
+      "id": "lampT1",
+      "type": "OUTPUT",
+      "x": 480,
+      "y": 930,
+      "label": "T1"
+    },
+    {
+      "id": "lampT2",
+      "type": "OUTPUT",
+      "x": 480,
+      "y": 1090,
+      "label": "T2"
     }
   ],
   "wires": [
@@ -1099,6 +1123,39 @@
       "to": {
         "componentId": "etapes",
         "port": "EN"
+      }
+    },
+    {
+      "id": "x_aff",
+      "from": {
+        "componentId": "alu",
+        "port": "résultat"
+      },
+      "to": {
+        "componentId": "aff",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "x_lampT1",
+      "from": {
+        "componentId": "decT",
+        "port": "out0"
+      },
+      "to": {
+        "componentId": "lampT1",
+        "port": "in0"
+      }
+    },
+    {
+      "id": "x_lampT2",
+      "from": {
+        "componentId": "decT",
+        "port": "out1"
+      },
+      "to": {
+        "componentId": "lampT2",
+        "port": "in0"
       }
     }
   ],
