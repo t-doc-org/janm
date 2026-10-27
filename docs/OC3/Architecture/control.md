@@ -11,8 +11,8 @@ seul**, il faut remplacer ces interrupteurs par des circuits.
 
 Nous allons y arriver pas à pas, en alternant théorie et pratique dans Logix :
 
-1. **Chercher les instructions** : le compteur de programme `pc` (le *program
-   counter* du chapitre précédent, TP 1), puis le registre d'instruction (TP 2).
+1. **Chercher les instructions** : le compteur de programme `pc` (en anglais *program
+   counter*, TP 1), puis le registre d'instruction (TP 2).
 2. **Exécuter les instructions** : les deux étapes d'une instruction, le
    multiplexeur d'écriture et le registre de sortie. Vous ferez alors tourner le
    programme **à la main**, en jouant vous-même le rôle de l'unité de commande
@@ -49,37 +49,12 @@ commande, mais `src` est un simple fil issu de `RI` (vous verrez pourquoi).
 Pas d'inquiétude si certains noms de la figure (`T1`, `T2`, `src`, lecture `Rd`...)
 sont encore inconnus : chacun est expliqué plus bas, au moment où l'on en a besoin.
 
-```{admonition} Avant de commencer
-:class: tip
-Ouvrez dans [Logix](https://maximejan.github.io/logix/) le fichier du TP mémoire
-(ALU, banc de registres, et RAM qui contient déjà le programme) : vous allez le
-compléter TP après TP, et l'enregistrer à la fin de chacun. Quelques règles pour
-toute la page :
-
-- Nommez vos composants (`pc`, `RI`...) : un circuit lisible est un circuit
-  réparable.
-- Tous les registres et compteurs se branchent sur la **même** horloge que le banc
-  de registres et la RAM.
-- **Faire un front montant**, c'est cliquer deux fois sur l'horloge : le premier
-  clic la fait passer de `0` à `1` (c'est le front montant), le second la ramène à
-  `0`, prête pour le suivant.
-- **Faire un `reset`**, c'est mettre l'entrée `reset` (créée au TP 1) à `1`, puis
-  la remettre à `0`.
-- Les composants de cette page se trouvent dans la palette de Logix sous les noms
-  *Compteur N-bit*, *Registre N-bit*, *Tranche*, *Multiplexeur*, *Décodeur*, et
-  les portes *AND* (`ET`), *OR* (`OU`) et *NOT* (`NON`). Leurs réglages (nombre de
-  bits...) se changent dans le panneau des propriétés, après avoir cliqué sur le
-  composant. Chaque entrée et chaque sortie d'un composant porte un petit nom
-  (`EN`, `LD`, `Q`...) : il est expliqué la première fois qu'on l'utilise.
-- Gardez l'afficheur `résultat` de l'ALU : il aide à vérifier les calculs.
-```
-
 ## Partie 1 : chercher les instructions
 
 ### Le compteur de programme
 Pour exécuter le programme, le processeur doit lire les cases de la mémoire **l'une
 après l'autre**. Jusqu'ici, c'est vous qui changiez l'adresse ; désormais, ce sera
-le *compteur de programme* (`pc`, le *program counter* du chapitre précédent).
+le *compteur de programme* (`pc`, de l'anglais *program counter*).
 C'est un **compteur** : un registre qui ajoute `1` à sa propre valeur à chaque
 front montant. Il contient l'adresse de la prochaine case à lire.
 
@@ -148,9 +123,9 @@ RAM ; `LD` (*load* : charger) décide s'il capture : si `LD` vaut `1`, le regist
 copie `D` au prochain front montant, sinon il garde sa valeur ; `CLK` reçoit
 l'horloge ; et la sortie `Q` donne la valeur retenue.
 
-Une fois l'instruction dans `RI`, il reste à la découper en champs, comme au
-chapitre précédent. C'est le rôle du composant *Tranche* : il a une entrée (le mot
-complet) et une sortie (un champ de ce mot). Dans ses propriétés, *Bit haut* et
+Une fois l'instruction dans `RI`, il reste à la découper en ses trois champs
+(opcode, `Rd` et `Rs`, voir le chapitre précédent). C'est le rôle du composant
+*Tranche* : il a une entrée (le mot complet) et une sortie (un champ de ce mot). Dans ses propriétés, *Bit haut* et
 *Bit bas* donnent les numéros du premier et du dernier bit du champ, le bit `0`
 étant celui de droite. Trois *Tranches* extraient l'opcode (bits `7` à `4`), `Rd`
 (bits `3` et `2`) et `Rs` (bits `1` et `0`).
@@ -161,6 +136,14 @@ complet) et une sortie (un champ de ce mot). Dans ses propriétés, *Bit haut* e
 :align: center
 
 Les trois champs d'une instruction, rappel du chapitre précédent.
+```
+
+Changez l'instruction ci-dessous et regardez les trois *Tranches* faire
+apparaître ses champs.
+
+```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBkw6ljb2RlciB1bmUgaW5zdHJ1Y3Rpb24iLCJvIjoiQ2hhbmdleiBsYSB2YWxldXIgZGUgbCdpbnN0cnVjdGlvbiAoOCBiaXRzKSA6IGxlIGNvbXBvc2FudCBTTElDRSBlbiBleHRyYWl0IGxlcyB0cm9pcyBjaGFtcHMsIGwnb3Bjb2RlIChiaXRzIDcgw6AgNCksIFJkIChiaXRzIDMgZXQgMikgZXQgUnMgKGJpdHMgMSBldCAwKS4gRXNzYXlleiAwMTAwMDAwMSAoQUREIHIwLCByMSkgOiBvcGNvZGUgPSAwMTAwLCBSZCA9IDAwLCBScyA9IDAxLiIsInMiOltdLCJhIjpbXSwiaSI6W10sInUiOltdLCJrIjoibm9uZSIsInIiOltdLCJsIjoxLCJjIjp7InZlcnNpb24iOjIsIm5hbWUiOiJjaXJjdWl0IiwiY29tcG9uZW50cyI6W3siaWQiOiJJIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjEyMCwic3RhdGUiOnsid2lkdGgiOjgsInZhbHVlIjo2NX0sImxhYmVsIjoiaW5zdHJ1Y3Rpb24ifSx7ImlkIjoib3AiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjQwLCJzdGF0ZSI6eyJ3aWR0aCI6OCwiaGkiOjcsImxvIjo0fX0seyJpZCI6InJkIiwidHlwZSI6IlNMSUNFIiwieCI6MjYwLCJ5IjoxMjAsInN0YXRlIjp7IndpZHRoIjo4LCJoaSI6MywibG8iOjJ9fSx7ImlkIjoicnMiLCJ0eXBlIjoiU0xJQ0UiLCJ4IjoyNjAsInkiOjIwMCwic3RhdGUiOnsid2lkdGgiOjgsImhpIjoxLCJsbyI6MH19LHsiaWQiOiJvbyIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo0NDAsInkiOjYwLCJzdGF0ZSI6eyJ3aWR0aCI6NH0sImxhYmVsIjoib3Bjb2RlIn0seyJpZCI6Im9kIiwidHlwZSI6Ik9VVFBVVCIsIngiOjQ0MCwieSI6MTQwLCJzdGF0ZSI6eyJ3aWR0aCI6Mn0sImxhYmVsIjoiUmQifSx7ImlkIjoib3MiLCJ0eXBlIjoiT1VUUFVUIiwieCI6NDQwLCJ5IjoyMjAsInN0YXRlIjp7IndpZHRoIjoyfSwibGFiZWwiOiJScyJ9XSwid2lyZXMiOlt7ImlkIjoidzEiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvcCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzIiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzMiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiSSIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJycyIsInBvcnQiOiJpbiJ9fSx7ImlkIjoidzQiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoib3AiLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoib28iLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NSIsImZyb20iOnsiY29tcG9uZW50SWQiOiJyZCIsInBvcnQiOiJvdXQifSwidG8iOnsiY29tcG9uZW50SWQiOiJvZCIsInBvcnQiOiJpbjAifX0seyJpZCI6Inc2IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6InJzIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6Im9zIiwicG9ydCI6ImluMCJ9fV0sImN1c3RvbURlZmluaXRpb25zIjp7fX19&embed=1
+:style: height: 320px; aspect-ratio: auto; border: 1px solid black;
+:title: Démonstration Logix : trois composants Tranche extraient l'opcode, Rd et Rs d'une instruction
 ```
 
 `Rd` et `Rs` vont directement au banc de registres : ce n'est plus vous qui
@@ -232,9 +215,9 @@ pointée par l'ancienne valeur du `pc`.
 registre, ou l'afficher. Il nous manque encore deux composants pour cela : le
 multiplexeur d'écriture et le registre de sortie, juste après.
 
-**Et l'étape "décoder" ?** Au chapitre précédent, le cycle d'un processeur
-comptait trois temps : chercher, décoder, exécuter (*fetch, decode, execute*).
-Notre processeur n'en a que deux, car il n'a pas besoin d'étape à part pour
+**Et l'étape "décoder" ?** On décrit souvent le travail d'un processeur comme un
+cycle en trois temps : chercher, décoder, exécuter (*fetch, decode, execute*).
+Notre processeur n'a que deux étapes, car il n'a pas besoin d'étape à part pour
 décoder : dès que `RI` contient l'instruction, les *Tranches* (et, au TP 5, le
 décodeur d'opcode) la découpent **en permanence**, sans attendre de front
 montant. Pendant `T2`, l'instruction est donc déjà décodée.
