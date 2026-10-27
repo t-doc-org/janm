@@ -131,8 +131,6 @@ montant tant que l'interrupteur `en` vaut `1`, et l'interrupteur `reset`, relié
     `0001 0100`, `0000 0010`...). Un nouveau `reset` vous ramène au début.
 
 ````{solution}
-Circuit corrigé : {download}`tp_processeur_1.json <solutions/tp_processeur_1.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
-
 - `pc` (*Compteur N-bit*, 4 bits) : `Q` → `A` de la RAM, `EN` ← `incrémenter pc`,
   `LD` ← `reset`, `CLK` ← horloge.
 - Les entrées `adresse`, `écrire` et `donnée mémoire` ont disparu. Les autres
@@ -189,8 +187,6 @@ choisissez les registres, c'est l'instruction.
     suivante.
 
 ````{solution}
-Circuit corrigé : {download}`tp_processeur_2.json <solutions/tp_processeur_2.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
-
 - `RI` (*Registre N-bit*, 8 bits) : `D` ← `Q` de la RAM, `LD` ← `LD RI`,
   `CLK` ← horloge.
 - *Tranches* sur la sortie de `RI` : bits 7 à 4 (`opcode`, pas encore relié),
@@ -409,8 +405,6 @@ c'est celle qu'on va chercher (`RI` contient encore la précédente).
     8e, le registre de sortie affiche `0000 1111`, soit `15`.
 
 ````{solution}
-Circuit corrigé : {download}`tp_processeur_3.json <solutions/tp_processeur_3.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
-
 - `mux d'écriture` (*Multiplexeur* 8 bits, sélection 1 bit) : `0` ← `Q` de la
   RAM, `1` ← résultat de l'ALU, `sel` ← *Tranche* `calcul` (bit 6), sortie →
   `D` des quatre registres.
@@ -478,8 +472,6 @@ Faites avancer l'horloge ci-dessous et regardez la ligne allumée passer de `T1`
     montant, le registre de sortie affiche `0000 1111`, comme au TP 3.
 
 ````{solution}
-Circuit corrigé : {download}`tp_processeur_4.json <solutions/tp_processeur_4.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
-
 - `compteur d'étapes` (compteur 1 bit) : `EN` ← `avancer`, `LD` ← `reset`,
   `CLK` ← horloge, sortie → décodeur 1 vers 2.
 - Sortie `0` du décodeur (`T1`) → `LD` de `RI` et lampe `T1` ; sortie `1`

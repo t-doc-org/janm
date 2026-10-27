@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340">
+<rect width="720" height="340" rx="14" fill="white"/>
+<rect x="84" y="30" width="232" height="92" rx="8" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2.5"/>
+<text x="200.0" y="56" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#1a1a2e" text-anchor="middle" font-weight="700">T1</text>
+<text x="200.0" y="76" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#c2410c" text-anchor="middle" font-weight="600">Fetch (chercher)</text>
+<text x="200.0" y="96" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#6b7280" text-anchor="middle" font-weight="400">RI reçoit l'instruction lue</text>
+<text x="200.0" y="112" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#6b7280" text-anchor="middle" font-weight="400">et le pc avance</text>
+<rect x="324" y="30" width="232" height="92" rx="8" fill="#f7f8fa" stroke="#1a1a2e" stroke-width="2.5"/>
+<text x="440.0" y="56" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#1a1a2e" text-anchor="middle" font-weight="700">T2</text>
+<text x="440.0" y="76" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#c2410c" text-anchor="middle" font-weight="600">Execute (exécuter)</text>
+<text x="440.0" y="96" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#6b7280" text-anchor="middle" font-weight="400">l'instruction agit :</text>
+<text x="440.0" y="112" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#6b7280" text-anchor="middle" font-weight="400">Rd ou la sortie capture</text>
+<rect x="564" y="30" width="136" height="92" rx="8" fill="#fbfbfc" stroke="#d1d5db" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="632.0" y="62" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#9ca3af" text-anchor="middle" font-weight="700">T1</text>
+<text x="632.0" y="82" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#9ca3af" text-anchor="middle" font-weight="400">instruction</text>
+<text x="632.0" y="97" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#9ca3af" text-anchor="middle" font-weight="400">suivante</text>
+<text x="40" y="177.5" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#1a1a2e" text-anchor="middle" font-weight="700">clk</text>
+<polyline points="60,195 80,195 80,150 200,150 200,195 320,195 320,150 440,150 440,195 560,195 560,150 680,150 680,195 700,195" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linejoin="round"/>
+<line x1="80" y1="229" x2="80" y2="207" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+<path d="M80,199 l-6,10 l12,0 z" fill="#c2410c"/>
+<line x1="80" y1="122" x2="80" y2="150" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="320" y1="229" x2="320" y2="207" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+<path d="M320,199 l-6,10 l12,0 z" fill="#c2410c"/>
+<line x1="320" y1="122" x2="320" y2="150" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="560" y1="229" x2="560" y2="207" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+<path d="M560,199 l-6,10 l12,0 z" fill="#c2410c"/>
+<line x1="560" y1="122" x2="560" y2="150" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="700" y="225" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#c2410c" text-anchor="end" font-weight="600">front montant</text>
+<rect x="324" y="258" width="232" height="62" rx="8" fill="#e6ecf7" stroke="#1e3a8a" stroke-width="2.5"/>
+<text x="440.0" y="278" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#1e3a8a" text-anchor="middle" font-weight="700">Decode (décoder) : en continu</text>
+<text x="440.0" y="296" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">les Tranches et le décodeur découpent RI</text>
+<text x="440.0" y="311" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400">dès qu'il change, sans attendre de front</text>
+</svg>

@@ -14,9 +14,10 @@ ram
 isa
 control
 ```
-## Examen
-```{toctree}
-objectifs
-```
+% Page objectifs.md introuvable : section réactivée quand le fichier sera de retour
+% ## Examen
+% ```{toctree}
+% objectifs
+% ```
 ## Lien vers Logix
 [Logix](https://maximejan.github.io/logix/)
