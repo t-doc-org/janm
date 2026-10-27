@@ -185,17 +185,45 @@ copie préalable on perdrait la valeur `10`.
 ````
 
 ### Exercice {num1}`exercice`
-L'instruction `ADD r0, r1` range son résultat dans `r0`, en **écrasant** l'ancien
-contenu de `r0`. Un élève veut calculer `r0 + r1` tout en gardant intactes les
-valeurs de `r0` et de `r1`. Expliquez comment y arriver avec les instructions du
-cours.
+La mémoire contient le programme ci-dessous, case après case. Au départ, tous les
+registres valent `0`.
+
+- `00010000`
+- `00001100`
+- `00010100`
+- `00000101`
+- `01010001`
+- `01000101`
+- `01000100`
+- `00100000`
+- `00100100`
+- `00000000`
+
+1. Traduisez le programme en instructions (par exemple `LOAD r0, …`), puis en
+   pseudocode (par exemple `r0 = r0 + r1`).
+2. Quelles valeurs le programme affiche-t-il, dans l'ordre ?
+
+```{quiz}
+:style: max-width: 26rem;
+1.  première valeur affichée (en décimal) : {r}`{"7": true}`
+2.  deuxième valeur affichée (en décimal) : {r}`{"17": true}`
+```
 
 ````{solution}
-On fait le calcul dans un registre libre, par exemple `r2` : `LOAD r2, 0`, puis
-`ADD r2, r0` (`r2` devient une copie de `r0`), puis `ADD r2, r1`. À la fin, `r2`
-contient `r0 + r1`, tandis que `r0` et `r1` sont inchangés.
+```{code-block} text
+binaire             instruction   pseudocode
+00010000 00001100   LOAD r0, 12   r0 = 12
+00010100 00000101   LOAD r1, 5    r1 = 5
+01010001            SUB r0, r1    r0 = r0 - r1
+01000101            ADD r1, r1    r1 = r1 + r1
+01000100            ADD r1, r0    r1 = r1 + r0
+00100000            OUT r0        afficher r0
+00100100            OUT r1        afficher r1
+00000000            STOP          arrêter
+```
+Attention : `LOAD` occupe deux cases. `00001100` et `00000101` ne sont pas des
+instructions, mais les valeurs `12` et `5`.
 
-Remarquez qu'il n'y a pas besoin d'une instruction "copier" : charger `0` puis
-additionner fait le même travail. Moins d'instructions, c'est un processeur plus
-simple à construire.
+Déroulement : `r0 = 12`, `r1 = 5`, puis `r0 = 12 - 5 = 7`, `r1 = 5 + 5 = 10`,
+`r1 = 10 + 7 = 17`. Le programme affiche donc `7`, puis `17`.
 ````

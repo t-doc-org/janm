@@ -307,18 +307,6 @@
       "y": 1180
     },
     {
-      "id": "STOPetT2",
-      "type": "AND",
-      "x": 560,
-      "y": 1260
-    },
-    {
-      "id": "avancer",
-      "type": "NOT",
-      "x": 720,
-      "y": 1260
-    },
-    {
       "id": "aff",
       "type": "OUTPUT",
       "x": 1120,
@@ -341,6 +329,16 @@
       "x": 480,
       "y": 1090,
       "label": "T2"
+    },
+    {
+      "id": "avancer",
+      "type": "INPUT",
+      "x": 20,
+      "y": 1040,
+      "state": {
+        "value": 1
+      },
+      "label": "avancer"
     }
   ],
   "wires": [
@@ -1082,50 +1080,6 @@
       }
     },
     {
-      "id": "w68",
-      "from": {
-        "componentId": "decOp",
-        "port": "out0"
-      },
-      "to": {
-        "componentId": "STOPetT2",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w69",
-      "from": {
-        "componentId": "decT",
-        "port": "out1"
-      },
-      "to": {
-        "componentId": "STOPetT2",
-        "port": "in1"
-      }
-    },
-    {
-      "id": "w70",
-      "from": {
-        "componentId": "STOPetT2",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "avancer",
-        "port": "in0"
-      }
-    },
-    {
-      "id": "w71",
-      "from": {
-        "componentId": "avancer",
-        "port": "out"
-      },
-      "to": {
-        "componentId": "etapes",
-        "port": "EN"
-      }
-    },
-    {
       "id": "x_aff",
       "from": {
         "componentId": "alu",
@@ -1156,6 +1110,17 @@
       "to": {
         "componentId": "lampT2",
         "port": "in0"
+      }
+    },
+    {
+      "id": "w_avancer",
+      "from": {
+        "componentId": "avancer",
+        "port": "out"
+      },
+      "to": {
+        "componentId": "etapes",
+        "port": "EN"
       }
     }
   ],

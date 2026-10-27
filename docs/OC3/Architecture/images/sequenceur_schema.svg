@@ -5,7 +5,7 @@
 <text x="115" y="104" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#1a1a2e" text-anchor="middle" font-weight="600">d'instruction</text>
 <rect x="250" y="120" width="225" height="150" rx="8" fill="#e6ecf7" stroke="#1e3a8a" stroke-width="3"/>
 <text x="362.5" y="189.0" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#1e3a8a" text-anchor="middle" font-weight="700">Logique de commande</text>
-<text x="362.5" y="209.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">(portes ET, OU, NON)</text>
+<text x="362.5" y="209.0" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400">(portes ET, OU)</text>
 <line x1="190" y1="93" x2="250" y2="150" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
 <path d="M250,150 l-8.5,-5 l0,10 z" fill="#1a1a2e"/>
 <text x="212" y="100" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#c2410c" text-anchor="start" font-weight="600">opcode</text>
