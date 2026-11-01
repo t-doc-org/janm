@@ -163,8 +163,8 @@ résultat en sortie, à droite. Sur les schémas de circuits, chaque porte poss�
 une **forme normalisée** qui permet de la reconnaître d'un coup d'œil :
 
 
-````{list-grid}
-:style: grid-template-columns: 1fr 1fr; align-items: center; justify-items: center; gap: 0.5rem 2rem;
+````{list-grid} 1fr 1fr
+:style: align-items: center; justify-items: center; gap: 0.5rem 2rem;
 - **Porte ET** : `a ∧ b`
   ```{image} images/porte_et.svg
   :width: 90%

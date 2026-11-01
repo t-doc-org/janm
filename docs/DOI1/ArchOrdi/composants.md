@@ -13,8 +13,8 @@ La **carte mère** est la pièce centrale à laquelle tous les autres composants
 se connectent. Elle joue le rôle de chef d'orchestre en permettant aux
 composants de communiquer entre eux.
 
-````{list-grid}
-:style: grid-template-columns: 1fr 1fr; text-align: center;
+````{list-grid} 1fr 1fr
+:style: text-align: center;
 
 - ```{figure} images/motherboard1.jpg
   :alt: Carte mère avec ses connecteurs visibles
@@ -108,8 +108,8 @@ Ses caractéristiques sont :
 
 Il existe deux types de disques durs :
 
-````{list-grid}
-:style: grid-template-columns: 1fr 1fr; text-align: center;
+````{list-grid} 1fr 1fr
+:style: text-align: center;
 
 - ```{figure} images/hdd.jpg
   :alt: HDD ouvert montrant le plateau magnétique et le bras de lecture
