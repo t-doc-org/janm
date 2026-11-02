@@ -17,8 +17,8 @@ Nous allons y arriver pas à pas, en alternant théorie et pratique dans Logix :
    multiplexeur d'écriture et le registre de sortie. Vous ferez alors tourner le
    programme **à la main**, en jouant vous-même le rôle de l'unité de commande
    (TP 3).
-3. **Automatiser** : le compteur d'étapes (TP 4), puis l'*unité de commande*, qui
-   remplacera vos derniers interrupteurs (TP 5).
+3. **Automatiser** : l'*unité de commande*, qui remplacera vos interrupteurs
+   (TP 4).
 
 ## Le processeur complet
 Voici le processeur que vous aurez construit à la fin de cette page. Les
@@ -44,7 +44,7 @@ commande, mais `src` est un simple fil issu de `RI` (vous verrez pourquoi).
 | multiplexeur d'écriture | choisit ce qui entre dans le registre `Rd` | *Multiplexeur* | TP 3 |
 | registre de sortie | affiche la valeur d'un registre (instruction `OUT`) | *Registre N-bit* | TP 3 |
 | compteur d'étapes | indique où en est l'instruction en cours | *Compteur N-bit* et *Décodeur* | TP 4 |
-| unité de commande | produit les signaux de commande | *Décodeur* et portes | TP 5 |
+| unité de commande | produit les signaux de commande | *Décodeur* et portes | TP 4 |
 
 Pas d'inquiétude si certains noms de la figure (`T1`, `T2`, `src`, lecture `Rd`...)
 sont encore inconnus : chacun est expliqué plus bas, au moment où l'on en a besoin.
@@ -161,7 +161,7 @@ choisissez les registres, c'est l'instruction.
     manuelle `Rd`** : sur le décodeur du banc **et** sur l'entrée de sélection
     `sel` du multiplexeur `lecture Rd`. La *Tranche* `Rs` va sur l'entrée `sel`
     du multiplexeur `lecture Rs`. Supprimez ensuite les entrées manuelles `Rd` et `Rs`. L'`opcode`
-    ne servira qu'au TP 5.
+    ne servira qu'au TP 4.
 4.  **Vérifiez.** Faites un `reset`, puis mettez `incrémenter pc` et `LD RI` à
     `1`. Au premier front montant, `RI` capture `0001 0000` (`LOAD r0`) et le
     `pc` passe à `0001`. Faites un deuxième front montant : `RI` capture
@@ -328,11 +328,10 @@ Pendant `T1`, on cherche toujours l'instruction suivante : incrémenter `pc` et
 ## Partie 3 : automatiser
 
 ### L'unité de commande
-Jouer l'unité de commande, c'est fastidieux : il est temps de la construire.
-Elle reçoit l'opcode de l'instruction (depuis `RI`). Elle contient un *compteur
-d'étapes*, qui lui indique l'étape en cours, et une *logique de commande* faite de
-portes, qui en déduit à chaque instant la valeur de tous les signaux. Elle fait
-exactement ce que vous faisiez à la main au TP 3.
+Jouer l'unité de commande, c'est fastidieux : il est temps de la construire. Elle
+fait exactement ce que vous faisiez à la main au TP 3 : à partir de l'**étape** en
+cours et de l'**opcode** de l'instruction (dans `RI`), elle calcule chaque signal
+avec quelques portes.
 
 ```{figure} images/sequenceur_schema.svg
 :width: 95%
@@ -343,54 +342,21 @@ La logique de commande combine l'opcode et l'étape courante pour produire les
 signaux de commande.
 ```
 
-### Le compteur d'étapes
-Pour connaître l'étape en cours, l'unité de commande utilise un compteur de
-**1 bit**, suivi d'un *décodeur 1 vers 2*. Rappel : un *Décodeur* a une entrée et
-des sorties numérotées `0`, `1`... ; seule la sortie dont le numéro est la valeur
-de l'entrée vaut `1`. Ici, sa sortie `0` vaut `1` pendant `T1`, sa sortie `1`
-pendant `T2`. À chaque front montant, on passe à l'autre étape :
-`T1`, `T2`, `T1`, `T2`... Chaque instruction dure donc toujours **2 étapes**.
-(On pourrait se passer du décodeur : `T2` est la sortie du compteur, et `T1` son
-inverse, avec une porte `NON`. Le décodeur fait exactement cela, et il resterait
-valable avec plus de deux étapes.)
-
-Faites avancer l'horloge ci-dessous et regardez la ligne allumée passer de `T1` à
-`T2`, puis revenir à `T1`.
+**L'étape en cours.** Un compteur de **1 bit** (*Compteur N-bit* réglé sur 1 bit),
+suivi d'un *Décodeur* 1 vers 2, suffit. Rappel : un *Décodeur* a une entrée et des
+sorties numérotées `0`, `1`... ; seule la sortie dont le numéro est la valeur de
+l'entrée vaut `1`. Ici, la sortie `0` vaut `1` pendant `T1`, la sortie `1` pendant
+`T2`, et chaque front montant fait passer à l'autre étape. Faites avancer
+l'horloge ci-dessous pour le voir.
 
 ```{iframe} https://maximejan.github.io/logix/?ex=eyJ2IjoxLCJ0IjoiRMOpbW8gOiBsZSBjb21wdGV1ciBkJ8OpdGFwZXMiLCJvIjoiRmFpdGVzIGF2YW5jZXIgbCdob3Jsb2dlIDogbGUgY29tcHRldXIgZCfDqXRhcGVzICgxIGJpdCkgY29tcHRlIDAsIDEsIDAsIDEuLi4sIGV0IGxlIGTDqWNvZGV1ciBhbGx1bWUgdW5lIHNldWxlIGxpZ25lIMOgIGxhIGZvaXMgOiBUMSwgcHVpcyBUMiwgcHVpcyBkZSBub3V2ZWF1IFQxLiAncmVzZXQnIChyZWxpw6kgw6AgTEQpIHJhbcOobmUgw6AgbCfDqXRhcGUgVDEuIiwicyI6W10sImEiOltdLCJpIjpbXSwidSI6W10sImsiOiJub25lIiwiciI6W10sImwiOjEsImMiOnsidmVyc2lvbiI6MiwibmFtZSI6ImNpcmN1aXQiLCJjb21wb25lbnRzIjpbeyJpZCI6IkVOIiwidHlwZSI6IklOUFVUIiwieCI6NDAsInkiOjQwLCJzdGF0ZSI6eyJ2YWx1ZSI6MX0sImxhYmVsIjoiZW4ifSx7ImlkIjoiY2xrIiwidHlwZSI6IkNMT0NLIiwieCI6NDAsInkiOjE0MCwibGFiZWwiOiJob3Jsb2dlIn0seyJpZCI6IlJTVCIsInR5cGUiOiJJTlBVVCIsIngiOjQwLCJ5IjoyNDAsInN0YXRlIjp7InZhbHVlIjowfSwibGFiZWwiOiJyZXNldCJ9LHsiaWQiOiJjbnQiLCJ0eXBlIjoiQ09VTlRFUiIsIngiOjIwMCwieSI6MTEwLCJzdGF0ZSI6eyJ3aWR0aCI6MX19LHsiaWQiOiJkZWMiLCJ0eXBlIjoiREVDT0RFUiIsIngiOjQyMCwieSI6MTIwLCJzdGF0ZSI6eyJ3aWR0aCI6MX19LHsiaWQiOiJUMSIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo2MDAsInkiOjExMCwibGFiZWwiOiJUMSJ9LHsiaWQiOiJUMiIsInR5cGUiOiJPVVRQVVQiLCJ4Ijo2MDAsInkiOjE5MCwibGFiZWwiOiJUMiJ9XSwid2lyZXMiOlt7ImlkIjoidzEiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiRU4iLCJwb3J0Ijoib3V0In0sInRvIjp7ImNvbXBvbmVudElkIjoiY250IiwicG9ydCI6IkVOIn19LHsiaWQiOiJ3MiIsImZyb20iOnsiY29tcG9uZW50SWQiOiJjbGsiLCJwb3J0IjoiQ0xLIn0sInRvIjp7ImNvbXBvbmVudElkIjoiY250IiwicG9ydCI6IkNMSyJ9fSx7ImlkIjoidzMiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiUlNUIiwicG9ydCI6Im91dCJ9LCJ0byI6eyJjb21wb25lbnRJZCI6ImNudCIsInBvcnQiOiJMRCJ9fSx7ImlkIjoidzQiLCJmcm9tIjp7ImNvbXBvbmVudElkIjoiY250IiwicG9ydCI6IlEifSwidG8iOnsiY29tcG9uZW50SWQiOiJkZWMiLCJwb3J0IjoiaW4ifX0seyJpZCI6Inc1IiwiZnJvbSI6eyJjb21wb25lbnRJZCI6ImRlYyIsInBvcnQiOiJvdXQwIn0sInRvIjp7ImNvbXBvbmVudElkIjoiVDEiLCJwb3J0IjoiaW4wIn19LHsiaWQiOiJ3NiIsImZyb20iOnsiY29tcG9uZW50SWQiOiJkZWMiLCJwb3J0Ijoib3V0MSJ9LCJ0byI6eyJjb21wb25lbnRJZCI6IlQyIiwicG9ydCI6ImluMCJ9fV0sImN1c3RvbURlZmluaXRpb25zIjp7fX19&embed=1
 :style: height: 340px; aspect-ratio: auto; border: 1px solid black;
 :title: Démonstration Logix : un compteur d'étapes de 1 bit dont le décodeur allume T1 et T2 l'une après l'autre
 ```
 
-### TP 4 : le compteur d'étapes
-1.  **Le compteur.** Placez un compteur de **1 bit** nommé `compteur d'étapes`.
-    Reliez son `CLK` à l'horloge et son `LD` à l'entrée `reset` (la même que pour
-    le `pc` : un `reset` remet les deux compteurs à `0`). Ajoutez une entrée
-    `avancer`, reliée à son entrée `EN`, et mettez-la à `1` : elle y restera
-    (non branchée, `EN` vaudrait `0` et le compteur ne bougerait pas).
-2.  **Le décodeur.** Placez un *Décodeur* de *Largeur d'entrée* 1 bit (1 vers 2)
-    sur la sortie du compteur : sa sortie `0` est `T1`, sa sortie `1` est `T2`.
-    Ajoutez deux sorties (lampes) nommées `T1` et `T2` sur ces deux fils, comme
-    dans la démo : vous verrez l'étape en cours.
-3.  **Un premier signal automatique.** Pendant `T1`, on charge **toujours** `RI` :
-    `LD RI = T1`. Reliez donc la sortie `T1` du décodeur à l'entrée `LD` de `RI`,
-    et supprimez l'interrupteur `LD RI`.
-4.  **Vérifiez.** Faites un `reset` : `T1` est allumée. À chaque front montant,
-    `T1` et `T2` s'allument tour à tour. Relancez le programme comme au TP 3, en
-    ne réglant plus que `incrémenter pc`, `LD Rd` et `LD sortie` : au 8e front
-    montant, le registre de sortie affiche `0000 1111`, comme au TP 3.
-
-````{solution}
-- `compteur d'étapes` (compteur 1 bit) : `EN` ← `avancer`, `LD` ← `reset`,
-  `CLK` ← horloge, sortie → décodeur 1 vers 2.
-- Sortie `0` du décodeur (`T1`) → `LD` de `RI` et lampe `T1` ; sortie `1`
-  (`T2`) → lampe `T2`.
-````
-
-### Quand chaque signal vaut-il 1 ?
-Il reste à remplacer vos trois derniers interrupteurs par des portes. Pour cela,
-l'unité de commande doit reconnaître l'instruction. Un autre décodeur, 4 vers 16
-cette fois, transforme l'opcode en une ligne par instruction. Pour les quatre instructions de calcul, le bit `calcul` suffit :
+**L'instruction.** Un second *Décodeur*, 4 vers 16, transforme l'opcode en une
+ligne par instruction ; pour les quatre instructions de calcul, le bit `calcul`
+suffit :
 
 | opcode | instruction | ligne utilisée |
 | :----: | :---------- | :------------- |
@@ -398,112 +364,39 @@ cette fois, transforme l'opcode en une ligne par instruction. Pour les quatre in
 | `0010` | `OUT Rd` | sortie `2` : `OUT` |
 | `0100` à `0111` | `ADD`, `SUB`, `AND`, `OR` | bit `6` de `RI` : `calcul` |
 
-Il suffit ensuite de relire le tableau des signaux de chaque étape **signal par
-signal**. Par
-exemple, incrémenter `pc` vaut `1` à l'étape `T1`, et aussi à l'étape `T2` quand
-l'instruction est `LOAD` : on l'écrit `T1 OU (LOAD ET T2)`. Voici tous les
-signaux :
+**Les signaux.** Il suffit de relire le tableau des signaux de chaque étape,
+signal par signal. Par exemple, incrémenter `pc` vaut `1` à l'étape `T1`, et aussi
+à l'étape `T2` quand l'instruction est `LOAD` : `T1 OU (LOAD ET T2)`. Un signal qui
+dépend de l'instruction teste toujours aussi `T2`, car pendant `T1`, `RI` contient
+encore l'instruction précédente.
 
 | signal | relié à | vaut `1` quand |
 | :----- | :------ | :------------- |
-| `LD RI` | `LD` du registre d'instruction | `T1` (déjà fait au TP 4) |
+| `LD RI` | `LD` du registre d'instruction | `T1` (un simple fil) |
 | incrémenter `pc` | `EN` du compteur de programme | `T1` OU (`LOAD` ET `T2`) |
 | `LD Rd` | `LD` du banc de registres | (`calcul` OU `LOAD`) ET `T2` |
 | `LD sortie` | `LD` du registre de sortie | `OUT` ET `T2` |
 | `src` | sélection du multiplexeur d'écriture | `calcul` (aucune porte) |
 | `op` | `op` de l'ALU | bits `5` et `4` de `RI` (aucune porte) |
 
-Deux remarques :
-
-- Pendant `T1`, `RI` contient encore l'instruction **précédente** (au départ,
-  `0000 0000`, c'est-à-dire `STOP`). C'est pourquoi un signal qui dépend de
-  l'instruction teste toujours aussi `T2`.
-- `src` et `op` font exception : ils ne servent qu'au moment où `Rd` capture, ils
-  peuvent donc dépendre de l'instruction seule. Pour `OUT`, l'ALU calcule
-  n'importe quoi, mais personne ne capture son résultat.
-
-### Exercice {num1}`exercice`
-Le processeur exécute l'instruction `SUB r1, r0`. Nous sommes à l'étape `T2`.
-Donnez la valeur de chaque signal de commande.
-
-```{role} b(quiz-select)
-:right:
-:options: |
-: 0
-: 1
-```
-
-```{role} deux(quiz-select)
-:right:
-:options: |
-: 00
-: 01
-: 10
-: 11
-```
-
-```{quiz}
-:style: max-width: 30rem;
-1.  `LD RI` : {b}`0`
-2.  incrémenter `pc` : {b}`0`
-3.  `LD Rd` : {b}`1`
-4.  `LD sortie` : {b}`0`
-5.  `src` : {b}`1`
-6.  `op` : {deux}`01`
-```
-
-````{solution}
-À l'étape `T2`, l'instruction `SUB` range `r1 - r0` dans `r1` : seul `LD Rd`
-vaut `1` (et `Rd` désigne `r1`). Le multiplexeur d'écriture doit laisser passer le
-résultat de l'ALU, donc `src = 1` (c'est le bit `calcul` de `0101`). Et `op` vaut
-les deux bits de droite de l'opcode de `SUB` (`0101`) : `op = 01`, la
-soustraction.
-````
-
-### Exercice {num1}`exercice`
-Imaginons un autre jeu d'instructions, où `ADD` = `0010`, `SUB` = `0011` et
-`OUT` = `0100`, et où `AND` et `OR` n'existent pas. Le décodeur d'opcode donne
-alors les lignes `ADD` (sortie `2`) et `SUB` (sortie `3`).
-
-1. Peut-on encore brancher directement deux bits de l'opcode sur l'entrée `op` de
-   l'ALU ? Pourquoi ?
-2. Donnez alors l'expression de chaque bit de `op`, et celle de `src`.
-3. Quel avantage a notre jeu d'instructions ?
-
-````{solution}
-1. Non. Les deux bits de droite de `ADD` (`0010`) valent `10`, ce qui
-   commanderait un ET au lieu d'une addition.
-2. Le bit de droite de `op` doit valoir `0` pour `ADD` et `1` pour `SUB` : c'est
-   exactement le bit `4` de l'opcode, un simple fil. Le bit de gauche doit valoir
-   `0` : il faut un fusionneur pour coller un `0` devant le bit `4`. Pour `src`,
-   il faut `1` pour `ADD` et `SUB`, et `0` pour `LOAD` : le bit `5` de l'opcode
-   convient, car `ADD` et `SUB` sont les seules instructions dont il vaut `1`.
-   (On peut aussi utiliser le décodeur d'opcode : `op` à droite = `SUB` et
-   `src` = `ADD` OU `SUB`, mais cela coûte une porte.)
-3. On s'en sort encore avec des fils, mais il faut un fusionneur et des astuces
-   propres à ces deux instructions : en ajoutant `AND` et `OR` à ce jeu, elles ne
-   marcheraient plus. Notre jeu, lui, choisit des opcodes `01xx` dont les deux
-   derniers bits sont le code de l'ALU : `op` et `src` sont de simples fils, et
-   les quatre opérations de l'ALU deviennent des instructions sans rien ajouter à
-   l'unité de commande. Les concepteurs de vrais processeurs choisissent leurs
-   opcodes de la même façon, pour simplifier le décodage.
-````
-
-### TP 5 : l'unité de commande
-1.  **Reconnaître l'instruction.** Placez un *Décodeur* de *Largeur d'entrée*
-    4 bits (4 vers 16) sur la *Tranche* `opcode` : ses sorties `1` et `2` sont
-    les lignes `LOAD` et `OUT` (les autres ne servent pas). Placez-le loin du décodeur d'étapes : les
-    deux ont des sorties `0`, `1`... faciles à confondre. Des lampes `LOAD`
-    et `OUT` peuvent aider.
-2.  **La logique de commande.** Avec des portes `ET` et `OU` (*AND* et *OR* dans
-    la palette), construisez les trois signaux qui restent dans le tableau
-    ci-dessus : incrémenter `pc`, `LD Rd` et `LD sortie`. Il vous faut en tout
-    3 portes `ET` et 2 portes `OU`. Reliez chaque signal **là où arrivait
-    son interrupteur** (`LD Rd` va donc sur les quatre portes `ET` du banc), puis
-    supprimez cet interrupteur.
-3.  **Lancez le programme.** Mettez `reset` à `1`, puis à `0`. Faites ensuite
-    avancer l'horloge à la main, sans toucher à rien d'autre, et vérifiez (en
-    comptant les fronts montants depuis le `reset`) :
+### TP 4 : l'unité de commande
+1.  **Le compteur d'étapes.** Placez un *Compteur N-bit* de **1 bit** nommé
+    `compteur d'étapes` : `CLK` ← horloge, `LD` ← `reset` (un `reset` remet ainsi
+    les deux compteurs à `0`), `EN` ← une nouvelle entrée `avancer`, mise à `1`.
+    Ajoutez un *Décodeur* de *Largeur d'entrée* 1 bit sur sa sortie : sortie `0`
+    = `T1`, sortie `1` = `T2`. Deux lampes (*Sortie*) `T1` et `T2` permettent de
+    voir l'étape.
+2.  **`LD RI`.** Reliez `T1` à l'entrée `LD` de `RI` et supprimez l'interrupteur
+    `LD RI`.
+3.  **Le décodeur d'opcode.** Placez un *Décodeur* de *Largeur d'entrée* 4 bits
+    sur la *Tranche* `opcode` : sa sortie `1` est `LOAD`, sa sortie `2` est `OUT`.
+    Placez-le loin du décodeur d'étapes, pour ne pas confondre leurs sorties.
+4.  **Les portes.** Avec 3 portes *AND* et 2 portes *OR*, construisez
+    incrémenter `pc`, `LD Rd` et `LD sortie`. Reliez chacun **là où arrivait son
+    interrupteur** (`LD Rd` va donc sur les quatre portes `ET` du banc), puis
+    supprimez l'interrupteur.
+5.  **Lancez le programme.** Faites un `reset`, puis avancez l'horloge sans
+    toucher à rien d'autre, et vérifiez :
 
     - au 1er front montant, `T2` s'allume, `RI` vaut `0001 0000` et `pc` vaut
       `0001` ;
@@ -520,7 +413,7 @@ alors les lignes `ADD` (sortie `2`) et `SUB` (sortie `3`).
     Si `r0` reste à `0` au 2e front, vérifiez `LD Rd` ; si `RI` ne change jamais,
     vérifiez le fil `T1` → `LD` de `RI` ; si `T1` et `T2` n'alternent
     pas, vérifiez que `avancer` vaut `1`.
-4.  **Enregistrez** votre processeur. Vous venez de construire un ordinateur.
+6.  **Enregistrez** votre processeur. Vous venez de construire un ordinateur.
 
 ````{solution}
 Circuit corrigé : {download}`tp_processeur.json <solutions/tp_processeur.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
@@ -538,11 +431,3 @@ L'unité de commande (3 portes `ET`, 2 portes `OU`) :
 `LD RI` est relié directement à `T1`, `op` vient de la *Tranche* bits 5 et 4 de
 `RI`, et `calcul` (la *Tranche* bit 6) commande directement le mux d'écriture.
 ````
-
-```{important}
-- Une instruction se déroule en deux étapes, une par front montant : chercher
-  (`T1`), puis exécuter (`T2`). Le décodage, lui, se fait en continu.
-- L'unité de commande combine l'**opcode** et l'**étape** courante pour produire
-  chaque signal de commande : elle n'est faite que d'un compteur d'étapes, de
-  décodeurs et de quelques portes `ET` et `OU`.
-```

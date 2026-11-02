@@ -89,7 +89,8 @@ print(a, b)
 
 Afin de bien comprendre l'exécution d'un programme, nous allons utiliser un tableau d'état. Celui-ci permettra d'établir la valeur de chaque variable à tout moment du programme. Dans l'exemple ci-dessous, on comprend bien que le changement de valeur de `a` n'impacte pas les valeurs de `b`, `c`, et `d`.
 
-````{list-grid} 1fr min-content
+````{list-grid}
+:style: grid-template-columns: 1fr min-content;
 - # Programme
   ```{exec} python
   :linenos:
