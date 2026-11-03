@@ -386,37 +386,19 @@ encore l'instruction précédente.
     Ajoutez un *Décodeur* de *Largeur d'entrée* 1 bit sur sa sortie : sortie `0`
     = `T1`, sortie `1` = `T2`. Deux lampes (*Sortie*) `T1` et `T2` permettent de
     voir l'étape.
-2.  **`LD RI`.** Reliez `T1` à l'entrée `LD` de `RI` et supprimez l'interrupteur
-    `LD RI`.
-3.  **Le décodeur d'opcode.** Placez un *Décodeur* de *Largeur d'entrée* 4 bits
+2.  **Le décodeur d'opcode.** Placez un *Décodeur* de *Largeur d'entrée* 4 bits
     sur la *Tranche* `opcode` : sa sortie `1` est `LOAD`, sa sortie `2` est `OUT`.
     Placez-le loin du décodeur d'étapes, pour ne pas confondre leurs sorties.
-4.  **Les portes.** Il reste à construire incrémenter `pc`, `LD Rd` et
-    `LD sortie`. Chaque formule vient du tableau des signaux de chaque étape
-    (partie 2) : un signal vaut `1` dans les lignes où il apparaît, et `0`
-    ailleurs. Chaque ligne se lit « étape **ET** instruction », et on relie les
-    lignes par **OU**. Comme pendant `T1`, `RI` contient encore l'instruction
-    précédente, une condition sur l'instruction est toujours accompagnée de
-    `ET T2`.
+3.  **Les signaux.** Construisez chaque signal avec des portes (3 *AND* et 2 *OR*
+    en tout), reliez-le **là où arrivait son interrupteur**, puis supprimez
+    l'interrupteur :
 
-    - **incrémenter `pc` = `T1` OU (`LOAD` ET `T2`).** Il apparaît dans deux
-      lignes. Pendant `T1`, on avance **toujours**, quelle que soit
-      l'instruction : `T1` seul. Pendant `T2`, on avance seulement pour
-      `LOAD`, afin de sauter la case qui contient la valeur : `LOAD ET T2`.
-      Une des deux suffit, d'où le `OU`.
-    - **`LD Rd` = (`calcul` OU `LOAD`) ET `T2`.** Un registre `Rd` reçoit une
-      valeur pendant `T2`, pour un calcul (résultat de l'ALU) ou pour un
-      `LOAD` (valeur de la mémoire). Les deux lignes ont la même étape `T2` :
-      on regroupe les instructions avec `OU`, puis on ajoute une seule fois
-      `ET T2`.
-    - **`LD sortie` = `OUT` ET `T2`.** Le registre de sortie ne capture que
-      pendant l'exécution (`T2`) d'un `OUT`, la seule ligne où il apparaît.
+    - `LD RI` = `T1` (un simple fil) ;
+    - incrémenter `pc` = `T1` OU (`LOAD` ET `T2`) ;
+    - `LD Rd` = (`calcul` OU `LOAD`) ET `T2` (vers les quatre portes `ET` du banc) ;
+    - `LD sortie` = `OUT` ET `T2`.
 
-    Traduisez ces formules en portes (3 *AND* et 2 *OR* en tout). Reliez chaque
-    signal **là où arrivait son interrupteur** (`LD Rd` va donc sur les quatre
-    portes `ET` du banc), puis supprimez l'interrupteur.
-
-5.  **Lancez le programme.** Faites un `reset`, puis avancez l'horloge sans
+4.  **Lancez le programme.** Faites un `reset`, puis avancez l'horloge sans
     toucher à rien d'autre, et vérifiez :
 
     - au 1er front montant, `T2` s'allume, `RI` vaut `0001 0000` et `pc` vaut
@@ -424,17 +406,12 @@ encore l'instruction précédente.
     - au 2e, `r0` vaut `0000 1101` ;
     - au 4e, `r1` vaut `0000 0010` ;
     - au 6e, `r0` vaut `0000 1111` ;
-    - au 8e, le registre de sortie montre `0000 1111` ;
-    - ensuite, `RI` reçoit `STOP` (`0000 0000`) : plus aucun registre ne change
-      et la sortie garde `0000 1111`. Le `pc`, lui, continue d'avancer sur les
-      cases vides de la mémoire, qui valent toutes `STOP`. Après la dernière
-      case, il revient à `0000` et le programme recommence (un vrai processeur
-      s'arrêterait ; le nôtre reste simple).
+    - au 8e, le registre de sortie montre `0000 1111`.
 
     Si `r0` reste à `0` au 2e front, vérifiez `LD Rd` ; si `RI` ne change jamais,
     vérifiez le fil `T1` → `LD` de `RI` ; si `T1` et `T2` n'alternent
     pas, vérifiez que `avancer` vaut `1`.
-6.  **Enregistrez** votre processeur. Vous venez de construire un ordinateur.
+5.  **Enregistrez** votre processeur. Vous venez de construire un ordinateur.
 
 ````{solution}
 Circuit corrigé : {download}`tp_processeur.json <solutions/tp_processeur.json>`. Dans Logix, ouvrez-le avec le bouton *Charger un JSON* (flèche vers le haut).
