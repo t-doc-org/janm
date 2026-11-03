@@ -391,10 +391,31 @@ encore l'instruction précédente.
 3.  **Le décodeur d'opcode.** Placez un *Décodeur* de *Largeur d'entrée* 4 bits
     sur la *Tranche* `opcode` : sa sortie `1` est `LOAD`, sa sortie `2` est `OUT`.
     Placez-le loin du décodeur d'étapes, pour ne pas confondre leurs sorties.
-4.  **Les portes.** Avec 3 portes *AND* et 2 portes *OR*, construisez
-    incrémenter `pc`, `LD Rd` et `LD sortie`. Reliez chacun **là où arrivait son
-    interrupteur** (`LD Rd` va donc sur les quatre portes `ET` du banc), puis
-    supprimez l'interrupteur.
+4.  **Les portes.** Il reste à construire incrémenter `pc`, `LD Rd` et
+    `LD sortie`. Chaque formule vient du tableau des signaux de chaque étape
+    (partie 2) : un signal vaut `1` dans les lignes où il apparaît, et `0`
+    ailleurs. Chaque ligne se lit « étape **ET** instruction », et on relie les
+    lignes par **OU**. Comme pendant `T1`, `RI` contient encore l'instruction
+    précédente, une condition sur l'instruction est toujours accompagnée de
+    `ET T2`.
+
+    - **incrémenter `pc` = `T1` OU (`LOAD` ET `T2`).** Il apparaît dans deux
+      lignes. Pendant `T1`, on avance **toujours**, quelle que soit
+      l'instruction : `T1` seul. Pendant `T2`, on avance seulement pour
+      `LOAD`, afin de sauter la case qui contient la valeur : `LOAD ET T2`.
+      Une des deux suffit, d'où le `OU`.
+    - **`LD Rd` = (`calcul` OU `LOAD`) ET `T2`.** Un registre `Rd` reçoit une
+      valeur pendant `T2`, pour un calcul (résultat de l'ALU) ou pour un
+      `LOAD` (valeur de la mémoire). Les deux lignes ont la même étape `T2` :
+      on regroupe les instructions avec `OU`, puis on ajoute une seule fois
+      `ET T2`.
+    - **`LD sortie` = `OUT` ET `T2`.** Le registre de sortie ne capture que
+      pendant l'exécution (`T2`) d'un `OUT`, la seule ligne où il apparaît.
+
+    Traduisez ces formules en portes (3 *AND* et 2 *OR* en tout). Reliez chaque
+    signal **là où arrivait son interrupteur** (`LD Rd` va donc sur les quatre
+    portes `ET` du banc), puis supprimez l'interrupteur.
+
 5.  **Lancez le programme.** Faites un `reset`, puis avancez l'horloge sans
     toucher à rien d'autre, et vérifiez :
 

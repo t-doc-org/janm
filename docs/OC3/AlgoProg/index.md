@@ -11,3 +11,22 @@ listes
 fonctions
 challenges
 ```
+
+## Complexité
+```{toctree}
+complexite
+```
+
+## Algorithmes de recherche
+```{toctree}
+recherche
+```
+
+## Algorithmes de tri
+```{toctree}
+tri_selection
+tri_insertion
+recursivite
+tri_fusion
+tri_rapide
+```
