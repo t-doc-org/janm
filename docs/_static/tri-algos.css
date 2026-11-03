@@ -1,0 +1,327 @@
+/* Copyright 2026 Maxime Jan <maxime.jan@edufr.ch> */
+/* SPDX-License-Identifier: CC-BY-NC-SA-4.0 */
+
+/* Module de visualisation des algorithmes de tri (tri-algos.js) */
+
+.tri-widget {
+  --tri-base: #94a3b8;
+  --tri-compare: #f59e0b;
+  --tri-swap: #ef4444;
+  --tri-trie: #22c55e;
+  --tri-trie-part: #86efac;
+  --tri-min: #3b82f6;
+  --tri-cle: #3b82f6;
+  --tri-pivot: #d946ef;
+  --tri-petit: #7dd3fc;
+  --tri-gauche: #2dd4bf;
+  --tri-droite: #a5b4fc;
+  --tri-duree: 300ms;
+  --tri-fond: var(--pst-color-surface, #f8fafc);
+  --tri-bord: var(--pst-color-border, #d1d5db);
+  --tri-texte: var(--pst-color-text-base, #1f2937);
+  --tri-texte-doux: var(--pst-color-text-muted, #6b7280);
+  border: 1px solid var(--tri-bord);
+  border-radius: 0.5rem;
+  background: var(--tri-fond);
+  color: var(--tri-texte);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+html[data-theme="dark"] .tri-widget {
+  --tri-base: #64748b;
+  --tri-trie: #16a34a;
+  --tri-trie-part: #4d7c5a;
+  --tri-petit: #0369a1;
+  --tri-gauche: #0f766e;
+  --tri-droite: #4f46e5;
+}
+
+.tri-tete {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.5rem;
+}
+.tri-titre { font-weight: 600; }
+.tri-compteurs {
+  font-size: 0.85rem;
+  color: var(--tri-texte-doux);
+  font-variant-numeric: tabular-nums;
+}
+.tri-consigne {
+  font-size: 0.9rem;
+  color: var(--tri-texte-doux);
+  margin-bottom: 0.5rem;
+}
+
+/* Scène */
+.tri-scene {
+  position: relative;
+  margin: 1.5rem 0 0.5rem 0;
+  user-select: none;
+}
+.tri-barre {
+  position: absolute;
+  background: var(--tri-base);
+  border-radius: 4px 4px 0 0;
+  transition: left var(--tri-duree) ease, top var(--tri-duree) ease,
+              background-color 150ms, opacity 150ms, outline-color 150ms;
+  box-sizing: border-box;
+}
+.tri-sans-anim .tri-barre { transition: none; }
+.tri-val {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--tri-texte);
+  font-variant-numeric: tabular-nums;
+}
+.tri-indices {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18px;
+  border-top: 1px solid var(--tri-bord);
+}
+.tri-indices span {
+  position: absolute;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--tri-texte-doux);
+}
+.tri-aux-fond {
+  position: absolute;
+  border: 1px dashed var(--tri-bord);
+  border-radius: 4px;
+  display: none;
+}
+.tri-aux-fond span {
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  font-size: 0.7rem;
+  color: var(--tri-texte-doux);
+  white-space: nowrap;
+}
+
+/* États des barres (de la moins à la plus prioritaire) */
+.tri-barre.st-gauche { background: var(--tri-gauche); }
+.tri-barre.st-droite { background: var(--tri-droite); }
+.tri-barre.st-petit { background: var(--tri-petit); }
+.tri-barre.st-trie-part { background: var(--tri-trie-part); }
+.tri-barre.st-trie { background: var(--tri-trie); }
+.tri-barre.st-hors { opacity: 0.35; }
+.tri-barre.st-min, .tri-barre.st-cle { background: var(--tri-min); }
+.tri-barre.st-pivot { background: var(--tri-pivot); }
+.tri-barre.st-compare { background: var(--tri-compare); opacity: 1; }
+.tri-barre.st-swap { background: var(--tri-swap); opacity: 1; }
+
+/* Exercice */
+.tri-cliquable .tri-barre { cursor: pointer; }
+.tri-cliquable .tri-barre:hover { filter: brightness(1.1); }
+.tri-barre.st-choisi {
+  outline: 3px solid var(--tri-texte);
+  outline-offset: 2px;
+}
+/* L'indice est un anneau pointillé dessiné autour de la barre : il reste visible
+   en même temps que le contour plein de la sélection. */
+.tri-barre.st-indice::after {
+  content: '';
+  position: absolute;
+  inset: -9px -3px -5px -3px;
+  border: 2px dashed var(--tri-compare);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.tri-retour {
+  min-height: 1.5rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+.tri-retour.tri-ok { color: #15803d; }
+.tri-retour.tri-ko { color: #dc2626; }
+.tri-retour.tri-info { color: var(--tri-texte-doux); }
+html[data-theme="dark"] .tri-retour.tri-ok { color: #4ade80; }
+html[data-theme="dark"] .tri-retour.tri-ko { color: #f87171; }
+
+@keyframes tri-secousse {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.tri-secousse .tri-scene { animation: tri-secousse 250ms ease 2; }
+
+/* Texte d'explication */
+.tri-texte {
+  min-height: 2.8rem;
+  padding: 0.4rem 0.6rem;
+  border-left: 3px solid var(--tri-compare);
+  background: color-mix(in srgb, var(--tri-compare) 8%, transparent);
+  border-radius: 0 4px 4px 0;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+/* Contrôles */
+.tri-controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.4rem 0;
+}
+.tri-btn, .tri-select {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--tri-bord);
+  border-radius: 0.35rem;
+  background: var(--pst-color-background, #fff);
+  color: var(--tri-texte);
+  cursor: pointer;
+}
+.tri-btn:hover { border-color: var(--tri-texte-doux); }
+.tri-btn-play { min-width: 6.5rem; }
+.tri-btn-action {
+  font-weight: 600;
+  border-color: var(--pst-color-primary, #2563eb);
+  color: var(--pst-color-primary, #2563eb);
+}
+.tri-select-algo { font-weight: 600; font-size: 0.95rem; }
+.tri-choix-liste { display: inline-flex; gap: 0.4rem; }
+.tri-vitesse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--tri-texte-doux);
+  margin-left: 0.5rem;
+}
+.tri-vitesse input { width: 6rem; }
+
+/* Légende */
+.tri-legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8rem;
+  color: var(--tri-texte-doux);
+  margin-top: 0.4rem;
+}
+.tri-leg { display: inline-flex; align-items: center; gap: 0.3rem; }
+.tri-leg i {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 2px;
+  background: var(--tri-base);
+}
+.tri-leg i.st-compare { background: var(--tri-compare); }
+.tri-leg i.st-swap { background: var(--tri-swap); }
+.tri-leg i.st-trie { background: var(--tri-trie); }
+.tri-leg i.st-trie-part { background: var(--tri-trie-part); }
+.tri-leg i.st-min, .tri-leg i.st-cle { background: var(--tri-min); }
+.tri-leg i.st-pivot { background: var(--tri-pivot); }
+.tri-leg i.st-petit { background: var(--tri-petit); }
+.tri-leg i.st-gauche { background: var(--tri-gauche); }
+.tri-leg i.st-droite { background: var(--tri-droite); }
+
+/* Récursion : arbre des appels et pile d'appels */
+.tri-widget {
+  --tri-ap-actif: #f59e0b;
+  --tri-ap-attente: #3b82f6;
+  --tri-ap-fini: #22c55e;
+}
+.tri-arbre-titre {
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem;
+  color: var(--tri-texte-doux);
+}
+.tri-appel {
+  position: absolute;
+  border-radius: 3px;
+  box-sizing: border-box;
+  transition: background-color 150ms, border-color 150ms;
+}
+.tri-appel.ap-actif {
+  background: color-mix(in srgb, var(--tri-ap-actif) 55%, transparent);
+  border: 2px solid var(--tri-ap-actif);
+}
+.tri-appel.ap-attente {
+  background: color-mix(in srgb, var(--tri-ap-attente) 15%, transparent);
+  border: 2px solid var(--tri-ap-attente);
+}
+.tri-appel.ap-fini {
+  background: color-mix(in srgb, var(--tri-ap-fini) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tri-ap-fini) 60%, transparent);
+}
+.tri-pile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  margin: 0 0 0.5rem 0;
+  min-height: 1.8rem;
+}
+.tri-pile-titre { color: var(--tri-texte-doux); margin-right: 0.2rem; }
+.tri-pile-vide { color: var(--tri-texte-doux); font-style: italic; }
+.tri-pile-fleche { color: var(--tri-texte-doux); }
+.tri-pile-appel {
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.3rem;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.tri-pile-appel.ap-attente {
+  border: 1px solid var(--tri-ap-attente);
+  background: color-mix(in srgb, var(--tri-ap-attente) 10%, transparent);
+}
+.tri-pile-appel.ap-actif {
+  border: 2px solid var(--tri-ap-actif);
+  background: color-mix(in srgb, var(--tri-ap-actif) 25%, transparent);
+  font-weight: 600;
+}
+.tri-leg i.st-ap-actif { background: var(--tri-ap-actif); }
+.tri-leg i.st-ap-attente { background: color-mix(in srgb, var(--tri-ap-attente) 15%, transparent); border: 2px solid var(--tri-ap-attente); box-sizing: border-box; }
+.tri-leg i.st-ap-fini { background: color-mix(in srgb, var(--tri-ap-fini) 30%, transparent); border: 1px solid var(--tri-ap-fini); box-sizing: border-box; }
+
+/* Recherche */
+.tri-cible {
+  font-weight: 600;
+  margin: 0.2rem 0 0 0;
+}
+.tri-leg i.st-hors { opacity: 0.35; }
+
+/* Icônes SVG */
+.tri-icone {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tri-icone-pleine { fill: currentColor; }
+.tri-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+.tri-retour {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
