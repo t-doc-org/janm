@@ -2,17 +2,40 @@
 
 ## 2BS1
 Groupe A :
- -
+ - Aerne Louis
+ - Beaud Adam
+ - Bouillard Anton
+ - Felchlin Léonard
+ - Gabaglio Luna
+ - Khattab Lara
+ - Künzle Arthur
+ - Lâm Jonathan
+ 
 
 Groupe B :
- -
+ - Mauron Amélie
+ - Minder Noah
+ - Muller Mathis
+ - Onraet Zoltan
+ - Philipona Mia-Laure
+ - Ribordy Mathieu Nicolas
+ - Sciboz Yves
+ - Tu Quoc Ella
+ - Zahnd Tim
 
 Dates :
- -
+ - 20.11.2026 (Groupe A)
+ - 27.11.2026 (Groupe B)
+ - 04.12.2026 (Groupe A)
+ - 11.12.2026 (Groupe B)
+ - 18.12.2026 (Groupe A)
+ - 08.01.2027 (Groupe B)
+ - 15.01.2027 (Groupe A)
+ - 22.01.2027 (Groupe B)
 
 ## 2BP1
 Groupe A :
- -
+ - 
 
 Groupe B :
  -
