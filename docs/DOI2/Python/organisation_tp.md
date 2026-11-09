@@ -35,13 +35,43 @@ Dates :
 
 ## 2BP1
 Groupe A :
- - 
+ - Baeriswyl Chloé
+ - Barrio Dan
+ - Beaud Ruben
+ - Buri Flurin
+ - Cuennet Anaël
+ - Djassah Myra
+ - Feldmann Micaëla
+ - Fidanza Corentin
+ - Fleckenstein Shiloh
+ - Fontana Lou
+ - Frachet Kinai
+ - Herr Elise
+ 
 
 Groupe B :
- -
+ - Jorge Stella
+ - Lehmann Rania
+ - Lukic Anamaria
+ - Maeder Nora
+ - Menoud Amélie
+ - Precup Anastasia
+ - Rouiller Elodie
+ - Rüeger Amalya
+ - Sonderegger Nils
+ - Volken Dionys
+ - Wider Levi
+ - Yassir Eliza
 
 Dates :
- -
+ - 19.11.2026 (Groupe A)
+ - 26.11.2026 (Groupe B)
+ - 03.12.2026 (Groupe A)
+ - 10.12.2026 (Groupe B)
+ - 17.12.2026 (Groupe A)
+ - 07.01.2027 (Groupe B)
+ - 14.01.2027 (Groupe A)
+ - 21.01.2027 (Groupe B)
 
 ## 2F1
 Groupe A :
