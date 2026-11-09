@@ -20,6 +20,7 @@ bootstrap
 vscode
 TP_sujet_perso/organisation_tp
 TP_sujet_perso/consigne_tp
+TP_sujet_perso/bibliographie
 ```
 
 ## Examen

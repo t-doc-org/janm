@@ -86,19 +86,18 @@ h1 {
 Lors de la visite de la bibliothécaire, vous effectuerez une recherche documentaire sur votre sujet. Celui-ci peut être élargi afin de trouver des documents pertinents. Durant ces 2 périodes, et durant les TP consacrés au projet vous êtes chargés de :
 
 - Trouver 3 sources pertinentes concernant votre sujet sur les plateformes présentées, dont au moins une présente à la biliothèque de STX
-- Rédiger une très courte bibliographie contenant ces 3 sources au format demandé dans [le guide du Travail de Maturité](https://new.cscfr.ch/images/stories/media/tm/TM_Guide_2026_27_F.pdf)
+- Rédiger une très courte bibliographie contenant ces 3 sources au format demandé dans [le guide du Travail de Maturité](https://new.cscfr.ch/images/stories/media/tm/TM_Guide_2026_27_F.pdf) (voir l'[aide à la rédaction de la bibliographie](bibliographie.md))
 - Présenter ces 3 sources à l'enseignant au plus tard durant le dernier TP consacré à ce projet. La source de la bibliothèque doit être présentée en "physique"
-- Pour chaque source, rédiger quelques phrases résumant les informations que vous y avez trouvées
 
 ## Développement et objectifs
 
 Une fois la mise en place effectuée, développez votre site Web en respectant les conditions suivantes :
 
  - Le site Web contient au moins 3 pages HTML dont le contenu (images, textes, vidéos, ...) est pertinent dans le sujet choisi
- - Le site Web contient une autre page HTML contenant votre résultat de la recherche documentaire (bibliographie et résumés)
+ - La bibliographie de votre recherche documentaire apparaît sur le site Web
  - Le site Web utilise correctement au moins une fois toutes les balises HTML travaillées en cours (voir [théorie HTML](../html.md)) de manière pertinente
  - Le site Web utilise correctement au moins 10 propriétés CSS différentes<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span>
- - Le site Web utilise des classes et des `div` de manière pertinente
+ - Le site Web utilise des classes de manière pertinente
  - Le site Web utilise la grille de [Bootstrap](../bootstrap.md) (`container`, `row`, `col`) pour organiser le contenu de ses pages, avec au moins deux lignes à plusieurs colonnes
  - Le style visuel du site Web est soigné
  - L'orthographe et la grammaire du site Web sont irréprochables
@@ -123,7 +122,6 @@ valeur maximale indiquée.
 | Un unique fichier `style.css` est lié à toutes les pages | 1 |
 | Au moins 10 propriétés CSS différentes sont utilisées correctement<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span> | 3 |
 | Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois (classes définies dans `style.css` ; les classes de Bootstrap ne comptent pas) | 3 |
-| Les balises `<div>` sont utilisées au moins 2 fois de manière pertinente, en lien avec une classe et du CSS, pour styliser un groupe | 2 |
 | **Bootstrap** | |
 | Bootstrap est installé correctement sur chaque page (`<link>` dans le `<head>`, avant celui de `style.css` ; `<script>` juste avant `</body>`) | 1 |
 | Le contenu de chaque page est placé dans un `container`, et les `row` et `col` sont correctement imbriquées (`col` dans une `row`, `row` dans le `container`) | 2 |
@@ -135,9 +133,8 @@ valeur maximale indiquée.
 | **Recherche documentaire** | |
 | 3 sources pertinentes trouvées, dont au moins une empruntée à la bibliothèque de STX et présentée physiquement | 3 |
 | Bibliographie rédigée au format demandé dans le guide du Travail de Maturité | 2 |
-| Résumé pertinent des informations trouvées pour chacune des 3 sources | 3 |
-| La recherche documentaire est présentée sur une page dédiée du site | 1 |
-| **Total** | **45** |
+| La bibliographie apparaît sur le site Web | 1 |
+| **Total** | **40** |
 
 ## Rendu
 
