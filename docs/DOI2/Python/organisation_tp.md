@@ -119,10 +119,39 @@ Dates :
 
 ## 2F2
 Groupe A :
- -
+ - Autunno Liliana
+ - Boudiaf Jihane
+ - Carrupt Paul
+ - Chap Hugo Hodoam
+ - Chobaz Jean
+ - Ciejak Lorène
+ - Cortizo Güimil Sergio
+ - Dévaud Cécile
+ - Ferreira Dos Reis Bryan
+ - Gay Paul-Vianney
+ - Jungo Lidya
+
 
 Groupe B :
- -
+ - Luyeye Kediamosiko Gloire
+ - Maradan Laly
+ - Mercier Fanny
+ - Miguez Juan
+ - Moning Alison
+ - Praz Arnaud
+ - Reutter Matilda
+ - Rumin Chaké
+ - Scherwey Ludovic
+ - Studer Mayla
+ - Thoos Loïc
 
 Dates :
- -
+ - 20.11.2026 (Groupe A)
+ - 27.11.2026 (Groupe B)
+ - 04.12.2026 (Groupe A)
+ - 11.12.2026 (Groupe B)
+ - 18.12.2026 (journée de Noël)
+ - 08.01.2027 (Groupe A)
+ - 15.01.2027 (Groupe B)
+ - 22.01.2027 (Groupe A)
+ - 29.01.2027 (Groupe B)
