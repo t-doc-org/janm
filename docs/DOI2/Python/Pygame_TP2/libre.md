@@ -1,4 +1,5 @@
 ```{metadata}
+hide: [primary-sidebar, secondary-sidebar, prev-next, footer]
 exec:
   python:
     files:
@@ -43,18 +44,27 @@ setup_canvas()
 :name: pygame_end
 :when:
 :class: hidden
-try:
-    await main()
-finally:
-    pygame.quit()
+# Anciens programmes écrits dans une fonction « async def main() ».
+if "main" in globals():
+    try:
+        await main()
+    finally:
+        pygame.quit()
+# Le programme est terminé : pygame rend le clavier à la page.
+pygame.quit()
 ```
 
 # Projet libre
 
+:::{container} projet-liens
+[Documentation du module](../pygame_doc.md)
+:::
+
+:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: e722f1e6-542a-4106-b297-6f9511754d02
-async def main():
-  while True:
-    await refresh((0, 0, 0))
+while True:
+    refresh((0, 0, 0))
 ```
+:::

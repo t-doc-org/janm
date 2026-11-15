@@ -31,7 +31,6 @@ fonctions_avec_vdr
 organisation_tp
 pygame_intro
 pygame_doc
-pygame_dino
 pygame_tp1
 pygame_tp2
 ```

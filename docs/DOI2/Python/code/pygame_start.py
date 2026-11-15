@@ -1,97 +1,341 @@
 
+import asyncio
+import os
+import sys
 import pygame
-import math
-import pathlib
 from random import randint, choice
+from pyodide.ffi import run_sync
 
+# Tant que pygame est actif, il capture le clavier de toute la page (on ne peut
+# plus écrire dans les éditeurs). Il faut donc toujours appeler pygame.quit()
+# à la fin du programme : arrêt avec le bouton « stop » (voir _wait_frame),
+# erreur (ci-dessous) ou fin normale (bloc pygame_end).
+if not getattr(sys.excepthook, "_pygame_quit", False):
+    _original_excepthook = sys.excepthook
+
+    def _excepthook(*args):
+        pygame.quit()
+        _original_excepthook(*args)
+
+    _excepthook._pygame_quit = True
+    sys.excepthook = _excepthook
+
+pygame.quit()  # repart de zéro si l'exécution précédente a été interrompue
+pygame.init()
 width, height = 600, 600
 window = pygame.display.set_mode((width, height))
-pygame.init()
 
-async def refresh(color):
-    await animation_frame()
+
+# ---------------------------------------------------------------------------
+# Boucle de jeu
+# ---------------------------------------------------------------------------
+
+_FRAME_MS = 1000 / 60      # 60 images par seconde, quel que soit l'écran
+_FREEZE_MS = 3000          # délai après lequel on considère que le jeu est bloqué
+_next_frame = None
+_last_refresh = animation_time()
+_keys_now = []
+_keys_before = []
+
+
+class _Done:
+    """Permet aux anciens programmes d'écrire « await refresh(...) »."""
+    def __await__(self):
+        return iter(())
+
+
+def _wait_frame():
+    """Attend la prochaine image du navigateur, sans async/await."""
+    t = run_sync(animation_frame())
+    # Le bouton « stop » annule la tâche, mais du code sans await ne le
+    # remarquerait jamais : on arrête donc le programme ici.
+    task = asyncio.current_task()
+    if task is not None and task.cancelling():
+        # L'annulation est traitée ici : sinon asyncio l'appliquerait une
+        # seconde fois à la fin du programme (message « PythonError »).
+        task.uncancel()
+        try:
+            task._must_cancel = False
+        except AttributeError:
+            pass
+        pygame.quit()  # rend le clavier à la page
+        raise asyncio.CancelledError()
+    return t
+
+
+def refresh(color):
+    global _next_frame, _last_refresh, _keys_now, _keys_before
+    # Sur un écran 120 ou 144 Hz, requestAnimationFrame est appelé plus de 60
+    # fois par seconde : on saute des images pour garder la même vitesse de jeu
+    # sur tous les ordinateurs.
+    t = _wait_frame()
+    if _next_frame is None:
+        _next_frame = t
+    while t < _next_frame - _FRAME_MS / 2:
+        t = _wait_frame()
+    _next_frame = max(_next_frame + _FRAME_MS, t)
+
     pygame.display.flip()
     window.fill(color)
 
+    pygame.event.get()  # vide la file d'événements (sinon elle se remplit)
+    _keys_before = _keys_now
+    _keys_now = _read_keys()
+    _last_refresh = animation_time()
+    return _Done()
 
 
-class Actor(pygame.sprite.Sprite):
-    def __init__(self, image_path, cx, cy):
-        super().__init__()
-        self.image_path = image_path
-        self.original_image = pygame.image.load(image_path).convert_alpha()
-        self.image = self.original_image.copy()
-        self.rect = self.image.get_rect(center=(cx, cy))
-        self.collision_margin = 0.05  # 5% de marge
-        self.angle = 0
+def _check_not_frozen():
+    """Détecte une boucle de jeu qui ne rend jamais la main au navigateur."""
+    if animation_time() - _last_refresh > _FREEZE_MS:
+        raise RuntimeError(
+            "Le jeu est bloqué : refresh(...) n'a pas été exécuté depuis plus "
+            "de 3 secondes. Avez-vous oublié refresh(...) au début de la "
+            "boucle de jeu ? Ou avez-vous écrit une autre boucle while qui ne "
+            "se termine jamais ?")
 
-    @property
-    def collision_rect(self):
-        """Crée le rect de collision à la volée basé sur le rect actuel"""
-        return self.rect.inflate(
-            -self.rect.width * self.collision_margin,
-            -self.rect.height * self.collision_margin
-        )
+
+# ---------------------------------------------------------------------------
+# Entrées utilisateur
+# ---------------------------------------------------------------------------
+
+# Touches dont le code est en dehors de 0-511 et qui échappent donc à la
+# boucle de _read_keys().
+_SPECIAL_KEYS = [
+    (pygame.K_UP, "UP"), (pygame.K_DOWN, "DOWN"),
+    (pygame.K_LEFT, "LEFT"), (pygame.K_RIGHT, "RIGHT"),
+    (pygame.K_LSHIFT, "SHIFT"), (pygame.K_RSHIFT, "SHIFT"),
+    (pygame.K_LCTRL, "CTRL"), (pygame.K_RCTRL, "CTRL"),
+    (pygame.K_LALT, "ALT"), (pygame.K_RALT, "ALT"),
+    (pygame.K_RETURN, "ENTER"), (pygame.K_KP_ENTER, "ENTER"),
+    (pygame.K_KP0, "0"), (pygame.K_KP1, "1"), (pygame.K_KP2, "2"),
+    (pygame.K_KP3, "3"), (pygame.K_KP4, "4"), (pygame.K_KP5, "5"),
+    (pygame.K_KP6, "6"), (pygame.K_KP7, "7"), (pygame.K_KP8, "8"),
+    (pygame.K_KP9, "9"),
+]
+
+
+def _read_keys():
+    pressed = []
+    keys = pygame.key.get_pressed()
+
+    # Codes de touches 0-511 : lettres, chiffres, espace, échap, tab, ...
+    # (les codes de touches suivent la disposition du clavier, QWERTZ compris)
+    for keycode in range(len(keys)):
+        if keys[keycode]:
+            name = pygame.key.name(keycode).upper()
+            if name and name != "UNKNOWN" and name not in pressed:
+                pressed.append(name)
+
+    for keycode, name in _SPECIAL_KEYS:
+        if keys[keycode] and name not in pressed:
+            pressed.append(name)
+
+    mouse_buttons = pygame.mouse.get_pressed()
+    if mouse_buttons[0]: pressed.append("MOUSE_1")
+    if mouse_buttons[1]: pressed.append("MOUSE_2")
+    if mouse_buttons[2]: pressed.append("MOUSE_3")
+    return pressed
+
+
+def get_pressed_keys():
+    _check_not_frozen()
+    return list(_keys_now)
+
+
+def get_new_keys():
+    _check_not_frozen()
+    return [key for key in _keys_now if key not in _keys_before]
+
+
+def get_mouse_x():
+    return pygame.mouse.get_pos()[0]
+
+
+def get_mouse_y():
+    return pygame.mouse.get_pos()[1]
+
+
+# ---------------------------------------------------------------------------
+# Acteurs et textes
+# ---------------------------------------------------------------------------
+
+_images = {}
+_IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp")
+
+
+def _load_image(image_path):
+    """Charge une image une seule fois, puis la réutilise."""
+    if image_path not in _images:
+        if not isinstance(image_path, str) or not os.path.isfile(image_path):
+            available = sorted(f for f in os.listdir()
+                               if f.lower().endswith(_IMAGE_EXTENSIONS))
+            raise FileNotFoundError(
+                f"L'image {image_path!r} n'existe pas. Vérifiez l'orthographe "
+                f"et l'extension (par exemple \"roger.png\"). Images "
+                f"disponibles sur cette page : {', '.join(available)}")
+        _images[image_path] = pygame.image.load(image_path).convert_alpha()
+    return _images[image_path]
+
+
+class _Element:
+    """Fonctionnalités communes à Actor et Text."""
+    collision_margin = 0
 
     def draw(self):
-        global window
-        window.blit(self.image, self.rect)
+        _check_not_frozen()
+        if not self._killed:
+            window.blit(self.image, self.rect)
 
     def get_x(self):
         return self.rect.centerx
+
     def get_y(self):
         return self.rect.centery
 
+    def get_width(self):
+        return self.rect.width
+
+    def get_height(self):
+        return self.rect.height
+
+    def get_left(self):
+        return self.rect.left
+
+    def get_right(self):
+        return self.rect.right
+
+    def get_top(self):
+        return self.rect.top
+
+    def get_bottom(self):
+        return self.rect.bottom
+
     def move(self, dx, dy):
         self.rect.move_ip(dx, dy)
-    def set_position(self, x, y):
-        self.rect.centerx = x
-        self.rect.centery = y
-    def collide(self, other_actor):
-        other_rect = getattr(other_actor, 'collision_rect', other_actor.rect)
-        return self.collision_rect.colliderect(other_rect)
 
-    def flip(self, horizontal=True, vertical=False):
-        self.image = pygame.transform.flip(self.image, horizontal, vertical)
-        self.rect = self.image.get_rect(center=self.rect.center)
+    def set_position(self, x, y):
+        self.rect.center = (x, y)
+
+    @property
+    def collision_rect(self):
+        """Rectangle de collision, légèrement plus petit que l'image."""
+        return self.rect.inflate(-self.rect.width * self.collision_margin,
+                                 -self.rect.height * self.collision_margin)
+
+    def collide(self, other_actor):
+        if not isinstance(other_actor, _Element):
+            if isinstance(other_actor, list):
+                raise TypeError(
+                    "collide() attend un acteur, pas une liste. Pour tester "
+                    "tous les acteurs d'une liste, utilisez une boucle for.")
+            raise TypeError(f"collide() attend un acteur (Actor ou Text), "
+                            f"pas {type(other_actor).__name__}.")
+        if self._killed or other_actor._killed:
+            return False
+        return self.collision_rect.colliderect(other_actor.collision_rect)
+
+    def kill(self):
+        self._killed = True
+
+    def is_killed(self):
+        return self._killed
+
+    def revive(self):
+        self._killed = False
+
+
+class Actor(_Element):
+    collision_margin = 0.05  # 5% de marge
+
+    def __init__(self, image_path, x, y):
+        self.image_path = image_path
+        self.original_image = _load_image(image_path)
+        self.image = self.original_image
+        self.rect = self.image.get_frect(center=(x, y))
+        self.factor = 1
+        self.angle = 0
+        self.flip_h = False
+        self.flip_v = False
+        self._killed = False
+
+    def _update_image(self):
+        """Reconstruit l'image à partir de l'originale (taille, miroir, angle)."""
+        image = self.original_image
+        if self.factor != 1:
+            new_size = (round(image.get_width() * self.factor),
+                        round(image.get_height() * self.factor))
+            image = pygame.transform.scale(image, new_size)
+        if self.flip_h or self.flip_v:
+            image = pygame.transform.flip(image, self.flip_h, self.flip_v)
+        if self.angle % 360 != 0:
+            image = pygame.transform.rotate(image, self.angle)
+        center = self.rect.center
+        self.image = image
+        self.rect = image.get_frect(center=center)
 
     def scale(self, factor):
-        new_size = (
-            int(self.original_image.get_width() * factor),
-            int(self.original_image.get_height() * factor)
-        )
-        self.image = pygame.transform.scale(self.original_image, new_size)
-        self.rect = self.image.get_rect(center=self.rect.center)
-        
-    def kill(self):
-        self.image = pygame.Surface((0, 0))
-        self.original_image = pygame.Surface((0, 0))
-        self.rect = self.image.get_rect()
+        if factor < 0:
+            raise ValueError("scale() attend un facteur positif, par exemple "
+                             "2 (2x plus grand) ou 0.5 (2x plus petit).")
+        self.factor = factor
+        self._update_image()
 
     def set_angle(self, angle):
         self.angle = angle
-        self.image = pygame.transform.rotate(self.original_image, angle)
+        self._update_image()
 
-class Text(pygame.sprite.Sprite):
+    def flip(self, horizontal=True, vertical=False):
+        # Inverse l'image à chaque appel
+        self.flip_h = self.flip_h != horizontal
+        self.flip_v = self.flip_v != vertical
+        self._update_image()
 
-
-    def __init__(self, text, cx, cy, *args):
-        super().__init__()
-        self.font = pygame.font.Font(None, 36)
-        self.image = self.font.render(text, *args)
-        self.rect = self.image.get_rect()
-        self.rect.centerx, self.rect.centery = cx, cy
-    def draw(self):
-        global window
-        window.blit(self.image, self.rect)
-    def kill(self):
-        self.image = pygame.Surface((0,0))
-        self.rect = self.image.get_rect()
+    def set_flip(self, horizontal, vertical=False):
+        # Fixe le sens de l'image : peut être appelé à chaque tour de boucle
+        self.flip_h = horizontal
+        self.flip_v = vertical
+        self._update_image()
 
 
-class Timer(pygame.time.Clock):
+_fonts = {}
+
+
+class Text(_Element):
+    def __init__(self, text, x, y, *args, size=36):
+        args = list(args)
+        # Ancienne forme : Text(texte, x, y, True, couleur, fond)
+        self.antialias = True
+        if args and isinstance(args[0], bool):
+            self.antialias = args.pop(0)
+        if len(args) > 3:
+            raise TypeError("Trop de paramètres. Utilisez : Text(texte, x, y, "
+                            "couleur_texte, couleur_fond, taille)")
+        self.color = args[0] if len(args) >= 1 else (0, 0, 0)
+        self.background = args[1] if len(args) >= 2 else None
+        self.size = args[2] if len(args) >= 3 else size
+        if self.size not in _fonts:
+            _fonts[self.size] = pygame.font.Font(None, self.size)
+        self.font = _fonts[self.size]
+        self._killed = False
+        self.rect = pygame.FRect(0, 0, 0, 0)
+        self.rect.center = (x, y)
+        self.set_text(text)
+
+    def set_text(self, text):
+        self.text = str(text)
+        center = self.rect.center
+        self.image = self.font.render(self.text, self.antialias, self.color,
+                                      self.background)
+        self.rect = self.image.get_frect(center=center)
+
+
+# ---------------------------------------------------------------------------
+# Timer
+# ---------------------------------------------------------------------------
+
+class Timer:
     def __init__(self, time):
-        super().__init__()
         self.time = time * 1000
         self.started = False
 
@@ -101,82 +345,83 @@ class Timer(pygame.time.Clock):
         self.end_time = self.start_time + self.time
 
     def is_finished(self):
-        #A retravailler
+        # Un timer qui n'a jamais été démarré est considéré comme terminé.
         if not self.started:
             return True
         return animation_time() >= self.end_time
 
+    def get_time_left(self):
+        if self.is_finished():
+            return 0
+        return (self.end_time - animation_time()) / 1000
+
     def __str__(self):
         if not self.started:
-            return "Not started"
-        elif self.is_finished():
-            return "0.00s"
-        else:
-            return f"{(self.end_time - animation_time()) / 1000:.2f}s"
+            return "Pas démarré"
+        return f"{self.get_time_left():.2f}s"
+
+
+# ---------------------------------------------------------------------------
+# Sons
+# ---------------------------------------------------------------------------
+
+_MUSIC_MIN_SIZE = 500_000  # au-delà (en octets), le fichier est lu en streaming
+_current_music = None
+
 
 class Sound:
+    """Les petits fichiers (bruitages) sont chargés en mémoire et peuvent être
+    joués en même temps. Les gros fichiers (musiques) sont lus en streaming,
+    car les décoder entièrement prendrait plusieurs secondes : une seule
+    musique peut alors être jouée à la fois."""
+
     def __init__(self, file_path):
         if not pygame.mixer.get_init():
             pygame.mixer.init()
-        pygame.mixer.music.load(file_path)
+        if not isinstance(file_path, str) or not os.path.isfile(file_path):
+            raise FileNotFoundError(
+                f"Le son {file_path!r} n'existe pas. Vérifiez l'orthographe "
+                f"et l'extension (par exemple \"yoshi.ogg\").")
+        self.file_path = file_path
+        self.volume = 1
+        self.is_music = os.path.getsize(file_path) > _MUSIC_MIN_SIZE
+        self.sound = None if self.is_music else pygame.mixer.Sound(file_path)
+        self.channel = None
+
+    def _is_current_music(self):
+        return self.is_music and _current_music is self
 
     def play(self, loops=0):
-        pygame.mixer.music.play(loops)
+        global _current_music
+        if self.is_music:
+            pygame.mixer.music.load(self.file_path)
+            pygame.mixer.music.set_volume(self.volume)
+            pygame.mixer.music.play(loops)
+            _current_music = self
+        else:
+            self.channel = self.sound.play(loops)
 
     def pause(self):
-        pygame.mixer.music.pause()
+        if self._is_current_music():
+            pygame.mixer.music.pause()
+        elif self.channel is not None:
+            self.channel.pause()
 
     def unpause(self):
-        pygame.mixer.music.unpause()
+        if self._is_current_music():
+            pygame.mixer.music.unpause()
+        elif self.channel is not None:
+            self.channel.unpause()
 
     def stop(self):
-        pygame.mixer.music.stop()
+        if self._is_current_music():
+            pygame.mixer.music.stop()
+        elif self.sound is not None:
+            self.sound.stop()
 
     def set_volume(self, volume):
-        pygame.mixer.music.set_volume(volume)
-
-
-def get_pressed_keys():
-    pressed_list = []
-    keys = pygame.key.get_pressed()
-    
-    # 1. La boucle pour les touches "standards" (lettres, chiffres)
-    # On itère sur les scancodes standards
-    for scancode in range(len(keys)):
-        if keys[scancode]:
-            try:
-                name = pygame.key.name(scancode).upper()
-                # On filtre un peu pour éviter d'avoir des trucs bizarres ou vides
-                if name and name != "UNKNOWN":
-                    pressed_list.append(name)
-            except ValueError:
-                pass
-
-    # 2. Vérification MANUELLE des touches spéciales (Flèches, Ctrl, etc.)
-    # C'est nécessaire car elles échappent souvent à la boucle simple ci-dessus
-    if keys[pygame.K_UP]:
-        pressed_list.append("UP")
-    if keys[pygame.K_DOWN]:
-        pressed_list.append("DOWN")
-    if keys[pygame.K_LEFT]:
-        pressed_list.append("LEFT")
-    if keys[pygame.K_RIGHT]:
-        pressed_list.append("RIGHT")
-    
-    # Tu peux aussi ajouter d'autres touches spéciales souvent manquées par la boucle :
-    if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
-        pressed_list.append("SHIFT")
-    if keys[pygame.K_SPACE]:
-        # Parfois "SPACE" ressort comme " " (vide) dans le name(), donc utile de le forcer
-        if " " in pressed_list: pressed_list.remove(" ") # Nettoyage optionnel
-        if "SPACE" not in pressed_list: pressed_list.append("SPACE")
-
-    # 3. Souris (Ton code original)
-    mouse_buttons = pygame.mouse.get_pressed()
-    if mouse_buttons[0]: pressed_list.append("MOUSE_1")
-    if mouse_buttons[1]: pressed_list.append("MOUSE_2")
-    if mouse_buttons[2]: pressed_list.append("MOUSE_3")
-
-    return pressed_list
-
-
+        self.volume = volume
+        if self._is_current_music():
+            pygame.mixer.music.set_volume(volume)
+        elif self.sound is not None:
+            self.sound.set_volume(volume)

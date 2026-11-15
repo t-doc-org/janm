@@ -1,5 +1,6 @@
 
 ```{metadata}
+hide: [primary-sidebar, secondary-sidebar, prev-next, footer]
 exec:
   python:
     files:
@@ -54,31 +55,39 @@ setup_canvas()
 :name: pygame_end
 :when:
 :class: hidden
-try:
-    await main()
-finally:
-    pygame.quit()
+# Anciens programmes écrits dans une fonction « async def main() ».
+if "main" in globals():
+    try:
+        await main()
+    finally:
+        pygame.quit()
+# Le programme est terminé : pygame rend le clavier à la page.
+pygame.quit()
 ```
 
 
 # Projet Space Shooter
 
-## Partie 1 : fonctionnalités de base
-````{tab-set}
+:::{container} projet-liens
+[Documentation du module](../pygame_doc.md)
+:::
+
+:::{container} projet-consignes
+``````{tab-set}
 :sync-group: etape
-```{tab-item} 1
+`````{tab-item} 1
 :sync: etape1
 Créez et dessinez l'acteur principal `vaisseau` en bas au centre de l'écran avec l'image `spaceship.png`. Rappel : l'écran fait 600x600 pixels.
-```
-```{tab-item}  2
+`````
+`````{tab-item} 2
 :sync: etape2
 Permettez au vaisseau de se déplacer latéralement.
  - Dans la boucle de jeu, récupérez les touches pressées avec `get_pressed_keys()`.
  - Si la touche {kbd}`A` est pressée, déplacez le vaisseau vers la gauche avec `move()`.
  - Si la touche {kbd}`D` est pressée, déplacez le vaisseau vers la droite avec `move()`.
  - Ajustez la vitesse de déplacement pour que la maniabilité soit agréable.
-```
-```{tab-item}   3
+`````
+`````{tab-item} 3
 :sync: etape3
 Armons notre vaisseau ! Pour pouvoir tirer plusieurs fois, nous allons stocker nos projectiles dans une liste.
  - Avant la boucle `while True`, créez une liste vide `lasers = []`.
@@ -88,15 +97,15 @@ Armons notre vaisseau ! Pour pouvoir tirer plusieurs fois, nous allons stocker n
  - Dans la boucle de jeu, dessinez `draw()` tous les lasers de la liste grâce à une boucle `for`.
 
 Vous devriez alors voir des lasers apparaître à l'endroit de votre vaisseau lorsque vous appuyez sur la touche {kbd}`Espace`. *Attention : Pour l'instant, rester appuyé sur espace créera un flux continu de lasers, c'est normal.*
-```
-```{tab-item}   4
+`````
+`````{tab-item} 4
 :sync: etape4
 Les lasers doivent maintenant se déplacer vers le haut.
  - Dans la boucle de jeu, parcourez la liste des lasers avec un `for`.
  - Déplacez chaque laser vers le haut (vitesse verticale négative, ex: `move(0, -7)`).
- - Pour éviter de ralentir l'ordinateur, si un laser sort par le haut de l'écran (y < -50), supprimez-le de la liste avec `remove()`. Vous pouvez récupérer la position verticale d'un laser avec `laser.get_y()`.
-```
-```{tab-item}   5
+ - Pour éviter de ralentir l'ordinateur, si un laser sort par le haut de l'écran (y < -50), supprimez-le de la liste avec `remove()`. Vous pouvez récupérer la position verticale d'un laser avec `laser.get_y()`. Faites-le dans une **deuxième** boucle `for`, placée après celle qui déplace les lasers : lorsqu'on retire un élément d'une liste pendant qu'on la parcourt, Python saute l'élément suivant, qui ne serait alors pas déplacé à ce tour-là.
+`````
+`````{tab-item} 5
 :sync: etape5
 Nous allons maintenant faire apparaître et tomber des astéroïdes régulièrement.
  - Avant la boucle de jeu, créez une liste vide `asteroides = []`.
@@ -108,66 +117,56 @@ Nous allons maintenant faire apparaître et tomber des astéroïdes régulièrem
    3. Redémarrez le timer.
  - Enfin, en vous inspirant grandement de ce que vous avez fait pour les lasers, utilisez une boucle `for` dans la boucle de jeu de sorte à dessiner les astéroïdes et à les faire bouger vers le bas.
 Vous devriez voir une succession d'astéroïdes tomber du haut de l'écran les uns sous les autres.
-```
-```{tab-item}   6
+`````
+`````{tab-item} 6
 :sync: etape6
-Pour l'instant les astéroïdes apparaissent tous à la même position horizontaale. Nous allons remédier à cela.
+Pour l'instant les astéroïdes apparaissent tous à la même position horizontale. Nous allons remédier à cela.
 
 Modifiez la création d'astéroïde de l'étape précédente. Plutôt que de donner une position horizontale fixe lors de la création de l'acteur, utilisez `randint(20, 580)`. Cette fonction permet de tirer un nombre entier aléatoire entre les deux bornes données en paramètre.
 
 Vous devriez maintenant voir une pluie d'astéroïdes tomber du haut de l'écran.
-```
-
-```{tab-item}   7
+`````
+`````{tab-item} 7
 :sync: etape7
 Nous allons nous lancer dans une étape assez complexe : gérer la collision entre un laser et un astéroïde. Il faut vérifier **chaque** laser contre **chaque** astéroïde.
  - Dans la boucle de jeu, créez une boucle `for` pour parcourir chaque laser.
  - À l'intérieur de celle-ci, créez une **deuxième** boucle `for` pour parcourir les astéroïdes.
  - Vérifiez la collision : `if laser.collide(asteroide):`. S'il y a bien une collision alors :
-    1. Supprimez l'astéroïde de sa liste.
-    2. Supprimez le laser de sa liste.
-```
-```{tab-item}   8
-:sync: etap8
+    1. Supprimez l'astéroïde de sa liste avec `remove()`.
+    2. Détruisez le laser avec `laser.kill()`. Un laser *killed* n'est plus dessiné et ne peut plus toucher d'autre astéroïde. Il sera retiré de la liste lorsqu'il sortira de l'écran (étape 4).
+
+*Attention : ne retirez pas le laser de sa liste avec `remove()` à cet endroit. Si un même laser touchait deux astéroïdes en même temps, Python essaierait de le retirer deux fois, ce qui provoquerait une erreur.*
+`````
+`````{tab-item} 8
+:sync: etape8
 Pour éviter que le joueur puisse continuellement tirer des lasers, nous allons maintenant revenir sur leur tir afin de le limiter.
  - Avant la boucle de jeu, créez un nouveau `timer_tir` avec une durée de 0.5 secondes. Démarrez immédiatement ce timer.
  - Modifiez la condition d'apparition d'un nouveau laser. On ne peut tirer que si la touche `"SPACE"` est pressée **ET** que le `timer_tir` est fini.
  - Dans cette condition, redémarrez le `timer_tir`.
 
  Votre vaisseau ne devrait maintenant plus tirer qu'un seul laser toutes les 0.5 secondes. Vous êtes évidemment libre d'adapter ce temps à votre convenance.
-```
-```{tab-item}   9
+`````
+`````{tab-item} 9
 :sync: etape9
 Nous allons maintenant gérer la fin du jeu. Celle-ci doit avoir lieu quand un astéroïde entre en collision avec le vaisseau ou lorsqu'un astéroïde n'a pas été détruit et continue sa route vers la terre.
 - Avant la boucle de jeu, créez une variable `gameover = False`.
 - Parcourez la liste des astéroïdes avec la boucle `for`
-  - Si un astéroïde est un collision avec le vaisseau **OU** si la position verticale (rappelez-vous de `get_y()`) d'un astéroïde est supérieure à 650, alors gameover devient `True`.
+  - Si un astéroïde est en collision avec le vaisseau **OU** si la position verticale (rappelez-vous de `get_y()`) d'un astéroïde est supérieure à 650, alors gameover devient `True`.
 - Modifiez votre code de sorte que tous les mouvements (vaisseau, lasers, astéroïdes) ainsi que toutes les apparitions (lasers et astéroïdes) ne se produisent plus que si gameover est `False`.
 
 En testant votre jeu, celui-ci devrait alors complètement se figer lorsqu'une des conditions de gameover est respectée.
-```
-
-```{tab-item}  10
+`````
+`````{tab-item} 10
 :sync: etape10
-Lorsque gameover est `True`, nous allons indiquer écrire le texte "GAMEOVER" à l'écran. Pour cela :
+Lorsque gameover est `True`, nous allons écrire le texte "GAMEOVER" à l'écran. Pour cela :
 
- - Avant la boucle `while True`, créez un nouveau `Text` comme ceci : `txt_gameover = Text("GAMEOVER", 300, 50, True, (0,0,0), (255, 255, 255))`
+ - Avant la boucle `while True`, créez un nouveau `Text` comme ceci : `txt_gameover = Text("GAMEOVER", 300, 50, (0, 0, 0), (255, 255, 255))`
  - Si gameover est `True`, dessinez `draw()` le `txt_gameover`.
- - Modifiez les couleurs et les position du texte à votre convenance.
-````
-
-
-```{exec} python
-:then: pygame_end
-:editor: 351561ff-39c1-4c28-834b-01556c44a642
-async def main():
-  while True:
-    await refresh((14, 0, 38))
-```
-
-
-
-## Partie 2 : fonctionnalités intermédiaires
+ - Modifiez les couleurs et la position du texte à votre convenance.
+`````
+`````{tab-item} Partie 2
+:sync: partie2
+**Partie 2 : fonctionnalités intermédiaires**
 
 Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc choisir des éléments de la liste suivante à implémenter et s'additionnant à 10 pts.
 
@@ -177,11 +176,101 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (4 pts) Ajoutez un système de vies. Le vaisseau commence avec 3 vies affichées à l'écran. Toucher un astéroïde ou en laisser passer un fait perdre une vie au lieu du gameover immédiat. Le gameover n'arrive que lorsque toutes les vies sont perdues. +1 pt si vous utilisez des images de coeur (`heart.png`).
  - (3 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsque le vaisseau ramasse l'un de ces bonus, il obtient un bonus de points (fonctionnalité à combiner avec l'affichage du score).
  - (1 pt) Ajoutez l'image `galaxy_background.jpg` comme image de fond.
+`````
+`````{tab-item} Partie 3
+:sync: partie3
+**Partie 3 : fonctionnalités avancées**
 
- ## Partie 3 : fonctionnalités avancées
-  - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
+ - (2 pts) Afin que le jeu ne commence pas immédiatement lorsqu'on lance le programme, définissez une touche sur laquelle on doit appuyer afin que le jeu démarre.
  - (3 pts) Ajoutez une fonctionnalité permettant de redémarrer le jeu une fois qu'on a perdu et qu'on appuie sur la touche `R`.
-  - (2 pts) Ajouter une nouvelle "attaque" par exemple un rayon laser plus large, une grosse bombe, ...
-
- - (5 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsqu'il le ramasse, le vaisseau obtient un pouvoir supplémentaire (tirs plus fréquents, vitesse augmentée, nouvelle attaque débloquée, ...). 5 pts pour l'ajout d'un bonus, + 1pt par bonus supplémentaire. +1 pt si un bonus obtenu est temporaire. 
+ - (2 pts) Ajouter une nouvelle "attaque" par exemple un rayon laser plus large, une grosse bombe, ...
+ - (5 pts) Ajoutez des bonus qui tombent du ciel comme les astéroïdes. Lorsqu'il les ramasse, le vaisseau obtient un pouvoir supplémentaire (tirs plus fréquents, vitesse augmentée, nouvelle attaque débloquée, ...). 5 pts pour l'ajout d'un bonus, + 1pt par bonus supplémentaire. +1 pt si un bonus obtenu est temporaire.
  - (3 pts) Ajoutez un deuxième type d'ennemi à détruire (`enemy_spaceship.png`). Ceux-ci se comportent différemment des astéroïdes. Par exemple, ils pourraient aussi bouger horizontalement. +2pts si les ennemis tirent aussi des lasers
+`````
+``````
+:::
+
+:::{container} projet-ide
+```{exec} python
+:then: pygame_end
+:editor: 351561ff-39c1-4c28-834b-01556c44a642
+while True:
+    refresh((14, 0, 38))
+```
+:::
+
+````{solution} Solution (étapes 1 à 10)
+```{code-block} python
+# Étape 1 : le vaisseau
+vaisseau = Actor("spaceship.png", 300, 550)
+
+# Étape 3 : les lasers
+lasers = []
+
+# Étape 5 : les astéroïdes
+asteroides = []
+timer_asteroides = Timer(1)
+timer_asteroides.start()
+
+# Étape 8 : cadence de tir
+timer_tir = Timer(0.5)
+timer_tir.start()
+
+# Étapes 9 et 10 : fin de partie
+gameover = False
+txt_gameover = Text("GAMEOVER", 300, 50, (0, 0, 0), (255, 255, 255))
+
+while True:
+    refresh((10, 10, 40))
+    touches = get_pressed_keys()
+
+    if gameover == False:
+        # Étape 2 : déplacement du vaisseau
+        if "A" in touches:
+            vaisseau.move(-5, 0)
+        if "D" in touches:
+            vaisseau.move(5, 0)
+
+        # Étapes 3 et 8 : tir
+        if "SPACE" in touches and timer_tir.is_finished():
+            laser = Actor("laser.png", vaisseau.get_x(), vaisseau.get_y() - 35)
+            lasers.append(laser)
+            timer_tir.start()
+
+        # Étape 4 : déplacement puis suppression des lasers
+        for laser in lasers:
+            laser.move(0, -7)
+        for laser in lasers:
+            if laser.get_y() < -50:
+                lasers.remove(laser)
+
+        # Étapes 5 et 6 : apparition et chute des astéroïdes
+        if timer_asteroides.is_finished():
+            asteroide = Actor("asteroide.png", randint(20, 580), -50)
+            asteroides.append(asteroide)
+            timer_asteroides.start()
+        for asteroide in asteroides:
+            asteroide.move(0, 2)
+
+        # Étape 7 : collisions lasers / astéroïdes
+        for laser in lasers:
+            for asteroide in asteroides:
+                if laser.collide(asteroide):
+                    asteroides.remove(asteroide)
+                    laser.kill()
+
+        # Étape 9 : fin de partie
+        for asteroide in asteroides:
+            if asteroide.collide(vaisseau) or asteroide.get_y() > 650:
+                gameover = True
+
+    vaisseau.draw()
+    for laser in lasers:
+        laser.draw()
+    for asteroide in asteroides:
+        asteroide.draw()
+    # Étape 10
+    if gameover:
+        txt_gameover.draw()
+```
+````
