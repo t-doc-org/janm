@@ -1,4 +1,4 @@
-# Pygame - TP 2-4
+# Pygame - TP 3-5
 
 ```{metadata}
 :recursive:

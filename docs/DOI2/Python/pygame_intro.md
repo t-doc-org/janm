@@ -49,7 +49,7 @@ setup_canvas()
 :class: hidden
 ```
 
-# Pygame - Découverte
+# Pygame - TP 1 : Découverte
 
 ```{image} images/pygame_logo.png
 :width: 60%

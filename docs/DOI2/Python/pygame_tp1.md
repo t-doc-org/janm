@@ -54,7 +54,7 @@ pygame.quit()
 
 
 
-# Pygame - TP 1
+# Pygame - TP 2
 
 :::{container} projet-liens
 [Documentation du module](pygame_doc.md)
