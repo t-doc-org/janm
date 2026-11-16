@@ -93,11 +93,11 @@ Lors de la visite de la bibliothécaire, vous effectuerez une recherche document
 
 Une fois la mise en place effectuée, développez votre site Web en respectant les conditions suivantes :
 
- - Le site Web contient au moins 3 pages HTML dont le contenu (images, textes, vidéos, ...) est pertinent dans le sujet choisi
+ - Le site Web contient au moins 3 pages HTML dont le contenu (images, textes, vidéos, ...) est pertinent dans le sujet choisi<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, et chaque page indique sa langue avec l'attribut lang de valeur rm sur la balise html</span>
  - La bibliographie de votre recherche documentaire apparaît sur le site Web
  - Le site Web utilise correctement au moins une fois toutes les balises HTML travaillées en cours (voir [théorie HTML](../html.md)) de manière pertinente
  - Le site Web utilise correctement au moins 10 propriétés CSS différentes<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span>
- - Le site Web utilise des classes de manière pertinente
+ - Le site Web utilise des classes de manière pertinente<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont la classe zone-ardoise sur la balise body de chaque page</span>
  - Le site Web utilise la grille de [Bootstrap](../bootstrap.md) (`container`, `row`, `col`) pour organiser le contenu de ses pages, avec au moins deux lignes à plusieurs colonnes
  - Le style visuel du site Web est soigné
  - L'orthographe et la grammaire du site Web sont irréprochables
@@ -111,28 +111,27 @@ valeur maximale indiquée.
 | Critère | Points |
 |---------|:------:|
 | **Conception et organisation** | |
-| Sujet pertinent (validé par l'enseignant) et plan des pages préparé | 2 |
+| Rendu au format demandé | 2 |
 | Organisation des fichiers conforme (dossier, `index.html`, `style.css`) | 1 |
 | **HTML** | |
 | Le site comporte 3 pages reliées par un même menu de navigation fonctionnel, présent sur chaque page. `index.html` est la page d'accueil | 3 |
-| Structure HTML complète sur chaque page (`<html>`, `<head>`, `<meta>`, `<title>`, `<body>`) | 2 |
+| Structure HTML complète sur chaque page (`<html>`, `<head>`, `<meta>`, `<title>`, `<body>`)<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, avec l'attribut lang de valeur rm sur la balise html</span> | 1 |
 | Les balises travaillées en cours (titres, paragraphes, listes, images, liens) sont utilisées de manière pertinente | 4 |
-| Au moins un `<table>` pertinent et au moins une liste (`<ul>` ou `<ol>`) pertinente | 2 |
+| Au moins un `<table>` pertinent et au moins une liste (`<ul>` ou `<ol>`) pertinente | 3 |
 | **CSS** | |
 | Un unique fichier `style.css` est lié à toutes les pages | 1 |
 | Au moins 10 propriétés CSS différentes sont utilisées correctement<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span> | 3 |
-| Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois (classes définies dans `style.css` ; les classes de Bootstrap ne comptent pas) | 3 |
+| Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois (classes définies dans `style.css` ; les classes de Bootstrap ne comptent pas)<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont la classe zone-ardoise sur la balise body</span> | 3 |
 | **Bootstrap** | |
 | Bootstrap est installé correctement sur chaque page (`<link>` dans le `<head>`, avant celui de `style.css` ; `<script>` juste avant `</body>`) | 1 |
-| Le contenu de chaque page est placé dans un `container`, et les `row` et `col` sont correctement imbriquées (`col` dans une `row`, `row` dans le `container`) | 2 |
-| Au moins deux lignes à plusieurs colonnes sont utilisées de manière pertinente (par exemple une image et son texte côte à côte, une galerie) | 2 |
+| Au moins deux lignes à plusieurs colonnes sont utilisées de manière pertinente (par exemple une image et son texte côte à côte, une galerie) | 4 |
 | **Contenu et soin** | |
 | Contenu informatif exact, suffisant et intéressant | 3 |
 | Orthographe et grammaire correctes | 2 |
 | Style visuel soigné et cohérent entre les 3 pages | 3 |
 | **Recherche documentaire** | |
-| 3 sources pertinentes trouvées, dont au moins une empruntée à la bibliothèque de STX et présentée physiquement | 3 |
-| Bibliographie rédigée au format demandé dans le guide du Travail de Maturité | 2 |
+| Dans les 3 sources trouvées, au moins une est empruntée à la bibliothèque de STX et présentée physiquement | 3 |
+| La bibliographie est correctement rédigée au format demandé dans le guide du Travail de Maturité | 2 |
 | La bibliographie apparaît sur le site Web | 1 |
 | **Total** | **40** |
 
