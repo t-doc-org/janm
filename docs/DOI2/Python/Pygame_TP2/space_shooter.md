@@ -57,10 +57,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -195,7 +195,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
 :then: pygame_end
 :editor: 351561ff-39c1-4c28-834b-01556c44a642
 while True:
-    refresh((14, 0, 38))
+  refresh((14, 0, 38))
 ```
 :::
 
@@ -221,56 +221,56 @@ gameover = False
 txt_gameover = Text("GAMEOVER", 300, 50, (0, 0, 0), (255, 255, 255))
 
 while True:
-    refresh((10, 10, 40))
-    touches = get_pressed_keys()
+  refresh((10, 10, 40))
+  touches = get_pressed_keys()
 
-    if gameover == False:
-        # Étape 2 : déplacement du vaisseau
-        if "A" in touches:
-            vaisseau.move(-5, 0)
-        if "D" in touches:
-            vaisseau.move(5, 0)
+  if gameover == False:
+    # Étape 2 : déplacement du vaisseau
+    if "A" in touches:
+      vaisseau.move(-5, 0)
+    if "D" in touches:
+      vaisseau.move(5, 0)
 
-        # Étapes 3 et 8 : tir
-        if "SPACE" in touches and timer_tir.is_finished():
-            laser = Actor("laser.png", vaisseau.get_x(), vaisseau.get_y() - 35)
-            lasers.append(laser)
-            timer_tir.start()
+    # Étapes 3 et 8 : tir
+    if "SPACE" in touches and timer_tir.is_finished():
+      laser = Actor("laser.png", vaisseau.get_x(), vaisseau.get_y() - 35)
+      lasers.append(laser)
+      timer_tir.start()
 
-        # Étape 4 : déplacement puis suppression des lasers
-        for laser in lasers:
-            laser.move(0, -7)
-        for laser in lasers:
-            if laser.get_y() < -50:
-                lasers.remove(laser)
-
-        # Étapes 5 et 6 : apparition et chute des astéroïdes
-        if timer_asteroides.is_finished():
-            asteroide = Actor("asteroide.png", randint(20, 580), -50)
-            asteroides.append(asteroide)
-            timer_asteroides.start()
-        for asteroide in asteroides:
-            asteroide.move(0, 2)
-
-        # Étape 7 : collisions lasers / astéroïdes
-        for laser in lasers:
-            for asteroide in asteroides:
-                if laser.collide(asteroide):
-                    asteroides.remove(asteroide)
-                    laser.kill()
-
-        # Étape 9 : fin de partie
-        for asteroide in asteroides:
-            if asteroide.collide(vaisseau) or asteroide.get_y() > 650:
-                gameover = True
-
-    vaisseau.draw()
+    # Étape 4 : déplacement puis suppression des lasers
     for laser in lasers:
-        laser.draw()
+      laser.move(0, -7)
+    for laser in lasers:
+      if laser.get_y() < -50:
+        lasers.remove(laser)
+
+    # Étapes 5 et 6 : apparition et chute des astéroïdes
+    if timer_asteroides.is_finished():
+      asteroide = Actor("asteroide.png", randint(20, 580), -50)
+      asteroides.append(asteroide)
+      timer_asteroides.start()
     for asteroide in asteroides:
-        asteroide.draw()
-    # Étape 10
-    if gameover:
-        txt_gameover.draw()
+      asteroide.move(0, 2)
+
+    # Étape 7 : collisions lasers / astéroïdes
+    for laser in lasers:
+      for asteroide in asteroides:
+        if laser.collide(asteroide):
+          asteroides.remove(asteroide)
+          laser.kill()
+
+    # Étape 9 : fin de partie
+    for asteroide in asteroides:
+      if asteroide.collide(vaisseau) or asteroide.get_y() > 650:
+        gameover = True
+
+  vaisseau.draw()
+  for laser in lasers:
+    laser.draw()
+  for asteroide in asteroides:
+    asteroide.draw()
+  # Étape 10
+  if gameover:
+    txt_gameover.draw()
 ```
 ````

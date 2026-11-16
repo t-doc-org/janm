@@ -72,8 +72,7 @@ Dans ce TP, vous allez découvrir **pas à pas** tous les outils dont vous aurez
 ```{admonition} Lancer et arrêter un programme
 :class: note
  - Cliquez sur ▶ à droite du code (ou appuyez sur {kbd}`Maj+Entrée` dans l'éditeur) pour lancer le programme.
- - Un jeu ne s'arrête jamais tout seul : cliquez sur ■ pour l'arrêter. Le message `CancelledError` qui s'affiche alors est normal.
- - Un seul jeu peut tourner à la fois : arrêtez-le avant d'en lancer un autre.
+ - Le jeu s'affiche dans une fenêtre par-dessus la page. Il ne s'arrête jamais tout seul : fermez la fenêtre avec × (ou cliquez à côté) pour l'arrêter.
  - Toutes les fonctions utilisées dans ce TP sont décrites dans la [documentation du module](pygame_doc.md). Gardez-la ouverte dans un autre onglet !
 ```
 
@@ -92,7 +91,7 @@ Le programme ci-dessous affiche un écran jaune de 600x600 pixels : la couleur `
 :then: pygame_end
 :editor: b21b5606-40b3-48e0-bd9f-a7a3212d8c08
 while True:
-    refresh((255, 255, 0))
+  refresh((255, 255, 0))
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -113,17 +112,17 @@ Combien de temps faut-il pour passer du noir au bleu ? Est-ce cohérent avec 60 
 :then: pygame_end
 :editor: 1dcfbe1a-b394-48e2-901a-05b6906a8d1c
 while True:
-    refresh((0, 0, 0))
+  refresh((0, 0, 0))
 ```
 
 ````{solution}
 ```{code-block} python
 bleu = 0
 while True:
-    refresh((0, 0, bleu))
-    bleu = bleu + 1
-    if bleu > 255:
-        bleu = 0
+  refresh((0, 0, bleu))
+  bleu = bleu + 1
+  if bleu > 255:
+    bleu = 0
 ```
 Il faut environ 4 secondes : 255 images ÷ 60 images par seconde ≈ 4,25 s.
 ````
@@ -158,8 +157,8 @@ roger = Actor("roger.png", 300, 50)
 roger = Actor("roger.png", 300, 50)
 
 while True:
-    refresh((197, 255, 143))
-    roger.draw()
+  refresh((197, 255, 143))
+  roger.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -188,9 +187,9 @@ orange = Actor("orange.png", 360, 300)
 orange.scale(0.5)
 
 while True:
-    refresh((197, 255, 143))
-    roger.draw()
-    orange.draw()
+  refresh((197, 255, 143))
+  roger.draw()
+  orange.draw()
 ```
 Les acteurs sont dessinés les uns après les autres : celui qui est dessiné **en dernier** apparaît par-dessus les autres.
 ````
@@ -208,9 +207,9 @@ roger = Actor("roger.png", 300, 300)
 vitesse = 2
 
 while True:
-    refresh((197, 255, 143))
-    roger.move(vitesse, 0)
-    roger.draw()
+  refresh((197, 255, 143))
+  roger.move(vitesse, 0)
+  roger.draw()
 ```
 
 Pour savoir où se trouve un acteur, vous disposez des méthodes suivantes. Elles sont indispensables pour savoir si un acteur sort de l'écran.
@@ -232,11 +231,11 @@ roger = Actor("roger.png", 300, 300)
 vitesse = 2
 
 while True:
-    refresh((197, 255, 143))
-    roger.move(vitesse, 0)
-    if roger.get_left() > 600:
-        roger.set_position(-30, roger.get_y())
-    roger.draw()
+  refresh((197, 255, 143))
+  roger.move(vitesse, 0)
+  if roger.get_left() > 600:
+    roger.set_position(-30, roger.get_y())
+  roger.draw()
 ```
 ````
 
@@ -252,15 +251,15 @@ roger = Actor("roger.png", 300, 300)
 vitesse = 2
 
 while True:
-    refresh((197, 255, 143))
-    roger.move(vitesse, 0)
-    if roger.get_right() > 600 or roger.get_left() < 0:
-        vitesse = -vitesse
-    if vitesse < 0:
-        roger.set_flip(True)
-    else:
-        roger.set_flip(False)
-    roger.draw()
+  refresh((197, 255, 143))
+  roger.move(vitesse, 0)
+  if roger.get_right() > 600 or roger.get_left() < 0:
+    vitesse = -vitesse
+  if vitesse < 0:
+    roger.set_flip(True)
+  else:
+    roger.set_flip(False)
+  roger.draw()
 ```
 ````
 
@@ -274,13 +273,13 @@ while True:
 roger = Actor("roger.png", 300, 300)
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    touches = get_pressed_keys()
-    if "D" in touches:
-        roger.move(3, 0)
+  touches = get_pressed_keys()
+  if "D" in touches:
+    roger.move(3, 0)
 
-    roger.draw()
+  roger.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -294,21 +293,21 @@ while True:
 roger = Actor("roger.png", 300, 300)
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    touches = get_pressed_keys()
-    if "D" in touches and roger.get_right() < 600:
-        roger.move(3, 0)
-        roger.set_flip(False)
-    if "A" in touches and roger.get_left() > 0:
-        roger.move(-3, 0)
-        roger.set_flip(True)
-    if "S" in touches and roger.get_bottom() < 600:
-        roger.move(0, 3)
-    if "W" in touches and roger.get_top() > 0:
-        roger.move(0, -3)
+  touches = get_pressed_keys()
+  if "D" in touches and roger.get_right() < 600:
+    roger.move(3, 0)
+    roger.set_flip(False)
+  if "A" in touches and roger.get_left() > 0:
+    roger.move(-3, 0)
+    roger.set_flip(True)
+  if "S" in touches and roger.get_bottom() < 600:
+    roger.move(0, 3)
+  if "W" in touches and roger.get_top() > 0:
+    roger.move(0, -3)
 
-    roger.draw()
+  roger.draw()
 ```
 Avec des `if` séparés, plusieurs touches peuvent agir en même temps : {kbd}`W` + {kbd}`D` fait aller Roger en diagonale.
 ````
@@ -327,9 +326,9 @@ roger = Actor("roger.png", 300, 300)
 taille = 1
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    roger.draw()
+  roger.draw()
 ```
 
 ````{solution}
@@ -338,14 +337,14 @@ roger = Actor("roger.png", 300, 300)
 taille = 1
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    nouvelles_touches = get_new_keys()
-    if "SPACE" in nouvelles_touches:
-        taille = taille + 0.1
-        roger.scale(taille)
+  nouvelles_touches = get_new_keys()
+  if "SPACE" in nouvelles_touches:
+    taille = taille + 0.1
+    roger.scale(taille)
 
-    roger.draw()
+  roger.draw()
 ```
 Avec `get_pressed_keys()`, Roger grandit 60 fois par seconde tant que la touche est maintenue. Avec `get_new_keys()`, il grandit une seule fois par pression. On utilise `get_new_keys()` pour une action ponctuelle (sauter, tirer une fois) et `get_pressed_keys()` pour une action continue (marcher).
 ````
@@ -360,9 +359,9 @@ Avec `get_pressed_keys()`, Roger grandit 60 fois par seconde tant que la touche 
 panier = Actor("basket.png", 300, 550)
 
 while True:
-    refresh((111, 255, 255))
-    panier.set_position(get_mouse_x(), 550)
-    panier.draw()
+  refresh((111, 255, 255))
+  panier.set_position(get_mouse_x(), 550)
+  panier.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -376,14 +375,14 @@ orange = Actor("orange.png", 300, 100)
 orange.scale(0.5)
 
 while True:
-    refresh((111, 255, 255))
-    panier.set_position(get_mouse_x(), 550)
+  refresh((111, 255, 255))
+  panier.set_position(get_mouse_x(), 550)
 
-    if "MOUSE_1" in get_new_keys():
-        orange.set_position(get_mouse_x(), get_mouse_y())
+  if "MOUSE_1" in get_new_keys():
+    orange.set_position(get_mouse_x(), get_mouse_y())
 
-    panier.draw()
-    orange.draw()
+  panier.draw()
+  orange.draw()
 ```
 ````
 
@@ -401,23 +400,23 @@ fraise = Actor("strawberry.png", 300, 300)
 vitesse = 3
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    touches = get_pressed_keys()
-    if "D" in touches:
-        roger.move(vitesse, 0)
-    if "A" in touches:
-        roger.move(-vitesse, 0)
-    if "S" in touches:
-        roger.move(0, vitesse)
-    if "W" in touches:
-        roger.move(0, -vitesse)
+  touches = get_pressed_keys()
+  if "D" in touches:
+    roger.move(vitesse, 0)
+  if "A" in touches:
+    roger.move(-vitesse, 0)
+  if "S" in touches:
+    roger.move(0, vitesse)
+  if "W" in touches:
+    roger.move(0, -vitesse)
 
-    if roger.collide(fraise):
-        fraise.set_position(randint(30, 570), randint(30, 570))
+  if roger.collide(fraise):
+    fraise.set_position(randint(30, 570), randint(30, 570))
 
-    roger.draw()
-    fraise.draw()
+  roger.draw()
+  fraise.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -434,27 +433,27 @@ banane = Actor("banana.png", randint(30, 570), randint(30, 570))
 vitesse = 3
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    touches = get_pressed_keys()
-    if "D" in touches:
-        roger.move(vitesse, 0)
-    if "A" in touches:
-        roger.move(-vitesse, 0)
-    if "S" in touches:
-        roger.move(0, vitesse)
-    if "W" in touches:
-        roger.move(0, -vitesse)
+  touches = get_pressed_keys()
+  if "D" in touches:
+    roger.move(vitesse, 0)
+  if "A" in touches:
+    roger.move(-vitesse, 0)
+  if "S" in touches:
+    roger.move(0, vitesse)
+  if "W" in touches:
+    roger.move(0, -vitesse)
 
-    if roger.collide(fraise):
-        fraise.set_position(randint(30, 570), randint(30, 570))
-        vitesse = vitesse + 1
-    if roger.collide(banane):
-        roger.kill()
+  if roger.collide(fraise):
+    fraise.set_position(randint(30, 570), randint(30, 570))
+    vitesse = vitesse + 1
+  if roger.collide(banane):
+    roger.kill()
 
-    roger.draw()
-    fraise.draw()
-    banane.draw()
+  roger.draw()
+  fraise.draw()
+  banane.draw()
 ```
 Comme Roger *killed* ne touche plus rien, la fraise ne bouge plus d'elle-même : `roger.collide(fraise)` vaut toujours `False`. On aurait aussi pu écrire `if roger.collide(fraise) and roger.is_killed() == False:`.
 ````
@@ -478,26 +477,26 @@ score = 0
 txt_score = Text("Score : 0", 80, 30, (0, 0, 0), (255, 255, 255))
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    touches = get_pressed_keys()
-    if "D" in touches:
-        roger.move(3, 0)
-    if "A" in touches:
-        roger.move(-3, 0)
-    if "S" in touches:
-        roger.move(0, 3)
-    if "W" in touches:
-        roger.move(0, -3)
+  touches = get_pressed_keys()
+  if "D" in touches:
+    roger.move(3, 0)
+  if "A" in touches:
+    roger.move(-3, 0)
+  if "S" in touches:
+    roger.move(0, 3)
+  if "W" in touches:
+    roger.move(0, -3)
 
-    if roger.collide(fraise):
-        fraise.set_position(randint(30, 570), randint(30, 570))
-        score = score + 1
-        txt_score.set_text(f"Score : {score}")
+  if roger.collide(fraise):
+    fraise.set_position(randint(30, 570), randint(30, 570))
+    score = score + 1
+    txt_score.set_text(f"Score : {score}")
 
-    roger.draw()
-    fraise.draw()
-    txt_score.draw()
+  roger.draw()
+  fraise.draw()
+  txt_score.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -511,8 +510,8 @@ txt_gagne = Text("Gagné !", 300, 300, (0, 150, 0), None, 80)
 ```
 Et à la fin de la boucle :
 ```{code-block} python
-    if score >= 5:
-        txt_gagne.draw()
+  if score >= 5:
+    txt_gagne.draw()
 ```
 `None` signifie « pas de couleur de fond ».
 ````
@@ -542,10 +541,10 @@ chrono.start()
 txt_temps = Text("", 300, 30, (0, 0, 0))
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    txt_temps.set_text(f"Temps : {chrono}")
-    txt_temps.draw()
+  txt_temps.set_text(f"Temps : {chrono}")
+  txt_temps.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -571,36 +570,36 @@ timer_fraise = Timer(2)
 timer_fraise.start()
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    if chrono.is_finished() == False:
-        touches = get_pressed_keys()
-        if "D" in touches:
-            roger.move(3, 0)
-        if "A" in touches:
-            roger.move(-3, 0)
-        if "S" in touches:
-            roger.move(0, 3)
-        if "W" in touches:
-            roger.move(0, -3)
+  if chrono.is_finished() == False:
+    touches = get_pressed_keys()
+    if "D" in touches:
+      roger.move(3, 0)
+    if "A" in touches:
+      roger.move(-3, 0)
+    if "S" in touches:
+      roger.move(0, 3)
+    if "W" in touches:
+      roger.move(0, -3)
 
-        if roger.collide(fraise):
-            fraise.set_position(randint(30, 570), randint(30, 570))
-            score = score + 1
-            txt_score.set_text(f"Score : {score}")
+    if roger.collide(fraise):
+      fraise.set_position(randint(30, 570), randint(30, 570))
+      score = score + 1
+      txt_score.set_text(f"Score : {score}")
 
-        if timer_fraise.is_finished():
-            fraise.set_position(randint(30, 570), randint(30, 570))
-            timer_fraise.start()
+    if timer_fraise.is_finished():
+      fraise.set_position(randint(30, 570), randint(30, 570))
+      timer_fraise.start()
 
-    txt_temps.set_text(f"Temps : {chrono}")
+  txt_temps.set_text(f"Temps : {chrono}")
 
-    roger.draw()
-    fraise.draw()
-    txt_score.draw()
-    txt_temps.draw()
-    if chrono.is_finished():
-        txt_fin.draw()
+  roger.draw()
+  fraise.draw()
+  txt_score.draw()
+  txt_temps.draw()
+  if chrono.is_finished():
+    txt_fin.draw()
 ```
 ````
 
@@ -623,22 +622,22 @@ timer_oranges = Timer(1)
 timer_oranges.start()
 
 while True:
-    refresh((111, 255, 255))
+  refresh((111, 255, 255))
 
-    if timer_oranges.is_finished():
-        orange = Actor("orange.png", randint(40, 560), -50)
-        orange.scale(0.5)
-        oranges.append(orange)
-        timer_oranges.start()
+  if timer_oranges.is_finished():
+    orange = Actor("orange.png", randint(40, 560), -50)
+    orange.scale(0.5)
+    oranges.append(orange)
+    timer_oranges.start()
 
-    for orange in oranges:
-        orange.move(0, 3)
-    for orange in oranges:
-        if orange.get_top() > 600:
-            oranges.remove(orange)
+  for orange in oranges:
+    orange.move(0, 3)
+  for orange in oranges:
+    if orange.get_top() > 600:
+      oranges.remove(orange)
 
-    for orange in oranges:
-        orange.draw()
+  for orange in oranges:
+    orange.draw()
 ```
 
 ### Exercice {num1}`exo-intro-pygame`
@@ -658,34 +657,34 @@ score = 0
 txt_score = Text("Score : 0", 80, 30, (0, 0, 0))
 
 while True:
-    refresh((111, 255, 255))
+  refresh((111, 255, 255))
 
-    touches = get_pressed_keys()
-    if "D" in touches:
-        panier.move(4, 0)
-    if "A" in touches:
-        panier.move(-4, 0)
+  touches = get_pressed_keys()
+  if "D" in touches:
+    panier.move(4, 0)
+  if "A" in touches:
+    panier.move(-4, 0)
 
-    if timer_oranges.is_finished():
-        orange = Actor("orange.png", randint(40, 560), -50)
-        orange.scale(0.5)
-        oranges.append(orange)
-        timer_oranges.start()
+  if timer_oranges.is_finished():
+    orange = Actor("orange.png", randint(40, 560), -50)
+    orange.scale(0.5)
+    oranges.append(orange)
+    timer_oranges.start()
 
-    for orange in oranges:
-        orange.move(0, 3)
-        if orange.collide(panier):
-            orange.kill()
-            score = score + 1
-            txt_score.set_text(f"Score : {score}")
-    for orange in oranges:
-        if orange.get_top() > 600:
-            oranges.remove(orange)
+  for orange in oranges:
+    orange.move(0, 3)
+    if orange.collide(panier):
+      orange.kill()
+      score = score + 1
+      txt_score.set_text(f"Score : {score}")
+  for orange in oranges:
+    if orange.get_top() > 600:
+      oranges.remove(orange)
 
-    panier.draw()
-    for orange in oranges:
-        orange.draw()
-    txt_score.draw()
+  panier.draw()
+  for orange in oranges:
+    orange.draw()
+  txt_score.draw()
 ```
 ````
 
@@ -714,7 +713,7 @@ musique.play(-1)
 ```
 Et dans le `if orange.collide(panier):` :
 ```{code-block} python
-            son_point.play()
+      son_point.play()
 ```
 ````
 
@@ -737,7 +736,7 @@ Idées pour aller plus loin :
 :then: pygame_end
 :editor: 73cf25f6-2369-41d3-826e-39d6c50a7818
 while True:
-    refresh((111, 255, 255))
+  refresh((111, 255, 255))
 ```
 
 ````{solution}
@@ -753,40 +752,40 @@ txt_gameover = Text("Game over", 300, 300, (0, 0, 0), (255, 90, 20), 60)
 son_point = Sound("son.ogg")
 
 while True:
-    refresh((111, 255, 255))
+  refresh((111, 255, 255))
 
-    if gameover == False:
-        touches = get_pressed_keys()
-        if "D" in touches and panier.get_right() < 600:
-            panier.move(4, 0)
-        if "A" in touches and panier.get_left() > 0:
-            panier.move(-4, 0)
+  if gameover == False:
+    touches = get_pressed_keys()
+    if "D" in touches and panier.get_right() < 600:
+      panier.move(4, 0)
+    if "A" in touches and panier.get_left() > 0:
+      panier.move(-4, 0)
 
-        if timer_oranges.is_finished():
-            orange = Actor("orange.png", randint(40, 560), -50)
-            orange.scale(0.5)
-            oranges.append(orange)
-            timer_oranges.start()
+    if timer_oranges.is_finished():
+      orange = Actor("orange.png", randint(40, 560), -50)
+      orange.scale(0.5)
+      oranges.append(orange)
+      timer_oranges.start()
 
-        for orange in oranges:
-            orange.move(0, 3)
-            if orange.collide(panier):
-                orange.kill()
-                score = score + 1
-                txt_score.set_text(f"Score : {score}")
-                son_point.play()
-            if orange.get_bottom() > 600 and orange.is_killed() == False:
-                gameover = True
-                txt_gameover.set_text(f"Game over. Score : {score}")
-        for orange in oranges:
-            if orange.get_top() > 600:
-                oranges.remove(orange)
-
-    panier.draw()
     for orange in oranges:
-        orange.draw()
-    txt_score.draw()
-    if gameover:
-        txt_gameover.draw()
+      orange.move(0, 3)
+      if orange.collide(panier):
+        orange.kill()
+        score = score + 1
+        txt_score.set_text(f"Score : {score}")
+        son_point.play()
+      if orange.get_bottom() > 600 and orange.is_killed() == False:
+        gameover = True
+        txt_gameover.set_text(f"Game over. Score : {score}")
+    for orange in oranges:
+      if orange.get_top() > 600:
+        oranges.remove(orange)
+
+  panier.draw()
+  for orange in oranges:
+    orange.draw()
+  txt_score.draw()
+  if gameover:
+    txt_gameover.draw()
 ```
 ````

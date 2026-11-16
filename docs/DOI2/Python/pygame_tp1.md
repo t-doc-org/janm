@@ -44,10 +44,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -198,7 +198,7 @@ A ce stade, le jeu est déjà jouable. Cependant, afin qu'il soit vraiment inté
 :then: pygame_end
 :editor: sdads
 while True:
-    refresh((112, 196, 209))
+  refresh((112, 196, 209))
 ```
 :::
 
@@ -223,40 +223,40 @@ tuyaux = []
 gameover = False
 
 while True:
-    refresh((110, 195, 205))
-    touches_pressées = get_new_keys()
+  refresh((110, 195, 205))
+  touches_pressées = get_new_keys()
 
-    if gameover == False:
-        # Étapes 3 et 4 : chute de plus en plus rapide
-        bird.move(0, vitesse)
-        vitesse = vitesse + ACCELERATION
+  if gameover == False:
+    # Étapes 3 et 4 : chute de plus en plus rapide
+    bird.move(0, vitesse)
+    vitesse = vitesse + ACCELERATION
 
-        # Étape 5 : saut
-        if "SPACE" in touches_pressées:
-            vitesse = VITESSE_SAUT
+    # Étape 5 : saut
+    if "SPACE" in touches_pressées:
+      vitesse = VITESSE_SAUT
 
-        # Étapes 7 et 8 : nouveaux tuyaux toutes les 3 secondes
-        if timer_tuyaux.is_finished():
-            tuyau_haut = Actor("tuyau_haut.png", 650, -100)
-            tuyau_bas = Actor("tuyau_bas.png", 650, 700)
-            tuyaux.append(tuyau_haut)
-            tuyaux.append(tuyau_bas)
-            timer_tuyaux.start()
+    # Étapes 7 et 8 : nouveaux tuyaux toutes les 3 secondes
+    if timer_tuyaux.is_finished():
+      tuyau_haut = Actor("tuyau_haut.png", 650, -100)
+      tuyau_bas = Actor("tuyau_bas.png", 650, 700)
+      tuyaux.append(tuyau_haut)
+      tuyaux.append(tuyau_bas)
+      timer_tuyaux.start()
 
-        # Étape 9 : déplacement puis suppression des tuyaux
-        for tuyau in tuyaux:
-            tuyau.move(-2, 0)
-        for tuyau in tuyaux:
-            if tuyau.get_x() < -100:
-                tuyaux.remove(tuyau)
-
-        # Étape 10 : collision
-        for tuyau in tuyaux:
-            if bird.collide(tuyau):
-                gameover = True
-
-    bird.draw()
+    # Étape 9 : déplacement puis suppression des tuyaux
     for tuyau in tuyaux:
-        tuyau.draw()
+      tuyau.move(-2, 0)
+    for tuyau in tuyaux:
+      if tuyau.get_x() < -100:
+        tuyaux.remove(tuyau)
+
+    # Étape 10 : collision
+    for tuyau in tuyaux:
+      if bird.collide(tuyau):
+        gameover = True
+
+  bird.draw()
+  for tuyau in tuyaux:
+    tuyau.draw()
 ```
 ````

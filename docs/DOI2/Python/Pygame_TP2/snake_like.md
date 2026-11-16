@@ -57,10 +57,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -201,7 +201,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
 :then: pygame_end
 :editor: a130776b-40b4-46b1-969d-b172edd44ba7
 while True:
-    refresh((0, 0, 0))
+  refresh((0, 0, 0))
 ```
 :::
 
@@ -229,72 +229,72 @@ vitesse_fantome_x = 2
 vitesse_fantome_y = 2
 
 while True:
-    refresh((0, 0, 0))
+  refresh((0, 0, 0))
 
-    # Étapes 3 et 4 : changement de direction
-    touches = get_pressed_keys()
-    if "A" in touches:
-        vitesse_x = -3
-        vitesse_y = 0
-        pacman.set_angle(90)
-    if "S" in touches:
-        vitesse_x = 0
-        vitesse_y = 3
-        pacman.set_angle(180)
-    if "D" in touches:
-        vitesse_x = 3
-        vitesse_y = 0
-        pacman.set_angle(270)
-    if "W" in touches:
-        vitesse_x = 0
-        vitesse_y = -3
-        pacman.set_angle(0)
+  # Étapes 3 et 4 : changement de direction
+  touches = get_pressed_keys()
+  if "A" in touches:
+    vitesse_x = -3
+    vitesse_y = 0
+    pacman.set_angle(90)
+  if "S" in touches:
+    vitesse_x = 0
+    vitesse_y = 3
+    pacman.set_angle(180)
+  if "D" in touches:
+    vitesse_x = 3
+    vitesse_y = 0
+    pacman.set_angle(270)
+  if "W" in touches:
+    vitesse_x = 0
+    vitesse_y = -3
+    pacman.set_angle(0)
 
-    # Étape 2 : déplacement
-    pacman.move(vitesse_x, vitesse_y)
+  # Étape 2 : déplacement
+  pacman.move(vitesse_x, vitesse_y)
 
-    # Étape 5 : rebonds sur les bords
-    if pacman.get_left() < 0:
-        vitesse_x = -vitesse_x
-        pacman.set_angle(270)
-    if pacman.get_right() > 600:
-        vitesse_x = -vitesse_x
-        pacman.set_angle(90)
-    if pacman.get_top() < 0:
-        vitesse_y = -vitesse_y
-        pacman.set_angle(180)
-    if pacman.get_bottom() > 600:
-        vitesse_y = -vitesse_y
-        pacman.set_angle(0)
+  # Étape 5 : rebonds sur les bords
+  if pacman.get_left() < 0:
+    vitesse_x = -vitesse_x
+    pacman.set_angle(270)
+  if pacman.get_right() > 600:
+    vitesse_x = -vitesse_x
+    pacman.set_angle(90)
+  if pacman.get_top() < 0:
+    vitesse_y = -vitesse_y
+    pacman.set_angle(180)
+  if pacman.get_bottom() > 600:
+    vitesse_y = -vitesse_y
+    pacman.set_angle(0)
 
-    # Étape 6 : apparition des pommes
-    if timer_pommes.is_finished():
-        pomme = Actor("apple.png", randint(30, 570), randint(30, 570))
-        pommes.append(pomme)
-        timer_pommes.start()
+  # Étape 6 : apparition des pommes
+  if timer_pommes.is_finished():
+    pomme = Actor("apple.png", randint(30, 570), randint(30, 570))
+    pommes.append(pomme)
+    timer_pommes.start()
 
-    # Étape 7 : ramasser les pommes
-    for pomme in pommes:
-        if pacman.collide(pomme):
-            pommes.remove(pomme)
-            score += 10
-            txt_score.set_text(f"Score: {score}")
+  # Étape 7 : ramasser les pommes
+  for pomme in pommes:
+    if pacman.collide(pomme):
+      pommes.remove(pomme)
+      score += 10
+      txt_score.set_text(f"Score: {score}")
 
-    # Étapes 8 et 9 : déplacement et rebonds du fantôme
-    fantome.move(vitesse_fantome_x, vitesse_fantome_y)
-    if fantome.get_left() < 0 or fantome.get_right() > 600:
-        vitesse_fantome_x = -vitesse_fantome_x
-    if fantome.get_top() < 0 or fantome.get_bottom() > 600:
-        vitesse_fantome_y = -vitesse_fantome_y
+  # Étapes 8 et 9 : déplacement et rebonds du fantôme
+  fantome.move(vitesse_fantome_x, vitesse_fantome_y)
+  if fantome.get_left() < 0 or fantome.get_right() > 600:
+    vitesse_fantome_x = -vitesse_fantome_x
+  if fantome.get_top() < 0 or fantome.get_bottom() > 600:
+    vitesse_fantome_y = -vitesse_fantome_y
 
-    # Étape 10 : pacman touche le fantôme
-    if pacman.collide(fantome):
-        pacman.kill()
+  # Étape 10 : pacman touche le fantôme
+  if pacman.collide(fantome):
+    pacman.kill()
 
-    for pomme in pommes:
-        pomme.draw()
-    pacman.draw()
-    fantome.draw()
-    txt_score.draw()
+  for pomme in pommes:
+    pomme.draw()
+  pacman.draw()
+  fantome.draw()
+  txt_score.draw()
 ```
 ````

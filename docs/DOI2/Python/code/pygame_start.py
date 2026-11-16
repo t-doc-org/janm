@@ -13,9 +13,12 @@ from pyodide.ffi import run_sync
 if not getattr(sys.excepthook, "_pygame_quit", False):
     _original_excepthook = sys.excepthook
 
-    def _excepthook(*args):
+    def _excepthook(exc_type, *args):
         pygame.quit()
-        _original_excepthook(*args)
+        # Arrêt volontaire (bouton « stop ») : inutile d'afficher un message.
+        if issubclass(exc_type, asyncio.CancelledError):
+            return
+        _original_excepthook(exc_type, *args)
 
     _excepthook._pygame_quit = True
     sys.excepthook = _excepthook

@@ -46,10 +46,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -181,7 +181,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
 :then: pygame_end
 :editor: 19acc670-9503-41b6-952b-d4ad387b1b43
 while True:
-    refresh((20, 10, 40))
+  refresh((20, 10, 40))
 ```
 :::
 
@@ -216,72 +216,72 @@ gameover = False
 txt_fin = Text("Fin !", 300, 300, (255, 255, 255), (120, 0, 120), 60)
 
 while True:
-    refresh((20, 10, 40))
+  refresh((20, 10, 40))
 
-    viseur.set_position(get_mouse_x(), get_mouse_y())
-    nouvelles_touches = get_new_keys()
+  viseur.set_position(get_mouse_x(), get_mouse_y())
+  nouvelles_touches = get_new_keys()
 
-    if gameover == False:
-        # Étapes 3 et 4 : apparition
-        if timer_apparition.is_finished():
-            if randint(1, 2) == 1:
-                fantomes_droite.append(Actor("blinky.png", -30, randint(60, 560)))
-            else:
-                fantome = Actor("inky.png", 630, randint(60, 560))
-                fantome.set_flip(True)
-                fantomes_gauche.append(fantome)
-            timer_apparition.start()
+  if gameover == False:
+    # Étapes 3 et 4 : apparition
+    if timer_apparition.is_finished():
+      if randint(1, 2) == 1:
+        fantomes_droite.append(Actor("blinky.png", -30, randint(60, 560)))
+      else:
+        fantome = Actor("inky.png", 630, randint(60, 560))
+        fantome.set_flip(True)
+        fantomes_gauche.append(fantome)
+      timer_apparition.start()
 
-        # Étapes 2 à 4 : déplacement
-        for fantome in fantomes_droite:
-            fantome.move(3, 0)
-        for fantome in fantomes_gauche:
-            fantome.move(-3, 0)
-
-        # Étapes 5, 6 et 9 : tir
-        if "MOUSE_1" in nouvelles_touches and balles > 0:
-            balles -= 1
-            txt_balles.set_text(f"Balles : {balles}")
-            for fantome in fantomes_droite:
-                if viseur.collide(fantome):
-                    fantome.kill()
-                    score += 1
-            for fantome in fantomes_gauche:
-                if viseur.collide(fantome):
-                    fantome.kill()
-                    score += 1
-            txt_score.set_text(f"Score : {score}")
-
-        # Étape 9 : recharger
-        if "SPACE" in nouvelles_touches:
-            balles = 6
-            txt_balles.set_text("Balles : 6")
-
-        # Étape 7 : nettoyage (boucles séparées)
-        for fantome in fantomes_droite:
-            if fantome.get_left() > 600:
-                fantomes_droite.remove(fantome)
-        for fantome in fantomes_gauche:
-            if fantome.get_right() < 0:
-                fantomes_gauche.remove(fantome)
-
-        # Étape 8 : chrono
-        txt_chrono.set_text(int(chrono.get_time_left()))
-
-        # Étape 10 : fin
-        if chrono.is_finished():
-            gameover = True
-            txt_fin.set_text(f"Fin ! Score : {score}")
-
+    # Étapes 2 à 4 : déplacement
     for fantome in fantomes_droite:
-        fantome.draw()
+      fantome.move(3, 0)
     for fantome in fantomes_gauche:
-        fantome.draw()
-    txt_score.draw()
-    txt_chrono.draw()
-    txt_balles.draw()
-    if gameover:
-        txt_fin.draw()
-    viseur.draw()
+      fantome.move(-3, 0)
+
+    # Étapes 5, 6 et 9 : tir
+    if "MOUSE_1" in nouvelles_touches and balles > 0:
+      balles -= 1
+      txt_balles.set_text(f"Balles : {balles}")
+      for fantome in fantomes_droite:
+        if viseur.collide(fantome):
+          fantome.kill()
+          score += 1
+      for fantome in fantomes_gauche:
+        if viseur.collide(fantome):
+          fantome.kill()
+          score += 1
+      txt_score.set_text(f"Score : {score}")
+
+    # Étape 9 : recharger
+    if "SPACE" in nouvelles_touches:
+      balles = 6
+      txt_balles.set_text("Balles : 6")
+
+    # Étape 7 : nettoyage (boucles séparées)
+    for fantome in fantomes_droite:
+      if fantome.get_left() > 600:
+        fantomes_droite.remove(fantome)
+    for fantome in fantomes_gauche:
+      if fantome.get_right() < 0:
+        fantomes_gauche.remove(fantome)
+
+    # Étape 8 : chrono
+    txt_chrono.set_text(int(chrono.get_time_left()))
+
+    # Étape 10 : fin
+    if chrono.is_finished():
+      gameover = True
+      txt_fin.set_text(f"Fin ! Score : {score}")
+
+  for fantome in fantomes_droite:
+    fantome.draw()
+  for fantome in fantomes_gauche:
+    fantome.draw()
+  txt_score.draw()
+  txt_chrono.draw()
+  txt_balles.draw()
+  if gameover:
+    txt_fin.draw()
+  viseur.draw()
 ```
 ````

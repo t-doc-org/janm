@@ -24,7 +24,7 @@ Cette fonction doit être appelée **au début de chaque tour** de la boucle de 
 **Exemple d'utilisation :**
 ```python
 while True:
-    refresh((197, 255, 143))  # Fond vert clair
+  refresh((197, 255, 143))  # Fond vert clair
 ```
 
 ## Gestion des entrées utilisateur
@@ -55,15 +55,15 @@ Retourne la position verticale (y) de la souris sur l'écran de jeu.
 **Exemple d'utilisation :**
 ```python
 while True:
-    touches_pressées = get_pressed_keys()
-    if "D" in touches_pressées:
-        print("La touche D est enfoncée")
-    if "MOUSE_1" in touches_pressées:
-        print("Clic gauche détecté")
+  touches_pressées = get_pressed_keys()
+  if "D" in touches_pressées:
+    print("La touche D est enfoncée")
+  if "MOUSE_1" in touches_pressées:
+    print("Clic gauche détecté")
 
-    nouvelles_touches = get_new_keys()
-    if "SPACE" in nouvelles_touches:
-        print("Saut !")  # Une seule fois par appui
+  nouvelles_touches = get_new_keys()
+  if "SPACE" in nouvelles_touches:
+    print("Saut !")  # Une seule fois par appui
 ```
 
 
@@ -162,22 +162,22 @@ orange.scale(0.5)
 vitesse = 3
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    touches_pressées = get_pressed_keys()
-    if "D" in touches_pressées:
-        roger.move(vitesse, 0)
-        roger.set_flip(False)
-    if "A" in touches_pressées:
-        roger.move(-vitesse, 0)
-        roger.set_flip(True)
+  touches_pressées = get_pressed_keys()
+  if "D" in touches_pressées:
+    roger.move(vitesse, 0)
+    roger.set_flip(False)
+  if "A" in touches_pressées:
+    roger.move(-vitesse, 0)
+    roger.set_flip(True)
 
-    if roger.collide(orange):
-        orange.kill()
-        vitesse += 2
+  if roger.collide(orange):
+    orange.kill()
+    vitesse += 2
 
-    roger.draw()
-    orange.draw()
+  roger.draw()
+  orange.draw()
 ```
 
 ## Text
@@ -215,15 +215,15 @@ petit_txt = Text("Appuyez sur ESPACE", 300, 550, (0, 0, 0), None, 24)
 score = 0
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    if "SPACE" in get_new_keys():
-        score += 1
-        score_txt.set_text(f"Score: {score}")
+  if "SPACE" in get_new_keys():
+    score += 1
+    score_txt.set_text(f"Score: {score}")
 
-    titre.draw()
-    score_txt.draw()
-    petit_txt.draw()
+  titre.draw()
+  score_txt.draw()
+  petit_txt.draw()
 ```
 
 ## Timer
@@ -259,22 +259,22 @@ timer_spawn.start()
 ennemis = []
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    # Vérifier si le timer est terminé
-    if timer_spawn.is_finished():
-        # Créer un nouvel ennemi
-        pos_x = randint(50, 550)
-        nouvel_ennemi = Actor("ennemi.png", pos_x, 50)
-        ennemis.append(nouvel_ennemi)
+  # Vérifier si le timer est terminé
+  if timer_spawn.is_finished():
+    # Créer un nouvel ennemi
+    pos_x = randint(50, 550)
+    nouvel_ennemi = Actor("ennemi.png", pos_x, 50)
+    ennemis.append(nouvel_ennemi)
 
-        # Redémarrer le timer
-        timer_spawn.start()
+    # Redémarrer le timer
+    timer_spawn.start()
 
-    # Dessiner tous les ennemis
-    for ennemi in ennemis:
-        ennemi.move(0, 2)  # Les ennemis descendent
-        ennemi.draw()
+  # Dessiner tous les ennemis
+  for ennemi in ennemis:
+    ennemi.move(0, 2)  # Les ennemis descendent
+    ennemi.draw()
 ```
 
 ## Sound
@@ -314,8 +314,8 @@ musique.set_volume(0.5)
 musique.play(-1)  # En boucle
 
 while True:
-    refresh((197, 255, 143))
+  refresh((197, 255, 143))
 
-    if "SPACE" in get_new_keys():
-        bruitage.play()
+  if "SPACE" in get_new_keys():
+    bruitage.play()
 ```

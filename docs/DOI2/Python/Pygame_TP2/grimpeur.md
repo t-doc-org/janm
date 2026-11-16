@@ -48,10 +48,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -95,8 +95,8 @@ Créons les plateformes. Elles seront stockées dans une liste.
 ```python
 plateformes = [Actor("brick.png", 300, 570)]
 for i in range(7):
-    plateforme = Actor("brick.png", randint(40, 560), 495 - i * 75)
-    plateformes.append(plateforme)
+  plateforme = Actor("brick.png", randint(40, 560), 495 - i * 75)
+  plateformes.append(plateforme)
 ```
  - Juste après, avec une boucle `for`, agrandissez chaque plateforme 2 fois avec `scale()`.
  - Dans la boucle de jeu, dessinez toutes les plateformes avec une boucle `for`.
@@ -183,7 +183,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
 :then: pygame_end
 :editor: 40189215-4e90-45ff-a6e4-7dc280f085cc
 while True:
-    refresh((30, 40, 90))
+  refresh((30, 40, 90))
 ```
 :::
 
@@ -201,10 +201,10 @@ VITESSE_SAUT = -11
 # Étape 4 : les plateformes
 plateformes = [Actor("brick.png", 300, 570)]
 for i in range(7):
-    plateforme = Actor("brick.png", randint(40, 560), 495 - i * 75)
-    plateformes.append(plateforme)
+  plateforme = Actor("brick.png", randint(40, 560), 495 - i * 75)
+  plateformes.append(plateforme)
 for plateforme in plateformes:
-    plateforme.scale(2)
+  plateforme.scale(2)
 
 # Étape 8 : score
 hauteur = 0
@@ -215,56 +215,56 @@ gameover = False
 txt_gameover = Text("GAME OVER", 300, 300, (255, 255, 255), (200, 0, 0), 60)
 
 while True:
-    refresh((30, 40, 90))
+  refresh((30, 40, 90))
 
-    if gameover == False:
-        # Étape 2 : gravité
-        vitesse_y += GRAVITE
-        roger.move(0, vitesse_y)
+  if gameover == False:
+    # Étape 2 : gravité
+    vitesse_y += GRAVITE
+    roger.move(0, vitesse_y)
 
-        # Étape 3 : déplacement gauche/droite et sortie par les côtés
-        touches = get_pressed_keys()
-        if "A" in touches:
-            roger.move(-5, 0)
-            roger.set_flip(True)
-        if "D" in touches:
-            roger.move(5, 0)
-            roger.set_flip(False)
-        if roger.get_x() < 0:
-            roger.set_position(600, roger.get_y())
-        if roger.get_x() > 600:
-            roger.set_position(0, roger.get_y())
+    # Étape 3 : déplacement gauche/droite et sortie par les côtés
+    touches = get_pressed_keys()
+    if "A" in touches:
+      roger.move(-5, 0)
+      roger.set_flip(True)
+    if "D" in touches:
+      roger.move(5, 0)
+      roger.set_flip(False)
+    if roger.get_x() < 0:
+      roger.set_position(600, roger.get_y())
+    if roger.get_x() > 600:
+      roger.set_position(0, roger.get_y())
 
-        # Étape 5 : rebond sur les plateformes (seulement en descendant)
-        for plateforme in plateformes:
-            if roger.collide(plateforme) and vitesse_y > 0:
-                vitesse_y = VITESSE_SAUT
-
-        # Étape 6 : défilement de l'écran
-        if roger.get_y() < 250:
-            decalage = 250 - roger.get_y()
-            roger.set_position(roger.get_x(), 250)
-            for plateforme in plateformes:
-                plateforme.move(0, decalage)
-            # Étape 8 : score
-            hauteur += decalage
-            txt_hauteur.set_text(f"Hauteur : {int(hauteur / 10)} m")
-
-        # Étape 7 : recyclage des plateformes sorties en bas
-        for plateforme in plateformes:
-            if plateforme.get_top() > 600:
-                plateforme.set_position(randint(40, 560), plateforme.get_y() - 600)
-
-        # Étape 9 : chute
-        if roger.get_top() > 600:
-            gameover = True
-
+    # Étape 5 : rebond sur les plateformes (seulement en descendant)
     for plateforme in plateformes:
-        plateforme.draw()
-    roger.draw()
-    txt_hauteur.draw()
-    # Étape 10
-    if gameover:
-        txt_gameover.draw()
+      if roger.collide(plateforme) and vitesse_y > 0:
+        vitesse_y = VITESSE_SAUT
+
+    # Étape 6 : défilement de l'écran
+    if roger.get_y() < 250:
+      decalage = 250 - roger.get_y()
+      roger.set_position(roger.get_x(), 250)
+      for plateforme in plateformes:
+        plateforme.move(0, decalage)
+      # Étape 8 : score
+      hauteur += decalage
+      txt_hauteur.set_text(f"Hauteur : {int(hauteur / 10)} m")
+
+    # Étape 7 : recyclage des plateformes sorties en bas
+    for plateforme in plateformes:
+      if plateforme.get_top() > 600:
+        plateforme.set_position(randint(40, 560), plateforme.get_y() - 600)
+
+    # Étape 9 : chute
+    if roger.get_top() > 600:
+      gameover = True
+
+  for plateforme in plateformes:
+    plateforme.draw()
+  roger.draw()
+  txt_hauteur.draw()
+  # Étape 10
+  if gameover:
+    txt_gameover.draw()
 ```
 ````

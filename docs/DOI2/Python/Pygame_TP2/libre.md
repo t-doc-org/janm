@@ -46,10 +46,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -65,6 +65,6 @@ pygame.quit()
 :then: pygame_end
 :editor: e722f1e6-542a-4106-b297-6f9511754d02
 while True:
-    refresh((0, 0, 0))
+  refresh((0, 0, 0))
 ```
 :::

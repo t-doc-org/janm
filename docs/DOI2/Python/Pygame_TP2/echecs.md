@@ -54,10 +54,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -84,12 +84,12 @@ Créons le plateau de jeu. Chaque case est un acteur, et toutes les cases sont s
  - Puis, copiez/collez le code suivant :
 ```python
 for ligne in range(8):
-    for colonne in range(8):
-        if (ligne + colonne) % 2 == 0:
-            case = Actor("case_claire.png", 55 + colonne * 70, 75 + ligne * 70)
-        else:
-            case = Actor("case_foncee.png", 55 + colonne * 70, 75 + ligne * 70)
-        cases.append(case)
+  for colonne in range(8):
+    if (ligne + colonne) % 2 == 0:
+      case = Actor("case_claire.png", 55 + colonne * 70, 75 + ligne * 70)
+    else:
+      case = Actor("case_foncee.png", 55 + colonne * 70, 75 + ligne * 70)
+    cases.append(case)
 ```
  - Dans la boucle de jeu, dessinez toutes les cases avec une boucle `for`.
 
@@ -171,11 +171,11 @@ Les joueurs doivent maintenant jouer chacun leur tour.
  - Au début de la boucle de jeu, ajoutez le code suivant. Il permet d'utiliser `mes_pieces` pour désigner la liste des pièces du joueur dont c'est le tour, et `pieces_adverses` pour celle de son adversaire :
 ```python
 if tour == "blanc":
-    mes_pieces = pieces_blanches
-    pieces_adverses = pieces_noires
+  mes_pieces = pieces_blanches
+  pieces_adverses = pieces_noires
 else:
-    mes_pieces = pieces_noires
-    pieces_adverses = pieces_blanches
+  mes_pieces = pieces_noires
+  pieces_adverses = pieces_blanches
 ```
  - À l'étape 5, remplacez `pieces_blanches` par `mes_pieces`.
  - À l'étape 6, juste après avoir placé la pièce sur sa case (donc **dans** le `if` de la collision avec la case), changez de joueur : si `tour` vaut `"blanc"`, il devient `"noir"`, sinon il devient `"blanc"`. Mettez aussi à jour le texte avec `txt_tour.set_text(...)`.
@@ -260,7 +260,7 @@ Si le déplacement n'est pas autorisé, la pièce ne bouge pas, et le joueur doi
 :then: pygame_end
 :editor: 798dfa7f-5769-4e6c-8751-b64f04c233cc
 while True:
-    refresh((50, 50, 50))
+  refresh((50, 50, 50))
 ```
 :::
 
@@ -269,19 +269,19 @@ while True:
 # Étape 1 : le plateau
 cases = []
 for ligne in range(8):
-    for colonne in range(8):
-        if (ligne + colonne) % 2 == 0:
-            case = Actor("case_claire.png", 55 + colonne * 70, 75 + ligne * 70)
-        else:
-            case = Actor("case_foncee.png", 55 + colonne * 70, 75 + ligne * 70)
-        cases.append(case)
+  for colonne in range(8):
+    if (ligne + colonne) % 2 == 0:
+      case = Actor("case_claire.png", 55 + colonne * 70, 75 + ligne * 70)
+    else:
+      case = Actor("case_foncee.png", 55 + colonne * 70, 75 + ligne * 70)
+    cases.append(case)
 
 # Étape 2 : les pions
 pieces_blanches = []
 pieces_noires = []
 for colonne in range(8):
-    pieces_blanches.append(Actor("pion_blanc.png", 55 + colonne * 70, 495))
-    pieces_noires.append(Actor("pion_noir.png", 55 + colonne * 70, 145))
+  pieces_blanches.append(Actor("pion_blanc.png", 55 + colonne * 70, 495))
+  pieces_noires.append(Actor("pion_noir.png", 55 + colonne * 70, 145))
 
 # Étape 3 : les autres pièces, à la main
 tour_blanche_1 = Actor("tour_blanc.png", 55, 565)
@@ -334,70 +334,70 @@ gameover = False
 txt_fin = Text("", 300, 300, (0, 0, 0), (255, 255, 255), 60)
 
 while True:
-    refresh((50, 50, 50))
+  refresh((50, 50, 50))
 
-    curseur.set_position(get_mouse_x(), get_mouse_y())
+  curseur.set_position(get_mouse_x(), get_mouse_y())
 
-    if tour == "blanc":
-        mes_pieces = pieces_blanches
-        pieces_adverses = pieces_noires
+  if tour == "blanc":
+    mes_pieces = pieces_blanches
+    pieces_adverses = pieces_noires
+  else:
+    mes_pieces = pieces_noires
+    pieces_adverses = pieces_blanches
+
+  if "MOUSE_1" in get_new_keys() and gameover == False:
+    if piece_selectionnee == None:
+      # Étape 5 : sélectionner une de ses pièces
+      for piece in mes_pieces:
+        if curseur.collide(piece):
+          piece_selectionnee = piece
     else:
-        mes_pieces = pieces_noires
-        pieces_adverses = pieces_blanches
+      # Étape 9 : cliquer sur une de ses pièces change la sélection
+      case_occupee = False
+      for piece in mes_pieces:
+        if curseur.collide(piece):
+          piece_selectionnee = piece
+          case_occupee = True
 
-    if "MOUSE_1" in get_new_keys() and gameover == False:
-        if piece_selectionnee == None:
-            # Étape 5 : sélectionner une de ses pièces
-            for piece in mes_pieces:
-                if curseur.collide(piece):
-                    piece_selectionnee = piece
-        else:
-            # Étape 9 : cliquer sur une de ses pièces change la sélection
-            case_occupee = False
-            for piece in mes_pieces:
-                if curseur.collide(piece):
-                    piece_selectionnee = piece
-                    case_occupee = True
+      if case_occupee == False:
+        # Étape 6 : déplacer la pièce sur la case cliquée
+        for case in cases:
+          if curseur.collide(case):
+            piece_selectionnee.set_position(case.get_x(), case.get_y())
+            # Étape 8 : capture
+            for adversaire in pieces_adverses:
+              if piece_selectionnee.collide(adversaire):
+                adversaire.kill()
+            # Étape 7 : changement de joueur
+            if tour == "blanc":
+              tour = "noir"
+              txt_tour.set_text("Aux noirs de jouer")
+            else:
+              tour = "blanc"
+              txt_tour.set_text("Aux blancs de jouer")
+        piece_selectionnee = None
 
-            if case_occupee == False:
-                # Étape 6 : déplacer la pièce sur la case cliquée
-                for case in cases:
-                    if curseur.collide(case):
-                        piece_selectionnee.set_position(case.get_x(), case.get_y())
-                        # Étape 8 : capture
-                        for adversaire in pieces_adverses:
-                            if piece_selectionnee.collide(adversaire):
-                                adversaire.kill()
-                        # Étape 7 : changement de joueur
-                        if tour == "blanc":
-                            tour = "noir"
-                            txt_tour.set_text("Aux noirs de jouer")
-                        else:
-                            tour = "blanc"
-                            txt_tour.set_text("Aux blancs de jouer")
-                piece_selectionnee = None
+  # Étape 10 : fin de partie
+  if roi_noir.is_killed():
+    gameover = True
+    txt_fin.set_text("Les blancs ont gagné !")
+  if roi_blanc.is_killed():
+    gameover = True
+    txt_fin.set_text("Les noirs ont gagné !")
 
-    # Étape 10 : fin de partie
-    if roi_noir.is_killed():
-        gameover = True
-        txt_fin.set_text("Les blancs ont gagné !")
-    if roi_blanc.is_killed():
-        gameover = True
-        txt_fin.set_text("Les noirs ont gagné !")
-
-    # Dessin
-    for case in cases:
-        case.draw()
-    if piece_selectionnee != None:
-        cadre.set_position(piece_selectionnee.get_x(), piece_selectionnee.get_y())
-        cadre.draw()
-    for piece in pieces_blanches:
-        piece.draw()
-    for piece in pieces_noires:
-        piece.draw()
-    txt_tour.draw()
-    if gameover:
-        txt_fin.draw()
-    curseur.draw()
+  # Dessin
+  for case in cases:
+    case.draw()
+  if piece_selectionnee != None:
+    cadre.set_position(piece_selectionnee.get_x(), piece_selectionnee.get_y())
+    cadre.draw()
+  for piece in pieces_blanches:
+    piece.draw()
+  for piece in pieces_noires:
+    piece.draw()
+  txt_tour.draw()
+  if gameover:
+    txt_fin.draw()
+  curseur.draw()
 ```
 ````

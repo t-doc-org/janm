@@ -16,6 +16,7 @@ html_theme_options = {
 
 # Ressources statiques (CSS/JS) supplémentaires
 html_css_files = ['custom.css']
+html_js_files = ['custom.js']
 
 metadata = {
     'solutions': 'dynamic',

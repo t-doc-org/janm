@@ -56,10 +56,10 @@ setup_canvas()
 :class: hidden
 # Anciens programmes écrits dans une fonction « async def main() ».
 if "main" in globals():
-    try:
-        await main()
-    finally:
-        pygame.quit()
+  try:
+    await main()
+  finally:
+    pygame.quit()
 # Le programme est terminé : pygame rend le clavier à la page.
 pygame.quit()
 ```
@@ -129,9 +129,9 @@ Créons maintenant les briques à détruire
  - Puis, copiez/collez le code suivant. Vous ne devez pas forcément comprendre à 100% ce qu'il se passe, mais devrez légèrement le modifier après.
 ```python
 for ligne in range(3):
-    for colonne in range(5):
-        brique = Actor("brick.png", 120 + colonne * 80, 80 + ligne * 40)
-        briques.append(brique)
+  for colonne in range(5):
+    brique = Actor("brick.png", 120 + colonne * 80, 80 + ligne * 40)
+    briques.append(brique)
 ```
 
  - Dans la boucle de jeu, utilisez une boucle `for` pour dessiner toutes les briques. *Pour chaque brique dans la liste des briques : draw cette brique*.
@@ -203,7 +203,7 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
 :then: pygame_end
 :editor: fce1ff87-ed2f-496e-9229-90e3d86166db
 while True:
-    refresh((40, 40, 60))
+  refresh((40, 40, 60))
 ```
 :::
 
@@ -221,9 +221,9 @@ vitesse_balle_y = -3
 # Étape 7 : les briques
 briques = []
 for ligne in range(3):
-    for colonne in range(5):
-        brique = Actor("brick.png", 120 + colonne * 80, 80 + ligne * 40)
-        briques.append(brique)
+  for colonne in range(5):
+    brique = Actor("brick.png", 120 + colonne * 80, 80 + ligne * 40)
+    briques.append(brique)
 
 # Étapes 9 et 10 : fin de partie
 gameover = False
@@ -231,51 +231,51 @@ txt_gameover = Text("PERDU !", 300, 300, (255, 0, 0), (255, 255, 255))
 txt_victoire = Text("VICTOIRE !", 300, 300, (0, 255, 0), (255, 255, 255))
 
 while True:
-    refresh((30, 30, 60))
+  refresh((30, 30, 60))
 
-    if gameover == False and len(briques) > 0:
-        # Étape 3 : déplacement de la raquette
-        touches = get_pressed_keys()
-        if "A" in touches:
-            raquette.move(-6, 0)
-        if "D" in touches:
-            raquette.move(6, 0)
+  if gameover == False and len(briques) > 0:
+    # Étape 3 : déplacement de la raquette
+    touches = get_pressed_keys()
+    if "A" in touches:
+      raquette.move(-6, 0)
+    if "D" in touches:
+      raquette.move(6, 0)
 
-        # Étape 4 : déplacement de la balle
-        balle.move(vitesse_balle_x, vitesse_balle_y)
+    # Étape 4 : déplacement de la balle
+    balle.move(vitesse_balle_x, vitesse_balle_y)
 
-        # Étape 5 : rebonds sur les murs
-        if balle.get_left() < 0 or balle.get_right() > 600:
-            vitesse_balle_x = -vitesse_balle_x
-        if balle.get_top() < 0:
-            vitesse_balle_y = -vitesse_balle_y
+    # Étape 5 : rebonds sur les murs
+    if balle.get_left() < 0 or balle.get_right() > 600:
+      vitesse_balle_x = -vitesse_balle_x
+    if balle.get_top() < 0:
+      vitesse_balle_y = -vitesse_balle_y
 
-        # Étape 6 : rebond sur la raquette
-        if balle.collide(raquette) and vitesse_balle_y > 0:
-            vitesse_balle_y = -vitesse_balle_y
-            vitesse_balle_x = (balle.get_x() - raquette.get_x()) / 10
+    # Étape 6 : rebond sur la raquette
+    if balle.collide(raquette) and vitesse_balle_y > 0:
+      vitesse_balle_y = -vitesse_balle_y
+      vitesse_balle_x = (balle.get_x() - raquette.get_x()) / 10
 
-        # Étape 8 : destruction des briques
-        brique_touchée = False
-        for brique in briques:
-            if balle.collide(brique):
-                briques.remove(brique)
-                brique_touchée = True
-        if brique_touchée:
-            vitesse_balle_y = -vitesse_balle_y
-
-        # Étape 9 : la balle tombe
-        if balle.get_y() > 620:
-            gameover = True
-
-    raquette.draw()
-    balle.draw()
+    # Étape 8 : destruction des briques
+    brique_touchée = False
     for brique in briques:
-        brique.draw()
-    # Étape 10
-    if gameover:
-        txt_gameover.draw()
-    if len(briques) == 0:
-        txt_victoire.draw()
+      if balle.collide(brique):
+        briques.remove(brique)
+        brique_touchée = True
+    if brique_touchée:
+      vitesse_balle_y = -vitesse_balle_y
+
+    # Étape 9 : la balle tombe
+    if balle.get_y() > 620:
+      gameover = True
+
+  raquette.draw()
+  balle.draw()
+  for brique in briques:
+    brique.draw()
+  # Étape 10
+  if gameover:
+    txt_gameover.draw()
+  if len(briques) == 0:
+    txt_victoire.draw()
 ```
 ````
