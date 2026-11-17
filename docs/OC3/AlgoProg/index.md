@@ -12,21 +12,18 @@ fonctions
 challenges
 ```
 
-## Complexité
-```{toctree}
-complexite
-```
-
 ## Algorithmes de recherche
 ```{toctree}
 recherche
 ```
 
-## Algorithmes de tri
+## Projet : algorithmes de tri
 ```{toctree}
-tri_selection
-tri_insertion
-recursivite
-tri_fusion
-tri_rapide
+projet_tri
+projet_complexite
+projet_tri_selection
+projet_tri_insertion
+projet_tri_fusion
+projet_tri_rapide
+projet_mesures
 ```

@@ -4,17 +4,19 @@
 /* Module de visualisation des algorithmes de tri (tri-algos.js) */
 
 .tri-widget {
-  --tri-base: #94a3b8;
-  --tri-compare: #f59e0b;
-  --tri-swap: #ef4444;
-  --tri-trie: #22c55e;
-  --tri-trie-part: #86efac;
-  --tri-min: #3b82f6;
-  --tri-cle: #3b82f6;
-  --tri-pivot: #d946ef;
-  --tri-petit: #7dd3fc;
-  --tri-gauche: #2dd4bf;
-  --tri-droite: #a5b4fc;
+  --tri-base: #eef1f4;
+  --tri-case-bord: #9fb0c2;
+  --tri-case-texte: #1f2937;
+  --tri-compare: #f4b26a;
+  --tri-swap: #f28b82;
+  --tri-trie: #b6d67e;
+  --tri-trie-part: #dcedc8;
+  --tri-min: #9cc3f0;
+  --tri-cle: #9cc3f0;
+  --tri-pivot: #dba8ea;
+  --tri-petit: #c5e6f7;
+  --tri-gauche: #b9e4da;
+  --tri-droite: #d3d6f8;
   --tri-duree: 300ms;
   --tri-fond: var(--pst-color-surface, #f8fafc);
   --tri-bord: var(--pst-color-border, #d1d5db);
@@ -30,12 +32,8 @@
 }
 
 html[data-theme="dark"] .tri-widget {
-  --tri-base: #64748b;
-  --tri-trie: #16a34a;
-  --tri-trie-part: #4d7c5a;
-  --tri-petit: #0369a1;
-  --tri-gauche: #0f766e;
-  --tri-droite: #4f46e5;
+  --tri-base: #cbd5e1;
+  --tri-case-bord: #64748b;
 }
 
 .tri-tete {
@@ -58,44 +56,42 @@ html[data-theme="dark"] .tri-widget {
   margin-bottom: 0.5rem;
 }
 
-/* Scène */
+/* Scène : la liste est dessinée comme une rangée de cases accolées */
 .tri-scene {
   position: relative;
-  margin: 1.5rem 0 0.5rem 0;
+  margin: 0.75rem auto 0.5rem auto;
   user-select: none;
 }
 .tri-barre {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--tri-base);
-  border-radius: 4px 4px 0 0;
+  border: 1px solid var(--tri-case-bord);
+  color: var(--tri-case-texte);
   transition: left var(--tri-duree) ease, top var(--tri-duree) ease,
               background-color 150ms, opacity 150ms, outline-color 150ms;
   box-sizing: border-box;
 }
 .tri-sans-anim .tri-barre { transition: none; }
 .tri-val {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.85rem;
+  font-size: var(--tri-police, 1rem);
   font-weight: 600;
-  line-height: 1.4;
-  color: var(--tri-texte);
+  line-height: 1;
   font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
 .tri-indices {
   position: absolute;
   left: 0;
   right: 0;
   height: 18px;
-  border-top: 1px solid var(--tri-bord);
 }
 .tri-indices span {
   position: absolute;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: min(0.7rem, var(--tri-police, 1rem));
   color: var(--tri-texte-doux);
 }
 .tri-aux-fond {
@@ -127,19 +123,21 @@ html[data-theme="dark"] .tri-widget {
 
 /* Exercice */
 .tri-cliquable .tri-barre { cursor: pointer; }
-.tri-cliquable .tri-barre:hover { filter: brightness(1.1); }
+.tri-cliquable .tri-barre:hover { filter: brightness(0.93); }
 .tri-barre.st-choisi {
-  outline: 3px solid var(--tri-texte);
-  outline-offset: 2px;
+  outline: 3px solid var(--tri-case-texte);
+  outline-offset: -4px;
+  z-index: 2;
 }
-/* L'indice est un anneau pointillé dessiné autour de la barre : il reste visible
-   en même temps que le contour plein de la sélection. */
+/* L'indice est un cadre pointillé qui dépasse au-dessus et au-dessous de la case :
+   il reste visible en même temps que le contour plein de la sélection. */
+.tri-barre.st-indice { z-index: 3; }
 .tri-barre.st-indice::after {
   content: '';
   position: absolute;
-  inset: -9px -3px -5px -3px;
-  border: 2px dashed var(--tri-compare);
-  border-radius: 6px;
+  inset: -8px 2px;
+  border: 2px dashed #d97706;
+  border-radius: 4px;
   pointer-events: none;
 }
 .tri-retour {
@@ -221,7 +219,8 @@ html[data-theme="dark"] .tri-retour.tri-ko { color: #f87171; }
   display: inline-block;
   width: 0.8rem;
   height: 0.8rem;
-  border-radius: 2px;
+  border: 1px solid var(--tri-case-bord);
+  box-sizing: border-box;
   background: var(--tri-base);
 }
 .tri-leg i.st-compare { background: var(--tri-compare); }

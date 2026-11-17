@@ -419,7 +419,7 @@
   }
 
   // ------------------------------------------------------------------
-  // Scène : affichage des barres
+  // Scène : affichage de la liste (une case par élément)
   // ------------------------------------------------------------------
   class Scene {
     constructor(parent, onClic) {
@@ -435,15 +435,18 @@
       this.root.innerHTML = '';
       this.bars = [];
       const n = trace.n;
-      this.max = Math.max(...trace.vals);
       this.avecAux = trace.frames.some(f => f.aux);
-      this.H = n > 16 ? 150 : 170;
-      this.labels = n <= 16;
-      let hauteurTotale = this.avecAux ? 2 * this.H + 40 : this.H + 22;
-      this.root.classList.toggle('tri-sans-valeurs', !this.labels);
+      // Côté d'une case : les cases sont carrées tant que la largeur le permet
+      const S = n <= 8 ? 52 : n <= 16 ? 44 : 30;
+      this.S = S;
+      this.root.style.maxWidth = (n * S) + 'px';
+      this.root.style.setProperty('--tri-police', n <= 16 ? '1rem' : n <= 24 ? '0.8rem' : '0.7rem');
+      this.labels = true;
+      this.auxTop = S + 42;
+      let hauteurTotale = this.avecAux ? this.auxTop + S + 6 : S + 22;
       // indices
       const idx = h('div', 'tri-indices');
-      idx.style.top = (this.H + 2) + 'px';
+      idx.style.top = (S + 2) + 'px';
       if (this.labels) {
         for (let i = 0; i < n; i++) {
           const s = h('span', '', String(i));
@@ -455,20 +458,19 @@
       this.root.appendChild(idx);
       if (this.avecAux) {
         const fond = h('div', 'tri-aux-fond');
-        fond.style.top = (this.H + 26) + 'px';
-        fond.style.height = (this.H - 6) + 'px';
+        fond.style.top = (S + 24) + 'px';
+        fond.style.height = (S + 22) + 'px';
         fond.appendChild(h('span', '', 'liste fusionnée'));
         this.fondAux = fond;
         this.root.appendChild(fond);
       }
       for (let id = 0; id < n; id++) {
         const b = h('div', 'tri-barre');
-        const hauteur = Math.max(10, Math.round((this.H - 26) * trace.vals[id] / this.max));
-        b.style.height = hauteur + 'px';
-        b.style.width = 'calc(' + (100 / n) + '% - ' + (n > 16 ? 2 : 6) + 'px)';
+        b.style.height = S + 'px';
+        // + 1px : les bordures de deux cases voisines se superposent
+        b.style.width = 'calc(' + (100 / n) + '% + 1px)';
         b.dataset.id = id;
-        b._h = hauteur;
-        if (this.labels) b.appendChild(h('span', 'tri-val', String(trace.vals[id])));
+        b.appendChild(h('span', 'tri-val', String(trace.vals[id])));
         b.addEventListener('click', () => this.onClic && this.onClic(id));
         this.root.appendChild(b);
         this.bars.push(b);
@@ -518,8 +520,8 @@
         if (!p) { b.style.display = 'none'; continue; }
         b.style.display = '';
         const i = p[1];
-        b.style.left = 'calc(' + (i * 100 / n) + '% + ' + (n > 16 ? 1 : 3) + 'px)';
-        b.style.top = (p[0] === 'm' ? this.H - b._h : 2 * this.H + 20 - b._h) + 'px';
+        b.style.left = (i * 100 / n) + '%';
+        b.style.top = (p[0] === 'm' ? 0 : this.auxTop) + 'px';
         const c = ['tri-barre'];
         const st = f.hl[id] || f.marques[id];
         if (st) c.push('st-' + st);
@@ -792,7 +794,7 @@
         ? 'Cherchez la valeur indiquée en suivant exactement l\'algorithme : à chaque étape, cliquez sur l\'élément ' +
           'que l\'algorithme compare à la valeur cherchée, puis sur "Comparer".'
         : `Triez la liste en suivant exactement l'algorithme : ${quoi}, dans le bon ordre. ` +
-          'Cliquez sur une ou deux barres pour les sélectionner, puis choisissez l\'opération.';
+          'Cliquez sur une ou deux cases pour les sélectionner, puis choisissez l\'opération.';
       el.appendChild(consigne);
       this.scene = new Scene(el, (id) => this.clic(id));
       this.scene.root.classList.add('tri-cliquable');
