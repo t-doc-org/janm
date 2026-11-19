@@ -3,7 +3,7 @@
 
 # Cours d'informatique Maxime Jan
 
-[![Publish](https://github.com/t-doc-org/janm/actions/workflows/publish.yml/badge.svg)](https://github.com/t-doc-org/janm/actions/workflows/publish.yml)
+[![Publish](https://github.com/t-doc-org/janm/actions/workflows/publish.yml/badge.svg)](https://github.com/t-doc-org/janm/actions/workflows/publish.yml) [![Fixes](https://janm.t-doc.org/tdoc-fixes.svg)](https://github.com/t-doc-org/janm/actions/workflows/publish.yml) [![Version](https://janm.t-doc.org/tdoc-version.svg)](https://common.t-doc.org/release-notes.html)
 
 Ce projet contient des documents pour l'enseignement de l'informatique.
 
