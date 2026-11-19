@@ -137,7 +137,15 @@ valeur maximale indiquée.
 
 ## Rendu
 
-[TODO]
+Pour rendre votre projet, vous devez :
+ 1. Contrôler de n'avoir aucun chemin d'accès absolu de type `C:/Users/janm/Documents/...`. Vos liens dans les attributs `href` et `src` doivent uniquement contenir le nom du fichier, comme `histoire.html` ou `paysage.jpeg`. Cela signifie que tous les fichiers du projet doivent se trouver dans le dossier du projet
+ 2. Créer un ZIP de votre projet
+    - **Windows** : clic-droite sur le dossier de projet, Compresser vers, Fichier ZIP
+    - **MacOS** : ctrl+clic sur le dossier de projet, Compresser
+3. Déposer le fichier ZIP dans le dépôt ci-dessous correspondant à votre classe.
+
+### Dépôts
+- [Dépôt 1F5](https://edudrop.fritic.ch/e/JQVF4V)
 
 ## Note sur le plagiat
 
