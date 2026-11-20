@@ -148,6 +148,8 @@ Pour rendre votre projet, vous devez :
 ### Dépôts
 - [Dépôt 1F5](https://edudrop.fritic.ch/e/JQVF4V)
 - [Dépôt 1F7](https://edudrop.fritic.ch/e/P9EUBS)
+- [Dépôt 1F8](https://edudrop.fritic.ch/e/AWNUU9)
+- [Dépôt 1BP1](https://edudrop.fritic.ch/e/UYM39X)
 
 ## Note sur le plagiat
 
