@@ -27,6 +27,10 @@ import tdoc.pygame
 setup_canvas()
 ```
 
+```{defaults} exec
+:editor-config: store: 'cloud'
+```
+
 ```{exec} python
 :name: pygame_start
 :when:

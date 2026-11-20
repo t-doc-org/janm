@@ -19,6 +19,10 @@ exec:
       MARIO.png:
 ```
 
+```{defaults} exec
+:editor-config: store: 'cloud'
+```
+
 ```{exec} python
 :name: setup
 :when:

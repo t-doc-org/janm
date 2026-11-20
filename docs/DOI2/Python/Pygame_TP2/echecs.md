@@ -27,6 +27,10 @@ exec:
       yoshi.ogg:
 ```
 
+```{defaults} exec
+:editor-config: store: 'cloud'
+```
+
 ```{exec} python
 :name: setup
 :when:
