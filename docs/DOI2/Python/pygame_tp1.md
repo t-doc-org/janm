@@ -52,15 +52,10 @@ if "main" in globals():
 pygame.quit()
 ```
 
-
-
 # Pygame - TP 2
 
-:::{container} projet-liens
 [Documentation du module](pygame_doc.md)
-:::
 
-:::::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} Présentation
@@ -159,7 +154,6 @@ Il faut maintenant retirer ce `print()` et faire véritablement apparaître les 
  - Ajoutez ces 2 tuyaux à la liste avec `append()`
  - Pour que les tuyaux apparaissent, il faut les *draw*. Vous pouvez le faire dans la boucle de jeu avec la logique *Pour chaque tuyau dans la liste : dessiner le tuyau*.
 
-
 3 secondes après le lancement, vous devriez voir une paire de tuyaux apparaître.
 `````
 `````{tab-item} 9
@@ -191,16 +185,13 @@ A ce stade, le jeu est déjà jouable. Cependant, afin qu'il soit vraiment inté
  - Le jeu ne démarre pas instantanément, mais seulement lorsqu'on appuie sur une touche
 `````
 ``````
-:::::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: sdads
 while True:
   refresh((112, 196, 209))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python

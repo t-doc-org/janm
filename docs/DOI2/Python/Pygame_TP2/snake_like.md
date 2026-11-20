@@ -67,11 +67,8 @@ pygame.quit()
 
 # Projet Pacman-like
 
-:::{container} projet-liens
 [Documentation du module](../pygame_doc.md)
-:::
 
-:::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} 1
@@ -194,16 +191,13 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (5 pts) Ajoutez un 2ème niveau avec une condition de victoire. Lorsque Pacman atteint un certain score, le joueur gagne, et un 2ème niveau apparaît. Celui-ci est différent du premier (différents obstacles, différents fantômes, différents fruits, ...)
 `````
 ``````
-:::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: a130776b-40b4-46b1-969d-b172edd44ba7
 while True:
   refresh((0, 0, 0))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python

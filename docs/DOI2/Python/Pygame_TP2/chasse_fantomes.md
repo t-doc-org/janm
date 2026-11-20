@@ -56,11 +56,8 @@ pygame.quit()
 
 # Projet Chasse aux fantômes
 
-:::{container} projet-liens
 [Documentation du module](../pygame_doc.md)
-:::
 
-:::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} Présentation
@@ -174,16 +171,13 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (5 pts) Un fantôme « boss », plus grand et plus lent, apparaît de temps en temps. Il faut le toucher 3 fois pour le détruire, et il rapporte 10 points.
 `````
 ``````
-:::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: 19acc670-9503-41b6-952b-d4ad387b1b43
 while True:
   refresh((20, 10, 40))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python

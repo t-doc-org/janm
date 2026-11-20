@@ -1,9 +1,8 @@
-// Pages de cours : le jeu Pygame s'affiche dans une fenêtre par-dessus la page
+// Le jeu Pygame s'affiche dans une fenêtre par-dessus la page
 // (voir custom.css). Ce script ajoute le bouton × et arrête le jeu lors d'un
-// clic à côté de la fenêtre. Rien ne change sur les pages « projet ».
+// clic à côté de la fenêtre.
 (() => {
   const popup = () => {
-    if (document.querySelector('.projet-ide')) return null;
     for (const out of document.querySelectorAll(
         'div.tdoc-exec-output.tdoc-sectioned')) {
       if (out.querySelector(':scope > .canvas')) return out;

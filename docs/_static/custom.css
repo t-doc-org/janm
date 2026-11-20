@@ -1,74 +1,15 @@
 /* ==========================================================================
-   Pages « projet » Pygame : consignes en haut, code à gauche, jeu à droite.
-
-   Structure attendue dans le fichier .md (voir Pygame_TP2/*.md) :
-
-     # Titre du projet
-
-     :::{container} projet-liens        <- liens en haut à droite (facultatif)
-     :::{container} projet-consignes    <- contient un {tab-set}
-     :::{container} projet-ide          <- contient le bloc {exec} avec :editor:
-
-   Les consignes prennent la hauteur de l'onglet affiché ; le code et le jeu
-   occupent le reste de la fenêtre (le jeu est réduit si nécessaire).
-   Sur les écrans étroits (< 1000px), la page garde la mise en page normale.
+   Deux colonnes dans un onglet de consignes (ex. texte à gauche, images à
+   droite) :
+     ::::{container} projet-colonnes
+     :::{container}
+     texte...
+     :::
+     images...
+     ::::
    ========================================================================== */
 
 @media (min-width: 1000px) {
-  /* Toute la largeur de la fenêtre. */
-  html:has(.projet-ide) .bd-page-width,
-  html:has(.projet-ide) .bd-main .bd-content .bd-article-container {
-    max-width: none;
-  }
-  html:has(.projet-ide) .bd-main .bd-content .bd-article {
-    padding: 0.5rem 1.5rem 0;
-  }
-
-  /* La page occupe au moins la hauteur de la fenêtre, sous l'en-tête. Elle ne
-     dépasse que si les consignes affichées sont très longues. */
-  section:has(> .projet-ide) {
-    --projet-gap: 0.5rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: var(--projet-gap);
-    min-height: calc(100vh - var(--pst-header-article-height, 2.7rem) - 1rem);
-  }
-  section:has(> .projet-ide) > * {
-    flex: none;
-    margin: 0;
-  }
-  section:has(> .projet-ide) > h1 {
-    margin: 0;
-    padding-right: 16rem;
-    font-size: 1.6rem;
-  }
-
-  /* Liens en haut à droite, à côté du titre. */
-  section:has(> .projet-ide) > .projet-liens {
-    position: absolute;
-    top: 0.3rem;
-    right: 0;
-  }
-  .projet-liens p {
-    margin: 0;
-  }
-
-  /* Consignes : la hauteur s'adapte au contenu de l'onglet affiché (pas de
-     barre de défilement). Le code et le jeu prennent la place qui reste. */
-  .projet-consignes > .sd-tab-set {
-    margin: 0;
-  }
-  .projet-consignes > .sd-tab-set > .sd-tab-content > :last-child {
-    margin-bottom: 0;
-  }
-  /* Deux colonnes dans un onglet (ex. texte à gauche, images à droite) :
-       ::::{container} projet-colonnes
-       :::{container}
-       texte...
-       :::
-       images...
-       :::: */
   .projet-colonnes {
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -79,89 +20,16 @@
   .projet-colonnes > * > :last-child {
     margin: 0;
   }
-  /* Espace avant et après les étapes 1 à 10. */
-  .projet-consignes > .sd-tab-set > label[data-sync-id=etape1]:not(:first-of-type) {
-    margin-left: 1rem;
-  }
-  .projet-consignes > .sd-tab-set > label[data-sync-id=etape10] {
-    margin-right: 1rem;
-  }
-
-  /* Code à gauche (toute la hauteur), jeu à droite. */
-  .projet-ide {
-    flex: 1 1 0 !important;
-    min-height: 20rem;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    column-gap: 0.75rem;
-    container-type: size;
-  }
-  .projet-ide > tdoc-exec {
-    grid-column: 1;
-    grid-row: 1 / -1;
-    min-height: 0;
-    margin: 0;
-  }
-  .projet-ide > tdoc-exec div.cm-editor {
-    height: 100%;
-    max-height: none !important;
-  }
-  .projet-ide > .tdoc-exec-output {
-    grid-column: 2;
-    align-self: start;
-    max-height: 100cqh;
-    margin: 0;
-    overflow-y: auto;
-  }
-  .projet-ide > .tdoc-exec-output.tdoc-sectioned {
-    width: min-content;
-    min-width: 16rem;
-  }
-  .projet-ide > .tdoc-exec-output.tdoc-error {
-    max-width: 600px;
-  }
-
-  /* Le jeu est réduit si la fenêtre n'est pas assez haute (600x600 max). */
-  .projet-ide > .tdoc-exec-output .canvas > canvas {
-    width: min(600px, 100cqh - 10px) !important;
-    height: auto !important;
-  }
-  .projet-ide > .tdoc-exec-output:has(.tdoc-console) .canvas > canvas {
-    width: min(600px, 100cqh - 9rem) !important;
-  }
-  .projet-ide > .tdoc-exec-output > .tdoc-console > pre {
-    max-height: 8rem;
-    white-space: pre-wrap;
-  }
-
-  /* Emplacement du jeu avant le premier lancement. */
-  .projet-ide:not(:has(> .tdoc-exec-output))::after {
-    content: "Cliquez sur \25B6\FE0E  à droite du code (ou Maj+Entrée dans l'éditeur) pour lancer le jeu";
-    grid-column: 2;
-    grid-row: 1;
-    box-sizing: border-box;
-    width: min(600px, 100cqh - 10px);
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border: 2px dashed var(--pst-color-border);
-    border-radius: 0.25rem;
-    color: var(--pst-color-text-muted);
-    text-align: center;
-  }
 }
 
 /* ==========================================================================
-   Pages de cours (pas les pages « projet ») : pendant que le jeu tourne, il
+   Toutes les pages : pendant que le jeu tourne, il
    s'affiche dans une fenêtre par-dessus la page assombrie. Le bouton ×, un
    clic à côté de la fenêtre ou le bouton ■ l'arrêtent (voir custom.js). À
    la fin du jeu, les messages éventuels (print, erreurs) restent sous le code.
    ========================================================================== */
 
-html:not(:has(.projet-ide)) div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) {
+div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) {
   position: fixed;
   z-index: 1100;
   top: 50%;
@@ -177,14 +45,14 @@ html:not(:has(.projet-ide)) div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) {
   border-radius: 0.5rem;
   box-shadow: 0 0 0 100vmax rgb(0 0 0 / 0.55), 0 0.5rem 2rem rgb(0 0 0 / 0.5);
 }
-html:not(:has(.projet-ide)) div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) > .canvas > canvas {
+div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) > .canvas > canvas {
   width: min(600px, 100vw - 3rem, 100vh - 4.5rem) !important;
   height: auto !important;
 }
-html:not(:has(.projet-ide)) div.tdoc-exec-output.tdoc-sectioned:has(> .canvas):has(> .tdoc-console) > .canvas > canvas {
+div.tdoc-exec-output.tdoc-sectioned:has(> .canvas):has(> .tdoc-console) > .canvas > canvas {
   width: min(600px, 100vw - 3rem, 100vh - 13rem) !important;
 }
-html:not(:has(.projet-ide)) div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) > .tdoc-console > pre {
+div.tdoc-exec-output.tdoc-sectioned:has(> .canvas) > .tdoc-console > pre {
   max-height: 7rem;
   white-space: pre-wrap;
 }

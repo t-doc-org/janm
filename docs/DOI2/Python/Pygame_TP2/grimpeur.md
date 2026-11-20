@@ -58,11 +58,8 @@ pygame.quit()
 
 # Projet Grimpeur
 
-:::{container} projet-liens
 [Documentation du module](../pygame_doc.md)
-:::
 
-:::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} Présentation
@@ -176,16 +173,13 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (4 pts) Roger peut tirer vers le haut avec {kbd}`Espace` pour détruire les fantômes.
 `````
 ``````
-:::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: 40189215-4e90-45ff-a6e4-7dc280f085cc
 while True:
   refresh((30, 40, 90))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python

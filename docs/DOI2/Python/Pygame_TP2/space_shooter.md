@@ -65,14 +65,10 @@ if "main" in globals():
 pygame.quit()
 ```
 
-
 # Projet Space Shooter
 
-:::{container} projet-liens
 [Documentation du module](../pygame_doc.md)
-:::
 
-:::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} 1
@@ -188,16 +184,13 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (3 pts) Ajoutez un deuxième type d'ennemi à détruire (`enemy_spaceship.png`). Ceux-ci se comportent différemment des astéroïdes. Par exemple, ils pourraient aussi bouger horizontalement. +2pts si les ennemis tirent aussi des lasers
 `````
 ``````
-:::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: 351561ff-39c1-4c28-834b-01556c44a642
 while True:
   refresh((14, 0, 38))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python

@@ -66,11 +66,8 @@ pygame.quit()
 
 # Projet Casse-Briques
 
-:::{container} projet-liens
 [Documentation du module](../pygame_doc.md)
-:::
 
-:::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} 1
@@ -196,16 +193,13 @@ Les fonctionnalités de la partie 2 valent au maximum 10 pts. Vous pouvez donc c
  - (3 pts) Ajoutez plusieurs balles simultanément (bonus "multi-ball"). Gérez une liste de balles comme pour les briques.
 `````
 ``````
-:::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: fce1ff87-ed2f-496e-9229-90e3d86166db
 while True:
   refresh((40, 40, 60))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python

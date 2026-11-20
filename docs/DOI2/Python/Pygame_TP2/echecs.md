@@ -64,11 +64,8 @@ pygame.quit()
 
 # Projet Échecs
 
-:::{container} projet-liens
 [Documentation du module](../pygame_doc.md)
-:::
 
-:::{container} projet-consignes
 ``````{tab-set}
 :sync-group: etape
 `````{tab-item} Présentation
@@ -253,16 +250,13 @@ Si le déplacement n'est pas autorisé, la pièce ne bouge pas, et le joueur doi
  - (4 pts) Appuyer sur {kbd}`U` annule le dernier coup joué.
 `````
 ``````
-:::
 
-:::{container} projet-ide
 ```{exec} python
 :then: pygame_end
 :editor: 798dfa7f-5769-4e6c-8751-b64f04c233cc
 while True:
   refresh((50, 50, 50))
 ```
-:::
 
 ````{solution} Solution (étapes 1 à 10)
 ```{code-block} python
