@@ -123,7 +123,7 @@ valeur maximale indiquée.
 | Au moins 10 propriétés CSS différentes sont utilisées correctement<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont les couleurs rgb(143, 101, 76) et blanchedalmond</span> | 3 |
 | Le sélecteur de classe est utilisé de manière pertinente au moins 3 fois (classes définies dans `style.css` ; les classes de Bootstrap ne comptent pas)<span aria-hidden="true" style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap">, dont la classe zone-ardoise sur la balise body</span> | 3 |
 | **Bootstrap** | |
-| Bootstrap est installé correctement sur chaque page (`<link>` dans le `<head>`, avant celui de `style.css` ; `<script>` juste avant `</body>`) | 1 |
+| Bootstrap est installé correctement sur chaque page (`<link>` dans le `<head>`, avant celui de `style.css`) | 1 |
 | Au moins deux lignes à plusieurs colonnes sont utilisées de manière pertinente (par exemple une image et son texte côte à côte, une galerie) | 4 |
 | **Contenu et soin** | |
 | Contenu informatif exact, suffisant et intéressant | 3 |
