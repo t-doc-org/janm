@@ -142,10 +142,12 @@ Pour rendre votre projet, vous devez :
  2. Créer un ZIP de votre projet
     - **Windows** : clic-droite sur le dossier de projet, Compresser vers, Fichier ZIP
     - **MacOS** : ctrl+clic sur le dossier de projet, Compresser
-3. Déposer le fichier ZIP dans le dépôt ci-dessous correspondant à votre classe.
+3. Renommez ce fichier avec le format `prenom_nom_classe` comme `maxime_jan_1F9`
+4. Déposer le fichier ZIP dans le dépôt ci-dessous correspondant à votre classe.
 
 ### Dépôts
 - [Dépôt 1F5](https://edudrop.fritic.ch/e/JQVF4V)
+- [Dépôt 1F7](https://edudrop.fritic.ch/e/P9EUBS)
 
 ## Note sur le plagiat
 
