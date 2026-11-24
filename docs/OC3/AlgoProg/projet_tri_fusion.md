@@ -8,35 +8,18 @@
 
 Le tri fusion et le tri rapide sont plus rapides que les tris par sélection et par insertion, mais aussi plus difficiles à programmer : vous n'aurez pas à les écrire, leur code vous sera fourni dans la [partie 6](projet_mesures.md). Il est par contre important de bien comprendre leur fonctionnement.
 
-## Le principe
-Deux enseignants ont chacun corrigé la moitié des copies d'un examen, et chacun a trié sa pile de copies par ordre alphabétique. Pour obtenir une seule pile triée, inutile de tout recommencer : il suffit de regarder la première copie de chaque pile, de prendre celle qui vient en premier dans l'alphabet, et de recommencer jusqu'à ce que les deux piles soient vides. Cette opération s'appelle une *fusion*.
-
-Le *tri fusion* applique un principe appelé *diviser pour régner* :
-
-1. on **coupe** la liste en deux moitiés ;
-2. on **trie** chaque moitié... avec le tri fusion lui-même ;
-3. on **fusionne** les deux moitiés triées.
-
-Pour trier chaque moitié, l'algorithme s'utilise donc lui-même, sur une liste deux fois plus courte : on dit que c'est un algorithme *récursif*. Chaque moitié est à son tour coupée en deux, et ainsi de suite jusqu'à des listes de 0 ou 1 élément, qui sont forcément déjà triées : c'est le *cas de base*, où l'on s'arrête.
-
-```{code-block} text
-:linenos:
-Pour trier une liste :
-    Si elle contient au plus un élément, elle est déjà triée : la retourner telle quelle
-    Sinon :
-        Couper la liste en deux moitiés
-        Trier la moitié gauche (avec le tri fusion)
-        Trier la moitié droite (avec le tri fusion)
-        Retourner la fusion des deux moitiés triées
+## Vidéo
+```{youtube} WlpUoBHOIhs
 ```
 
-<!-- Vidéo : tri fusion -->
+## Démonstration
+Le tri fusion coupe la liste en deux moitiés, trie chaque moitié, puis fusionne les deux moitiés triées. Pour trier chaque moitié, il s'utilise lui-même : c'est un algorithme *récursif*. Les moitiés sont coupées à leur tour, jusqu'à des listes de 0 ou 1 élément, qui sont forcément déjà triées.
 
-Observez l'algorithme dans la visualisation ci-dessous. Sous la liste, l'*arbre des appels* montre toutes les fois où le tri fusion est utilisé sur une partie de la liste : l'appel en cours en orange, les appels en attente en bleu, et les appels terminés en vert. La *pile d'appels* affiche les appels en attente, du premier lancé jusqu'à celui en cours.
+Dans la démonstration ci-dessous, sous la liste, l'*arbre des appels* montre toutes les fois où le tri fusion est utilisé sur une partie de la liste : l'appel en cours en orange, les appels en attente en bleu, et les appels terminés en vert. La *pile d'appels* affiche les appels en attente, du premier lancé jusqu'à celui en cours.
 
 <div class="tri-visu" data-algo="fusion" data-liste="7 3 9 1 5 8 2 6"></div>
 
-## La fusion de deux listes triées
+### La fusion de deux listes triées
 Le cœur de l'algorithme est la fusion. Comme les deux listes sont triées, leur plus petit élément est forcément leur premier élément (leur *tête*). On compare donc les deux têtes, on place la plus petite dans le résultat, et on avance dans la liste d'où elle vient. Quand l'une des deux listes est épuisée, on ajoute simplement tous les éléments restants de l'autre.
 
 Voici la fusion de `[1, 3, 7, 9]` et `[2, 5, 6, 8]` :
@@ -52,6 +35,7 @@ Voici la fusion de `[1, 3, 7, 9]` et `[2, 5, 6, 8]` :
 | `9` et `8` | `8` | `[1, 2, 3, 5, 6, 7, 8]` |
 | la liste de droite est vide | `9` | `[1, 2, 3, 5, 6, 7, 8, 9]` |
 
+### L'arbre des appels
 L'arbre ci-dessous résume tous les appels du tri fusion pour la liste `[7, 3, 9, 1, 5, 8, 2, 6]`. Les appels descendent en coupant les listes en deux jusqu'au cas de base, puis les résultats remontent en étant fusionnés.
 
 ```{code-block} text
@@ -73,7 +57,7 @@ tri_fusion([7, 3, 9, 1, 5, 8, 2, 6])
 └── fusion                   →  [1, 2, 3, 5, 6, 7, 8, 9]
 ```
 
-## À vous de jouer
+## Exemple à la main
 Triez la liste ci-dessous en suivant **exactement** le tri fusion. Les découpages et les appels se font automatiquement ; à chaque fusion, comparez les têtes des deux moitiés (sélectionnez-les puis cliquez sur "Comparer"), puis placez la plus petite dans la liste fusionnée (sélectionnez-la puis cliquez sur "Placer").
 
 <div class="tri-exo" data-algo="fusion" data-liste="5 2 8 1 6 3"></div>
@@ -93,7 +77,7 @@ Dessinez l'arbre des appels du tri fusion pour la liste `[6, 1, 8, 3, 5, 2, 7, 4
 
 ### Question {num1}`question-tri:q-fusion-niveaux`
 1. Combien de niveaux de découpage l'arbre des appels compte-t-il pour une liste de 16 éléments ? De 1024 éléments ? D'un million d'éléments ?
-2. Dans la visualisation, relevez le nombre de comparaisons du tri fusion pour des listes aléatoires de 8, de 16 et de 32 éléments. Comparez-les au nombre de comparaisons du tri par sélection pour les mêmes tailles.
+2. Dans la démonstration, relevez le nombre de comparaisons du tri fusion pour des listes aléatoires de 8, de 16 et de 32 éléments. Comparez-les au nombre de comparaisons du tri par sélection pour les mêmes tailles.
 3. Pour une liste d'un million d'éléments, estimez le nombre d'opérations du tri par sélection et celui du tri fusion. Sur un ordinateur qui effectue un milliard d'opérations par seconde, combien de temps chacun prendrait-il environ ?
 
 ```{admonition} Pour le rapport
@@ -101,5 +85,5 @@ Dessinez l'arbre des appels du tri fusion pour la liste `[6, 1, 8, 3, 5, 2, 7, 4
 - **Question {numref}`%s <question-tri:q-fusion-arbre>`** : l'arbre des appels complet, dessiné à
   la main (photo lisible) ou à l'ordinateur, et le tableau de la dernière fusion.
 - **Question {numref}`%s <question-tri:q-fusion-niveaux>`** : les réponses, avec les nombres
-  relevés dans la visualisation et vos calculs.
+  relevés dans la démonstration et vos calculs.
 ```

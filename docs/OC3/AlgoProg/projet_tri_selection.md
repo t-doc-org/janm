@@ -8,33 +8,23 @@
 
 Les parties 2 à 5 présentent quatre algorithmes de tri, un par page. Pour chacun d'eux :
 
-1. lisez le principe et la description de l'algorithme ;
-2. regardez la vidéo ;
-3. observez l'algorithme dans la visualisation, étape par étape ou en lecture automatique ;
-4. triez vous-même une liste dans l'exercice "À vous de jouer" ;
-5. répondez aux questions.
+1. regardez la vidéo ;
+2. observez l'algorithme dans la démonstration, étape par étape ou en lecture automatique ;
+3. faites l'exemple à la main, dans l'exercice interactif ;
+4. répondez aux questions.
 
-Vous programmerez vous-mêmes les deux premiers, le tri par sélection et le tri par insertion, à la fin de leur page. Le code des deux autres, le tri fusion et le tri rapide, vous sera fourni dans la [partie 6](projet_mesures.md).
+Vous programmerez ensuite vous-mêmes les deux premiers, le tri par sélection et le tri par insertion, à la fin de leur page. Le code des deux autres, le tri fusion et le tri rapide, vous sera fourni dans la [partie 6](projet_mesures.md).
 
-Les visualisations comptent les comparaisons et les échanges effectués. Sous chacune d'elles, vous pouvez choisir la taille de la liste et son type (aléatoire, presque triée, triée à l'envers ou déjà triée), puis tirer une nouvelle liste : servez-vous-en pour répondre aux questions.
+Les démonstrations comptent les comparaisons et les échanges effectués. Sous chacune d'elles, vous pouvez choisir la taille de la liste et son type (aléatoire, presque triée, triée à l'envers ou déjà triée), puis tirer une nouvelle liste : servez-vous-en pour répondre aux questions.
 
-## Le principe
-Imaginez que vous deviez ranger les élèves d'une classe par taille, du plus petit au plus grand. Une méthode naturelle consiste à chercher le plus petit élève et à le placer au début de la rangée, puis à chercher le plus petit parmi ceux qui restent et à le placer en deuxième position, et ainsi de suite. C'est exactement le principe du *tri par sélection* : à chaque étape, on **sélectionne** le minimum de la partie non triée, et on l'**échange** avec le premier élément de cette partie.
-
-```{code-block} text
-:linenos:
-Pour chaque position i, de la première à l'avant-dernière :
-    Chercher la position du minimum parmi les éléments de la position i jusqu'à la fin
-    Échanger ce minimum avec l'élément de la position i
+## Vidéo
+```{youtube} 8u3Yq-5DTN8
 ```
 
-Après le premier passage, le plus petit élément est à sa place définitive au début de la liste. Après le deuxième passage, les deux plus petits sont à leur place, etc. Le dernier élément n'a pas besoin d'être traité : quand tous les autres sont à leur place, il l'est forcément aussi.
-
-<!-- Vidéo : tri par sélection -->
-
+## Démonstration
 <div class="tri-visu" data-algo="selection" data-liste="7 3 9 1 5 8 2 6"></div>
 
-## Exemple pas à pas
+### Exemple pas à pas
 Le tableau ci-dessous résume le tri de la liste `[7, 3, 9, 1, 5]`. La partie déjà triée est en gras.
 
 | Passage | Partie non triée | Minimum | Échange | Liste après le passage |
@@ -44,7 +34,7 @@ Le tableau ci-dessous résume le tri de la liste `[7, 3, 9, 1, 5]`. La partie d�
 | `i = 2` | `[9, 7, 5]` | `5` | `5` et `9` | [**1**, **3**, **5**, 7, 9] |
 | `i = 3` | `[7, 9]` | `7` | aucun, il est déjà à sa place | [**1**, **3**, **5**, **7**, **9**] |
 
-## À vous de jouer
+## Exemple à la main
 Triez la liste ci-dessous en suivant **exactement** le tri par sélection. Sélectionnez deux éléments en cliquant dessus, puis choisissez l'opération : chaque comparaison et chaque échange doivent être faits dans le bon ordre.
 
 <div class="tri-exo" data-algo="selection" data-liste="5 2 8 1 6"></div>
@@ -55,7 +45,7 @@ Triez la liste ci-dessous en suivant **exactement** le tri par sélection. Séle
 Triez à la main la liste `[8, 3, 6, 1, 5, 2]` avec le tri par sélection. Présentez votre réponse dans un tableau comme celui de l'exemple, avec, pour chaque passage, le minimum trouvé, l'échange effectué et la liste obtenue.
 
 ### Question {num1}`question-tri:q-selection-complexite`
-1. Dans la visualisation, triez des listes aléatoires de 8, de 16, puis de 32 éléments, et relevez à chaque fois le nombre de comparaisons. Recommencez avec des listes déjà triées. Que constatez-vous ?
+1. Dans la démonstration, triez des listes aléatoires de 8, de 16, puis de 32 éléments, et relevez à chaque fois le nombre de comparaisons. Recommencez avec des listes déjà triées. Que constatez-vous ?
 2. Pour une liste de $n$ éléments, combien de comparaisons le premier passage effectue-t-il ? Et le deuxième ? Et le dernier ? Déduisez-en le nombre total de comparaisons en fonction de $n$, et vérifiez votre formule avec les nombres relevés au point 1.
 3. Quelle est la complexité du tri par sélection ? Combien d'échanges effectue-t-il au maximum ?
 
@@ -70,6 +60,18 @@ quel est le **dernier** terme de votre somme avant d'appliquer la formule !
 
 ## Programmer le tri par sélection
 Il est temps de programmer le tri par sélection en Python. Le code s'écrit désormais **sur votre ordinateur**, et plus dans le navigateur : seuls les exemples de cette page peuvent encore être exécutés directement ici.
+
+### Description de l'algorithme
+Imaginez que vous deviez ranger les élèves d'une classe par taille, du plus petit au plus grand. Une méthode naturelle consiste à chercher le plus petit élève et à le placer au début de la rangée, puis à chercher le plus petit parmi ceux qui restent et à le placer en deuxième position, et ainsi de suite. C'est exactement le principe du *tri par sélection* : à chaque étape, on **sélectionne** le minimum de la partie non triée, et on l'**échange** avec le premier élément de cette partie.
+
+```{code-block} text
+:linenos:
+Pour chaque position i, de la première à l'avant-dernière :
+    Chercher la position du minimum parmi les éléments de la position i jusqu'à la fin
+    Échanger ce minimum avec l'élément de la position i
+```
+
+Après le premier passage, le plus petit élément est à sa place définitive au début de la liste. Après le deuxième passage, les deux plus petits sont à leur place, etc. Le dernier élément n'a pas besoin d'être traité : quand tous les autres sont à leur place, il l'est forcément aussi.
 
 ### Mise en place
 1. Installez un éditeur Python sur votre ordinateur, si ce n'est pas déjà fait. Le plus simple est [Thonny](https://thonny.org), qui installe Python en même temps. Visual Studio Code, avec son extension *Python*, convient aussi.
@@ -130,7 +132,7 @@ print(mes_notes)
 ```
 
 ### Le code
-Complétez la fonction `tri_selection(liste)` dans `tris.py`, en suivant le principe décrit au début de cette page. Exécutez `tris.py` pour la vérifier : la ligne affichée doit être la liste triée.
+Complétez la fonction `tri_selection(liste)` dans `tris.py`, en suivant la description de l'algorithme ci-dessus. Exécutez `tris.py` pour la vérifier : la ligne affichée doit être la liste triée.
 
 ```{admonition} Indices
 :class: tip dropdown
@@ -156,7 +158,7 @@ Lorsque votre fonction est correcte, ajoutez-y des commentaires pour expliquer s
 ```{admonition} Pour le rapport
 :class: note
 - **Questions {numref}`%s <question-tri:q-selection-trace>` et {numref}`%s <question-tri:q-selection-complexite>`** :
-  le tableau et les réponses, avec les nombres relevés dans la visualisation et vos explications.
+  le tableau et les réponses, avec les nombres relevés dans la démonstration et vos explications.
 - **Question {numref}`%s <question-tri:q-code-selection>`** : le code de votre fonction
   `tri_selection`, commenté.
 ```

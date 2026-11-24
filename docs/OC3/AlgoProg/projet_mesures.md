@@ -205,7 +205,7 @@ plt.savefig("graphique_aleatoires.png", dpi=150)
 plt.show()
 ```
 
-1. Le tri fusion et le tri rapide sont des fonctions *récursives* : `tri_fusion` et `tri_rapide_zone` s'appellent elles-mêmes pour trier des parties plus petites de la liste, exactement comme dans les arbres des appels des visualisations du [tri fusion](projet_tri_fusion.md) et du [tri rapide](projet_tri_rapide.md). Vous pouvez comparer leur code aux descriptions des parties 4 et 5, mais vous n'avez pas besoin de le comprendre en détail.
+1. Le tri fusion et le tri rapide sont des fonctions *récursives* : `tri_fusion` et `tri_rapide_zone` s'appellent elles-mêmes pour trier des parties plus petites de la liste, exactement comme dans les arbres des appels des démonstrations du [tri fusion](projet_tri_fusion.md) et du [tri rapide](projet_tri_rapide.md). Vous pouvez comparer leur code au fonctionnement vu dans les parties 4 et 5, mais vous n'avez pas besoin de le comprendre en détail.
 2. `temps_tri(tri, liste)` mesure le temps nécessaire pour trier une **copie** de la liste. Une fonction peut recevoir une autre fonction en paramètre, comme n'importe quelle valeur : `temps_tri` reçoit dans son paramètre `tri` la fonction de tri à mesurer, par exemple `tri_selection`, et l'appelle avec `tri(copie)`.
 3. `temps_moyen(tri, n, repetitions)` trie plusieurs listes aléatoires différentes de `n` éléments, et retourne le temps moyen.
 4. La boucle des mesures remplit la liste `temps_selection` : pour chaque taille de la liste `tailles`, elle contient le temps moyen correspondant. Les deux listes ont donc la même longueur, et peuvent être passées à `plt.plot`.
